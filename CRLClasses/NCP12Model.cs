@@ -11,8 +11,6 @@ public class NCP12Model
     public string PostageClass { get; set; }
     public NCP12Model()
 	{
-		//
-		// TODO: Add constructor logic here
-		//
+	
 	}
 }
