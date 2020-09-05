@@ -127,6 +127,7 @@
     <Compile Include="Helpers\Enums.cs" />
     <Compile Include="Helpers\Logger.cs" />
     <Compile Include="Models\ConfigModel.cs" />
+    <Compile Include="Models\InputCopyBookModels\AccountsModel.cs" />
     <Compile Include="Models\InputCopyBookModels\MortgageLoanBillingModels\BlendedRateInformationRecordModel.cs" />
     <Compile Include="Models\InputCopyBookModels\MortgageLoanBillingModels\CoBorrowerRecordModel.cs" />
     <Compile Include="Models\InputCopyBookModels\MortgageLoanBillingModels\EscrowRecordModel.cs" />
@@ -141,7 +142,7 @@
     <Compile Include="Models\InputCopyBookModels\MortgageLoanBillingModels\HeaderRecordModel.cs" />
     <Compile Include="Models\InputCopyBookModels\MortgageLoanBillingModels\InstitutionRecordModel.cs" />
     <Compile Include="Models\InputCopyBookModels\MortgageLoanBillingModels\MasterFileDataPart1Model.cs" />
-    <Compile Include="Models\InputCopyBookModels\MortgageLoanBillingModels\MortgageLoanBillingFileModel.cs" />
+    <Compile Include="Models\InputCopyBookModels\MortgageLoanBillingFileModel.cs" />
     <Compile Include="Models\InputCopyBookModels\MortgageLoanBillingModels\MasterFileDataPart2Model.cs" />
     <Compile Include="Models\InputCopyBookModels\MortgageLoanBillingModels\PL_RecordModel.cs" />
     <Compile Include="Models\InputCopyBookModels\EConsentModel.cs" />
@@ -150,7 +151,7 @@
     <Compile Include="Models\InputCopyBookModels\MortgageLoanBillingModels\DisasterTrackingRecordModel.cs" />
     <Compile Include="Models\InputCopyBookModels\MortgageLoanBillingModels\EmailAddressRecordModel.cs" />
     <Compile Include="Models\InputCopyBookModels\MortgageLoanBillingModels\LateChargeDetailRecordModel.cs" />
-    <Compile Include="Models\InputCopyBookModels\MortgageLoanBillingModels\LateChargeInformationRecord.cs" />
+    <Compile Include="Models\InputCopyBookModels\MortgageLoanBillingModels\LateChargeInformationRecordModel.cs" />
     <Compile Include="Models\InputCopyBookModels\MortgageLoanBillingModels\RHCDSOnlyRecordModel.cs" />
     <Compile Include="Models\InputCopyBookModels\MortgageLoanBillingModels\TrailerRecordModel.cs" />
     <Compile Include="Models\InputCopyBookModels\SupplementalCCFModel.cs" />
