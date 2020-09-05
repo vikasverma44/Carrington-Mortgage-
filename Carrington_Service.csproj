@@ -127,6 +127,10 @@
     <Compile Include="Helpers\Enums.cs" />
     <Compile Include="Helpers\Logger.cs" />
     <Compile Include="Models\ConfigModel.cs" />
+    <Compile Include="Models\InputCopyBookModels\MortgageLoanBillingModels\HeaderRecor.cs" />
+    <Compile Include="Models\InputCopyBookModels\MortgageLoanBillingModels\InstitutionRecord.cs" />
+    <Compile Include="Models\InputCopyBookModels\MortgageLoanBillingModels\MasterFileDataPart1.cs" />
+    <Compile Include="Models\InputCopyBookModels\MortgageLoanBillingModels\PL_Record.cs" />
     <Compile Include="Models\LogFileModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -163,7 +167,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Input\" />
-    <Folder Include="Models\InputCopyBookModels\MortgageLoanBillingModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
