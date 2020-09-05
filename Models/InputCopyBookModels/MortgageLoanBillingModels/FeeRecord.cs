@@ -13,9 +13,7 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
         public string AccountNumber { get; set; }
         public string SequenceNumber { get; set; }
         public string FeeType { get; set; }
-
         public string FeeDescription { get; set; }
-
         public string FeeLevelAmortizedFeePayment { get; set; }
         public string PreviousFeeBalance { get; set; }
         public string NewReceivableFeesAssessed { get; set; }

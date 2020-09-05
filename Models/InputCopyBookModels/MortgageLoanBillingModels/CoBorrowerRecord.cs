@@ -53,7 +53,7 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
         public string CoborrowerAddressLine106 { get; set; }
         public string CoborrowerAddressLine206 { get; set; }
         public string CoborrowerCity06 { get; set; }
-        public string CoborrowerState04 { get; set; }
+        public string CoborrowerState04Part2 { get; set; }
         public string CoborrowerZipCode06 { get; set; }
         public string CoborrowerBillingStatement06 { get; set; }
         public string CoborrowerName07 { get; set; }
