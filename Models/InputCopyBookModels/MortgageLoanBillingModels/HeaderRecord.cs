@@ -11,5 +11,7 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
         public string RecordIdentifier { get; set; }
         public string InstitutionNumber { get; set; }
         public string Filler1 { get; set; }
+        public string Filler2 { get; set; }
+        public string FileIdentifier { get; set; }
     }
 }
