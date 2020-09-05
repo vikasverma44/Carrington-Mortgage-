@@ -144,6 +144,16 @@
     <Compile Include="Models\InputCopyBookModels\MortgageLoanBillingModels\MortgageLoanBillingFileModel.cs" />
     <Compile Include="Models\InputCopyBookModels\MortgageLoanBillingModels\MasterFileDataPart2Model.cs" />
     <Compile Include="Models\InputCopyBookModels\MortgageLoanBillingModels\PL_RecordModel.cs" />
+    <Compile Include="Models\InputCopyBookModels\EConsentModel.cs" />
+    <Compile Include="Models\InputCopyBookModels\MortgageLoanBillingModels\ActiveBankruptcyInformationRecordModel.cs" />
+    <Compile Include="Models\InputCopyBookModels\MortgageLoanBillingModels\ArchivedBankruptcyDetailRecordModel.cs" />
+    <Compile Include="Models\InputCopyBookModels\MortgageLoanBillingModels\DisasterTrackingRecordModel.cs" />
+    <Compile Include="Models\InputCopyBookModels\MortgageLoanBillingModels\EmailAddressRecordModel.cs" />
+    <Compile Include="Models\InputCopyBookModels\MortgageLoanBillingModels\LateChargeDetailRecordModel.cs" />
+    <Compile Include="Models\InputCopyBookModels\MortgageLoanBillingModels\LateChargeInformationRecord.cs" />
+    <Compile Include="Models\InputCopyBookModels\MortgageLoanBillingModels\RHCDSOnlyRecordModel.cs" />
+    <Compile Include="Models\InputCopyBookModels\MortgageLoanBillingModels\TrailerRecordModel.cs" />
+    <Compile Include="Models\InputCopyBookModels\SupplementalCCFModel.cs" />
     <Compile Include="Models\LogFileModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
