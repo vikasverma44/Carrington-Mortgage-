@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
 {
-    public class EscrowRecord
+    public class EscrowRecordModel
     {
-        public string EscrowPayeeDataRecord { get; set; }
-        public string ThisRecordCanOccurUpTo30TimesIfPayeeDataIsAvailable { get; set; }
-        public string Name { get; set; }
         public string RecordIdentifier { get; set; }
         public string InstitutionNumber { get; set; }
         public string AccountNumber { get; set; }

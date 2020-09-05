@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
 {
-    public class MasterFileDataPart2
+    public class MasterFileDataPart2Model
     {
-        public string MasterFileDataRecordPart2 { get; set; }
-        public string BusinessName { get; set; }
         public string RecordIdentifier { get; set; }
         public string InstitutionNumber { get; set; }
         public string AccountNumber { get; set; }

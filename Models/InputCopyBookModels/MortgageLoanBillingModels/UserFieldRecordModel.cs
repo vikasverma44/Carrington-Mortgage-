@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
 {
-   public class UserFieldRecord
+   public class UserFieldRecordModel
     {
-        public string InstitutionNumberPart2 { get; set; }
-        public string AccountNumberPart2 { get; set; }
+        public string RecordIdentifier { get; set; }
+        public string InstitutionNumber { get; set; }
+        public string AccountNumber { get; set; }
         public string SequenceNumberRssiSeqNo9_05_1519ZeroFilled { get; set; }
         public string UserField02 { get; set; }
         public string UserField03 { get; set; }
