@@ -163,6 +163,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Input\" />
+    <Folder Include="Models\InputCopyBookModels\MortgageLoanBillingModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
