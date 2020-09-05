@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
 {
-    public class MasterFileDataPart_1
+    public class MasterFileDataPart_1Model
     {
         public string RecordIdentifier { get; set; }
         public string InstitutionNumber { get; set; }
@@ -40,7 +40,7 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
         public string RunDate { get; set; }
         public string PrimaryBorrowersName { get; set; }
         public string SecondaryBorrowersName { get; set; }
-        
+
         public string MailingAddress { get; set; }
         public string PropertyAddress { get; set; }
         public string DueDateGrace { get; set; }
@@ -66,7 +66,7 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
         public string NegativeAmortizationPaidYTD { get; set; }
         public string NoteRateOverUnder { get; set; }
         public string OriginalRateOverUnder { get; set; }
-        
+
         public string BillableNumber { get; set; }
         public string BankTransitRoutingNumber { get; set; }
         public string WithholdingInterestYTD { get; set; }
@@ -78,7 +78,7 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
         public string FeeReceivable { get; set; }
         public string PastDuePayments { get; set; }
 
-        
+
         public string PastPaymentDueDate { get; set; }
         public string PastRegularAmount { get; set; }
         public string PastLateAmount { get; set; }
@@ -109,9 +109,9 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
         public string PrimaryBorrowerCellPhoneNumber { get; set; }
         public string DirectMailIndicator { get; set; }
         public string TelemarketIndicator { get; set; }
-          public string FeeReceivablePart2 { get; set; }
+        public string FeeReceivablePart2 { get; set; }
         public string FirstStatementonAcquiredLoanIndicator { get; set; }
-        
+
         public string MailCode { get; set; }
         public string SpecialStatementRequest { get; set; }
         public string StopCode1 { get; set; }
@@ -137,7 +137,7 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
         public string InterestStartDateAccruals { get; set; }
         public string TermofLoan { get; set; }
         public string FieldmanSolicitorCode { get; set; }
-        
+
         public string UpdatedTerm { get; set; }
         public string ModificationDate { get; set; }
         public string AlternativeMortgageIndicator { get; set; }
@@ -148,7 +148,7 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
         public string SixtyDaysDelinquentCount { get; set; }
         public string NinetyDaysDelinquentCount { get; set; }
         public string TotalNSFCounter { get; set; }
-        
+
         public string PrimaryBorrowersBirthdate { get; set; }
         public string CreditBureauScore1 { get; set; }
         public string CreditBureauScore2 { get; set; }
@@ -181,7 +181,7 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
         public string NSFIndicator { get; set; }
         public string FeeReceivablePart3 { get; set; }
         public string EmployeeCode { get; set; }
-        
+
         public string AuditDate { get; set; }
         public string PrimaryBorrowersAge { get; set; }
         public string SecondaryBorrowersAge { get; set; }
@@ -207,7 +207,7 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
         public string EscrowPaidYTD { get; set; }
         public string FeesPaidYTD { get; set; }
         public string LateChargesPaidYTD { get; set; }
-        
+
         public string PastPaidPaymentDueDate01 { get; set; }
         public string PastPaidPaymentPaidDate01 { get; set; }
         public string PastPaidPaymentDueDate02 { get; set; }
@@ -244,7 +244,7 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
         public string FirstContactCity { get; set; }
         public string FirstContactState { get; set; }
         public string FirstContactZipCode { get; set; }
-        
+
         public string FirstContactPhoneNumber { get; set; }
         public string FirstContactExtension { get; set; }
         public string PastPaymentDueDateR { get; set; }

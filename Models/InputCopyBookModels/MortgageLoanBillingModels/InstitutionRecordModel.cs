@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
 {
-    public class InstitutionRecord
+    public class InstitutionRecordModel
     {
         public string RecordIdentifier { get; set; }
         public string InstitutionNumber { get; set; }

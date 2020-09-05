@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
 {
-    public class TransactionRecord
+    public class TransactionRecordModel
     {
         public string RecordIdentifier { get; set; }
         public string InstitutionNumber { get; set; }
@@ -50,44 +50,44 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
         public string UncollectedLateChargeBalanceAfterTransaction { get; set; }
         public string LastActivityDateBeforeTransaction { get; set; }
         public string ConstructionLoanBalanceAfterTransaction { get; set; }
-        public string LastActivityDateConstructionLoanBeforeTransaction  { get; set; }
-    public string PreCalculationInterestAmountAfterTransaction  { get; set; }
-public string PreCalculationInterestDateAfterTransaction  { get; set; }
-public string TransactionAmountFees  { get; set; }
-public string FeeCode { get; set; }
-public string FeeDescription { get; set; }
-public string TransactionAmountNegativeAmortizationTaken  { get; set; }
-public string TransactionAmountNegativeAmortizationPaid  { get; set; }
-public string EscrowPayeeTypeCode { get; set; }
-public string AmortizedFeePayment { get; set; }
-public string TransactionAmountUnappliedFunds2  { get; set; }
-public string TransactionAmountUnappliedFunds3  { get; set; }
-public string TransactionAmountUnappliedFunds4  { get; set; }
-public string TransactionAmountUnappliedFunds5  { get; set; }
-public string PurchaseOrderExpenseCode { get; set; }
-public string ExpenseFeeDescription { get; set; }
-public string ExpenseFeeAmount { get; set; }
-public string TransactionAmountToP_IShortage  { get; set; }
-public string TransactionAmountEscrowShortageOverage  { get; set; }
-public string AmountToHmpBorrowerIncentive { get; set; }
-public string TransactionAmountToPra { get; set; }
-public string TransactionAmountPostedToDeferredPrincipal { get; set; }
-public string DeferredPrincipalBalanceAfterTransaction { get; set; }
-public string TranAmountToDeferredInterest { get; set; }
-public string DeferredInterestBalanceAfterTransaction { get; set; }
-public string TranAmountToDeferredLateCharge { get; set; }
-public string DeferredLateChgBalanceAfterTransaction { get; set; }
-public string TranAmountToDeferredEscrowAdv { get; set; }
-public string DeferredEscrowAdvanceAfterTransaction { get; set; }
-public string TranAmountToDeferredPaidExpensesAdv { get; set; }
-public string DeferredPaidExpensesAfterTransaction { get; set; }
-public string TranAmountToDeferredUnpaidExpenseAdv { get; set; }
-public string DeferredUnpaidExpensesAfterTransaction { get; set; }
-public string TranAmountToDeferredAdminFees { get; set; }
-public string DeferredAdminFeesBalAfterTransaction { get; set; }
-public string OptionalDeferredAmount { get; set; }
-public string DeferredOptionalInsAfterTransaction { get; set; }
-public string TransactionAmountEscrowPart2  { get; set; }
+        public string LastActivityDateConstructionLoanBeforeTransaction { get; set; }
+        public string PreCalculationInterestAmountAfterTransaction { get; set; }
+        public string PreCalculationInterestDateAfterTransaction { get; set; }
+        public string TransactionAmountFees { get; set; }
+        public string FeeCode { get; set; }
+        public string FeeDescription { get; set; }
+        public string TransactionAmountNegativeAmortizationTaken { get; set; }
+        public string TransactionAmountNegativeAmortizationPaid { get; set; }
+        public string EscrowPayeeTypeCode { get; set; }
+        public string AmortizedFeePayment { get; set; }
+        public string TransactionAmountUnappliedFunds2 { get; set; }
+        public string TransactionAmountUnappliedFunds3 { get; set; }
+        public string TransactionAmountUnappliedFunds4 { get; set; }
+        public string TransactionAmountUnappliedFunds5 { get; set; }
+        public string PurchaseOrderExpenseCode { get; set; }
+        public string ExpenseFeeDescription { get; set; }
+        public string ExpenseFeeAmount { get; set; }
+        public string TransactionAmountToP_IShortage { get; set; }
+        public string TransactionAmountEscrowShortageOverage { get; set; }
+        public string AmountToHmpBorrowerIncentive { get; set; }
+        public string TransactionAmountToPra { get; set; }
+        public string TransactionAmountPostedToDeferredPrincipal { get; set; }
+        public string DeferredPrincipalBalanceAfterTransaction { get; set; }
+        public string TranAmountToDeferredInterest { get; set; }
+        public string DeferredInterestBalanceAfterTransaction { get; set; }
+        public string TranAmountToDeferredLateCharge { get; set; }
+        public string DeferredLateChgBalanceAfterTransaction { get; set; }
+        public string TranAmountToDeferredEscrowAdv { get; set; }
+        public string DeferredEscrowAdvanceAfterTransaction { get; set; }
+        public string TranAmountToDeferredPaidExpensesAdv { get; set; }
+        public string DeferredPaidExpensesAfterTransaction { get; set; }
+        public string TranAmountToDeferredUnpaidExpenseAdv { get; set; }
+        public string DeferredUnpaidExpensesAfterTransaction { get; set; }
+        public string TranAmountToDeferredAdminFees { get; set; }
+        public string DeferredAdminFeesBalAfterTransaction { get; set; }
+        public string OptionalDeferredAmount { get; set; }
+        public string DeferredOptionalInsAfterTransaction { get; set; }
+        public string TransactionAmountEscrowPart2 { get; set; }
 
     }
 }

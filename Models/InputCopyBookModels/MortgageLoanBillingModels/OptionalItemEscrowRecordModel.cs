@@ -6,19 +6,22 @@ using System.Threading.Tasks;
 
 namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
 {
-    public class MultiLockboxRecord
+    public class OptionalItemEscrowRecordModel
     {
-
         public string RecordIdentifier { get; set; }
         public string InstitutionNumber { get; set; }
         public string AccountNumber { get; set; }
         public string SequenceNumber { get; set; }
-        public string LoanLockboxIdentification { get; set; }
-        public string LockboxAddress1 { get; set; }
-        public string LockboxAddress2 { get; set; }
-        public string LockboxCity { get; set; }
-        public string LockboxState { get; set; }
-        public string LockboxZipCode { get; set; }
+        public string ProductName { get; set; }
+
+        public string MonthlyAmount { get; set; }
+
+        public string PendingAmount { get; set; }
+
+        public string PendingDate { get; set; }
+        public string EscrowType { get; set; }
+        public string EscrowLineUncollectedOptIns { get; set; }
+        public string Filler { get; set; }
 
     }
 }

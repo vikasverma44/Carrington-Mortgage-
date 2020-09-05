@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
 {
-    public class CoBorrowerRecord
+    public class CoBorrowerRecordModel
     {
         public string RecordIdentifier { get; set; }
         public string InstitutionNumber { get; set; }
@@ -124,15 +124,7 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
         public string CoBorrowerEmailIndicator6 { get; set; }
         public string CoBorrowerEmailIndicator7 { get; set; }
         public string CoBorrowerEmailIndicator8 { get; set; }
-
         public string CoBorrowerEmailIndicator9 { get; set; }
         public string CoBorrowerEmailIndicator10 { get; set; }
-
-
-
-
-
-
-
     }
 }
