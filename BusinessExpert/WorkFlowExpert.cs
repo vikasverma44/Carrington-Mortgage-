@@ -173,12 +173,90 @@ namespace Carrington_Service.BusinessExpert
             };
         }
 
+        public void GetPL_Record(byte[] currentByte)
+        {
+            MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
+                {
+                   new AccountsModel
+                   { PL_RecordModel = new PL_RecordModel()
+                    {
+                       RecordIdentifier=GetPositionData(currentByte, 1, 1),
+                       InstitutionNumber=GetPositionData(currentByte, 2,3),
 
+                       AccountNumber=GetPositionData(currentByte, 5,10),
+                       SequenceNumber=GetPositionData(currentByte, 15,5),
+
+                       PL_Entity=GetPositionData(currentByte, 20,3),
+                       PLSSGroup=GetPositionData(currentByte, 23,8),
+
+                       PL_EntityStatus=GetPositionData(currentByte, 31,1),
+                       PLSSEntityBrandingName=GetPositionData(currentByte, 32,35),
+
+                       EntityBrandingAddressLine1=GetPositionData(currentByte, 67,35), 
+                       EntityBrandingAddressLine2=GetPositionData(currentByte, 102,21),
+
+                       EntityBrandingCity=GetPositionData(currentByte, 137,21),
+                       EntityBrandingState=GetPositionData(currentByte, 158,35),
+
+                       EntityBrandingZipCode=GetPositionData(currentByte, 193,10),
+                       EntityBrandingPhone=GetPositionData(currentByte, 203,10),
+
+                       PL_EntityTaxIdentificationNumber=GetPositionData(currentByte, 213,09),
+                       MERSOrganizationID=GetPositionData(currentByte, 222,07),
+
+                       HUDIDNumber=GetPositionData(currentByte, 229,12),
+                       VAID=GetPositionData(currentByte, 241,06),
+
+                       EntityRHSLenderBranchID=GetPositionData(currentByte, 247,03),
+                       EntityHUDContactNameFirst=GetPositionData(currentByte, 250,10),
+
+                       EntityHUDContactNameLast=GetPositionData(currentByte, 260,20),
+                       EntityHUDContactTelephone=GetPositionData(currentByte, 280,10),
+
+                       EntityHUDPrincipalServicingOfficeCity=GetPositionData(currentByte, 290,21),
+                       EntityHUDPrincipalServicingOfficeState=GetPositionData(currentByte, 311,2),
+
+                       EntityHUDPrincipalServicingOfficeZipCode=GetPositionData(currentByte, 313,09),
+                       EntityHUDCompanyHeadquartersStateCode=GetPositionData(currentByte, 322,03),
+
+                       EntityLockboxAddressLine1=GetPositionData(currentByte, 325,35),
+                       EntityLockboxAddressLine2=GetPositionData(currentByte, 360,35),
+
+                       EntityLockboxCity=GetPositionData(currentByte, 395,21),
+                       EntityLockboxState=GetPositionData(currentByte, 416,2),
+
+                       EntityLockboxZipCode=GetPositionData(currentByte, 418,10),
+                       EntityAlternateAddress1=GetPositionData(currentByte, 428,35),
+
+                       EntityAlternateAddress2=GetPositionData(currentByte, 463,35),
+                       EntityAlternateCity=GetPositionData(currentByte, 498,21),
+
+                       EntityAlternateState=GetPositionData(currentByte, 519,2),
+                       EntityAlternateZipCode=GetPositionData(currentByte, 521,10),
+
+                       EntityAlternatePhoneNumber1Desc=GetPositionData(currentByte, 531,20),
+                       EntityAlternatePhoneNumber1=GetPositionData(currentByte, 551,10),
+
+                       EntityAlternatePhoneNumber2Desc=GetPositionData(currentByte, 561,20),
+                       EntityAlternatePhoneNumber2=GetPositionData(currentByte, 581,10),
+
+                       EntityAlternatePhoneNumber3Desc=GetPositionData(currentByte, 591,20),
+                       EntityAlternatePhoneNumber3=GetPositionData(currentByte, 611,10),
+
+                       EntityAlternatePhoneNumber4Desc=GetPositionData(currentByte, 621,20),
+                       EntityAlternatePhoneNumber4=GetPositionData(currentByte, 641,10),
+
+                       EntityAlternatePhoneNumber5Desc=GetPositionData(currentByte, 651,20),
+                       EntityAlternatePhoneNumber5=GetPositionData(currentByte, 671,10),
+
+                   }
+                   } 
+            };
+        }
         public void GetMasterFileDataPart_1(byte[] currentByte)
         {
-            MortgageLoanBillingFileModel MortgageLoanBillingFile = new MortgageLoanBillingFileModel()
-            {
-                AccountModelList = new List<AccountsModel>()
+
+            MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
                 {
                    new AccountsModel
                    { MasterFileDataPart_1Model = new MasterFileDataPart_1Model()
@@ -665,16 +743,12 @@ namespace Carrington_Service.BusinessExpert
 
                    }
                    }
-                }
             };
         }
 
-
         public void GetMasterFileDataPart_2(byte[] currentByte)
         {
-            MortgageLoanBillingFileModel MortgageLoanBillingFile = new MortgageLoanBillingFileModel()
-            {
-                AccountModelList = new List<AccountsModel>()
+            MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
                 {
                    new AccountsModel
                    { MasterFileDataPart2Model = new MasterFileDataPart2Model()
@@ -682,7 +756,7 @@ namespace Carrington_Service.BusinessExpert
                        RecordIdentifier = GetPositionData(currentByte, 1, 1),
                        InstitutionNumber = GetPositionData(currentByte, 2, 3),
                        AccountNumber= GetPositionData(currentByte, 5, 10),
-                       SequenceNumber= GetPositionData(currentByte, 15, 5), 
+                       SequenceNumber= GetPositionData(currentByte, 15, 5),
 
                        UnappliedFundsBalance2= GetPositionData(currentByte, 20, 5),
                        UnappliedFundsCode2= GetPositionData(currentByte, 25, 1),
@@ -712,7 +786,7 @@ namespace Carrington_Service.BusinessExpert
                        BillingMessageCode03= GetPositionData(currentByte, 114, 6),
 
                        BillingMessageCode04= GetPositionData(currentByte, 120, 6),
-                       BillingMessageCode05= GetPositionData(currentByte, 126, 6), 
+                       BillingMessageCode05= GetPositionData(currentByte, 126, 6),
 
                        BillingMessageCode06= GetPositionData(currentByte, 132, 6),
                        BillingMessageCode07= GetPositionData(currentByte, 138, 6),
@@ -778,13 +852,14 @@ namespace Carrington_Service.BusinessExpert
                        CurrentOccupancyCode=GetPositionData(currentByte, 537, 1),
                        Filler4=GetPositionData(currentByte, 538, 965),
                     }
-                   } 
-                }
-            };
+                   }
+                };
         }
+
+
         public string GetPositionData(byte[] currentByte, int startPos, int fieldLength)
         {
-            return Encoding.Default.GetString(currentByte, startPos, fieldLength); 
+            return Encoding.Default.GetString(currentByte, startPos, fieldLength);
         }
         #endregion
 
