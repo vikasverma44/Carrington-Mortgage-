@@ -13,7 +13,7 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
         public string AccountNumber { get; set; }
         public string SequenceNumber { get; set; }
         public string RateReductionPlanNumber { get; set; }
-        public string RateReductionLoanStatus { get; set; }
+        public string RateReductionLoanStatus { get; set; } 
         public string RateReductionTotalReductionToDate { get; set; }
         public string RateReductionTiersCompletedToDate { get; set; }
         public string RateReductionTierStatus { get; set; }
