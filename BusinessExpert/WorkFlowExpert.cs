@@ -1245,6 +1245,28 @@ namespace Carrington_Service.BusinessExpert
             };
         }
 
+        public void GetMultiLockboxRecordModel(byte[] currentByte)
+        {
+            MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
+                {
+                   new AccountsModel
+                   { MultiLockboxRecordModel = new MultiLockboxRecordModel()
+                    {
+                              RecordIdentifier = GetPositionData(currentByte, 1, 1),
+                              InstitutionNumber = GetPositionData(currentByte, 2, 3),
+                              AccountNumber= GetPositionData(currentByte, 5, 10),
+                              SequenceNumber = GetPositionData(currentByte, 15, 5),
+                              LoanLockboxIdentification = GetPositionData(currentByte, 20, 1),
+                              LockboxAddress1 = GetPositionData(currentByte, 21, 35),
+                              LockboxAddress2 = GetPositionData(currentByte, 56, 35),
+                              LockboxCity = GetPositionData(currentByte, 91, 20),
+                              LockboxState = GetPositionData(currentByte, 111, 2),
+                              LockboxZipCode = GetPositionData(currentByte, 113, 10),
+                    }
+                   }
+                 }; 
+        }
+
         public string GetPositionData(byte[] currentByte, int startPos, int fieldLength)
         {
             return Encoding.Default.GetString(currentByte, startPos, fieldLength);
