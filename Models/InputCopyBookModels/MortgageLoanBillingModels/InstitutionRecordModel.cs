@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
 {
-    public class InstitutionRecord
+    public class InstitutionRecordModel
     {
         public string RecordIdentifier { get; set; }
         public string InstitutionNumber { get; set; }
@@ -14,6 +14,7 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
         public string SequenceNumber { get; set; }
         public string InstitutionName { get; set; }
         public string InstitutionAddress1 { get; set; }
+        public string InstitutionAddress2 { get; set; }
         public string InstitutionCity { get; set; }
         public string InstitutionState { get; set; }
         public string InstitutionZip { get; set; }
@@ -24,7 +25,7 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
         public string AlternativeCouponCity { get; set; }
         public string AlternativeCouponState { get; set; }
         public string AlternativeCouponZip { get; set; }
-        public string AlternativePhoneNumberDescription  { get; set; }
+        public string AlternativePhoneNumberDescription1  { get; set; }
         public string AlternativePhoneNumber1 { get; set; }
         public string AlternativePhoneNumberDescription2 { get; set; }
         public string AlternativePhoneNumber2 { get; set; }
