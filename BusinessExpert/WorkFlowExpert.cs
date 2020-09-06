@@ -923,7 +923,7 @@ namespace Carrington_Service.BusinessExpert
                        }
                    }
             };
-            }
+        }
 
         public void GetUserFieldRecord(byte[] currentByte)
         {
@@ -1333,7 +1333,7 @@ namespace Carrington_Service.BusinessExpert
                               LockboxZipCode = GetPositionData(currentByte, 113, 10),
                     }
                    }
-                 }; 
+                 };
         }
 
         public void GetRateReductionRecord(byte[] currentByte)
@@ -1348,7 +1348,7 @@ namespace Carrington_Service.BusinessExpert
                        AccountNumber= GetPositionData(currentByte,5,10),
                        SequenceNumber= GetPositionData(currentByte,15,5),
                        RateReductionPlanNumber= GetPositionData(currentByte,20,6),
-                       RateReductionLoanStatus= GetPositionData(currentByte,26,1), 
+                       RateReductionLoanStatus= GetPositionData(currentByte,26,1),
                        RateReductionTotalReductionToDate= GetPositionData(currentByte,27,7),
                        RateReductionTiersCompletedToDate= GetPositionData(currentByte,34,2),
                        RateReductionTierStatus= GetPositionData(currentByte,36,1),
@@ -1421,6 +1421,198 @@ namespace Carrington_Service.BusinessExpert
                        Filler= GetPositionData(currentByte,90,11),
                     }
                    }
+            };
+        }
+        public void GetFeeRecordModel(byte[] currentByte)
+        {
+            MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
+            {
+                new AccountsModel
+                { FeeRecordModel = new FeeRecordModel()
+                {
+                     RecordIdentifier= GetPositionData(currentByte,1,1),
+                       InstitutionNumber= GetPositionData(currentByte,2,3),
+                       AccountNumber= GetPositionData(currentByte,5,10),
+                       SequenceNumber= GetPositionData(currentByte,15,5),
+                       FeeType= GetPositionData(currentByte,20,3),
+                       FeeDescription= GetPositionData(currentByte,23,23),
+                       FeeLevelAmortizedFeePayment= GetPositionData(currentByte,46,7),
+                       PreviousFeeBalance= GetPositionData(currentByte,53,7),
+                       NewReceivableFeesAssessed= GetPositionData(currentByte,60,7),
+                       AssessedDate= GetPositionData(currentByte,67,7),
+                       FeesInvoiceCredits= GetPositionData(currentByte,23,23),
+                       FeesNotPreviouslyAssessedThatAreCollectedThisBillingCycle= GetPositionData(currentByte,83,7),
+                       FeeBalanceThisBillingCycle= GetPositionData(currentByte,83,7),
+                       FeesWaivedThisBillingCycle= GetPositionData(currentByte,90,7),
+                       FeeCollectedTransactionDate=GetPositionData(currentByte,104,7),
+                       FeeWaivedTransactionDate=GetPositionData(currentByte,111,7),
+                       RecurringFeesDue=GetPositionData(currentByte,118,9),
+                       RecurringFeePaymentsPastDue=GetPositionData(currentByte,127,2),
+                       FillerPart1=GetPositionData(currentByte,129,4),
+                       InvoiceExpenseType=GetPositionData(currentByte,133,1),
+                       InvoicePurchaseOrderNumber=GetPositionData(currentByte,134,2),
+                       InvoiceExpenseAmountBilled=GetPositionData(currentByte,146,4),
+                       InvoiceExpenseAmountPaid=GetPositionData(currentByte,150,4),
+                       InvoiceRecoverabilityFlag=GetPositionData(currentByte,154,1),
+                       InvoiceDate=GetPositionData(currentByte,155,4),
+                       DateInvoiceWasPaid=GetPositionData(currentByte,159,4),
+                       InvoiceVendorCode=GetPositionData(currentByte,163,7),
+                       InvoiceResponsibilityCode=GetPositionData(currentByte,170,2),
+                       InvoiceExpenseCode=GetPositionData(currentByte,172,2),
+                       InvoiceNumber=GetPositionData(currentByte,174,15),
+                       InvoiceFunctionalArea=GetPositionData(currentByte,189,5),
+                       FillerPart2=GetPositionData(currentByte,194,207),
+
+
+                }
+                }
+            };
+        }
+
+        public void GetSolicitationRecordModel(byte[] currentByte)
+        {
+            MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
+            {
+                new AccountsModel
+                { SolicitationRecordModel = new SolicitationRecordModel()
+                {
+                     RecordIdentifier= GetPositionData(currentByte,1,1),
+                       InstitutionNumber= GetPositionData(currentByte,2,3),
+                       AccountNumber= GetPositionData(currentByte,5,10),
+                       SequenceNumber= GetPositionData(currentByte,15,5),
+                       LoanSolicitationCampaignId= GetPositionData(currentByte,20,5),
+                       LoanSolicitationCampaignControl= GetPositionData(currentByte,25,3),
+                       LoanSolicitationCampaignMethod= GetPositionData(currentByte,28,3),
+                }
+                }
+            };
+        }
+        public void GetTransactionRecordModel(byte[] currentByte)
+        {
+            MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
+            {
+                new AccountsModel
+                { TransactionRecordModel = new TransactionRecordModel()
+                {
+                    RecordIdentifier= GetPositionData(currentByte,1,1),
+                       InstitutionNumber= GetPositionData(currentByte,2,3),
+                       AccountNumber= GetPositionData(currentByte,5,10),
+                       SequenceNumber= GetPositionData(currentByte,15,5),
+                       DayOfTaskInitiation= GetPositionData(currentByte,20,4),
+                       BinaryTimeOfDayOfTaskInitiation= GetPositionData(currentByte,24,4),
+                       TransactionDate= GetPositionData(currentByte,28,4),
+                       PatternID= GetPositionData(currentByte,32,8),
+                       Filler1= GetPositionData(currentByte,40,1),
+                       LogTransaction= GetPositionData(currentByte,41,4),
+                       Filler2= GetPositionData(currentByte,45,1),
+                       TellerOverride= GetPositionData(currentByte,46,1),
+                       Filler3= GetPositionData(currentByte,47,1),
+                       TransactionAmount= GetPositionData(currentByte,48,13),
+                       CashAmount= GetPositionData(currentByte,56,13),
+                       TellerNumber= GetPositionData(currentByte,64,3),
+                       UnappliedFundCodeBefore= GetPositionData(currentByte,67,5),
+                       UnappliedFundCodeAfter= GetPositionData(currentByte,72,5),
+                       TransactionAmountPrincipal= GetPositionData(currentByte,77,6),
+                       TransactionAmountInterest= GetPositionData(currentByte,83,6),
+                       TransactionAmountEscrow= GetPositionData(currentByte,89,5),
+                       TransactionAmountLateCharge= GetPositionData(currentByte,94,5),
+                       TransactionAmountUncollectedOptionalInsurance= GetPositionData(currentByte,99,5),
+                       TransactionAmountUncollectedInterest= GetPositionData(currentByte,104,5),
+                       TransactionAmountPostedToUnappliedFunds= GetPositionData(currentByte,109,5),
+                       TransactionAmountUncollectedLateCharges= GetPositionData(currentByte,114,5),
+                       TransactionAmountConstructionBalance= GetPositionData(currentByte,119,5),
+                       TransactionPaymentCounter= GetPositionData(currentByte,124,2),
+                       TransactionAmountOptionalInsurance= GetPositionData(currentByte,126,2),
+                       PrincipalBalanceAfterTransaction= GetPositionData(currentByte,131,6),
+                       EscrowBalanceAfterTransaction= GetPositionData(currentByte,137,6),
+                       InterestPaidToDateAfterTransaction= GetPositionData(currentByte,143,4),
+                       StandardEscrowPayment= GetPositionData(currentByte,147,5),
+                       UncollectedCreditInsuranceBalanceAfterTransaction= GetPositionData(currentByte,152,4),
+                       UncollectedInterestBalanceAfterTransaction= GetPositionData(currentByte,157,6),
+                       UnappliedFundsBalanceAfterTransaction= GetPositionData(currentByte,163,5),
+                       UncollectedLateChargeBalanceAfterTransaction= GetPositionData(currentByte,168,5),
+                       LastActivityDateBeforeTransaction= GetPositionData(currentByte,173,4),
+                       ConstructionLoanBalanceAfterTransaction= GetPositionData(currentByte,177,5),
+                       LastActivityDateConstructionLoanBeforeTransaction= GetPositionData(currentByte,182,4),
+                       PreCalculationInterestAmountAfterTransaction= GetPositionData(currentByte,186,6),
+                       PreCalculationInterestDateAfterTransaction= GetPositionData(currentByte,192,4),
+                      TransactionAmountFees= GetPositionData(currentByte,196,6),
+                      FeeCode= GetPositionData(currentByte,202,3),
+                      FeeDescription= GetPositionData(currentByte,205,23),
+                      TransactionAmountNegativeAmortizationTaken= GetPositionData(currentByte,228,6),
+                      TransactionAmountNegativeAmortizationPaid= GetPositionData(currentByte,234,6),
+                      EscrowPayeeTypeCode= GetPositionData(currentByte,240,2),
+                      AmortizedFeePayment= GetPositionData(currentByte,242,7),
+                      TransactionAmountUnappliedFunds2= GetPositionData(currentByte,249,9),
+                      TransactionAmountUnappliedFunds3= GetPositionData(currentByte,258,9),
+                      TransactionAmountUnappliedFunds4= GetPositionData(currentByte,267,9),
+                      TransactionAmountUnappliedFunds5= GetPositionData(currentByte,276,9),
+                      PurchaseOrderExpenseCode= GetPositionData(currentByte,285,3),
+                      ExpenseFeeDescription= GetPositionData(currentByte,288,30),
+                      ExpenseFeeAmount= GetPositionData(currentByte,318,8),
+                      TransactionAmountToP_IShortage= GetPositionData(currentByte,324,9),
+                      TransactionAmountEscrowShortageOverage= GetPositionData(currentByte,333,9),
+                      AmountToHmpBorrowerIncentive= GetPositionData(currentByte,342,7),
+                      TransactionAmountToPra= GetPositionData(currentByte,349,11),
+                      TransactionAmountPostedToDeferredPrincipal= GetPositionData(currentByte,360,6),
+                      DeferredPrincipalBalanceAfterTransaction= GetPositionData(currentByte,366,6),
+                      TranAmountToDeferredInterest= GetPositionData(currentByte,372,6),
+                      DeferredInterestBalanceAfterTransaction= GetPositionData(currentByte,378,6),
+                      TranAmountToDeferredLateCharge= GetPositionData(currentByte,384,5),
+                      DeferredLateChgBalanceAfterTransaction= GetPositionData(currentByte,389,6),
+                      TranAmountToDeferredEscrowAdv= GetPositionData(currentByte,395,5),
+                      DeferredEscrowAdvanceAfterTransaction= GetPositionData(currentByte,400,6),
+                      TranAmountToDeferredPaidExpensesAdv= GetPositionData(currentByte,406,6),
+                      DeferredPaidExpensesAfterTransaction= GetPositionData(currentByte,412,6),
+                      TranAmountToDeferredUnpaidExpenseAdv= GetPositionData(currentByte,418,6),
+                      DeferredUnpaidExpensesAfterTransaction= GetPositionData(currentByte,424,6),
+                      TranAmountToDeferredAdminFees= GetPositionData(currentByte,430,6),
+                      DeferredAdminFeesBalAfterTransaction= GetPositionData(currentByte,436,6),
+                      OptionalDeferredAmount= GetPositionData(currentByte,442,5),
+                      DeferredOptionalInsAfterTransaction= GetPositionData(currentByte,447,6),
+                      TransactionAmountEscrowPart2= GetPositionData(currentByte,453,6),
+                      Filler4= GetPositionData(currentByte,459,1042),
+
+
+                }
+                }
+            };
+        }
+
+        public void GetForeignInformationRecordModel(byte[] currentByte)
+        {
+            MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
+            {
+                new AccountsModel
+                { ForeignInformationRecordModel = new ForeignInformationRecordModel()
+                {
+                    RecordIdentifier= GetPositionData(currentByte,1,1),
+                    InstitutionNumber= GetPositionData(currentByte,2,3),
+                    AccountNumber= GetPositionData(currentByte,2,4),
+                    SequenceNumber= GetPositionData(currentByte,2,5),
+                    PrimaryBorrowerSIdNumber= GetPositionData(currentByte,2,6),
+                    PrimaryBorrowerPrefix= GetPositionData(currentByte,2,7),
+                    PrimaryBorrowerSuffix= GetPositionData(currentByte,2,8),
+                    Attention= GetPositionData(currentByte,2,9),
+                    MailCountry= GetPositionData(currentByte,2,10),
+                    MailZipCode= GetPositionData(currentByte,2,11),
+                    PrimaryBorrowerHomeTelephoneNumberCountryCode= GetPositionData(currentByte,2,12),
+                    PrimaryBorrowerHomeTelephoneNumber= GetPositionData(currentByte,2,13),
+                    PrimaryBorrowerWorkTelephoneNumberCountryCode= GetPositionData(currentByte,2,14),
+                    PrimaryBorrowerWorkTelephoneNumber= GetPositionData(currentByte,2,15),
+                    PrimaryBorrowerFaxTelephoneNumberCountryCode= GetPositionData(currentByte,2,16),
+                    PrimaryBorrowerFaxTelephoneNumber= GetPositionData(currentByte,2,17),
+                    PrimaryBorrowerCellTelephoneNumberCountryCode= GetPositionData(currentByte,2,18),
+                    PrimaryBorrowerCellTelephoneNumber= GetPositionData(currentByte,2,19),
+                    PropertyCountry= GetPositionData(currentByte,2,20),
+                    PropertyZipCode= GetPositionData(currentByte,2,21),
+                    AlternateMailCountry= GetPositionData(currentByte,2,22),
+                    AlternateZipCode= GetPositionData(currentByte,2,23),
+                    Filler= GetPositionData(currentByte,2,24),
+
+
+                }
+                }
             };
         }
         public string GetPositionData(byte[] currentByte, int startPos, int fieldLength)

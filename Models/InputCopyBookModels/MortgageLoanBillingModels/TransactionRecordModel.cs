@@ -88,6 +88,6 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
         public string OptionalDeferredAmount { get; set; }
         public string DeferredOptionalInsAfterTransaction { get; set; }
         public string TransactionAmountEscrowPart2 { get; set; }
-
+        public string Filler4 { get; set; }
     }
 }

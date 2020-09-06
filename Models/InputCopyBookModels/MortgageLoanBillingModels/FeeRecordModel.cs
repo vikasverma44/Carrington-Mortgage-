@@ -26,6 +26,7 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
         public string FeeWaivedTransactionDate { get; set; }
         public string RecurringFeesDue { get; set; }
         public string RecurringFeePaymentsPastDue { get; set; }
+        public string FillerPart1 { get; set; }
         public string InvoiceExpenseType { get; set; }
         public string InvoicePurchaseOrderNumber { get; set; }
         public string InvoiceExpenseAmountBilled { get; set; }
@@ -38,6 +39,7 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
         public string InvoiceExpenseCode { get; set; }
         public string InvoiceNumber { get; set; }
         public string InvoiceFunctionalArea { get; set; }
+        public string FillerPart2 { get; set; }
 
     }
 }
