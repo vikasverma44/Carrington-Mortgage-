@@ -112,6 +112,22 @@
   <ItemGroup>
     <Compile Include="Agents\AgentApi.cs" />
     <Compile Include="BusinessExpert\WorkFlowExpert.cs" />
+    <Compile Include="Calculation_Classes\ChapterSevenBillingStatement.cs" />
+    <Compile Include="Calculation_Classes\ChapterSevenOptionARMStatement.cs" />
+    <Compile Include="CRLClasses\NCP10Model.cs" />
+    <Compile Include="CRLClasses\NCP11Model.cs" />
+    <Compile Include="CRLClasses\NCP12Model.cs" />
+    <Compile Include="CRLClasses\NCP13Model.cs" />
+    <Compile Include="CRLClasses\NCP14Model.cs" />
+    <Compile Include="CRLClasses\NCP15Model.cs" />
+    <Compile Include="CRLClasses\NCP16Model.cs" />
+    <Compile Include="CRLClasses\NCP17Model.cs" />
+    <Compile Include="CRLClasses\NCP18Model.cs" />
+    <Compile Include="CRLClasses\NCP88Model.cs" />
+    <Compile Include="CRLClasses\NCP89Model.cs" />
+    <Compile Include="CRLClasses\NCPEXT11_CompPass1Model.cs" />
+    <Compile Include="CRLClasses\NCPPipeCreatedByComposerModel.cs" />
+    <Compile Include="CRLClasses\NCPPipeCreatedByRubikaModel.cs" />
     <Compile Include="DIContainer.cs" />
     <Compile Include="Helpers\Constant.cs" />
     <Compile Include="Helpers\SubscribeHelper.cs" />
