@@ -111,7 +111,7 @@ namespace Carrington_Service.BusinessExpert
                 }
                 else if (inputValue == "A")
                 {
-                    GetAccountRecord(currentByteLine);
+                    GetMasterFileDataPart_1(currentByteLine);
                 }
                 iBytesRead = InputFileStream.Read(currentByteLine, 0, numOfBytes);
             }
@@ -174,7 +174,7 @@ namespace Carrington_Service.BusinessExpert
         }
 
 
-        public void GetAccountRecord(byte[] currentByte)
+        public void GetMasterFileDataPart_1(byte[] currentByte)
         {
             MortgageLoanBillingFileModel MortgageLoanBillingFile = new MortgageLoanBillingFileModel()
             {
@@ -184,7 +184,7 @@ namespace Carrington_Service.BusinessExpert
                    { MasterFileDataPart_1Model = new MasterFileDataPart_1Model()
                     {
                          RecordIdentifier = GetPositionData(currentByte, 0, 1),
-                         InstitutionNumber=GetPositionData(currentByte, 2, 3), 
+                         InstitutionNumber=GetPositionData(currentByte, 2, 3),
 
                          AccountNumber=GetPositionData(currentByte, 5, 10),
                          SequenceNumber=GetPositionData(currentByte, 15, 5),
@@ -280,7 +280,7 @@ namespace Carrington_Service.BusinessExpert
                          OriginalRateOverUnder=GetPositionData(currentByte, 767, 4),
 
                          BillableNumber=GetPositionData(currentByte, 771, 9),
-                         BankTransitRoutingNumber=GetPositionData(currentByte, 780, 5), 
+                         BankTransitRoutingNumber=GetPositionData(currentByte, 780, 5),
 
                          WithholdingInterestYTD=GetPositionData(currentByte, 785, 4),
                          NegativeAmortizationFlag=GetPositionData(currentByte, 789, 1),
@@ -518,7 +518,7 @@ namespace Carrington_Service.BusinessExpert
                          PastLateAmountR=GetPositionData(currentByte, 1803, 6),
 
                          PastPaidPaymentDueDate7=GetPositionData(currentByte, 2187, 6),
-                         PastPaidPaymentPaidDate7=GetPositionData(currentByte, 2193, 6), 
+                         PastPaidPaymentPaidDate7=GetPositionData(currentByte, 2193, 6),
 
                          PastPaidPaymentDueDate8=GetPositionData(currentByte, 2199, 6),
                          PastPaidPaymentPaidDate8=GetPositionData(currentByte, 2205, 6),
@@ -668,9 +668,123 @@ namespace Carrington_Service.BusinessExpert
                 }
             };
         }
+
+
+        public void GetMasterFileDataPart_2(byte[] currentByte)
+        {
+            MortgageLoanBillingFileModel MortgageLoanBillingFile = new MortgageLoanBillingFileModel()
+            {
+                AccountModelList = new List<AccountsModel>()
+                {
+                   new AccountsModel
+                   { MasterFileDataPart2Model = new MasterFileDataPart2Model()
+                    {
+                       RecordIdentifier = GetPositionData(currentByte, 1, 1),
+                       InstitutionNumber = GetPositionData(currentByte, 2, 3),
+                       AccountNumber= GetPositionData(currentByte, 5, 10),
+                       SequenceNumber= GetPositionData(currentByte, 15, 5), 
+
+                       UnappliedFundsBalance2= GetPositionData(currentByte, 20, 5),
+                       UnappliedFundsCode2= GetPositionData(currentByte, 25, 1),
+
+                       UnappliedFundsBalance3= GetPositionData(currentByte, 26, 5),
+                       UnappliedFundsCode3= GetPositionData(currentByte, 31, 1),
+
+                       UnappliedFundsBalance4= GetPositionData(currentByte, 32, 5),
+                       UnappliedFundsCode4= GetPositionData(currentByte, 37, 1),
+
+                       UnappliedFundsBalance5= GetPositionData(currentByte, 38, 5),
+                       UnappliedFundsCode5= GetPositionData(currentByte, 43, 1),
+
+                       UnappliedFundsBalanceTotal= GetPositionData(currentByte, 44, 6),
+                       TotalAmountToBeDrafted= GetPositionData(currentByte, 50, 6),
+
+                       RecurringDraftBankTotalDraftAmount= GetPositionData(currentByte, 56, 6),
+                       Filler= GetPositionData(currentByte, 62, 26),
+
+                       UncollectedP_IAdvance= GetPositionData(currentByte, 88, 6),
+                       OriginalMaturityDate= GetPositionData(currentByte, 94, 5),
+
+                       DelinquentCounselorCode= GetPositionData(currentByte, 99, 3),
+                       BillingMessageCode01= GetPositionData(currentByte, 102, 6),
+
+                       BillingMessageCode02= GetPositionData(currentByte, 108, 6),
+                       BillingMessageCode03= GetPositionData(currentByte, 114, 6),
+
+                       BillingMessageCode04= GetPositionData(currentByte, 120, 6),
+                       BillingMessageCode05= GetPositionData(currentByte, 126, 6), 
+
+                       BillingMessageCode06= GetPositionData(currentByte, 132, 6),
+                       BillingMessageCode07= GetPositionData(currentByte, 138, 6),
+
+                       BillingMessageCode08= GetPositionData(currentByte, 144, 6),
+                       BillingMessageCode09= GetPositionData(currentByte, 150, 6),
+
+                       BillingMessageCode10= GetPositionData(currentByte, 156, 6),
+                       BillingMessageCode11= GetPositionData(currentByte, 162, 6),
+
+                       BillingMessageCode12= GetPositionData(currentByte, 168, 6),
+                       BillingMessageCode13= GetPositionData(currentByte, 174, 6),
+
+                       BillingMessageCode14= GetPositionData(currentByte, 180, 6),
+                       BillingMessageCode15= GetPositionData(currentByte, 186, 6),
+
+                       BillingMessageCode16= GetPositionData(currentByte, 192, 6),
+                       BillingMessageCode17= GetPositionData(currentByte, 198, 6),
+
+                       BillingMessageCode18= GetPositionData(currentByte, 204, 6),
+                       BillingMessageCode19= GetPositionData(currentByte, 210, 6),
+                       BillingMessageCode20= GetPositionData(currentByte, 216, 6),
+
+                       PrimaryBorrowerMailingForeign= GetPositionData(currentByte, 222, 1),
+                       AlternativeAddressForeignAddressFlag= GetPositionData(currentByte, 223, 1),
+
+                       PropertyForeignAddressIndicator= GetPositionData(currentByte, 224, 1),
+                       TotalDeferredItemsBalance= GetPositionData(currentByte, 225, 7),
+
+                       DeferredInterestBalance= GetPositionData(currentByte, 232, 6),
+                       DeferredLateChargesBalance= GetPositionData(currentByte, 238, 4),
+
+                       DeferredEscrowAdvancesBalance= GetPositionData(currentByte, 242,6),
+                       DeferredDrmExpenseAdvancesPaidBalance= GetPositionData(currentByte, 248, 6),
+
+                       DeferredDrmExpenseAdvancesUnpaidBalance= GetPositionData(currentByte, 254, 6),
+                       DeferredAdministrativeFeesBalance= GetPositionData(currentByte, 260, 6),
+
+                       PrimaryBorrowerSLanguage= GetPositionData(currentByte, 266, 1),
+                       UncollectedEscrowShortage= GetPositionData(currentByte, 267, 6),
+
+                       DeferredOptionalProductPremiums= GetPositionData(currentByte, 273, 5),
+                       ClosingAgentCode= GetPositionData(currentByte, 278, 5),
+
+                       FillerPart2= GetPositionData(currentByte, 283, 13),
+                       DeferredPrincipalBalance= GetPositionData(currentByte, 296, 11),
+
+                       CombinedPrincipalBalance= GetPositionData(currentByte, 302, 6),
+                       OriginalPrincipalReductionAmount= GetPositionData(currentByte, 308, 6),
+
+                       RemainingPraAmount= GetPositionData(currentByte, 314, 6),
+                       PraTakenAmount= GetPositionData(currentByte, 320, 6),
+
+                       LossMitigationProgram= GetPositionData(currentByte, 326, 3),
+                       FclActionStartDate= GetPositionData(currentByte, 329, 6),
+
+                       MostRecentBreachLetterDate= GetPositionData(currentByte, 335, 6),
+                       HigherPricedMortgageLoanFlag= GetPositionData(currentByte, 341, 1),
+
+                       HpmlEscrowRequiredThroughDate= GetPositionData(currentByte, 342, 8),
+                       Filler3=GetPositionData(currentByte, 350, 187),
+
+                       CurrentOccupancyCode=GetPositionData(currentByte, 537, 1),
+                       Filler4=GetPositionData(currentByte, 538, 965),
+                    }
+                   } 
+                }
+            };
+        }
         public string GetPositionData(byte[] currentByte, int startPos, int fieldLength)
         {
-            return Encoding.Default.GetString(currentByte, startPos, fieldLength); ;
+            return Encoding.Default.GetString(currentByte, startPos, fieldLength); 
         }
         #endregion
 

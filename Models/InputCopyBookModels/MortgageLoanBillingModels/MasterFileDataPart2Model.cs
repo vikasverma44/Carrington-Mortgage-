@@ -53,7 +53,7 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
         public string BillingMessageCode20 { get; set; }
         public string EndOfBillingMessageInformation { get; set; }
         public string PrimaryBorrowerMailingForeign { get; set; }
-        public string AddressFlag { get; set; }
+        public string AddressFlag { get; set; }//DOUBT INCLIED TO UPPER PROPERTY
         public string AlternativeAddressForeignAddressFlag { get; set; }
         public string PropertyForeignAddressIndicator { get; set; }
         public string TotalDeferredItemsBalance { get; set; }
@@ -78,11 +78,12 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
         public string MostRecentBreachLetterDate { get; set; }
         public string HigherPricedMortgageLoanFlag { get; set; }
         public string HpmlEscrowRequiredThroughDate { get; set; }
+        public string Filler3 { get; set; }
         public string CurrentOccupancyCode { get; set; }
+        public string Filler4 { get; set; }
+        public string RecordIdentifierPart2 { get; set; }//DOUBT 
 
-        public string RecordIdentifierPart2 { get; set; }
 
-       
 
-}
+    }
 }
