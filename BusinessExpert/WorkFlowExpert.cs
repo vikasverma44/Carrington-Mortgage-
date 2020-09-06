@@ -1400,6 +1400,29 @@ namespace Carrington_Service.BusinessExpert
                    }
             };
         }
+
+        public void GetOptionalItemEscrowRecordModel(byte[] currentByte)
+        {
+            MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
+                {
+                   new AccountsModel
+                   { OptionalItemEscrowRecordModel = new OptionalItemEscrowRecordModel()
+                    {
+                       RecordIdentifier= GetPositionData(currentByte,1,1),
+                       InstitutionNumber= GetPositionData(currentByte,2,3),
+                       AccountNumber= GetPositionData(currentByte,5,10),
+                       SequenceNumber= GetPositionData(currentByte,15,5),
+                       ProductName= GetPositionData(currentByte,20,35),
+                       MonthlyAmount= GetPositionData(currentByte,55,11),
+                       PendingAmount= GetPositionData(currentByte,66,11),
+                       PendingDate= GetPositionData(currentByte,77,4),
+                       EscrowType= GetPositionData(currentByte,81,2),
+                       EscrowLineUncollectedOptIns= GetPositionData(currentByte,83,7),
+                       Filler= GetPositionData(currentByte,90,11),
+                    }
+                   }
+            };
+        }
         public string GetPositionData(byte[] currentByte, int startPos, int fieldLength)
         {
             return Encoding.Default.GetString(currentByte, startPos, fieldLength);
