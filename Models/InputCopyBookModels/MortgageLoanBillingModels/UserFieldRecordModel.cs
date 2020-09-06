@@ -11,7 +11,7 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
         public string RecordIdentifier { get; set; }
         public string InstitutionNumber { get; set; }
         public string AccountNumber { get; set; }
-        public string SequenceNumberRssiSeqNo9_05_1519ZeroFilled { get; set; }
+        public string SequenceNumber { get; set; }
         public string UserField02 { get; set; }
         public string UserField03 { get; set; }
         public string UserField04 { get; set; }
