@@ -42,8 +42,7 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
         public string CoborrowerZipCode04 { get; set; }
         public string CoborrowerBillingStatement04 { get; set; }
         public string CoborrowerName05 { get; set; }
-        public string CoborrowerAddress { get; set; }
-        public string Line105 { get; set; }
+        public string CoborrowerAddressLine105 { get; set; } 
         public string CoborrowerAddressLine205 { get; set; }
         public string CoborrowerCity05 { get; set; }
         public string CoborrowerState05 { get; set; }
@@ -126,5 +125,6 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
         public string CoBorrowerEmailIndicator8 { get; set; }
         public string CoBorrowerEmailIndicator9 { get; set; }
         public string CoBorrowerEmailIndicator10 { get; set; }
+        public string Filler1 { get; set; }
     }
 }

@@ -34,6 +34,7 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
         public string BlendedRateLoanOptionIndicator { get; set; }
         public string CurrentBlendedRateFixedPerc { get; set; }
         public string CurrentBlendedRateAdjustablePerc { get; set; }
+        public string Filler1 { get; set; }
 
     }
 }

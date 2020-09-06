@@ -1676,6 +1676,212 @@ namespace Carrington_Service.BusinessExpert
                 }
             };
         }
+
+        public void GetBlendedRateInformationRecordModel(byte[] currentByte)
+        {
+            MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
+            {
+                new AccountsModel
+                { BlendedRateInformationRecordModel = new BlendedRateInformationRecordModel()
+                {
+                    RecordIdentifier= GetPositionData(currentByte,1,1),
+                    InstitutionNumber= GetPositionData(currentByte,2,3),
+                     AccountNumber= GetPositionData(currentByte,5,10),
+                    SequenceNumber= GetPositionData(currentByte,15,5),
+                    SpecialProductType= GetPositionData(currentByte,20,1),
+                    SpecialLoanTypeId= GetPositionData(currentByte,21,1),
+                    AlternativeChangeAmount1= GetPositionData(currentByte,22,6),
+                    AlternativeChangeAmount2= GetPositionData(currentByte,28,6),
+                    AlternativeChangeAmount3= GetPositionData(currentByte,34,6),
+                    AlternativeChangeAmount4= GetPositionData(currentByte,40,6),
+                    AlternativePaymentAmount1= GetPositionData(currentByte,46,6),
+                    AlternativePaymentAmount2= GetPositionData(currentByte,52,6),
+                    AlternativePaymentAmount3= GetPositionData(currentByte,58,6),
+                    AlternativePaymentAmount4= GetPositionData(currentByte,64,6),
+                    BlendedAdjustableRate= GetPositionData(currentByte,70,4),
+                    BlendedFixedRate= GetPositionData(currentByte,74,4),
+                    BlendedRateAdjustableComponent= GetPositionData(currentByte,78,4),
+                    BlendedRateFixedComponent= GetPositionData(currentByte,82,4),
+                    BlendedRateFlag= GetPositionData(currentByte,86,1),
+                    BlendedRateMargin= GetPositionData(currentByte,87,4),
+                    BlendedRateTerm= GetPositionData(currentByte,91,2),
+                    OriginalBlendedAdjustablePercent= GetPositionData(currentByte,93,4),
+                    OriginalBlendedFixedPercent= GetPositionData(currentByte,97,4),
+                    BlendedRateLoanOptionIndicator= GetPositionData(currentByte,101,1),
+                    CurrentBlendedRateFixedPerc= GetPositionData(currentByte,102,11),
+                    CurrentBlendedRateAdjustablePerc= GetPositionData(currentByte,113,11),
+                    Filler1= GetPositionData(currentByte,124,277),
+                }
+                }
+            };
+        }
+
+        public void GetCoBorrowerRecordModel(byte[] currentByte)
+        {
+            MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
+            {
+                new AccountsModel
+                { CoBorrowerRecordModel = new CoBorrowerRecordModel()
+                {
+                    RecordIdentifier= GetPositionData(currentByte,1,1),
+                    InstitutionNumber= GetPositionData(currentByte,2,3),
+                    AccountNumber= GetPositionData(currentByte,5,10),
+                    RecordNumber= GetPositionData(currentByte,15,5),
+                    CoborrowerName01= GetPositionData(currentByte,20,35),
+                    CoborrowerAddressLine101= GetPositionData(currentByte,55,35),
+                    CoborrowerAddressLine201= GetPositionData(currentByte,90,35),
+                    CoborrowerCity01= GetPositionData(currentByte,125,21),
+                    CoborrowerState01= GetPositionData(currentByte,146,2),
+                    CoborrowerZipCode01= GetPositionData(currentByte,148,10),
+                    CoborrowerBillingStatement01= GetPositionData(currentByte,158,1),
+                    CoborrowerName02= GetPositionData(currentByte,159,35),
+                    CoborrowerAddressLine102= GetPositionData(currentByte,194,35),
+                    CoborrowerAddressLine202= GetPositionData(currentByte,229,35),
+                    CoborrowerCity02= GetPositionData(currentByte,264,21),
+                    CoborrowerState02= GetPositionData(currentByte,285,2),
+                    CoborrowerZipCode02= GetPositionData(currentByte,287,10),
+                    CoborrowerBillingStatement02= GetPositionData(currentByte,297,1),
+                    CoborrowerName03= GetPositionData(currentByte,298,35),
+                    CoborrowerAddressLine103= GetPositionData(currentByte,333,35),
+                    CoborrowerAddressLine203= GetPositionData(currentByte,368,35),
+                    CoborrowerCity03= GetPositionData(currentByte,403,21),
+                    CoborrowerState03= GetPositionData(currentByte,424,2),
+                    CoborrowerZipCode03= GetPositionData(currentByte,426,10),
+                    CoborrowerStatement03= GetPositionData(currentByte,436,1),
+                    CoborrowerName04= GetPositionData(currentByte,437,35),
+                    CoborrowerAddressLine104= GetPositionData(currentByte,472,35),
+                    CoborrowerAddressLine204= GetPositionData(currentByte,507,35),
+                    CoborrowerCity04= GetPositionData(currentByte,542,21),
+                    CoborrowerState04= GetPositionData(currentByte,563,2),
+                    CoborrowerZipCode04= GetPositionData(currentByte,565,10),
+                    CoborrowerBillingStatement04= GetPositionData(currentByte,575,1),
+                    CoborrowerName05= GetPositionData(currentByte,576,35),
+                    CoborrowerAddressLine105= GetPositionData(currentByte,611,35),
+                    CoborrowerAddressLine205= GetPositionData(currentByte,646,35),
+                    CoborrowerCity05= GetPositionData(currentByte,681,21),
+                    CoborrowerState05= GetPositionData(currentByte,702,2),
+                    CoborrowerZipCode05= GetPositionData(currentByte,704,10),
+                    CoborrowerBillingStatement05= GetPositionData(currentByte,714,1),
+                    CoborrowerName06= GetPositionData(currentByte,715,35),
+                    CoborrowerAddressLine106= GetPositionData(currentByte,750,35),
+                    CoborrowerAddressLine206= GetPositionData(currentByte,785,-65),
+                    CoborrowerCity06= GetPositionData(currentByte,820,21),
+                    CoborrowerState04Part2= GetPositionData(currentByte,841,2),
+                    CoborrowerZipCode06= GetPositionData(currentByte,843,10),
+                    CoborrowerBillingStatement06= GetPositionData(currentByte,853,1),
+                    CoborrowerName07= GetPositionData(currentByte,854,35),
+                    CoborrowerAddressLine107= GetPositionData(currentByte,889,35),
+                    CoborrowerAddressLine207= GetPositionData(currentByte,924,35),
+                    CoborrowerCity07= GetPositionData(currentByte,959,21),
+                    CoborrowerState07= GetPositionData(currentByte,980,2),
+                    CoborrowerZipCode07= GetPositionData(currentByte,982,10),
+                    CoborrowerBillingStatement07= GetPositionData(currentByte,992,1),
+                    CoborrowerName08= GetPositionData(currentByte,993,35),
+                    CoborrowerAddressLine108= GetPositionData(currentByte,1028,35),
+                    CoborrowerAddressLine208= GetPositionData(currentByte,1063,35),
+                    CoborrowerCity08= GetPositionData(currentByte,1098,21),
+                    CoborrowerState08= GetPositionData(currentByte,1119,2),
+                    CoborrowerZipCode08= GetPositionData(currentByte,1121,10),
+                    CoborrowerBillingStatement08= GetPositionData(currentByte,1131,1),
+                    CoborrowerName09= GetPositionData(currentByte,1132,35),
+                    CoborrowerAddressLine109= GetPositionData(currentByte,1167,35),
+                    CoborrowerAddressLine209= GetPositionData(currentByte,1202,35),
+                    CoborrowerCity09= GetPositionData(currentByte,1237,121),
+                    CoborrowerState09= GetPositionData(currentByte,1258,2),
+                    CoborrowerZipCode09= GetPositionData(currentByte,1260,10),
+                    CoborrowerBillingStatement09= GetPositionData(currentByte,1270,1),
+                    CoborrowerName10= GetPositionData(currentByte,1271,35),
+                    CoborrowerAddressLine110= GetPositionData(currentByte,1306,35),
+                    CoborrowerAddressLine210= GetPositionData(currentByte,1341,35),
+                    CoborrowerCity10= GetPositionData(currentByte,1376,21),
+                    CoborrowerState10= GetPositionData(currentByte,1397,2),
+                    CoborrowerZipCode10= GetPositionData(currentByte,1399,10),
+                    CoborrowerBillingStatement10= GetPositionData(currentByte,1409,1),
+                    Coborrower1CorrespondenceFlag= GetPositionData(currentByte,1410,1),
+                    Coborrower2CorrespondenceFlag= GetPositionData(currentByte,1411,1),
+                    Coborrower3CorrespondenceFlag= GetPositionData(currentByte,1412,1),
+                    Coborrower4CorrespondenceFlag= GetPositionData(currentByte,1413,1),
+                    Coborrower5CorrespondenceFlag= GetPositionData(currentByte,1414,1),
+                    Coborrower6CorrespondenceFlag= GetPositionData(currentByte,1415,1),
+                    Coborrower7CorrespondenceFlag= GetPositionData(currentByte,1416,1),
+                    Coborrower8CorrespondenceFlag= GetPositionData(currentByte,1417,1),
+                    Coborrower9CorrespondenceFlag= GetPositionData(currentByte,1418,1),
+                    Coborrower10CorrespondenceFlag= GetPositionData(currentByte,1419,1),
+                    BorrowerType01= GetPositionData(currentByte,1420,1),
+                    CoborrowerSiiVerified01= GetPositionData(currentByte,1421,1),
+                    BorrowerType02= GetPositionData(currentByte,1422,1),
+                    CoborrowerSiiVerified02= GetPositionData(currentByte,1423,1),
+                    BorrowerType03= GetPositionData(currentByte,1424,1),
+                    CoborrowerSiiVerified03= GetPositionData(currentByte,1425,1),
+                    BorrowerType04= GetPositionData(currentByte,1426,1),
+                    CoborrowerSiiVerified04= GetPositionData(currentByte,1427,1),
+                    BorrowerType05= GetPositionData(currentByte,1428,1),
+                    CoborrowerSiiVerified05= GetPositionData(currentByte,1429,1),
+                    BorrowerType06= GetPositionData(currentByte,1430,1),
+                    CoborrowerSiiVerified06= GetPositionData(currentByte,1431,1),
+                    BorrowerType07= GetPositionData(currentByte,1432,1),
+                    CoborrowerSiiVerified07= GetPositionData(currentByte,1433,1),
+                    BorrowerType08= GetPositionData(currentByte,1434,1),
+                    CoborrowerSiiVerified08= GetPositionData(currentByte,1435,1),
+                    BorrowerType09= GetPositionData(currentByte,1436,1),
+                    CoborrowerSiiVerified09= GetPositionData(currentByte,1437,1),
+                    BorrowerType10= GetPositionData(currentByte,1438,1),
+                    CoborrowerSiiVerified10= GetPositionData(currentByte,1439,1),
+                    CoBorrowerEmailIndicator1= GetPositionData(currentByte,1440,1),
+                    CoBorrowerEmailIndicator2= GetPositionData(currentByte,1441,1),
+                    CoBorrowerEmailIndicator3= GetPositionData(currentByte,1442,1),
+                    CoBorrowerEmailIndicator4= GetPositionData(currentByte,1443,1),
+                    CoBorrowerEmailIndicator5= GetPositionData(currentByte,1444,1),
+                    CoBorrowerEmailIndicator6= GetPositionData(currentByte,1445,1),
+                    CoBorrowerEmailIndicator7= GetPositionData(currentByte,1446,1),
+                    CoBorrowerEmailIndicator8= GetPositionData(currentByte,1447,1),
+                    CoBorrowerEmailIndicator9= GetPositionData(currentByte,1448,1),
+                    CoBorrowerEmailIndicator10= GetPositionData(currentByte,1449,1),
+                    Filler1= GetPositionData(currentByte,1450,2561),
+
+                }
+                }
+            };
+        }
+
+
+        public void GetLateChargeInformationRecordModel(byte[] currentByte)
+        {
+            MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
+            {
+                new AccountsModel
+                { LateChargeInformationRecordModel = new LateChargeInformationRecordModel()
+                {
+                    RecordIdentifier= GetPositionData(currentByte,1,1),
+                    InstitutionNumber= GetPositionData(currentByte,2,3),
+                    AccountNumber= GetPositionData(currentByte,5,10),
+                    SequenceNumber= GetPositionData(currentByte,15,5),
+                    InterestPaidToDate= GetPositionData(currentByte,20,4),
+                    LateChargeCode= GetPositionData(currentByte,24,1),
+                    LateChargeAssessCode= GetPositionData(currentByte,25,1),
+                    LateChargePaidToDate= GetPositionData(currentByte,26,4),
+                    LateChargeCollectionMethod= GetPositionData(currentByte,30,1),
+                    LateChargeFactor= GetPositionData(currentByte,31,3),
+                    LateChargeAssessmentMethod= GetPositionData(currentByte,34,1),
+                    LateChargeMaximum= GetPositionData(currentByte,35,4),
+                    LateChargeMinimum= GetPositionData(currentByte,39,4),
+                    LateChargesAssessmentMaximumAnnual= GetPositionData(currentByte,43,5),
+                    LateChargeAssessmentMaximumLifeTime= GetPositionData(currentByte,48,5),
+                    LateChargeCounter= GetPositionData(currentByte,53,2),
+                    LateChargeFreezeDateTo= GetPositionData(currentByte,55,4),
+                    LateChargeFreezeDateFrom= GetPositionData(currentByte,59,4),
+                    LateChargeFreezeDateType= GetPositionData(currentByte,63,1),
+                    LateChargeYearType= GetPositionData(currentByte,64,2),
+                    LateChargesAssessedLifeOfLoan= GetPositionData(currentByte,66,5),
+                    LateChargesAssessedYtd= GetPositionData(currentByte,71,5),
+                    Filler= GetPositionData(currentByte,76,130),
+
+                }
+                }
+            };
+        }
+        
+
         public string GetPositionData(byte[] currentByte, int startPos, int fieldLength)
         {
             return Encoding.Default.GetString(currentByte, startPos, fieldLength);
