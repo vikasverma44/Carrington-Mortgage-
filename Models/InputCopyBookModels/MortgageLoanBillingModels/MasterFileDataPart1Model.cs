@@ -18,9 +18,19 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
         public string LoanType { get; set; }
         public string LoanSubtype { get; set; }
         public string P_IPayment { get; set; }
+        public string EscrowPayment { get; set; }
         public string InvestorOwnershipCode { get; set; }
         public string InvestorInformationOccurrences { get; set; }
 
+        public string InvestorCode { get; set; }
+        public string InvestorPrimaryName { get; set; }
+        public string InvestorBlockCode { get; set; }
+        public string InvestorPercentOwned { get; set; }
+        public string InvestorRate { get; set; }
+        public string InvestorServiceFeeCode { get; set; }
+        public string InvestorServiceFeeRate { get; set; }
+        public string InvestorAccountNumber { get; set; }
+        public string Filler1 { get; set; }
         public string LastStatementDate { get; set; }
         public string PrecalculatedInterestAmount { get; set; }
         public string UnappliedFundsBalanceFirst { get; set; }
@@ -110,6 +120,7 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
         public string DirectMailIndicator { get; set; }
         public string TelemarketIndicator { get; set; }
         public string FeeReceivablePart2 { get; set; }
+        public string ServicingDate { get; set; }
         public string FirstStatementonAcquiredLoanIndicator { get; set; }
 
         public string MailCode { get; set; }
@@ -250,7 +261,7 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
         public string PastPaymentDueDateR { get; set; }
         public string PastRegularAmountR { get; set; }
         public string PastLateAmountR { get; set; }
-        public string BeginningofPastDuePaidPaymentInformation { get; set; }
+        public string BeginningofPastDuePaidPaymentInformation { get; set; }// DOUBT FULL
 
         public string PastPaidPaymentDueDate7 { get; set; }
         public string PastPaidPaymentPaidDate7 { get; set; }
@@ -333,8 +344,7 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
         public string CoborrowerSolicitationOptOutType09 { get; set; }
         public string CoborrowerSolicitationOptOutDate09 { get; set; }
         public string CoborrowerSolicitationOptOutType10 { get; set; }
-
-
+        public string CoborrowerSolicitationOptOutDate10 { get; set; }
         public string AcceleratedDate { get; set; }
         public string AcceleratedAccruedInterest { get; set; }
         public string PrintStatement { get; set; }
