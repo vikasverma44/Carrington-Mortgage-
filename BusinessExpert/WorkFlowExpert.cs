@@ -1267,6 +1267,46 @@ namespace Carrington_Service.BusinessExpert
                  }; 
         }
 
+        public void GetRateReductionRecord(byte[] currentByte)
+        {
+            MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
+                {
+                   new AccountsModel
+                   { RateReductionRecordModel = new RateReductionRecordModel()
+                    {
+                       RecordIdentifier= GetPositionData(currentByte,1,1),
+                       InstitutionNumber= GetPositionData(currentByte,2,3),
+                       AccountNumber= GetPositionData(currentByte,5,10),
+                       SequenceNumber= GetPositionData(currentByte,15,5),
+                       RateReductionPlanNumber= GetPositionData(currentByte,20,6),
+                       RateReductionLoanStatus= GetPositionData(currentByte,26,1), 
+                       RateReductionTotalReductionToDate= GetPositionData(currentByte,27,7),
+                       RateReductionTiersCompletedToDate= GetPositionData(currentByte,34,2),
+                       RateReductionTierStatus= GetPositionData(currentByte,36,1),
+                       RateReductionDisqualificationDate= GetPositionData(currentByte,37,8),
+                       RateReduction= GetPositionData(currentByte,45,8),
+                       DisqualificationDueDate= GetPositionData(currentByte,,1),
+                       RateReductionCompletionDate= GetPositionData(currentByte,53,8),
+                       RateReductionCompletionDueDate= GetPositionData(currentByte,61,8),
+                       RateReductionReQualificationDate= GetPositionData(currentByte,69,8),
+                       RateReductionReQualificationDueDate= GetPositionData(currentByte,77,8),
+                       RateReductionLoanRequiredOnTimePayments= GetPositionData(currentByte,85,3),
+                       RateReductionOnTimePaymentsCtr= GetPositionData(currentByte,88,2),
+                       RateReductionRemainingPaymentsCtr= GetPositionData(currentByte,90,2),
+                       RateReductionNewRate= GetPositionData(currentByte,92,7),
+                       RateReductionNewPayment= GetPositionData(currentByte,99,7),
+                       RateReductionNewEffDate= GetPositionData(currentByte,106,8),
+                       RateReductionPaymentDifference= GetPositionData(currentByte,114,9),
+                       RateReductionResetDate= GetPositionData(currentByte,123,8),
+                       RateReductionResetDueDate= GetPositionData(currentByte,131,8),
+                       RateReductionBeginningDueDate= GetPositionData(currentByte,139,8),
+                       RateReductionAmount= GetPositionData(currentByte,147,7),
+
+                    }
+                   }
+                 };
+        }
+
         public string GetPositionData(byte[] currentByte, int startPos, int fieldLength)
         {
             return Encoding.Default.GetString(currentByte, startPos, fieldLength);
