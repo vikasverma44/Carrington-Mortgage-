@@ -6,7 +6,7 @@
 public class NCP18Model
 {
 	public int Record { get; set; }
-	public string Numofpages { get; set; }
+	public string OCRScanline { get; set; }
 	public int Numofpages { get; set; }
 	public string IntelligetInserts { get; set; }
 	public string ClientIndicator1 { get; set; }
