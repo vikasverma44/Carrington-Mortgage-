@@ -23,7 +23,6 @@ namespace Carrington_Service
             container.Register<ILogger, Logger>(lifestyle);
             container.Register<IWorkFlowService, WorkFlowService>(lifestyle);
             container.Register<IEmailService, EmailService>(lifestyle);
-            container.Register<IFileIOService, FileIOService>(lifestyle);
         }
 
         public static WorkFlowService GetWorkFlowServiceInstance()

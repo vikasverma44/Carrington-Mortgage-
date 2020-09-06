@@ -74,6 +74,7 @@
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.1.1.1\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -138,7 +139,6 @@
     <Compile Include="Infrastructure\IAgentApi.cs" />
     <Compile Include="Infrastructure\IConfigHelper.cs" />
     <Compile Include="Infrastructure\IEmailService.cs" />
-    <Compile Include="Infrastructure\IFileIOService.cs" />
     <Compile Include="Infrastructure\ILogger.cs" />
     <Compile Include="Infrastructure\IWorkFlowExpert.cs" />
     <Compile Include="Infrastructure\IWorkFlowService.cs" />
@@ -147,6 +147,10 @@
     <Compile Include="Helpers\Enums.cs" />
     <Compile Include="Helpers\Logger.cs" />
     <Compile Include="Models\ConfigModel.cs" />
+    <Compile Include="Models\CmsBillInput.cs" />
+    <Compile Include="Models\InputCopyBookModels\EConsentInput.cs" />
+    <Compile Include="Models\TransModel.cs" />
+    <Compile Include="Models\DetModel.cs" />
     <Compile Include="Models\InputCopyBookModels\AccountsModel.cs" />
     <Compile Include="Models\InputCopyBookModels\MortgageLoanBillingModels\BlendedRateInformationRecordModel.cs" />
     <Compile Include="Models\InputCopyBookModels\MortgageLoanBillingModels\CoBorrowerRecordModel.cs" />
@@ -179,7 +183,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\EmailService.cs" />
-    <Compile Include="Services\FileIOService.cs" />
     <Compile Include="Services\WorkFlowService.cs" />
   </ItemGroup>
   <ItemGroup>

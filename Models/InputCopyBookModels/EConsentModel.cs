@@ -11,7 +11,5 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels
         public string EConsentDate { get; set; }
         public string EMailAddress { get; set; }
         public string Filler { get; set; }
-
-
     }
 }
