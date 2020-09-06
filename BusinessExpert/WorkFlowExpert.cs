@@ -259,7 +259,8 @@ namespace Carrington_Service.BusinessExpert
             MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
                 {
                    new AccountsModel
-                   { MasterFileDataPart_1Model = new MasterFileDataPart_1Model()
+                   {
+                       MasterFileDataPart_1Model = new MasterFileDataPart_1Model()
                     {
                          RecordIdentifier = GetPositionData(currentByte, 0, 1),
                          InstitutionNumber=GetPositionData(currentByte, 2, 3),
@@ -855,6 +856,74 @@ namespace Carrington_Service.BusinessExpert
                    }
                 };
         }
+        public void GetTrailerRecords(byte[] currentByte)
+        {
+            MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
+                {
+                   new AccountsModel
+                   {
+                       TrailerRecordModel= new TrailerRecordModel()
+                    {
+
+                       RecordIdentifier = GetPositionData(currentByte, 1, 1),
+                       InstitutionNumber      =GetPositionData(currentByte,2 ,3),
+                       Filler1                =GetPositionData(currentByte,5 ,10),
+                       SequenceNumber         =GetPositionData(currentByte,15 ,5),
+                       TotalNumberOfBRecords  =GetPositionData(currentByte,20 ,1),
+                       TotalNumberOfARecords  =GetPositionData(currentByte,21 ,9),
+                       TotalNumberOfRRecords  =GetPositionData(currentByte,30 ,9),
+                       TotalNumberOfERecords  =GetPositionData(currentByte, 30,15),
+                       TotalNumberOfTRecords  =GetPositionData(currentByte,54 ,15),
+                       TotalNumberOfORecords  =GetPositionData(currentByte,69 ,9),
+                       TotalNumberOfFRecords  =GetPositionData(currentByte,78 ,9),
+                       TotalNumberOfURecords  =GetPositionData(currentByte,87 ,9),
+                       TotalNumberOf2Records  =GetPositionData(currentByte, 96,9),
+                       TotalNumberOfPRecords  =GetPositionData(currentByte,105 ,9),
+                       TotalNumberOfLRecords  =GetPositionData(currentByte,114 ,9),
+                       TotalNumberOfSRecords  =GetPositionData(currentByte,123 ,9),
+                       TotalNumberOfFrRecords =GetPositionData(currentByte,132 ,9),
+                       TotalNumberOfRecordsIncludingHeaderAndTrailerRecords =GetPositionData(currentByte,141 ,15),
+                       TotalLoanCount   =GetPositionData(currentByte,156 ,9),
+
+                    }
+                       }
+            };
+        }
+
+        public void GetRHCDRecords(byte[] currentByte)
+        {
+            MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
+                {
+                   new AccountsModel
+                   {
+                   RHCDSOnlyRecordModel= new RHCDSOnlyRecordModel()
+                    {
+                    RecordIdentifier                            =GetPositionData(currentByte,1 ,1),
+                    InstitutionCode                             =GetPositionData(currentByte,2 ,3),
+                    AccountNumber                               =GetPositionData(currentByte,5 ,10),
+                    SequenceNumber                              =GetPositionData(currentByte,15 ,5),
+                    AssistanceAgreementExpirationDate           =GetPositionData(currentByte,20 ,4),
+                    SubsidyPaidYearToDate                       =GetPositionData(currentByte,24 ,5),
+                    MoratoriumEffectiveDate                     =GetPositionData(currentByte,29 ,4),
+                    MoratoriumFlag                              =GetPositionData(currentByte,33 ,1),
+                    MoratoriumExpirationDate                    =GetPositionData(currentByte,34 ,4),
+                    NoticeControl                               =GetPositionData(currentByte,38 ,1),
+                    PendingStartDate                            =GetPositionData(currentByte,39 ,4),
+                    BankruptcyFlag                              =GetPositionData(currentByte,43 ,1),
+                    BankruptcyTypeCode                          =GetPositionData(currentByte,44 ,1),
+                    RepaymentPlanStatusFlag                     =GetPositionData(currentByte,45 ,1),
+                    RepaymentPlanCancellationDate               =GetPositionData(currentByte,46 ,4),
+                    RepaymentPlanAdditionalPaymentAmount        =GetPositionData(currentByte,50 ,5),
+                    RepaymentPlanTerm                           =GetPositionData(currentByte,55 ,2),
+                    RepaymentPlanCreationDate                   =GetPositionData(currentByte,57 ,4),
+                    DownpaymentAmount                           =GetPositionData(currentByte,61 ,5),
+                    PlanPaymentStartDate                        =GetPositionData(currentByte,66 ,4),
+                    AmountOfDwaDelinquency                      =GetPositionData(currentByte,70 ,4),
+                    PostPetitionReaffAgrmtPlanSource            =GetPositionData(currentByte,74 ,1),
+                       }
+                   }
+            };
+            }
 
         public void GetUserFieldRecord(byte[] currentByte)
         {
