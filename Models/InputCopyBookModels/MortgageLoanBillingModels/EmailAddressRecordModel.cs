@@ -34,6 +34,7 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
         public string CoBorrowerEmailAddress8 { get; set; }
         public string CoBorrowerEmailAddress9 { get; set; }
         public string CoBorrowerEmailAddress10 { get; set; }
+        public string Filler { get; set; }
 
     }
 }

@@ -1881,11 +1881,255 @@ namespace Carrington_Service.BusinessExpert
             };
         }
         
+        public void GetLateChargeDetailRecordModel(byte[] currentByte)
+        {
+            MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
+            {
+                new AccountsModel
+                { LateChargeDetailRecordModel = new LateChargeDetailRecordModel()
+                {
+                    RecordIdentifier= GetPositionData(currentByte,1,1),
+                    InstitutionNumber= GetPositionData(currentByte,2,3),
+                    AccountNumber= GetPositionData(currentByte,5,10),
+                    SequenceNumber= GetPositionData(currentByte,15,5),
+                    LateChargePaymentDueDate= GetPositionData(currentByte,20,4),
+                    LateChargeDueDate= GetPositionData(currentByte,24,4),
+                    LateChargeCalculatedDate= GetPositionData(currentByte,28,4),
+                    LateChargeAmountForLcDueDate= GetPositionData(currentByte,32,5),
+                    LateChargePaidDate= GetPositionData(currentByte,37,4),
+                    LateChargeFactor= GetPositionData(currentByte,41,3),
+                    LateChargeCalculationMethod= GetPositionData(currentByte,44,1),
+                    LateChargeWaiverDate= GetPositionData(currentByte,45,4),
+                    LateChargeWaiverCode= GetPositionData(currentByte,49,1),
+                    LateChargeReversalDate= GetPositionData(currentByte,50,4),
+                    LateChargePaidAmount= GetPositionData(currentByte,54,5),
+                    LateChargeWaiverAmount= GetPositionData(currentByte,59,5),
+                    LateChargeReversalAmount= GetPositionData(currentByte,64,5),
+                    LateChargeAdjDate= GetPositionData(currentByte,69,4),
+                    LateChargePaymentDueDate2= GetPositionData(currentByte,73,5),
+                    LateChargeOsBalance= GetPositionData(currentByte,78,5),
+                    Filler= GetPositionData(currentByte,83,123),
 
+                }
+                }
+            };
+        }
+        public void GetActiveBankruptcyInformationRecordModel(byte[] currentByte)
+        {
+            MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
+            {
+                new AccountsModel
+                { ActiveBankruptcyInformationRecordModel = new ActiveBankruptcyInformationRecordModel()
+                {
+                    RecordIdentifier= GetPositionData(currentByte,1,1),
+                    InstitutionNumber= GetPositionData(currentByte,2,3),
+                    AccountNumber= GetPositionData(currentByte,5,10),
+                    SequenceNumber= GetPositionData(currentByte,15,5),
+                    BankruptcyType= GetPositionData(currentByte,20,1),
+                    BkrFilingChapterNumberPrior1= GetPositionData(currentByte,21,2),
+                    BkrFilingCaseNumber1= GetPositionData(currentByte,23,12),
+                    BkrFiledBy1= GetPositionData(currentByte,35,1),
+                    BkrFilingDebtorActive= GetPositionData(currentByte,36,35),
+                    BankruptcyFiledByCodebtor= GetPositionData(currentByte,71,35),
+                    BkrFiledByCoborrowerIndicator1= GetPositionData(currentByte,106,1),
+                    BankruptcyFiledByCoborrowerIndicator2Active= GetPositionData(currentByte,107,1),
+                    BankruptcyFiledByCoborrowerIndicator3Active= GetPositionData(currentByte,108,1),
+                    BankruptcyFiledByCoborrowerIndicator4Active= GetPositionData(currentByte,109,1),
+                    BankruptcyFiledByCoborrowerIndicator5Active= GetPositionData(currentByte,110,1),
+                    BankruptcyFiledByCoborrowerIndicator6Active= GetPositionData(currentByte,111,1),
+                    BankruptcyFiledByCoborrowerIndicator7Active= GetPositionData(currentByte,112,1),
+                    BankruptcyFiledByCoborrowerIndicator8Active= GetPositionData(currentByte,113,1),
+                    BankruptcyFiledByCoborrowerIndicator9Active= GetPositionData(currentByte,114,1),
+                    BankruptcyFiledByCoborrowerIndicator10Active= GetPositionData(currentByte,115,1),
+                    BankruptcyDateFiledActive= GetPositionData(currentByte,116,4),
+                    BankruptcyConversionDateActive= GetPositionData(currentByte,120,4),
+                    BankruptcyReaffirmationDateActive= GetPositionData(currentByte,124,4),
+                    BankruptcyDischargeDateActive= GetPositionData(currentByte,128,4),
+                    BankruptcyDismissedDateActive= GetPositionData(currentByte,132,4),
+                    BankruptcyMotionForReliefActive= GetPositionData(currentByte,136,4),
+                    ConcurrentBankruptcyTypeActive= GetPositionData(currentByte,140,1),
+                    ConcurrentBankruptcyChapterActive= GetPositionData(currentByte,141,2),
+                    ConcurrentBankruptcyCaseNumberActive= GetPositionData(currentByte,143,12),
+                    ConcurrentBankruptcyFiledByCodeActive= GetPositionData(currentByte,155,1),
+                    ConcurrentBankruptcyFiledByNameActive= GetPositionData(currentByte,156,25),
+                    ConcurrentBankruptcyCoDebtorNameActive= GetPositionData(currentByte,181,25),
+                    ConcurrentBankruptcyFiledByCoborrowerIndicator1Active= GetPositionData(currentByte,206,1),
+                    ConcurrentBankruptcyFiledByCoborrowerIndicator2Active= GetPositionData(currentByte,207,1),
+                    ConcurrentBankruptcyFiledByCoborrowerIndicator3Active= GetPositionData(currentByte,208,1),
+                    ConcurrentBankruptcyFiledByCoborrowerIndicator4Active= GetPositionData(currentByte,209,1),
+                    ConcurrentBankruptcyFiledByCoborrowerIndicator5Active= GetPositionData(currentByte,210,1),
+                    ConcurrentBankruptcyFiledByCoborrowerIndicator6Active= GetPositionData(currentByte,211,1),
+                    ConcurrentBankruptcyFiledByCoborrowerIndicator7Active= GetPositionData(currentByte,212,1),
+                    ConcurrentBankruptcyFiledByCoborrowerIndicator8Active= GetPositionData(currentByte,213,1),
+                    ConcurrentBankruptcyFiledByCoborrowerIndicator9Active= GetPositionData(currentByte,214,1),
+                    ConcurrentBankruptcyFiledByCoborrowerIndicator10Active= GetPositionData(currentByte,215,1),
+                    ConcurrentBankruptcyFiledByDateActive= GetPositionData(currentByte,216,4),
+                    ConcurrentBankruptcyConversionDateActive= GetPositionData(currentByte,220,4),
+                    ConcurrentBankruptcyReaffirmationDateActive= GetPositionData(currentByte,224,4),
+                    ConcurrentBankruptcyDischargedDateActive= GetPositionData(currentByte,228,4),
+                    ConcurrentBankruptcyDismissedDateActive= GetPositionData(currentByte,232,4),
+                    ConcurrentBankruptcyReliefGrantedDateActive= GetPositionData(currentByte,236,4),
+                    BankruptcyPost= GetPositionData(currentByte,240,6),
+                    PetitionAmountDue= GetPositionData(currentByte,,1),
+                    BankruptcyPostPetitionLateChangeAmount= GetPositionData(currentByte,246,5),
+                    TotalReceivedDuringBkrPrePetition= GetPositionData(currentByte,251,5),
+                    PostPetitionFeesAndCharges= GetPositionData(currentByte,256,5),
+                    PrePetitionFundsReceivedLastBillingCycle= GetPositionData(currentByte,261,5),
+                    PrePetitionArrearage= GetPositionData(currentByte,266,5),
+                    BankruptcyStatementNotice= GetPositionData(currentByte,271,1),
+                    BankruptcyAttorneyName= GetPositionData(currentByte,272,35),
+                    BankruptcyAttorneyAddress1= GetPositionData(currentByte,307,35),
+                    BankruptcyAttorneyAddress2= GetPositionData(currentByte,342,35),
+                    BankruptcyAttorneyCity= GetPositionData(currentByte,377,21),
+                    BankruptcyAttorneyState= GetPositionData(currentByte,398,2),
+                    BankruptcyAttorneyZip= GetPositionData(currentByte,400,10),
+                    PrePetitionSuspenseBalance= GetPositionData(currentByte,410,6),
+                    PostPetitionSuspenseBalance= GetPositionData(currentByte,416,6),
+                    PostPetitionSuspenseBalanceAgreedOrder= GetPositionData(currentByte,422,6),
+                    PostPetitionAoAmountDue= GetPositionData(currentByte,428,5),
+                    PostPetitionAoDueDate= GetPositionData(currentByte,433,4),
+                    BkrCramDownFlag= GetPositionData(currentByte,437,1),
+                    PastUnpaidPostPetitionAmounts= GetPositionData(currentByte,438,5),
+                    BkrDischarged= GetPositionData(currentByte,443,1),
+                    PostPetitionShortfall= GetPositionData(currentByte,444,6),
+                    PostPetitionAoShortfall= GetPositionData(currentByte,450,6),
+                    PrePetitionDueDate= GetPositionData(currentByte,456,4),
+                    PrePetitionPaymentAmount= GetPositionData(currentByte,460,6),
+                    PrePetitionShortfall= GetPositionData(currentByte,466,6),
+                    PostPetitionPaymentDate= GetPositionData(currentByte,472,8),
+                    PostPetitionPaymentAmount= GetPositionData(currentByte,480,6),
+                    PostPetitionLateChargeAmount= GetPositionData(currentByte,486,4),
+                    Filler= GetPositionData(currentByte,490,511),
+
+                }
+                }
+            };
+        }
+       
+        public void GetArchivedBankruptcyDetailRecordModel(byte[] currentByte)
+        {
+            MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
+            {
+                new AccountsModel
+                { ArchivedBankruptcyDetailRecordModel = new ArchivedBankruptcyDetailRecordModel()
+                {
+                    RecordIdentifier= GetPositionData(currentByte,1,1),
+                    InstitutionNumber= GetPositionData(currentByte,2,3),
+                    AccountNumber= GetPositionData(currentByte,5,10),
+                    SequenceNumber= GetPositionData(currentByte,15,5),
+                    BankruptcyTypeArchive= GetPositionData(currentByte,20,1),
+                    BankruptcyChapterArchive= GetPositionData(currentByte,21,2),
+                    BankruptcyCaseNumberArchive= GetPositionData(currentByte,23,12),
+                    BankruptcyFiledByCodeArchive= GetPositionData(currentByte,35,1),
+                    BankruptcyFiledByNameArchive= GetPositionData(currentByte,36,35),
+                    BankruptcyFiledByCodebtorName= GetPositionData(currentByte,71,35),
+                    BankruptcyFiledByCoborrowerIndicator1Archive= GetPositionData(currentByte,106,1),
+                    BankruptcyFiledByCoborrowerIndicator2Archive= GetPositionData(currentByte,107,1),
+                    BankruptcyFiledByCoborrowerIndicator3Archive= GetPositionData(currentByte,108,1),
+                    BankruptcyFiledByCoborrowerIndicator4Archive= GetPositionData(currentByte,109,1),
+                    BankruptcyFiledByCoborrowerIndicator5Archive= GetPositionData(currentByte,110,1),
+                    BankruptcyFiledByCoborrowerIndicator6Archive= GetPositionData(currentByte,111,1),
+                    BankruptcyFiledByCoborrowerIndicator7Archive= GetPositionData(currentByte,112,1),
+                    BankruptcyFiledByCoborrowerIndicator8Archive= GetPositionData(currentByte,113,1),
+                    BankruptcyFiledByCoborrowerIndicator9Archive= GetPositionData(currentByte,114,1),
+                    BankruptcyFiledByCoborrowerIndicator10Archive= GetPositionData(currentByte,115,1),
+                    BankruptcyDateFiledArchive= GetPositionData(currentByte,116,4),
+                    BankruptcyConversionDateArchive= GetPositionData(currentByte,120,4),
+                    BankruptcyReaffirmationDateArchive= GetPositionData(currentByte,124,4),
+                    BankruptcyDischargeDateArchive= GetPositionData(currentByte,128,4),
+                    BankruptcyDismissedDateArchive= GetPositionData(currentByte,132,4),
+                    BankruptcyMotionForReliefArchive= GetPositionData(currentByte,136,4),
+                    BankruptcyStatementNoticeArchive= GetPositionData(currentByte,140,1),
+                    Filler= GetPositionData(currentByte,141,160),
+
+
+
+                }
+                }
+            };
+        }
+
+        public void GetEmailAddressRecordModel(byte[] currentByte)
+        {
+            MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
+            {
+                new AccountsModel
+                { EmailAddressRecordModel = new EmailAddressRecordModel()
+                {
+                    RecordIdentifier= GetPositionData(currentByte,1,1),
+                    InstitutionCode= GetPositionData(currentByte,2,3),
+                    AccountNumber= GetPositionData(currentByte,5,10),
+                    SequenceNumber= GetPositionData(currentByte,15,5),
+                    PrimaryBorrowerEMailAddress= GetPositionData(currentByte,20,60),
+                    SecondaryBorrowerEMailAddress= GetPositionData(currentByte,80,60),
+                    EStatementEmailAddress1= GetPositionData(currentByte,140,60),
+                    EStatementEmailAddress2= GetPositionData(currentByte,200,60),
+                    EStatementEmailAddress3= GetPositionData(currentByte,260,60),
+                    EStatementEmailAddress4= GetPositionData(currentByte,320,60),
+                    EStatementEmailAddress5= GetPositionData(currentByte,380,60),
+                    EStatementEmailAddress6= GetPositionData(currentByte,440,60),
+                    EStatementEmailAddress7= GetPositionData(currentByte,500,60),
+                    EStatementEmailAddress8= GetPositionData(currentByte,560,60),
+                    EStatementEmailAddress9= GetPositionData(currentByte,620,60),
+                    EStatementEmailAddress10= GetPositionData(currentByte,680,60),
+                    CoBorrowerEmailAddress1= GetPositionData(currentByte,740,60),
+                    CoBorrowerEmailAddress2= GetPositionData(currentByte,800,60),
+                    CoBorrowerEmailAddress3= GetPositionData(currentByte,860,60),
+                    CoBorrowerEmailAddress4= GetPositionData(currentByte,920,60),
+                    CoBorrowerEmailAddress5= GetPositionData(currentByte,980,60),
+                    CoBorrowerEmailAddress6= GetPositionData(currentByte,1040,60),
+                    CoBorrowerEmailAddress7= GetPositionData(currentByte,1100,60),
+                    CoBorrowerEmailAddress8= GetPositionData(currentByte,1160,60),
+                    CoBorrowerEmailAddress9= GetPositionData(currentByte,1220,60),
+                    CoBorrowerEmailAddress10= GetPositionData(currentByte,1280,60),
+                    Filler= GetPositionData(currentByte,1340,2671),
+                }
+                }
+            };
+        }
+
+        public void GetDisasterTrackingRecordModel(byte[] currentByte)
+        {
+            MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
+            {
+                new AccountsModel
+                { DisasterTrackingRecordModel = new DisasterTrackingRecordModel()
+                {
+                    RecordIdentifier= GetPositionData(currentByte,1,1),
+                    InstitutionNumber= GetPositionData(currentByte,2,3),
+                    AccountNumber= GetPositionData(currentByte,5,10),
+                    SequenceNumber= GetPositionData(currentByte,15,5),
+                    DisasterOccurrenceNumber= GetPositionData(currentByte,20,3),
+                    DisasterStatus= GetPositionData(currentByte,23,1),
+                    DisasterName= GetPositionData(currentByte,24,35),
+                    DisasterType= GetPositionData(currentByte,59,2),
+                    DesignationDate= GetPositionData(currentByte,61,4),
+                    DisasterEndDate= GetPositionData(currentByte,65,4),
+                    DisasterExtendedEndDate= GetPositionData(currentByte,69,4),
+                    DeclarationNumber= GetPositionData(currentByte,73,10),
+                    ApplicantNumber= GetPositionData(currentByte,83,10),
+                    PropertyImpact= GetPositionData(currentByte,93,1),
+                    PropertyImpactDeterminationDate= GetPositionData(currentByte,94,4),
+                    PropertyImpactResolutionDate= GetPositionData(currentByte,98,4),
+                    PropertyImpactSeverity= GetPositionData(currentByte,102,1),
+                    WorkplaceImpact= GetPositionData(currentByte,103,1),
+                    WorkplaceImpactDeterminationDate= GetPositionData(currentByte,104,4),
+                    WorkplaceImpactResolutionDate= GetPositionData(currentByte,108,4),
+                    WorkplaceImpactSeverity= GetPositionData(currentByte,112,1),
+                    AttemptedContact= GetPositionData(currentByte,113,1),
+                    DateAttempted= GetPositionData(currentByte,114,4),
+                    ContactMade= GetPositionData(currentByte,118,1),
+                    DateContacted= GetPositionData(currentByte,119,4),
+                    Filler= GetPositionData(currentByte,123,78),
+                }
+                }
+            };
+        }
         public string GetPositionData(byte[] currentByte, int startPos, int fieldLength)
         {
             return Encoding.Default.GetString(currentByte, startPos, fieldLength);
         }
+
         private (List<DetModel>,List<TransModel>) ReadCMSBillInputFileDetRecord(string path)
         {
             var fileContents = File.ReadAllLines(path);

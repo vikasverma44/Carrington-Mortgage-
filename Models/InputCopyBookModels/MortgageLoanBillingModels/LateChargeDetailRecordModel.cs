@@ -26,7 +26,8 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
         public string LateChargeWaiverAmount { get; set; }
         public string LateChargeReversalAmount { get; set; }
         public string LateChargeAdjDate { get; set; }
-       
+        public string LateChargePaymentDueDate2 { get; set; }
+
         public string LateChargeOsBalance { get; set; }
         public string Filler { get; set; }
 
