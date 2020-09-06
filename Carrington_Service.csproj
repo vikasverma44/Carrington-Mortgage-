@@ -112,6 +112,7 @@
   <ItemGroup>
     <Compile Include="Agents\AgentApi.cs" />
     <Compile Include="BusinessExpert\WorkFlowExpert.cs" />
+    <Compile Include="Calculation_Classes\StandardBillingStatement.cs" />
     <Compile Include="Calculation_Classes\OptionARMBillingStatement.cs" />
     <Compile Include="Calculation_Classes\ChapterThirteenOptionARMStatement.cs" />
     <Compile Include="Calculation_Classes\ChapterThirteenBillingStatement.cs" />
