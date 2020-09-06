@@ -4,6 +4,8 @@ using System.Runtime.Remoting.Messaging;
 /// <summary>
 /// Summary description for Class1
 /// </summary>
+ namespace Carrington_Service.Calculation_Classes
+{
 public class ChapterSevenBillingStatement
 {
     public decimal PaymentAmount { get; set; }
@@ -35,7 +37,7 @@ public class ChapterSevenBillingStatement
         //Copybook Field Name=RSSI-BILL-TOTAL-DUE  plus  RSSI - BILL - PMT - AMT
         return PaymentAmount;
     }
-    public decimal DeferredBalance()
+    public decimal GetDeferredBalance()
     {
         //Calculation =  RSSI-DEF-TOT-BAL minus  RSSI - DEF - UNPD - EXP - ADV - BAL
         //Conditional Statement=If RSSI-DEF-TOT-BAL minus  RSSI - DEF - UNPD - EXP - ADV - BAL = 0, then "N/A", else RSSI - DEF - TOT - BAL minus RSSI - DEF - UNPD - EXP - ADV - BAL
@@ -78,7 +80,7 @@ public class ChapterSevenBillingStatement
         //Calculation =  Past Due Amount (+) Current Payment Due
         //Conditional Statement=If RSSI-PRIN-BAL = 0, then "0.00"
         //Copybook Field Name=RSSI-BILL-TOTAL-DUE plus RSSI - BILL - PMT - AMT
-        Return TotalPaymentAmount;
+        return TotalPaymentAmount;
     }
     public decimal GetFeesAndChargesPaidLastMonth()
     {
@@ -150,4 +152,5 @@ public class ChapterSevenBillingStatement
         return Miscellaneous;
     }
   
+}
 }
