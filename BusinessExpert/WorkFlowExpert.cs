@@ -416,6 +416,7 @@ namespace Carrington_Service.BusinessExpert
 
         #region PM File Mapping
 
+        // H Header Record. One record per file.
         public void GetHeaderRecord(byte[] currentByte)
         {
             MortgageLoanBillingFile.HeaderRecords = new HeaderRecordModel()
@@ -428,6 +429,8 @@ namespace Carrington_Service.BusinessExpert
             };
 
         }
+
+        // B Institution Record.One record per institution.
         public void GetInstitutionRecord(byte[] currentByte)
         {
             MortgageLoanBillingFile.InstitutionRecords = new InstitutionRecordModel()
@@ -466,6 +469,7 @@ namespace Carrington_Service.BusinessExpert
             };
         }
 
+        // P PL$$ Entity Record.One record per Entity within Institution if applicable.
         public void GetPL_Record(byte[] currentByte, ref AccountsModel acc)
         {
             acc.PL_RecordModel = new PL_RecordModel()
@@ -540,6 +544,8 @@ namespace Carrington_Service.BusinessExpert
                 EntityAlternatePhoneNumber5 = GetPositionData(currentByte, 671, 10),
             };
         }
+
+        // A Master File Data Part 1 Record.One record per loan.
         public void GetMasterFileDataPart_1(byte[] currentByte, ref AccountsModel acc)
         {
 
@@ -1028,6 +1034,7 @@ namespace Carrington_Service.BusinessExpert
             };
         }
 
+        // 2 Master File Data Part 2 Record.One record per loan.
         public void GetMasterFileDataPart_2(byte[] currentByte, ref AccountsModel acc)
         {
 
@@ -1135,6 +1142,7 @@ namespace Carrington_Service.BusinessExpert
             };
         }
 
+        // U User Field Record. One record per loan if applicable.
         public void GetUserFieldRecord(byte[] currentByte, ref AccountsModel acc)
         {
             acc.UserFieldRecordModel = new UserFieldRecordModel()
@@ -1518,6 +1526,7 @@ namespace Carrington_Service.BusinessExpert
             };
         }
 
+        // L Multiple Lockbox Record. One record per loan if applicable.
         public void GetMultiLockboxRecordModel(byte[] currentByte, ref AccountsModel acc)
         {
             acc.MultiLockboxRecordModel = new MultiLockboxRecordModel()
@@ -1536,7 +1545,7 @@ namespace Carrington_Service.BusinessExpert
             };
         }
 
-
+        // R Rate Reduction Record. One record per loan if applicable.
         public void GetRateReductionRecord(byte[] currentByte, ref AccountsModel acc)
         {
             acc.RateReductionRecordModel = new RateReductionRecordModel()
@@ -1572,6 +1581,7 @@ namespace Carrington_Service.BusinessExpert
             };
         }
 
+        // E Escrow Payee Data Record. Multiple records per loan if applicable.
         public void GetEscrowRecordModel(byte[] currentByte, ref AccountsModel acc)
         {
 
@@ -1594,6 +1604,7 @@ namespace Carrington_Service.BusinessExpert
             };
         }
 
+        // O Optional Items/Escrow Record. Multiple records per loan if applicable.
         public void GetOptionalItemEscrowRecordModel(byte[] currentByte, ref AccountsModel acc)
         {
 
@@ -1613,6 +1624,8 @@ namespace Carrington_Service.BusinessExpert
 
             };
         }
+
+        // F Fee Record. Multiple records per loan if applicable.
         public void GetFeeRecordModel(byte[] currentByte, ref AccountsModel acc)
         {
             acc.FeeRecordModel = new FeeRecordModel()
@@ -1653,6 +1666,7 @@ namespace Carrington_Service.BusinessExpert
             };
         }
 
+        // S Solicitation Record. One record per loan if applicable.
         public void GetSolicitationRecordModel(byte[] currentByte, ref AccountsModel acc)
         {
             acc.SolicitationRecordModel = new SolicitationRecordModel()
@@ -1667,6 +1681,8 @@ namespace Carrington_Service.BusinessExpert
 
             };
         }
+
+        // T Transaction Record. Multiple records per loan if applicable.
         public void GetTransactionRecordModel(byte[] currentByte, ref AccountsModel acc)
         {
             acc.TransactionRecordModel = new TransactionRecordModel()
@@ -1753,6 +1769,7 @@ namespace Carrington_Service.BusinessExpert
             };
         }
 
+        // C Foreign Information Record. One record per loan if applicable.
         public void GetForeignInformationRecordModel(byte[] currentByte, ref AccountsModel acc)
         {
             acc.ForeignInformationRecordModel = new ForeignInformationRecordModel()
@@ -1784,6 +1801,7 @@ namespace Carrington_Service.BusinessExpert
             };
         }
 
+        // D Blended Rate Information Record. One record per loan if applicable.
         public void GetBlendedRateInformationRecordModel(byte[] currentByte, ref AccountsModel acc)
         {
             acc.BlendedRateInformationRecordModel = new BlendedRateInformationRecordModel()
@@ -1818,6 +1836,8 @@ namespace Carrington_Service.BusinessExpert
             };
         }
 
+
+        //  I Co-borrower Record. One record per loan if applicable.
         public void GetCoBorrowerRecordModel(byte[] currentByte, ref AccountsModel acc)
         {
             acc.CoBorrowerRecordModel = new CoBorrowerRecordModel()
@@ -1941,7 +1961,7 @@ namespace Carrington_Service.BusinessExpert
             };
         }
 
-
+        // < Late Charge Information Record. One record per loan if applicable.
         public void GetLateChargeInformationRecordModel(byte[] currentByte, ref AccountsModel acc)
         {
             acc.LateChargeInformationRecordModel = new LateChargeInformationRecordModel()
@@ -1973,6 +1993,7 @@ namespace Carrington_Service.BusinessExpert
             };
         }
 
+        // - Late Charge Detail Record.One record per loan if applicable.
         public void GetLateChargeDetailRecordModel(byte[] currentByte, ref AccountsModel acc)
         {
             acc.LateChargeDetailRecordModel = new LateChargeDetailRecordModel()
@@ -2001,6 +2022,8 @@ namespace Carrington_Service.BusinessExpert
 
             };
         }
+
+        // J Active Bankruptcy Information Record. One record per loan if applicable.
         public void GetActiveBankruptcyInformationRecordModel(byte[] currentByte, ref AccountsModel acc)
         {
             acc.ActiveBankruptcyInformationRecordModel = new ActiveBankruptcyInformationRecordModel()
@@ -2087,6 +2110,7 @@ namespace Carrington_Service.BusinessExpert
             };
         }
 
+        // K Archived Bankruptcy Information Record. Multiple records per loan if applicable.
         public void GetArchivedBankruptcyDetailRecordModel(byte[] currentByte, ref AccountsModel acc)
         {
             acc.ArchivedBankruptcyDetailRecordModel = new ArchivedBankruptcyDetailRecordModel()
@@ -2123,6 +2147,7 @@ namespace Carrington_Service.BusinessExpert
             };
         }
 
+        // X Email Addresses Record
         public void GetEmailAddressRecordModel(byte[] currentByte, ref AccountsModel acc)
         {
             acc.EmailAddressRecordModel = new EmailAddressRecordModel()
@@ -2158,6 +2183,7 @@ namespace Carrington_Service.BusinessExpert
             };
         }
 
+        // 3 Disaster Tracking Record
         public void GetDisasterTrackingRecordModel(byte[] currentByte, ref AccountsModel acc)
         {
             acc.DisasterTrackingRecordModel = new DisasterTrackingRecordModel()
@@ -2191,7 +2217,7 @@ namespace Carrington_Service.BusinessExpert
             };
         }
 
-
+        // 4 RHCDS Only Record(Only created if RHCDS Option (DB-2: I-RHCDS-OPT) =‘Y’)
         public void GetRHCDRecords(byte[] currentByte, ref AccountsModel acc)
         {
             acc.RHCDSOnlyRecordModel = new RHCDSOnlyRecordModel()
@@ -2222,6 +2248,7 @@ namespace Carrington_Service.BusinessExpert
             };
         }
 
+        // Z Trailer. One record per file.
         public void GetTrailerRecords(byte[] currentByte, ref AccountsModel acc)
         {
             acc.TrailerRecordModel = new TrailerRecordModel()
