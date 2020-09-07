@@ -351,7 +351,6 @@ namespace Carrington_Service.BusinessExpert
                 EntityAlternatePhoneNumber5Desc = GetPositionData(currentByte, 651, 20),
                 EntityAlternatePhoneNumber5 = GetPositionData(currentByte, 671, 10),
             };
-            accountsListModels.Add(acc);
         }
         public void GetMasterFileDataPart_1(byte[] currentByte)
         {
