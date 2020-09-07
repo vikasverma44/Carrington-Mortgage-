@@ -181,21 +181,95 @@ namespace Carrington_Service.BusinessExpert
                 }
                 else if (counter > 1)
                 {
-                    if (inputValue == "A")
-                    {
-                        //firstRecord = true;
-                        accountsModel = new AccountsModel();
-                    }
-
                     if (inputValue == "P")
                     {
                         GetPL_Record(currentByteLine, ref accountsModel);
                     }
                     else if (inputValue == "A")
                     {
-                        GetMasterFileDataPart_1(currentByteLine);
+                        accountsModel = new AccountsModel();
+                        GetMasterFileDataPart_1(currentByteLine, ref accountsModel);
                     }
-
+                    else if (inputValue == "2")
+                    {
+                        GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
+                    }
+                    else if (inputValue == "U")
+                    {
+                        GetUserFieldRecord(currentByteLine, ref accountsModel);
+                    }
+                    else if (inputValue == "L")
+                    { 
+                        GetMultiLockboxRecordModel(currentByteLine, ref accountsModel);
+                    }
+                    else if (inputValue == "R")
+                    {
+                        GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
+                    }
+                    else if (inputValue == "E")
+                    {
+                        GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
+                    }
+                    else if (inputValue == "O")
+                    {
+                        GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
+                    }
+                    else if (inputValue == "F")
+                    {
+                        GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
+                    }
+                    else if (inputValue == "S")
+                    {
+                        GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
+                    }
+                    else if (inputValue == "T")
+                    {
+                        GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
+                    }
+                    else if (inputValue == "C")
+                    {
+                        GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
+                    }
+                    else if (inputValue == "D")
+                    {
+                        GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
+                    }
+                    else if (inputValue == "I")
+                    {
+                        GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
+                    }
+                    else if (inputValue == "<")
+                    {
+                        GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
+                    }
+                    else if (inputValue == "-")
+                    {
+                        GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
+                    }
+                    else if (inputValue == "J")
+                    {
+                        GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
+                    }
+                    else if (inputValue == "K")
+                    {
+                        GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
+                    }
+                    else if (inputValue == "X")
+                    {
+                        GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
+                    }
+                    else if (inputValue == "3")
+                    {
+                        GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
+                    }
+                    else if (inputValue == "4")
+                    {
+                        GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
+                    }
+                    else if (inputValue == "Z")
+                    {
+                        GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
+                    }
                     if (isLastRecord)
                         accountModelList.Add(accountsModel);
 
@@ -211,7 +285,7 @@ namespace Carrington_Service.BusinessExpert
             try
             {
                 int iBytesRead = InputFileStream.Read(currentByteLine, 0, numOfBytes + numOfBytes);
-               if (iBytesRead > 0)
+                if (iBytesRead > 0)
                 {
                     string inputValue = Encoding.Default.GetString(currentByteLine, 0, 1);
                     if (inputValue == "A")
@@ -352,7 +426,7 @@ namespace Carrington_Service.BusinessExpert
                 EntityAlternatePhoneNumber5 = GetPositionData(currentByte, 671, 10),
             };
         }
-        public void GetMasterFileDataPart_1(byte[] currentByte)
+        public void GetMasterFileDataPart_1(byte[] currentByte, ref AccountsModel acc)
         {
 
             MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
@@ -846,7 +920,7 @@ namespace Carrington_Service.BusinessExpert
             };
         }
 
-        public void GetMasterFileDataPart_2(byte[] currentByte)
+        public void GetMasterFileDataPart_2(byte[] currentByte, ref AccountsModel acc)
         {
             MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
                 {
@@ -955,76 +1029,8 @@ namespace Carrington_Service.BusinessExpert
                    }
                 };
         }
-        public void GetTrailerRecords(byte[] currentByte)
-        {
-            MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
-                {
-                   new AccountsModel
-                   {
-                       TrailerRecordModel= new TrailerRecordModel()
-                    {
 
-                       RecordIdentifier = GetPositionData(currentByte, 1, 1),
-                       InstitutionNumber      =GetPositionData(currentByte,2 ,3),
-                       Filler1                =GetPositionData(currentByte,5 ,10),
-                       SequenceNumber         =GetPositionData(currentByte,15 ,5),
-                       TotalNumberOfBRecords  =GetPositionData(currentByte,20 ,1),
-                       TotalNumberOfARecords  =GetPositionData(currentByte,21 ,9),
-                       TotalNumberOfRRecords  =GetPositionData(currentByte,30 ,9),
-                       TotalNumberOfERecords  =GetPositionData(currentByte, 30,15),
-                       TotalNumberOfTRecords  =GetPositionData(currentByte,54 ,15),
-                       TotalNumberOfORecords  =GetPositionData(currentByte,69 ,9),
-                       TotalNumberOfFRecords  =GetPositionData(currentByte,78 ,9),
-                       TotalNumberOfURecords  =GetPositionData(currentByte,87 ,9),
-                       TotalNumberOf2Records  =GetPositionData(currentByte, 96,9),
-                       TotalNumberOfPRecords  =GetPositionData(currentByte,105 ,9),
-                       TotalNumberOfLRecords  =GetPositionData(currentByte,114 ,9),
-                       TotalNumberOfSRecords  =GetPositionData(currentByte,123 ,9),
-                       TotalNumberOfFrRecords =GetPositionData(currentByte,132 ,9),
-                       TotalNumberOfRecordsIncludingHeaderAndTrailerRecords =GetPositionData(currentByte,141 ,15),
-                       TotalLoanCount   =GetPositionData(currentByte,156 ,9),
-
-                    }
-                       }
-            };
-        }
-
-        public void GetRHCDRecords(byte[] currentByte)
-        {
-            MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
-                {
-                   new AccountsModel
-                   {
-                   RHCDSOnlyRecordModel= new RHCDSOnlyRecordModel()
-                    {
-                    RecordIdentifier                            =GetPositionData(currentByte,1 ,1),
-                    InstitutionCode                             =GetPositionData(currentByte,2 ,3),
-                    AccountNumber                               =GetPositionData(currentByte,5 ,10),
-                    SequenceNumber                              =GetPositionData(currentByte,15 ,5),
-                    AssistanceAgreementExpirationDate           =GetPositionData(currentByte,20 ,4),
-                    SubsidyPaidYearToDate                       =GetPositionData(currentByte,24 ,5),
-                    MoratoriumEffectiveDate                     =GetPositionData(currentByte,29 ,4),
-                    MoratoriumFlag                              =GetPositionData(currentByte,33 ,1),
-                    MoratoriumExpirationDate                    =GetPositionData(currentByte,34 ,4),
-                    NoticeControl                               =GetPositionData(currentByte,38 ,1),
-                    PendingStartDate                            =GetPositionData(currentByte,39 ,4),
-                    BankruptcyFlag                              =GetPositionData(currentByte,43 ,1),
-                    BankruptcyTypeCode                          =GetPositionData(currentByte,44 ,1),
-                    RepaymentPlanStatusFlag                     =GetPositionData(currentByte,45 ,1),
-                    RepaymentPlanCancellationDate               =GetPositionData(currentByte,46 ,4),
-                    RepaymentPlanAdditionalPaymentAmount        =GetPositionData(currentByte,50 ,5),
-                    RepaymentPlanTerm                           =GetPositionData(currentByte,55 ,2),
-                    RepaymentPlanCreationDate                   =GetPositionData(currentByte,57 ,4),
-                    DownpaymentAmount                           =GetPositionData(currentByte,61 ,5),
-                    PlanPaymentStartDate                        =GetPositionData(currentByte,66 ,4),
-                    AmountOfDwaDelinquency                      =GetPositionData(currentByte,70 ,4),
-                    PostPetitionReaffAgrmtPlanSource            =GetPositionData(currentByte,74 ,1),
-                       }
-                   }
-            };
-        }
-
-        public void GetUserFieldRecord(byte[] currentByte)
+        public void GetUserFieldRecord(byte[] currentByte, ref AccountsModel acc)
         {
             MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
                 {
@@ -1413,7 +1419,7 @@ namespace Carrington_Service.BusinessExpert
             };
         }
 
-        public void GetMultiLockboxRecordModel(byte[] currentByte)
+        public void GetMultiLockboxRecordModel(byte[] currentByte, ref AccountsModel acc)
         {
             MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
                 {
@@ -1435,7 +1441,8 @@ namespace Carrington_Service.BusinessExpert
                  };
         }
 
-        public void GetRateReductionRecord(byte[] currentByte)
+
+        public void GetRateReductionRecord(byte[] currentByte, ref AccountsModel acc)
         {
             MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
                 {
@@ -1452,7 +1459,7 @@ namespace Carrington_Service.BusinessExpert
                        RateReductionTiersCompletedToDate= GetPositionData(currentByte,34,2),
                        RateReductionTierStatus= GetPositionData(currentByte,36,1),
                        RateReductionDisqualificationDate= GetPositionData(currentByte,37,8),
-                       RateReductionDisqualificationDueDate= GetPositionData(currentByte,45,8), 
+                       RateReductionDisqualificationDueDate= GetPositionData(currentByte,45,8),
                        RateReductionCompletionDate= GetPositionData(currentByte,53,8),
                        RateReductionCompletionDueDate= GetPositionData(currentByte,61,8),
                        RateReductionReQualificationDate= GetPositionData(currentByte,69,8),
@@ -1473,8 +1480,79 @@ namespace Carrington_Service.BusinessExpert
                    }
                  };
         }
+        public void GetTrailerRecords(byte[] currentByte, ref AccountsModel acc)
+        {
+            MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
+                {
+                   new AccountsModel
+                   {
+                       TrailerRecordModel= new TrailerRecordModel()
+                    {
 
-        public void GetEscrowRecordModel(byte[] currentByte)
+                       RecordIdentifier = GetPositionData(currentByte, 1, 1),
+                       InstitutionNumber      =GetPositionData(currentByte,2 ,3),
+                       Filler1                =GetPositionData(currentByte,5 ,10),
+                       SequenceNumber         =GetPositionData(currentByte,15 ,5),
+                       TotalNumberOfBRecords  =GetPositionData(currentByte,20 ,1),
+                       TotalNumberOfARecords  =GetPositionData(currentByte,21 ,9),
+                       TotalNumberOfRRecords  =GetPositionData(currentByte,30 ,9),
+                       TotalNumberOfERecords  =GetPositionData(currentByte, 30,15),
+                       TotalNumberOfTRecords  =GetPositionData(currentByte,54 ,15),
+                       TotalNumberOfORecords  =GetPositionData(currentByte,69 ,9),
+                       TotalNumberOfFRecords  =GetPositionData(currentByte,78 ,9),
+                       TotalNumberOfURecords  =GetPositionData(currentByte,87 ,9),
+                       TotalNumberOf2Records  =GetPositionData(currentByte, 96,9),
+                       TotalNumberOfPRecords  =GetPositionData(currentByte,105 ,9),
+                       TotalNumberOfLRecords  =GetPositionData(currentByte,114 ,9),
+                       TotalNumberOfSRecords  =GetPositionData(currentByte,123 ,9),
+                       TotalNumberOfFrRecords =GetPositionData(currentByte,132 ,9),
+                       TotalNumberOfRecordsIncludingHeaderAndTrailerRecords =GetPositionData(currentByte,141 ,15),
+                       TotalLoanCount   =GetPositionData(currentByte,156 ,9),
+
+                    }
+                       }
+            };
+        }
+
+        public void GetRHCDRecords(byte[] currentByte, ref AccountsModel acc)
+        {
+            MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
+                {
+                   new AccountsModel
+                   {
+                   RHCDSOnlyRecordModel= new RHCDSOnlyRecordModel()
+                    {
+                    RecordIdentifier                            =GetPositionData(currentByte,1 ,1),
+                    InstitutionCode                             =GetPositionData(currentByte,2 ,3),
+                    AccountNumber                               =GetPositionData(currentByte,5 ,10),
+                    SequenceNumber                              =GetPositionData(currentByte,15 ,5),
+                    AssistanceAgreementExpirationDate           =GetPositionData(currentByte,20 ,4),
+                    SubsidyPaidYearToDate                       =GetPositionData(currentByte,24 ,5),
+                    MoratoriumEffectiveDate                     =GetPositionData(currentByte,29 ,4),
+                    MoratoriumFlag                              =GetPositionData(currentByte,33 ,1),
+                    MoratoriumExpirationDate                    =GetPositionData(currentByte,34 ,4),
+                    NoticeControl                               =GetPositionData(currentByte,38 ,1),
+                    PendingStartDate                            =GetPositionData(currentByte,39 ,4),
+                    BankruptcyFlag                              =GetPositionData(currentByte,43 ,1),
+                    BankruptcyTypeCode                          =GetPositionData(currentByte,44 ,1),
+                    RepaymentPlanStatusFlag                     =GetPositionData(currentByte,45 ,1),
+                    RepaymentPlanCancellationDate               =GetPositionData(currentByte,46 ,4),
+                    RepaymentPlanAdditionalPaymentAmount        =GetPositionData(currentByte,50 ,5),
+                    RepaymentPlanTerm                           =GetPositionData(currentByte,55 ,2),
+                    RepaymentPlanCreationDate                   =GetPositionData(currentByte,57 ,4),
+                    DownpaymentAmount                           =GetPositionData(currentByte,61 ,5),
+                    PlanPaymentStartDate                        =GetPositionData(currentByte,66 ,4),
+                    AmountOfDwaDelinquency                      =GetPositionData(currentByte,70 ,4),
+                    PostPetitionReaffAgrmtPlanSource            =GetPositionData(currentByte,74 ,1),
+                       }
+                   }
+            };
+        }
+
+
+
+
+        public void GetEscrowRecordModel(byte[] currentByte, ref AccountsModel acc)
         {
             MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
                 {
@@ -1499,7 +1577,7 @@ namespace Carrington_Service.BusinessExpert
             };
         }
 
-        public void GetOptionalItemEscrowRecordModel(byte[] currentByte)
+        public void GetOptionalItemEscrowRecordModel(byte[] currentByte, ref AccountsModel acc)
         {
             MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
                 {
@@ -1521,7 +1599,7 @@ namespace Carrington_Service.BusinessExpert
                    }
             };
         }
-        public void GetFeeRecordModel(byte[] currentByte)
+        public void GetFeeRecordModel(byte[] currentByte, ref AccountsModel acc)
         {
             MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
             {
@@ -1567,7 +1645,7 @@ namespace Carrington_Service.BusinessExpert
             };
         }
 
-        public void GetSolicitationRecordModel(byte[] currentByte)
+        public void GetSolicitationRecordModel(byte[] currentByte, ref AccountsModel acc)
         {
             MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
             {
@@ -1585,7 +1663,7 @@ namespace Carrington_Service.BusinessExpert
                 }
             };
         }
-        public void GetTransactionRecordModel(byte[] currentByte)
+        public void GetTransactionRecordModel(byte[] currentByte, ref AccountsModel acc)
         {
             MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
             {
@@ -1677,7 +1755,7 @@ namespace Carrington_Service.BusinessExpert
             };
         }
 
-        public void GetForeignInformationRecordModel(byte[] currentByte)
+        public void GetForeignInformationRecordModel(byte[] currentByte, ref AccountsModel acc)
         {
             MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
             {
@@ -1714,7 +1792,7 @@ namespace Carrington_Service.BusinessExpert
             };
         }
 
-        public void GetBlendedRateInformationRecordModel(byte[] currentByte)
+        public void GetBlendedRateInformationRecordModel(byte[] currentByte, ref AccountsModel acc)
         {
             MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
             {
@@ -1753,7 +1831,7 @@ namespace Carrington_Service.BusinessExpert
             };
         }
 
-        public void GetCoBorrowerRecordModel(byte[] currentByte)
+        public void GetCoBorrowerRecordModel(byte[] currentByte, ref AccountsModel acc)
         {
             MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
             {
@@ -1882,7 +1960,7 @@ namespace Carrington_Service.BusinessExpert
         }
 
 
-        public void GetLateChargeInformationRecordModel(byte[] currentByte)
+        public void GetLateChargeInformationRecordModel(byte[] currentByte, ref AccountsModel acc)
         {
             MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
             {
@@ -1918,7 +1996,7 @@ namespace Carrington_Service.BusinessExpert
             };
         }
 
-        public void GetLateChargeDetailRecordModel(byte[] currentByte)
+        public void GetLateChargeDetailRecordModel(byte[] currentByte, ref AccountsModel acc)
         {
             MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
             {
@@ -1951,7 +2029,7 @@ namespace Carrington_Service.BusinessExpert
                 }
             };
         }
-        public void GetActiveBankruptcyInformationRecordModel(byte[] currentByte)
+        public void GetActiveBankruptcyInformationRecordModel(byte[] currentByte, ref AccountsModel acc)
         {
             MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
             {
@@ -2006,7 +2084,7 @@ namespace Carrington_Service.BusinessExpert
                     ConcurrentBankruptcyDischargedDateActive= GetPositionData(currentByte,228,4),
                     ConcurrentBankruptcyDismissedDateActive= GetPositionData(currentByte,232,4),
                     ConcurrentBankruptcyReliefGrantedDateActive= GetPositionData(currentByte,236,4),
-                    BankruptcyPostPetitionAmountDue= GetPositionData(currentByte,240,6), 
+                    BankruptcyPostPetitionAmountDue= GetPositionData(currentByte,240,6),
                     BankruptcyPostPetitionLateChangeAmount= GetPositionData(currentByte,246,5),
                     TotalReceivedDuringBkrPrePetition= GetPositionData(currentByte,251,5),
                     PostPetitionFeesAndCharges= GetPositionData(currentByte,256,5),
@@ -2042,7 +2120,7 @@ namespace Carrington_Service.BusinessExpert
             };
         }
 
-        public void GetArchivedBankruptcyDetailRecordModel(byte[] currentByte)
+        public void GetArchivedBankruptcyDetailRecordModel(byte[] currentByte, ref AccountsModel acc)
         {
             MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
             {
@@ -2085,7 +2163,7 @@ namespace Carrington_Service.BusinessExpert
             };
         }
 
-        public void GetEmailAddressRecordModel(byte[] currentByte)
+        public void GetEmailAddressRecordModel(byte[] currentByte, ref AccountsModel acc)
         {
             MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
             {
@@ -2124,7 +2202,7 @@ namespace Carrington_Service.BusinessExpert
             };
         }
 
-        public void GetDisasterTrackingRecordModel(byte[] currentByte)
+        public void GetDisasterTrackingRecordModel(byte[] currentByte, ref AccountsModel acc)
         {
             MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
             {
@@ -2161,6 +2239,9 @@ namespace Carrington_Service.BusinessExpert
                 }
             };
         }
+
+
+
         public string GetPositionData(byte[] currentByte, int startPos, int fieldLength)
         {
             return Encoding.Default.GetString(currentByte, startPos, fieldLength);
