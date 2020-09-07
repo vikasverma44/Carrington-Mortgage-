@@ -41,6 +41,8 @@ namespace Carrington_Service.BusinessExpert
                 Logger.Trace("STARTED: Start WorkFlow Service Method");
                 //ReadCMSBillInputFileDetRecord(@"C:\NCP-Carrington\Input\CMS_BILLINPUT02_06232020.txt");
                 //ReadEConsentRecord(@"C:\NCP-Carrington\Input\Carrington_Econsent_Setups_06232020.txt");
+
+                readData();
                 TimeWatch();
                 return true;
             }
@@ -68,7 +70,6 @@ namespace Carrington_Service.BusinessExpert
             try
             {
                 Logger.Trace("STARTED:  Step - 1 Execute workflow to send mail alongwith the Campaigning Request using Send Campaign Request with WFSID =" + WFSID.ToString());
-
 
                 Logger.Trace("ENDED:    Step - 1 Send Campaign Request with WFSID =" + WFSID.ToString());
                 return true;
@@ -199,78 +200,78 @@ namespace Carrington_Service.BusinessExpert
                         GetUserFieldRecord(currentByteLine, ref accountsModel);
                     }
                     else if (inputValue == "L")
-                    { 
+                    {
                         GetMultiLockboxRecordModel(currentByteLine, ref accountsModel);
                     }
-                    else if (inputValue == "R")
-                    {
-                        GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
-                    }
-                    else if (inputValue == "E")
-                    {
-                        GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
-                    }
-                    else if (inputValue == "O")
-                    {
-                        GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
-                    }
-                    else if (inputValue == "F")
-                    {
-                        GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
-                    }
-                    else if (inputValue == "S")
-                    {
-                        GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
-                    }
-                    else if (inputValue == "T")
-                    {
-                        GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
-                    }
-                    else if (inputValue == "C")
-                    {
-                        GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
-                    }
-                    else if (inputValue == "D")
-                    {
-                        GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
-                    }
-                    else if (inputValue == "I")
-                    {
-                        GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
-                    }
-                    else if (inputValue == "<")
-                    {
-                        GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
-                    }
-                    else if (inputValue == "-")
-                    {
-                        GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
-                    }
-                    else if (inputValue == "J")
-                    {
-                        GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
-                    }
-                    else if (inputValue == "K")
-                    {
-                        GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
-                    }
-                    else if (inputValue == "X")
-                    {
-                        GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
-                    }
-                    else if (inputValue == "3")
-                    {
-                        GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
-                    }
-                    else if (inputValue == "4")
-                    {
-                        GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
-                    }
-                    else if (inputValue == "Z")
-                    {
-                        GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
-                    }
-                    if (isLastRecord)
+                    //else if (inputValue == "R")
+                    //{
+                    //    GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
+                    //}
+                    //else if (inputValue == "E")
+                    //{
+                    //    GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
+                    //}
+                    //else if (inputValue == "O")
+                    //{
+                    //    GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
+                    //}
+                    //else if (inputValue == "F")
+                    //{
+                    //    GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
+                    //}
+                    //else if (inputValue == "S")
+                    //{
+                    //    GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
+                    //}
+                    //else if (inputValue == "T")
+                    //{
+                    //    GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
+                    //}
+                    //else if (inputValue == "C")
+                    //{
+                    //    GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
+                    //}
+                    //else if (inputValue == "D")
+                    //{
+                    //    GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
+                    //}
+                    //else if (inputValue == "I")
+                    //{
+                    //    GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
+                    //}
+                    //else if (inputValue == "<")
+                    //{
+                    //    GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
+                    //}
+                    //else if (inputValue == "-")
+                    //{
+                    //    GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
+                    //}
+                    //else if (inputValue == "J")
+                    //{
+                    //    GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
+                    //}
+                    //else if (inputValue == "K")
+                    //{
+                    //    GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
+                    //}
+                    //else if (inputValue == "X")
+                    //{
+                    //    GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
+                    //}
+                    //else if (inputValue == "3")
+                    //{
+                    //    GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
+                    //}
+                    //else if (inputValue == "4")
+                    //{
+                    //    GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
+                    //}
+                    //else if (inputValue == "Z")
+                    //{
+                    //    GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
+                    //}
+                    if (IsLastRecord(currentByteLine,  numOfBytes))
                         accountModelList.Add(accountsModel);
 
                 }
@@ -306,7 +307,7 @@ namespace Carrington_Service.BusinessExpert
         {
             MortgageLoanBillingFile.HeaderRecords = new HeaderRecordModel()
             {
-                RecordIdentifier = GetPositionData(currentByte, 0, 1),
+                RecordIdentifier = GetPositionData(currentByte, 1, 1),
                 InstitutionNumber = GetPositionData(currentByte, 2, 3),
                 Filler1 = GetPositionData(currentByte, 5, 10),
                 Filler2 = GetPositionData(currentByte, 15, 5),
@@ -318,7 +319,7 @@ namespace Carrington_Service.BusinessExpert
         {
             MortgageLoanBillingFile.InstitutionRecords = new InstitutionRecordModel()
             {
-                RecordIdentifier = GetPositionData(currentByte, 0, 1),
+                RecordIdentifier = GetPositionData(currentByte, 1, 1),
                 InstitutionNumber = GetPositionData(currentByte, 2, 3),
                 Filler = GetPositionData(currentByte, 5, 10),
                 SequenceNumber = GetPositionData(currentByte, 15, 5),
@@ -435,7 +436,7 @@ namespace Carrington_Service.BusinessExpert
                    {
                        MasterFileDataPart_1Model = new MasterFileDataPart_1Model()
                     {
-                         RecordIdentifier = GetPositionData(currentByte, 0, 1),
+                         RecordIdentifier = GetPositionData(currentByte, 1, 1),
                          InstitutionNumber=GetPositionData(currentByte, 2, 3),
 
                          AccountNumber=GetPositionData(currentByte, 5, 10),
@@ -2244,7 +2245,14 @@ namespace Carrington_Service.BusinessExpert
 
         public string GetPositionData(byte[] currentByte, int startPos, int fieldLength)
         {
-            return Encoding.Default.GetString(currentByte, startPos, fieldLength);
+            try
+            {
+                return Encoding.Default.GetString(currentByte, startPos - 1, fieldLength);
+            }
+            catch (Exception ex)
+            {
+                return "";
+            }
         }
 
         private (List<DetModel>, List<TransModel>) ReadCMSBillInputFileDetRecord(string path)
