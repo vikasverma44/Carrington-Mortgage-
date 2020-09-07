@@ -2,12 +2,13 @@
 using Carrington_Service.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net;
 using System.Net.Mail;
 
 namespace Carrington_Service.Services
 {
-    internal class EmailService : IEmailService
+    public class EmailService : IEmailService
     {
         private readonly ILogger Logger;
         private readonly IConfigHelper ConfigHelper;
@@ -16,7 +17,6 @@ namespace Carrington_Service.Services
             Logger = logger;
             ConfigHelper = configHelper;
         }
-
         public bool SendNotification(string emailBody)
         {
             try
@@ -27,6 +27,16 @@ namespace Carrington_Service.Services
                 string mailCC = string.Empty;
                 string mailSubject = "NCP System Generated Mail. Please Do not Reply";
                 string mailBody = emailBody;
+
+                string FilePath = @"C:\NCP-Carrington\Input\EmailTemplate.html";
+                StreamReader str = new StreamReader(FilePath);
+                string MailText = str.ReadToEnd();
+                str.Close();
+
+                //Repalce [newusername] = signup user name   
+                MailText = MailText.Replace("[Receiver]", "Tim");
+                MailText = MailText.Replace("[Sender]", "Bhawna");
+
                 bool mailHTML = true;
                 List<string> mailAttachmentPath = new List<string>();
                 return SendMailMessage(mailTo, mailFrom, mailBCC, mailCC, mailSubject,
