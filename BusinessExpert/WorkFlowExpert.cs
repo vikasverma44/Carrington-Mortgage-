@@ -1,4 +1,8 @@
-﻿using Carrington_Service.Infrastructure;
+﻿using Carrington_Service.Helpers;
+using Carrington_Service.Infrastructure;
+using Carrington_Service.Interfaces;
+using Carrington_Service.Services;
+using Microsoft.VisualBasic.Logging;
 using ODHS_EDelivery.Models;
 using ODHS_EDelivery.Models.InputCopyBookModels;
 using ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels;
@@ -20,16 +24,17 @@ namespace Carrington_Service.BusinessExpert
         public ILogger Logger;
         private readonly IConfigHelper ConfigHelper;
         private readonly IAgentApi ApiAgent;
+        public IEmailService EmailService;
         MortgageLoanBillingFileModel MortgageLoanBillingFile = new MortgageLoanBillingFileModel();
         // List<AccountsModel> accountModelList = new List<AccountsModel>();
         AccountsModel accountsModel;
-        public WorkFlowExpert(IConfigHelper configHelper, ILogger logger, IAgentApi apiAgent)
+        public WorkFlowExpert(IConfigHelper configHelper, ILogger logger, IAgentApi apiAgent, IEmailService emailService)
         {
             ConfigHelper = configHelper;
             Logger = logger;
             ApiAgent = apiAgent;
+            EmailService = emailService;
             //configHelper.Model.DatabaseSetting = DbService.GetDataBaseSettings();
-
         }
 
         #endregion
@@ -39,6 +44,7 @@ namespace Carrington_Service.BusinessExpert
             try
             {
                 Logger.Trace("STARTED: Start WorkFlow Service Method");
+                EmailService.SendNotification("");
                 //ReadCMSBillInputFileDetRecord(@"C:\NCP-Carrington\Input\CMS_BILLINPUT02_06232020.txt");
                 //ReadEConsentRecord(@"C:\NCP-Carrington\Input\Carrington_Econsent_Setups_06232020.txt");
 
@@ -82,16 +88,17 @@ namespace Carrington_Service.BusinessExpert
             }
         }
 
-        private static void TimeWatch()
+        private void TimeWatch()
         {
-            //Time when method needs to be called
-            var DailyTime = "15:08:00";
+            //24 hours timer is working perfectly
+            string path = @"C:\NCP-Carrington\Input";
+            var DailyTime = "16:36:00";
             var timeParts = DailyTime.Split(new char[1] { ':' });
 
             var dateNow = DateTime.Now;
             var date = new DateTime(dateNow.Year, dateNow.Month, dateNow.Day,
                        int.Parse(timeParts[0]), int.Parse(timeParts[1]), int.Parse(timeParts[2]));
-            TimeSpan ts;
+            TimeSpan ts; 
             if (date > dateNow)
                 ts = date - dateNow;
             else
@@ -99,52 +106,30 @@ namespace Carrington_Service.BusinessExpert
                 date = date.AddDays(1);
                 ts = date - dateNow;
             }
-            string path = @"C:\NCP-Carrington\Input";
             //waits certan time and run the code
             Task.Delay(ts).ContinueWith((x) => MonitorDirectory(path));
-
-            Console.Read();
         }
-        private static void MonitorDirectory(string path)
-
+        private  void MonitorDirectory(string path)
         {
-
             FileSystemWatcher fileSystemWatcher = new FileSystemWatcher();
 
             fileSystemWatcher.Path = path;
 
             fileSystemWatcher.Created += FileSystemWatcher_Created;
 
-            //fileSystemWatcher.Renamed += FileSystemWatcher_Renamed;
-
-            //fileSystemWatcher.Deleted += FileSystemWatcher_Deleted;
-
             fileSystemWatcher.EnableRaisingEvents = true;
 
         }
 
-        private static void FileSystemWatcher_Created(object sender, FileSystemEventArgs e)
+        private  void FileSystemWatcher_Created(object sender, FileSystemEventArgs e)
         {
-
-            Console.WriteLine("File created: {0}", e.Name);
+            string fileName = e.Name;
+            Logger.Trace("File created: "+ fileName + "");
+            if (File.Exists(@"C:\NCP-Carrington\Input\"  + fileName))
+            {
+                EmailService.SendNotification("");
+            }
         }
-
-        private static void FileSystemWatcher_Renamed(object sender, FileSystemEventArgs e)
-
-        {
-
-            Console.WriteLine("File renamed: {0}", e.Name);
-
-        }
-
-        private static void FileSystemWatcher_Deleted(object sender, FileSystemEventArgs e)
-
-        {
-
-            Console.WriteLine("File deleted: {0}", e.Name);
-
-        }
-
         #endregion
 
         #region New Code
