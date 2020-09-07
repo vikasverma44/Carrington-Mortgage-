@@ -24,9 +24,11 @@ namespace Carrington_Service.BusinessExpert
         public ILogger Logger;
         private readonly IConfigHelper ConfigHelper;
         private readonly IAgentApi ApiAgent;
+        public FileStream InputFileStream;
         public IEmailService EmailService;
         MortgageLoanBillingFileModel MortgageLoanBillingFile = new MortgageLoanBillingFileModel();
-        // List<AccountsModel> accountModelList = new List<AccountsModel>();
+        CmsBillInput CmsBillInput = new CmsBillInput();
+        EConsentInput EConsentInput = new EConsentInput();
         AccountsModel accountsModel;
         public WorkFlowExpert(IConfigHelper configHelper, ILogger logger, IAgentApi apiAgent, IEmailService emailService)
         {
@@ -45,10 +47,11 @@ namespace Carrington_Service.BusinessExpert
             {
                 Logger.Trace("STARTED: Start WorkFlow Service Method");
                 EmailService.SendNotification("");
-                //ReadCMSBillInputFileDetRecord(@"C:\NCP-Carrington\Input\CMS_BILLINPUT02_06232020.txt");
-                //ReadEConsentRecord(@"C:\NCP-Carrington\Input\Carrington_Econsent_Setups_06232020.txt");
 
-                readData();
+                ReadPMFile(@"D:\Carrington\06232020011800.testfebil06232020141628.ETOA");
+                ReadCMSBillInputFileDetRecord(@"C:\NCP-Carrington\Input\CMS_BILLINPUT02_06232020.txt");
+                ReadEConsentRecord(@"C:\NCP-Carrington\Input\Carrington_Econsent_Setups_06232020.txt");
+
                 TimeWatch();
                 return true;
             }
@@ -130,17 +133,14 @@ namespace Carrington_Service.BusinessExpert
                 EmailService.SendNotification("");
             }
         }
-        #endregion
-
-        #region New Code
+        #endregion       
 
 
-        public void readData()
-        {
-             string FileNameWithPath = @"D:\Carrington\06232020011800.testfebil06232020141628.ETOA";          
+        public void ReadPMFile(string fileNameWithPath)
+        {     
 
             int numOfBytes = 4010;
-            InputFileStream = new System.IO.FileStream(FileNameWithPath, System.IO.FileMode.Open, System.IO.FileAccess.Read, FileShare.ReadWrite);
+            InputFileStream = new System.IO.FileStream(fileNameWithPath, System.IO.FileMode.Open, System.IO.FileAccess.Read, FileShare.ReadWrite);
 
             byte[] currentByteLine = new byte[numOfBytes];
 
@@ -269,8 +269,128 @@ namespace Carrington_Service.BusinessExpert
             MortgageLoanBillingFile.AccountModelList.Add(accountsModel);
 
         }
-         
-        public FileStream InputFileStream { get; private set; }
+
+        private (List<DetModel>, List<TransModel>) ReadCMSBillInputFileDetRecord(string path)
+        {
+            var fileContents = File.ReadAllLines(path);
+            var splitFileContents = (from f in fileContents select f.Split(',')).ToArray();
+            List<DetModel> detList = new List<DetModel>();
+            List<TransModel> transList = new List<TransModel>();
+          
+            foreach (var line in splitFileContents)
+            {
+                if (line[1].ToString() == "DET")
+                {
+                    CmsBillInput.DetRecord = new DetModel()
+                    {
+                        SnapShotDate = line[0].ToString(),
+                        FieldDescription = line[1].ToString(),
+                        LoanNumber = line[2].ToString(),
+                        Eligible = line[3].ToString(),
+                        PriorMoAmnt = line[4].ToString(),
+                        YTDAmnt = line[5].ToString(),
+                        SentNO631_ = line[6].ToString(),
+                        FlagRecordIndicator = line[7].ToString(),
+                        CurrentDate = line[8].ToString(),
+                        NYOrdinance = line[9].ToString(),
+                        PriorServicerLoanNumber = line[10].ToString(),
+                        PrimaryBorrowerName = line[11].ToString(),
+                        MailingAddressLine1 = line[12].ToString(),
+                        MailingAddressLine2 = line[13].ToString(),
+                        MailingAddressCity = line[14].ToString(),
+                        MailingAddressState = line[15].ToString(),
+                        MailingAddressZip = line[16].ToString(),
+                        PropertAddressLine1 = line[17].ToString(),
+                        PropertyAddressLine2 = line[18].ToString(),
+                        PropertyAddressCity = line[19].ToString(),
+                        PropertyAddressState = line[20].ToString(),
+                        PropertyAddressZip = line[21].ToString(),
+                        OriginationDate = line[22].ToString(),
+                        OriginalLoanAmount = line[23].ToString(),
+                        CurrentPrincipalBalance = line[24].ToString(),
+                        MaturityDate = line[25].ToString(),
+                        TotalAmountDue = line[26].ToString(),
+                        MERSFlag = line[27].ToString(),
+                        PriorServicerName = line[28].ToString(),
+                        PriorServicerAddressLine1 = line[29].ToString(),
+                        PriorServicerAddressLine2 = line[30].ToString(),
+                        PriorServicerCity = line[31].ToString(),
+                        PriorServicerState = line[32].ToString(),
+                        PriorServicerZip = line[33].ToString(),
+                        PriorServicerPhoneNumber = line[34].ToString(),
+                        CMSCSHoursofOperation = line[35].ToString(),
+                        ServiceTransferDate = line[36].ToString(),
+                        PriorServicerReleaseDate = line[37].ToString(),
+                        SaleDate = line[38].ToString(),
+                        InvestorCreditorName = line[39].ToString(),
+                        TrusteeName = line[40].ToString(),
+                        TrusteeAddressLine1 = line[41].ToString(),
+                        TrusteeAddressLine2 = line[42].ToString(),
+                        TrusteeCity = line[43].ToString(),
+                        TrusteeState = line[44].ToString(),
+                        TrusteeZip = line[45].ToString(),
+                        TrusteePhone = line[46].ToString(),
+                        CMSCustomerServicePhone = line[47].ToString(),
+                        SecondaryBorrowerName = line[48].ToString(),
+                        Originator = line[49].ToString(),
+                        ACH_Verbiage = line[50].ToString(),
+                        SecurityPosition = line[51].ToString(),
+                        OnboardingFlyer = line[52].ToString(),
+                        TrusteePart1 = line[53].ToString(),
+                        TrusteePart2 = line[54].ToString(),
+                        DealName = line[55].ToString(),
+                        TotalDue = line[56].ToString(),
+                        LockBoxAddress = line[57].ToString()
+                    };
+                    detList.Add(CmsBillInput.DetRecord);
+                }
+                if (line[1].ToString() == "TRN")
+                {
+                    CmsBillInput.TransRecord = new TransModel()
+                    {
+                        SnapShotDate = line[0].ToString(),
+                        FieldDescription = line[1].ToString(),
+                        LoanNumber = line[2].ToString(),
+                        TransactionDate = line[3].ToString(),
+                        TransactionAmount = line[4].ToString(),
+                        PrincipalAmount = line[5].ToString(),
+                        InterestAmount = line[6].ToString(),
+                        EscrowAmount = line[7].ToString(),
+                        LateChargeAmount = line[8].ToString()
+                    };
+                    transList.Add(CmsBillInput.TransRecord);
+                }
+
+            }
+            return (detList, transList);
+        }
+
+        private List<EConsentModel> ReadEConsentRecord(string path)
+        {
+            var fileContents = File.ReadAllLines(path);
+            var splitFileContents = (from f in fileContents select f.Split(',')).ToArray();
+            List<EConsentModel> eConsentList = new List<EConsentModel>();
+          
+            foreach (var line in splitFileContents)
+            {
+                //DateTime date = DateTime.Parse(line[0].ToString());
+                EConsentInput.EConsentRecord = new EConsentModel()
+                {
+                    FileDate = Convert.ToDateTime(DateTime.ParseExact(line[0].ToString(), "MM/dd/yyyy", CultureInfo.InvariantCulture)),
+                    LoanNumber = line[1].ToString(),
+                    DocumentType = line[2].ToString(),
+                    EConsentFlag = line[3].ToString(),
+                    EConsentDate = line[4].ToString(),
+                    EMailAddress = line[5].ToString(),
+                    Filler = line[6].ToString()
+                };
+                eConsentList.Add(EConsentInput.EConsentRecord);
+            }
+            return eConsentList;
+        }
+
+
+        #region PM File Mapping
 
         public void GetHeaderRecord(byte[] currentByte)
         {
@@ -2118,124 +2238,8 @@ namespace Carrington_Service.BusinessExpert
             }
         }
 
-        private (List<DetModel>, List<TransModel>) ReadCMSBillInputFileDetRecord(string path)
-        {
-            var fileContents = File.ReadAllLines(path);
-            var splitFileContents = (from f in fileContents select f.Split(',')).ToArray();
-            List<DetModel> detList = new List<DetModel>();
-            List<TransModel> transList = new List<TransModel>();
-            CmsBillInput CmsBillInput = new CmsBillInput();
-            foreach (var line in splitFileContents)
-            {
-                if (line[1].ToString() == "DET")
-                {
-                    CmsBillInput.DetRecord = new DetModel()
-                    {
-                        SnapShotDate = line[0].ToString(),
-                        FieldDescription = line[1].ToString(),
-                        LoanNumber = line[2].ToString(),
-                        Eligible = line[3].ToString(),
-                        PriorMoAmnt = line[4].ToString(),
-                        YTDAmnt = line[5].ToString(),
-                        SentNO631_ = line[6].ToString(),
-                        FlagRecordIndicator = line[7].ToString(),
-                        CurrentDate = line[8].ToString(),
-                        NYOrdinance = line[9].ToString(),
-                        PriorServicerLoanNumber = line[10].ToString(),
-                        PrimaryBorrowerName = line[11].ToString(),
-                        MailingAddressLine1 = line[12].ToString(),
-                        MailingAddressLine2 = line[13].ToString(),
-                        MailingAddressCity = line[14].ToString(),
-                        MailingAddressState = line[15].ToString(),
-                        MailingAddressZip = line[16].ToString(),
-                        PropertAddressLine1 = line[17].ToString(),
-                        PropertyAddressLine2 = line[18].ToString(),
-                        PropertyAddressCity = line[19].ToString(),
-                        PropertyAddressState = line[20].ToString(),
-                        PropertyAddressZip = line[21].ToString(),
-                        OriginationDate = line[22].ToString(),
-                        OriginalLoanAmount = line[23].ToString(),
-                        CurrentPrincipalBalance = line[24].ToString(),
-                        MaturityDate = line[25].ToString(),
-                        TotalAmountDue = line[26].ToString(),
-                        MERSFlag = line[27].ToString(),
-                        PriorServicerName = line[28].ToString(),
-                        PriorServicerAddressLine1 = line[29].ToString(),
-                        PriorServicerAddressLine2 = line[30].ToString(),
-                        PriorServicerCity = line[31].ToString(),
-                        PriorServicerState = line[32].ToString(),
-                        PriorServicerZip = line[33].ToString(),
-                        PriorServicerPhoneNumber = line[34].ToString(),
-                        CMSCSHoursofOperation = line[35].ToString(),
-                        ServiceTransferDate = line[36].ToString(),
-                        PriorServicerReleaseDate = line[37].ToString(),
-                        SaleDate = line[38].ToString(),
-                        InvestorCreditorName = line[39].ToString(),
-                        TrusteeName = line[40].ToString(),
-                        TrusteeAddressLine1 = line[41].ToString(),
-                        TrusteeAddressLine2 = line[42].ToString(),
-                        TrusteeCity = line[43].ToString(),
-                        TrusteeState = line[44].ToString(),
-                        TrusteeZip = line[45].ToString(),
-                        TrusteePhone = line[46].ToString(),
-                        CMSCustomerServicePhone = line[47].ToString(),
-                        SecondaryBorrowerName = line[48].ToString(),
-                        Originator = line[49].ToString(),
-                        ACH_Verbiage = line[50].ToString(),
-                        SecurityPosition = line[51].ToString(),
-                        OnboardingFlyer = line[52].ToString(),
-                        TrusteePart1 = line[53].ToString(),
-                        TrusteePart2 = line[54].ToString(),
-                        DealName = line[55].ToString(),
-                        TotalDue = line[56].ToString(),
-                        LockBoxAddress = line[57].ToString()
-                    };
-                    detList.Add(CmsBillInput.DetRecord);
-                }
-                if (line[1].ToString() == "TRN")
-                {
-                    CmsBillInput.TransRecord = new TransModel()
-                    {
-                        SnapShotDate = line[0].ToString(),
-                        FieldDescription = line[1].ToString(),
-                        LoanNumber = line[2].ToString(),
-                        TransactionDate = line[3].ToString(),
-                        TransactionAmount = line[4].ToString(),
-                        PrincipalAmount = line[5].ToString(),
-                        InterestAmount = line[6].ToString(),
-                        EscrowAmount = line[7].ToString(),
-                        LateChargeAmount = line[8].ToString()
-                    };
-                    transList.Add(CmsBillInput.TransRecord);
-                }
-
-            }
-            return (detList, transList);
-        }
-
-        private List<EConsentModel> ReadEConsentRecord(string path)
-        {
-            var fileContents = File.ReadAllLines(path);
-            var splitFileContents = (from f in fileContents select f.Split(',')).ToArray();
-            List<EConsentModel> eConsentList = new List<EConsentModel>();
-            EConsentInput EConsentInput = new EConsentInput();
-            foreach (var line in splitFileContents)
-            {
-                //DateTime date = DateTime.Parse(line[0].ToString());
-                EConsentInput.EConsentRecord = new EConsentModel()
-                {
-                    FileDate = Convert.ToDateTime(DateTime.ParseExact(line[0].ToString(), "MM/dd/yyyy", CultureInfo.InvariantCulture)),
-                    LoanNumber = line[1].ToString(),
-                    DocumentType = line[2].ToString(),
-                    EConsentFlag = line[3].ToString(),
-                    EConsentDate = line[4].ToString(),
-                    EMailAddress = line[5].ToString(),
-                    Filler = line[6].ToString()
-                };
-                eConsentList.Add(EConsentInput.EConsentRecord);
-            }
-            return eConsentList;
-        }
         #endregion
+   
+       
     }
 }
