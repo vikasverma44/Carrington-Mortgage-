@@ -48,9 +48,33 @@ namespace Carrington_Service.BusinessExpert
                 Logger.Trace("STARTED: Start WorkFlow Service Method");
                 EmailService.SendNotification("");
 
-                ReadPMFile(@"D:\Carrington\06232020011800.testfebil06232020141628.ETOA");
-                ReadCMSBillInputFileDetRecord(@"C:\NCP-Carrington\Input\CMS_BILLINPUT02_06232020.txt");
-                ReadEConsentRecord(@"C:\NCP-Carrington\Input\Carrington_Econsent_Setups_06232020.txt");
+                ReadPMFile(@"D:\Carrington\Mapping File\TESTDATA.ETOA");
+                (List<DetModel> detData, List<TransModel> transData) = ReadCMSBillInputFileDetRecord(@"D:\Carrington\Mapping File\CMS_BILLINPUT02_06232020.txt");
+                List<EConsentModel> EconsentData = ReadEConsentRecord(@"D:\Carrington\Mapping File\Carrington_Econsent_Setups_06232020.txt");
+
+                foreach (AccountsModel accountDetails in MortgageLoanBillingFile.AccountModelList)
+                {
+                    string accountToMatch = accountDetails.MasterFileDataPart_1Model.AccountNumber;
+                    bool isAccountMatched = false;
+                    if (detData.Any(df => df.LoanNumber == accountToMatch))
+                    {
+                        if (EconsentData.Any(df => df.LoanNumber == accountToMatch))
+                        {
+                            isAccountMatched = true;
+                        }
+                    }
+                    else if (transData.Any(df => df.LoanNumber == accountToMatch))
+                    {
+                        if (EconsentData.Any(df => df.LoanNumber == accountToMatch))
+                        {
+                            isAccountMatched = true;
+                        }
+                    }
+                    if (isAccountMatched)
+                    {
+                        accountDetails.IsMatched = true;
+                    }
+                }
 
                 TimeWatch();
                 return true;
@@ -101,7 +125,7 @@ namespace Carrington_Service.BusinessExpert
             var dateNow = DateTime.Now;
             var date = new DateTime(dateNow.Year, dateNow.Month, dateNow.Day,
                        int.Parse(timeParts[0]), int.Parse(timeParts[1]), int.Parse(timeParts[2]));
-            TimeSpan ts; 
+            TimeSpan ts;
             if (date > dateNow)
                 ts = date - dateNow;
             else
@@ -112,7 +136,7 @@ namespace Carrington_Service.BusinessExpert
             //waits certan time and run the code
             Task.Delay(ts).ContinueWith((x) => MonitorDirectory(path));
         }
-        private  void MonitorDirectory(string path)
+        private void MonitorDirectory(string path)
         {
             FileSystemWatcher fileSystemWatcher = new FileSystemWatcher();
 
@@ -124,11 +148,11 @@ namespace Carrington_Service.BusinessExpert
 
         }
 
-        private  void FileSystemWatcher_Created(object sender, FileSystemEventArgs e)
+        private void FileSystemWatcher_Created(object sender, FileSystemEventArgs e)
         {
             string fileName = e.Name;
-            Logger.Trace("File created: "+ fileName + "");
-            if (File.Exists(@"C:\NCP-Carrington\Input\"  + fileName))
+            Logger.Trace("File created: " + fileName + "");
+            if (File.Exists(@"C:\NCP-Carrington\Input\" + fileName))
             {
                 EmailService.SendNotification("");
             }
@@ -137,7 +161,7 @@ namespace Carrington_Service.BusinessExpert
 
 
         public void ReadPMFile(string fileNameWithPath)
-        {     
+        {
 
             int numOfBytes = 4010;
             InputFileStream = new System.IO.FileStream(fileNameWithPath, System.IO.FileMode.Open, System.IO.FileAccess.Read, FileShare.ReadWrite);
@@ -149,7 +173,7 @@ namespace Carrington_Service.BusinessExpert
             int counter = 0;
             int startPos = 0;
             int fieldLength = 1;
-            bool firstRecord = false; 
+            bool firstRecord = false;
             while (iBytesRead > 0)
             {
                 string inputValue = Encoding.Default.GetString(currentByteLine, startPos, fieldLength);
@@ -260,7 +284,7 @@ namespace Carrington_Service.BusinessExpert
                     else if (inputValue == "Z")
                     {
                         GetTrailerRecords(currentByteLine, ref accountsModel);
-                    } 
+                    }
 
                 }
                 iBytesRead = InputFileStream.Read(currentByteLine, 0, numOfBytes);
@@ -276,7 +300,7 @@ namespace Carrington_Service.BusinessExpert
             var splitFileContents = (from f in fileContents select f.Split(',')).ToArray();
             List<DetModel> detList = new List<DetModel>();
             List<TransModel> transList = new List<TransModel>();
-          
+
             foreach (var line in splitFileContents)
             {
                 if (line[1].ToString() == "DET")
@@ -370,7 +394,7 @@ namespace Carrington_Service.BusinessExpert
             var fileContents = File.ReadAllLines(path);
             var splitFileContents = (from f in fileContents select f.Split(',')).ToArray();
             List<EConsentModel> eConsentList = new List<EConsentModel>();
-          
+
             foreach (var line in splitFileContents)
             {
                 //DateTime date = DateTime.Parse(line[0].ToString());
@@ -2239,7 +2263,7 @@ namespace Carrington_Service.BusinessExpert
         }
 
         #endregion
-   
-       
+
+
     }
 }
