@@ -20,6 +20,9 @@ namespace Carrington_Service.BusinessExpert
         public ILogger Logger;
         private readonly IConfigHelper ConfigHelper;
         private readonly IAgentApi ApiAgent;
+        MortgageLoanBillingFileModel MortgageLoanBillingFile = new MortgageLoanBillingFileModel();
+        List<AccountsModel> accountModelList = new List<AccountsModel>();
+        AccountsModel accountsModel;
         public WorkFlowExpert(IConfigHelper configHelper, ILogger logger, IAgentApi apiAgent)
         {
             ConfigHelper = configHelper;
@@ -38,7 +41,7 @@ namespace Carrington_Service.BusinessExpert
                 Logger.Trace("STARTED: Start WorkFlow Service Method");
                 //ReadCMSBillInputFileDetRecord(@"C:\NCP-Carrington\Input\CMS_BILLINPUT02_06232020.txt");
                 //ReadEConsentRecord(@"C:\NCP-Carrington\Input\Carrington_Econsent_Setups_06232020.txt");
-                TimeWatch(); 
+                TimeWatch();
                 return true;
             }
             catch (Exception ex)
@@ -154,34 +157,75 @@ namespace Carrington_Service.BusinessExpert
             InputFileStream = new System.IO.FileStream(FileNameWithPath, System.IO.FileMode.Open, System.IO.FileAccess.Read, FileShare.ReadWrite);
 
             byte[] currentByteLine = new byte[numOfBytes];
+
+
             int iBytesRead = InputFileStream.Read(currentByteLine, 0, numOfBytes);
-            int count = 0;
+            int counter = 0;
             int startPos = 0;
             int fieldLength = 1;
+            bool firstRecord = false;
+            bool isLastRecord = false;
             while (iBytesRead > 0)
             {
                 string inputValue = Encoding.Default.GetString(currentByteLine, startPos, fieldLength);
+                if (counter <= 1)
+                {
+                    if (inputValue == "H")
+                    {
+                        GetHeaderRecord(currentByteLine);
+                    }
+                    else if (inputValue == "B")
+                    {
+                        GetInstitutionRecord(currentByteLine);
+                    }
+                }
+                else if (counter > 1)
+                {
+                    if (inputValue == "A")
+                    {
+                        //firstRecord = true;
+                        accountsModel = new AccountsModel();
+                    }
 
-                if (inputValue == "H")
-                {
-                    GetHeaderRecord(currentByteLine);
-                }
-                else if (inputValue == "B")
-                {
-                    GetInstitutionRecord(currentByteLine);
-                }
-                else if (inputValue == "A")
-                {
-                    GetMasterFileDataPart_1(currentByteLine);
+                    if (inputValue == "P")
+                    {
+                        GetPL_Record(currentByteLine, ref accountsModel);
+                    }
+                    else if (inputValue == "A")
+                    {
+                        GetMasterFileDataPart_1(currentByteLine);
+                    }
+
+                    if (isLastRecord)
+                        accountModelList.Add(accountsModel);
+
                 }
                 iBytesRead = InputFileStream.Read(currentByteLine, 0, numOfBytes);
+                counter++;
             }
 
         }
-        //List<MortgageLoanBillingFileModel> MortgageLoanBillingFileList = new List<MortgageLoanBillingFileModel>();
 
-        MortgageLoanBillingFileModel MortgageLoanBillingFile = new MortgageLoanBillingFileModel();
-
+        private bool IsLastRecord(byte[] currentByteLine, int numOfBytes)
+        {
+            try
+            {
+                int iBytesRead = InputFileStream.Read(currentByteLine, 0, numOfBytes + numOfBytes);
+               if (iBytesRead > 0)
+                {
+                    string inputValue = Encoding.Default.GetString(currentByteLine, 0, 1);
+                    if (inputValue == "A")
+                        return true;
+                    else
+                        return false;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
         public FileStream InputFileStream { get; private set; }
 
         public void GetHeaderRecord(byte[] currentByte)
@@ -234,85 +278,80 @@ namespace Carrington_Service.BusinessExpert
             };
         }
 
-        public void GetPL_Record(byte[] currentByte)
+        public void GetPL_Record(byte[] currentByte, ref AccountsModel acc)
         {
-            MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
-                {
-                   new AccountsModel
-                   { PL_RecordModel = new PL_RecordModel()
-                    {
-                       RecordIdentifier=GetPositionData(currentByte, 1, 1),
-                       InstitutionNumber=GetPositionData(currentByte, 2,3),
+            acc.PL_RecordModel = new PL_RecordModel()
+            {
+                RecordIdentifier = GetPositionData(currentByte, 1, 1),
+                InstitutionNumber = GetPositionData(currentByte, 2, 3),
 
-                       AccountNumber=GetPositionData(currentByte, 5,10),
-                       SequenceNumber=GetPositionData(currentByte, 15,5),
+                AccountNumber = GetPositionData(currentByte, 5, 10),
+                SequenceNumber = GetPositionData(currentByte, 15, 5),
 
-                       PL_Entity=GetPositionData(currentByte, 20,3),
-                       PLSSGroup=GetPositionData(currentByte, 23,8),
+                PL_Entity = GetPositionData(currentByte, 20, 3),
+                PLSSGroup = GetPositionData(currentByte, 23, 8),
 
-                       PL_EntityStatus=GetPositionData(currentByte, 31,1),
-                       PLSSEntityBrandingName=GetPositionData(currentByte, 32,35),
+                PL_EntityStatus = GetPositionData(currentByte, 31, 1),
+                PLSSEntityBrandingName = GetPositionData(currentByte, 32, 35),
 
-                       EntityBrandingAddressLine1=GetPositionData(currentByte, 67,35),
-                       EntityBrandingAddressLine2=GetPositionData(currentByte, 102,21),
+                EntityBrandingAddressLine1 = GetPositionData(currentByte, 67, 35),
+                EntityBrandingAddressLine2 = GetPositionData(currentByte, 102, 21),
 
-                       EntityBrandingCity=GetPositionData(currentByte, 137,21),
-                       EntityBrandingState=GetPositionData(currentByte, 158,35),
+                EntityBrandingCity = GetPositionData(currentByte, 137, 21),
+                EntityBrandingState = GetPositionData(currentByte, 158, 35),
 
-                       EntityBrandingZipCode=GetPositionData(currentByte, 193,10),
-                       EntityBrandingPhone=GetPositionData(currentByte, 203,10),
+                EntityBrandingZipCode = GetPositionData(currentByte, 193, 10),
+                EntityBrandingPhone = GetPositionData(currentByte, 203, 10),
 
-                       PL_EntityTaxIdentificationNumber=GetPositionData(currentByte, 213,09),
-                       MERSOrganizationID=GetPositionData(currentByte, 222,07),
+                PL_EntityTaxIdentificationNumber = GetPositionData(currentByte, 213, 09),
+                MERSOrganizationID = GetPositionData(currentByte, 222, 07),
 
-                       HUDIDNumber=GetPositionData(currentByte, 229,12),
-                       VAID=GetPositionData(currentByte, 241,06),
+                HUDIDNumber = GetPositionData(currentByte, 229, 12),
+                VAID = GetPositionData(currentByte, 241, 06),
 
-                       EntityRHSLenderBranchID=GetPositionData(currentByte, 247,03),
-                       EntityHUDContactNameFirst=GetPositionData(currentByte, 250,10),
+                EntityRHSLenderBranchID = GetPositionData(currentByte, 247, 03),
+                EntityHUDContactNameFirst = GetPositionData(currentByte, 250, 10),
 
-                       EntityHUDContactNameLast=GetPositionData(currentByte, 260,20),
-                       EntityHUDContactTelephone=GetPositionData(currentByte, 280,10),
+                EntityHUDContactNameLast = GetPositionData(currentByte, 260, 20),
+                EntityHUDContactTelephone = GetPositionData(currentByte, 280, 10),
 
-                       EntityHUDPrincipalServicingOfficeCity=GetPositionData(currentByte, 290,21),
-                       EntityHUDPrincipalServicingOfficeState=GetPositionData(currentByte, 311,2),
+                EntityHUDPrincipalServicingOfficeCity = GetPositionData(currentByte, 290, 21),
+                EntityHUDPrincipalServicingOfficeState = GetPositionData(currentByte, 311, 2),
 
-                       EntityHUDPrincipalServicingOfficeZipCode=GetPositionData(currentByte, 313,09),
-                       EntityHUDCompanyHeadquartersStateCode=GetPositionData(currentByte, 322,03),
+                EntityHUDPrincipalServicingOfficeZipCode = GetPositionData(currentByte, 313, 09),
+                EntityHUDCompanyHeadquartersStateCode = GetPositionData(currentByte, 322, 03),
 
-                       EntityLockboxAddressLine1=GetPositionData(currentByte, 325,35),
-                       EntityLockboxAddressLine2=GetPositionData(currentByte, 360,35),
+                EntityLockboxAddressLine1 = GetPositionData(currentByte, 325, 35),
+                EntityLockboxAddressLine2 = GetPositionData(currentByte, 360, 35),
 
-                       EntityLockboxCity=GetPositionData(currentByte, 395,21),
-                       EntityLockboxState=GetPositionData(currentByte, 416,2),
+                EntityLockboxCity = GetPositionData(currentByte, 395, 21),
+                EntityLockboxState = GetPositionData(currentByte, 416, 2),
 
-                       EntityLockboxZipCode=GetPositionData(currentByte, 418,10),
-                       EntityAlternateAddress1=GetPositionData(currentByte, 428,35),
+                EntityLockboxZipCode = GetPositionData(currentByte, 418, 10),
+                EntityAlternateAddress1 = GetPositionData(currentByte, 428, 35),
 
-                       EntityAlternateAddress2=GetPositionData(currentByte, 463,35),
-                       EntityAlternateCity=GetPositionData(currentByte, 498,21),
+                EntityAlternateAddress2 = GetPositionData(currentByte, 463, 35),
+                EntityAlternateCity = GetPositionData(currentByte, 498, 21),
 
-                       EntityAlternateState=GetPositionData(currentByte, 519,2),
-                       EntityAlternateZipCode=GetPositionData(currentByte, 521,10),
+                EntityAlternateState = GetPositionData(currentByte, 519, 2),
+                EntityAlternateZipCode = GetPositionData(currentByte, 521, 10),
 
-                       EntityAlternatePhoneNumber1Desc=GetPositionData(currentByte, 531,20),
-                       EntityAlternatePhoneNumber1=GetPositionData(currentByte, 551,10),
+                EntityAlternatePhoneNumber1Desc = GetPositionData(currentByte, 531, 20),
+                EntityAlternatePhoneNumber1 = GetPositionData(currentByte, 551, 10),
 
-                       EntityAlternatePhoneNumber2Desc=GetPositionData(currentByte, 561,20),
-                       EntityAlternatePhoneNumber2=GetPositionData(currentByte, 581,10),
+                EntityAlternatePhoneNumber2Desc = GetPositionData(currentByte, 561, 20),
+                EntityAlternatePhoneNumber2 = GetPositionData(currentByte, 581, 10),
 
-                       EntityAlternatePhoneNumber3Desc=GetPositionData(currentByte, 591,20),
-                       EntityAlternatePhoneNumber3=GetPositionData(currentByte, 611,10),
+                EntityAlternatePhoneNumber3Desc = GetPositionData(currentByte, 591, 20),
+                EntityAlternatePhoneNumber3 = GetPositionData(currentByte, 611, 10),
 
-                       EntityAlternatePhoneNumber4Desc=GetPositionData(currentByte, 621,20),
-                       EntityAlternatePhoneNumber4=GetPositionData(currentByte, 641,10),
+                EntityAlternatePhoneNumber4Desc = GetPositionData(currentByte, 621, 20),
+                EntityAlternatePhoneNumber4 = GetPositionData(currentByte, 641, 10),
 
-                       EntityAlternatePhoneNumber5Desc=GetPositionData(currentByte, 651,20),
-                       EntityAlternatePhoneNumber5=GetPositionData(currentByte, 671,10),
-
-                   }
-                   }
+                EntityAlternatePhoneNumber5Desc = GetPositionData(currentByte, 651, 20),
+                EntityAlternatePhoneNumber5 = GetPositionData(currentByte, 671, 10),
             };
+            accountsListModels.Add(acc);
         }
         public void GetMasterFileDataPart_1(byte[] currentByte)
         {
@@ -1880,7 +1919,7 @@ namespace Carrington_Service.BusinessExpert
                 }
             };
         }
-        
+
         public void GetLateChargeDetailRecordModel(byte[] currentByte)
         {
             MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
@@ -2005,7 +2044,7 @@ namespace Carrington_Service.BusinessExpert
                 }
             };
         }
-       
+
         public void GetArchivedBankruptcyDetailRecordModel(byte[] currentByte)
         {
             MortgageLoanBillingFile.AccountModelList = new List<AccountsModel>()
@@ -2130,7 +2169,7 @@ namespace Carrington_Service.BusinessExpert
             return Encoding.Default.GetString(currentByte, startPos, fieldLength);
         }
 
-        private (List<DetModel>,List<TransModel>) ReadCMSBillInputFileDetRecord(string path)
+        private (List<DetModel>, List<TransModel>) ReadCMSBillInputFileDetRecord(string path)
         {
             var fileContents = File.ReadAllLines(path);
             var splitFileContents = (from f in fileContents select f.Split(',')).ToArray();
@@ -2235,15 +2274,15 @@ namespace Carrington_Service.BusinessExpert
             {
                 //DateTime date = DateTime.Parse(line[0].ToString());
                 EConsentInput.EConsentRecord = new EConsentModel()
-                    {
-                        FileDate = Convert.ToDateTime(DateTime.ParseExact(line[0].ToString(), "MM/dd/yyyy", CultureInfo.InvariantCulture)),
-                        LoanNumber = line[1].ToString(),
-                        DocumentType = line[2].ToString(),
-                        EConsentFlag = line[3].ToString(),
-                        EConsentDate = line[4].ToString(),
-                        EMailAddress = line[5].ToString(),
-                        Filler = line[6].ToString()
-                    };
+                {
+                    FileDate = Convert.ToDateTime(DateTime.ParseExact(line[0].ToString(), "MM/dd/yyyy", CultureInfo.InvariantCulture)),
+                    LoanNumber = line[1].ToString(),
+                    DocumentType = line[2].ToString(),
+                    EConsentFlag = line[3].ToString(),
+                    EConsentDate = line[4].ToString(),
+                    EMailAddress = line[5].ToString(),
+                    Filler = line[6].ToString()
+                };
                 eConsentList.Add(EConsentInput.EConsentRecord);
             }
             return eConsentList;
