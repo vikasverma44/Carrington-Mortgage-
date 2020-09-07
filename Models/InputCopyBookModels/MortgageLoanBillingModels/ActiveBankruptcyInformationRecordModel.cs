@@ -57,8 +57,7 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
         public string ConcurrentBankruptcyDischargedDateActive { get; set; }
         public string ConcurrentBankruptcyDismissedDateActive { get; set; }
         public string ConcurrentBankruptcyReliefGrantedDateActive { get; set; }
-        public string BankruptcyPost { get; set; }
-        public string PetitionAmountDue { get; set; }
+        public string BankruptcyPostPetitionAmountDue { get; set; } 
         public string BankruptcyPostPetitionLateChangeAmount { get; set; }
         public string TotalReceivedDuringBkrPrePetition { get; set; }
         public string PostPetitionFeesAndCharges { get; set; }

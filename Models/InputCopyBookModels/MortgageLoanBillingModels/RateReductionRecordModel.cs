@@ -18,8 +18,7 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
         public string RateReductionTiersCompletedToDate { get; set; }
         public string RateReductionTierStatus { get; set; }
         public string RateReductionDisqualificationDate { get; set; }
-        public string RateReduction { get; set; }
-        public string DisqualificationDueDate { get; set; }
+        public string RateReductionDisqualificationDueDate { get; set; } 
         public string RateReductionCompletionDate { get; set; }
         public string RateReductionCompletionDueDate { get; set; }
         public string RateReductionReQualificationDate { get; set; }
