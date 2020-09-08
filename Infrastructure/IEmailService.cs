@@ -1,6 +1,6 @@
 ﻿namespace Carrington_Service.Interfaces
 {
-    internal interface IEmailService
+    public interface IEmailService
     {
         bool SendNotification(string emailBody);
     }
