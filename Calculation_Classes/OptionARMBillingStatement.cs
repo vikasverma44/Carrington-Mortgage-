@@ -1,4 +1,4 @@
-﻿using ODHS_EDelivery.Models.InputCopyBookModels; 
+﻿using ODHS_EDelivery.Models.InputCopyBookModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -220,9 +220,9 @@ namespace Carrington_Service.Calculation_Classes
             //If RSSI-ALT - PYMT4 < RSSI - ALT - PYMT1, then ""Option Not Available""
             //If RSSI-BILL - PMT - AMT = 0, then ""Option Not Available"""
 
-//RSSI-BILL-TOTAL-DUE
-//  plus
-//RSSI - ALT - PYMT4"
+            //RSSI-BILL-TOTAL-DUE
+            //  plus
+            //RSSI - ALT - PYMT4"
             return TotalAmountDueOption1;
         }
         public string GetPrincipalOption2()
@@ -269,6 +269,19 @@ namespace Carrington_Service.Calculation_Classes
         }
         public string GetReplacementReserveOption3(AccountsModel model)
         {
+            //If RSSI-ALT-PYMT2 (-) RSSI-ALT-CHG-AMT2 (-) RSSI-ESC-PYMT
+            //(+) RSSI - PRE - INT - AMT = 0, then do not print the Replacement Reserve line.
+
+            //If RSSI-PRIN - BAL = 0, then ""0.00""
+            //If RSSI-BILL - PMT - AMT = 0, then ""0.00"
+
+            //"RSSI-ALT-PYMT2
+            // minus
+            //RSSI - ALT - CHG - AMT2
+            //  minus
+            //RSSI - ESC - PYMT
+            //plus
+            //RSSI - PRE - INT - AMT"
 
             return ReplacementReserveOption3;
         }
@@ -284,18 +297,52 @@ namespace Carrington_Service.Calculation_Classes
         }
         public string GetTotalAmountDueOption3(AccountsModel model)
         {
-            return TotalAmountDueOption3;
+            if (Convert.ToInt64(model.MasterFileDataPart_1Model.PrincipalBalance) == 0)
+            {
+                return "0.00";
+            }
+            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativePaymentAmount2) == 0)
+            {
+                return "Option Not Available";
+            }
+            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativePaymentAmount2) < Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativePaymentAmount1))
+            {
+                return "Option Not Available";
+            }
+            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.CurrentPayment) == 0)
+            {
+                return "Option Not Available";
+            }
+            else
+            {
+                return Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.PastDueAmtTotalDue) -
+                    Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativePaymentAmount2));
+            }
         }
         public string GetPrincipalOption4(AccountsModel model)
         {
-
-            return PrincipalOption4;
+            if (Convert.ToInt64(model.MasterFileDataPart_1Model.PrincipalBalance) == 0)
+            {
+                return "0.00";
+            }
+            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.InterestOnPymtDue) > Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativeChangeAmount1))
+            {
+                return "0.00";
+            }
+            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.CurrentPayment) == 0)
+            {
+                return "0.00";
+            }
+            else
+            {
+                return Convert.ToString(Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativeChangeAmount1) - Convert.ToInt64(model.MasterFileDataPart_1Model.InterestOnPymtDue));
+            }
         }
         public string GetAssistanceAmountOption4(AccountsModel model)
         {
             if (Convert.ToInt64(model.MasterFileDataPart_1Model.PrecalculatedInterestAmount) == 0)
             {
-                // then do not print the Assistance Amount line.
+                return "then do not print the Assistance Amount line.";
             }
             else if (Convert.ToInt64(model.MasterFileDataPart_1Model.PrincipalBalance) == 0)
             {
@@ -305,7 +352,10 @@ namespace Carrington_Service.Calculation_Classes
             {
                 return "0.00";
             }
-            return AssistanceAmountOption4;
+            else
+            {
+                return Convert.ToString(model.MasterFileDataPart_1Model.PrecalculatedInterestAmount);
+            }
         }
         public string GetReplacementReserveOption4(AccountsModel model)
         {
