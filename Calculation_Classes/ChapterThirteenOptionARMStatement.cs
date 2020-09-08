@@ -161,7 +161,10 @@ namespace Carrington_Service.Calculation_Classes
             {
                 FeesandChargesPaidLastMonth = Convert.ToString(total - Convert.ToInt64(model.TransactionRecordModel.TransactionAmount));
             }
-
+            else
+            {
+                FeesandChargesPaidLastMonth = Convert.ToString(total);
+            }
             return FeesandChargesPaidLastMonth;
         }
         public string GetUnappliedFundsPaidLastMonth(AccountsModel model)
@@ -186,7 +189,10 @@ namespace Carrington_Service.Calculation_Classes
             {
                 FeesandChargesPaidLastMonth = Convert.ToString(total - Convert.ToInt64(model.TransactionRecordModel.TransactionAmount));
             }
-
+            else
+            {
+                FeesandChargesPaidLastMonth = Convert.ToString(total);
+            }
             return FeesandChargesPaidLastMonth;
         }
         public string GetUnappliedFundsPaidYearToDate(AccountsModel model)
@@ -220,6 +226,10 @@ namespace Carrington_Service.Calculation_Classes
                (Convert.ToInt64(model.TransactionRecordModel.FeeDescription) == 67 || Convert.ToInt64(model.TransactionRecordModel.FeeDescription) == 198))
             {
                 TotalPaidYearToDate = Convert.ToString(total - Convert.ToInt64(model.TransactionRecordModel.TransactionAmount));
+            }
+            else
+            {
+                TotalPaidYearToDate = Convert.ToString(total);
             }
             return TotalPaidYearToDate;
         }
@@ -292,35 +302,36 @@ namespace Carrington_Service.Calculation_Classes
 
             }
             return ReplacementReserveOption1;
-        }
+        }/// <summary>
+        /// 34
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public string GetOverduePaymentsOption1(AccountsModel model)
         {
-            if ((Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativePaymentAmount4)
-              - Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativeChangeAmount4)
-              - Convert.ToInt64(model.MasterFileDataPart_1Model.EscrowPayment)
-              + Convert.ToInt64(model.MasterFileDataPart_1Model.PrecalculatedInterestAmount) == 0))
-                OverduePaymentsOption1 = "do not print the Replacement Reserve line";
+            if (Convert.ToInt64(model.MasterFileDataPart_1Model.PrincipalBalance) == 0)
+                AmountDueOption1 = "0.00";
 
-            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.PrincipalBalance) == 0)
-                OverduePaymentsOption1 = "0.00";
+            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativePaymentAmount4) == 0)
+                AmountDueOption1 = "null";
+
+            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativePaymentAmount4) < Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativePaymentAmount1))
+                AmountDueOption1 = "null";
 
             else if (Convert.ToInt64(model.MasterFileDataPart_1Model.CurrentPayment) == 0)
-                OverduePaymentsOption1 = "0.00";
+                AmountDueOption1 = "null";
 
             else if (Convert.ToDateTime(model.ActiveBankruptcyInformationRecordModel.PostPetitionPaymentDate) > Convert.ToDateTime(model.MasterFileDataPart_1Model.CurrentDueDate))
-                OverduePaymentsOption1 = "null";
+                AmountDueOption1 = "null";
             else
             {
-                OverduePaymentsOption1 = Convert.ToString(Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativePaymentAmount4)
-                                            - Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativeChangeAmount4)
-                                            - Convert.ToInt64(model.MasterFileDataPart_1Model.EscrowPayment)
-                                            + Convert.ToInt64(model.MasterFileDataPart_1Model.PrecalculatedInterestAmount));
-
+                //AmountDueOption1 = Convert.ToInt64(model.ActiveBankruptcyInformationRecordModel.PastUnpaidPostPetitionAmounts)
+                //                 + Convert.ToInt64(GetTotalFeesPaidOption1(model));
             }
             return OverduePaymentsOption1;
         }
 
-        public string GetTotalFeesPaidOption1()
+        public string GetTotalFeesPaidOption1(AccountsModel model)
         {
 
             return TotalFeesPaidOption1;
