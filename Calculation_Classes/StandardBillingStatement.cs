@@ -33,87 +33,207 @@ namespace Carrington_Service.Calculation_Classes
         public string TotalDue { get; set; }
        
         /* While Calculating Conditions must be applied*/
-        public decimal GetAmountDue()
+        public string GetAmountDue(AccountsModel accountsModel)
         {
-
+            if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.PrincipalBalance) == 0)
+            {
+                AmountDue = "0";
+            }
+            else
+            {
+                AmountDue = Convert.ToString(Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.PastDueAmtTotalDue)
+                    + Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount4));
+            }
             return AmountDue;
         }
-        public decimal GetPrincipal()
+        public string GetPrincipal(AccountsModel accountsModel)
         {
+            if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.PrincipalBalance) == 0)
+            {
+                Principal = "0.00";
+            }
 
+            else if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.CurrentPayment) == 0)
+            {
+                Principal = "null";
+            }
+            else
+            {
+                Principal = Convert.ToString(Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativeChangeAmount4)
+                                 - Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.InterestOnPymtDue));
+            }
             return Principal;
         }
-        public decimal GetAssistanceAmount()
+        public string GetAssistanceAmount(AccountsModel accountsModel)
         {
+            if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.PrecalculatedInterestAmount) == 0)
+                AssistanceAmount = "do not print the Assistance Amount line";
 
+            else if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.PrincipalBalance) == 0)
+                AssistanceAmount = "0.00";
+
+            else if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.CurrentPayment) == 0)
+                AssistanceAmount = "0.00";
+            else
+            {
+                AssistanceAmount = accountsModel.MasterFileDataPart_1Model.PrecalculatedInterestAmount;
+            }
             return AssistanceAmount;
         }
-
-        public decimal GetReplacementReserveAmount()
+        public string GetReplacementReserveAmount(AccountsModel accountsModel)
         {
+            if ((Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount4)
+               - Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativeChangeAmount4)
+               - Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.EscrowPayment)
+               + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.PrecalculatedInterestAmount) == 0))
+                ReplacementReserveAmount = "do not print the Replacement Reserve line";
 
+            else if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.PrincipalBalance) == 0)
+                ReplacementReserveAmount = "0.00";
+
+            else if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.CurrentPayment) == 0)
+                ReplacementReserveAmount = "0.00";
+            else
+            {
+                ReplacementReserveAmount = Convert.ToString(Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount4)
+                                            - Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativeChangeAmount4)
+                                            - Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.EscrowPayment)
+                                            + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.PrecalculatedInterestAmount));
+
+            }
             return ReplacementReserveAmount;
         }
-        public decimal GetOverduePayment()
+        public string GetOverduePayment(AccountsModel accountsModel)
         {
-
-            return OverduePayment;
+            return OverduePayment = Convert.ToString(Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.PastDueAmtTotalDue)
+                               - Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.LateChargesAccruedSinceLastStatement)
+                               - Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.PrincipalPaidSinceLastStatement)
+                               - Convert.ToInt64(GetTotalFeesAndCharges(accountsModel)));
         }
-
-        public decimal GetTotalFeesAndCharges()
+        public string GetTotalFeesAndCharges(AccountsModel accountsModel)
         {
+            
+            var Total = Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.FeesAssessedSinceLastStatement)
+            + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.LateChargesAccruedSinceLastStatement);
+
+            if (Convert.ToInt64(accountsModel.TransactionRecordModel.LogTransaction) == 5605
+                && (Convert.ToInt64(accountsModel.TransactionRecordModel.FeeDescription) == 67))
+            {
+                TotalFeesAndCharges = Convert.ToString(Total - Convert.ToInt64(accountsModel.TransactionRecordModel.TransactionAmount));
+            }
+            else if ((Convert.ToInt64(accountsModel.TransactionRecordModel.LogTransaction) == 5605
+                    || Convert.ToInt64(accountsModel.TransactionRecordModel.LogTransaction) == 5707)
+                    && (Convert.ToInt64(accountsModel.TransactionRecordModel.FeeDescription) == 198))
+            {
+                TotalFeesAndCharges = Convert.ToString(Total - Convert.ToInt64(accountsModel.TransactionRecordModel.TransactionAmount));
+            }
+            else
+            {
+                TotalFeesAndCharges = Convert.ToString(Total);
+            }
+          
             return TotalFeesAndCharges;
         }
-
-        public decimal GetTotalFeesPaid()
+        public string GetTotalFeesPaid(AccountsModel accountsModel)
         {
+            if ((Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.FeeReceivable)
+                      + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.LateChargeDue)) <
+                       Convert.ToInt64(GetTotalFeesAndCharges(accountsModel)))
+            {
+                TotalFeesPaid = Convert.ToString((Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.FeeReceivable)
+                    + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.LateChargeDue)
+                    - Convert.ToInt64(GetTotalFeesAndCharges(accountsModel))));
+            }
+            else
+                TotalFeesPaid = "0.00";
 
             return TotalFeesPaid;
         }
-        public decimal GetTotalAmountDue()
+        public string GetTotalAmountDue(AccountsModel accountsModel)
         {
+            if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.PrincipalBalance) == 0)
+                TotalAmountDue = "0.00";
+            else
+                TotalAmountDue = Convert.ToString(Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.PastDueAmtTotalDue)
+                               + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.CurrentPayment));
 
             return TotalAmountDue;
         }
-        public decimal GetPastDueBalance()
-        {
 
-            return PastDueBalance;
+        public string GetPastDueBalance(AccountsModel accountsModel)
+        {
+            return Convert.ToString(Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.PastDueAmtTotalDue) -
+             Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.FeesAssessedSinceLastStatement) -
+             Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.LateChargesAccruedSinceLastStatement));
         }
-        public decimal GetDeferredBalance()
+        public string GetDeferredBalance(AccountsModel accountsModel)
         {
-
+            if ((Convert.ToInt32(accountsModel.MasterFileDataPart2Model.TotalDeferredItemsBalance)
+                - Convert.ToInt32(accountsModel.MasterFileDataPart2Model.DeferredDrmExpenseAdvancesUnpaidBalance)) == 0)
+            {
+                DeferredBalance = "N/A";
+            }
+            else
+            {
+                DeferredBalance = Convert.ToString(Convert.ToInt32(accountsModel.MasterFileDataPart2Model.TotalDeferredItemsBalance)
+                    - Convert.ToInt32(accountsModel.MasterFileDataPart2Model.DeferredDrmExpenseAdvancesUnpaidBalance));
+            }
             return DeferredBalance;
         }
-        public decimal GetUnappliedFunds()
+        public string GetUnappliedFunds(AccountsModel accountsModel)
         {
-
+            UnappliedFunds = Convert.ToString(accountsModel.MasterFileDataPart_1Model.UnappliedFundsCodeFirst != "L" ? Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.UnappliedFundsBalanceFirst) : 0
+              + accountsModel.MasterFileDataPart2Model.UnappliedFundsCode2 != "L" ? Convert.ToInt64(accountsModel.MasterFileDataPart2Model.UnappliedFundsBalance2) : 0
+              + accountsModel.MasterFileDataPart2Model.UnappliedFundsCode3 != "L" ? Convert.ToInt64(accountsModel.MasterFileDataPart2Model.UnappliedFundsBalance3) : 0
+              + accountsModel.MasterFileDataPart2Model.UnappliedFundsCode4 != "L" ? Convert.ToInt64(accountsModel.MasterFileDataPart2Model.UnappliedFundsBalance4) : 0
+              + accountsModel.MasterFileDataPart2Model.UnappliedFundsCode5 != "L" ? Convert.ToInt64(accountsModel.MasterFileDataPart2Model.UnappliedFundsBalance5) : 0);
             return UnappliedFunds;
         }
-        public decimal GetFeesAndChargesPaidLastMonth()
+        public string GetFeesAndChargesPaidLastMonth(AccountsModel accountsModel)
         {
-
+            if ((Convert.ToInt64(accountsModel.TransactionRecordModel.LogTransaction) == 5705 || Convert.ToInt64(accountsModel.TransactionRecordModel.LogTransaction) == 5707)
+              &&
+              (Convert.ToInt64(accountsModel.TransactionRecordModel.FeeDescription) == 67 || Convert.ToInt64(accountsModel.TransactionRecordModel.FeeDescription) == 198))
+            {
+                FeesAndChargesPaidLastMonth = Convert.ToString((Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.FeesPaidSinceLastStatement)
+                + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.LateChargesPaidSinceLastStatement))
+                - Convert.ToInt64(accountsModel.TransactionRecordModel.TransactionAmount));
+            }
             return FeesAndChargesPaidLastMonth;
         }
-
-        public decimal GetUnappliedFundsPaidLastMonth()
+        public string GetUnappliedFundsPaidLastMonth(AccountsModel accountsModel)
         {
+            UnappliedFundsPaidLastMonth = Convert.ToString(Convert.ToInt64(accountsModel.TransactionRecordModel.TransactionAmountPostedToUnappliedFunds)
+          + Convert.ToInt64(accountsModel.TransactionRecordModel.TransactionAmountUnappliedFunds2)
+          + Convert.ToInt64(accountsModel.TransactionRecordModel.TransactionAmountUnappliedFunds3)
+          + Convert.ToInt64(accountsModel.TransactionRecordModel.TransactionAmountUnappliedFunds4)
+          + Convert.ToInt64(accountsModel.TransactionRecordModel.TransactionAmountUnappliedFunds5));
 
             return UnappliedFundsPaidLastMonth;
         }
-        public decimal GetTotalPaidLastMonth()
+        public string GetTotalPaidLastMonth()
         {
-
             return TotalPaidLastMonth;
         }
-
-        public decimal GetFeesAndChargesPaidYearToDate()
+        public string GetFeesAndChargesPaidYearToDate(AccountsModel accountsModel)
         {
-
+            if ((Convert.ToInt64(accountsModel.TransactionRecordModel.LogTransaction) == 5705 || Convert.ToInt64(accountsModel.TransactionRecordModel.LogTransaction) == 5707)
+             &&(Convert.ToInt64(accountsModel.TransactionRecordModel.FeeDescription) == 67 || Convert.ToInt64(accountsModel.TransactionRecordModel.FeeDescription) == 198))
+            {
+                FeesAndChargesPaidYearToDate = Convert.ToString((Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.FeesPaidYTD)
+                + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.LateChargesPaidYTD))
+                - Convert.ToInt64(accountsModel.TransactionRecordModel.TransactionAmount));
+            }
             return FeesAndChargesPaidYearToDate;
         }
-        public decimal GetUnappliedFundsPaidYearToDate()
+        public string GetUnappliedFundsPaidYearToDate(AccountsModel accountsModel)
         {
+            UnappliedFundsPaidYearToDate = Convert.ToString(accountsModel.MasterFileDataPart_1Model.UnappliedFundsCodeFirst != "L" ? Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.UnappliedFundsBalanceFirst) : 0
+              + accountsModel.MasterFileDataPart2Model.UnappliedFundsCode2 != "L" ? Convert.ToInt64(accountsModel.MasterFileDataPart2Model.UnappliedFundsBalance2) : 0
+              + accountsModel.MasterFileDataPart2Model.UnappliedFundsCode3 != "L" ? Convert.ToInt64(accountsModel.MasterFileDataPart2Model.UnappliedFundsBalance3) : 0
+              + accountsModel.MasterFileDataPart2Model.UnappliedFundsCode4 != "L" ? Convert.ToInt64(accountsModel.MasterFileDataPart2Model.UnappliedFundsBalance4) : 0
+              + accountsModel.MasterFileDataPart2Model.UnappliedFundsCode5 != "L" ? Convert.ToInt64(accountsModel.MasterFileDataPart2Model.UnappliedFundsBalance5) : 0);
+
             return UnappliedFundsPaidYearToDate;
         }
         public string GetTotalPaidYearToDate(AccountsModel accountsModel)
