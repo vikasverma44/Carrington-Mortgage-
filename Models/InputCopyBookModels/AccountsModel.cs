@@ -31,9 +31,9 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels
             SolicitationRecordModel = new SolicitationRecordModel();
             TrailerRecordModel = new TrailerRecordModel();
             TransactionRecordModel = new TransactionRecordModel();
-            UserFieldRecordModel  = new UserFieldRecordModel ();
+            UserFieldRecordModel = new UserFieldRecordModel();
 
-        }                  
+        }
         public ActiveBankruptcyInformationRecordModel ActiveBankruptcyInformationRecordModel { get; set; }
         public ArchivedBankruptcyDetailRecordModel ArchivedBankruptcyDetailRecordModel { get; set; }
         public BlendedRateInformationRecordModel BlendedRateInformationRecordModel { get; set; }
@@ -56,5 +56,6 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels
         public TrailerRecordModel TrailerRecordModel { get; set; }
         public TransactionRecordModel TransactionRecordModel { get; set; }
         public UserFieldRecordModel UserFieldRecordModel { get; set; }
+        public bool IsMatched { get; set; } = false;
     }
 }
