@@ -8,20 +8,17 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
 {
     public class OptionalItemEscrowRecordModel
     {
-        public string RecordIdentifier { get; set; }
-        public string InstitutionNumber { get; set; }
-        public string AccountNumber { get; set; }
-        public string SequenceNumber { get; set; }
-        public string ProductName { get; set; }
-
-        public string MonthlyAmount { get; set; }
-
-        public string PendingAmount { get; set; }
-
-        public string PendingDate { get; set; }
-        public string EscrowType { get; set; }
-        public string EscrowLineUncollectedOptIns { get; set; }
-        public string Filler { get; set; }
+        public string Rssi_Rcd_Id { get; set; }
+        public string Rssi_Inst { get; set; }
+        public string Rssi_Acnt_Rem { get; set; }
+        public string Rssi_Seq_No { get; set; }
+        public string Rssi_Oed_Prod_Name { get; set; }
+        public string Rssi_Oed_Cur_Amt { get; set; }
+        public string Rssi_Oed_Pend_Amt { get; set; }
+        public string Rssi_Oed_Pend_Date { get; set; }
+        public string Rssi_Oed_Prod_Type { get; set; }
+        public string Rssi_Oed_Tot_Prem_Due { get; set; }
+        public string Rssi_Oed_Filler { get; set; }
 
     }
 }

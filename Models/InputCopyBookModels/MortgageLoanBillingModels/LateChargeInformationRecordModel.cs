@@ -8,29 +8,28 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
 {
     public class LateChargeInformationRecordModel
     {
-        public string RecordIdentifier { get; set; }
-        public string InstitutionNumber { get; set; }
-        public string AccountNumber { get; set; }
-        public string SequenceNumber { get; set; }
-        public string InterestPaidToDate { get; set; }
-        public string LateChargeCode { get; set; }
-        public string LateChargeAssessCode { get; set; }
-        public string LateChargePaidToDate { get; set; }
-        public string LateChargeCollectionMethod { get; set; }
-        public string LateChargeFactor { get; set; }
-        public string LateChargeAssessmentMethod { get; set; }
-        public string LateChargeMaximum { get; set; }
-        public string LateChargeMinimum { get; set; }
-        public string LateChargesAssessmentMaximumAnnual { get; set; }
-        public string LateChargeAssessmentMaximumLifeTime { get; set; }
-        public string LateChargeCounter { get; set; }
-        public string LateChargeFreezeDateTo { get; set; }
-        public string LateChargeFreezeDateFrom { get; set; }
-        public string LateChargeFreezeDateType { get; set; }
-        public string LateChargeYearType { get; set; }
-        public string LateChargesAssessedLifeOfLoan { get; set; }
-        public string LateChargesAssessedYtd { get; set; }
+        public string Rssi_Rcd_Id { get; set; }
+        public string Rssi_Inst { get; set; }
+        public string Rssi_Acct_No { get; set; }
+        public string Rssi_Seq_No { get; set; }
+        public string Rssi_Lci_Pymt_Due_Dt_PackedData { get; set; }
+        public string Rssi_Lci_Code { get; set; }
+        public string Rssi_Lci_Ind { get; set; }
+        public string Rssi_Lci_Ptd_PackedData { get; set; }
+        public string Rssi_Lci_Coll_Meth { get; set; }
+        public string Rssi_Lci_Factor_PackedData { get; set; }
+        public string Rssi_Lci_Assess_Meth { get; set; }
+        public string Rssi_Lci_Max_PackedData { get; set; }
+        public string Rssi_Lci_Min_PackedData { get; set; }
+        public string Rssi_Lci_Max_Annual_PackedData { get; set; }
+        public string Rssi_Lci_Max_Life_PackedData { get; set; }
+        public string Rssi_Lci_Counter_PackedData { get; set; }
+        public string Rssi_Lci_Freeze_To_Dt_PackedData { get; set; }
+        public string Rssi_Lci_Freeze_From_Dt_PackedData { get; set; }
+        public string Rssi_Lci_Freeze_Dt_Type { get; set; }
+        public string Rssi_Lci_Year_Type_PackedData { get; set; }
+        public string Rssi_Lci_Assesed_Lfe_To_Dt_PackedData { get; set; }
+        public string Rssi_Lci_Assessed_Ytd_PackedData { get; set; }
         public string Filler { get; set; }
-
     }
 }

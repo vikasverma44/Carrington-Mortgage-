@@ -8,19 +8,19 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
 {
     public class EscrowRecordModel
     {
-        public string RecordIdentifier { get; set; }
-        public string InstitutionNumber { get; set; }
-        public string AccountNumber { get; set; }
-        public string SequenceNumber { get; set; }
-        public string PayeeType { get; set; }
-        public string EscrowLineCompanyCountyCode { get; set; }
-        public string EscrowLineAgencyTownshipCode { get; set; }
-        public string PayeePrimaryName { get; set; }
-        public string PayeeTelephoneNumber { get; set; }
-        public string ProductName { get; set; }
-        public string AmountDueForOneCycle { get; set; }
-        public string TotalNumberOfPaymentsDue { get; set; }
-        public string EscrowLineExpirationDate { get; set; }
+        public string Rssi_Rcd_Id { get; set; }
+        public string Rssi_Inst { get; set; }
+        public string Rssi_Acnt_Rem { get; set; }
+        public string Rssi_Seq_No { get; set; }
+        public string Rssi_Esc_Type { get; set; }
+        public string Rssi_Ins_Co { get; set; }
+        public string Rssi_Ins_Ag { get; set; }
+        public string Rssi_Payee_Name { get; set; }
+        public string Rssi_Payee_Phone { get; set; }
+        public string Rssi_Prod_Name { get; set; }
+        public string Rssi_Pymt_Due { get; set; }
+        public string Rssi_Num_Due { get; set; }
+        public string Rssi_Esc_Expir_Dt { get; set; }
 
 
 

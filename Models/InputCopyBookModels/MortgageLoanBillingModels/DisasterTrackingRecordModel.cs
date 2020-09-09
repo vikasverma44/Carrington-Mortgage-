@@ -8,31 +8,31 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
 {
     public class DisasterTrackingRecordModel
     {
-        public string RecordIdentifier { get; set; }
-        public string InstitutionNumber { get; set; }
-        public string AccountNumber { get; set; }
-        public string SequenceNumber { get; set; }
-        public string DisasterOccurrenceNumber { get; set; }
-        public string DisasterStatus { get; set; }
-        public string DisasterName { get; set; }
-        public string DisasterType { get; set; }
-        public string DesignationDate { get; set; }
-        public string DisasterEndDate { get; set; }
-        public string DisasterExtendedEndDate { get; set; }
-        public string DeclarationNumber { get; set; }
-        public string ApplicantNumber { get; set; }
-        public string PropertyImpact { get; set; }
-        public string PropertyImpactDeterminationDate { get; set; }
-        public string PropertyImpactResolutionDate { get; set; }
-        public string PropertyImpactSeverity { get; set; }
-        public string WorkplaceImpact { get; set; }
-        public string WorkplaceImpactDeterminationDate { get; set; }
-        public string WorkplaceImpactResolutionDate { get; set; }
-        public string WorkplaceImpactSeverity { get; set; }
-        public string AttemptedContact { get; set; }
-        public string DateAttempted { get; set; }
-        public string ContactMade { get; set; }
-        public string DateContacted { get; set; }
+        public string Rssi_Rcd_Id { get; set; }
+        public string Rssi_Inst { get; set; }
+        public string Rssi_Acct_No { get; set; }
+        public string Rssi_Seq_No { get; set; }
+        public string Rssi_Dstr_Occ_Num { get; set; }
+        public string Rssi_Dstr_Status { get; set; }
+        public string Rssi_Dstr_Disaster_Name { get; set; }
+        public string Rssi_Dstr_Type { get; set; }
+        public string Rssi_Dstr_Desig_Dt { get; set; }
+        public string Rssi_Dstr_End_Dt { get; set; }
+        public string Rssi_Dstr_Extended_Dt { get; set; }
+        public string Rssi_Dstr_Ddn { get; set; }
+        public string Rssi_Dstr_Aplcnt_Nbr { get; set; }
+        public string Rssi_Dstr_Prop_Impact_Determine { get; set; }
+        public string Rssi_Dstr_Prop_Determine_Dt { get; set; }
+        public string Rssi_Dstr_Prop_Resolution_Dt { get; set; }
+        public string Rssi_Dstr_Prop_Impact_Severity { get; set; }
+        public string Rssi_Dstr_Wrkp_Impact_Determine { get; set; }
+        public string Rssi_Dstr_Wrkp_Determine_Dt { get; set; }
+        public string Rssi_Dstr_Wrkp_Resolution_Dt { get; set; }
+        public string Rssi_Dstr_Wrkp_Impact_Severity { get; set; }
+        public string Rssi_Dstr_Attempt_Contact { get; set; }
+        public string Rssi_Dstr_Attempt_Contact_Dt { get; set; }
+        public string Rssi_Dstr_Contact_Made { get; set; }
+        public string Rssi_Dstr_Contact_Made_Dt { get; set; }
         public string Filler { get; set; }
 
     }

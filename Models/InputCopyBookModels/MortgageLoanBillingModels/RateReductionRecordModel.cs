@@ -8,32 +8,32 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
 {
     public class RateReductionRecordModel
     {
-        public string RecordIdentifier { get; set; }
-        public string InstitutionNumber { get; set; }
-        public string AccountNumber { get; set; }
-        public string SequenceNumber { get; set; }
-        public string RateReductionPlanNumber { get; set; }
-        public string RateReductionLoanStatus { get; set; } 
-        public string RateReductionTotalReductionToDate { get; set; }
-        public string RateReductionTiersCompletedToDate { get; set; }
-        public string RateReductionTierStatus { get; set; }
-        public string RateReductionDisqualificationDate { get; set; }
-        public string RateReductionDisqualificationDueDate { get; set; } 
-        public string RateReductionCompletionDate { get; set; }
-        public string RateReductionCompletionDueDate { get; set; }
-        public string RateReductionReQualificationDate { get; set; }
-        public string RateReductionReQualificationDueDate { get; set; }
-        public string RateReductionLoanRequiredOnTimePayments { get; set; }
-        public string RateReductionOnTimePaymentsCtr { get; set; }
-        public string RateReductionRemainingPaymentsCtr { get; set; }
-        public string RateReductionNewRate { get; set; }
-        public string RateReductionNewPayment { get; set; }
-        public string RateReductionNewEffDate { get; set; }
-        public string RateReductionPaymentDifference { get; set; }
-        public string RateReductionResetDate { get; set; }
-        public string RateReductionResetDueDate { get; set; }
-        public string RateReductionBeginningDueDate { get; set; }
-        public string RateReductionAmount { get; set; }
+        public string Rssi_Rcd_Id { get; set; }
+        public string Rssi_Inst { get; set; }
+        public string Rssi_Acct_No { get; set; }
+        public string Rssi_Seq_No { get; set; }
+        public string Rssi_Loan_Plan_Nbr { get; set; }
+        public string Rssi_Loan_Status { get; set; } 
+        public string Rssi_Tot_Red_To_Date { get; set; }
+        public string Rssi_Tot_Tiers_Comp { get; set; }
+        public string Rssi_Tier_Status { get; set; }
+        public string Rssi_Disql_Dt { get; set; }
+        public string Rssi_Disql_Due_Dt { get; set; } 
+        public string Rssi_Cpltn_Date { get; set; }
+        public string Rssi_Cpltn_Due_Dt { get; set; }
+        public string Rssi_Reql_Dt { get; set; }
+        public string Rssi_Reql_Due_Dt { get; set; }
+        public string Rssi_Total_Rq { get; set; }
+        public string Rssi_Ot_Pmts_Ctr { get; set; }
+        public string Rssi_Rem_Pmts_Ctr { get; set; }
+        public string Rssi_New_Rate { get; set; }
+        public string Rssi_New_Pmt { get; set; }
+        public string Rssi_New_Eff_Dt { get; set; }
+        public string Rssi_Pmt_Diff { get; set; }
+        public string Rssi_Reset_Date { get; set; }
+        public string Rssi_Reset_Due_Dt { get; set; }
+        public string Rssi_Beg_Due_Dt { get; set; }
+        public string Rssi_Reduct_Amt { get; set; }
 
 
 
