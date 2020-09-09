@@ -264,26 +264,47 @@ namespace Carrington_Service.Calculation_Classes
         }
         public string GetAssistanceAmountOption3(AccountsModel model)
         {
-
-            return AssistanceAmountOption3;
+            if (Convert.ToInt64(model.MasterFileDataPart_1Model.PrecalculatedInterestAmount) == 0)
+            {
+                return "then do not print the Assistance Amount line.";
+            }
+            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.PrincipalBalance) == 0)
+            {
+                return "0.00";
+            }
+            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.CurrentPayment) == 0)
+            {
+                return "0.00";
+            }
+            else
+            {
+                return Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.PrecalculatedInterestAmount));
+            }
         }
         public string GetReplacementReserveOption3(AccountsModel model)
         {
-            //If RSSI-ALT-PYMT2 (-) RSSI-ALT-CHG-AMT2 (-) RSSI-ESC-PYMT
-            //(+) RSSI - PRE - INT - AMT = 0, then do not print the Replacement Reserve line.
-
-            //If RSSI-PRIN - BAL = 0, then ""0.00""
-            //If RSSI-BILL - PMT - AMT = 0, then ""0.00"
-
-            //"RSSI-ALT-PYMT2
-            // minus
-            //RSSI - ALT - CHG - AMT2
-            //  minus
-            //RSSI - ESC - PYMT
-            //plus
-            //RSSI - PRE - INT - AMT"
-
-            return ReplacementReserveOption3;
+            if (Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativePaymentAmount2) -
+                Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativeChangeAmount2) -
+                Convert.ToInt64(model.MasterFileDataPart_1Model.EscrowPayment) +
+                Convert.ToInt64(model.MasterFileDataPart_1Model.PrecalculatedInterestAmount) == 0)
+            {
+                return "then do not print the Replacement Reserve line.";
+            }
+            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.PrincipalBalance) == 0)
+            {
+                return "0.00";
+            }
+            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.CurrentPayment) == 0)
+            {
+                return "0.00";
+            }
+            else
+            {
+                return Convert.ToString(Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativePaymentAmount2) -
+                                         Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativeChangeAmount2) -
+                                         Convert.ToInt64(model.MasterFileDataPart_1Model.EscrowPayment) +
+                                         Convert.ToInt64(model.MasterFileDataPart_1Model.PrecalculatedInterestAmount))
+            }
         }
         public string GetOverduePaymentsOption3(AccountsModel model)
         {
@@ -455,11 +476,9 @@ namespace Carrington_Service.Calculation_Classes
 
         public string GeUnappliedFundsPaidLastMonth(AccountsModel model)
         {
-            return Convert.ToString(Convert.ToInt64(model.TransactionRecordModel.TransactionAmountPostedToUnappliedFunds) +
-                                    Convert.ToInt64(model.TransactionRecordModel.TransactionAmountUnappliedFunds2) +
-                                    Convert.ToInt64(model.TransactionRecordModel.TransactionAmountUnappliedFunds3) +
-                                    Convert.ToInt64(model.TransactionRecordModel.TransactionAmountUnappliedFunds4) +
-                                    Convert.ToInt64(model.TransactionRecordModel.TransactionAmountUnappliedFunds5));
+            return "";
+
+
         }
 
         public string GetFeesandChargesPaidYeartoDate(AccountsModel model)
@@ -469,8 +488,19 @@ namespace Carrington_Service.Calculation_Classes
         }
         public string GetUnappliedFundsPaidYearToDate(AccountsModel model)
         {
+            return GetUnappliedFunds(model);
 
-            return UnappliedFundsPaidYearToDate;
+            //RSSI-ESC-VAR (If RSSI-UNAP-FUND-CD <> ""L"")
+            //            plus
+            //RSSI - UNAPL - BAL - 2(If RSSI - UNAP - CD - 2 <> ""L"")
+            // plus
+            //RSSI - UNAPL - BAL - 3(If RSSI - UNAP - CD - 3 <> ""L"")
+            // plus
+            //RSSI - UNAPL - BAL - 4(If RSSI - UNAP - CD - 4 <> ""L"")
+            // plus
+            //RSSI - UNAPL - BAL - 5(If RSSI - UNAP - CD - 5 <> ""L"")"
+
+            //  return UnappliedFundsPaidYearToDate;
         }
         public string GeSuspense(AccountsModel model)
         {
@@ -512,15 +542,28 @@ namespace Carrington_Service.Calculation_Classes
         {
 
 
-            //RSSI-ESC-VAR (If RSSI-UNAP-FUND-CD <> ""L"")
+            //RSSI-ESC-VAR          (If RSSI-UNAP-FUND-CD <> ""L"")
             // plus
-            //RSSI - UNAPL - BAL - 2(If RSSI - UNAP - CD - 2 <> ""L"")
+            //RSSI - UNAPL - BAL - 2(If RSSI-UNAP-CD -2 <> ""L"")
             // plus
-            //RSSI - UNAPL - BAL - 3(If RSSI - UNAP - CD - 3 <> ""L"")
+            //RSSI - UNAPL - BAL - 3(If RSSI-UNAP-CD-3 <> ""L"")
             // plus
-            //RSSI - UNAPL - BAL - 4(If RSSI - UNAP - CD - 4 <> ""L"")
+            //RSSI - UNAPL - BAL - 4(If RSSI-UNAP-CD-4 <> ""L"")
             // plus
-            //RSSI - UNAPL - BAL - 5(If RSSI - UNAP - CD - 5 <> ""L"")"
+            //RSSI-UNAP-BAL-5       (If RSSI-UNAP-CD-5 <> ""L"")"
+
+            //   Convert.ToInt64(model.MasterFileDataPart_1Model.UnappliedFundsBalanceFirst) +   //RSSI-ESC-VAR 
+            //   Convert.ToInt64(model.TransactionRecordModel.TransactionAmountUnappliedFunds2) +//RSSI-UNAP-BAL-2
+            //   Convert.ToInt64(model.TransactionRecordModel.TransactionAmountUnappliedFunds3) +//RSSI-UNAP-BAL-3
+            //   Convert.ToInt64(model.TransactionRecordModel.TransactionAmountUnappliedFunds4) +//RSSI-UNAP-BAL-4
+            //   Convert.ToInt64(model.TransactionRecordModel.TransactionAmountUnappliedFunds5));//RSSI-UNAP-BAL-5
+            //
+            //  Convert.ToInt64(model.MasterFileDataPart2Model.UnappliedFundsCode5) //RSSI-UNAP-CD-5
+            //  Convert.ToInt64(model.MasterFileDataPart2Model.UnappliedFundsCode4) //RSSI-UNAP-CD-4
+            //  Convert.ToInt64(model.MasterFileDataPart2Model.UnappliedFundsCode3) //RSSI-UNAP-CD-3
+            //  Convert.ToInt64(model.MasterFileDataPart2Model.UnappliedFundsCode2) //RSSI-UNAP-CD-2
+            //
+            //      Convert.ToInt64(model.MasterFileDataPart_1Model.UnappliedFundsCodeFirst //RSSI-UNAP-FUND-CD
 
             return UnappliedFunds;
         }
@@ -532,6 +575,43 @@ namespace Carrington_Service.Calculation_Classes
         }
         public string GetTotalPaidYearToDate(AccountsModel model)
         {
+            //RSSI-PRIN-PAID-YTD
+            //plus
+            //RSSI-INT-PD-YTD
+            // plus
+            //RSSI-ESC-PAID-YTD
+            //plus
+            //RSSI-FEES-PAID-YTD
+            // plus
+            //RSSI-LATE-CHG-PAID-YTD
+            // plus
+            //RSSI-ESC-VAR(If RSSI-UNAP-FUND-CD <> ""L"")
+            // plus
+            //RSSI-UNAPL-BAL-2(If RSSI-UNAP-CD-2 <> ""L"")
+            // plu
+            //RSSI-UNAPL-BAL-3(If RSSI-UNAP-CD-3 <> ""L"")
+            //plus
+            //RSSI-UNAPL-BAL-4(If RSSI-UNAP-CD-4 <> ""L"")
+            //plu
+            //RSSI-UNAPL-BAL-5(If RSSI-UNAP-CD-5 <> ""L"")"
+
+
+
+            // Convert.ToInt64(model.MasterFileDataPart_1Model.PrincipalPaidYTD  //RSSI-PRIN-PAID-YTD
+            // Convert.ToInt64(model.MasterFileDataPart_1Model.InterestPaidYearToDate  //RSSI-INT-PD-YTD
+            // Convert.ToInt64(model.MasterFileDataPart_1Model.EscrowPaidYTD   //RSSI-ESC-PAID-YTD
+            // Convert.ToInt64(model.MasterFileDataPart_1Model.FeesPaidYTD //RSSI-FEES-PAID-YTD
+            // Convert.ToInt64(model.MasterFileDataPart_1Model.LateChargesPaidYTD) //RSSI-LATE-CHG-PAID-YTD
+            // Convert.ToInt64(model.MasterFileDataPart_1Model.UnappliedFundsBalanceFirst) +   //RSSI-ESC-VAR 
+            // Convert.ToInt64(model.TransactionRecordModel.TransactionAmountUnappliedFunds2) +//RSSI-UNAP-BAL-2
+            // Convert.ToInt64(model.TransactionRecordModel.TransactionAmountUnappliedFunds3) +//RSSI-UNAP-BAL-3
+            // Convert.ToInt64(model.TransactionRecordModel.TransactionAmountUnappliedFunds4) +//RSSI-UNAP-BAL-4
+            // Convert.ToInt64(model.TransactionRecordModel.TransactionAmountUnappliedFunds5));//RSSI-UNAP-BAL-5
+
+            // Convert.ToInt64(model.MasterFileDataPart2Model.UnappliedFundsCode5) //RSSI-UNAP-CD-5
+            // Convert.ToInt64(model.MasterFileDataPart2Model.UnappliedFundsCode4) //RSSI-UNAP-CD-4
+            // Convert.ToInt64(model.MasterFileDataPart2Model.UnappliedFundsCode3) //RSSI-UNAP-CD-3
+            // Convert.ToInt64(model.MasterFileDataPart2Model.UnappliedFundsCode2) //RSSI-UNAP-CD-2
 
             return TotalPaidYearToDate;
         }
