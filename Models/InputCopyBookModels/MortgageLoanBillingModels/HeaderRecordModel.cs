@@ -8,10 +8,10 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
 {
     public class HeaderRecordModel
     {
-        public string RecordIdentifier { get; set; }
-        public string InstitutionNumber { get; set; }
-        public string Filler1 { get; set; }
-        public string Filler2 { get; set; }
-        public string FileIdentifier { get; set; }
+        public string Rssi_Rcd_Id { get; set; }
+        public string Rssi_Inst { get; set; }
+        public string Rssi_Acct_No { get; set; }
+        public string Rssi_Seq_No { get; set; }
+        public string Rssi_File_Id { get; set; }
     }
 }

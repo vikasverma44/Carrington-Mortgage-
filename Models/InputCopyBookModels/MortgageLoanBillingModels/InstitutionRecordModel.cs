@@ -8,39 +8,39 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
 {
     public class InstitutionRecordModel
     {
-        public string RecordIdentifier { get; set; }
-        public string InstitutionNumber { get; set; }
-        public string Filler { get; set; }
-        public string SequenceNumber { get; set; }
-        public string InstitutionName { get; set; }
-        public string InstitutionAddress1 { get; set; }
-        public string InstitutionAddress2 { get; set; }
-        public string InstitutionCity { get; set; }
-        public string InstitutionState { get; set; }
-        public string InstitutionZip { get; set; }
-        public string InstitutionPhone { get; set; }
-        public string AlternativeCouponAddress1 { get; set; }
-        public string AlternativeCouponAddress2 { get; set; }
+        public string Rssi_Rcd_Id { get; set; }
+        public string Rssi_Inst { get; set; }
+        public string Rssi_Acct_No { get; set; }
+        public string Rssi_Seq_No { get; set; }
+        public string Rssi_Institution_Name { get; set; }
+        public string Rssi_Inst_Adrs_1 { get; set; }
+        public string Rssi_Inst_Adrs_2 { get; set; }
+        public string Rssi_Inst_City { get; set; }
+        public string Rssi_Inst_State { get; set; }
+        public string Rssi_Inst_Zip { get; set; }
+        public string Rssi_Inst_Phone { get; set; }
+        public string Rssi_Alt_Coup_Adrs_1 { get; set; }
+        public string Rssi_Alt_Coup_Adrs_2 { get; set; }
 
-        public string AlternativeCouponCity { get; set; }
-        public string AlternativeCouponState { get; set; }
-        public string AlternativeCouponZip { get; set; }
-        public string AlternativePhoneNumberDescription1  { get; set; }
-        public string AlternativePhoneNumber1 { get; set; }
-        public string AlternativePhoneNumberDescription2 { get; set; }
-        public string AlternativePhoneNumber2 { get; set; }
-        public string AlternativePhoneNumberDescription3 { get; set; }
-        public string AlternativePhoneNumber3 { get; set; }
-        public string AlternativePhoneNumberDescription4 { get; set; }
-        public string AlternativePhoneNumber4 { get; set; }
-        public string AlternativePhoneNumberDescription5 { get; set; }
+        public string Rssi_Alt_Coup_City { get; set; }
+        public string Rssi_Alt_Coup_State { get; set; }
+        public string Rssi_Alt_Coup_Zip { get; set; }
+        public string Rssi_Alt_Coup_Ph_Desc_1 { get; set; }
+        public string Rssi_Alt_Coup_Ph_No_1 { get; set; }
+        public string Rssi_Alt_Coup_Ph_Desc_2 { get; set; }
+        public string Rssi_Alt_Coup_Ph_No_2 { get; set; }
+        public string Rssi_Alt_Coup_Ph_Desc_3 { get; set; }
+        public string Rssi_Alt_Coup_Ph_No_3 { get; set; }
+        public string Rssi_Alt_Coup_Ph_Desc_4 { get; set; }
+        public string Rssi_Alt_Coup_Ph_No_4 { get; set; }
+        public string Rssi_Alt_Coup_Ph_Desc_5 { get; set; }
 
-        public string AlternativePhoneNumber5 { get; set; }
-        public string LockboxAddress1  { get; set; }
-        public string LockboxAddress2 { get; set; }
-        public string LockboxCity { get; set; }
-        public string LockboxState { get; set; }
-        public string LockboxZipCode { get; set; }
+        public string Rssi_Alt_Coup_Ph_No_5 { get; set; }
+        public string Rssi_Lock_Adrs_1 { get; set; }
+        public string Rssi_Lock_Adrs_2 { get; set; }
+        public string Rssi_Lock_City { get; set; }
+        public string Rssi_Lock_State { get; set; }
+        public string Rssi_Lock_Zip { get; set; }
        
     }
 }

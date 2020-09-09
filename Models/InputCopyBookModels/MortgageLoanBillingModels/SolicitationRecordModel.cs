@@ -8,13 +8,13 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
 {
     public class SolicitationRecordModel
     {
-        public string RecordIdentifier { get; set; }
-        public string InstitutionNumber { get; set; }
-        public string AccountNumber { get; set; }
-        public string SequenceNumber { get; set; }
-        public string LoanSolicitationCampaignId { get; set; }
-        public string LoanSolicitationCampaignControl { get; set; }
-        public string LoanSolicitationCampaignMethod { get; set; }
+        public string Rssi_Rcd_Id { get; set; }
+        public string Rssi_Inst { get; set; }
+        public string Rssi_Acct_No { get; set; }
+        public string Rssi_Seq_No { get; set; }
+        public string Rssi_Campgn_Id { get; set; }
+        public string Rssi_Campgncntl { get; set; }
+        public string Rssi_Campgnmeth { get; set; }
 
     }
 }

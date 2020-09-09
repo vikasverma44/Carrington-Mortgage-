@@ -60,11 +60,11 @@ namespace Carrington_Service.Calculation_Classes
             {
                 AmountDueOption1 = "0";
             }
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount4) == 0)
+            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) == 0)
             {
                 AmountDueOption1 = "N/A";
             }
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount4) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount1))
+            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
             {
                 AmountDueOption1 = "N/A";
             }
@@ -85,11 +85,11 @@ namespace Carrington_Service.Calculation_Classes
             {
                 AmountDueOption2 = "0";
             }
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount3) == 0)
+            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) == 0)
             {
                 AmountDueOption2 = "N/A";
             }
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount3) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount1))
+            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
             {
                 AmountDueOption2 = "N/A";
             }
@@ -100,7 +100,8 @@ namespace Carrington_Service.Calculation_Classes
             else
             {
                 AmountDueOption2 = Convert.ToString(Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData)
-                    + Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount3));
+                    + Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData));
+                
             }
             return AmountDueOption2;
         }
@@ -110,11 +111,11 @@ namespace Carrington_Service.Calculation_Classes
             {
                 AmountDueOption3 = "0";
             }
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount2) == 0)
+            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) == 0)
             {
                 AmountDueOption3 = "N/A";
             }
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount2) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount1))
+            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
             {
                 AmountDueOption3 = "N/A";
             }
@@ -125,7 +126,7 @@ namespace Carrington_Service.Calculation_Classes
             else
             {
                 AmountDueOption3 = Convert.ToString(Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData)
-                    + Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount2));
+                    + Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData));
             }
             return AmountDueOption3;
         }
@@ -142,7 +143,7 @@ namespace Carrington_Service.Calculation_Classes
             else
             {
                 AmountDueOption4 = Convert.ToString(Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData)
-                    + Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount1));
+                    + Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData));
             }
             return AmountDueOption4;
         }
@@ -153,10 +154,10 @@ namespace Carrington_Service.Calculation_Classes
             if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 PrincipalOption1 = "0.00";
 
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount4) == 0)
+            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) == 0)
                 PrincipalOption1 = "null";
 
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount4) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount1))
+            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
                 PrincipalOption1 = "null";
 
             else if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
@@ -165,7 +166,7 @@ namespace Carrington_Service.Calculation_Classes
 
             else
             {
-                PrincipalOption1 = Convert.ToString(Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativeChangeAmount4)
+                PrincipalOption1 = Convert.ToString(Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt4_PackedData)
                                  - Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData));
             }
 
@@ -191,8 +192,8 @@ namespace Carrington_Service.Calculation_Classes
         }
         public string GetReplacementReserve(AccountsModel accountsModel)
         {
-            if ((Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount4)
-               - Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativeChangeAmount4)
+            if ((Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData)
+               - Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt4_PackedData)
                - Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData)
                + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0))
                 ReplacementReserve = "do not print the Replacement Reserve line";
@@ -206,8 +207,8 @@ namespace Carrington_Service.Calculation_Classes
 
             else
             {
-                ReplacementReserve = Convert.ToString(Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount4)
-                                            - Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativeChangeAmount4)
+                ReplacementReserve = Convert.ToString(Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData)
+                                            - Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt4_PackedData)
                                             - Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData)
                                             + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData));
 
@@ -219,10 +220,10 @@ namespace Carrington_Service.Calculation_Classes
             if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 OverduePaymentsOption1 = "0.00";
 
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount4) == 0)
+            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) == 0)
                 OverduePaymentsOption1 = "null";
 
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount4) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount1))
+            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
                 OverduePaymentsOption1 = "null";
 
             else if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
@@ -246,11 +247,11 @@ namespace Carrington_Service.Calculation_Classes
             {
                 TotalFeesChargedOption1 = "0";
             }
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount4) == 0)
+            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) == 0)
             {
                 TotalFeesChargedOption1 = "0";
             }
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount4) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount1))
+            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
             {
                 TotalFeesChargedOption1 = "null";
             }
@@ -259,16 +260,16 @@ namespace Carrington_Service.Calculation_Classes
                 var Total = Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.FeesAssessedSinceLastStatement)
                 + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.LateChargesAccruedSinceLastStatement);
 
-                if (Convert.ToInt64(accountsModel.TransactionRecordModel.LogTransaction) == 5605
-                    && (Convert.ToInt64(accountsModel.TransactionRecordModel.FeeDescription) == 67))
+                if (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5605
+                    && (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 67))
                 {
-                    TotalFeesChargedOption1 = Convert.ToString(Total - Convert.ToInt64(accountsModel.TransactionRecordModel.TransactionAmount));
+                    TotalFeesChargedOption1 = Convert.ToString(Total - Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
                 }
-                else if ((Convert.ToInt64(accountsModel.TransactionRecordModel.LogTransaction) == 5605
-                     || Convert.ToInt64(accountsModel.TransactionRecordModel.LogTransaction) == 5707)
-                     && (Convert.ToInt64(accountsModel.TransactionRecordModel.FeeDescription) == 198))
+                else if ((Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5605
+                     || Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5707)
+                     && (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 198))
                 {
-                    TotalFeesChargedOption1 = Convert.ToString(Total - Convert.ToInt64(accountsModel.TransactionRecordModel.TransactionAmount));
+                    TotalFeesChargedOption1 = Convert.ToString(Total - Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
                 }
                 else
                 {
@@ -283,10 +284,10 @@ namespace Carrington_Service.Calculation_Classes
             if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 TotalFeesPaidOption1 = "0.00";
 
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount4) == 0)
+            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) == 0)
                 TotalFeesPaidOption1 = "null";
 
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount4) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount1))
+            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
                 TotalFeesPaidOption1 = "null";
 
             else if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
@@ -312,10 +313,10 @@ namespace Carrington_Service.Calculation_Classes
             if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 TotalFeesPaidOption1 = "0.00";
 
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount4) == 0)
+            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) == 0)
                 TotalFeesPaidOption1 = "N/A";
 
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount4) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount1))
+            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
                 TotalFeesPaidOption1 = "N/A";
 
             else if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
@@ -323,7 +324,7 @@ namespace Carrington_Service.Calculation_Classes
 
 
             else
-                TotalAmountDueOption1 = Convert.ToString(Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount4)
+                TotalAmountDueOption1 = Convert.ToString(Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData)
                                + Convert.ToInt64(accountsModel.ActiveBankruptcyInformationRecordModel.PastUnpaidPostPetitionAmounts)
                                + Convert.ToInt64(accountsModel.ActiveBankruptcyInformationRecordModel.PostPetitionFeesAndCharges));
 
@@ -336,17 +337,17 @@ namespace Carrington_Service.Calculation_Classes
             if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 PrincipalOption1 = "0.00";
 
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount3) == 0)
+            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) == 0)
                 PrincipalOption1 = "null";
 
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount3) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount1))
+            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
                 PrincipalOption1 = "null";
 
             else if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                 PrincipalOption1 = "null";
             else
             {
-                AmountDueOption1 = Convert.ToString(Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativeChangeAmount3)
+                AmountDueOption1 = Convert.ToString(Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt3_PackedData)
                                  - Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData));
             }
             return PrincipalOption2;
@@ -369,8 +370,8 @@ namespace Carrington_Service.Calculation_Classes
         }
         public string GetReplacementReserveOption2(AccountsModel accountsModel)
         {
-            if ((Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount3)
-              - Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativeChangeAmount3)
+            if ((Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData)
+              - Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt3_PackedData)
               - Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData)
               + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0))
                 ReplacementReserveOption2 = "do not print the Replacement Reserve line";
@@ -383,8 +384,8 @@ namespace Carrington_Service.Calculation_Classes
 
             else
             {
-                ReplacementReserveOption2 = Convert.ToString(Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount3)
-                                            - Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativeChangeAmount3)
+                ReplacementReserveOption2 = Convert.ToString(Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData)
+                                            - Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt3_PackedData)
                                             - Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData)
                                             + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData));
 
@@ -396,10 +397,10 @@ namespace Carrington_Service.Calculation_Classes
             if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 OverduePaymentsOption2 = "0.00";
 
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount3) == 0)
+            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) == 0)
                 OverduePaymentsOption2 = "null";
 
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount3) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount1))
+            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
                 OverduePaymentsOption2 = "null";
 
             else if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
@@ -422,11 +423,11 @@ namespace Carrington_Service.Calculation_Classes
             {
                 TotalFeesChargedOption2 = "0";
             }
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount3) == 0)
+            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) == 0)
             {
                 TotalFeesChargedOption2 = "0";
             }
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount3) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount1))
+            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
             {
                 TotalFeesChargedOption2 = "null";
             }
@@ -435,16 +436,16 @@ namespace Carrington_Service.Calculation_Classes
                 var Total = Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.FeesAssessedSinceLastStatement)
                 + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.LateChargesAccruedSinceLastStatement);
 
-                if (Convert.ToInt64(accountsModel.TransactionRecordModel.LogTransaction) == 5605
-                    && (Convert.ToInt64(accountsModel.TransactionRecordModel.FeeDescription) == 67))
+                if (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5605
+                    && (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 67))
                 {
-                    TotalFeesChargedOption2 = Convert.ToString(Total - Convert.ToInt64(accountsModel.TransactionRecordModel.TransactionAmount));
+                    TotalFeesChargedOption2 = Convert.ToString(Total - Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
                 }
-                else if ((Convert.ToInt64(accountsModel.TransactionRecordModel.LogTransaction) == 5605
-                     || Convert.ToInt64(accountsModel.TransactionRecordModel.LogTransaction) == 5707)
-                     && (Convert.ToInt64(accountsModel.TransactionRecordModel.FeeDescription) == 198))
+                else if ((Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5605
+                     || Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5707)
+                     && (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 198))
                 {
-                    TotalFeesChargedOption2 = Convert.ToString(Total - Convert.ToInt64(accountsModel.TransactionRecordModel.TransactionAmount));
+                    TotalFeesChargedOption2 = Convert.ToString(Total - Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
                 }
                 else
                 {
@@ -459,10 +460,10 @@ namespace Carrington_Service.Calculation_Classes
             if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 TotalFeesPaidOption2 = "0.00";
 
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount3) == 0)
+            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) == 0)
                 TotalFeesPaidOption2 = "null";
 
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount3) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount1))
+            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
                 TotalFeesPaidOption2 = "null";
 
             else if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
@@ -486,17 +487,17 @@ namespace Carrington_Service.Calculation_Classes
             if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 TotalAmountDueOption2 = "0.00";
 
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount3) == 0)
+            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) == 0)
                 TotalAmountDueOption2 = "N/A";
 
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount3) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount1))
+            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
                 TotalAmountDueOption2 = "N/A";
 
             else if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                 TotalAmountDueOption2 = "N/A";
 
             else
-                TotalAmountDueOption2 = Convert.ToString(Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount3)
+                TotalAmountDueOption2 = Convert.ToString(Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData)
                                + Convert.ToInt64(accountsModel.ActiveBankruptcyInformationRecordModel.PastUnpaidPostPetitionAmounts)
                                + Convert.ToInt64(accountsModel.ActiveBankruptcyInformationRecordModel.PostPetitionFeesAndCharges));
 
@@ -509,17 +510,17 @@ namespace Carrington_Service.Calculation_Classes
             if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 PrincipalOption3 = "0.00";
 
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount2) == 0)
+            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) == 0)
                 PrincipalOption3 = "null";
 
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount2) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount1))
+            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
                 PrincipalOption3 = "null";
 
             else if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                 PrincipalOption3 = "null";
             else
             {
-                PrincipalOption3 = Convert.ToString(Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativeChangeAmount2)
+                PrincipalOption3 = Convert.ToString(Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt2_PackedData)
                                  - Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData));
             }
             return PrincipalOption3;
@@ -542,8 +543,8 @@ namespace Carrington_Service.Calculation_Classes
         }
         public string GetReplacementReserveOption3(AccountsModel accountsModel)
         {
-            if ((Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount2)
-             - Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativeChangeAmount2)
+            if ((Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData)
+             - Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt2_PackedData)
              - Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData)
              + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0))
                 ReplacementReserveOption3 = "do not print the Replacement Reserve line";
@@ -555,8 +556,8 @@ namespace Carrington_Service.Calculation_Classes
                 ReplacementReserveOption3 = "0.00";
             else
             {
-                ReplacementReserveOption3 = Convert.ToString(Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount2)
-                                            - Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativeChangeAmount2)
+                ReplacementReserveOption3 = Convert.ToString(Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData)
+                                            - Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt2_PackedData)
                                             - Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData)
                                             + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData));
 
@@ -568,10 +569,10 @@ namespace Carrington_Service.Calculation_Classes
             if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 OverduePaymentsOption2 = "0.00";
 
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount2) == 0)
+            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) == 0)
                 OverduePaymentsOption2 = "null";
 
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount2) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount1))
+            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
                 OverduePaymentsOption2 = "null";
 
             else if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
@@ -593,11 +594,11 @@ namespace Carrington_Service.Calculation_Classes
             {
                 TotalFeesChargedOption3 = "0";
             }
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount2) == 0)
+            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) == 0)
             {
                 TotalFeesChargedOption3 = "0";
             }
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount2) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount1))
+            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
             {
                 TotalFeesChargedOption3 = "null";
             }
@@ -606,16 +607,16 @@ namespace Carrington_Service.Calculation_Classes
                 var Total = Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.FeesAssessedSinceLastStatement)
                 + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.LateChargesAccruedSinceLastStatement);
 
-                if (Convert.ToInt64(accountsModel.TransactionRecordModel.LogTransaction) == 5605
-                    && (Convert.ToInt64(accountsModel.TransactionRecordModel.FeeDescription) == 67))
+                if (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5605
+                    && (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 67))
                 {
-                    TotalFeesChargedOption3 = Convert.ToString(Total - Convert.ToInt64(accountsModel.TransactionRecordModel.TransactionAmount));
+                    TotalFeesChargedOption3 = Convert.ToString(Total - Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
                 }
-                else if ((Convert.ToInt64(accountsModel.TransactionRecordModel.LogTransaction) == 5605
-                     || Convert.ToInt64(accountsModel.TransactionRecordModel.LogTransaction) == 5707)
-                     && (Convert.ToInt64(accountsModel.TransactionRecordModel.FeeDescription) == 198))
+                else if ((Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5605
+                     || Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5707)
+                     && (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 198))
                 {
-                    TotalFeesChargedOption3 = Convert.ToString(Total - Convert.ToInt64(accountsModel.TransactionRecordModel.TransactionAmount));
+                    TotalFeesChargedOption3 = Convert.ToString(Total - Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
                 }
                 else
                 {
@@ -630,10 +631,10 @@ namespace Carrington_Service.Calculation_Classes
             if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 TotalFeesPaidOption3 = "0.00";
 
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount2) == 0)
+            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) == 0)
                 TotalFeesPaidOption3 = "null";
 
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount2) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount1))
+            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
                 TotalFeesPaidOption3 = "null";
 
             else if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
@@ -657,10 +658,10 @@ namespace Carrington_Service.Calculation_Classes
             if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 TotalAmountDueOption3 = "0.00";
 
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount2) == 0)
+            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) == 0)
                 TotalAmountDueOption3 = "N/A";
 
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount2) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount1))
+            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
                 TotalAmountDueOption3 = "N/A";
 
             else if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
@@ -668,7 +669,7 @@ namespace Carrington_Service.Calculation_Classes
 
 
             else
-                TotalAmountDueOption2 = Convert.ToString(Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount2)
+                TotalAmountDueOption2 = Convert.ToString(Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData)
                                + Convert.ToInt64(accountsModel.ActiveBankruptcyInformationRecordModel.PastUnpaidPostPetitionAmounts)
                                + Convert.ToInt64(accountsModel.ActiveBankruptcyInformationRecordModel.PostPetitionFeesAndCharges));
 
@@ -681,7 +682,7 @@ namespace Carrington_Service.Calculation_Classes
             if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 PrincipalOption4 = "0.00";
 
-            else if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData) > Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativeChangeAmount1))
+            else if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData) > Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt1_PackedData))
                 PrincipalOption4 = "0.00";
 
             else if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
@@ -690,7 +691,7 @@ namespace Carrington_Service.Calculation_Classes
 
             else
             {
-                PrincipalOption4 = Convert.ToString(Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativeChangeAmount1)
+                PrincipalOption4 = Convert.ToString(Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt1_PackedData)
                                  - Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData));
             }
             return PrincipalOption4;
@@ -714,8 +715,8 @@ namespace Carrington_Service.Calculation_Classes
         }
         public string GetReplacementReserveOption4(AccountsModel accountsModel)
         {
-            if ((Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount1)
-            - Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativeChangeAmount1)
+            if ((Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData)
+            - Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt1_PackedData)
             - Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData)
             + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0))
                 ReplacementReserveOption4 = "do not print the Replacement Reserve line";
@@ -729,8 +730,8 @@ namespace Carrington_Service.Calculation_Classes
 
             else
             {
-                ReplacementReserveOption4 = Convert.ToString(Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount1)
-                                            - Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativeChangeAmount1)
+                ReplacementReserveOption4 = Convert.ToString(Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData)
+                                            - Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt1_PackedData)
                                             - Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData)
                                             + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData));
 
@@ -766,16 +767,16 @@ namespace Carrington_Service.Calculation_Classes
                 var Total = Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.FeesAssessedSinceLastStatement)
                 + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.LateChargesAccruedSinceLastStatement);
 
-                if (Convert.ToInt64(accountsModel.TransactionRecordModel.LogTransaction) == 5605
-                    && (Convert.ToInt64(accountsModel.TransactionRecordModel.FeeDescription) == 67))
+                if (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5605
+                    && (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 67))
                 {
-                    TotalFeesChargedOption4 = Convert.ToString(Total - Convert.ToInt64(accountsModel.TransactionRecordModel.TransactionAmount));
+                    TotalFeesChargedOption4 = Convert.ToString(Total - Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
                 }
-                else if ((Convert.ToInt64(accountsModel.TransactionRecordModel.LogTransaction) == 5605
-                     || Convert.ToInt64(accountsModel.TransactionRecordModel.LogTransaction) == 5707)
-                     && (Convert.ToInt64(accountsModel.TransactionRecordModel.FeeDescription) == 198))
+                else if ((Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5605
+                     || Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5707)
+                     && (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 198))
                 {
-                    TotalFeesChargedOption4 = Convert.ToString(Total - Convert.ToInt64(accountsModel.TransactionRecordModel.TransactionAmount));
+                    TotalFeesChargedOption4 = Convert.ToString(Total - Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
                 }
                 else
                 {
@@ -815,7 +816,7 @@ namespace Carrington_Service.Calculation_Classes
 
 
             else
-                TotalAmountDueOption4 = Convert.ToString(Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount1)
+                TotalAmountDueOption4 = Convert.ToString(Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData)
                                + Convert.ToInt64(accountsModel.ActiveBankruptcyInformationRecordModel.PastUnpaidPostPetitionAmounts)
                                + Convert.ToInt64(accountsModel.ActiveBankruptcyInformationRecordModel.PostPetitionFeesAndCharges));
             return TotalAmountDueOption4;
@@ -827,13 +828,13 @@ namespace Carrington_Service.Calculation_Classes
             var Total = Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.FeesPaidSinceLastStatement)
                + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.LateChargesPaidSinceLastStatement);
 
-            if ((Convert.ToInt64(accountsModel.TransactionRecordModel.LogTransaction) == 5705
-                || Convert.ToInt64(accountsModel.TransactionRecordModel.LogTransaction) == 5707)
+            if ((Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5705
+                || Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5707)
                 &&
-                (Convert.ToInt64(accountsModel.TransactionRecordModel.FeeDescription) == 67
-                || Convert.ToInt64(accountsModel.TransactionRecordModel.FeeDescription) == 198))
+                (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 67
+                || Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 198))
             {
-                FeesandChargesPaidLastMonth = Convert.ToString(Total - Convert.ToInt64(accountsModel.TransactionRecordModel.TransactionAmount));
+                FeesandChargesPaidLastMonth = Convert.ToString(Total - Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
             }
             else
             {
@@ -843,11 +844,11 @@ namespace Carrington_Service.Calculation_Classes
         }
         public string GeUnappliedFundsPaidLastMonth(AccountsModel accountsModel)
         {
-            UnappliedFundsPaidLastMonth = Convert.ToString(Convert.ToInt64(accountsModel.TransactionRecordModel.TransactionAmountPostedToUnappliedFunds)
-               + Convert.ToInt64(accountsModel.TransactionRecordModel.TransactionAmountUnappliedFunds2)
-               + Convert.ToInt64(accountsModel.TransactionRecordModel.TransactionAmountUnappliedFunds2)
-               + Convert.ToInt64(accountsModel.TransactionRecordModel.TransactionAmountUnappliedFunds2)
-               + Convert.ToInt64(accountsModel.TransactionRecordModel.TransactionAmountUnappliedFunds2));
+            UnappliedFundsPaidLastMonth = Convert.ToString(Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData)
+               + Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2)
+               + Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2)
+               + Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2)
+               + Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2));
 
             return UnappliedFundsPaidLastMonth;
         }
@@ -856,13 +857,13 @@ namespace Carrington_Service.Calculation_Classes
             var Total = Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.FeesPaidYTD)
                 + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.LateChargesPaidYTD);
 
-            if ((Convert.ToInt64(accountsModel.TransactionRecordModel.LogTransaction) == 5705
-                || Convert.ToInt64(accountsModel.TransactionRecordModel.LogTransaction) == 5707)
+            if ((Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5705
+                || Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5707)
                 &&
-                (Convert.ToInt64(accountsModel.TransactionRecordModel.FeeDescription) == 67
-                || Convert.ToInt64(accountsModel.TransactionRecordModel.FeeDescription) == 198))
+                (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 67
+                || Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 198))
             {
-                FeesandChargesPaidYeartoDate = Convert.ToString(Total - Convert.ToInt64(accountsModel.TransactionRecordModel.TransactionAmount));
+                FeesandChargesPaidYeartoDate = Convert.ToString(Total - Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
             }
             else
             {
@@ -887,11 +888,11 @@ namespace Carrington_Service.Calculation_Classes
             {
                 PaymentAmountOption1 = "0.00";
             }
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount4) == 0)
+            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) == 0)
             {
                 PaymentAmountOption1 = "N/A";
             }
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount4) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount1))
+            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
             {
                 PaymentAmountOption1 = "N/A";
             }
@@ -902,7 +903,7 @@ namespace Carrington_Service.Calculation_Classes
             else
             {
                 PaymentAmountOption1 = Convert.ToString(Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData)
-                    + Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount4));
+                    + Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData));
             }
             return PaymentAmountOption1;
         }
@@ -912,11 +913,11 @@ namespace Carrington_Service.Calculation_Classes
             {
                 PaymentAmountOption2 = "0.00";
             }
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount3) == 0)
+            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) == 0)
             {
                 PaymentAmountOption2 = "N/A";
             }
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount3) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount1))
+            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
             {
                 PaymentAmountOption2 = "N/A";
             }
@@ -927,7 +928,7 @@ namespace Carrington_Service.Calculation_Classes
             else
             {
                 PaymentAmountOption2 = Convert.ToString(Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData)
-                    + Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount3));
+                    + Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData));
             }
             return PaymentAmountOption2;
         }
@@ -937,11 +938,11 @@ namespace Carrington_Service.Calculation_Classes
             {
                 PaymentAmountOption4 = "0.00";
             }
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount2) == 0)
+            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) == 0)
             {
                 PaymentAmountOption3 = "N/A";
             }
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount2) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount1))
+            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
             {
                 PaymentAmountOption3 = "N/A";
             }
@@ -952,7 +953,7 @@ namespace Carrington_Service.Calculation_Classes
             else
             {
                 PaymentAmountOption3 = Convert.ToString(Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData)
-                    + Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount2));
+                    + Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData));
             }
             return PaymentAmountOption3;
         }
@@ -969,34 +970,34 @@ namespace Carrington_Service.Calculation_Classes
             else
             {
                 PaymentAmountOption4 = Convert.ToString(Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData)
-                    + Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount1));
+                    + Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData));
             }
 
             return PaymentAmountOption4;
         }
         public string GetSuspense(AccountsModel accountsModel)
         {
-            Suspense = Convert.ToString(Convert.ToInt64(accountsModel.TransactionRecordModel.TransactionAmountPostedToUnappliedFunds)
-                + Convert.ToInt64(accountsModel.TransactionRecordModel.TransactionAmountUnappliedFunds2)
-                + Convert.ToInt64(accountsModel.TransactionRecordModel.TransactionAmountUnappliedFunds2)
-                + Convert.ToInt64(accountsModel.TransactionRecordModel.TransactionAmountUnappliedFunds2)
-                + Convert.ToInt64(accountsModel.TransactionRecordModel.TransactionAmountUnappliedFunds2));
+            Suspense = Convert.ToString(Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData)
+                + Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2)
+                + Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2)
+                + Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2)
+                + Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2));
 
             return Suspense;
         }
         public string GetMiscellaneous(AccountsModel accountsModel)
         {
-            Miscellaneous = Convert.ToString(Convert.ToInt64(accountsModel.TransactionRecordModel.TransactionAmountConstructionBalance)
-                + Convert.ToInt64(accountsModel.TransactionRecordModel.TransactionAmountOptionalInsurance)
-                + Convert.ToInt64(accountsModel.TransactionRecordModel.TransactionAmountToP_IShortage)
-                + Convert.ToInt64(accountsModel.TransactionRecordModel.TransactionAmountPostedToDeferredPrincipal)
-                + Convert.ToInt64(accountsModel.TransactionRecordModel.TranAmountToDeferredInterest)
-                + Convert.ToInt64(accountsModel.TransactionRecordModel.TransactionAmountLateCharge)
-                + Convert.ToInt64(accountsModel.TransactionRecordModel.TransactionAmountEscrow)
-                + Convert.ToInt64(accountsModel.TransactionRecordModel.TranAmountToDeferredPaidExpensesAdv)
-                + Convert.ToInt64(accountsModel.TransactionRecordModel.TranAmountToDeferredUnpaidExpenseAdv)
-                + Convert.ToInt64(accountsModel.TransactionRecordModel.TranAmountToDeferredAdminFees)
-                + Convert.ToInt64(accountsModel.TransactionRecordModel.OptionalDeferredAmount)
+            Miscellaneous = Convert.ToString(Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Lip_PackedData)
+                + Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Cr_Ins_PackedData)
+                + Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Pi_Shrtg)
+                + Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Prin_PackedData)
+                + Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Int_PackedData)
+                + Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Lc_PackedData)
+                + Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Esc_PackedData)
+                + Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Pd_Exp_Adv_PackedData)
+                + Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Unp_Exp_Adv_PackedData)
+                + Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Admin_Fees_PackedData)
+                + Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Optins_PackedData)
                 );
             return Miscellaneous;
         }
