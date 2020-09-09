@@ -174,13 +174,13 @@ namespace Carrington_Service.Calculation_Classes
         /// <returns></returns>
         public string GetFeesandChargesPaidLastMonth(AccountsModel model)
         {
-            if ((Convert.ToInt64(model.TransactionRecordModel.LogTransaction) == 5705 || Convert.ToInt64(model.TransactionRecordModel.LogTransaction) == 5707)
+            if ((Convert.ToInt64(model.TransactionRecordModel.Rssi_Log_Tran) == 5705 || Convert.ToInt64(model.TransactionRecordModel.Rssi_Log_Tran) == 5707)
               &&
-              (Convert.ToInt64(model.TransactionRecordModel.FeeDescription) == 67 || Convert.ToInt64(model.TransactionRecordModel.FeeDescription) == 198))
+              (Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 67 || Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 198))
             {
                 FeesandChargesPaidLastMonth = Convert.ToString((Convert.ToInt64(model.MasterFileDataPart_1Model.FeesPaidSinceLastStatement)
                 + Convert.ToInt64(model.MasterFileDataPart_1Model.LateChargesPaidSinceLastStatement))
-                - Convert.ToInt64(model.TransactionRecordModel.TransactionAmount));
+                - Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
             }
             return FeesandChargesPaidLastMonth;
         }
@@ -191,11 +191,11 @@ namespace Carrington_Service.Calculation_Classes
         /// <returns></returns>
         public string GetUnappliedFundsPaidLastMonth(AccountsModel model)
         {
-            FeesandChargesPaidLastMonth = Convert.ToString(Convert.ToInt64(model.TransactionRecordModel.TransactionAmountPostedToUnappliedFunds)
-           + Convert.ToInt64(model.TransactionRecordModel.TransactionAmountUnappliedFunds2)
-           + Convert.ToInt64(model.TransactionRecordModel.TransactionAmountUnappliedFunds3)
-           + Convert.ToInt64(model.TransactionRecordModel.TransactionAmountUnappliedFunds4)
-           + Convert.ToInt64(model.TransactionRecordModel.TransactionAmountUnappliedFunds5));
+            FeesandChargesPaidLastMonth = Convert.ToString(Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData)
+           + Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2)
+           + Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3)
+           + Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_04)
+           + Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05));
 
             return UnappliedFundsPaidLastMonth;
         }
@@ -206,13 +206,13 @@ namespace Carrington_Service.Calculation_Classes
         /// <returns></returns>
         public string GetFeesandChargesPaidYearToDate(AccountsModel model)
         {
-            if ((Convert.ToInt64(model.TransactionRecordModel.LogTransaction) == 5705 || Convert.ToInt64(model.TransactionRecordModel.LogTransaction) == 5707)
+            if ((Convert.ToInt64(model.TransactionRecordModel.Rssi_Log_Tran) == 5705 || Convert.ToInt64(model.TransactionRecordModel.Rssi_Log_Tran) == 5707)
               &&
-              (Convert.ToInt64(model.TransactionRecordModel.FeeDescription) == 67 || Convert.ToInt64(model.TransactionRecordModel.FeeDescription) == 198))
+              (Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 67 || Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 198))
             {
                 FeesandChargesPaidLastMonth = Convert.ToString((Convert.ToInt64(model.MasterFileDataPart_1Model.FeesPaidYTD)
                 + Convert.ToInt64(model.MasterFileDataPart_1Model.LateChargesPaidYTD))
-                - Convert.ToInt64(model.TransactionRecordModel.TransactionAmount));
+                - Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
             }
             return FeesandChargesPaidLastMonth;
         }
@@ -240,9 +240,9 @@ namespace Carrington_Service.Calculation_Classes
         /// <returns></returns>
         public string GetTotalPaidYearToDate(AccountsModel model)
         {
-            if ((Convert.ToInt64(model.TransactionRecordModel.LogTransaction) == 5705 || Convert.ToInt64(model.TransactionRecordModel.LogTransaction) == 5707)
+            if ((Convert.ToInt64(model.TransactionRecordModel.Rssi_Log_Tran) == 5705 || Convert.ToInt64(model.TransactionRecordModel.Rssi_Log_Tran) == 5707)
                &&
-               (Convert.ToInt64(model.TransactionRecordModel.FeeDescription) == 67 || Convert.ToInt64(model.TransactionRecordModel.FeeDescription) == 198))
+               (Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 67 || Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 198))
             {
                 TotalPaidYearToDate = Convert.ToString((Convert.ToInt64(model.MasterFileDataPart_1Model.PrincipalPaidYTD)
            + Convert.ToInt64(model.MasterFileDataPart_1Model.InterestPaidYearToDate)
@@ -254,7 +254,7 @@ namespace Carrington_Service.Calculation_Classes
            + model.MasterFileDataPart2Model.UnappliedFundsCode3 != "L" ? Convert.ToInt64(model.MasterFileDataPart2Model.UnappliedFundsBalance3) : 0
            + model.MasterFileDataPart2Model.UnappliedFundsCode4 != "L" ? Convert.ToInt64(model.MasterFileDataPart2Model.UnappliedFundsBalance4) : 0
            + model.MasterFileDataPart2Model.UnappliedFundsCode5 != "L" ? Convert.ToInt64(model.MasterFileDataPart2Model.UnappliedFundsBalance5) : 0)
-           - Convert.ToInt64(model.TransactionRecordModel.TransactionAmount));
+           - Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
             }
 
             return TotalPaidYearToDate;
@@ -927,11 +927,11 @@ namespace Carrington_Service.Calculation_Classes
         /// <returns></returns>
         public string GetSuspense(AccountsModel model)
         {
-            Suspense = Convert.ToString((Convert.ToInt64(model.TransactionRecordModel.TransactionAmountPostedToUnappliedFunds)
-                   + Convert.ToInt64(model.TransactionRecordModel.TransactionAmountUnappliedFunds2)
-                   + Convert.ToInt64(model.TransactionRecordModel.TransactionAmountUnappliedFunds3)
-                   + Convert.ToInt64(model.TransactionRecordModel.TransactionAmountUnappliedFunds4)
-                   + Convert.ToInt64(model.TransactionRecordModel.TransactionAmountUnappliedFunds5)));
+            Suspense = Convert.ToString((Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData)
+                   + Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2)
+                   + Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3)
+                   + Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_04)
+                   + Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05)));
             return Suspense;
         }
         /// <summary>
@@ -942,17 +942,17 @@ namespace Carrington_Service.Calculation_Classes
         public string GetMiscellaneous(AccountsModel model)
         {
             Miscellaneous = Convert.ToString(
-                Convert.ToDecimal(model.TransactionRecordModel.TransactionAmountConstructionBalance)
-                + Convert.ToDecimal(model.TransactionRecordModel.TransactionAmountOptionalInsurance)
-                + Convert.ToDecimal(model.TransactionRecordModel.TransactionAmountToP_IShortage)
-                + Convert.ToDecimal(model.TransactionRecordModel.TransactionAmountPostedToDeferredPrincipal)
-                + Convert.ToDecimal(model.TransactionRecordModel.TranAmountToDeferredInterest)
-                + Convert.ToDecimal(model.TransactionRecordModel.TranAmountToDeferredLateCharge)
-                + Convert.ToDecimal(model.TransactionRecordModel.TranAmountToDeferredEscrowAdv)
-                + Convert.ToDecimal(model.TransactionRecordModel.TranAmountToDeferredPaidExpensesAdv)
-                + Convert.ToDecimal(model.TransactionRecordModel.TranAmountToDeferredUnpaidExpenseAdv)
-                + Convert.ToDecimal(model.TransactionRecordModel.TranAmountToDeferredAdminFees)
-                + Convert.ToDecimal(model.TransactionRecordModel.OptionalDeferredAmount));
+                Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Lip_PackedData)
+                + Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Cr_Ins_PackedData)
+                + Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Pi_Shrtg)
+                + Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Prin_PackedData)
+                + Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Int_PackedData)
+                + Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Late_Chrg_PackedData)
+                + Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Esc_Adv_PackedData)
+                + Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Pd_Exp_Adv_PackedData)
+                + Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Unp_Exp_Adv_PackedData)
+                + Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Admin_Fees_PackedData)
+                + Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Optins_PackedData));
             return Miscellaneous;
         }
         /// <summary>
