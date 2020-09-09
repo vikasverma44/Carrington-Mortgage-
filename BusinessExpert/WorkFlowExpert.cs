@@ -575,7 +575,7 @@ namespace Carrington_Service.BusinessExpert
                 InvestorPrimaryName = GetPositionData(currentByte, 53, 35),
                 InvestorBlockCode = GetPositionData(currentByte, 88, 3),
 
-                InvestorPercentOwned = GetPositionData(currentByte, 91, 34),
+                InvestorPercentOwned = GetPositionData(currentByte, 91, 4),
                 InvestorRate = GetPositionData(currentByte, 95, 4),
 
                 InvestorServiceFeeCode = GetPositionData(currentByte, 99, 1),
@@ -635,7 +635,7 @@ namespace Carrington_Service.BusinessExpert
                 TaxesPaidYearToDate = GetPositionData(currentByte, 720, 5),
                 InterestPaidToDate = GetPositionData(currentByte, 725, 6),
 
-                CurrentDueDate = GetPositionData(currentByte, 731, 7),
+                CurrentDueDate = GetPositionData(currentByte, 731, 6),
                 UncollectedCreditInsurance = GetPositionData(currentByte, 737, 6),
 
                 UncollectedInterest = GetPositionData(currentByte, 743, 6),
@@ -660,7 +660,7 @@ namespace Carrington_Service.BusinessExpert
                 SecondaryMortgagePaymentAmount = GetPositionData(currentByte, 803, 6),
 
                 FeeReceivable = GetPositionData(currentByte, 809, 4),
-                PastDuePayments = GetPositionData(currentByte, 813, 8),
+                PastDuePayments = GetPositionData(currentByte, 813, 108),
 
                 PastPaymentDueDate = GetPositionData(currentByte, 813, 6),
                 PastRegularAmount = GetPositionData(currentByte, 819, 6),
@@ -668,7 +668,7 @@ namespace Carrington_Service.BusinessExpert
                 PastLateAmount = GetPositionData(currentByte, 825, 6),
                 BillingOption = GetPositionData(currentByte, 921, 1),
 
-                AlternativeOverUnder = GetPositionData(currentByte, 923, 4),
+                AlternativeOverUnder = GetPositionData(currentByte, 922, 4),
                 CurrentIndexDate = GetPositionData(currentByte, 926, 4),
 
                 CurrentIndexRate = GetPositionData(currentByte, 930, 4),
@@ -698,8 +698,8 @@ namespace Carrington_Service.BusinessExpert
                 EmailBillIndicator = GetPositionData(currentByte, 1005, 1),
                 PrimaryBorrowerEmailAddress = GetPositionData(currentByte, 1006, 40),
 
-                PrimaryBorrowerFaxNumber = GetPositionData(currentByte, 1046, 11),
-                PrimaryBorrowerCellPhoneNumber = GetPositionData(currentByte, 1052, 11),
+                PrimaryBorrowerFaxNumber = GetPositionData(currentByte, 1046, 6),
+                PrimaryBorrowerCellPhoneNumber = GetPositionData(currentByte, 1052, 6),
 
                 DirectMailIndicator = GetPositionData(currentByte, 1058, 2),
                 TelemarketIndicator = GetPositionData(currentByte, 1060, 2),
@@ -777,7 +777,7 @@ namespace Carrington_Service.BusinessExpert
                 NetInvestment = GetPositionData(currentByte, 1327, 11),
 
                 DiscountQuotedOriginalDiscountAmount = GetPositionData(currentByte, 1338, 9),
-                TotalPaymentsForLifeOfLoan = GetPositionData(currentByte, 1347, 11),
+                TotalPaymentsForLifeOfLoan = GetPositionData(currentByte, 1347, 13),
 
                 MonthlyInterestRate = GetPositionData(currentByte, 1360, 7),
                 NumberOfDaysDelinquent = GetPositionData(currentByte, 1367, 5),
@@ -849,7 +849,7 @@ namespace Carrington_Service.BusinessExpert
                 PastPaidPaymentDueDate04 = GetPositionData(currentByte, 1572, 6),
 
                 PastPaidPaymentPaidDate04 = GetPositionData(currentByte, 1578, 6),
-                PastPaidPaymentDueDate05 = GetPositionData(currentByte, 1572, 6),
+                PastPaidPaymentDueDate05 = GetPositionData(currentByte, 1584, 6),
 
                 PastPaidPaymentPaidDate05 = GetPositionData(currentByte, 1590, 6),
                 PastPaidPaymentDueDate06 = GetPositionData(currentByte, 1596, 6),
@@ -1022,7 +1022,7 @@ namespace Carrington_Service.BusinessExpert
                 NextAchDraftDate = GetPositionData(currentByte, 2626, 4),
                 MostRecentBreachLetterDate = GetPositionData(currentByte, 2630, 4),
 
-                FullFinalChargeOffDate = GetPositionData(currentByte, 2634, 2),
+                FullFinalChargeOffDate = GetPositionData(currentByte, 2634, 4),
                 PromiseDate = GetPositionData(currentByte, 2638, 4),
 
                 PromiseAmount = GetPositionData(currentByte, 2642, 6),
@@ -1119,7 +1119,7 @@ namespace Carrington_Service.BusinessExpert
                 ClosingAgentCode = GetPositionData(currentByte, 278, 5),
 
                 FillerPart2 = GetPositionData(currentByte, 283, 13),
-                DeferredPrincipalBalance = GetPositionData(currentByte, 296, 11),
+                DeferredPrincipalBalance = GetPositionData(currentByte, 296, 6),
 
                 CombinedPrincipalBalance = GetPositionData(currentByte, 302, 6),
                 OriginalPrincipalReductionAmount = GetPositionData(currentByte, 308, 6),
@@ -1492,7 +1492,7 @@ namespace Carrington_Service.BusinessExpert
                 UserField342 = GetPositionData(currentByte, 3703, 7),
                 UserField343 = GetPositionData(currentByte, 3710, 7),
                 UserField344 = GetPositionData(currentByte, 3717, 7),
-                UserField345 = GetPositionData(currentByte, 2724, 1007),
+                UserField345 = GetPositionData(currentByte, 2724, 7),
                 UserField346 = GetPositionData(currentByte, 3731, 7),
                 UserField347 = GetPositionData(currentByte, 3738, 7),
                 UserField348 = GetPositionData(currentByte, 3745, 7),
@@ -1640,17 +1640,17 @@ namespace Carrington_Service.BusinessExpert
                 PreviousFeeBalance = GetPositionData(currentByte, 53, 7),
                 NewReceivableFeesAssessed = GetPositionData(currentByte, 60, 7),
                 AssessedDate = GetPositionData(currentByte, 67, 7),
-                FeesInvoiceCredits = GetPositionData(currentByte, 23, 23),
-                FeesNotPreviouslyAssessedThatAreCollectedThisBillingCycle = GetPositionData(currentByte, 83, 7),
-                FeeBalanceThisBillingCycle = GetPositionData(currentByte, 83, 7),
+                FeesInvoiceCredits = GetPositionData(currentByte, 74, 9),
+                FeesNotPreviouslyAssessedThatAreCollectedThisBillingCycle = GetPositionData(currentByte, 83, 7),          
                 FeesWaivedThisBillingCycle = GetPositionData(currentByte, 90, 7),
+                FeeBalanceThisBillingCycle = GetPositionData(currentByte, 97, 7),
                 FeeCollectedTransactionDate = GetPositionData(currentByte, 104, 7),
                 FeeWaivedTransactionDate = GetPositionData(currentByte, 111, 7),
                 RecurringFeesDue = GetPositionData(currentByte, 118, 9),
                 RecurringFeePaymentsPastDue = GetPositionData(currentByte, 127, 2),
                 FillerPart1 = GetPositionData(currentByte, 129, 4),
                 InvoiceExpenseType = GetPositionData(currentByte, 133, 1),
-                InvoicePurchaseOrderNumber = GetPositionData(currentByte, 134, 2),
+                InvoicePurchaseOrderNumber = GetPositionData(currentByte, 134, 12),
                 InvoiceExpenseAmountBilled = GetPositionData(currentByte, 146, 4),
                 InvoiceExpenseAmountPaid = GetPositionData(currentByte, 150, 4),
                 InvoiceRecoverabilityFlag = GetPositionData(currentByte, 154, 1),
@@ -1776,27 +1776,27 @@ namespace Carrington_Service.BusinessExpert
             {
                 RecordIdentifier = GetPositionData(currentByte, 1, 1),
                 InstitutionNumber = GetPositionData(currentByte, 2, 3),
-                AccountNumber = GetPositionData(currentByte, 2, 4),
-                SequenceNumber = GetPositionData(currentByte, 2, 5),
-                PrimaryBorrowerSIdNumber = GetPositionData(currentByte, 2, 6),
-                PrimaryBorrowerPrefix = GetPositionData(currentByte, 2, 7),
-                PrimaryBorrowerSuffix = GetPositionData(currentByte, 2, 8),
-                Attention = GetPositionData(currentByte, 2, 9),
-                MailCountry = GetPositionData(currentByte, 2, 10),
-                MailZipCode = GetPositionData(currentByte, 2, 11),
-                PrimaryBorrowerHomeTelephoneNumberCountryCode = GetPositionData(currentByte, 2, 12),
-                PrimaryBorrowerHomeTelephoneNumber = GetPositionData(currentByte, 2, 13),
-                PrimaryBorrowerWorkTelephoneNumberCountryCode = GetPositionData(currentByte, 2, 14),
-                PrimaryBorrowerWorkTelephoneNumber = GetPositionData(currentByte, 2, 15),
-                PrimaryBorrowerFaxTelephoneNumberCountryCode = GetPositionData(currentByte, 2, 16),
-                PrimaryBorrowerFaxTelephoneNumber = GetPositionData(currentByte, 2, 17),
-                PrimaryBorrowerCellTelephoneNumberCountryCode = GetPositionData(currentByte, 2, 18),
-                PrimaryBorrowerCellTelephoneNumber = GetPositionData(currentByte, 2, 19),
-                PropertyCountry = GetPositionData(currentByte, 2, 20),
-                PropertyZipCode = GetPositionData(currentByte, 2, 21),
-                AlternateMailCountry = GetPositionData(currentByte, 2, 22),
-                AlternateZipCode = GetPositionData(currentByte, 2, 23),
-                Filler = GetPositionData(currentByte, 2, 24),
+                AccountNumber = GetPositionData(currentByte, 5, 10),
+                SequenceNumber = GetPositionData(currentByte, 15, 5),
+                PrimaryBorrowerSIdNumber = GetPositionData(currentByte, 20, 15),
+                PrimaryBorrowerPrefix = GetPositionData(currentByte, 35, 6),
+                PrimaryBorrowerSuffix = GetPositionData(currentByte, 41, 6),
+                Attention = GetPositionData(currentByte, 47, 35),
+                MailCountry = GetPositionData(currentByte, 82, 35),
+                MailZipCode = GetPositionData(currentByte, 117, 10),
+                PrimaryBorrowerHomeTelephoneNumberCountryCode = GetPositionData(currentByte, 127, 3),
+                PrimaryBorrowerHomeTelephoneNumber = GetPositionData(currentByte, 130, 15),
+                PrimaryBorrowerWorkTelephoneNumberCountryCode = GetPositionData(currentByte, 145, 3),
+                PrimaryBorrowerWorkTelephoneNumber = GetPositionData(currentByte, 148, 15),
+                PrimaryBorrowerFaxTelephoneNumberCountryCode = GetPositionData(currentByte, 163, 3),
+                PrimaryBorrowerFaxTelephoneNumber = GetPositionData(currentByte, 166, 15),
+                PrimaryBorrowerCellTelephoneNumberCountryCode = GetPositionData(currentByte, 181, 3),
+                PrimaryBorrowerCellTelephoneNumber = GetPositionData(currentByte, 184, 15),
+                PropertyCountry = GetPositionData(currentByte, 199, 35),
+                PropertyZipCode = GetPositionData(currentByte, 234, 10),
+                AlternateMailCountry = GetPositionData(currentByte, 244, 35),
+                AlternateZipCode = GetPositionData(currentByte, 279, 10),
+                Filler = GetPositionData(currentByte, 289, 212),
 
             };
         }
@@ -1905,7 +1905,7 @@ namespace Carrington_Service.BusinessExpert
                 CoborrowerName09 = GetPositionData(currentByte, 1132, 35),
                 CoborrowerAddressLine109 = GetPositionData(currentByte, 1167, 35),
                 CoborrowerAddressLine209 = GetPositionData(currentByte, 1202, 35),
-                CoborrowerCity09 = GetPositionData(currentByte, 1237, 121),
+                CoborrowerCity09 = GetPositionData(currentByte, 1237, 21),
                 CoborrowerState09 = GetPositionData(currentByte, 1258, 2),
                 CoborrowerZipCode09 = GetPositionData(currentByte, 1260, 10),
                 CoborrowerBillingStatement09 = GetPositionData(currentByte, 1270, 1),
