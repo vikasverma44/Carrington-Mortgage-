@@ -2073,7 +2073,7 @@ namespace Carrington_Service.BusinessExpert
                 Rssi_B_C_Filed_Cbwr6_Id = GetPositionData(currentByte, 211, 1),
                 Rssi_B_C_Filed_Cbwr7_Id = GetPositionData(currentByte, 212, 1),
                 Rssi_B_C_Filed_Cbwr8_Id = GetPositionData(currentByte, 213, 1),
-                ConcurrentBankruptcyFiledByCoborrowerIndicator9Active = GetPositionData(currentByte, 214, 1),
+                Rssi_B_C_Filed_Cbwr9_Id = GetPositionData(currentByte, 214, 1),
                 Rssi_B_C_Filed_Cbwr10_Id = GetPositionData(currentByte, 215, 1),
                 Rssi_B_C_Filed_Dt_PackedData = GetPositionData(currentByte, 216, 4),
                 Rssi_B_C_Conv_1_Date_PackedData = GetPositionData(currentByte, 220, 4),
