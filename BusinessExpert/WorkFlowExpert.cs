@@ -30,6 +30,11 @@ namespace Carrington_Service.BusinessExpert
         CmsBillInput CmsBillInput = new CmsBillInput();
         EConsentInput EConsentInput = new EConsentInput();
         AccountsModel accountsModel;
+        /// <summary>The NCP10 version.</summary>
+        private const string Ncp10Version = "03";
+
+        /// <summary>The delimiter.</summary>
+        private const string Delimiter = "|";
         public WorkFlowExpert(IConfigHelper configHelper, ILogger logger, IAgentApi apiAgent, IEmailService emailService)
         {
             ConfigHelper = configHelper;
@@ -2288,7 +2293,25 @@ namespace Carrington_Service.BusinessExpert
                 return "";
             }
         }
+        public void GenerateCRL30File()
+        {
+            //List<AccountsModel> account = new List<AccountsModel>();
+            //Logger.Trace("Creating NCP Header records...");
 
+
+            //Logger.Trace("Creating NCP Institution records...");
+            //Logger.Trace("Starting Account records process...");
+            // var line = new StringBuilder();
+
+            
+            //foreach (var account in account)
+            //{
+            //    Logger.Trace("Creating NCP10 records for Account" + account.MasterFileDataPart_1Model.AccountNumber);
+            //    //account.MasterFileDataPart_1Model.AccountNumber;
+            //    line.Append(Delimiter).Append(extractAccount.MailReturnAddress.Address.CityName);
+
+            //}
+        }
         #endregion
 
 

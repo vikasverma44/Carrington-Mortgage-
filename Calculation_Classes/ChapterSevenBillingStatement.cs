@@ -14,7 +14,7 @@ namespace Carrington_Service.Calculation_Classes
         public string Principal { get; set; }
         public string PastUnpaidAmount { get; set; }
         public string TotalFeesandCharges { get; set; }
-        public string TotalFeesPaid { get; set; }
+        public Decimal TotalFeesPaid { get; set; }
         public string TotalPaymentAmount { get; set; }
         public string FeesAndChargesPaidLastMonth { get; set; }
         public string UnappliedFundsPaidLastMonth { get; set; }
@@ -84,9 +84,22 @@ namespace Carrington_Service.Calculation_Classes
             TotalFeesandCharges = Convert.ToString(Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.FeesAssessedSinceLastStatement)+Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.LateChargesAccruedSinceLastStatement));
             return TotalFeesandCharges;
         }
-        public string GetTotalFeesPaid(AccountsModel accountModel)
+        public decimal GetTotalFeesPaid(AccountsModel accountModel)
         {
-           // TotalFeesPaid = Convert.ToString();
+            if ((Convert.ToInt64(accountModel.MasterFileDataPart_1Model.FeeReceivable) +
+                 Convert.ToInt64(accountModel.MasterFileDataPart_1Model.LateChargeDue)) <
+                 Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.PostPetitionFeesAndCharges))
+                
+
+                    TotalFeesPaid = Convert.ToInt64(accountModel.MasterFileDataPart_1Model.FeeReceivable) +
+                    Convert.ToInt64(accountModel.MasterFileDataPart_1Model.LateChargeDue) -
+                    Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.PostPetitionFeesAndCharges);
+            
+            else
+            {
+                TotalFeesPaid = Convert.ToInt64(0.00);
+            }
+
             return TotalFeesPaid;
         }
         public string GetTotalPaymentAmount(AccountsModel accountModel)
@@ -102,9 +115,18 @@ namespace Carrington_Service.Calculation_Classes
             return TotalPaymentAmount;
 
             }
-        public string GetFeesAndChargesPaidLastMonth()
+        public string GetFeesAndChargesPaidLastMonth(AccountsModel accountsModel)
         {
-         
+
+            if ((Convert.ToInt64(accountsModel.TransactionRecordModel.LogTransaction) == 5705 || Convert.ToInt64(accountsModel.TransactionRecordModel.LogTransaction) == 5707)
+              &&
+              (Convert.ToInt64(accountsModel.TransactionRecordModel.FeeDescription) == 67 || Convert.ToInt64(accountsModel.TransactionRecordModel.FeeDescription) == 198))
+            {
+
+                FeesAndChargesPaidLastMonth = Convert.ToString(Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.FeesPaidSinceLastStatement) +
+                Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.LateChargesPaidSinceLastStatement));
+            }
+
             return FeesAndChargesPaidLastMonth;
         }
         public string GetUnappliedFundsPaidLastMonth(AccountsModel accountModel)
@@ -112,12 +134,19 @@ namespace Carrington_Service.Calculation_Classes
             UnappliedFundsPaidLastMonth = Convert.ToString(Convert.ToDecimal(accountModel.TransactionRecordModel.TransactionAmountPostedToUnappliedFunds) + Convert.ToDecimal(accountModel.TransactionRecordModel.TransactionAmountUnappliedFunds2) + Convert.ToDecimal(accountModel.TransactionRecordModel.TransactionAmountUnappliedFunds3) + Convert.ToDecimal(accountModel.TransactionRecordModel.TransactionAmountUnappliedFunds4) + Convert.ToDecimal(accountModel.TransactionRecordModel.TransactionAmountUnappliedFunds5));
             return UnappliedFundsPaidLastMonth;
         }
-        public string GetTotalPaidLastMonth()
+        public string GetTotalPaidLastMonth(AccountsModel accountsModel)
         {
-            //Calculation =  RSSI-TOT-PD-SINCE-LST-STMT     minus  (RSSI - TR - AMT  where RSSI - LOG - TRAN = 5705 or  5707 and  RSSI - TR - FEE - CODE = 67 or 198)  + PriorMoAmnt
-            //Conditional Statement=
-            //Copybook Field Name=RSSI-TOT-PD-SINCE-LST-STMT  minus RSSI - TR - AMT where RSSI-LOG - TRAN = 5705 or 5707 and RSSI - TR - FEE - CODE = 67 or 198  plus PriorMoAmnt
-            return TotalPaidLastMonth;
+            if ((Convert.ToInt64(accountsModel.TransactionRecordModel.LogTransaction) == 5705 || Convert.ToInt64(accountsModel.TransactionRecordModel.LogTransaction) == 5707)
+            &&
+            (Convert.ToInt64(accountsModel.TransactionRecordModel.FeeDescription) == 67 || Convert.ToInt64(accountsModel.TransactionRecordModel.FeeDescription) == 198))
+            {
+            }
+            else
+            {
+
+            }
+
+                return TotalPaidLastMonth;
         }
         public string GetFeesAndChargesPaidYeartoDate(AccountsModel accountModel)
         {
