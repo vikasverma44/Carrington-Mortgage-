@@ -8,56 +8,56 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
 {
     public class PL_RecordModel
     {
-        public string RecordIdentifier { get; set; }
-        public string InstitutionNumber { get; set; }
-        public string AccountNumber { get; set; }
-        public string SequenceNumber { get; set; }
-        public string PL_Entity { get; set; }
-        public string PLSSGroup { get; set; }
-        public string PL_EntityStatus { get; set; }
-        public string PLSSEntityBrandingName { get; set; }
-        public string EntityBrandingAddressLine1  { get; set; }
-        public string EntityBrandingAddressLine2 { get; set; }
-        public string EntityBrandingCity { get; set; }
-        public string EntityBrandingState { get; set; }
+        public string Rssi_Rcd_Id { get; set; }
+        public string Rssi_Inst { get; set; }
+        public string Rssi_Acct_No { get; set; }
+        public string Rssi_Seq_No { get; set; }
+        public string Rssi_N1Mx_Plss_Entity { get; set; }
+        public string Rssi_Enty_Plss_Group { get; set; }
+        public string Rssi_Enty_Status { get; set; }
+        public string Rssi_Enty_Name { get; set; }
+        public string Rssi_Enty_Adrs_1 { get; set; }
+        public string Rssi_Enty_Adrs_2 { get; set; }
+        public string Rssi_Enty_City { get; set; }
+        public string Rssi_Enty_State { get; set; }
 
-        public string EntityBrandingZipCode  { get; set; }
-        public string EntityBrandingPhone { get; set; }
-        public string PL_EntityTaxIdentificationNumber { get; set; }
-        public string MERSOrganizationID { get; set; }
-        public string HUDIDNumber { get; set; }
-        public string VAID { get; set; }
-        public string EntityRHSLenderBranchID { get; set; }
-        public string EntityHUDContactNameFirst { get; set; }
-        public string EntityHUDContactNameLast { get; set; }
-        public string EntityHUDContactTelephone { get; set; }
-        public string EntityHUDPrincipalServicingOfficeCity { get; set; }
-        public string EntityHUDPrincipalServicingOfficeState { get; set; }
+        public string Rssi_Enty_Zip { get; set; }
+        public string Rssi_Enty_Phone { get; set; }
+        public string Rssi_Enty_Tax_Id_Number { get; set; }
+        public string Rssi_I_Mers_Org_Id { get; set; }
+        public string Rssi_I_Hud_Id { get; set; }
+        public string Rssi_I_Va_Set264_Id { get; set; }
+        public string Rssi_Enty_Rhs_Lender_Number { get; set; }
+        public string Rssi_Enty_Hud_Cont_Name_First { get; set; }
+        public string Rssi_Enty_Hud_Cont_Name_Last { get; set; }
+        public string Rssi_Enty_Cont_Phn { get; set; }
+        public string Rssi_Enty_Hud_Office_City { get; set; }
+        public string Rssi_Enty_Hud_Office_State { get; set; }
 
-        public string EntityHUDPrincipalServicingOfficeZipCode { get; set; }
-        public string EntityHUDCompanyHeadquartersStateCode { get; set; }
-        public string EntityLockboxAddressLine1  { get; set; }
-        public string EntityLockboxAddressLine2 { get; set; }
-        public string EntityLockboxCity { get; set; }
-        public string EntityLockboxState { get; set; }
+        public string Rssi_Enty_Hud_Office_Zip { get; set; }
+        public string Rssi_Enty_Company_Head_St_Cd { get; set; }
+        public string Rssi_Enty_Lock_Adrs_1 { get; set; }
+        public string Rssi_Enty_Lock_Adrs_2 { get; set; }
+        public string Rssi_Enty_Lock_City { get; set; }
+        public string Rssi_Enty_Lock_State { get; set; }
 
         //
 
-        public string EntityLockboxZipCode { get; set; }
-        public string EntityAlternateAddress1 { get; set; }
-        public string EntityAlternateAddress2 { get; set; }
-        public string EntityAlternateCity { get; set; }
-        public string EntityAlternateState { get; set; }
-        public string EntityAlternateZipCode  { get; set; }
-        public string EntityAlternatePhoneNumber1Desc { get; set; }
-        public string EntityAlternatePhoneNumber1  { get; set; }
-        public string EntityAlternatePhoneNumber2Desc { get; set; }
-        public string EntityAlternatePhoneNumber2 { get; set; }
-        public string EntityAlternatePhoneNumber3Desc { get; set; }
-        public string EntityAlternatePhoneNumber3  { get; set; }
-        public string EntityAlternatePhoneNumber4Desc { get; set; }
-        public string EntityAlternatePhoneNumber4 { get; set; }
-        public string EntityAlternatePhoneNumber5Desc { get; set; }
-        public string EntityAlternatePhoneNumber5 { get; set; }
+        public string Rssi_Enty_Lock_Zip { get; set; }
+        public string Rssi_Enty_Alt_Coup_Adrs_1 { get; set; }
+        public string Rssi_Enty_Alt_Coup_Adrs_2 { get; set; }
+        public string Rssi_Enty_Alt_Coup_City { get; set; }
+        public string Rssi_Enty_Alt_Coup_State { get; set; }
+        public string Rssi_Enty_Alt_Coup_Zip { get; set; }
+        public string Rssi_Enty_Alt_Coup_Ph_Desc_1 { get; set; }
+        public string Rssi_Enty_Alt_Coup_Ph_No_1 { get; set; }
+        public string Rssi_Enty_Alt_Coup_Ph_Desc_2 { get; set; }
+        public string Rssi_Enty_Alt_Coup_Ph_No_2 { get; set; }
+        public string Rssi_Enty_Alt_Coup_Ph_Desc_3 { get; set; }
+        public string Rssi_Enty_Alt_Coup_Ph_No_3 { get; set; }
+        public string Rssi_Enty_Alt_Coup_Ph_Desc_4 { get; set; }
+        public string Rssi_Enty_Alt_Coup_Ph_No_4 { get; set; }
+        public string Rssi_Enty_Alt_Coup_Ph_Desc_5 { get; set; }
+        public string Rssi_Enty_Alt_Coup_Ph_No_5 { get; set; }
     }
 }

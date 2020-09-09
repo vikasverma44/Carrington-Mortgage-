@@ -8,16 +8,16 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
 {
     public class MultiLockboxRecordModel
     {
-        public string RecordIdentifier { get; set; }
-        public string InstitutionNumber { get; set; }
-        public string AccountNumber { get; set; }
-        public string SequenceNumber { get; set; }
-        public string LoanLockboxIdentification { get; set; }
-        public string LockboxAddress1 { get; set; }
-        public string LockboxAddress2 { get; set; }
-        public string LockboxCity { get; set; }
-        public string LockboxState { get; set; }
-        public string LockboxZipCode { get; set; }
+        public string Rssi_Rcd_Id { get; set; }
+        public string Rssi_Inst { get; set; }
+        public string Rssi_Acct_No { get; set; }
+        public string Rssi_Seq_No { get; set; }
+        public string Rssi_Il_Lkbx_Id_Data { get; set; }
+        public string Rssi_Il_Lkbx_Addr_1 { get; set; }
+        public string Rssi_Il_Lkbx_Addr_2 { get; set; }
+        public string Rssi_Il_Lkbx_City { get; set; }
+        public string Rssi_Il_Lkbx_State { get; set; }
+        public string Rssi_Il_Lkbx_Zip { get; set; }
 
     }
 }
