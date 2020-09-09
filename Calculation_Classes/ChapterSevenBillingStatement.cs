@@ -34,13 +34,13 @@ namespace Carrington_Service.Calculation_Classes
         public string GetPaymentAmount(AccountsModel accountModel)
         {
 
-            if (accountModel.MasterFileDataPart_1Model.PrincipalBalance == "0")
+            if (accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData == "0")
             {
                 PaymentAmount = Convert.ToString("0.00");
             }
             else
             {
-                PaymentAmount = Convert.ToString(Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.PastDueAmtTotalDue) + Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.CurrentPayment));
+                PaymentAmount = Convert.ToString(Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) + Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData));
             }
             return PaymentAmount;
         }
@@ -58,13 +58,13 @@ namespace Carrington_Service.Calculation_Classes
         }
         public string GetPrincipal(AccountsModel accountModel)
         {
-            if (accountModel.MasterFileDataPart_1Model.PrincipalBalance == "0" || accountModel.MasterFileDataPart_1Model.CurrentPayment=="0")
+            if (accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData == "0" || accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData=="0")
             {
                 Principal = "0.00";
             }
             else
             {
-                Principal = Convert.ToString(Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.P_IPayment) + Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.InterestOnPymtDue));
+                Principal = Convert.ToString(Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_P_I_Pymt_PackedData) + Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData));
 
             }
 
@@ -74,7 +74,7 @@ namespace Carrington_Service.Calculation_Classes
         public string GetPastUnpaidAmount(AccountsModel accountModel)
         {
             //Total Fees Paid was not there so used total fees due
-            PastUnpaidAmount = Convert.ToString(Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.PastDueAmtTotalDue) - Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.FeesAssessedSinceLastStatement) - Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.LateChargesAccruedSinceLastStatement) - Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.TotalFeesDue));
+            PastUnpaidAmount = Convert.ToString(Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) - Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.FeesAssessedSinceLastStatement) - Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.LateChargesAccruedSinceLastStatement) - Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.TotalFeesDue));
            
             return PastUnpaidAmount;
         }
@@ -86,13 +86,13 @@ namespace Carrington_Service.Calculation_Classes
         }
         public decimal GetTotalFeesPaid(AccountsModel accountModel)
         {
-            if ((Convert.ToInt64(accountModel.MasterFileDataPart_1Model.FeeReceivable) +
-                 Convert.ToInt64(accountModel.MasterFileDataPart_1Model.LateChargeDue)) <
+            if ((Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Fees_PackedData) +
+                 Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)) <
                  Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.PostPetitionFeesAndCharges))
                 
 
-                    TotalFeesPaid = Convert.ToInt64(accountModel.MasterFileDataPart_1Model.FeeReceivable) +
-                    Convert.ToInt64(accountModel.MasterFileDataPart_1Model.LateChargeDue) -
+                    TotalFeesPaid = Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Fees_PackedData) +
+                    Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData) -
                     Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.PostPetitionFeesAndCharges);
             
             else
@@ -104,13 +104,13 @@ namespace Carrington_Service.Calculation_Classes
         }
         public string GetTotalPaymentAmount(AccountsModel accountModel)
         {
-            if (accountModel.MasterFileDataPart_1Model.PrincipalBalance == "0")
+            if (accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData == "0")
             {
                 TotalPaymentAmount = Convert.ToString("0.00");
             }
             else
             {
-                TotalPaymentAmount = Convert.ToString(Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.PastDueAmtTotalDue) + Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.CurrentPayment));
+                TotalPaymentAmount = Convert.ToString(Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) + Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData));
             }
             return TotalPaymentAmount;
 
@@ -165,23 +165,23 @@ namespace Carrington_Service.Calculation_Classes
         }
         public string GetUnappliedFundsPaidYearToDate(AccountsModel accountModel)
         {
-            UnappliedFundsPaidYearToDate= Convert.ToString((accountModel.MasterFileDataPart_1Model.UnappliedFundsCodeFirst != "L" ? Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.UnappliedFundsBalanceFirst) : 0) + (accountModel.MasterFileDataPart2Model.UnappliedFundsCode2 != "L" ? Convert.ToDecimal(accountModel.MasterFileDataPart2Model.UnappliedFundsBalance2) : 0) + (accountModel.MasterFileDataPart2Model.UnappliedFundsCode3 != "L" ? Convert.ToDecimal(accountModel.MasterFileDataPart2Model.UnappliedFundsBalance3) : 0) + (accountModel.MasterFileDataPart2Model.UnappliedFundsCode4 != "L" ? Convert.ToDecimal(accountModel.MasterFileDataPart2Model.UnappliedFundsBalance4) : 0) + (accountModel.MasterFileDataPart2Model.UnappliedFundsCode5 != "L" ? Convert.ToDecimal(accountModel.MasterFileDataPart2Model.UnappliedFundsBalance5) : 0));
+            UnappliedFundsPaidYearToDate= Convert.ToString((accountModel.MasterFileDataPart_1Model.Rssi_Unap_Fund_Cd != "L" ? Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Esc_Var_PackedData) : 0) + (accountModel.MasterFileDataPart2Model.UnappliedFundsCode2 != "L" ? Convert.ToDecimal(accountModel.MasterFileDataPart2Model.UnappliedFundsBalance2) : 0) + (accountModel.MasterFileDataPart2Model.UnappliedFundsCode3 != "L" ? Convert.ToDecimal(accountModel.MasterFileDataPart2Model.UnappliedFundsBalance3) : 0) + (accountModel.MasterFileDataPart2Model.UnappliedFundsCode4 != "L" ? Convert.ToDecimal(accountModel.MasterFileDataPart2Model.UnappliedFundsBalance4) : 0) + (accountModel.MasterFileDataPart2Model.UnappliedFundsCode5 != "L" ? Convert.ToDecimal(accountModel.MasterFileDataPart2Model.UnappliedFundsBalance5) : 0));
             return UnappliedFundsPaidYearToDate;
         }
         public string GetTotalPaidYearToDate(AccountsModel accountModel)
         {
-            TotalPaidYearToDate= Convert.ToString(Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.PrincipalPaidYTD) + Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.InterestPaidYearToDate) + Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.EscrowPaidYTD) + Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.FeesPaidYTD) + Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.LateChargesPaidYTD) +(accountModel.MasterFileDataPart_1Model.UnappliedFundsCodeFirst !="L" ? Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.UnappliedFundsBalanceFirst) : 0) + (accountModel.MasterFileDataPart2Model.UnappliedFundsCode2 != "L" ? Convert.ToDecimal(accountModel.MasterFileDataPart2Model.UnappliedFundsBalance2) : 0) + (accountModel.MasterFileDataPart2Model.UnappliedFundsCode3 != "L" ? Convert.ToDecimal(accountModel.MasterFileDataPart2Model.UnappliedFundsBalance3) : 0) + (accountModel.MasterFileDataPart2Model.UnappliedFundsCode4 != "L" ? Convert.ToDecimal(accountModel.MasterFileDataPart2Model.UnappliedFundsBalance4) : 0) + (accountModel.MasterFileDataPart2Model.UnappliedFundsCode5 != "L" ? Convert.ToDecimal(accountModel.MasterFileDataPart2Model.UnappliedFundsBalance5) : 0) + Convert.ToDecimal(accountModel.TransactionRecordModel.OptionalDeferredAmount));
+            TotalPaidYearToDate= Convert.ToString(Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.PrincipalPaidYTD) + Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Int_Pd_Ytd_PackedData) + Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.EscrowPaidYTD) + Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.FeesPaidYTD) + Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.LateChargesPaidYTD) +(accountModel.MasterFileDataPart_1Model.Rssi_Unap_Fund_Cd !="L" ? Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Esc_Var_PackedData) : 0) + (accountModel.MasterFileDataPart2Model.UnappliedFundsCode2 != "L" ? Convert.ToDecimal(accountModel.MasterFileDataPart2Model.UnappliedFundsBalance2) : 0) + (accountModel.MasterFileDataPart2Model.UnappliedFundsCode3 != "L" ? Convert.ToDecimal(accountModel.MasterFileDataPart2Model.UnappliedFundsBalance3) : 0) + (accountModel.MasterFileDataPart2Model.UnappliedFundsCode4 != "L" ? Convert.ToDecimal(accountModel.MasterFileDataPart2Model.UnappliedFundsBalance4) : 0) + (accountModel.MasterFileDataPart2Model.UnappliedFundsCode5 != "L" ? Convert.ToDecimal(accountModel.MasterFileDataPart2Model.UnappliedFundsBalance5) : 0) + Convert.ToDecimal(accountModel.TransactionRecordModel.OptionalDeferredAmount));
             return TotalPaidYearToDate;
         }
         public string GetTotalDue(AccountsModel accountModel)
         {
-            if (accountModel.MasterFileDataPart_1Model.PrincipalBalance == "0")
+            if (accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData == "0")
             {
                 TotalDue = Convert.ToString("0.00");
             }
             else
             {
-                TotalDue = Convert.ToString(Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.PastDueAmtTotalDue) + Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.CurrentPayment));
+                TotalDue = Convert.ToString(Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) + Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData));
             }
             return TotalDue;
             

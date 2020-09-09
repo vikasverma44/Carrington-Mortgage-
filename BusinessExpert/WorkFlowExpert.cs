@@ -59,7 +59,7 @@ namespace Carrington_Service.BusinessExpert
 
                 foreach (AccountsModel accountDetails in MortgageLoanBillingFile.AccountModelList)
                 {
-                    string accountToMatch = accountDetails.MasterFileDataPart_1Model.AccountNumber;
+                    string accountToMatch = accountDetails.MasterFileDataPart_1Model.Rssi_Acct_No;
                     bool isAccountMatched = false;
                     if (detData.Any(df => df.LoanNumber == accountToMatch))
                     {
@@ -556,247 +556,247 @@ namespace Carrington_Service.BusinessExpert
 
             acc.MasterFileDataPart_1Model = new MasterFileDataPart_1Model()
             {
-                RecordIdentifier = GetPositionData(currentByte, 1, 1),
-                InstitutionNumber = GetPositionData(currentByte, 2, 3),
+                Rssi_Rcd_Id = GetPositionData(currentByte, 1, 1),
+                Rssi_Inst = GetPositionData(currentByte, 2, 3),
 
-                AccountNumber = GetPositionData(currentByte, 5, 10),
-                SequenceNumber = GetPositionData(currentByte, 15, 5),
+                Rssi_Acct_No = GetPositionData(currentByte, 5, 10),
+                Rssi_Seq_No = GetPositionData(currentByte, 15, 5),
 
-                CreditInsurancePayment = GetPositionData(currentByte, 20, 4),
-                PrincipalBalance = GetPositionData(currentByte, 24, 6),
+                Rssi_Cr_Ins_Pymt_PackedData = GetPositionData(currentByte, 20, 4),
+                Rssi_Prin_Bal_PackedData = GetPositionData(currentByte, 24, 6),
 
-                EscrowBalance = GetPositionData(currentByte, 30, 6),
-                LoanType = GetPositionData(currentByte, 36, 1),
+                Rssi_Esc_Bal_PackedData = GetPositionData(currentByte, 30, 6),
+                Rssi_Ln_Type_PackedData = GetPositionData(currentByte, 36, 1),
 
-                LoanSubtype = GetPositionData(currentByte, 37, 1),
-                P_IPayment = GetPositionData(currentByte, 38, 6),
+                Rssi_Sub_Type_PackedData = GetPositionData(currentByte, 37, 1),
+                Rssi_P_I_Pymt_PackedData = GetPositionData(currentByte, 38, 6),
 
-                EscrowPayment = GetPositionData(currentByte, 44, 5),
-                InvestorOwnershipCode = GetPositionData(currentByte, 49, 1),
+                Rssi_Esc_Pymt_PackedData = GetPositionData(currentByte, 44, 5),
+                Rssi_Inv_Own_Cd_PackedData = GetPositionData(currentByte, 49, 1),
 
-                InvestorInformationOccurrences = GetPositionData(currentByte, 50, 280),
-                InvestorCode = GetPositionData(currentByte, 50, 3),
+                Rssi_Inv_All = GetPositionData(currentByte, 50, 280),
+                Rssi_Inv_Code_PackedData = GetPositionData(currentByte, 50, 3),
 
-                InvestorPrimaryName = GetPositionData(currentByte, 53, 35),
-                InvestorBlockCode = GetPositionData(currentByte, 88, 3),
+                Rssi_Inv_Name = GetPositionData(currentByte, 53, 35),
+                Rssi_Inv_Block_PackedData = GetPositionData(currentByte, 88, 3),
 
-                InvestorPercentOwned = GetPositionData(currentByte, 91, 4),
-                InvestorRate = GetPositionData(currentByte, 95, 4),
+                Rssi_Inv_Pc_Owned_PackedData = GetPositionData(currentByte, 91, 4),
+                Rssi_Inv_Rate_PackedData = GetPositionData(currentByte, 95, 4),
 
-                InvestorServiceFeeCode = GetPositionData(currentByte, 99, 1),
-                InvestorServiceFeeRate = GetPositionData(currentByte, 100, 4),
+                Rssi_Inv_Sv_Code_PackedData = GetPositionData(currentByte, 99, 1),
+                Rssi_Inv_Sv_Fee_PackedData = GetPositionData(currentByte, 100, 4),
 
-                InvestorAccountNumber = GetPositionData(currentByte, 104, 15),
-                Filler1 = GetPositionData(currentByte, 119, 1),
+                Rssi_Inv_Sv_Acct = GetPositionData(currentByte, 104, 15),
+                Rssi_Inv_Fill = GetPositionData(currentByte, 119, 1),
 
-                LastStatementDate = GetPositionData(currentByte, 330, 6),
-                PrecalculatedInterestAmount = GetPositionData(currentByte, 336, 6),
+                Rssi_Lip_La_Date = GetPositionData(currentByte, 330, 6),
+                Rssi_Pre_Int_Amt_PackedData = GetPositionData(currentByte, 336, 6),
 
-                UnappliedFundsBalanceFirst = GetPositionData(currentByte, 342, 6),
-                PropertyTypeCode = GetPositionData(currentByte, 348, 2),
+                Rssi_Esc_Var_PackedData = GetPositionData(currentByte, 342, 6),
+                Rssi_Prop_Cd_PackedData = GetPositionData(currentByte, 348, 2),
 
-                InterestPaidYearToDate = GetPositionData(currentByte, 350, 6),
-                PurposeCode = GetPositionData(currentByte, 356, 2),
+                Rssi_Int_Pd_Ytd_PackedData = GetPositionData(currentByte, 350, 6),
+                Rssi_Pur_Code_PackedData = GetPositionData(currentByte, 356, 2),
 
-                UnappliedFundsCodeFirst = GetPositionData(currentByte, 358, 1),
-                StateCode = GetPositionData(currentByte, 359, 2),
+                Rssi_Unap_Fund_Cd = GetPositionData(currentByte, 358, 1),
+                Rssi_State_PackedData = GetPositionData(currentByte, 359, 2),
 
-                DueDate = GetPositionData(currentByte, 361, 6),
-                PaymentsPastDue = GetPositionData(currentByte, 367, 7),
+                Rssi_Due_Date = GetPositionData(currentByte, 361, 6),
+                Rssi_Pymts_Due_Amt_PackedData = GetPositionData(currentByte, 367, 7),
 
-                PaymentDueCounter = GetPositionData(currentByte, 374, 2),
-                LateChargeAmount = GetPositionData(currentByte, 376, 4),
+                Rssi_Pymts_Due_Ctr_PackedData = GetPositionData(currentByte, 374, 2),
+                Rssi_Late_Chg_Amt_PackedData = GetPositionData(currentByte, 376, 4),
 
-                LateChargeDue = GetPositionData(currentByte, 380, 4),
-                PrepaidFlag = GetPositionData(currentByte, 384, 1),
+                Rssi_Late_Chg_Due_PackedData = GetPositionData(currentByte, 380, 4),
+                Rssi_Prepaid_Flag = GetPositionData(currentByte, 384, 1),
 
-                EscrowInterestYTD = GetPositionData(currentByte, 385, 4),
-                RunDate = GetPositionData(currentByte, 389, 6),
+                Rssi_Esc_Int_Ytd_PackedData = GetPositionData(currentByte, 385, 4),
+                Rssi_Run_Date = GetPositionData(currentByte, 389, 6),
 
-                PrimaryBorrowersName = GetPositionData(currentByte, 395, 35),
-                SecondaryBorrowersName = GetPositionData(currentByte, 430, 35),
+                Rssi_Primary_Name = GetPositionData(currentByte, 395, 35),
+                Rssi_Secondary_Name = GetPositionData(currentByte, 430, 35),
 
-                MailingAddress = GetPositionData(currentByte, 465, 35),
-                PropertyAddress = GetPositionData(currentByte, 570, 35),
+                Rssi_Mail_Adrs_1 = GetPositionData(currentByte, 465, 35),
+                Rssi_Appl_Adrs_1 = GetPositionData(currentByte, 570, 35),
 
-                DueDateGrace = GetPositionData(currentByte, 675, 6),
-                CurrentPayment = GetPositionData(currentByte, 681, 6),
+                Rssi_Bill_Pmt_Dte = GetPositionData(currentByte, 675, 6),
+                Rssi_Bill_Pmt_Amt_PackedData = GetPositionData(currentByte, 681, 6),
 
-                BranchNumber = GetPositionData(currentByte, 687, 3),
-                PastDueAmtTotalDue = GetPositionData(currentByte, 690, 7),
+                Rssi_Branch_PackedData = GetPositionData(currentByte, 687, 3),
+                Rssi_Bill_Total_Due_PackedData = GetPositionData(currentByte, 690, 7),
 
-                LateCharge = GetPositionData(currentByte, 697, 5),
-                PaymentCycleCode = GetPositionData(currentByte, 702, 1),
+                Rssi_Bill_Lc_PackedData = GetPositionData(currentByte, 697, 5),
+                Rssi_Pymt_Cyc_PackedData = GetPositionData(currentByte, 702, 1),
 
-                WarningCode = GetPositionData(currentByte, 703, 1),
-                DistributionMailCode = GetPositionData(currentByte, 704, 1),
+                Rssi_W_Flag_PackedData = GetPositionData(currentByte, 703, 1),
+                Rssi_Dist_Mail_Cd = GetPositionData(currentByte, 704, 1),
 
-                LastActivityDate = GetPositionData(currentByte, 705, 4),
-                AnnualPercentageRate = GetPositionData(currentByte, 709, 3),
+                Rssi_Last_Actvty_Dt_PackedData = GetPositionData(currentByte, 705, 4),
+                Rssi_Apr_Rate_PackedData = GetPositionData(currentByte, 709, 3),
 
-                NegativeAmortizationTaken = GetPositionData(currentByte, 712, 6),
-                GraceDays = GetPositionData(currentByte, 718, 2),
+                Rssi_Neg_Amort_Taken_PackedData = GetPositionData(currentByte, 712, 6),
+                Rssi_Grace_Days_PackedData = GetPositionData(currentByte, 718, 2),
 
-                TaxesPaidYearToDate = GetPositionData(currentByte, 720, 5),
-                InterestPaidToDate = GetPositionData(currentByte, 725, 6),
+                Rssi_Taxpd_Ytd_PackedData = GetPositionData(currentByte, 720, 5),
+                Rssi_Pd_To_Date = GetPositionData(currentByte, 725, 6),
 
-                CurrentDueDate = GetPositionData(currentByte, 731, 6),
-                UncollectedCreditInsurance = GetPositionData(currentByte, 737, 6),
+                Rssi_Cur_Due_Dte = GetPositionData(currentByte, 731, 6),
+                Rssi_Prn_Var_PackedData = GetPositionData(currentByte, 737, 6),
 
-                UncollectedInterest = GetPositionData(currentByte, 743, 6),
-                NoteRate = GetPositionData(currentByte, 749, 4),
+                Rssi_Uncol_Int_PackedData = GetPositionData(currentByte, 743, 6),
+                Rssi_Note_Rate_PackedData = GetPositionData(currentByte, 749, 4),
 
-                NegativeAmortizationAssessedYTD = GetPositionData(currentByte, 753, 5),
-                NegativeAmortizationPaidYTD = GetPositionData(currentByte, 758, 5),
+                Rssi_Neg_Am_Ass_Ytd_PackedData = GetPositionData(currentByte, 753, 5),
+                Rssi_Neg_Am_Paid_Ytd_PackedData = GetPositionData(currentByte, 758, 5),
 
-                NoteRateOverUnder = GetPositionData(currentByte, 763, 4),
-                OriginalRateOverUnder = GetPositionData(currentByte, 767, 4),
+                Rssi_Rate_Ov_PackedData = GetPositionData(currentByte, 763, 4),
+                Rssi_Org_Rate_Ov_PackedData = GetPositionData(currentByte, 767, 4),
 
-                BillableNumber = GetPositionData(currentByte, 771, 9),
-                BankTransitRoutingNumber = GetPositionData(currentByte, 780, 5),
+                Rssi_Bill_Number_PackedData = GetPositionData(currentByte, 771, 9),
+                Rssi_Bank_Trans_PackedData = GetPositionData(currentByte, 780, 5),
 
-                WithholdingInterestYTD = GetPositionData(currentByte, 785, 4),
-                NegativeAmortizationFlag = GetPositionData(currentByte, 789, 1),
+                Rssi_Withhold_Ytd_PackedData = GetPositionData(currentByte, 785, 4),
+                Rssi_Neg_Amort_Flag_PackedData = GetPositionData(currentByte, 789, 1),
 
-                InterestOnPymtDue = GetPositionData(currentByte, 790, 6),
-                SecondMortgageCode = GetPositionData(currentByte, 796, 1),
+                Rssi_Int_Due_PackedData = GetPositionData(currentByte, 790, 6),
+                Rssi_Sec_Mort_Cd_PackedData = GetPositionData(currentByte, 796, 1),
 
-                SecondaryMortgageAccountNumber = GetPositionData(currentByte, 797, 6),
-                SecondaryMortgagePaymentAmount = GetPositionData(currentByte, 803, 6),
+                Rssi_2Nd_Acct_No_PackedData = GetPositionData(currentByte, 797, 6),
+                Rssi_2Nd_Bill_Amt_PackedData = GetPositionData(currentByte, 803, 6),
 
-                FeeReceivable = GetPositionData(currentByte, 809, 4),
-                PastDuePayments = GetPositionData(currentByte, 813, 108),
+                Rssi_Fees_PackedData = GetPositionData(currentByte, 809, 4),
+                Rssi_Past_Payments = GetPositionData(currentByte, 813, 108),
 
-                PastPaymentDueDate = GetPositionData(currentByte, 813, 6),
-                PastRegularAmount = GetPositionData(currentByte, 819, 6),
+                Rssi_Past_Date = GetPositionData(currentByte, 813, 6),
+                Rssi_Reg_Amt_PackedData = GetPositionData(currentByte, 819, 6),
 
-                PastLateAmount = GetPositionData(currentByte, 825, 6),
-                BillingOption = GetPositionData(currentByte, 921, 1),
+                Rssi_Late_Amt_PackedData = GetPositionData(currentByte, 825, 6),
+                Rssi_Billing_Opt = GetPositionData(currentByte, 921, 1),
 
-                AlternativeOverUnder = GetPositionData(currentByte, 922, 4),
-                CurrentIndexDate = GetPositionData(currentByte, 926, 4),
+                Rssi_Alt_Ov_Un_PackedData = GetPositionData(currentByte, 922, 4),
+                Rssi_Indx_Dt_PackedData = GetPositionData(currentByte, 926, 4),
 
-                CurrentIndexRate = GetPositionData(currentByte, 930, 4),
-                EmployeeDiscountedMargin = GetPositionData(currentByte, 934, 4),
+                Rssi_Curr_Indx_PackedData = GetPositionData(currentByte, 930, 4),
+                Rssi_Mkt_Ov_Un_PackedData = GetPositionData(currentByte, 934, 4),
 
-                InterestOnlyPayment = GetPositionData(currentByte, 938, 6),
-                FullyAmortizePayment = GetPositionData(currentByte, 944, 6),
+                Rssi_Int_Pmt_PackedData = GetPositionData(currentByte, 938, 6),
+                Rssi_Amort_Pmt_PackedData = GetPositionData(currentByte, 944, 6),
 
-                BillMethod = GetPositionData(currentByte, 950, 1),
-                ACHAccountNumber = GetPositionData(currentByte, 951, 20),
+                Rssi_Bill_Method_PackedData = GetPositionData(currentByte, 950, 1),
+                Rssi_Ach_Acct_No = GetPositionData(currentByte, 951, 20),
 
-                AnalysisIndexRate = GetPositionData(currentByte, 971, 4),
-                InterestMethod = GetPositionData(currentByte, 975, 2),
+                Rssi_Anl_Indx_Rte_PackedData = GetPositionData(currentByte, 971, 4),
+                Rssi_Int_Meth_PackedData = GetPositionData(currentByte, 975, 2),
 
-                CrossSellFlag = GetPositionData(currentByte, 977, 1),
-                MultipleLoanFlag = GetPositionData(currentByte, 978, 1),
+                Rssi_Cross_Sell_Flag = GetPositionData(currentByte, 977, 1),
+                Rssi_Mult_Loan_Flag = GetPositionData(currentByte, 978, 1),
 
-                Filler = GetPositionData(currentByte, 979, 1),
-                PrimaryBorrowerSocialSecurityNumber = GetPositionData(currentByte, 980, 4),
+                Rssi_Primary_Social_Fill = GetPositionData(currentByte, 979, 1),
+                Rssi_Primary_Social_Sec = GetPositionData(currentByte, 980, 4),
 
-                RepaymentPlanNextDueDate = GetPositionData(currentByte, 984, 6),
-                AmortizedFeePayment = GetPositionData(currentByte, 990, 5),
+                Rssi_Repy_Plan_Due_Date_PackedData = GetPositionData(currentByte, 984, 6),
+                Rssi_Amort_Fee_Pymt_PackedData = GetPositionData(currentByte, 990, 5),
 
-                RepaymentPlanNextPaymentDueAmount = GetPositionData(currentByte, 995, 4),
-                PlanRemainingBalance = GetPositionData(currentByte, 999, 6),
+                Rssi_Repay_Amt_Due_PackedData = GetPositionData(currentByte, 995, 4),
+                Rssi_Repy_Remain_Bal_PackedData = GetPositionData(currentByte, 999, 6),
 
-                EmailBillIndicator = GetPositionData(currentByte, 1005, 1),
-                PrimaryBorrowerEmailAddress = GetPositionData(currentByte, 1006, 40),
+                Rssi_Email_Bill_Ind = GetPositionData(currentByte, 1005, 1),
+                Rssi_Primary_Email_Adr = GetPositionData(currentByte, 1006, 40),
 
-                PrimaryBorrowerFaxNumber = GetPositionData(currentByte, 1046, 6),
-                PrimaryBorrowerCellPhoneNumber = GetPositionData(currentByte, 1052, 6),
+                Rssi_Primary_Fax_Phone_PackedData = GetPositionData(currentByte, 1046, 6),
+                Rssi_Primary_Cell_Ph_PackedData = GetPositionData(currentByte, 1052, 6),
 
-                DirectMailIndicator = GetPositionData(currentByte, 1058, 2),
-                TelemarketIndicator = GetPositionData(currentByte, 1060, 2),
+                Rssi_Direct_Mail = GetPositionData(currentByte, 1058, 2),
+                Rssi_Telemarket = GetPositionData(currentByte, 1060, 2),
 
-                FeeReceivablePart2 = GetPositionData(currentByte, 1062, 5),
-                ServicingDate = GetPositionData(currentByte, 1067, 8),
+                Rssi_Fees_New_PackedData = GetPositionData(currentByte, 1062, 5),
+                Rssi_Serv_Date = GetPositionData(currentByte, 1067, 8),
 
-                FirstStatementonAcquiredLoanIndicator = GetPositionData(currentByte, 1075, 1),
-                MailCode = GetPositionData(currentByte, 1076, 1),
+                Rssi_First_Stmt_Ind = GetPositionData(currentByte, 1075, 1),
+                Rssi_Mail_Cd = GetPositionData(currentByte, 1076, 1),
 
-                SpecialStatementRequest = GetPositionData(currentByte, 1077, 1),
-                StopCode1 = GetPositionData(currentByte, 1078, 1),
+                Rssi_Spec_Stmt_Req = GetPositionData(currentByte, 1077, 1),
+                Rssi_Stop_1 = GetPositionData(currentByte, 1078, 1),
 
-                OptInFlag = GetPositionData(currentByte, 1079, 1),
-                OptOutFlag = GetPositionData(currentByte, 1080, 1),
+                Rssi_Opt_In_Flag = GetPositionData(currentByte, 1079, 1),
+                Rssi_Opt_Out_Flag = GetPositionData(currentByte, 1080, 1),
 
-                SecondaryBorrowerEmailIndicator = GetPositionData(currentByte, 1081, 1),
-                FirstPaymentDate = GetPositionData(currentByte, 1082, 8),
+                Rssi_Ml_Scnd_Email_Bill_Ind = GetPositionData(currentByte, 1081, 1),
+                Rssi_First_Due_Dt = GetPositionData(currentByte, 1082, 8),
 
-                MortgageLoanFlag = GetPositionData(currentByte, 1090, 1),
-                PurchasedFrom = GetPositionData(currentByte, 1091, 34),
+                Rssi_Mort_Ln_Flg = GetPositionData(currentByte, 1090, 1),
+                Rssi_Purch_From_Name = GetPositionData(currentByte, 1091, 34),
 
-                UncollectedNSFFees = GetPositionData(currentByte, 1125, 7),
-                UncollectedExtensionFees = GetPositionData(currentByte, 1132, 7),
+                Rssi_Uncoll_Nsf_Fees = GetPositionData(currentByte, 1125, 7),
+                Rssi_Uncoll_Ext_Fees = GetPositionData(currentByte, 1132, 7),
 
-                PrimaryBorrowersHomePhone = GetPositionData(currentByte, 1139, 11),
-                InvestorTaxID = GetPositionData(currentByte, 1150, 11),
+                Rssi_Prim_Home_Ph = GetPositionData(currentByte, 1139, 11),
+                Rssi_V_Tax_Id = GetPositionData(currentByte, 1150, 11),
 
-                ForceOrderCoverageFlagFire = GetPositionData(currentByte, 1161, 1),
-                ForceOrderCoverageFlagHomeowners = GetPositionData(currentByte, 1162, 1),
+                Rssi_F_O_Flag_1 = GetPositionData(currentByte, 1161, 1),
+                Rssi_F_O_Flag_2 = GetPositionData(currentByte, 1162, 1),
 
-                ForceOrderCoverageFlagFlood = GetPositionData(currentByte, 1163, 1),
-                ForceOrderCoverageFlagEarthquake = GetPositionData(currentByte, 1164, 1),
+                Rssi_F_O_Flag_3 = GetPositionData(currentByte, 1163, 1),
+                Rssi_F_O_Flag_4 = GetPositionData(currentByte, 1164, 1),
 
-                ForceOrderCoverageFlagWind = GetPositionData(currentByte, 1165, 1),
+                Rssi_F_O_Flag_5 = GetPositionData(currentByte, 1165, 1),
                 FillerPart3 = GetPositionData(currentByte, 1166, 5),
 
-                SecondaryBorrowersSocialSecurityNumber = GetPositionData(currentByte, 1171, 4),
-                ClosingDate = GetPositionData(currentByte, 1175, 8),
+                Rssi_Scnd_Social_Sec = GetPositionData(currentByte, 1171, 4),
+                Rssi_Origin_Date = GetPositionData(currentByte, 1175, 8),
 
-                InterestStartDateAccruals = GetPositionData(currentByte, 1183, 8),
-                TermofLoan = GetPositionData(currentByte, 1191, 3),
+                Rssi_Int_Start_Dt = GetPositionData(currentByte, 1183, 8),
+                Rssi_Term_Clos = GetPositionData(currentByte, 1191, 3),
 
-                FieldmanSolicitorCode = GetPositionData(currentByte, 1194, 5),
-                UpdatedTerm = GetPositionData(currentByte, 1199, 3),
+                Rssi_Couns_Cd = GetPositionData(currentByte, 1194, 5),
+                Rssi_Updated_Term = GetPositionData(currentByte, 1199, 3),
 
-                ModificationDate = GetPositionData(currentByte, 1202, 8),
-                AlternativeMortgageIndicator = GetPositionData(currentByte, 1210, 1),
+                Rssi_Modify_Date = GetPositionData(currentByte, 1202, 8),
+                Rssi_Var_Rate = GetPositionData(currentByte, 1210, 1),
 
-                NameChangeIndicator = GetPositionData(currentByte, 1211, 1),
-                AddressChangeIndicator = GetPositionData(currentByte, 1212, 1),
+                Rssi_Name_Chg_Ind = GetPositionData(currentByte, 1211, 1),
+                Rssi_Addr_Chg_Ind = GetPositionData(currentByte, 1212, 1),
 
-                BalloonDate = GetPositionData(currentByte, 1213, 8),
-                ThirtyDaysDelinquentCount = GetPositionData(currentByte, 1221, 3),
+                Rssi_Balloon_Date = GetPositionData(currentByte, 1213, 8),
+                Rssi_Times_Delq_30 = GetPositionData(currentByte, 1221, 3),
 
-                SixtyDaysDelinquentCount = GetPositionData(currentByte, 1224, 3),
-                NinetyDaysDelinquentCount = GetPositionData(currentByte, 1227, 3),
+                Rssi_Times_Delq_60 = GetPositionData(currentByte, 1224, 3),
+                Rssi_Times_Delq_90 = GetPositionData(currentByte, 1227, 3),
 
-                TotalNSFCounter = GetPositionData(currentByte, 1230, 3),
-                PrimaryBorrowersBirthdate = GetPositionData(currentByte, 1233, 8),
+                Rssi_Nsf_Tl_Ctr = GetPositionData(currentByte, 1230, 3),
+                Rssi_Dem1_Prim_Birthdt = GetPositionData(currentByte, 1233, 8),
 
-                CreditBureauScore1 = GetPositionData(currentByte, 1241, 15),
-                CreditBureauScore2 = GetPositionData(currentByte, 1256, 15),
+                Rssi_Dem1_Cb_Score_1 = GetPositionData(currentByte, 1241, 15),
+                Rssi_Dem1_Cb_Score_2 = GetPositionData(currentByte, 1256, 15),
 
-                CreditBureauScore3 = GetPositionData(currentByte, 1271, 15),
-                LastExtensionPostDate = GetPositionData(currentByte, 1286, 8),
+                Rssi_Dem1_Cb_Score_3 = GetPositionData(currentByte, 1271, 15),
+                Rssi_Ext_Latest_Post_Dt = GetPositionData(currentByte, 1286, 8),
 
-                TotalActivatedExtensions = GetPositionData(currentByte, 1294, 3),
-                PreNotificationFlag = GetPositionData(currentByte, 1297, 1),
+                Rssi_Ext_Tot_Act_Ext = GetPositionData(currentByte, 1294, 3),
+                Rssi_Pre_Note = GetPositionData(currentByte, 1297, 1),
 
-                PrimaryBorrowersWorkNumber = GetPositionData(currentByte, 1298, 11),
-                EOYGrossInterestPaid = GetPositionData(currentByte, 1309, 11),
+                Rssi_Prim_Work_Ph = GetPositionData(currentByte, 1298, 11),
+                Rssi_Eoyh_Int_Gross = GetPositionData(currentByte, 1309, 11),
 
-                ForeclosureAdvance = GetPositionData(currentByte, 1320, 7),
-                NetInvestment = GetPositionData(currentByte, 1327, 11),
+                Rssi_Foreclosure_Adv = GetPositionData(currentByte, 1320, 7),
+                Rssi_Net_Investment = GetPositionData(currentByte, 1327, 11),
 
-                DiscountQuotedOriginalDiscountAmount = GetPositionData(currentByte, 1338, 9),
-                TotalPaymentsForLifeOfLoan = GetPositionData(currentByte, 1347, 13),
+                Rssi_Orig_Dcnt_Amount = GetPositionData(currentByte, 1338, 9),
+                Rssi_Tot_Pymts_Lol = GetPositionData(currentByte, 1347, 13),
 
-                MonthlyInterestRate = GetPositionData(currentByte, 1360, 7),
-                NumberOfDaysDelinquent = GetPositionData(currentByte, 1367, 5),
+                Rssi_Monthly_Int_Rate = GetPositionData(currentByte, 1360, 7),
+                Rssi_Num_Days_Delq = GetPositionData(currentByte, 1367, 5),
 
-                LossMitAnalysisOptionDate = GetPositionData(currentByte, 1372, 8),
-                PriorAccountNumber = GetPositionData(currentByte, 1380, 20),
+                Rssi_Optn_Maint_Dt = GetPositionData(currentByte, 1372, 8),
+                Rssi_Prior_Acnt_Nbr = GetPositionData(currentByte, 1380, 20),
 
-                LastPaymentDate = GetPositionData(currentByte, 1400, 8),
-                PrimaryBorrowersMaritalStatus = GetPositionData(currentByte, 1408, 1),
+                Rssi_Last_Pymt_Dt = GetPositionData(currentByte, 1400, 8),
+                Rssi_Prim_Marital_Stat = GetPositionData(currentByte, 1408, 1),
 
-                CloseCode = GetPositionData(currentByte, 1409, 1),
-                REOIndicator = GetPositionData(currentByte, 1410, 1),
+                Rssi_Cls_Cd = GetPositionData(currentByte, 1409, 1),
+                Rssi_Reo_Ind = GetPositionData(currentByte, 1410, 1),
 
-                MaturityDate = GetPositionData(currentByte, 1411, 8),
+                Rssi_Mat_Date = GetPositionData(currentByte, 1411, 8),
                 PartialChargeOffTaken = GetPositionData(currentByte, 1419, 11),
 
                 LockoutCode = GetPositionData(currentByte, 1430, 1),
