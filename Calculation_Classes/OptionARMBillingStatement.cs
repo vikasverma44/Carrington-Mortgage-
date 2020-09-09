@@ -814,10 +814,10 @@ namespace Carrington_Service.Calculation_Classes
             //   Convert.ToInt64(model.TransactionRecordModel.TransactionAmountUnappliedFunds4) +//RSSI-UNAP-BAL-4
             //   Convert.ToInt64(model.TransactionRecordModel.TransactionAmountUnappliedFunds5));//RSSI-UNAP-BAL-5
             //
-            //  Convert.ToInt64(model.MasterFileDataPart2Model.UnappliedFundsCode5) //RSSI-UNAP-CD-5
-            //  Convert.ToInt64(model.MasterFileDataPart2Model.UnappliedFundsCode4) //RSSI-UNAP-CD-4
-            //  Convert.ToInt64(model.MasterFileDataPart2Model.UnappliedFundsCode3) //RSSI-UNAP-CD-3
-            //  Convert.ToInt64(model.MasterFileDataPart2Model.UnappliedFundsCode2) //RSSI-UNAP-CD-2
+            //  Convert.ToInt64(model.MasterFileDataPart2Model.Rssi_Unap_Cd_5) //RSSI-UNAP-CD-5
+            //  Convert.ToInt64(model.MasterFileDataPart2Model.Rssi_Unap_Cd_4) //RSSI-UNAP-CD-4
+            //  Convert.ToInt64(model.MasterFileDataPart2Model.Rssi_Unap_Cd_3) //RSSI-UNAP-CD-3
+            //  Convert.ToInt64(model.MasterFileDataPart2Model.Rssi_Unap_Cd_2) //RSSI-UNAP-CD-2
             //
             //      Convert.ToInt64(model.MasterFileDataPart_1Model.UnappliedFundsCodeFirst //RSSI-UNAP-FUND-CD
 
@@ -864,10 +864,10 @@ namespace Carrington_Service.Calculation_Classes
             // Convert.ToInt64(model.TransactionRecordModel.TransactionAmountUnappliedFunds4) +//RSSI-UNAP-BAL-4
             // Convert.ToInt64(model.TransactionRecordModel.TransactionAmountUnappliedFunds5));//RSSI-UNAP-BAL-5
 
-            // Convert.ToInt64(model.MasterFileDataPart2Model.UnappliedFundsCode5) //RSSI-UNAP-CD-5
-            // Convert.ToInt64(model.MasterFileDataPart2Model.UnappliedFundsCode4) //RSSI-UNAP-CD-4
-            // Convert.ToInt64(model.MasterFileDataPart2Model.UnappliedFundsCode3) //RSSI-UNAP-CD-3
-            // Convert.ToInt64(model.MasterFileDataPart2Model.UnappliedFundsCode2) //RSSI-UNAP-CD-2
+            // Convert.ToInt64(model.MasterFileDataPart2Model.Rssi_Unap_Cd_5) //RSSI-UNAP-CD-5
+            // Convert.ToInt64(model.MasterFileDataPart2Model.Rssi_Unap_Cd_4) //RSSI-UNAP-CD-4
+            // Convert.ToInt64(model.MasterFileDataPart2Model.Rssi_Unap_Cd_3) //RSSI-UNAP-CD-3
+            // Convert.ToInt64(model.MasterFileDataPart2Model.Rssi_Unap_Cd_2) //RSSI-UNAP-CD-2
 
             return TotalPaidYearToDate;
         }
