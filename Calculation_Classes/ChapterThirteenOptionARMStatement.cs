@@ -416,22 +416,22 @@ namespace Carrington_Service.Calculation_Classes
         public string GetPrincipalOption2(AccountsModel model)
         {
             if (Convert.ToInt64(model.MasterFileDataPart_1Model.PrincipalBalance) == 0)
-                PrincipalOption1 = "0.00";
+                PrincipalOption2 = "0.00";
 
             else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativePaymentAmount3) == 0)
-                PrincipalOption1 = "null";
+                PrincipalOption2 = "null";
 
             else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativePaymentAmount3) < Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativePaymentAmount1))
-                PrincipalOption1 = "null";
+                PrincipalOption2 = "null";
 
             else if (Convert.ToInt64(model.MasterFileDataPart_1Model.CurrentPayment) == 0)
-                PrincipalOption1 = "null";
+                PrincipalOption2 = "null";
 
             else if (Convert.ToDateTime(model.ActiveBankruptcyInformationRecordModel.PostPetitionPaymentDate) > Convert.ToDateTime(model.MasterFileDataPart_1Model.CurrentDueDate))
-                PrincipalOption1 = "null";
+                PrincipalOption2 = "null";
             else
             {
-                AmountDueOption1 = Convert.ToString(Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativeChangeAmount3)
+                PrincipalOption2 = Convert.ToString(Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativeChangeAmount3)
                                  - Convert.ToInt64(model.MasterFileDataPart_1Model.InterestOnPymtDue));
             }
             return PrincipalOption2;
