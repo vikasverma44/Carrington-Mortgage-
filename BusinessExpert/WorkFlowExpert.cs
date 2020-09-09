@@ -1646,7 +1646,7 @@ namespace Carrington_Service.BusinessExpert
                 Rssi_Fd_Assess_Amt = GetPositionData(currentByte, 60, 7),
                 Rssi_Fd_Assess_Date = GetPositionData(currentByte, 67, 7),
                 Rssi_Fd_Coll_Assess = GetPositionData(currentByte, 74, 9),
-                Rssi_Fd_Coll_Non_Assess = GetPositionData(currentByte, 83, 7),          
+                Rssi_Fd_Coll_Non_Assess = GetPositionData(currentByte, 83, 7),
                 Rssi_Fd_Waived = GetPositionData(currentByte, 90, 7),
                 Rssi_Fd_Curr_Fee_Bal = GetPositionData(currentByte, 97, 7),
                 Rssi_Fd_Coll_Date = GetPositionData(currentByte, 104, 7),
@@ -2259,25 +2259,25 @@ namespace Carrington_Service.BusinessExpert
             acc.TrailerRecordModel = new TrailerRecordModel()
             {
 
-                RecordIdentifier = GetPositionData(currentByte, 1, 1),
-                InstitutionNumber = GetPositionData(currentByte, 2, 3),
-                Filler1 = GetPositionData(currentByte, 5, 10),
-                SequenceNumber = GetPositionData(currentByte, 15, 5),
-                TotalNumberOfBRecords = GetPositionData(currentByte, 20, 1),
-                TotalNumberOfARecords = GetPositionData(currentByte, 21, 9),
-                TotalNumberOfRRecords = GetPositionData(currentByte, 30, 9),
-                TotalNumberOfERecords = GetPositionData(currentByte, 30, 15),
-                TotalNumberOfTRecords = GetPositionData(currentByte, 54, 15),
-                TotalNumberOfORecords = GetPositionData(currentByte, 69, 9),
-                TotalNumberOfFRecords = GetPositionData(currentByte, 78, 9),
-                TotalNumberOfURecords = GetPositionData(currentByte, 87, 9),
-                TotalNumberOf2Records = GetPositionData(currentByte, 96, 9),
-                TotalNumberOfPRecords = GetPositionData(currentByte, 105, 9),
-                TotalNumberOfLRecords = GetPositionData(currentByte, 114, 9),
-                TotalNumberOfSRecords = GetPositionData(currentByte, 123, 9),
-                TotalNumberOfFrRecords = GetPositionData(currentByte, 132, 9),
-                TotalNumberOfRecordsIncludingHeaderAndTrailerRecords = GetPositionData(currentByte, 141, 15),
-                TotalLoanCount = GetPositionData(currentByte, 156, 9),
+                Rssi_Rcd_Id = GetPositionData(currentByte, 1, 1),
+                Rssi_Inst = GetPositionData(currentByte, 2, 3),
+                Rssi_Acct_Np = GetPositionData(currentByte, 5, 10),
+                Rssi_Seq_No = GetPositionData(currentByte, 15, 5),
+                Rssi_Total_B_Records = GetPositionData(currentByte, 20, 1),
+                Rssi_Total_A_Records = GetPositionData(currentByte, 21, 9),
+                Rssi_Total_R_Records = GetPositionData(currentByte, 30, 9),
+                Rssi_Total_E_Records = GetPositionData(currentByte, 30, 15),
+                Rssi_Total_T_Records = GetPositionData(currentByte, 54, 15),
+                Rssi_Total_O_Records = GetPositionData(currentByte, 69, 9),
+                Rssi_Total_F_Records = GetPositionData(currentByte, 78, 9),
+                Rssi_Total_U_Records = GetPositionData(currentByte, 87, 9),
+                Rssi_Total_2_Records = GetPositionData(currentByte, 96, 9),
+                Rssi_Total_P_Records = GetPositionData(currentByte, 105, 9),
+                Rssi_Total_L_Records = GetPositionData(currentByte, 114, 9),
+                Rssi_Total_S_Records = GetPositionData(currentByte, 123, 9),
+                Rssi_Total_Fr_Records = GetPositionData(currentByte, 132, 9),
+                Rssi_Total_Records = GetPositionData(currentByte, 141, 15),
+                Rssi_Total_Loans = GetPositionData(currentByte, 156, 9),
 
             };
         }
@@ -2303,7 +2303,7 @@ namespace Carrington_Service.BusinessExpert
             //Logger.Trace("Starting Account records process...");
             // var line = new StringBuilder();
 
-            
+
             //foreach (var account in account)
             //{
             //    Logger.Trace("Creating NCP10 records for Account" + account.MasterFileDataPart_1Model.AccountNumber);
