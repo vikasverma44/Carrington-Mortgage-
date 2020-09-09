@@ -30,6 +30,11 @@ namespace Carrington_Service.BusinessExpert
         CmsBillInput CmsBillInput = new CmsBillInput();
         EConsentInput EConsentInput = new EConsentInput();
         AccountsModel accountsModel;
+        /// <summary>The NCP10 version.</summary>
+        private const string Ncp10Version = "03";
+
+        /// <summary>The delimiter.</summary>
+        private const string Delimiter = "|";
         public WorkFlowExpert(IConfigHelper configHelper, ILogger logger, IAgentApi apiAgent, IEmailService emailService)
         {
             ConfigHelper = configHelper;
@@ -443,13 +448,13 @@ namespace Carrington_Service.BusinessExpert
                 InstitutionAddress1 = GetPositionData(currentByte, 55, 35),
                 InstitutionAddress2 = GetPositionData(currentByte, 90, 35),
                 InstitutionCity = GetPositionData(currentByte, 125, 21),
-                InstitutionState = GetPositionData(currentByte, 146, 2),
+                InstitutionState = GetPositionData(currentByte, 146, 1),
                 InstitutionZip = GetPositionData(currentByte, 148, 10),
                 InstitutionPhone = GetPositionData(currentByte, 158, 10),
                 AlternativeCouponAddress1 = GetPositionData(currentByte, 168, 35),
                 AlternativeCouponAddress2 = GetPositionData(currentByte, 203, 35),
                 AlternativeCouponCity = GetPositionData(currentByte, 238, 21),
-                AlternativeCouponState = GetPositionData(currentByte, 259, 2),
+                AlternativeCouponState = GetPositionData(currentByte, 259, 1),
                 AlternativeCouponZip = GetPositionData(currentByte, 261, 10),
                 AlternativePhoneNumberDescription1 = GetPositionData(currentByte, 271, 20),
                 AlternativePhoneNumber1 = GetPositionData(currentByte, 291, 10),
@@ -487,7 +492,7 @@ namespace Carrington_Service.BusinessExpert
                 PLSSEntityBrandingName = GetPositionData(currentByte, 32, 35),
 
                 EntityBrandingAddressLine1 = GetPositionData(currentByte, 67, 35),
-                EntityBrandingAddressLine2 = GetPositionData(currentByte, 102, 35),
+                EntityBrandingAddressLine2 = GetPositionData(currentByte, 102, 21),
 
                 EntityBrandingCity = GetPositionData(currentByte, 137, 21),
                 EntityBrandingState = GetPositionData(currentByte, 158, 35),
@@ -2288,7 +2293,25 @@ namespace Carrington_Service.BusinessExpert
                 return "";
             }
         }
+        public void GenerateCRL30File()
+        {
+            //List<AccountsModel> account = new List<AccountsModel>();
+            //Logger.Trace("Creating NCP Header records...");
 
+
+            //Logger.Trace("Creating NCP Institution records...");
+            //Logger.Trace("Starting Account records process...");
+            // var line = new StringBuilder();
+
+            
+            //foreach (var account in account)
+            //{
+            //    Logger.Trace("Creating NCP10 records for Account" + account.MasterFileDataPart_1Model.AccountNumber);
+            //    //account.MasterFileDataPart_1Model.AccountNumber;
+            //    line.Append(Delimiter).Append(extractAccount.MailReturnAddress.Address.CityName);
+
+            //}
+        }
         #endregion
 
 

@@ -246,48 +246,218 @@ namespace Carrington_Service.Calculation_Classes
             }
         }
 
-        public string GetOverduePaymentsOption1()
+        public string GetOverduePaymentsOption1(AccountsModel model)
         {
+            if (Convert.ToInt64(model.MasterFileDataPart_1Model.PrincipalBalance) == 0)
+                AmountDueOption1 = "0.00";
+
+            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativePaymentAmount4) == 0)
+                AmountDueOption1 = "null";
+
+            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativePaymentAmount4) < Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativePaymentAmount1))
+                AmountDueOption1 = "null";
+
+            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.CurrentPayment) == 0)
+                AmountDueOption1 = "null";
+
+            else
+            {
+                //not found total fees paid
+                AmountDueOption1 = Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.PastDueAmtTotalDue)
+                                 - Convert.ToInt64(model.MasterFileDataPart_1Model.FeesAssessedSinceLastStatement) - Convert.ToInt64(model.MasterFileDataPart_1Model.LateChargesAccruedSinceLastStatement));
+            }
             return OverduePaymentsOption1;
         }
 
-        public string GetTotalFeesPaidOption1()
+        public string GetTotalFeesPaidOption1(AccountsModel model)
         {
+
+            // need to check
+            if (Convert.ToInt64(model.MasterFileDataPart_1Model.PrincipalBalance) == 0)
+                TotalFeesPaidOption1 = "0.00";
+
+            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativePaymentAmount4) == 0)
+                TotalFeesPaidOption1 = "null";
+
+            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativePaymentAmount4) < Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativePaymentAmount1))
+                TotalFeesPaidOption1 = "null";
+
+            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.CurrentPayment) == 0)
+                TotalFeesPaidOption1 = "null";
+
+           
+            else if ((Convert.ToInt64(model.MasterFileDataPart_1Model.FeeReceivable)
+                      + Convert.ToInt64(model.MasterFileDataPart_1Model.LateChargeDue)) <
+                       Convert.ToInt64(model.ActiveBankruptcyInformationRecordModel.PostPetitionFeesAndCharges))
+            {
+                TotalFeesPaidOption1 = Convert.ToString((Convert.ToInt64(model.MasterFileDataPart_1Model.FeeReceivable)
+                    + Convert.ToInt64(model.MasterFileDataPart_1Model.LateChargeDue)
+                    - Convert.ToInt64(model.ActiveBankruptcyInformationRecordModel.PostPetitionFeesAndCharges)));
+            }
+            else
+                TotalFeesPaidOption1 = "0.00";
 
             return TotalFeesPaidOption1;
         }
-        public string GetTotalAmountDueOption1()
-        { 
+        public string GetTotalAmountDueOption1(AccountsModel model)
+        {
+
+            if (Convert.ToInt64(model.MasterFileDataPart_1Model.PrincipalBalance) == 0)
+                TotalFeesPaidOption1 = "0.00";
+
+            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativePaymentAmount4) == 0)
+                TotalFeesPaidOption1 = "N/A";
+
+            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativePaymentAmount4) < Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativePaymentAmount1))
+                TotalFeesPaidOption1 = "N/A";
+
+            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.CurrentPayment) == 0)
+                TotalFeesPaidOption1 = "N/A";
+          
+            else
+                TotalAmountDueOption1 = Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.PastDueAmtTotalDue)
+                               + Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativePaymentAmount4));
+
             return TotalAmountDueOption1;
         }
-        public string GetPrincipalOption2()
+        public string GetPrincipalOption2(AccountsModel model)
         {
 
+            if (Convert.ToInt64(model.MasterFileDataPart_1Model.PrincipalBalance) == 0)
+                PrincipalOption2 = "0.00";
+
+            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativePaymentAmount3) == 0)
+                PrincipalOption2 = "null";
+
+            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativePaymentAmount3) < Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativePaymentAmount1))
+                PrincipalOption2 = "null";
+
+            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.CurrentPayment) == 0)
+                PrincipalOption2 = "null";
+
+          
+            else
+            {
+                PrincipalOption2 = Convert.ToString(Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativeChangeAmount3)
+                                 - Convert.ToInt64(model.MasterFileDataPart_1Model.InterestOnPymtDue));
+            }
             return PrincipalOption2;
         }
-        public string GetAssistanceAmountOption2()
+        public string GetAssistanceAmountOption2(AccountsModel model)
         {
 
+            if (Convert.ToInt64(model.MasterFileDataPart_1Model.PrecalculatedInterestAmount) == 0)
+                AssistanceAmountOption2 = "do not print the Assistance Amount line";
+
+            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.PrincipalBalance) == 0)
+                AssistanceAmountOption2 = "0.00";
+
+            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.CurrentPayment) == 0)
+                AssistanceAmountOption2 = "null";
+
+            else
+            {
+                AssistanceAmountOption2 =Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.PrecalculatedInterestAmount) * -1);
+            }
             return AssistanceAmountOption2;
         }
-        public string GetReplacementReserveOption2()
+        public string GetReplacementReserveOption2(AccountsModel model)
         {
 
+            if ((Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativePaymentAmount3)
+               - Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativeChangeAmount3)
+               - Convert.ToInt64(model.MasterFileDataPart_1Model.EscrowPayment)
+               + Convert.ToInt64(model.MasterFileDataPart_1Model.PrecalculatedInterestAmount) == 0))
+                ReplacementReserveOption2 = "do not print the Replacement Reserve line";
+
+            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.PrincipalBalance) == 0)
+                ReplacementReserveOption2 = "0.00";
+
+            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.CurrentPayment) == 0)
+                ReplacementReserveOption2 = "0.00";
+          
+            else
+            {
+                ReplacementReserveOption2 = Convert.ToString(Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativePaymentAmount3)
+                                            - Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativeChangeAmount3)
+                                            - Convert.ToInt64(model.MasterFileDataPart_1Model.EscrowPayment)
+                                            + Convert.ToInt64(model.MasterFileDataPart_1Model.PrecalculatedInterestAmount));
+
+            }
             return ReplacementReserveOption2;
         }
-        public string GetOverduePaymentsOption2()
+        public string GetOverduePaymentsOption2(AccountsModel model)
         {
+            //what is - Total Fees Paid
 
+            if (Convert.ToInt64(model.MasterFileDataPart_1Model.PrincipalBalance) == 0)
+                OverduePaymentsOption2 = "0.00";
+
+            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativePaymentAmount3) == 0)
+                OverduePaymentsOption2 = "null";
+
+            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativePaymentAmount3) < Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativePaymentAmount1))
+                OverduePaymentsOption2 = "null";
+
+            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.CurrentPayment) == 0)
+                OverduePaymentsOption2 = "null";
+
+           
+            else
+            {
+                OverduePaymentsOption2 = Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.PastDueAmtTotalDue)
+                                 - Convert.ToInt64(model.MasterFileDataPart_1Model.FeesAssessedSinceLastStatement) - Convert.ToInt64(model.MasterFileDataPart_1Model.LateChargesAccruedSinceLastStatement));
+            }
             return OverduePaymentsOption2;
         }
 
         public string GetTotalFeesPaidOption2(AccountsModel model)
         {
 
+            // need to check
+            if (Convert.ToInt64(model.MasterFileDataPart_1Model.PrincipalBalance) == 0)
+                TotalFeesPaidOption2 = "0.00";
+
+            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativePaymentAmount3) == 0)
+                TotalFeesPaidOption2 = "null";
+
+            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativePaymentAmount3) < Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativePaymentAmount1))
+                TotalFeesPaidOption2 = "null";
+
+            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.CurrentPayment) == 0)
+                TotalFeesPaidOption2 = "null";
+
+            else if ((Convert.ToInt64(model.MasterFileDataPart_1Model.FeeReceivable)
+                      + Convert.ToInt64(model.MasterFileDataPart_1Model.LateChargeDue)) <
+                       Convert.ToInt64(model.ActiveBankruptcyInformationRecordModel.PostPetitionFeesAndCharges))
+            {
+                TotalFeesPaidOption2 = Convert.ToString((Convert.ToInt64(model.MasterFileDataPart_1Model.FeeReceivable)
+                    + Convert.ToInt64(model.MasterFileDataPart_1Model.LateChargeDue)
+                    - Convert.ToInt64(model.ActiveBankruptcyInformationRecordModel.PostPetitionFeesAndCharges)));
+            }
+            else
+                TotalFeesPaidOption2 = "0.00";
+
             return TotalFeesPaidOption2;
         }
         public string GetTotalAmountDueOption2(AccountsModel model)
         {
+
+            if (Convert.ToInt64(model.MasterFileDataPart_1Model.PrincipalBalance) == 0)
+                TotalAmountDueOption2 = "0.00";
+
+            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativePaymentAmount3) == 0)
+                TotalAmountDueOption2 = "N/A";
+
+            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativePaymentAmount3) < Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativePaymentAmount1))
+                TotalAmountDueOption2 = "N/A";
+
+            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.CurrentPayment) == 0)
+                TotalAmountDueOption2 = "N/A";
+
+             else
+                TotalAmountDueOption2 = Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.PastDueAmtTotalDue)
+                               + Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativePaymentAmount3));
 
             return TotalAmountDueOption2;
         }
@@ -295,6 +465,23 @@ namespace Carrington_Service.Calculation_Classes
         public string GetPrincipalOption3(AccountsModel model)
         {
 
+            if (Convert.ToInt64(model.MasterFileDataPart_1Model.PrincipalBalance) == 0)
+                PrincipalOption3 = "0.00";
+
+            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativePaymentAmount2) == 0)
+                PrincipalOption3 = "N/A";
+
+            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativePaymentAmount2) < Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativePaymentAmount1))
+                PrincipalOption3 = "null";
+
+            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.CurrentPayment) == 0)
+                PrincipalOption3 = "null";
+          
+            else
+            {
+                PrincipalOption3 = Convert.ToString(Convert.ToInt64(model.BlendedRateInformationRecordModel.AlternativeChangeAmount2)
+                                 - Convert.ToInt64(model.MasterFileDataPart_1Model.InterestOnPymtDue));
+            }
             return PrincipalOption3;
         }
         public string GetAssistanceAmountOption3(AccountsModel model)
