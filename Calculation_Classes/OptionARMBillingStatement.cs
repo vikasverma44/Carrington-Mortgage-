@@ -105,15 +105,15 @@ namespace Carrington_Service.Calculation_Classes
         }
         public string GetDeferredBalance(AccountsModel model)
         {
-            if (Convert.ToInt64(model.MasterFileDataPart2Model.TotalDeferredItemsBalance) -
-                Convert.ToInt64(model.MasterFileDataPart2Model.DeferredDrmExpenseAdvancesUnpaidBalance) == 0)
+            if (Convert.ToInt64(model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal) -
+                Convert.ToInt64(model.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) == 0)
             {
                 return "N/A";
             }
             else
             {
-                return Convert.ToString(Convert.ToInt64(model.MasterFileDataPart2Model.TotalDeferredItemsBalance) -
-                    Convert.ToInt64(model.MasterFileDataPart2Model.DeferredDrmExpenseAdvancesUnpaidBalance));
+                return Convert.ToString(Convert.ToInt64(model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal) -
+                    Convert.ToInt64(model.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData));
             }
         }
         public string GetTotalFeesChargedOption4(AccountsModel model)
@@ -288,11 +288,11 @@ namespace Carrington_Service.Calculation_Classes
            
             else if ((Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
                       + Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)) <
-                       Convert.ToInt64(model.ActiveBankruptcyInformationRecordModel.PostPetitionFeesAndCharges))
+                       Convert.ToInt64(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData))
             {
                 TotalFeesPaidOption1 = Convert.ToString((Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
                     + Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)
-                    - Convert.ToInt64(model.ActiveBankruptcyInformationRecordModel.PostPetitionFeesAndCharges)));
+                    - Convert.ToInt64(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData)));
             }
             else
                 TotalFeesPaidOption1 = "0.00";
@@ -429,11 +429,11 @@ namespace Carrington_Service.Calculation_Classes
 
             else if ((Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
                       + Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)) <
-                       Convert.ToInt64(model.ActiveBankruptcyInformationRecordModel.PostPetitionFeesAndCharges))
+                       Convert.ToInt64(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData))
             {
                 TotalFeesPaidOption2 = Convert.ToString((Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
                     + Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)
-                    - Convert.ToInt64(model.ActiveBankruptcyInformationRecordModel.PostPetitionFeesAndCharges)));
+                    - Convert.ToInt64(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData)));
             }
             else
                 TotalFeesPaidOption2 = "0.00";
@@ -814,10 +814,10 @@ namespace Carrington_Service.Calculation_Classes
             //   Convert.ToInt64(model.TransactionRecordModel.TransactionAmountUnappliedFunds4) +//RSSI-UNAP-BAL-4
             //   Convert.ToInt64(model.TransactionRecordModel.TransactionAmountUnappliedFunds5));//RSSI-UNAP-BAL-5
             //
-            //  Convert.ToInt64(model.MasterFileDataPart2Model.UnappliedFundsCode5) //RSSI-UNAP-CD-5
-            //  Convert.ToInt64(model.MasterFileDataPart2Model.UnappliedFundsCode4) //RSSI-UNAP-CD-4
-            //  Convert.ToInt64(model.MasterFileDataPart2Model.UnappliedFundsCode3) //RSSI-UNAP-CD-3
-            //  Convert.ToInt64(model.MasterFileDataPart2Model.UnappliedFundsCode2) //RSSI-UNAP-CD-2
+            //  Convert.ToInt64(model.MasterFileDataPart2Model.Rssi_Unap_Cd_5) //RSSI-UNAP-CD-5
+            //  Convert.ToInt64(model.MasterFileDataPart2Model.Rssi_Unap_Cd_4) //RSSI-UNAP-CD-4
+            //  Convert.ToInt64(model.MasterFileDataPart2Model.Rssi_Unap_Cd_3) //RSSI-UNAP-CD-3
+            //  Convert.ToInt64(model.MasterFileDataPart2Model.Rssi_Unap_Cd_2) //RSSI-UNAP-CD-2
             //
             //      Convert.ToInt64(model.MasterFileDataPart_1Model.UnappliedFundsCodeFirst //RSSI-UNAP-FUND-CD
 
@@ -864,10 +864,10 @@ namespace Carrington_Service.Calculation_Classes
             // Convert.ToInt64(model.TransactionRecordModel.TransactionAmountUnappliedFunds4) +//RSSI-UNAP-BAL-4
             // Convert.ToInt64(model.TransactionRecordModel.TransactionAmountUnappliedFunds5));//RSSI-UNAP-BAL-5
 
-            // Convert.ToInt64(model.MasterFileDataPart2Model.UnappliedFundsCode5) //RSSI-UNAP-CD-5
-            // Convert.ToInt64(model.MasterFileDataPart2Model.UnappliedFundsCode4) //RSSI-UNAP-CD-4
-            // Convert.ToInt64(model.MasterFileDataPart2Model.UnappliedFundsCode3) //RSSI-UNAP-CD-3
-            // Convert.ToInt64(model.MasterFileDataPart2Model.UnappliedFundsCode2) //RSSI-UNAP-CD-2
+            // Convert.ToInt64(model.MasterFileDataPart2Model.Rssi_Unap_Cd_5) //RSSI-UNAP-CD-5
+            // Convert.ToInt64(model.MasterFileDataPart2Model.Rssi_Unap_Cd_4) //RSSI-UNAP-CD-4
+            // Convert.ToInt64(model.MasterFileDataPart2Model.Rssi_Unap_Cd_3) //RSSI-UNAP-CD-3
+            // Convert.ToInt64(model.MasterFileDataPart2Model.Rssi_Unap_Cd_2) //RSSI-UNAP-CD-2
 
             return TotalPaidYearToDate;
         }
