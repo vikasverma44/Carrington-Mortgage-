@@ -8,30 +8,30 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
 {
     public class ForeignInformationRecordModel
     {
-        public string RecordIdentifier { get; set; }
-        public string InstitutionNumber { get; set; }
-        public string AccountNumber { get; set; }
-        public string SequenceNumber { get; set; }
-        public string PrimaryBorrowerSIdNumber { get; set; }
-        public string PrimaryBorrowerPrefix { get; set; }
-        public string PrimaryBorrowerSuffix { get; set; }
-        public string Attention { get; set; }
-        public string MailCountry { get; set; }
-        public string MailZipCode { get; set; }
-        public string PrimaryBorrowerHomeTelephoneNumberCountryCode { get; set; }
-        public string PrimaryBorrowerHomeTelephoneNumber { get; set; }
-        public string PrimaryBorrowerWorkTelephoneNumberCountryCode { get; set; }
-        public string PrimaryBorrowerWorkTelephoneNumber { get; set; }
-        public string PrimaryBorrowerFaxTelephoneNumberCountryCode { get; set; }
-        public string PrimaryBorrowerFaxTelephoneNumber { get; set; }
-        public string PrimaryBorrowerCellTelephoneNumberCountryCode { get; set; }
-        public string PrimaryBorrowerCellTelephoneNumber { get; set; }
+        public string Rssi_Rcd_Id { get; set; }
+        public string Rssi_Inst { get; set; }
+        public string Rssi_Acct_No { get; set; }
+        public string Rssi_Seq_No { get; set; }
+        public string Rssi_Prim_Id_Number { get; set; }
+        public string Rssi_Primary_Borr_Prefix { get; set; }
+        public string Rssi_Primary_Borr_Suffix { get; set; }
+        public string Rssi_Attention { get; set; }
+        public string Rssi_Prim_Mail_Country { get; set; }
+        public string Rssi_Prim_Zip_Code { get; set; }
+        public string Rssi_Prim_Home_Ph_Co { get; set; }
+        public string Rssi_Prim_Home_Ph1 { get; set; }
+        public string Rssi_Prim_Work_Ph_Co { get; set; }
+        public string Rssi_Prim_Work_Ph1 { get; set; }
+        public string Rssi_Prim_Fax_Ph_Co { get; set; }
+        public string Rssi_Prim_Fax_Phone { get; set; }
+        public string Rssi_Prim_Cell_Ph_Co { get; set; }
+        public string Rssi_Prim_Cell_Ph { get; set; }
 
-        public string PropertyCountry { get; set; }
-        public string PropertyZipCode { get; set; }
-        public string AlternateMailCountry { get; set; }
-        public string AlternateZipCode { get; set; }
-        public string Filler { get; set; }
+        public string Rssi_Appl_Country { get; set; }
+        public string Rssi_Appl_Zip_Cd { get; set; }
+        public string Rssi_Altr_Cntry { get; set; }
+        public string Rssi_Altr_Zip_Cd { get; set; }
+        public string Filler_289_500 { get; set; }
 
 
     }

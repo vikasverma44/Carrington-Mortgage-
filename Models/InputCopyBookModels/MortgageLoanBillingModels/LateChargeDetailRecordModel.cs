@@ -8,27 +8,27 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
 {
    public class LateChargeDetailRecordModel
     {
-        public string RecordIdentifier { get; set; }
-        public string InstitutionNumber { get; set; }
-        public string AccountNumber { get; set; }
-        public string SequenceNumber { get; set; }
-        public string LateChargePaymentDueDate { get; set; }
-        public string LateChargeDueDate { get; set; }
-        public string LateChargeCalculatedDate { get; set; }
-        public string LateChargeAmountForLcDueDate { get; set; }
-        public string LateChargePaidDate { get; set; }
-        public string LateChargeFactor { get; set; }
-        public string LateChargeCalculationMethod { get; set; }
-        public string LateChargeWaiverDate { get; set; }
-        public string LateChargeWaiverCode { get; set; }
-        public string LateChargeReversalDate { get; set; }
-        public string LateChargePaidAmount { get; set; }
-        public string LateChargeWaiverAmount { get; set; }
-        public string LateChargeReversalAmount { get; set; }
-        public string LateChargeAdjDate { get; set; }
-        public string LateChargePaymentDueDate2 { get; set; }
+        public string Rssi_Rcd_Id { get; set; }
+        public string Rssi_Inst { get; set; }
+        public string Rssi_Acct_No { get; set; }
+        public string Rssi_Seq_No { get; set; }
+        public string Rssi_Lcd_Pymt_Due_Dt_PackedData { get; set; }
+        public string Rssi_Lcd_Due_Dt_PackedData { get; set; }
+        public string Rssi_Lcd_Calc_Dt_PackedData { get; set; }
+        public string Rssi_Lcd_Amt_For_Lc_Due_Dt_PackedData { get; set; }
+        public string Rssi_Lcd_Pd_Dt_PackedData { get; set; }
+        public string Rssi_Lcd_Factor_PackedData { get; set; }
+        public string Rssi_Lcd_Calc_Meth { get; set; }
+        public string Rssi_Lcd_Waiver_Dt_PackedData { get; set; }
+        public string Rssi_Lcd_Waiver_Cd { get; set; }
+        public string Rssi_Lcd_Rev_Dt_PackedData { get; set; }
+        public string Rssi_Lcd_Paid_Amt { get; set; }
+        public string Rssi_Lcd_Waive_Amt { get; set; }
+        public string Rssi_Lcd_Rev_Amt { get; set; }
+        public string Rssi_Lcd_Lc_Adj_Dt_PackedData { get; set; }
+        public string Rssi_Lcd_Lc_Adj_Amt_PackedData { get; set; }
 
-        public string LateChargeOsBalance { get; set; }
+        public string Rssi_Lcd_Rem_Bal_PackedData { get; set; }
         public string Filler { get; set; }
 
     }

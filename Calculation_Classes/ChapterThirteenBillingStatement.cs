@@ -32,17 +32,17 @@ namespace Carrington_Service.Calculation_Classes
         /* While Calculating Conditions must be applied and copybook fields must be verified twice*/
         public string GetPaymentAmount(AccountsModel accountsModel)
         {
-            if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.PrincipalBalance) == 0)
+            if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 PaymentAmount = "0.00";
 
 
             else if (Convert.ToDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) >
-                 Convert.ToDateTime(accountsModel.MasterFileDataPart_1Model.CurrentDueDate))
+                 Convert.ToDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
 
                 PaymentAmount = Convert.ToString(Convert.ToInt64(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Unpaid_PackedData) +
                     Convert.ToInt64(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData));
             else
-                PaymentAmount = Convert.ToString(Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.CurrentPayment) +
+                PaymentAmount = Convert.ToString(Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) +
                     Convert.ToInt64(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Unpaid_PackedData) +
                     Convert.ToInt64(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData));
 
@@ -73,20 +73,20 @@ namespace Carrington_Service.Calculation_Classes
         /// <returns></returns>
         public string GetPrincipal(AccountsModel accountsModel)
         {
-            if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.PrincipalBalance) == 0 ||
-                Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.CurrentPayment) == 0)
+            if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0 ||
+                Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
 
                 Principal = "0.00";
 
             else if (Convert.ToDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) >
-                    Convert.ToDateTime(accountsModel.MasterFileDataPart_1Model.CurrentDueDate))
+                    Convert.ToDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
 
                 Principal = "0.00";
 
             else
             {
-                Principal = Convert.ToString(Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.P_IPayment) -
-                    Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.InterestOnPymtDue));
+                Principal = Convert.ToString(Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_P_I_Pymt_PackedData) -
+                    Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData));
             }
 
             return Principal;
@@ -111,13 +111,13 @@ namespace Carrington_Service.Calculation_Classes
         /// <returns></returns>
         public decimal GetTotalFeesPaid(AccountsModel accountsModel)
         {
-            if ((Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.FeeReceivable) +
-                Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.LateChargeDue)) <
-                Convert.ToInt64(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData))
+            if ((Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_PackedData) +
+                Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)) <
+                Convert.ToInt64(accountsModel.ActiveBankruptcyInformationRecordModel.PostPetitionFeesAndCharges))
             {
 
-                TotalFeesPaid = Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.FeeReceivable) +
-                    Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.LateChargeDue) -
+                TotalFeesPaid = Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_PackedData) +
+                    Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData) -
                     Convert.ToInt64(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData);
             }
             else
@@ -135,17 +135,17 @@ namespace Carrington_Service.Calculation_Classes
         /// <returns></returns>
         public string GetTotalPaymentAmount(AccountsModel accountsModel)
         {
-            if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.PrincipalBalance) == 0)
+            if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 TotalPaymentAmount = "0.00";
 
 
             else if (Convert.ToDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) >
-                 Convert.ToDateTime(accountsModel.MasterFileDataPart_1Model.CurrentDueDate))
+                 Convert.ToDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
 
                 TotalPaymentAmount = Convert.ToString(Convert.ToInt64(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Unpaid_PackedData) +
                     Convert.ToInt64(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData));
             else
-                TotalPaymentAmount = Convert.ToString(Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.CurrentPayment) +
+                TotalPaymentAmount = Convert.ToString(Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) +
                     Convert.ToInt64(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Unpaid_PackedData) +
                     Convert.ToInt64(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData));
 
@@ -161,14 +161,14 @@ namespace Carrington_Service.Calculation_Classes
         /// <returns></returns>
         public string GetFeesAndChargesPaidLastMonth(AccountsModel accountsModel)
         {
-            if ((Convert.ToInt64(accountsModel.TransactionRecordModel.LogTransaction) == 5705 || Convert.ToInt64(accountsModel.TransactionRecordModel.LogTransaction) == 5707)
+            if ((Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5705 || Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5707)
               &&
-              (Convert.ToInt64(accountsModel.TransactionRecordModel.FeeDescription) == 67 || Convert.ToInt64(accountsModel.TransactionRecordModel.FeeDescription) == 198))
+              (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 67 || Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 198))
             {
 
                 FeesAndChargesPaidLastMonth =Convert.ToString(Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.FeesPaidSinceLastStatement) +
                 Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.LateChargesPaidSinceLastStatement) -
-                Convert.ToInt64(accountsModel.TransactionRecordModel.TransactionAmount));
+                Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
             }
 
             return FeesAndChargesPaidLastMonth;
@@ -181,22 +181,22 @@ namespace Carrington_Service.Calculation_Classes
         /// <returns></returns>
         public string GetUnappliedFundsPaidLastMonth(AccountsModel accountModel)
         {
-            UnappliedFundsPaidLastMonth = Convert.ToString(Convert.ToDecimal(accountModel.TransactionRecordModel.TransactionAmountPostedToUnappliedFunds) + Convert.ToDecimal(accountModel.TransactionRecordModel.TransactionAmountUnappliedFunds2) + Convert.ToDecimal(accountModel.TransactionRecordModel.TransactionAmountUnappliedFunds3) + Convert.ToDecimal(accountModel.TransactionRecordModel.TransactionAmountUnappliedFunds4) + Convert.ToDecimal(accountModel.TransactionRecordModel.TransactionAmountUnappliedFunds5));
+            UnappliedFundsPaidLastMonth = Convert.ToString(Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_04) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05));
             return UnappliedFundsPaidLastMonth;
         }
         public string GetTotalPaidLastMonth(AccountsModel accountsModel)
         {
 
-            if ((Convert.ToInt64(accountsModel.TransactionRecordModel.LogTransaction) == 5705 || Convert.ToInt64(accountsModel.TransactionRecordModel.LogTransaction) == 5707)
+            if ((Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5705 || Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5707)
             &&
-            (Convert.ToInt64(accountsModel.TransactionRecordModel.FeeDescription) == 67 || Convert.ToInt64(accountsModel.TransactionRecordModel.FeeDescription) == 198))
+            (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 67 || Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 198))
             {
                 //Need to know and Add PriorMoAmnt in this section
-                TotalPaidLastMonth = Convert.ToString(Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.TotalAmountPaidSinceLastStatement) - Convert.ToInt64(accountsModel.TransactionRecordModel.TransactionAmount));
+                TotalPaidLastMonth = Convert.ToString(Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.TotalAmountPaidSinceLastStatement) - Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
             }
             else
             {
-                TotalPaidLastMonth = Convert.ToString(Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.TotalAmountPaidSinceLastStatement) - Convert.ToInt64(accountsModel.TransactionRecordModel.TransactionAmount));
+                TotalPaidLastMonth = Convert.ToString(Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.TotalAmountPaidSinceLastStatement) - Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
             }
 
             return TotalPaidLastMonth;
@@ -204,8 +204,8 @@ namespace Carrington_Service.Calculation_Classes
         public string GetFeesAndChargesPaidYeartoDate(AccountsModel accountModel)
         {
 
-            Decimal total = Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.FeesPaidYTD) + Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.LateChargesPaidYTD) - Convert.ToDecimal(accountModel.TransactionRecordModel.TransactionAmount);
-            if ((Convert.ToInt32(accountModel.TransactionRecordModel.LogTransaction) == 5705 || Convert.ToInt32(accountModel.TransactionRecordModel.LogTransaction) == 5707) && (Convert.ToInt32(accountModel.TransactionRecordModel.FeeCode) == 67 || Convert.ToInt32(accountModel.TransactionRecordModel.FeeCode) == 198))
+            Decimal total = Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.FeesPaidYTD) + Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.LateChargesPaidYTD) - Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData);
+            if ((Convert.ToInt32(accountModel.TransactionRecordModel.Rssi_Log_Tran) == 5705 || Convert.ToInt32(accountModel.TransactionRecordModel.Rssi_Log_Tran) == 5707) && (Convert.ToInt32(accountModel.TransactionRecordModel.Rssi_Tr_Fee_Code) == 67 || Convert.ToInt32(accountModel.TransactionRecordModel.Rssi_Tr_Fee_Code) == 198))
             {
                 FeesAndChargesPaidYeartoDate = Convert.ToString(total);
             }
@@ -218,24 +218,29 @@ namespace Carrington_Service.Calculation_Classes
         public string GetUnappliedFundsPaidYearToDate(AccountsModel accountModel)
         {
 
-            UnappliedFundsPaidYearToDate = Convert.ToString((accountModel.MasterFileDataPart_1Model.UnappliedFundsCodeFirst != "L" ? Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.UnappliedFundsBalanceFirst) : 0) + (accountModel.MasterFileDataPart2Model.UnappliedFundsCode2 != "L" ? Convert.ToDecimal(accountModel.MasterFileDataPart2Model.UnappliedFundsBalance2) : 0) + (accountModel.MasterFileDataPart2Model.UnappliedFundsCode3 != "L" ? Convert.ToDecimal(accountModel.MasterFileDataPart2Model.UnappliedFundsBalance3) : 0) + (accountModel.MasterFileDataPart2Model.UnappliedFundsCode4 != "L" ? Convert.ToDecimal(accountModel.MasterFileDataPart2Model.UnappliedFundsBalance4) : 0) + (accountModel.MasterFileDataPart2Model.UnappliedFundsCode5 != "L" ? Convert.ToDecimal(accountModel.MasterFileDataPart2Model.UnappliedFundsBalance5) : 0));
+            UnappliedFundsPaidYearToDate = Convert.ToString((accountModel.MasterFileDataPart_1Model.Rssi_Unap_Fund_Cd != "L" ? 
+                Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Esc_Var_PackedData) : 0) + (accountModel.MasterFileDataPart2Model.UnappliedFundsCode2 != "L" ?
+                Convert.ToDecimal(accountModel.MasterFileDataPart2Model.UnappliedFundsBalance2) : 0) + (accountModel.MasterFileDataPart2Model.UnappliedFundsCode3 != "L" ? 
+                Convert.ToDecimal(accountModel.MasterFileDataPart2Model.UnappliedFundsBalance3) : 0) + (accountModel.MasterFileDataPart2Model.UnappliedFundsCode4 != "L" ?
+                Convert.ToDecimal(accountModel.MasterFileDataPart2Model.UnappliedFundsBalance4) : 0) + (accountModel.MasterFileDataPart2Model.UnappliedFundsCode5 != "L" ? 
+                Convert.ToDecimal(accountModel.MasterFileDataPart2Model.UnappliedFundsBalance5) : 0));
             return UnappliedFundsPaidYearToDate;
         }
         public string GetTotalPaidYearToDate(AccountsModel accountModel)
         {
 
-            TotalPaidYearToDate = Convert.ToString(Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.PrincipalPaidYTD) + Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.InterestPaidYearToDate) + Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.EscrowPaidYTD) + Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.FeesPaidYTD) + Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.LateChargesPaidYTD) + (accountModel.MasterFileDataPart_1Model.UnappliedFundsCodeFirst != "L" ? Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.UnappliedFundsBalanceFirst) : 0) + (accountModel.MasterFileDataPart2Model.UnappliedFundsCode2 != "L" ? Convert.ToDecimal(accountModel.MasterFileDataPart2Model.UnappliedFundsBalance2) : 0) + (accountModel.MasterFileDataPart2Model.UnappliedFundsCode3 != "L" ? Convert.ToDecimal(accountModel.MasterFileDataPart2Model.UnappliedFundsBalance3) : 0) + (accountModel.MasterFileDataPart2Model.UnappliedFundsCode4 != "L" ? Convert.ToDecimal(accountModel.MasterFileDataPart2Model.UnappliedFundsBalance4) : 0) + (accountModel.MasterFileDataPart2Model.UnappliedFundsCode5 != "L" ? Convert.ToDecimal(accountModel.MasterFileDataPart2Model.UnappliedFundsBalance5) : 0) + Convert.ToDecimal(accountModel.TransactionRecordModel.OptionalDeferredAmount));
+            TotalPaidYearToDate = Convert.ToString(Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.PrincipalPaidYTD) + Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Int_Pd_Ytd_PackedData) + Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.EscrowPaidYTD) + Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.FeesPaidYTD) + Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.LateChargesPaidYTD) + (accountModel.MasterFileDataPart_1Model.Rssi_Unap_Fund_Cd != "L" ? Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Esc_Var_PackedData) : 0) + (accountModel.MasterFileDataPart2Model.UnappliedFundsCode2 != "L" ? Convert.ToDecimal(accountModel.MasterFileDataPart2Model.UnappliedFundsBalance2) : 0) + (accountModel.MasterFileDataPart2Model.UnappliedFundsCode3 != "L" ? Convert.ToDecimal(accountModel.MasterFileDataPart2Model.UnappliedFundsBalance3) : 0) + (accountModel.MasterFileDataPart2Model.UnappliedFundsCode4 != "L" ? Convert.ToDecimal(accountModel.MasterFileDataPart2Model.UnappliedFundsBalance4) : 0) + (accountModel.MasterFileDataPart2Model.UnappliedFundsCode5 != "L" ? Convert.ToDecimal(accountModel.MasterFileDataPart2Model.UnappliedFundsBalance5) : 0) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Optins_PackedData));
             return TotalPaidYearToDate;
         }
 
         public string GetSuspense(AccountsModel accountModel)
         {
-            Suspense = Convert.ToString(Convert.ToDecimal(accountModel.TransactionRecordModel.TransactionAmountPostedToUnappliedFunds) + Convert.ToDecimal(accountModel.TransactionRecordModel.TransactionAmountUnappliedFunds2) + Convert.ToDecimal(accountModel.TransactionRecordModel.TransactionAmountUnappliedFunds3) + Convert.ToDecimal(accountModel.TransactionRecordModel.TransactionAmountUnappliedFunds4) + Convert.ToDecimal(accountModel.TransactionRecordModel.TransactionAmountUnappliedFunds5));
+            Suspense = Convert.ToString(Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_04) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05));
             return Suspense;
         }
         public string GetMiscellaneous(AccountsModel accountModel)
         {
-            Miscellaneous = Convert.ToString(Convert.ToDecimal(accountModel.TransactionRecordModel.TransactionAmountConstructionBalance) + Convert.ToDecimal(accountModel.TransactionRecordModel.TransactionAmountOptionalInsurance) + Convert.ToDecimal(accountModel.TransactionRecordModel.TransactionAmountToP_IShortage) + Convert.ToDecimal(accountModel.TransactionRecordModel.TransactionAmountPostedToDeferredPrincipal) + Convert.ToDecimal(accountModel.TransactionRecordModel.TranAmountToDeferredInterest) + Convert.ToDecimal(accountModel.TransactionRecordModel.TranAmountToDeferredLateCharge) + Convert.ToDecimal(accountModel.TransactionRecordModel.TranAmountToDeferredEscrowAdv) + Convert.ToDecimal(accountModel.TransactionRecordModel.TranAmountToDeferredPaidExpensesAdv) + Convert.ToDecimal(accountModel.TransactionRecordModel.TranAmountToDeferredUnpaidExpenseAdv) + Convert.ToDecimal(accountModel.TransactionRecordModel.TranAmountToDeferredAdminFees) + Convert.ToDecimal(accountModel.TransactionRecordModel.OptionalDeferredAmount));
+            Miscellaneous = Convert.ToString(Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Lip_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Cr_Ins_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Pi_Shrtg) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Prin_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Int_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Late_Chrg_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Esc_Adv_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Pd_Exp_Adv_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Unp_Exp_Adv_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Admin_Fees_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Optins_PackedData));
             return Miscellaneous;
         }
 
