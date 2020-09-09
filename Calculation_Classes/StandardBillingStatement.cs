@@ -42,7 +42,7 @@ namespace Carrington_Service.Calculation_Classes
             else
             {
                 AmountDue = Convert.ToString(Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.PastDueAmtTotalDue)
-                    + Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount4));
+                    + Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData));
             }
             return AmountDue;
         }
@@ -59,7 +59,7 @@ namespace Carrington_Service.Calculation_Classes
             }
             else
             {
-                Principal = Convert.ToString(Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativeChangeAmount4)
+                Principal = Convert.ToString(Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt4_PackedData)
                                  - Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.InterestOnPymtDue));
             }
             return Principal;
@@ -82,8 +82,8 @@ namespace Carrington_Service.Calculation_Classes
         }
         public string GetReplacementReserveAmount(AccountsModel accountsModel)
         {
-            if ((Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount4)
-               - Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativeChangeAmount4)
+            if ((Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData)
+               - Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt4_PackedData)
                - Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.EscrowPayment)
                + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.PrecalculatedInterestAmount) == 0))
                 ReplacementReserveAmount = "do not print the Replacement Reserve line";
@@ -95,8 +95,8 @@ namespace Carrington_Service.Calculation_Classes
                 ReplacementReserveAmount = "0.00";
             else
             {
-                ReplacementReserveAmount = Convert.ToString(Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativePaymentAmount4)
-                                            - Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.AlternativeChangeAmount4)
+                ReplacementReserveAmount = Convert.ToString(Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData)
+                                            - Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt4_PackedData)
                                             - Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.EscrowPayment)
                                             + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.PrecalculatedInterestAmount));
 
