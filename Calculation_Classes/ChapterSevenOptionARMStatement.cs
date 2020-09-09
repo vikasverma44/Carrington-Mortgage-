@@ -256,8 +256,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             else
             {
-                var Total = Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.FeesAssessedSinceLastStatement)
-                + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.LateChargesAccruedSinceLastStatement);
+                var Total = Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData)
+                + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData);
 
                 if (Convert.ToInt64(accountsModel.TransactionRecordModel.LogTransaction) == 5605
                     && (Convert.ToInt64(accountsModel.TransactionRecordModel.FeeDescription) == 67))
@@ -432,8 +432,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             else
             {
-                var Total = Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.FeesAssessedSinceLastStatement)
-                + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.LateChargesAccruedSinceLastStatement);
+                var Total = Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData)
+                + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData);
 
                 if (Convert.ToInt64(accountsModel.TransactionRecordModel.LogTransaction) == 5605
                     && (Convert.ToInt64(accountsModel.TransactionRecordModel.FeeDescription) == 67))
@@ -603,8 +603,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             else
             {
-                var Total = Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.FeesAssessedSinceLastStatement)
-                + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.LateChargesAccruedSinceLastStatement);
+                var Total = Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData)
+                + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData);
 
                 if (Convert.ToInt64(accountsModel.TransactionRecordModel.LogTransaction) == 5605
                     && (Convert.ToInt64(accountsModel.TransactionRecordModel.FeeDescription) == 67))
@@ -763,8 +763,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             else
             {
-                var Total = Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.FeesAssessedSinceLastStatement)
-                + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.LateChargesAccruedSinceLastStatement);
+                var Total = Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData)
+                + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData);
 
                 if (Convert.ToInt64(accountsModel.TransactionRecordModel.LogTransaction) == 5605
                     && (Convert.ToInt64(accountsModel.TransactionRecordModel.FeeDescription) == 67))
@@ -824,8 +824,8 @@ namespace Carrington_Service.Calculation_Classes
 
         public string GetFeesandChargesPaidLastMonth(AccountsModel accountsModel)//Issue
         {
-            var Total = Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.FeesPaidSinceLastStatement)
-               + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.LateChargesPaidSinceLastStatement);
+            var Total = Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Pd_Since_Lst_Stmt_PackedData)
+               + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Lc_Pd_Since_Lst_Stmt_PackedData);
 
             if ((Convert.ToInt64(accountsModel.TransactionRecordModel.LogTransaction) == 5705
                 || Convert.ToInt64(accountsModel.TransactionRecordModel.LogTransaction) == 5707)
@@ -853,8 +853,8 @@ namespace Carrington_Service.Calculation_Classes
         }
         public string GetFeesandChargesPaidYeartoDate(AccountsModel accountsModel)//Issue
         {
-            var Total = Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.FeesPaidYTD)
-                + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.LateChargesPaidYTD);
+            var Total = Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Paid_Ytd_PackedData)
+                + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Late_Chg_Paid_Ytd_PackedData);
 
             if ((Convert.ToInt64(accountsModel.TransactionRecordModel.LogTransaction) == 5705
                 || Convert.ToInt64(accountsModel.TransactionRecordModel.LogTransaction) == 5707)

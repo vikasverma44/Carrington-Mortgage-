@@ -178,8 +178,8 @@ namespace Carrington_Service.Calculation_Classes
               &&
               (Convert.ToInt64(model.TransactionRecordModel.FeeDescription) == 67 || Convert.ToInt64(model.TransactionRecordModel.FeeDescription) == 198))
             {
-                FeesandChargesPaidLastMonth = Convert.ToString((Convert.ToInt64(model.MasterFileDataPart_1Model.FeesPaidSinceLastStatement)
-                + Convert.ToInt64(model.MasterFileDataPart_1Model.LateChargesPaidSinceLastStatement))
+                FeesandChargesPaidLastMonth = Convert.ToString((Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_Pd_Since_Lst_Stmt_PackedData)
+                + Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Lc_Pd_Since_Lst_Stmt_PackedData))
                 - Convert.ToInt64(model.TransactionRecordModel.TransactionAmount));
             }
             return FeesandChargesPaidLastMonth;
@@ -210,8 +210,8 @@ namespace Carrington_Service.Calculation_Classes
               &&
               (Convert.ToInt64(model.TransactionRecordModel.FeeDescription) == 67 || Convert.ToInt64(model.TransactionRecordModel.FeeDescription) == 198))
             {
-                FeesandChargesPaidLastMonth = Convert.ToString((Convert.ToInt64(model.MasterFileDataPart_1Model.FeesPaidYTD)
-                + Convert.ToInt64(model.MasterFileDataPart_1Model.LateChargesPaidYTD))
+                FeesandChargesPaidLastMonth = Convert.ToString((Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_Paid_Ytd_PackedData)
+                + Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Paid_Ytd_PackedData))
                 - Convert.ToInt64(model.TransactionRecordModel.TransactionAmount));
             }
             return FeesandChargesPaidLastMonth;
@@ -244,11 +244,11 @@ namespace Carrington_Service.Calculation_Classes
                &&
                (Convert.ToInt64(model.TransactionRecordModel.FeeDescription) == 67 || Convert.ToInt64(model.TransactionRecordModel.FeeDescription) == 198))
             {
-                TotalPaidYearToDate = Convert.ToString((Convert.ToInt64(model.MasterFileDataPart_1Model.PrincipalPaidYTD)
+                TotalPaidYearToDate = Convert.ToString((Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Paid_Ytd_PackedData)
            + Convert.ToInt64(model.MasterFileDataPart_1Model.InterestPaidYearToDate)
-           + Convert.ToInt64(model.MasterFileDataPart_1Model.EscrowPaidYTD)
-           + Convert.ToInt64(model.MasterFileDataPart_1Model.FeesPaidYTD)
-           + Convert.ToInt64(model.MasterFileDataPart_1Model.LateChargesPaidYTD)
+           + Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Esc_Paid_Ytd_PackedData)
+           + Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_Paid_Ytd_PackedData)
+           + Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Paid_Ytd_PackedData)
            + model.MasterFileDataPart_1Model.UnappliedFundsCodeFirst != "L" ? Convert.ToInt64(model.MasterFileDataPart_1Model.UnappliedFundsBalanceFirst) : 0
            + model.MasterFileDataPart2Model.UnappliedFundsCode2 != "L" ? Convert.ToInt64(model.MasterFileDataPart2Model.UnappliedFundsBalance2) : 0
            + model.MasterFileDataPart2Model.UnappliedFundsCode3 != "L" ? Convert.ToInt64(model.MasterFileDataPart2Model.UnappliedFundsBalance3) : 0

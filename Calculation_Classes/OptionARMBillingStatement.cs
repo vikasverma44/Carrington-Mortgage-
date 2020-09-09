@@ -264,7 +264,7 @@ namespace Carrington_Service.Calculation_Classes
             {
                 //not found total fees paid
                 AmountDueOption1 = Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.PastDueAmtTotalDue)
-                                 - Convert.ToInt64(model.MasterFileDataPart_1Model.FeesAssessedSinceLastStatement) - Convert.ToInt64(model.MasterFileDataPart_1Model.LateChargesAccruedSinceLastStatement));
+                                 - Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData) - Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData));
             }
             return OverduePaymentsOption1;
         }
@@ -406,7 +406,7 @@ namespace Carrington_Service.Calculation_Classes
             else
             {
                 OverduePaymentsOption2 = Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.PastDueAmtTotalDue)
-                                 - Convert.ToInt64(model.MasterFileDataPart_1Model.FeesAssessedSinceLastStatement) - Convert.ToInt64(model.MasterFileDataPart_1Model.LateChargesAccruedSinceLastStatement));
+                                 - Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData) - Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData));
             }
             return OverduePaymentsOption2;
         }
@@ -549,8 +549,8 @@ namespace Carrington_Service.Calculation_Classes
             else
             {
                 return Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.PastDueAmtTotalDue) -
-                                        Convert.ToInt64(model.MasterFileDataPart_1Model.FeesPaidSinceLastStatement) -
-                                        Convert.ToInt64(model.MasterFileDataPart_1Model.LateChargesAccruedSinceLastStatement) -
+                                        Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_Pd_Since_Lst_Stmt_PackedData) -
+                                        Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData) -
                                         Convert.ToInt64(GetTotalFeesPaidOption3(model)));
             }
         }
@@ -692,8 +692,8 @@ namespace Carrington_Service.Calculation_Classes
             {
                 return 
                 Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.PastDueAmtTotalDue) -
-                    Convert.ToInt64(model.MasterFileDataPart_1Model.FeesAssessedSinceLastStatement) -
-                    Convert.ToInt64(model.MasterFileDataPart_1Model.LateChargesAccruedSinceLastStatement) -
+                    Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData) -
+                    Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData) -
                  Convert.ToInt64(GetTotalFeesPaidOption3(model))); 
             }
 
@@ -701,8 +701,8 @@ namespace Carrington_Service.Calculation_Classes
 
         public string GetTotalFeesPaidOption4(AccountsModel model)
         {
-            var TotalFeeCharged = Convert.ToInt64(model.MasterFileDataPart_1Model.FeesAssessedSinceLastStatement)
-                + Convert.ToInt64(model.MasterFileDataPart_1Model.LateChargesAccruedSinceLastStatement);
+            var TotalFeeCharged = Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData)
+                + Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData);
 
             if (Convert.ToInt64(model.MasterFileDataPart_1Model.PrincipalBalance) == 0)
             {
@@ -751,8 +751,8 @@ namespace Carrington_Service.Calculation_Classes
 
         public string GetFeesandChargesPaidYeartoDate(AccountsModel model)
         {
-            return Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.FeesPaidYTD) +
-                                    Convert.ToInt64(model.MasterFileDataPart_1Model.LateChargesPaidYTD));
+            return Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_Paid_Ytd_PackedData) +
+                                    Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Paid_Ytd_PackedData));
         }
         public string GetUnappliedFundsPaidYearToDate(AccountsModel model)
         {
@@ -791,8 +791,8 @@ namespace Carrington_Service.Calculation_Classes
         public string GetFeesAndChargesPaidLastMonth(AccountsModel model)
         {
 
-            return Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.FeesPaidSinceLastStatement) +
-              Convert.ToInt64(model.MasterFileDataPart_1Model.LateChargesPaidSinceLastStatement));
+            return Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_Pd_Since_Lst_Stmt_PackedData) +
+              Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Lc_Pd_Since_Lst_Stmt_PackedData));
         }
         public string GetUnappliedFunds(AccountsModel model)
         {
@@ -826,8 +826,8 @@ namespace Carrington_Service.Calculation_Classes
         public string GetPastDueBalance(AccountsModel model)
         {
             return Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.PastDueAmtTotalDue) -
-              Convert.ToInt64(model.MasterFileDataPart_1Model.FeesAssessedSinceLastStatement) -
-              Convert.ToInt64(model.MasterFileDataPart_1Model.LateChargesAccruedSinceLastStatement));
+              Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData) -
+              Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData));
         }
         public string GetTotalPaidYearToDate(AccountsModel model)
         {
@@ -950,8 +950,8 @@ namespace Carrington_Service.Calculation_Classes
             else
             {
                 return Convert.ToString(
-                        Convert.ToInt64(model.MasterFileDataPart_1Model.FeesPaidSinceLastStatement) +
-                        Convert.ToInt64(model.MasterFileDataPart_1Model.LateChargesAccruedSinceLastStatement) -
+                        Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_Pd_Since_Lst_Stmt_PackedData) +
+                        Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData) -
                          Convert.ToInt64(model.TransactionRecordModel.TransactionAmount));
                          // WHERE)
             }
