@@ -46,13 +46,13 @@ namespace Carrington_Service.Calculation_Classes
         }
         public string GetDeferredBalance(AccountsModel accountModel)
         {
-            if ((Convert.ToInt32(accountModel.MasterFileDataPart2Model.TotalDeferredItemsBalance) - Convert.ToInt32(accountModel.MasterFileDataPart2Model.DeferredDrmExpenseAdvancesUnpaidBalance)) == 0)
+            if ((Convert.ToInt32(accountModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal) - Convert.ToInt32(accountModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData)) == 0)
             {
                 DeferredBalance = "N/A";
             }
             else
             {
-                DeferredBalance = Convert.ToString(Convert.ToInt32(accountModel.MasterFileDataPart2Model.TotalDeferredItemsBalance) - Convert.ToInt32(accountModel.MasterFileDataPart2Model.DeferredDrmExpenseAdvancesUnpaidBalance));
+                DeferredBalance = Convert.ToString(Convert.ToInt32(accountModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal) - Convert.ToInt32(accountModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData));
             }
             return DeferredBalance;
         }

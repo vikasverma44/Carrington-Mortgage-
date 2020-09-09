@@ -105,15 +105,15 @@ namespace Carrington_Service.Calculation_Classes
         }
         public string GetDeferredBalance(AccountsModel model)
         {
-            if (Convert.ToInt64(model.MasterFileDataPart2Model.TotalDeferredItemsBalance) -
-                Convert.ToInt64(model.MasterFileDataPart2Model.DeferredDrmExpenseAdvancesUnpaidBalance) == 0)
+            if (Convert.ToInt64(model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal) -
+                Convert.ToInt64(model.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) == 0)
             {
                 return "N/A";
             }
             else
             {
-                return Convert.ToString(Convert.ToInt64(model.MasterFileDataPart2Model.TotalDeferredItemsBalance) -
-                    Convert.ToInt64(model.MasterFileDataPart2Model.DeferredDrmExpenseAdvancesUnpaidBalance));
+                return Convert.ToString(Convert.ToInt64(model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal) -
+                    Convert.ToInt64(model.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData));
             }
         }
         public string GetTotalFeesChargedOption4(AccountsModel model)
