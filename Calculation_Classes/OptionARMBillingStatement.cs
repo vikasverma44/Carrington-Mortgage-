@@ -760,26 +760,26 @@ namespace Carrington_Service.Calculation_Classes
         }
         public string GeSuspense(AccountsModel model)
         {
-            return Convert.ToString(Convert.ToInt64(model.TransactionRecordModel.TransactionAmountPostedToUnappliedFunds) +
-                  Convert.ToInt64(model.TransactionRecordModel.TransactionAmountUnappliedFunds2) +
-                  Convert.ToInt64(model.TransactionRecordModel.TransactionAmountUnappliedFunds3) +
-                  Convert.ToInt64(model.TransactionRecordModel.TransactionAmountUnappliedFunds4) +
-                  Convert.ToInt64(model.TransactionRecordModel.TransactionAmountUnappliedFunds5));
+            return Convert.ToString(Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData) +
+                  Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2) +
+                  Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3) +
+                  Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_04) +
+                  Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05));
         }
 
         public string GetMiscellaneous(AccountsModel model)
         {
-            return Convert.ToString(Convert.ToInt64(model.TransactionRecordModel.TransactionAmountConstructionBalance) +
-               Convert.ToInt64(model.TransactionRecordModel.TransactionAmountOptionalInsurance) +
-               Convert.ToInt64(model.TransactionRecordModel.TransactionAmountToP_IShortage) +
-               Convert.ToInt64(model.TransactionRecordModel.TransactionAmountPostedToDeferredPrincipal) +
-               Convert.ToInt64(model.TransactionRecordModel.TranAmountToDeferredInterest) +
-               Convert.ToInt64(model.TransactionRecordModel.TranAmountToDeferredLateCharge) +
-               Convert.ToInt64(model.TransactionRecordModel.TranAmountToDeferredEscrowAdv) +
-               Convert.ToInt64(model.TransactionRecordModel.TranAmountToDeferredPaidExpensesAdv) +
-               Convert.ToInt64(model.TransactionRecordModel.TranAmountToDeferredUnpaidExpenseAdv) +
-               Convert.ToInt64(model.TransactionRecordModel.TranAmountToDeferredAdminFees) +
-               Convert.ToInt64(model.TransactionRecordModel.OptionalDeferredAmount));
+            return Convert.ToString(Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_To_Lip_PackedData) +
+               Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_To_Cr_Ins_PackedData) +
+               Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_To_Pi_Shrtg) +
+               Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Prin_PackedData) +
+               Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Int_PackedData) +
+               Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Late_Chrg_PackedData) +
+               Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Esc_Adv_PackedData) +
+               Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Pd_Exp_Adv_PackedData) +
+               Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Unp_Exp_Adv_PackedData) +
+               Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Admin_Fees_PackedData) +
+               Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Optins_PackedData));
         }
         public string GetTotalDue(AccountsModel model)
         {
@@ -952,7 +952,7 @@ namespace Carrington_Service.Calculation_Classes
                 return Convert.ToString(
                         Convert.ToInt64(model.MasterFileDataPart_1Model.FeesPaidSinceLastStatement) +
                         Convert.ToInt64(model.MasterFileDataPart_1Model.LateChargesAccruedSinceLastStatement) -
-                         Convert.ToInt64(model.TransactionRecordModel.TransactionAmount));
+                         Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
                          // WHERE)
             }
 
