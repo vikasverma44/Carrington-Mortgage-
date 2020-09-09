@@ -113,7 +113,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             if ((Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_PackedData) +
                 Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)) <
-                Convert.ToInt64(accountsModel.ActiveBankruptcyInformationRecordModel.PostPetitionFeesAndCharges))
+                Convert.ToInt64(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData))
             {
 
                 TotalFeesPaid = Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_PackedData) +
