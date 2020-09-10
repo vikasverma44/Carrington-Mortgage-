@@ -465,7 +465,8 @@ namespace Carrington_Service.Calculation_Classes
         {
             String paymentReceivedAfter = string.Empty;
 
-            //if (RSSI_BILL_PMT_AMT == 0) { paymentReceivedAfter = "suppress Late Charge message"; }
+            if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0) { paymentReceivedAfter = "suppress Late Charge message"; }
+
 
             return paymentReceivedAfter;
         }
@@ -473,8 +474,8 @@ namespace Carrington_Service.Calculation_Classes
         public string LateFee(AccountsModel accountsModel)
         {
             String lateFee = string.Empty;
-
-            //if (RSSI_BILL_PMT_AMT == 0) { lateFee = "suppress Late Charge message"; }
+            if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0) { lateFee = "suppress Late Charge message"; }
+             
 
             return lateFee;
         }
@@ -484,10 +485,11 @@ namespace Carrington_Service.Calculation_Classes
 
             String autodraftMessage = string.Empty;
 
-            //if (RSSI_TOT_DRAFT_AMT > 0 && RSSI_PRIN_BAL > 0)
-            //{
-            //    autodraftMessage = "then print Autodraft message.";
-            //}
+            if (Convert.ToInt64(accountsModel.MasterFileDataPart2Model.Rssi_Tot_Draft_Amt_PackedData) > 0 &&
+              Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) > 0)
+            {
+                autodraftMessage = "then print Autodraft message.";
+            }
 
             return autodraftMessage;
         }
@@ -541,10 +543,10 @@ namespace Carrington_Service.Calculation_Classes
 
             String chargeOffNoticeDelinquencyNoticeRefinanceMessage = string.Empty;
 
-            //if (RSSI_CHRG_OFF_DT > 0) { chargeOffNoticeDelinquencyNoticeRefinanceMessage="print the Charge Off Notice"; }
-            //else if (masterFileDataPart_1Model.Rssi_Num_Days_Delq >= 30 && RSSI_PRIN_BAL > 0)
-            //{ chargeOffNoticeDelinquencyNoticeRefinanceMessage="You are late on your mortgage payments.Failure to bring your loan current may result in fees and foreclosure - the loss of your home. See additional comments related to the Delinquency Box on page 2."; }
-            //else if (masterFileDataPart_1Model.Rssi_Num_Days_Delq < 30 && RSSI_PRIN_BAL > 0) { chargeOffNoticeDelinquencyNoticeRefinanceMessage= "the Refinance Message"; }
+            if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Chrg_Off_Dt_PackedData) > 0) { chargeOffNoticeDelinquencyNoticeRefinanceMessage = "print the Charge Off Notice"; }
+            else if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Num_Days_Delq) >= 30 && Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) > 0)
+            { chargeOffNoticeDelinquencyNoticeRefinanceMessage = "You are late on your mortgage payments.Failure to bring your loan current may result in fees and foreclosure - the loss of your home. See additional comments related to the Delinquency Box on page 2."; }
+            else if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Num_Days_Delq) < 30 && Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) > 0) { chargeOffNoticeDelinquencyNoticeRefinanceMessage = "the Refinance Message"; }
 
 
             return chargeOffNoticeDelinquencyNoticeRefinanceMessage;
@@ -556,7 +558,11 @@ namespace Carrington_Service.Calculation_Classes
 
             String interest = string.Empty;
 
-            //if (RSSI_PRIN_BAL == 0 || RSSI_BILL_PMT_AMT == 0) { interest= "0.00"; }
+            if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0 ||
+              Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+            {
+                interest = "0.00";
+            }
 
             return interest;
         }
@@ -566,7 +572,11 @@ namespace Carrington_Service.Calculation_Classes
 
             String escrowTaxesInsurance = string.Empty;
 
-            //if (RSSI_PRIN_BAL == 0 || RSSI_BILL_PMT_AMT == 0) { escrowTaxesInsurance= "0.00"; }
+            if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0 ||
+               Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+            {
+                escrowTaxesInsurance = "0.00";
+            }
 
             return escrowTaxesInsurance;
         }
@@ -575,8 +585,10 @@ namespace Carrington_Service.Calculation_Classes
         {
 
             String regularMonthlyPayment = string.Empty;
-
-            //if (RSSI_PRIN_BAL == 0) { regularMonthlyPayment= "0.00"; }
+            if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+            {
+                regularMonthlyPayment = "0.00";
+            }
 
             return regularMonthlyPayment;
         }
@@ -586,8 +598,14 @@ namespace Carrington_Service.Calculation_Classes
 
             String buydownBalance = string.Empty;
 
-            //if (RSSI_USR_303 <= 0) { buydownBalance = "N/A"; } else { buydownBalance="RSSI - USR - 303"; }
-
+            if (Convert.ToInt64(accountsModel.UserFieldRecordModel.Rssi_Usr_303_PackedData) < 0)
+            {
+                buydownBalance = "N/A";
+            }
+            else
+            {
+                buydownBalance = "RSSI - USR - 303";
+            }
             return buydownBalance;
         }
 
@@ -596,7 +614,8 @@ namespace Carrington_Service.Calculation_Classes
 
             String partialClaim = string.Empty;
 
-            if (int.Parse(accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) == 0) { partialClaim = "N/A"; } else { partialClaim = "RSSI - DEF - UNPD - EXP - ADV - BAL"; }
+            if (Convert.ToInt64(accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) == 0) { partialClaim = "N/A"; } else { partialClaim = "RSSI - DEF - UNPD - EXP - ADV - BAL"; }
+
 
 
             return partialClaim;
@@ -607,8 +626,15 @@ namespace Carrington_Service.Calculation_Classes
 
             String negativeAmortization = string.Empty;
 
-            //if (RSSI_NEG_AMORT_TAKEN == 0) { negativeAmortization="N/A"; } else { negativeAmortization= "RSSI - NEG - AMORT - TAKEN"; }
 
+            if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Neg_Amort_Taken_PackedData) == 0)
+            {
+                negativeAmortization = "N/A";
+            }
+            else
+            {
+                negativeAmortization = "RSSI - NEG - AMORT - TAKEN";
+            }
             return negativeAmortization;
         }
 
@@ -647,8 +673,10 @@ namespace Carrington_Service.Calculation_Classes
 
             String receivedAfter = string.Empty;
 
-            //if (RSSI_BILL_PMT_AMT == 0) { receivedAfter = "suppress Late Charge message."; }
-
+            if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+            {
+                receivedAfter = "suppress Late Charge message.";
+            }
             return receivedAfter;
         }
 
@@ -656,7 +684,12 @@ namespace Carrington_Service.Calculation_Classes
         {
 
             String lateCharge = string.Empty;
+            if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+            {
+                lateCharge = "suppress Late Charge message.";
+            }
 
+            //DOUBT
             //if (RSSI_BILL_PMT_AMT == 0) { receivedAfter = "suppress Late Charge message."; }
 
             return lateCharge;
@@ -885,7 +918,11 @@ namespace Carrington_Service.Calculation_Classes
             //If (RSSI_K_B_DSCHG_DT > 00/00/00) && RSSI_K_B_DSCHG_DT = 00 / 00 / 00){
             //    bankruptcyMessage = "print Bankruptcy message.";
 
+            //if ( accountsModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Dschg_Dt_PackedData> "00/00/00" &&
+            //    accountsModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Dschg_Dt_PackedData=00/00/00)
+            //{
 
+            //}
             return bankruptcyMessage;
         }
 
@@ -893,8 +930,9 @@ namespace Carrington_Service.Calculation_Classes
         {
 
             String repaymentPlanMessage = string.Empty;
-            // If (RSSI-REPY - REMAIN - BAL not = 00000C)
-
+            // If (RSSI-REPY-REMAIN-BAL not = 00000C)
+            //DOUBT
+            //if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Repy_Remain_Bal_PackedData) !=
             return repaymentPlanMessage;
         }
 
@@ -912,7 +950,11 @@ namespace Carrington_Service.Calculation_Classes
         {
 
             String stateNSF = string.Empty;
-            // if(RSSI_CHRG_OFF_DT == 0 &&  RSSI_TOT_DRAFT_AMT == 0) { stateNSF = "AutoPay Service message"; }
+            if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Chrg_Off_Dt_PackedData)==0 &&
+                Convert.ToInt64(accountsModel.MasterFileDataPart2Model.Rssi_Tot_Draft_Amt_PackedData)==0)
+            {
+                stateNSF = "AutoPay Service message";
+            }
 
             return stateNSF;
         }
@@ -922,7 +964,10 @@ namespace Carrington_Service.Calculation_Classes
 
             String chargeOffNotice = string.Empty;
 
-            //if (RSSI_CHRG_OFF_DT > 0) { chargeOffNotice="print Charge Off message"; }
+            if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Chrg_Off_Dt_PackedData)>0)
+            {
+                chargeOffNotice = "print Charge Off message";
+            }
 
             return chargeOffNotice;
         }
