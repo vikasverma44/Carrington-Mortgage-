@@ -21,12 +21,7 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
         public string Rssi_Pymt_Due { get; set; }
         public string Rssi_Num_Due { get; set; }
         public string Rssi_Esc_Expir_Dt { get; set; }
-
-
-
-
-
-
+        public string rssi_esc_type { get; set; }
 
     }
 }

@@ -32,7 +32,7 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels
             TrailerRecordModel = new TrailerRecordModel();
             TransactionRecordModel = new TransactionRecordModel();
             UserFieldRecordModel = new UserFieldRecordModel();
-
+            detModel = new DetModel();
         }
         public ActiveBankruptcyInformationRecordModel ActiveBankruptcyInformationRecordModel { get; set; }
         public ArchivedBankruptcyDetailRecordModel ArchivedBankruptcyDetailRecordModel { get; set; }
@@ -57,5 +57,8 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels
         public TransactionRecordModel TransactionRecordModel { get; set; }
         public UserFieldRecordModel UserFieldRecordModel { get; set; }
         public bool IsMatched { get; set; } = false;
+
+        public DetModel detModel { get; set; }
+        
     }
 }
