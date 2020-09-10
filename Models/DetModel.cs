@@ -14,7 +14,7 @@ namespace ODHS_EDelivery.Models
         public string Eligible { get; set; }
         public string PriorMoAmnt { get; set; }
         public string YTDAmnt { get; set; }
-        public string SentNO631_ { get; set; }
+        public string SentNO631 { get; set; }
         public string FlagRecordIndicator { get; set; }
         public string CurrentDate { get; set; }
         public string NYOrdinance { get; set; }

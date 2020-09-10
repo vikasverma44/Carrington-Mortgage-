@@ -663,7 +663,9 @@ namespace Carrington_Service.Calculation_Classes
 
             String lockboxAddress = string.Empty;
 
-            //if (MailingState==  "KS"|| MailingState == "LA" || MailingState == "NM" || MailingState == "OK" || MailingState == "TX" ) { lockboxAddress = "Dallas P.O.Box Address else Pasadena P.O.Box Address"; }
+            if (accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 ==  "KS"|| accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "LA" || 
+                accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "NM" || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "OK" ||
+                accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "TX" ) { lockboxAddress = "Dallas P.O.Box Address else Pasadena P.O.Box Address"; }
 
             return lockboxAddress;
         }
@@ -689,9 +691,7 @@ namespace Carrington_Service.Calculation_Classes
                 lateCharge = "suppress Late Charge message.";
             }
 
-            //DOUBT
-            //if (RSSI_BILL_PMT_AMT == 0) { receivedAfter = "suppress Late Charge message."; }
-
+           
             return lateCharge;
         }
 
@@ -720,7 +720,7 @@ namespace Carrington_Service.Calculation_Classes
 
             String totalAmount = string.Empty;
 
-            //if (RSSI_TR_EXP_FEE_AMT <> 0) { "RSSI-TR-EXP-FEE-AMT"; }
+            if (int.Parse(accountsModel.TransactionRecordModel.Rssi_Tr_Exp_Fee_Amt_PackedData) != 0) { totalAmount= "RSSI-TR-EXP-FEE-AMT"; }
             //else if (RSSI_FT_TYPE_CODE == 000) { totalAmount="RSSI-FEE-AMT-ASSESSED"; } else { totalAmount= "RSSI-TR-AMT";}
 
             return totalAmount;
@@ -732,8 +732,10 @@ namespace Carrington_Service.Calculation_Classes
             String delinquencyInformationbox = string.Empty;
 
 
-            //if (  accountsModel.MasterFileDataPart_1Model.Rssi_Num_Days_Delq >= 30 && RSSI_PRIN_BAL > 0) {
-            //    delinquencyInformationbox= "include the Delinquency Notice section, else leave blank."; }
+            if ( int.Parse(accountsModel.MasterFileDataPart_1Model.Rssi_Num_Days_Delq) >= 30 && Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) > 0)
+            {
+                delinquencyInformationbox = "include the Delinquency Notice section, else leave blank.";
+            }
 
 
             return delinquencyInformationbox;
@@ -891,12 +893,12 @@ namespace Carrington_Service.Calculation_Classes
         {
 
             String preForeclosureNotice = string.Empty;
-
-            //if (SentNO631_Flag == 1)
-            //{
-            //    preForeclosureNotice = "LEASE TAKE NOTICE that Carrington Mortgage Services, LLC has fulfilled, the pre - foreclosure notice requirements of Real Property Actions and Proceedings Law §1304 or Uniform Commercial Code § 9‐611(f), if applicable.     ";
-            //}
-            //else if(SentNO631_Flag == 0) { preForeclosureNotice = "do not print pre - foreclosure message"; }
+            
+            if (int.Parse(accountsModel.detModel.SentNO631) == 1)
+            {
+                preForeclosureNotice = "LEASE TAKE NOTICE that Carrington Mortgage Services, LLC has fulfilled, the pre - foreclosure notice requirements of Real Property Actions and Proceedings Law §1304 or Uniform Commercial Code § 9‐611(f), if applicable.     ";
+            }
+            else if (int.Parse(accountsModel.detModel.SentNO631) == 0) { preForeclosureNotice = "do not print pre - foreclosure message"; }
             return preForeclosureNotice;
         }
 
@@ -904,8 +906,11 @@ namespace Carrington_Service.Calculation_Classes
         {
 
             String lenderPlacedInsuranceMessage = string.Empty;
-            //if(PayeeType == 20 || PayeeType== 21 && CompanyCode = 2450 && (AgencyCode == 29000 || AgencyCode == 29005 || AgencyCode == 43000 || AgencyCode == 43001)) 
-            // { lenderPlacedInsuranceMessage= "print Lender Placed Insurance message"; }
+            if (accountsModel.EscrowRecordModel.rssi_esc_type == "20" || accountsModel.EscrowRecordModel.rssi_esc_type == "21" && 
+                accountsModel.EscrowRecordModel.Rssi_Ins_Co == "2450" && accountsModel.EscrowRecordModel.Rssi_Ins_Ag == "29000" || 
+                accountsModel.EscrowRecordModel.Rssi_Ins_Ag == "29005" || accountsModel.EscrowRecordModel.Rssi_Ins_Ag == "43000" ||
+                accountsModel.EscrowRecordModel.Rssi_Ins_Ag == "43001")
+            { lenderPlacedInsuranceMessage = "then print Lender Placed Insurance message"; }
 
             return lenderPlacedInsuranceMessage;
         }
@@ -939,7 +944,9 @@ namespace Carrington_Service.Calculation_Classes
 
             String stateNSF = string.Empty;
 
-            // if(RSSI_STATE == 6 || RSSI_STATE == 16 || RSSI_STATE == 18 || RSSI_STATE == 42 ) { stateNSF = "print State NSF message"; }
+             if(accountsModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "6" || accountsModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "16"
+                || accountsModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "18" || accountsModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "42" ) 
+            { stateNSF = "print State NSF message"; }
 
             return stateNSF;
         }

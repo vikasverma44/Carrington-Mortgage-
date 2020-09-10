@@ -318,7 +318,7 @@ namespace Carrington_Service.BusinessExpert
                         Eligible = line[3].ToString(),
                         PriorMoAmnt = line[4].ToString(),
                         YTDAmnt = line[5].ToString(),
-                        SentNO631_ = line[6].ToString(),
+                        SentNO631 = line[6].ToString(),
                         FlagRecordIndicator = line[7].ToString(),
                         CurrentDate = line[8].ToString(),
                         NYOrdinance = line[9].ToString(),
