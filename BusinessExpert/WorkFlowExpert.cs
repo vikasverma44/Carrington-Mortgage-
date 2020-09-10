@@ -797,8 +797,7 @@ namespace Carrington_Service.BusinessExpert
                 Rssi_Reo_Ind = GetPositionData(currentByte, 1410, 1),
 
                 Rssi_Mat_Date = GetPositionData(currentByte, 1411, 8),
-                PartialChargeOffTaken = GetPositionData(currentByte, 1419, 11),
-                MaturityDate = GetPositionData(currentByte, 1411, 8),
+               
                 Rssi_Lien_3_Pymt_Amt = GetPositionData(currentByte, 1419, 11),
 
                 Rssi_L_Flag = GetPositionData(currentByte, 1430, 1),
