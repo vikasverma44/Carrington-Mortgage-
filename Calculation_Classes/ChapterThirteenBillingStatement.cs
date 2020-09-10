@@ -24,6 +24,22 @@ namespace Carrington_Service.Calculation_Classes
         public string TotalPaidYearToDate { get; set; }
         public string Suspense { get; set; }
         public string Miscellaneous { get; set; }
+
+        public string PrimaryBorrowerBKAttorney { get; set; }
+        public string SecondaryBorrower { get; set; }
+        public string MailingBKAttorneyAddressLine1 { get; set; }
+        public string MailingBKAttorneyAddressLine2 { get; set; }
+        public string BorrowerAttorneyMailingCityStateZip { get; set; }
+        public string MailingCountry { get; set; }
+        public string Interest { get; set; }
+        public string EscrowTaxesandInsurance { get; set; }
+        public string RegularMonthlyPayment { get; set; }
+        public string BuydownBalance{ get; set; }
+        public string PartialClaim{ get; set; }
+        public string InterestRateUntil { get; set; }
+        public string PrepaymentPenalty{ get; set; }
+
+        #region "Old Code==>>"
         ChapterThirteenBillingStatement()
         {
 
@@ -100,7 +116,7 @@ namespace Carrington_Service.Calculation_Classes
         public string GetPastUnpaidAmount(AccountsModel accountsModel)
         {
 
-            PastUnpaidAmount =Convert.ToString(Convert.ToInt64(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Unpaid_PackedData) - GetTotalFeesPaid(accountsModel));
+            PastUnpaidAmount = Convert.ToString(Convert.ToInt64(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Unpaid_PackedData) - GetTotalFeesPaid(accountsModel));
             return PastUnpaidAmount;
         }
 
@@ -166,7 +182,7 @@ namespace Carrington_Service.Calculation_Classes
               (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 67 || Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 198))
             {
 
-                FeesAndChargesPaidLastMonth =Convert.ToString(Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.FeesPaidSinceLastStatement) +
+                FeesAndChargesPaidLastMonth = Convert.ToString(Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.FeesPaidSinceLastStatement) +
                 Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.LateChargesPaidSinceLastStatement) -
                 Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
             }
@@ -238,6 +254,162 @@ namespace Carrington_Service.Calculation_Classes
             Miscellaneous = Convert.ToString(Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Lip_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Cr_Ins_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Pi_Shrtg) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Prin_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Int_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Late_Chrg_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Esc_Adv_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Pd_Exp_Adv_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Unp_Exp_Adv_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Admin_Fees_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Optins_PackedData));
             return Miscellaneous;
         }
+        #endregion
 
+        #region Method ==>
+
+        public string GetPrimaryBorrowerBKAttorney(AccountsModel accountModel)
+        {
+            if (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B")
+                PrimaryBorrowerBKAttorney = accountModel.MasterFileDataPart_1Model.Rssi_Primary_Name;
+            else if (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L")
+                PrimaryBorrowerBKAttorney = accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_Name1;
+            else if (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y")
+                PrimaryBorrowerBKAttorney = accountModel.MasterFileDataPart_1Model.Rssi_Primary_Name + accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_Name1;
+            return PrimaryBorrowerBKAttorney;
+        }
+
+        public string GetSecondaryBorrower(AccountsModel accountModel)
+        {
+            if (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B")
+            {
+                SecondaryBorrower = accountModel.MasterFileDataPart_1Model.Rssi_Secondary_Name;
+            }
+            return SecondaryBorrower;
+        }
+
+        public string GetMailingBKAttorneyAddressLine1(AccountsModel accountModel)
+        {
+            if (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B")
+                MailingBKAttorneyAddressLine1 = accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1;
+            else if (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L")
+                MailingBKAttorneyAddressLine1 = accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_Adrs1;
+            else if (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y")
+                MailingBKAttorneyAddressLine1 = accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1 + accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_Adrs1;
+            return MailingBKAttorneyAddressLine1;
+        }
+
+        public string GetMailingBKAttorneyAddressLine2(AccountsModel accountModel)
+        {
+            if (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B")
+                MailingBKAttorneyAddressLine2 = accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_2;
+            else if (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L")
+                MailingBKAttorneyAddressLine2 = accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_Adrs2;
+            else if (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y")
+                MailingBKAttorneyAddressLine2 = accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_2 + accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_Adrs2;
+            return MailingBKAttorneyAddressLine2;
+        }
+        public string GetBorrowerAttorneyMailingCityStateZip(AccountsModel accountModel)
+        {
+            if (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B")
+                BorrowerAttorneyMailingCityStateZip = accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
+            else if (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L")
+                BorrowerAttorneyMailingCityStateZip = accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_City +
+                    accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_State + accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_Zip;
+            else if (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y")
+                BorrowerAttorneyMailingCityStateZip = accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_City +
+                    accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_State + accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_Zip;
+            return BorrowerAttorneyMailingCityStateZip;
+        }
+
+        public string GetMailingCountry(AccountsModel accountModel)
+        {
+            if (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")
+                MailingCountry = accountModel.ForeignInformationRecordModel.Rssi_Altr_Cntry;
+            else if (accountModel.MasterFileDataPart2Model.Rssi_Prim_Forgn_Flag == "Y")
+                MailingCountry = accountModel.ForeignInformationRecordModel.Rssi_Prim_Mail_Country;
+            else if (accountModel.MasterFileDataPart2Model.Rssi_Appl_Foreign_Flag == "Y")
+                MailingCountry = "RSSI-APPL-COUNTRY to copy 1";
+            else
+                MailingCountry = null;
+            return MailingCountry;
+        }
+
+        public string GetInterest(AccountsModel accountModel)
+        {
+            if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                Interest = "0.00";
+            else if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                Interest = "0.00";
+            else if (Convert.ToDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > Convert.ToDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                Interest = "0.00";
+           
+            return Interest;
+        }
+        public string GetEscrowTaxesandInsurance(AccountsModel accountModel)
+        {
+            if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                EscrowTaxesandInsurance = "0.00";
+            else if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                EscrowTaxesandInsurance = "0.00";
+            else if (Convert.ToDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > Convert.ToDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                EscrowTaxesandInsurance = "0.00";
+
+            return EscrowTaxesandInsurance;
+        }
+        public string GetRegularMonthlyPayment(AccountsModel accountModel)
+        {
+            if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                RegularMonthlyPayment = "0.00";
+            else if (Convert.ToDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > Convert.ToDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                RegularMonthlyPayment = "0.00";
+
+            return RegularMonthlyPayment;
+        }
+        public string GetBuydownBalance(AccountsModel accountModel)
+        {
+            if (Convert.ToInt64(accountModel.UserFieldRecordModel.Rssi_Usr_303_PackedData) <= 0)
+                BuydownBalance = "N/A";
+            else
+                BuydownBalance = accountModel.UserFieldRecordModel.Rssi_Usr_303_PackedData;
+
+            return BuydownBalance;
+        }
+        public string GetPartialClaim(AccountsModel accountModel)
+        {
+            if (Convert.ToInt64(accountModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) == 0)
+                PartialClaim = "N/A";
+            else
+                PartialClaim = accountModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData;
+
+            return PartialClaim;
+        }
+        public string GetInterestRateUntil(AccountsModel accountModel)
+        {
+            if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Rate_Chg_Date) > 19000000)
+                InterestRateUntil = "Until RSSI-RATE-CHG-DATE";
+            else
+                InterestRateUntil = null;
+
+            return InterestRateUntil;
+        }
+
+        //public string GetPrepaymentPenalty(AccountsModel accountModel)
+        //{
+        //    if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.RSSI_PREPAY_PEN_AMT) > 0)
+        //        PrepaymentPenalty = "Yes";
+        //    else
+        //        PrepaymentPenalty = "No";
+
+        //    return PrepaymentPenalty;
+        //}
+
+       
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+        #endregion
     }
 }
