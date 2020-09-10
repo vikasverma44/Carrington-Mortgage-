@@ -914,15 +914,13 @@ namespace Carrington_Service.Calculation_Classes
         {
 
             String bankruptcyMessage = string.Empty;
+             
 
-            //If (RSSI_K_B_DSCHG_DT > 00/00/00) && RSSI_K_B_DSCHG_DT = 00 / 00 / 00){
-            //    bankruptcyMessage = "print Bankruptcy message.";
-
-            //if ( accountsModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Dschg_Dt_PackedData> "00/00/00" &&
-            //    accountsModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Dschg_Dt_PackedData=00/00/00)
-            //{
-
-            //}
+            if (Convert.ToDateTime(accountsModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Dschg_Dt_PackedData) >Convert.ToDateTime("00/00/00") &&
+                Convert.ToDateTime(accountsModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Dschg_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+            {
+                bankruptcyMessage = "print Bankruptcy message.";
+            }
             return bankruptcyMessage;
         }
 
