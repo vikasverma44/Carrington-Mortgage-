@@ -25,6 +25,8 @@ namespace Carrington_Service.Calculation_Classes
         public string Suspense { get; set; }
         public string Miscellaneous { get; set; }
 
+
+        public string PrintStatement { get; set; }
         public string PrimaryBorrowerBKAttorney { get; set; }
         public string SecondaryBorrower { get; set; }
         public string MailingBKAttorneyAddressLine1 { get; set; }
@@ -34,12 +36,28 @@ namespace Carrington_Service.Calculation_Classes
         public string Interest { get; set; }
         public string EscrowTaxesandInsurance { get; set; }
         public string RegularMonthlyPayment { get; set; }
-        public string BuydownBalance{ get; set; }
-        public string PartialClaim{ get; set; }
+        public string BuydownBalance { get; set; }
+        public string PartialClaim { get; set; }
         public string InterestRateUntil { get; set; }
-        public string PrepaymentPenalty{ get; set; }
+        public string PrepaymentPenalty { get; set; }
+        public string CarringtonFoundationDonationPaidLastMonh { get; set; }
+        public string CarringtonFoundationDonationPaidYearToDate { get; set; }
+        public string PostPetitonPastDueMessage { get; set; }
+        public string CMSPartialClaim { get; set; }
+        public string HUDPartialClaim { get; set; }
+        public string POBoxAddress { get; set; }
+        public string Date { get; set; }
+        public string Amount { get; set; }
+        public string LenderPlacedInsuranceMessage { get; set; }
+        public string StateNSF { get; set; }
+        public string AutodraftMessage { get; set; }
+        public string StateDisclosures { get; set; }
+        public string CarringtonCharitableFoundation { get; set; }
+        public string PaymentInformationMessage { get; set; }
+      
 
-        #region "Old Code==>>"
+
+        
         ChapterThirteenBillingStatement()
         {
 
@@ -182,7 +200,7 @@ namespace Carrington_Service.Calculation_Classes
               (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 67 || Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 198))
             {
 
-                FeesAndChargesPaidLastMonth =Convert.ToString(Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Pd_Since_Lst_Stmt_PackedData) +
+                FeesAndChargesPaidLastMonth = Convert.ToString(Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Pd_Since_Lst_Stmt_PackedData) +
                 Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Lc_Pd_Since_Lst_Stmt_PackedData) -
                 Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
             }
@@ -254,10 +272,17 @@ namespace Carrington_Service.Calculation_Classes
             Miscellaneous = Convert.ToString(Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Lip_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Cr_Ins_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Pi_Shrtg) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Prin_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Int_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Late_Chrg_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Esc_Adv_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Pd_Exp_Adv_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Unp_Exp_Adv_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Admin_Fees_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Optins_PackedData));
             return Miscellaneous;
         }
-        #endregion
 
-        #region Method ==>
 
+
+        #region  New Method ==>
+
+        public string GetPrintStatement(AccountsModel accountModel)
+        {
+            if (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H")
+                CMSPartialClaim = "Create image but do not mail.";
+            return CMSPartialClaim;
+        }
         public string GetPrimaryBorrowerBKAttorney(AccountsModel accountModel)
         {
             if (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B")
@@ -333,7 +358,7 @@ namespace Carrington_Service.Calculation_Classes
                 Interest = "0.00";
             else if (Convert.ToDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > Convert.ToDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                 Interest = "0.00";
-           
+
             return Interest;
         }
         public string GetEscrowTaxesandInsurance(AccountsModel accountModel)
@@ -384,31 +409,144 @@ namespace Carrington_Service.Calculation_Classes
             return InterestRateUntil;
         }
 
-        //public string GetPrepaymentPenalty(AccountsModel accountModel)
+        public string GetPrepaymentPenalty(AccountsModel accountModel)
+        {
+            if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Prepay_Pen_Amt_PackedData) > 0)
+                PrepaymentPenalty = "Yes";
+            else
+                PrepaymentPenalty = "No";
+
+            return PrepaymentPenalty;
+        }
+        public string GetCarringtonFoundationDonationPaidLastMonh(AccountsModel accountModel)
+        {
+            if (Convert.ToInt64(accountModel.SupplementalCCFModel.PriorMoAmnt) > 0 || Convert.ToInt64(accountModel.SupplementalCCFModel.YTDAmnt) > 0)
+                CarringtonFoundationDonationPaidLastMonh = "Carrington Charitable Foundation Donation line";
+            return CarringtonFoundationDonationPaidLastMonh;
+        }
+        public string GetCarringtonFoundationDonationPaidYearToDate(AccountsModel accountModel)
+        {
+            if (Convert.ToInt64(accountModel.SupplementalCCFModel.PriorMoAmnt) > 0 || Convert.ToInt64(accountModel.SupplementalCCFModel.YTDAmnt) > 0)
+                CarringtonFoundationDonationPaidYearToDate = "Carrington Charitable Foundation Donation line";
+            return CarringtonFoundationDonationPaidYearToDate;
+        }
+
+        public string GetPostPetitonPastDueMessage(AccountsModel accountModel)
+        {
+            TimeSpan timeSpan = Convert.ToDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Run_Date) -
+                                Convert.ToDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date);
+            if (timeSpan.Days >= 45)
+                PostPetitonPastDueMessage = "We have not received all of your mortgage payments due since you filed for bankruptcy.";
+            return PostPetitonPastDueMessage;
+        }
+
+        public string GetCMSPartialClaim(AccountsModel accountModel)
+        {
+            if (Convert.ToInt64(accountModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) > 0 && accountModel.UserFieldRecordModel.Rssi_Usr_88 == "C")
+                CMSPartialClaim = "CMS Partial Claim Message.";
+            return CMSPartialClaim;
+        }
+        public string GetHUDPartialClaim(AccountsModel accountModel)
+        {
+            if (Convert.ToInt64(accountModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) > 0 && accountModel.UserFieldRecordModel.Rssi_Usr_88 == "H")
+                HUDPartialClaim = "HUD Partial Claim Message.";
+            return HUDPartialClaim;
+
+        }
+        // This condition statement is not cleared ===>  If Mailing State = KS, LA, NM, OK, or TX then Dallas P.O.Box Address else Pasadena P.O.Box  Address
+        public string GetPOBoxAddress(AccountsModel accountModel)
+        {
+            var mailingState = "KS, LA, NM, OK, TX";
+            if (mailingState.Contains(accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3))
+                POBoxAddress = "Dallas P.O.Box Address.";
+            else
+                POBoxAddress = "Pasadena P.O.Box  Address.";
+            return POBoxAddress;
+
+        }
+        //public string GetDate(AccountsModel accountModel)
         //{
-        //    if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.RSSI_PREPAY_PEN_AMT) > 0)
-        //        PrepaymentPenalty = "Yes";
+        //    if (accountModel.FeeRecordModel.RSSI_FT_TYPE_CODE == "000")
+        //        Date = accountModel.FeeRecordModel.RSSI_FEE_DATE_ASSESSED;
         //    else
-        //        PrepaymentPenalty = "No";
+        //        Date = accountModel.MasterFileDataPart_1Model.Rssi_Bank_Trans_PackedData;
+        //    return Date;
 
-        //    return PrepaymentPenalty;
         //}
+        //public string GetAmount(AccountsModel accountModel)
+        //{
+        //    if (Convert.ToInt64(accountModel.TransactionRecordModel.Rssi_Tr_Exp_Fee_Amt_PackedData) != 0)
+        //        Amount = accountModel.TransactionRecordModel.Rssi_Tr_Exp_Fee_Amt_PackedData;
+        //    else if (accountModel.TransactionRecordModel.RSSI_FT_TYPE_CODE == "000")
+        //        Amount = accountModel.TransactionRecordModel.RSSI_FEE_AMT_ASSESSED;
+        //    else
+        //        Amount = accountModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData;
+        //    return Amount;
 
+        //}
+        public string GetLenderPlacedInsuranceMessage(AccountsModel accountModel)
+        {
+            var agencyCode = "29000, 29005, 43000, 43001";
+            if ((Convert.ToInt64(accountModel.EscrowRecordModel.Rssi_Esc_Type) == 22 || Convert.ToInt64(accountModel.EscrowRecordModel.Rssi_Esc_Type) == 21)
+                && Convert.ToInt64(accountModel.EscrowRecordModel.Rssi_Ins_Co) == 2450
+                && agencyCode.Contains(accountModel.EscrowRecordModel.Rssi_Ins_Ag))
+            {
+                POBoxAddress = "Lender Placed Insurance message.";
+            }
+            return POBoxAddress;
+
+        }
+        public string GetStateNSF(AccountsModel accountModel)
+        {
+            var rssiState = "6, 16, 18, 42";
+            if (rssiState.Contains(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData))
+            {
+                StateNSF = "State NSF message.";
+            }
+            return StateNSF;
+
+        }
+
+        public string GetAutodraftMessage(AccountsModel accountModel)
+        {
+            if (Convert.ToInt64(accountModel.MasterFileDataPart2Model.Rssi_Tot_Draft_Amt_PackedData) > 0 && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) > 0)
+            {
+                AutodraftMessage = "Autodraft message.";
+            }
+            return AutodraftMessage;
+
+        }
+
+        //What to do if the condition is satisfied
+        public string GetStateDisclosures(AccountsModel accountModel)
+        {
+            var rssiState = "4, 6, 12, 22, 24, 33, 34, 43, 44";
+            var mailingState = " AR, CO, HI, MA, MN, NC, NY, TN, TX";
+            if (rssiState.Contains(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) || mailingState.Contains(accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3))
+                StateDisclosures = "?";
+            return StateDisclosures;
+
+        }
+
+        public string GetCarringtonCharitableFoundation (AccountsModel accountModel)
+        {
+            if (Convert.ToInt64(accountModel.SupplementalCCFModel.PriorMoAmnt) > 0 || Convert.ToInt64(accountModel.SupplementalCCFModel.YTDAmnt) > 0 )
+                CarringtonCharitableFoundation = "The Carrington Charitable Foundation verbiage.";
+            return CarringtonCharitableFoundation;
+        }
+
+        public string GetPaymentInformationMessage(AccountsModel accountModel)
+        {
+            var mailingState = "KS, LA, NM, OK, TX";
+            if (mailingState.Contains(accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3))
+                PaymentInformationMessage = "Dallas P.O.Box Address.";
+            else
+                PaymentInformationMessage = "Pasadena P.O.Box  Address.";
+            return PaymentInformationMessage;
+
+        }
        
-
         
-
-
-
-
-
-
-
-
-
-
-
-
 
         #endregion
     }
