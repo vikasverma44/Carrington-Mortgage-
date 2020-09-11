@@ -59,6 +59,6 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels
         public bool IsMatched { get; set; } = false;
 
         public DetModel detModel { get; set; }
-        
+        public SupplementalCCFModel SupplementalCCFModel { get; internal set; }
     }
 }
