@@ -318,7 +318,7 @@ namespace Carrington_Service.BusinessExpert
                         Eligible = line[3].ToString(),
                         PriorMoAmnt = line[4].ToString(),
                         YTDAmnt = line[5].ToString(),
-                        SentNO631_ = line[6].ToString(),
+                        SentNO631 = line[6].ToString(),
                         FlagRecordIndicator = line[7].ToString(),
                         CurrentDate = line[8].ToString(),
                         NYOrdinance = line[9].ToString(),
@@ -448,13 +448,13 @@ namespace Carrington_Service.BusinessExpert
                 Rssi_Inst_Adrs_1 = GetPositionData(currentByte, 55, 35),
                 Rssi_Inst_Adrs_2 = GetPositionData(currentByte, 90, 35),
                 Rssi_Inst_City = GetPositionData(currentByte, 125, 21),
-                Rssi_Inst_State = GetPositionData(currentByte, 146, 1),
+                Rssi_Inst_State = GetPositionData(currentByte, 146, 2),
                 Rssi_Inst_Zip = GetPositionData(currentByte, 148, 10),
                 Rssi_Inst_Phone = GetPositionData(currentByte, 158, 10),
                 Rssi_Alt_Coup_Adrs_1 = GetPositionData(currentByte, 168, 35),
                 Rssi_Alt_Coup_Adrs_2 = GetPositionData(currentByte, 203, 35),
                 Rssi_Alt_Coup_City = GetPositionData(currentByte, 238, 21),
-                Rssi_Alt_Coup_State = GetPositionData(currentByte, 259, 1),
+                Rssi_Alt_Coup_State = GetPositionData(currentByte, 259, 2),
                 Rssi_Alt_Coup_Zip = GetPositionData(currentByte, 261, 10),
                 Rssi_Alt_Coup_Ph_Desc_1 = GetPositionData(currentByte, 271, 20),
                 Rssi_Alt_Coup_Ph_No_1 = GetPositionData(currentByte, 291, 10),
@@ -492,7 +492,7 @@ namespace Carrington_Service.BusinessExpert
                 Rssi_Enty_Name = GetPositionData(currentByte, 32, 35),
 
                 Rssi_Enty_Adrs_1 = GetPositionData(currentByte, 67, 35),
-                Rssi_Enty_Adrs_2 = GetPositionData(currentByte, 102, 21),
+                Rssi_Enty_Adrs_2 = GetPositionData(currentByte, 102, 35),
 
                 Rssi_Enty_City = GetPositionData(currentByte, 137, 21),
                 Rssi_Enty_State = GetPositionData(currentByte, 158, 35),
@@ -1031,7 +1031,7 @@ namespace Carrington_Service.BusinessExpert
                 Rssi_Chrg_Off_Dt_PackedData = GetPositionData(currentByte, 2634, 4),
                 Rssi_Promise_Date_PackedData = GetPositionData(currentByte, 2638, 4),
 
-                Rssi_Promise_Amt_PackedData = GetPositionData(currentByte, 2642, 6),
+                Rssi_Promise_Amt_PackedData = GetPositionData(currentByte, 2642, 5),
                 Rssi_Promise_Broken_Dt_PackedData = GetPositionData(currentByte, 2647, 4),
 
                 Rssi_Promise_Kept_Date_PackedData = GetPositionData(currentByte, 2651, 4),
