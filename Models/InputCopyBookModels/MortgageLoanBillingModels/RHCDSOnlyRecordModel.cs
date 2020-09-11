@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 
 namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
 {
-   public class RHCDSOnlyRecordModel
+    public class RHCDSOnlyRecordModel
     {
         public string Rssi_Rcd_Id { get; set; }
         public string Rssi_Inst { get; set; }
@@ -30,6 +31,7 @@ namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
         public string Rssi_Rpmt_Start_Dt_PackedData { get; set; }
         public string Rssi_Ffssd119_Dwa_Delq_PackedData { get; set; }
         public string Rssi_Poc_Post_Plan_Source { get; set; }
+        public string Filler { get; set; }
 
     }
 }

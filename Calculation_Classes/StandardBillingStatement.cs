@@ -32,6 +32,93 @@ namespace Carrington_Service.Calculation_Classes
         public string Miscellaneous { get; set; }
         public string TotalDue { get; set; }
 
+        public StringBuilder finalLine;
+        public string GetFinalStringStandardBilling(AccountsModel accountModel)
+        {
+            finalLine = new StringBuilder();
+
+            finalLine.Append("01" + "|");
+            finalLine.Append("STD BK CHPT 7 STMT" + "|");
+            finalLine.Append(" " + "|");
+            finalLine.Append("01" + "|");
+
+            finalLine.Append(GetAmountDue(accountModel) + "|");
+            finalLine.Append(GetPrincipal(accountModel) + "|");
+            finalLine.Append(GetAssistanceAmount(accountModel) + "|");
+            finalLine.Append(GetReplacementReserveAmount(accountModel) + "|");
+            finalLine.Append(GetOverduePayment(accountModel) + "|");
+            finalLine.Append(GetTotalFeesAndCharges(accountModel) + "|");
+            finalLine.Append(GetTotalFeesPaid(accountModel) + "|");
+            finalLine.Append(GetTotalAmountDue(accountModel) + "|");
+            finalLine.Append(GetPastDueBalance(accountModel) + "|");
+            finalLine.Append(GetDeferredBalance(accountModel) + "|");
+            finalLine.Append(GetUnappliedFunds(accountModel) + "|");
+            finalLine.Append(GetFeesAndChargesPaidLastMonth(accountModel) + "|");
+            finalLine.Append(GetUnappliedFundsPaidLastMonth(accountModel) + "|");
+            finalLine.Append(GetTotalPaidLastMonth(accountModel) + "|");
+            finalLine.Append(GetFeesAndChargesPaidYearToDate(accountModel) + "|");
+            finalLine.Append(GetUnappliedFundsPaidYearToDate(accountModel) + "|");
+            finalLine.Append(GetTotalPaidYearToDate(accountModel) + "|");
+            finalLine.Append(GetLatePaymentAmount(accountModel) + "|");
+            finalLine.Append(GetSuspense(accountModel) + "|");
+            finalLine.Append(GetMiscellaneous(accountModel) + "|");
+            finalLine.Append(GetTotalDue(accountModel) + "|");
+            finalLine.Append(GetPrintStatement(accountModel) + "|");
+            finalLine.Append(GetAttention(accountModel) + "|");
+            finalLine.Append(GetPrimaryBorrower(accountModel) + "|");
+            finalLine.Append(GetSecondaryBorrower(accountModel) + "|");
+            finalLine.Append(GetMailingAddressLine1(accountModel) + "|");
+            finalLine.Append(GetMailingAddressLine2(accountModel) + "|");
+            finalLine.Append(GetMailingCityStateZip(accountModel) + "|");
+            finalLine.Append(GetMailingCountry(accountModel) + "|");
+            finalLine.Append(GetPaymentReceivedAfter(accountModel) + "|");
+            finalLine.Append(GetLateFee(accountModel) + "|");
+            finalLine.Append(GetAutodraftMessage(accountModel) + "|");
+            finalLine.Append(GetInterestRateUnti(accountModel) + "|");
+            finalLine.Append(GetPrepaymentPenalty(accountModel) + "|");
+            finalLine.Append(GetMaturityDate(accountModel) + "|");
+            finalLine.Append(GetmodificationDate(accountModel) + "|");
+            finalLine.Append(GetChargeOffNoticeDelinquencyNoticeRefinanceMessage(accountModel) + "|");
+            finalLine.Append(GetInterest(accountModel) + "|");
+            finalLine.Append(GetEscrowTaxesInsurance(accountModel) + "|");
+            finalLine.Append(GetRegularMonthlyPayment(accountModel) + "|");
+            finalLine.Append(GetBuydownBalance(accountModel) + "|");
+            finalLine.Append(GetPartialClaim(accountModel) + "|");
+            finalLine.Append(GetNegativeAmortization(accountModel) + "|");
+            finalLine.Append(GetCarringtonCharitableFoundationMonth(accountModel) + "|");
+            finalLine.Append(GetCarringtonCharitablePaidYeartoDate(accountModel) + "|");
+            finalLine.Append(GetLockboxAddress(accountModel) + "|");
+            finalLine.Append(GetReceivedAfter(accountModel) + "|");
+            finalLine.Append(GetLateCharge(accountModel) + "|");
+            finalLine.Append(GetCarringtonCharitableDonationbox(accountModel) + "|");
+            finalLine.Append(GetEffectiveDate(accountModel) + "|");
+            finalLine.Append(GetTotalAmount(accountModel) + "|");
+            finalLine.Append(GetDelinquencyInformationbox(accountModel) + "|");
+            finalLine.Append(GetRecentPayment6(accountModel) + "|");
+            finalLine.Append(GetRecentPayment5(accountModel) + "|");
+            finalLine.Append(GetRecentPayment4(accountModel) + "|");
+            finalLine.Append(GetRecentPayment3(accountModel) + "|");
+            finalLine.Append(GetRecentPayment2(accountModel) + "|");
+            finalLine.Append(GetRecentPayment1(accountModel) + "|");
+            finalLine.Append(GetLossMitigtationNotice(accountModel) + "|");
+            finalLine.Append(GetForeclosureNotice(accountModel) + "|");
+            finalLine.Append(GetPreForeclosureNotice(accountModel) + "|");
+            finalLine.Append(GetLenderPlacedInsuranceMessage(accountModel) + "|");
+            finalLine.Append(GetBankruptcyMessage(accountModel) + "|");
+            finalLine.Append(GetRepaymentPlanMessage(accountModel) + "|");
+            finalLine.Append(GetStateNSF(accountModel) + "|");
+            finalLine.Append(GetACHMessage(accountModel) + "|");
+            finalLine.Append(GetChargeOffNotice(accountModel) + "|");
+            finalLine.Append(GetCMSPartialClaim(accountModel) + "|");
+            finalLine.Append(GetHUDPartialClaim(accountModel) + "|");
+            finalLine.Append(GetStateDisclosures(accountModel) + "|");
+            finalLine.Append(GetCarringtonCharitableFoundation(accountModel) + "|");
+            finalLine.Append(GetPaymentInformationMessage(accountModel) + "|");
+
+
+
+            return Convert.ToString(finalLine);
+        }
         /* While Calculating Conditions must be applied*/
         public string GetAmountDue(AccountsModel accountsModel)
         {
@@ -475,7 +562,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             String lateFee = string.Empty;
             if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0) { lateFee = "suppress Late Charge message"; }
-             
+
 
             return lateFee;
         }
@@ -663,9 +750,9 @@ namespace Carrington_Service.Calculation_Classes
 
             String lockboxAddress = string.Empty;
 
-            if (accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 ==  "KS"|| accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "LA" || 
+            if (accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "KS" || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "LA" ||
                 accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "NM" || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "OK" ||
-                accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "TX" ) { lockboxAddress = "Dallas P.O.Box Address else Pasadena P.O.Box Address"; }
+                accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "TX") { lockboxAddress = "Dallas P.O.Box Address else Pasadena P.O.Box Address"; }
 
             return lockboxAddress;
         }
@@ -691,7 +778,7 @@ namespace Carrington_Service.Calculation_Classes
                 lateCharge = "suppress Late Charge message.";
             }
 
-           
+
             return lateCharge;
         }
 
@@ -720,7 +807,7 @@ namespace Carrington_Service.Calculation_Classes
 
             String totalAmount = string.Empty;
 
-            if (int.Parse(accountsModel.TransactionRecordModel.Rssi_Tr_Exp_Fee_Amt_PackedData) != 0) { totalAmount= "RSSI-TR-EXP-FEE-AMT"; }
+            if (int.Parse(accountsModel.TransactionRecordModel.Rssi_Tr_Exp_Fee_Amt_PackedData) != 0) { totalAmount = "RSSI-TR-EXP-FEE-AMT"; }
             //else if (RSSI_FT_TYPE_CODE == 000) { totalAmount="RSSI-FEE-AMT-ASSESSED"; } else { totalAmount= "RSSI-TR-AMT";}
 
             return totalAmount;
@@ -732,7 +819,7 @@ namespace Carrington_Service.Calculation_Classes
             String delinquencyInformationbox = string.Empty;
 
 
-            if ( int.Parse(accountsModel.MasterFileDataPart_1Model.Rssi_Num_Days_Delq) >= 30 && Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) > 0)
+            if (int.Parse(accountsModel.MasterFileDataPart_1Model.Rssi_Num_Days_Delq) >= 30 && Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) > 0)
             {
                 delinquencyInformationbox = "include the Delinquency Notice section, else leave blank.";
             }
@@ -787,7 +874,6 @@ namespace Carrington_Service.Calculation_Classes
 
             String recentPayment4 = string.Empty;
 
-
             if (int.Parse(accountsModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 1) { recentPayment4 = "Payment Due RSSI-PMT-DUE-3-DATE: Fully paid on RSSI-PMT-PAID-3-DATE"; }
             else if (int.Parse(accountsModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 2) { recentPayment4 = "Payment Due RSSI - PMT - DUE - 2 - DATE: Fully paid on RSSI-PMT - PAID - 2 - DATE"; }
             else if (int.Parse(accountsModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 3) { recentPayment4 = "Payment Due RSSI - PMT - DUE - 1 - DATE: Fully paid on RSSI-PMT - PAID - 1 - DATE"; }
@@ -807,7 +893,6 @@ namespace Carrington_Service.Calculation_Classes
         {
 
             String RecentPayment2 = string.Empty;
-
 
             if (int.Parse(accountsModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 1) { RecentPayment2 = "Payment Due RSSI-PMT-DUE-2-DATE: Fully paid on RSSI-PMT-PAID-2-DATE"; }
             else if (int.Parse(accountsModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 2) { RecentPayment2 = "Payment Due RSSI - PMT - DUE - 1 - DATE: Fully paid on RSSI-PMT - PAID - 1 - DATE"; }
@@ -836,7 +921,7 @@ namespace Carrington_Service.Calculation_Classes
 
             else if (int.Parse(accountsModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6 && int.Parse(accountsModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0 && int.Parse(accountsModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
             {
-                RecentPayment2 = "Payment Due RSSI - PAST - DATE(4): Unpaid balance of $RSSI - REG - AMT(4)";
+                RecentPayment2 = "Payment Due RSSI - PAST - DATE(5): Unpaid balance of $RSSI - REG - AMT(5)";
             }
 
             return RecentPayment2;
@@ -893,7 +978,7 @@ namespace Carrington_Service.Calculation_Classes
         {
 
             String preForeclosureNotice = string.Empty;
-            
+
             if (int.Parse(accountsModel.detModel.SentNO631) == 1)
             {
                 preForeclosureNotice = "LEASE TAKE NOTICE that Carrington Mortgage Services, LLC has fulfilled, the pre - foreclosure notice requirements of Real Property Actions and Proceedings Law §1304 or Uniform Commercial Code § 9‐611(f), if applicable.     ";
@@ -906,8 +991,8 @@ namespace Carrington_Service.Calculation_Classes
         {
 
             String lenderPlacedInsuranceMessage = string.Empty;
-            if (accountsModel.EscrowRecordModel.rssi_esc_type == "20" || accountsModel.EscrowRecordModel.rssi_esc_type == "21" && 
-                accountsModel.EscrowRecordModel.Rssi_Ins_Co == "2450" && accountsModel.EscrowRecordModel.Rssi_Ins_Ag == "29000" || 
+            if (accountsModel.EscrowRecordModel.rssi_esc_type == "20" || accountsModel.EscrowRecordModel.rssi_esc_type == "21" &&
+                accountsModel.EscrowRecordModel.Rssi_Ins_Co == "2450" && accountsModel.EscrowRecordModel.Rssi_Ins_Ag == "29000" ||
                 accountsModel.EscrowRecordModel.Rssi_Ins_Ag == "29005" || accountsModel.EscrowRecordModel.Rssi_Ins_Ag == "43000" ||
                 accountsModel.EscrowRecordModel.Rssi_Ins_Ag == "43001")
             { lenderPlacedInsuranceMessage = "then print Lender Placed Insurance message"; }
@@ -919,9 +1004,9 @@ namespace Carrington_Service.Calculation_Classes
         {
 
             String bankruptcyMessage = string.Empty;
-             
 
-            if (Convert.ToDateTime(accountsModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Dschg_Dt_PackedData) >Convert.ToDateTime("00/00/00") &&
+
+            if (Convert.ToDateTime(accountsModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Dschg_Dt_PackedData) > Convert.ToDateTime("00/00/00") &&
                 Convert.ToDateTime(accountsModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Dschg_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
             {
                 bankruptcyMessage = "print Bankruptcy message.";
@@ -931,11 +1016,12 @@ namespace Carrington_Service.Calculation_Classes
 
         public string GetRepaymentPlanMessage(AccountsModel accountsModel)
         {
-
             String repaymentPlanMessage = string.Empty;
-            // If (RSSI-REPY-REMAIN-BAL not = 00000C)
-            //DOUBT
-            //if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Repy_Remain_Bal_PackedData) !=
+            if (accountsModel.MasterFileDataPart_1Model.Rssi_Repy_Remain_Bal_PackedData != "00000C")
+            {
+                repaymentPlanMessage = "";
+            }
+
             return repaymentPlanMessage;
         }
 
@@ -944,8 +1030,8 @@ namespace Carrington_Service.Calculation_Classes
 
             String stateNSF = string.Empty;
 
-             if(accountsModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "6" || accountsModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "16"
-                || accountsModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "18" || accountsModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "42" ) 
+            if (accountsModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "6" || accountsModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "16"
+               || accountsModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "18" || accountsModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "42")
             { stateNSF = "print State NSF message"; }
 
             return stateNSF;
@@ -955,8 +1041,8 @@ namespace Carrington_Service.Calculation_Classes
         {
 
             String stateNSF = string.Empty;
-            if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Chrg_Off_Dt_PackedData)==0 &&
-                Convert.ToInt64(accountsModel.MasterFileDataPart2Model.Rssi_Tot_Draft_Amt_PackedData)==0)
+            if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Chrg_Off_Dt_PackedData) == 0 &&
+                Convert.ToInt64(accountsModel.MasterFileDataPart2Model.Rssi_Tot_Draft_Amt_PackedData) == 0)
             {
                 stateNSF = "AutoPay Service message";
             }
@@ -969,7 +1055,7 @@ namespace Carrington_Service.Calculation_Classes
 
             String chargeOffNotice = string.Empty;
 
-            if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Chrg_Off_Dt_PackedData)>0)
+            if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Chrg_Off_Dt_PackedData) > 0)
             {
                 chargeOffNotice = "print Charge Off message";
             }
