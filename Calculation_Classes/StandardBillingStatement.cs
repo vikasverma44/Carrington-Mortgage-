@@ -475,7 +475,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             String lateFee = string.Empty;
             if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0) { lateFee = "suppress Late Charge message"; }
-             
+
 
             return lateFee;
         }
@@ -663,9 +663,9 @@ namespace Carrington_Service.Calculation_Classes
 
             String lockboxAddress = string.Empty;
 
-            if (accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 ==  "KS"|| accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "LA" || 
+            if (accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "KS" || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "LA" ||
                 accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "NM" || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "OK" ||
-                accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "TX" ) { lockboxAddress = "Dallas P.O.Box Address else Pasadena P.O.Box Address"; }
+                accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "TX") { lockboxAddress = "Dallas P.O.Box Address else Pasadena P.O.Box Address"; }
 
             return lockboxAddress;
         }
@@ -691,7 +691,7 @@ namespace Carrington_Service.Calculation_Classes
                 lateCharge = "suppress Late Charge message.";
             }
 
-           
+
             return lateCharge;
         }
 
@@ -720,7 +720,7 @@ namespace Carrington_Service.Calculation_Classes
 
             String totalAmount = string.Empty;
 
-            if (int.Parse(accountsModel.TransactionRecordModel.Rssi_Tr_Exp_Fee_Amt_PackedData) != 0) { totalAmount= "RSSI-TR-EXP-FEE-AMT"; }
+            if (int.Parse(accountsModel.TransactionRecordModel.Rssi_Tr_Exp_Fee_Amt_PackedData) != 0) { totalAmount = "RSSI-TR-EXP-FEE-AMT"; }
             //else if (RSSI_FT_TYPE_CODE == 000) { totalAmount="RSSI-FEE-AMT-ASSESSED"; } else { totalAmount= "RSSI-TR-AMT";}
 
             return totalAmount;
@@ -732,7 +732,7 @@ namespace Carrington_Service.Calculation_Classes
             String delinquencyInformationbox = string.Empty;
 
 
-            if ( int.Parse(accountsModel.MasterFileDataPart_1Model.Rssi_Num_Days_Delq) >= 30 && Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) > 0)
+            if (int.Parse(accountsModel.MasterFileDataPart_1Model.Rssi_Num_Days_Delq) >= 30 && Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) > 0)
             {
                 delinquencyInformationbox = "include the Delinquency Notice section, else leave blank.";
             }
@@ -891,7 +891,7 @@ namespace Carrington_Service.Calculation_Classes
         {
 
             String preForeclosureNotice = string.Empty;
-            
+
             if (int.Parse(accountsModel.detModel.SentNO631) == 1)
             {
                 preForeclosureNotice = "LEASE TAKE NOTICE that Carrington Mortgage Services, LLC has fulfilled, the pre - foreclosure notice requirements of Real Property Actions and Proceedings Law §1304 or Uniform Commercial Code § 9‐611(f), if applicable.     ";
@@ -904,8 +904,8 @@ namespace Carrington_Service.Calculation_Classes
         {
 
             String lenderPlacedInsuranceMessage = string.Empty;
-            if (accountsModel.EscrowRecordModel.rssi_esc_type == "20" || accountsModel.EscrowRecordModel.rssi_esc_type == "21" && 
-                accountsModel.EscrowRecordModel.Rssi_Ins_Co == "2450" && accountsModel.EscrowRecordModel.Rssi_Ins_Ag == "29000" || 
+            if (accountsModel.EscrowRecordModel.rssi_esc_type == "20" || accountsModel.EscrowRecordModel.rssi_esc_type == "21" &&
+                accountsModel.EscrowRecordModel.Rssi_Ins_Co == "2450" && accountsModel.EscrowRecordModel.Rssi_Ins_Ag == "29000" ||
                 accountsModel.EscrowRecordModel.Rssi_Ins_Ag == "29005" || accountsModel.EscrowRecordModel.Rssi_Ins_Ag == "43000" ||
                 accountsModel.EscrowRecordModel.Rssi_Ins_Ag == "43001")
             { lenderPlacedInsuranceMessage = "then print Lender Placed Insurance message"; }
@@ -917,9 +917,9 @@ namespace Carrington_Service.Calculation_Classes
         {
 
             String bankruptcyMessage = string.Empty;
-             
 
-            if (Convert.ToDateTime(accountsModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Dschg_Dt_PackedData) >Convert.ToDateTime("00/00/00") &&
+
+            if (Convert.ToDateTime(accountsModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Dschg_Dt_PackedData) > Convert.ToDateTime("00/00/00") &&
                 Convert.ToDateTime(accountsModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Dschg_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
             {
                 bankruptcyMessage = "print Bankruptcy message.";
@@ -929,11 +929,12 @@ namespace Carrington_Service.Calculation_Classes
 
         public string GetRepaymentPlanMessage(AccountsModel accountsModel)
         {
-
             String repaymentPlanMessage = string.Empty;
-            // If (RSSI-REPY-REMAIN-BAL not = 00000C)
-            //DOUBT
-            //if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Repy_Remain_Bal_PackedData) !=
+            if (accountsModel.MasterFileDataPart_1Model.Rssi_Repy_Remain_Bal_PackedData != "00000C")
+            {
+                repaymentPlanMessage = "";
+            }
+
             return repaymentPlanMessage;
         }
 
@@ -942,8 +943,8 @@ namespace Carrington_Service.Calculation_Classes
 
             String stateNSF = string.Empty;
 
-             if(accountsModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "6" || accountsModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "16"
-                || accountsModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "18" || accountsModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "42" ) 
+            if (accountsModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "6" || accountsModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "16"
+               || accountsModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "18" || accountsModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "42")
             { stateNSF = "print State NSF message"; }
 
             return stateNSF;
@@ -953,8 +954,8 @@ namespace Carrington_Service.Calculation_Classes
         {
 
             String stateNSF = string.Empty;
-            if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Chrg_Off_Dt_PackedData)==0 &&
-                Convert.ToInt64(accountsModel.MasterFileDataPart2Model.Rssi_Tot_Draft_Amt_PackedData)==0)
+            if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Chrg_Off_Dt_PackedData) == 0 &&
+                Convert.ToInt64(accountsModel.MasterFileDataPart2Model.Rssi_Tot_Draft_Amt_PackedData) == 0)
             {
                 stateNSF = "AutoPay Service message";
             }
@@ -967,7 +968,7 @@ namespace Carrington_Service.Calculation_Classes
 
             String chargeOffNotice = string.Empty;
 
-            if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Chrg_Off_Dt_PackedData)>0)
+            if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Chrg_Off_Dt_PackedData) > 0)
             {
                 chargeOffNotice = "print Charge Off message";
             }
