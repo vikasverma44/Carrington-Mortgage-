@@ -32,6 +32,93 @@ namespace Carrington_Service.Calculation_Classes
         public string Miscellaneous { get; set; }
         public string TotalDue { get; set; }
 
+        public StringBuilder finalLine;
+        public string GetFinalStringStandardBilling(AccountsModel accountModel)
+        {
+            finalLine = new StringBuilder();
+
+            finalLine.Append("01" + "|");
+            finalLine.Append("STD BK CHPT 7 STMT" + "|");
+            finalLine.Append(" " + "|");
+            finalLine.Append("01" + "|");
+
+            finalLine.Append(GetAmountDue(accountModel) + "|");
+            finalLine.Append(GetPrincipal(accountModel) + "|");
+            finalLine.Append(GetAssistanceAmount(accountModel) + "|");
+            finalLine.Append(GetReplacementReserveAmount(accountModel) + "|");
+            finalLine.Append(GetOverduePayment(accountModel) + "|");
+            finalLine.Append(GetTotalFeesAndCharges(accountModel) + "|");
+            finalLine.Append(GetTotalFeesPaid(accountModel) + "|");
+            finalLine.Append(GetTotalAmountDue(accountModel) + "|");
+            finalLine.Append(GetPastDueBalance(accountModel) + "|");
+            finalLine.Append(GetDeferredBalance(accountModel) + "|");
+            finalLine.Append(GetUnappliedFunds(accountModel) + "|");
+            finalLine.Append(GetFeesAndChargesPaidLastMonth(accountModel) + "|");
+            finalLine.Append(GetUnappliedFundsPaidLastMonth(accountModel) + "|");
+            finalLine.Append(GetTotalPaidLastMonth(accountModel) + "|");
+            finalLine.Append(GetFeesAndChargesPaidYearToDate(accountModel) + "|");
+            finalLine.Append(GetUnappliedFundsPaidYearToDate(accountModel) + "|");
+            finalLine.Append(GetTotalPaidYearToDate(accountModel) + "|");
+            finalLine.Append(GetLatePaymentAmount(accountModel) + "|");
+            finalLine.Append(GetSuspense(accountModel) + "|");
+            finalLine.Append(GetMiscellaneous(accountModel) + "|");
+            finalLine.Append(GetTotalDue(accountModel) + "|");
+            finalLine.Append(GetPrintStatement(accountModel) + "|");
+            finalLine.Append(GetAttention(accountModel) + "|");
+            finalLine.Append(GetPrimaryBorrower(accountModel) + "|");
+            finalLine.Append(GetSecondaryBorrower(accountModel) + "|");
+            finalLine.Append(GetMailingAddressLine1(accountModel) + "|");
+            finalLine.Append(GetMailingAddressLine2(accountModel) + "|");
+            finalLine.Append(GetMailingCityStateZip(accountModel) + "|");
+            finalLine.Append(GetMailingCountry(accountModel) + "|");
+            finalLine.Append(GetPaymentReceivedAfter(accountModel) + "|");
+            finalLine.Append(GetLateFee(accountModel) + "|");
+            finalLine.Append(GetAutodraftMessage(accountModel) + "|");
+            finalLine.Append(GetInterestRateUnti(accountModel) + "|");
+            finalLine.Append(GetPrepaymentPenalty(accountModel) + "|");
+            finalLine.Append(GetMaturityDate(accountModel) + "|");
+            finalLine.Append(GetmodificationDate(accountModel) + "|");
+            finalLine.Append(GetChargeOffNoticeDelinquencyNoticeRefinanceMessage(accountModel) + "|");
+            finalLine.Append(GetInterest(accountModel) + "|");
+            finalLine.Append(GetEscrowTaxesInsurance(accountModel) + "|");
+            finalLine.Append(GetRegularMonthlyPayment(accountModel) + "|");
+            finalLine.Append(GetBuydownBalance(accountModel) + "|");
+            finalLine.Append(GetPartialClaim(accountModel) + "|");
+            finalLine.Append(GetNegativeAmortization(accountModel) + "|");
+            finalLine.Append(GetCarringtonCharitableFoundationMonth(accountModel) + "|");
+            finalLine.Append(GetCarringtonCharitablePaidYeartoDate(accountModel) + "|");
+            finalLine.Append(GetLockboxAddress(accountModel) + "|");
+            finalLine.Append(GetReceivedAfter(accountModel) + "|");
+            finalLine.Append(GetLateCharge(accountModel) + "|");
+            finalLine.Append(GetCarringtonCharitableDonationbox(accountModel) + "|");
+            finalLine.Append(GetEffectiveDate(accountModel) + "|");
+            finalLine.Append(GetTotalAmount(accountModel) + "|");
+            finalLine.Append(GetDelinquencyInformationbox(accountModel) + "|");
+            finalLine.Append(GetRecentPayment6(accountModel) + "|");
+            finalLine.Append(GetRecentPayment5(accountModel) + "|");
+            finalLine.Append(GetRecentPayment4(accountModel) + "|");
+            finalLine.Append(GetRecentPayment3(accountModel) + "|");
+            finalLine.Append(GetRecentPayment2(accountModel) + "|");
+            finalLine.Append(GetRecentPayment1(accountModel) + "|");
+            finalLine.Append(GetLossMitigtationNotice(accountModel) + "|");
+            finalLine.Append(GetForeclosureNotice(accountModel) + "|");
+            finalLine.Append(GetPreForeclosureNotice(accountModel) + "|");
+            finalLine.Append(GetLenderPlacedInsuranceMessage(accountModel) + "|");
+            finalLine.Append(GetBankruptcyMessage(accountModel) + "|");
+            finalLine.Append(GetRepaymentPlanMessage(accountModel) + "|");
+            finalLine.Append(GetStateNSF(accountModel) + "|");
+            finalLine.Append(GetACHMessage(accountModel) + "|");
+            finalLine.Append(GetChargeOffNotice(accountModel) + "|");
+            finalLine.Append(GetCMSPartialClaim(accountModel) + "|");
+            finalLine.Append(GetHUDPartialClaim(accountModel) + "|");
+            finalLine.Append(GetStateDisclosures(accountModel) + "|");
+            finalLine.Append(GetCarringtonCharitableFoundation(accountModel) + "|");
+            finalLine.Append(GetPaymentInformationMessage(accountModel) + "|");
+
+
+
+            return Convert.ToString(finalLine);
+        }
         /* While Calculating Conditions must be applied*/
         public string GetAmountDue(AccountsModel accountsModel)
         {
