@@ -33,9 +33,9 @@ namespace Carrington_Service.Services
                 string MailText = str.ReadToEnd();
                 str.Close();
 
-                //Repalce [newusername] = signup user name   
                 MailText = MailText.Replace("[Receiver]", "Tim");
                 MailText = MailText.Replace("[Sender]", "Bhawna");
+                mailBody = MailText;
 
                 bool mailHTML = true;
                 List<string> mailAttachmentPath = new List<string>();
