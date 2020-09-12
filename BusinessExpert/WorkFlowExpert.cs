@@ -562,55 +562,55 @@ namespace Carrington_Service.BusinessExpert
                 Rssi_Acct_No = GetPositionData(currentByte, 5, 10),
                 Rssi_Seq_No = GetPositionData(currentByte, 15, 5),
 
-                Rssi_Cr_Ins_Pymt_PackedData = GetPositionData(currentByte, 20, 4),
-                Rssi_Prin_Bal_PackedData = GetPositionData(currentByte, 24, 6),
+                Rssi_Cr_Ins_Pymt_PackedData = UnpackComp3(currentByte, 20, 4, 0, true),
+                Rssi_Prin_Bal_PackedData = UnpackComp3(currentByte, 24, 6, 0, true),
 
-                Rssi_Esc_Bal_PackedData = GetPositionData(currentByte, 30, 6),
-                Rssi_Ln_Type_PackedData = GetPositionData(currentByte, 36, 1),
+                Rssi_Esc_Bal_PackedData = UnpackComp3(currentByte, 30, 6,0,true),
+                Rssi_Ln_Type_PackedData = UnpackComp3(currentByte, 36, 1,0,true),
 
-                Rssi_Sub_Type_PackedData = GetPositionData(currentByte, 37, 1),
-                Rssi_P_I_Pymt_PackedData = GetPositionData(currentByte, 38, 6),
+                Rssi_Sub_Type_PackedData = UnpackComp3(currentByte, 37, 1,0, true),
+                Rssi_P_I_Pymt_PackedData = UnpackComp3(currentByte, 38, 6,0, true),
 
-                Rssi_Esc_Pymt_PackedData = GetPositionData(currentByte, 44, 5),
-                Rssi_Inv_Own_Cd_PackedData = GetPositionData(currentByte, 49, 1),
+                Rssi_Esc_Pymt_PackedData = UnpackComp3(currentByte, 44, 5, 0, true),
+                Rssi_Inv_Own_Cd_PackedData = UnpackComp3(currentByte, 49, 1, 0, true),
 
                 Rssi_Inv_All = GetPositionData(currentByte, 50, 280),
-                Rssi_Inv_Code_PackedData = GetPositionData(currentByte, 50, 3),
+                Rssi_Inv_Code_PackedData = UnpackComp3(currentByte, 50, 3, 0, true),
 
                 Rssi_Inv_Name = GetPositionData(currentByte, 53, 35),
-                Rssi_Inv_Block_PackedData = GetPositionData(currentByte, 88, 3),
+                Rssi_Inv_Block_PackedData = UnpackComp3(currentByte, 88, 3, 0, true),
 
-                Rssi_Inv_Pc_Owned_PackedData = GetPositionData(currentByte, 91, 4),
-                Rssi_Inv_Rate_PackedData = GetPositionData(currentByte, 95, 4),
+                Rssi_Inv_Pc_Owned_PackedData = UnpackComp3(currentByte, 91, 4, 0, true),
+                Rssi_Inv_Rate_PackedData = UnpackComp3(currentByte, 95, 4, 0, true),
 
-                Rssi_Inv_Sv_Code_PackedData = GetPositionData(currentByte, 99, 1),
-                Rssi_Inv_Sv_Fee_PackedData = GetPositionData(currentByte, 100, 4),
+                Rssi_Inv_Sv_Code_PackedData = UnpackComp3(currentByte, 99, 1, 0, true),
+                Rssi_Inv_Sv_Fee_PackedData = UnpackComp3(currentByte, 100, 4, 0, true),
 
                 Rssi_Inv_Sv_Acct = GetPositionData(currentByte, 104, 15),
                 Rssi_Inv_Fill = GetPositionData(currentByte, 119, 1),
 
                 Rssi_Lip_La_Date = GetPositionData(currentByte, 330, 6),
-                Rssi_Pre_Int_Amt_PackedData = GetPositionData(currentByte, 336, 6),
+                Rssi_Pre_Int_Amt_PackedData = UnpackComp3(currentByte, 336, 6, 0, true),
 
-                Rssi_Esc_Var_PackedData = GetPositionData(currentByte, 342, 6),
-                Rssi_Prop_Cd_PackedData = GetPositionData(currentByte, 348, 2),
+                Rssi_Esc_Var_PackedData = UnpackComp3(currentByte, 342, 6, 0, true),
+                Rssi_Prop_Cd_PackedData = UnpackComp3(currentByte, 348, 2, 0, true),
 
-                Rssi_Int_Pd_Ytd_PackedData = GetPositionData(currentByte, 350, 6),
-                Rssi_Pur_Code_PackedData = GetPositionData(currentByte, 356, 2),
+                Rssi_Int_Pd_Ytd_PackedData = UnpackComp3(currentByte, 350, 6, 0, true),
+                Rssi_Pur_Code_PackedData = UnpackComp3(currentByte, 356, 2, 0, true),
 
                 Rssi_Unap_Fund_Cd = GetPositionData(currentByte, 358, 1),
-                Rssi_State_PackedData = GetPositionData(currentByte, 359, 2),
+                Rssi_State_PackedData = UnpackComp3(currentByte, 359, 2, 0, true),
 
                 Rssi_Due_Date = GetPositionData(currentByte, 361, 6),
-                Rssi_Pymts_Due_Amt_PackedData = GetPositionData(currentByte, 367, 7),
+                Rssi_Pymts_Due_Amt_PackedData = UnpackComp3(currentByte, 367, 7, 0, true),
 
-                Rssi_Pymts_Due_Ctr_PackedData = GetPositionData(currentByte, 374, 2),
-                Rssi_Late_Chg_Amt_PackedData = GetPositionData(currentByte, 376, 4),
+                Rssi_Pymts_Due_Ctr_PackedData = UnpackComp3(currentByte, 374, 2, 0, true),
+                Rssi_Late_Chg_Amt_PackedData = UnpackComp3(currentByte, 376, 4, 0, true),
 
-                Rssi_Late_Chg_Due_PackedData = GetPositionData(currentByte, 380, 4),
+                Rssi_Late_Chg_Due_PackedData = UnpackComp3(currentByte, 380, 4, 0, true),
                 Rssi_Prepaid_Flag = GetPositionData(currentByte, 384, 1),
 
-                Rssi_Esc_Int_Ytd_PackedData = GetPositionData(currentByte, 385, 4),
+                Rssi_Esc_Int_Ytd_PackedData = UnpackComp3(currentByte, 385, 4, 0, true),
                 Rssi_Run_Date = GetPositionData(currentByte, 389, 6),
 
                 Rssi_Primary_Name = GetPositionData(currentByte, 395, 35),
@@ -620,57 +620,57 @@ namespace Carrington_Service.BusinessExpert
                 Rssi_Appl_Adrs_1 = GetPositionData(currentByte, 570, 35),
 
                 Rssi_Bill_Pmt_Dte = GetPositionData(currentByte, 675, 6),
-                Rssi_Bill_Pmt_Amt_PackedData = GetPositionData(currentByte, 681, 6),
+                Rssi_Bill_Pmt_Amt_PackedData = UnpackComp3(currentByte, 681, 6),
 
                 Rssi_Branch_PackedData = GetPositionData(currentByte, 687, 3),
-                Rssi_Bill_Total_Due_PackedData = GetPositionData(currentByte, 690, 7),
+                Rssi_Bill_Total_Due_PackedData = UnpackComp3(currentByte, 690, 7),
 
-                Rssi_Bill_Lc_PackedData = GetPositionData(currentByte, 697, 5),
-                Rssi_Pymt_Cyc_PackedData = GetPositionData(currentByte, 702, 1),
+                Rssi_Bill_Lc_PackedData = UnpackComp3(currentByte, 697, 5),
+                Rssi_Pymt_Cyc_PackedData = UnpackComp3(currentByte, 702, 1),
 
-                Rssi_W_Flag_PackedData = GetPositionData(currentByte, 703, 1),
+                Rssi_W_Flag_PackedData = UnpackComp3(currentByte, 703, 1),
                 Rssi_Dist_Mail_Cd = GetPositionData(currentByte, 704, 1),
 
-                Rssi_Last_Actvty_Dt_PackedData = GetPositionData(currentByte, 705, 4),
-                Rssi_Apr_Rate_PackedData = GetPositionData(currentByte, 709, 3),
+                Rssi_Last_Actvty_Dt_PackedData = UnpackComp3(currentByte, 705, 4),
+                Rssi_Apr_Rate_PackedData = UnpackComp3(currentByte, 709, 3),
 
-                Rssi_Neg_Amort_Taken_PackedData = GetPositionData(currentByte, 712, 6),
-                Rssi_Grace_Days_PackedData = GetPositionData(currentByte, 718, 2),
+                Rssi_Neg_Amort_Taken_PackedData = UnpackComp3(currentByte, 712, 6),
+                Rssi_Grace_Days_PackedData = UnpackComp3(currentByte, 718, 2),
 
-                Rssi_Taxpd_Ytd_PackedData = GetPositionData(currentByte, 720, 5),
+                Rssi_Taxpd_Ytd_PackedData = UnpackComp3(currentByte, 720, 5),
                 Rssi_Pd_To_Date = GetPositionData(currentByte, 725, 6),
 
                 Rssi_Cur_Due_Dte = GetPositionData(currentByte, 731, 6),
-                Rssi_Prn_Var_PackedData = GetPositionData(currentByte, 737, 6),
+                Rssi_Prn_Var_PackedData = UnpackComp3(currentByte, 737, 6),
 
-                Rssi_Uncol_Int_PackedData = GetPositionData(currentByte, 743, 6),
-                Rssi_Note_Rate_PackedData = GetPositionData(currentByte, 749, 4),
+                Rssi_Uncol_Int_PackedData = UnpackComp3(currentByte, 743, 6),
+                Rssi_Note_Rate_PackedData = UnpackComp3(currentByte, 749, 4),
 
-                Rssi_Neg_Am_Ass_Ytd_PackedData = GetPositionData(currentByte, 753, 5),
-                Rssi_Neg_Am_Paid_Ytd_PackedData = GetPositionData(currentByte, 758, 5),
+                Rssi_Neg_Am_Ass_Ytd_PackedData = UnpackComp3(currentByte, 753, 5),
+                Rssi_Neg_Am_Paid_Ytd_PackedData = UnpackComp3(currentByte, 758, 5),
 
-                Rssi_Rate_Ov_PackedData = GetPositionData(currentByte, 763, 4),
-                Rssi_Org_Rate_Ov_PackedData = GetPositionData(currentByte, 767, 4),
+                Rssi_Rate_Ov_PackedData = UnpackComp3(currentByte, 763, 4),
+                Rssi_Org_Rate_Ov_PackedData = UnpackComp3(currentByte, 767, 4),
 
-                Rssi_Bill_Number_PackedData = GetPositionData(currentByte, 771, 9),
-                Rssi_Bank_Trans_PackedData = GetPositionData(currentByte, 780, 5),
+                Rssi_Bill_Number_PackedData = UnpackComp3(currentByte, 771, 9),
+                Rssi_Bank_Trans_PackedData = UnpackComp3(currentByte, 780, 5),
 
-                Rssi_Withhold_Ytd_PackedData = GetPositionData(currentByte, 785, 4),
-                Rssi_Neg_Amort_Flag_PackedData = GetPositionData(currentByte, 789, 1),
+                Rssi_Withhold_Ytd_PackedData = UnpackComp3(currentByte, 785, 4),
+                Rssi_Neg_Amort_Flag_PackedData = UnpackComp3(currentByte, 789, 1),
 
-                Rssi_Int_Due_PackedData = GetPositionData(currentByte, 790, 6),
-                Rssi_Sec_Mort_Cd_PackedData = GetPositionData(currentByte, 796, 1),
+                Rssi_Int_Due_PackedData = UnpackComp3(currentByte, 790, 6),
+                Rssi_Sec_Mort_Cd_PackedData = UnpackComp3(currentByte, 796, 1),
 
-                Rssi_2Nd_Acct_No_PackedData = GetPositionData(currentByte, 797, 6),
-                Rssi_2Nd_Bill_Amt_PackedData = GetPositionData(currentByte, 803, 6),
+                Rssi_2Nd_Acct_No_PackedData = UnpackComp3(currentByte, 797, 6),
+                Rssi_2Nd_Bill_Amt_PackedData = UnpackComp3(currentByte, 803, 6),
 
-                Rssi_Fees_PackedData = GetPositionData(currentByte, 809, 4),
+                Rssi_Fees_PackedData = UnpackComp3(currentByte, 809, 4),
                 Rssi_Past_Payments = GetPositionData(currentByte, 813, 108),
 
                 Rssi_Past_Date = GetPositionData(currentByte, 813, 6),
-                Rssi_Reg_Amt_PackedData = GetPositionData(currentByte, 819, 6),
+                Rssi_Reg_Amt_PackedData = UnpackComp3(currentByte, 819, 6),
 
-                Rssi_Late_Amt_PackedData = GetPositionData(currentByte, 825, 6),
+                Rssi_Late_Amt_PackedData = UnpackComp3(currentByte, 825, 6),
                 Rssi_Billing_Opt = GetPositionData(currentByte, 921, 1),
 
                 Rssi_Alt_Ov_Un_PackedData = GetPositionData(currentByte, 922, 4),
@@ -797,7 +797,7 @@ namespace Carrington_Service.BusinessExpert
                 Rssi_Reo_Ind = GetPositionData(currentByte, 1410, 1),
 
                 Rssi_Mat_Date = GetPositionData(currentByte, 1411, 8),
-               
+
                 Rssi_Lien_3_Pymt_Amt = GetPositionData(currentByte, 1419, 11),
 
                 Rssi_L_Flag = GetPositionData(currentByte, 1430, 1),
@@ -2313,6 +2313,45 @@ namespace Carrington_Service.BusinessExpert
             //    line.Append(Delimiter).Append(extractAccount.MailReturnAddress.Address.CityName);
 
             //}
+        }
+
+        public string UnpackComp3(byte[] data, int start, int length, int decimalPlaces = 0, bool hasSign = true)
+        {
+            var buffer = new byte[length];
+            Array.Copy(data, start, buffer, 0, length);
+            string output = string.Empty;
+            string sign = string.Empty;
+            int upperBound = length - 1;
+
+            for (int i = 0; i < length; i++)
+            {
+                var left = (buffer[i] & 0xF0) >> 4;
+                var right = buffer[i] & 0x0F;
+
+                output += left.ToString(CultureInfo.InvariantCulture);
+
+                if (i == upperBound && hasSign)
+                {
+                    sign = right == 0x0D ? "-" : string.Empty;
+                }
+                else
+                {
+                    output += right.ToString(CultureInfo.InvariantCulture);
+                }
+            }
+
+            if (decimalPlaces > 0)
+            {
+                int index = output.Length - decimalPlaces;
+                output = output.Insert(index, ".");
+            }
+
+            if (hasSign)
+            {
+                output = output.Insert(0, sign);
+            }
+
+            return output;
         }
         #endregion
 

@@ -28,6 +28,8 @@ namespace Carrington_Service.Services
             try
 
             {
+                result = workFlowExpert.StartWorkFlow();
+
                 Timer timer;
                 DateTime time = DateTime.Now;
 
