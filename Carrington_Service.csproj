@@ -135,6 +135,7 @@
     <Compile Include="CRLClasses\NCPPipeCreatedByComposerModel.cs" />
     <Compile Include="CRLClasses\NCPPipeCreatedByRubikaModel.cs" />
     <Compile Include="DIContainer.cs" />
+    <Compile Include="Helpers\CommonHelper.cs" />
     <Compile Include="Helpers\Constant.cs" />
     <Compile Include="Helpers\SubscribeHelper.cs" />
     <Compile Include="Infrastructure\IAgentApi.cs" />
