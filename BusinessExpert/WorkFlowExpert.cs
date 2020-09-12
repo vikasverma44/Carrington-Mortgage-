@@ -51,8 +51,6 @@ namespace Carrington_Service.BusinessExpert
             try
             {
                 Logger.Trace("STARTED: Start WorkFlow Service Method");
-                EmailService.SendNotification("");
-
                 ReadPMFile(@"D:\Carrington\Mapping File\TESTDATA.ETOA");
                 (List<DetModel> detData, List<TransModel> transData) = ReadCMSBillInputFileDetRecord(@"D:\Carrington\Mapping File\CMS_BILLINPUT02_06232020.txt");
                 List<EConsentModel> EconsentData = ReadEConsentRecord(@"D:\Carrington\Mapping File\Carrington_Econsent_Setups_06232020.txt");

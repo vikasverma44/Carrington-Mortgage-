@@ -16,6 +16,13 @@ namespace Carrington_Service.Helpers
                 LoggingFileMaxSizeInMB = GetSetting<int>("LoggingFileMaxSizeInMB"),
                 LoggingPath = GetSetting<string>("LoggingPath"),
                 IsReleaseMode = GetSetting<bool>("IsReleaseMode"),
+                IsEmailEnabled = GetSetting<bool>("IsEmailEnabled"),
+                SMTP_Host = GetSetting<string>("SMTP_Host"),
+                SMTP_Port = GetSetting<int>("SMTP_Port"),
+                SMTP_Usr = GetSetting<string>("SMTP_Usr"),
+                SMTP_Pwd = GetSetting<string>("SMTP_Pwd"),
+                SMTP_From = GetSetting<string>("SMTP_From"),
+                SMTP_To = GetSetting<string>("SMTP_To"),
             };
         }
 
