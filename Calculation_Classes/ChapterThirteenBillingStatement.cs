@@ -280,8 +280,8 @@ namespace Carrington_Service.Calculation_Classes
         public string GetPrintStatement(AccountsModel accountModel)
         {
             if (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H")
-                CMSPartialClaim = "Create image but do not mail.";
-            return CMSPartialClaim;
+                PrintStatement = "Create image but do not mail.";
+            return PrintStatement;
         }
         public string GetPrimaryBorrowerBKAttorney(AccountsModel accountModel)
         {
@@ -491,9 +491,9 @@ namespace Carrington_Service.Calculation_Classes
                 && Convert.ToInt64(accountModel.EscrowRecordModel.Rssi_Ins_Co) == 2450
                 && agencyCode.Contains(accountModel.EscrowRecordModel.Rssi_Ins_Ag))
             {
-                POBoxAddress = "Lender Placed Insurance message.";
+                LenderPlacedInsuranceMessage = "Lender Placed Insurance message.";
             }
-            return POBoxAddress;
+            return LenderPlacedInsuranceMessage;
 
         }
         public string GetStateNSF(AccountsModel accountModel)
