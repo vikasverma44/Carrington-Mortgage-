@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Mail;
+using System.Text;
 
 namespace Carrington_Service.Services
 {
@@ -26,17 +27,9 @@ namespace Carrington_Service.Services
                 string mailBCC = string.Empty;
                 string mailCC = string.Empty;
                 string mailSubject = "NCP System Generated Mail. Please Do not Reply";
-                string mailBody = emailBody;
-
-                string FilePath = @"C:\NCP-Carrington\Input\EmailTemplate.html";
-                StreamReader str = new StreamReader(FilePath);
-                string MailText = str.ReadToEnd();
-                str.Close();
-
-                MailText = MailText.Replace("[Receiver]", "Tim");
-                MailText = MailText.Replace("[Sender]", "Bhawna");
-                mailBody = MailText;
-
+                string mailBody = EmailTemplate();
+                mailBody = mailBody.Replace("[Receiver]", "Tim");
+                mailBody = mailBody.Replace("[Sender]", "Bhawna");
                 bool mailHTML = true;
                 List<string> mailAttachmentPath = new List<string>();
                 return SendMailMessage(mailTo, mailFrom, mailBCC, mailCC, mailSubject,
@@ -147,6 +140,48 @@ namespace Carrington_Service.Services
                 return false;
             }
             return true;
+        }
+
+        public string EmailTemplate()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("<html>");
+            sb.AppendLine("<head>");
+            sb.AppendLine("<title></title>");
+            sb.AppendLine("<meta charset='utf-8'/>");
+            sb.AppendLine("<style>");
+            sb.AppendLine("table, th, td {");
+            sb.AppendLine("border: 1px solid black;");
+            sb.AppendLine("}");
+            sb.AppendLine("</style>");
+            sb.AppendLine("</head>");
+            sb.AppendLine("<body>");
+            sb.AppendLine("<br />");
+            sb.AppendLine("<table width='50%'>");
+            sb.AppendLine("<tr align='center'>");
+            sb.AppendLine("<td>  ");
+            sb.AppendLine("<br />  ");
+            sb.AppendLine("<br />  ");
+            sb.AppendLine("Dear [Receiver]  ");
+            sb.AppendLine("<br />  ");
+            sb.AppendLine("<br />  ");
+            sb.AppendLine("Thank you for registering with us!  ");
+            sb.AppendLine("<br />  ");
+            sb.AppendLine("Regards,  ");
+            sb.AppendLine("<br />  ");
+            sb.AppendLine("[Sender]");
+            sb.AppendLine("<br />  ");
+            sb.AppendLine("<br />  ");
+            sb.AppendLine("</td>  ");
+            sb.AppendLine("</tr>  ");
+            sb.AppendLine("<tr>  ");
+            sb.AppendLine("<td align='center' style='background-color:yellow'>");
+            sb.AppendLine("<br />  ");
+            sb.AppendLine("<span style='font-size:20px;'><i>This is NCP generated Email, Please donot reply</span>");
+            sb.AppendLine("<br />  ");
+            sb.AppendLine("<br />  ");
+            sb.AppendLine("</td>  ");
+            return sb.ToString();
         }
 
     }
