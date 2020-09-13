@@ -9,6 +9,7 @@ using ODHS_EDelivery.Models.InputCopyBookModels;
 using ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Globalization;
@@ -54,6 +55,20 @@ namespace Carrington_Service.BusinessExpert
 
         public bool StartWorkFlow()
         {
+            try
+            {
+                return FileReadingProcess();
+            }
+            catch (Exception ex)
+            {
+
+                Logger.Error(ex, "");
+                return false;
+            }
+
+        }
+        public bool FileReadingProcess()
+        {
             Logger.Trace("STARTED: File Reading Process Started");
             try
             {
@@ -63,31 +78,31 @@ namespace Carrington_Service.BusinessExpert
                 {
                     if (file.Contains("TESTDATA"))
                     {
-                        pmFilePath = Convert.ToString(ConfigHelper.Model.InputFilePathLocation_Local + file);
+                        pmFilePath = file;
                     }
                     else if (file.Contains("CMS_BILLINPUT"))
                     {
-                        supplimentFilePath = Convert.ToString(ConfigHelper.Model.InputFilePathLocation_Local + file);
+                        supplimentFilePath = file;
                     }
                     else if (file.Contains("Carrington_Econsent"))
                     {
-                        EConsentFilePath = Convert.ToString(ConfigHelper.Model.InputFilePathLocation_Local + file);
+                        EConsentFilePath = file;
                     }
                 }
                 bool isFileMissing = false;
                 if (pmFilePath == null)
                 {
-                    Logger.Trace("ENDED: PM File Not Found");
+                    Logger.Trace("ERROR: PM File Not Found");
                     isFileMissing = true;
                 }
-                if (supplimentFilePath== null)
+                if (supplimentFilePath == null)
                 {
-                    Logger.Trace("ENDED: Suppliment  File Not Found");
+                    Logger.Trace("ERROR: Suppliment  File Not Found");
                     isFileMissing = true;
                 }
-                if (EConsentFilePath== null)
+                if (EConsentFilePath == null)
                 {
-                    Logger.Trace("ENDED: Econsent  File Not Found");
+                    Logger.Trace("ERROR: Econsent  File Not Found");
                     isFileMissing = true;
                 }
 
@@ -95,17 +110,16 @@ namespace Carrington_Service.BusinessExpert
                 {
                     AccountMatchingProcess(pmFilePath, supplimentFilePath, EConsentFilePath);
                 }
-               
+
                 TimeWatch();
                 Logger.Trace("ENDED: File Reading Process Completed");
                 return true;
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "File Reading Process Failed");
+                Logger.Error(ex, "File Reading Process Failed :");
                 return false;
             }
-
         }
         public bool AccountMatchingProcess(string pmFilePath, string supplimentFilePath, string EConsentFilePath)
         {
@@ -139,8 +153,7 @@ namespace Carrington_Service.BusinessExpert
                                             if (!anyAccountFound)
                                             {
                                                 anyAccountFound = true;
-                                            }
-                                            countAccount++;
+                                            } 
                                         }
                                     }
                                     else if (transData.Any(df => df.LoanNumber == accountToMatch))
@@ -152,8 +165,7 @@ namespace Carrington_Service.BusinessExpert
                                             if (!anyAccountFound)
                                             {
                                                 anyAccountFound = true;
-                                            }
-                                            countAccount++;
+                                            } 
                                         }
                                     }
                                     if (isAccountMatched)
@@ -201,7 +213,7 @@ namespace Carrington_Service.BusinessExpert
             }
             catch (Exception ex)
             {
-                Logger.Trace("Error : Account Matching Process Error :" + Convert.ToString(ex));
+                Logger.Error(ex, "Error : Account Matching Process Error :");
                 return true;
             }
         }
@@ -282,255 +294,283 @@ namespace Carrington_Service.BusinessExpert
 
         public void ReadPMFile(string fileNameWithPath)
         {
-
-            int numOfBytes = 4010;
-            InputFileStream = new System.IO.FileStream(fileNameWithPath, System.IO.FileMode.Open, System.IO.FileAccess.Read, FileShare.ReadWrite);
-
-            byte[] currentByteLine = new byte[numOfBytes];
-
-
-            int iBytesRead = InputFileStream.Read(currentByteLine, 0, numOfBytes);
-            int counter = 0;
-            int startPos = 0;
-            int fieldLength = 1;
-            bool firstRecord = false;
-            while (iBytesRead > 0)
+            Logger.Trace("STARTED: Reading PM File");
+            try
             {
-                string inputValue = Encoding.Default.GetString(currentByteLine, startPos, fieldLength);
-                if (counter <= 1)
-                {
-                    if (inputValue == "H")
-                    {
-                        GetHeaderRecord(currentByteLine);
-                    }
-                    else if (inputValue == "B")
-                    {
-                        GetInstitutionRecord(currentByteLine);
-                    }
-                }
-                else if (counter > 1)
-                {
-                    if (inputValue == "P")
-                    {
-                        GetPL_Record(currentByteLine, ref accountsModel);
-                    }
-                    else if (inputValue == "A")
-                    {
-                        if (firstRecord)
-                        {
-                            MortgageLoanBillingFile.AccountModelList.Add(accountsModel);
-                            accountsModel = null;
-                        }
-                        accountsModel = new AccountsModel();
-                        firstRecord = true;
-                        GetMasterFileDataPart_1(currentByteLine, ref accountsModel);
-                    }
-                    else if (inputValue == "2")
-                    {
-                        GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
-                    }
-                    else if (inputValue == "U")
-                    {
-                        GetUserFieldRecord(currentByteLine, ref accountsModel);
-                    }
-                    else if (inputValue == "L")
-                    {
-                        GetMultiLockboxRecordModel(currentByteLine, ref accountsModel);
-                    }
-                    else if (inputValue == "R")
-                    {
-                        GetRateReductionRecord(currentByteLine, ref accountsModel);
-                    }
-                    else if (inputValue == "E")
-                    {
-                        GetEscrowRecordModel(currentByteLine, ref accountsModel);
-                    }
-                    else if (inputValue == "O")
-                    {
-                        GetOptionalItemEscrowRecordModel(currentByteLine, ref accountsModel);
-                    }
-                    else if (inputValue == "F")
-                    {
-                        GetFeeRecordModel(currentByteLine, ref accountsModel);
-                    }
-                    else if (inputValue == "S")
-                    {
-                        GetSolicitationRecordModel(currentByteLine, ref accountsModel);
-                    }
-                    else if (inputValue == "T")
-                    {
-                        GetTransactionRecordModel(currentByteLine, ref accountsModel);
-                    }
-                    else if (inputValue == "C")
-                    {
-                        GetForeignInformationRecordModel(currentByteLine, ref accountsModel);
-                    }
-                    else if (inputValue == "D")
-                    {
-                        GetBlendedRateInformationRecordModel(currentByteLine, ref accountsModel);
-                    }
-                    else if (inputValue == "I")
-                    {
-                        GetCoBorrowerRecordModel(currentByteLine, ref accountsModel);
-                    }
-                    else if (inputValue == "<")
-                    {
-                        GetLateChargeInformationRecordModel(currentByteLine, ref accountsModel);
-                    }
-                    else if (inputValue == "-")
-                    {
-                        GetLateChargeDetailRecordModel(currentByteLine, ref accountsModel);
-                    }
-                    else if (inputValue == "J")
-                    {
-                        GetActiveBankruptcyInformationRecordModel(currentByteLine, ref accountsModel);
-                    }
-                    else if (inputValue == "K")
-                    {
-                        GetArchivedBankruptcyDetailRecordModel(currentByteLine, ref accountsModel);
-                    }
-                    else if (inputValue == "X")
-                    {
-                        GetEmailAddressRecordModel(currentByteLine, ref accountsModel);
-                    }
-                    else if (inputValue == "3")
-                    {
-                        GetDisasterTrackingRecordModel(currentByteLine, ref accountsModel);
-                    }
-                    else if (inputValue == "4")
-                    {
-                        GetRHCDRecords(currentByteLine, ref accountsModel);
-                    }
-                    else if (inputValue == "Z")
-                    {
-                        GetTrailerRecords(currentByteLine, ref accountsModel);
-                    }
+                int numOfBytes = 4010;
+                InputFileStream = new System.IO.FileStream(fileNameWithPath, System.IO.FileMode.Open, System.IO.FileAccess.Read, FileShare.ReadWrite);
 
+                byte[] currentByteLine = new byte[numOfBytes];
+
+
+                int iBytesRead = InputFileStream.Read(currentByteLine, 0, numOfBytes);
+                int counter = 0;
+                int startPos = 0;
+                int fieldLength = 1;
+                bool firstRecord = false;
+                while (iBytesRead > 0)
+                {
+                    string inputValue = Encoding.Default.GetString(currentByteLine, startPos, fieldLength);
+                    if (counter <= 1)
+                    {
+                        if (inputValue == "H")
+                        {
+                            GetHeaderRecord(currentByteLine);
+                        }
+                        else if (inputValue == "B")
+                        {
+                            GetInstitutionRecord(currentByteLine);
+                        }
+                    }
+                    else if (counter > 1)
+                    {
+                        if (inputValue == "P")
+                        {
+                            GetPL_Record(currentByteLine, ref accountsModel);
+                        }
+                        else if (inputValue == "A")
+                        {
+                            if (firstRecord)
+                            {
+                                MortgageLoanBillingFile.AccountModelList.Add(accountsModel);
+                                accountsModel = null;
+                            }
+                            accountsModel = new AccountsModel();
+                            firstRecord = true;
+                            GetMasterFileDataPart_1(currentByteLine, ref accountsModel);
+                        }
+                        else if (inputValue == "2")
+                        {
+                            GetMasterFileDataPart_2(currentByteLine, ref accountsModel);
+                        }
+                        else if (inputValue == "U")
+                        {
+                            GetUserFieldRecord(currentByteLine, ref accountsModel);
+                        }
+                        else if (inputValue == "L")
+                        {
+                            GetMultiLockboxRecordModel(currentByteLine, ref accountsModel);
+                        }
+                        else if (inputValue == "R")
+                        {
+                            GetRateReductionRecord(currentByteLine, ref accountsModel);
+                        }
+                        else if (inputValue == "E")
+                        {
+                            GetEscrowRecordModel(currentByteLine, ref accountsModel);
+                        }
+                        else if (inputValue == "O")
+                        {
+                            GetOptionalItemEscrowRecordModel(currentByteLine, ref accountsModel);
+                        }
+                        else if (inputValue == "F")
+                        {
+                            GetFeeRecordModel(currentByteLine, ref accountsModel);
+                        }
+                        else if (inputValue == "S")
+                        {
+                            GetSolicitationRecordModel(currentByteLine, ref accountsModel);
+                        }
+                        else if (inputValue == "T")
+                        {
+                            GetTransactionRecordModel(currentByteLine, ref accountsModel);
+                        }
+                        else if (inputValue == "C")
+                        {
+                            GetForeignInformationRecordModel(currentByteLine, ref accountsModel);
+                        }
+                        else if (inputValue == "D")
+                        {
+                            GetBlendedRateInformationRecordModel(currentByteLine, ref accountsModel);
+                        }
+                        else if (inputValue == "I")
+                        {
+                            GetCoBorrowerRecordModel(currentByteLine, ref accountsModel);
+                        }
+                        else if (inputValue == "<")
+                        {
+                            GetLateChargeInformationRecordModel(currentByteLine, ref accountsModel);
+                        }
+                        else if (inputValue == "-")
+                        {
+                            GetLateChargeDetailRecordModel(currentByteLine, ref accountsModel);
+                        }
+                        else if (inputValue == "J")
+                        {
+                            GetActiveBankruptcyInformationRecordModel(currentByteLine, ref accountsModel);
+                        }
+                        else if (inputValue == "K")
+                        {
+                            GetArchivedBankruptcyDetailRecordModel(currentByteLine, ref accountsModel);
+                        }
+                        else if (inputValue == "X")
+                        {
+                            GetEmailAddressRecordModel(currentByteLine, ref accountsModel);
+                        }
+                        else if (inputValue == "3")
+                        {
+                            GetDisasterTrackingRecordModel(currentByteLine, ref accountsModel);
+                        }
+                        else if (inputValue == "4")
+                        {
+                            GetRHCDRecords(currentByteLine, ref accountsModel);
+                        }
+                        else if (inputValue == "Z")
+                        {
+                            GetTrailerRecords(currentByteLine, ref accountsModel);
+                        }
+
+                    }
+                    iBytesRead = InputFileStream.Read(currentByteLine, 0, numOfBytes);
+                    counter++;
                 }
-                iBytesRead = InputFileStream.Read(currentByteLine, 0, numOfBytes);
-                counter++;
+                MortgageLoanBillingFile.AccountModelList.Add(accountsModel);
             }
-            MortgageLoanBillingFile.AccountModelList.Add(accountsModel);
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "PM File Error :");
+            }
 
         }
 
         private (List<DetModel>, List<TransModel>) ReadCMSBillInputFileDetRecord(string path)
         {
-            var fileContents = File.ReadAllLines(path);
-            var splitFileContents = (from f in fileContents select f.Split(',')).ToArray();
-            List<DetModel> detList = new List<DetModel>();
-            List<TransModel> transList = new List<TransModel>();
-
-            foreach (var line in splitFileContents)
+            Logger.Trace("STARTED: Reading Suppliment File");
+            try
             {
-                if (line[1].ToString() == "DET")
-                {
-                    CmsBillInput.DetRecord = new DetModel()
-                    {
-                        SnapShotDate = line[0].ToString(),
-                        FieldDescription = line[1].ToString(),
-                        LoanNumber = line[2].ToString(),
-                        Eligible = line[3].ToString(),
-                        PriorMoAmnt = line[4].ToString(),
-                        YTDAmnt = line[5].ToString(),
-                        SentNO631 = line[6].ToString(),
-                        FlagRecordIndicator = line[7].ToString(),
-                        CurrentDate = line[8].ToString(),
-                        NYOrdinance = line[9].ToString(),
-                        PriorServicerLoanNumber = line[10].ToString(),
-                        PrimaryBorrowerName = line[11].ToString(),
-                        MailingAddressLine1 = line[12].ToString(),
-                        MailingAddressLine2 = line[13].ToString(),
-                        MailingAddressCity = line[14].ToString(),
-                        MailingAddressState = line[15].ToString(),
-                        MailingAddressZip = line[16].ToString(),
-                        PropertAddressLine1 = line[17].ToString(),
-                        PropertyAddressLine2 = line[18].ToString(),
-                        PropertyAddressCity = line[19].ToString(),
-                        PropertyAddressState = line[20].ToString(),
-                        PropertyAddressZip = line[21].ToString(),
-                        OriginationDate = line[22].ToString(),
-                        OriginalLoanAmount = line[23].ToString(),
-                        CurrentPrincipalBalance = line[24].ToString(),
-                        MaturityDate = line[25].ToString(),
-                        TotalAmountDue = line[26].ToString(),
-                        MERSFlag = line[27].ToString(),
-                        PriorServicerName = line[28].ToString(),
-                        PriorServicerAddressLine1 = line[29].ToString(),
-                        PriorServicerAddressLine2 = line[30].ToString(),
-                        PriorServicerCity = line[31].ToString(),
-                        PriorServicerState = line[32].ToString(),
-                        PriorServicerZip = line[33].ToString(),
-                        PriorServicerPhoneNumber = line[34].ToString(),
-                        CMSCSHoursofOperation = line[35].ToString(),
-                        ServiceTransferDate = line[36].ToString(),
-                        PriorServicerReleaseDate = line[37].ToString(),
-                        SaleDate = line[38].ToString(),
-                        InvestorCreditorName = line[39].ToString(),
-                        TrusteeName = line[40].ToString(),
-                        TrusteeAddressLine1 = line[41].ToString(),
-                        TrusteeAddressLine2 = line[42].ToString(),
-                        TrusteeCity = line[43].ToString(),
-                        TrusteeState = line[44].ToString(),
-                        TrusteeZip = line[45].ToString(),
-                        TrusteePhone = line[46].ToString(),
-                        CMSCustomerServicePhone = line[47].ToString(),
-                        SecondaryBorrowerName = line[48].ToString(),
-                        Originator = line[49].ToString(),
-                        ACH_Verbiage = line[50].ToString(),
-                        SecurityPosition = line[51].ToString(),
-                        OnboardingFlyer = line[52].ToString(),
-                        TrusteePart1 = line[53].ToString(),
-                        TrusteePart2 = line[54].ToString(),
-                        DealName = line[55].ToString(),
-                        TotalDue = line[56].ToString(),
-                        LockBoxAddress = line[57].ToString()
-                    };
-                    detList.Add(CmsBillInput.DetRecord);
-                }
-                if (line[1].ToString() == "TRN")
-                {
-                    CmsBillInput.TransRecord = new TransModel()
-                    {
-                        SnapShotDate = line[0].ToString(),
-                        FieldDescription = line[1].ToString(),
-                        LoanNumber = line[2].ToString(),
-                        TransactionDate = line[3].ToString(),
-                        TransactionAmount = line[4].ToString(),
-                        PrincipalAmount = line[5].ToString(),
-                        InterestAmount = line[6].ToString(),
-                        EscrowAmount = line[7].ToString(),
-                        LateChargeAmount = line[8].ToString()
-                    };
-                    transList.Add(CmsBillInput.TransRecord);
-                }
+                var fileContents = File.ReadAllLines(path);
+                var splitFileContents = (from f in fileContents select f.Split(',')).ToArray();
+                List<DetModel> detList = new List<DetModel>();
+                List<TransModel> transList = new List<TransModel>();
 
+                foreach (var line in splitFileContents)
+                {
+                    if (line[1].ToString() == "DET")
+                    {
+                        CmsBillInput.DetRecord = new DetModel()
+                        {
+                            SnapShotDate = line[0].ToString(),
+                            FieldDescription = line[1].ToString(),
+                            LoanNumber = line[2].ToString(),
+                            Eligible = line[3].ToString(),
+                            PriorMoAmnt = line[4].ToString(),
+                            YTDAmnt = line[5].ToString(),
+                            SentNO631 = line[6].ToString(),
+                            FlagRecordIndicator = line[7].ToString(),
+                            CurrentDate = line[8].ToString(),
+                            NYOrdinance = line[9].ToString(),
+                            PriorServicerLoanNumber = line[10].ToString(),
+                            PrimaryBorrowerName = line[11].ToString(),
+                            MailingAddressLine1 = line[12].ToString(),
+                            MailingAddressLine2 = line[13].ToString(),
+                            MailingAddressCity = line[14].ToString(),
+                            MailingAddressState = line[15].ToString(),
+                            MailingAddressZip = line[16].ToString(),
+                            PropertAddressLine1 = line[17].ToString(),
+                            PropertyAddressLine2 = line[18].ToString(),
+                            PropertyAddressCity = line[19].ToString(),
+                            PropertyAddressState = line[20].ToString(),
+                            PropertyAddressZip = line[21].ToString(),
+                            OriginationDate = line[22].ToString(),
+                            OriginalLoanAmount = line[23].ToString(),
+                            CurrentPrincipalBalance = line[24].ToString(),
+                            MaturityDate = line[25].ToString(),
+                            TotalAmountDue = line[26].ToString(),
+                            MERSFlag = line[27].ToString(),
+                            PriorServicerName = line[28].ToString(),
+                            PriorServicerAddressLine1 = line[29].ToString(),
+                            PriorServicerAddressLine2 = line[30].ToString(),
+                            PriorServicerCity = line[31].ToString(),
+                            PriorServicerState = line[32].ToString(),
+                            PriorServicerZip = line[33].ToString(),
+                            PriorServicerPhoneNumber = line[34].ToString(),
+                            CMSCSHoursofOperation = line[35].ToString(),
+                            ServiceTransferDate = line[36].ToString(),
+                            PriorServicerReleaseDate = line[37].ToString(),
+                            SaleDate = line[38].ToString(),
+                            InvestorCreditorName = line[39].ToString(),
+                            TrusteeName = line[40].ToString(),
+                            TrusteeAddressLine1 = line[41].ToString(),
+                            TrusteeAddressLine2 = line[42].ToString(),
+                            TrusteeCity = line[43].ToString(),
+                            TrusteeState = line[44].ToString(),
+                            TrusteeZip = line[45].ToString(),
+                            TrusteePhone = line[46].ToString(),
+                            CMSCustomerServicePhone = line[47].ToString(),
+                            SecondaryBorrowerName = line[48].ToString(),
+                            Originator = line[49].ToString(),
+                            ACH_Verbiage = line[50].ToString(),
+                            SecurityPosition = line[51].ToString(),
+                            OnboardingFlyer = line[52].ToString(),
+                            TrusteePart1 = line[53].ToString(),
+                            TrusteePart2 = line[54].ToString(),
+                            DealName = line[55].ToString(),
+                            TotalDue = line[56].ToString(),
+                            LockBoxAddress = line[57].ToString()
+                        };
+                        detList.Add(CmsBillInput.DetRecord);
+                    }
+                    if (line[1].ToString() == "TRN")
+                    {
+                        CmsBillInput.TransRecord = new TransModel()
+                        {
+                            SnapShotDate = line[0].ToString(),
+                            FieldDescription = line[1].ToString(),
+                            LoanNumber = line[2].ToString(),
+                            TransactionDate = line[3].ToString(),
+                            TransactionAmount = line[4].ToString(),
+                            PrincipalAmount = line[5].ToString(),
+                            InterestAmount = line[6].ToString(),
+                            EscrowAmount = line[7].ToString(),
+                            LateChargeAmount = line[8].ToString()
+                        };
+                        transList.Add(CmsBillInput.TransRecord);
+                    }
+
+                }
+                Logger.Trace("ENDNED: Reading Suppliment File");
+                return (detList, transList);
             }
-            return (detList, transList);
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "Suppliment File Error");
+                return (null, null);
+            }
         }
 
         private List<EConsentModel> ReadEConsentRecord(string path)
         {
-            var fileContents = File.ReadAllLines(path);
-            var splitFileContents = (from f in fileContents select f.Split(',')).ToArray();
-            List<EConsentModel> eConsentList = new List<EConsentModel>();
-
-            foreach (var line in splitFileContents)
+            Logger.Trace("STARTED: Reading EConsent File");
+            try
             {
-                //DateTime date = DateTime.Parse(line[0].ToString());
-                EConsentInput.EConsentRecord = new EConsentModel()
+                var fileContents = File.ReadAllLines(path);
+                var splitFileContents = (from f in fileContents select f.Split(',')).ToArray();
+                List<EConsentModel> eConsentList = new List<EConsentModel>();
+
+                foreach (var line in splitFileContents)
                 {
-                    FileDate = Convert.ToDateTime(DateTime.ParseExact(line[0].ToString(), "MM/dd/yyyy", CultureInfo.InvariantCulture)),
-                    LoanNumber = line[1].ToString(),
-                    DocumentType = line[2].ToString(),
-                    EConsentFlag = line[3].ToString(),
-                    EConsentDate = line[4].ToString(),
-                    EMailAddress = line[5].ToString(),
-                    Filler = line[6].ToString()
-                };
-                eConsentList.Add(EConsentInput.EConsentRecord);
+                    //DateTime date = DateTime.Parse(line[0].ToString());
+                    EConsentInput.EConsentRecord = new EConsentModel()
+                    {
+                        FileDate = Convert.ToDateTime(DateTime.ParseExact(line[0].ToString(), "MM/dd/yyyy", CultureInfo.InvariantCulture)),
+                        LoanNumber = line[1].ToString(),
+                        DocumentType = line[2].ToString(),
+                        EConsentFlag = line[3].ToString(),
+                        EConsentDate = line[4].ToString(),
+                        EMailAddress = line[5].ToString(),
+                        Filler = line[6].ToString()
+                    };
+                    eConsentList.Add(EConsentInput.EConsentRecord);
+                }
+                Logger.Trace("ENDED: Reading Econsent File Complete");
+                return eConsentList;
             }
-            return eConsentList;
+            catch (Exception ex)
+            {
+                Logger.Error(ex,"Econsent File Reading Error :");
+                return null;
+            }
+
         }
 
 
@@ -2587,6 +2627,7 @@ namespace Carrington_Service.BusinessExpert
             }
             catch (Exception ex)
             {
+                Logger.Error(ex, "Error at Start Pos" + startPos + "And Field Lenght " + fieldLength);
                 return "";
             }
         }
@@ -2612,53 +2653,61 @@ namespace Carrington_Service.BusinessExpert
 
         public string PackedTypeCheckAndUnPackData(string propertyName, byte[] data, int start, int length, int decimalPlaces = 0, bool hasSign = true)
         {
-            if (propertyName.Contains("PackedData") && propertyName != null)
+            try
             {
-                var buffer = new byte[length];
-                Array.Copy(data, start - 1, buffer, 0, length);
-                string output = string.Empty;
-                string sign = string.Empty;
-                int upperBound = length - 1;
-
-                for (int i = 0; i < length; i++)
+                if (propertyName.Contains("PackedData") && propertyName != null)
                 {
-                    var left = (buffer[i] & 0xF0) >> 4;
-                    var right = buffer[i] & 0x0F;
+                    var buffer = new byte[length];
+                    Array.Copy(data, start - 1, buffer, 0, length);
+                    string output = string.Empty;
+                    string sign = string.Empty;
+                    int upperBound = length - 1;
 
-                    output += left.ToString(CultureInfo.InvariantCulture);
-
-                    if (i == upperBound && hasSign)
+                    for (int i = 0; i < length; i++)
                     {
-                        sign = right == 0x0D ? "-" : string.Empty;
+                        var left = (buffer[i] & 0xF0) >> 4;
+                        var right = buffer[i] & 0x0F;
+
+                        output += left.ToString(CultureInfo.InvariantCulture);
+
+                        if (i == upperBound && hasSign)
+                        {
+                            sign = right == 0x0D ? "-" : string.Empty;
+                        }
+                        else
+                        {
+                            output += right.ToString(CultureInfo.InvariantCulture);
+                        }
                     }
-                    else
+
+                    if (decimalPlaces > 0)
                     {
-                        output += right.ToString(CultureInfo.InvariantCulture);
+                        int index = output.Length - decimalPlaces;
+                        output = output.Insert(index, ".");
                     }
-                }
 
-                if (decimalPlaces > 0)
+                    if (hasSign)
+                    {
+                        output = output.Insert(0, sign);
+                    }
+
+                    return output;
+                }
+                else
                 {
-                    int index = output.Length - decimalPlaces;
-                    output = output.Insert(index, ".");
+                    return GetPositionData(data, start, length);
                 }
 
-                if (hasSign)
-                {
-                    output = output.Insert(0, sign);
-                }
-
-                return output;
             }
-            else
+            catch (Exception ex)
             {
-                return GetPositionData(data, start, length);
+                Logger.Error(ex, "Error :" + propertyName);
+                return "";
             }
-
-
         }
         #endregion
 
 
     }
 }
+

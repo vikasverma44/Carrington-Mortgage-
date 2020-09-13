@@ -194,9 +194,6 @@ namespace Carrington_Service.Helpers
             if (!string.IsNullOrEmpty(ConfigHelper.Model.LoggingPath))
             {
                 logPath = ConfigHelper.Model.LoggingPath.Trim();
-                logPath = Path.Combine(logPath, "Logs");
-                if (!Directory.Exists(logPath))
-                { Directory.CreateDirectory(logPath); }
             }
             else
             {
@@ -209,8 +206,7 @@ namespace Carrington_Service.Helpers
 
 
             LogFilename = logPath + Path.DirectorySeparatorChar +
-                System.Reflection.Assembly.GetExecutingAssembly().GetName().Name +
-                "_" + fileDate.ToString("ddMMMyyyy") + "_" + fileCounter + FileEXT;
+                "Conversion_" + fileDate.ToString("ddMMMyyyy")  + FileEXT;
 
 
 
