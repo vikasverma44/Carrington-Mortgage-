@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 
-namespace ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels
+namespace CarringtonMortgage.Models.InputCopyBookModels.MortgageLoanBillingModels
 {
     public class RHCDSOnlyRecordModel
     {

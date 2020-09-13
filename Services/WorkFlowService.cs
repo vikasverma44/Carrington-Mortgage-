@@ -1,5 +1,5 @@
 ﻿using Carrington_Service.Infrastructure;
-using System;
+using System; 
 using System.Timers;
 namespace Carrington_Service.Services
 {
@@ -28,6 +28,7 @@ namespace Carrington_Service.Services
             try
 
             {
+                result = workFlowExpert.StartWorkFlow();
                 Timer timer;
                 DateTime time = DateTime.Now;
 
@@ -55,7 +56,7 @@ namespace Carrington_Service.Services
             TimerPurge.Interval = 60 * 1000;
 
             TimerPurge.Start();
-            // Logger.Trace("Service Processing Timers Initialized");
+           //  Logger.Trace("Service Processing Timers Initialized");
 
 
         }
@@ -65,6 +66,10 @@ namespace Carrington_Service.Services
             if (DateTime.Now.Hour > 12 && DateTime.Now.Hour < 8)
             {
                 result = workFlowExpert.StartWorkFlow();
+            }
+            else
+            {
+                
             }
 
         }

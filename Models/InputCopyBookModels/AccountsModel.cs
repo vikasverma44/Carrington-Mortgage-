@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels;
-namespace ODHS_EDelivery.Models.InputCopyBookModels
+using CarringtonMortgage.Models.InputCopyBookModels.MortgageLoanBillingModels;
+namespace CarringtonMortgage.Models.InputCopyBookModels
 {
     public class AccountsModel
     {
