@@ -1,6 +1,5 @@
 ﻿using Carrington_Service.Infrastructure;
-using System;
-using System.Diagnostics;
+using System; 
 using System.Timers;
 namespace Carrington_Service.Services
 {

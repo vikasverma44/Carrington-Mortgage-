@@ -27,13 +27,13 @@ namespace Carrington_Service.Services
                 string mailBCC = string.Empty;
                 string mailCC = string.Empty;
                 string mailSubject = "NCP System Generated Mail. Please Do not Reply";
-                string mailBody = EmailTemplate();
-                mailBody = mailBody.Replace("[Receiver]", "Tim");
-                mailBody = mailBody.Replace("[Sender]", "Bhawna");
-                bool mailHTML = true;
+                //string mailBody = EmailTemplate();
+                //mailBody = mailBody.Replace("[Receiver]", "Tim");
+                //mailBody = mailBody.Replace("[Sender]", "Bhawna");
+                bool mailHTML = false;
                 List<string> mailAttachmentPath = new List<string>();
                 return SendMailMessage(mailTo, mailFrom, mailBCC, mailCC, mailSubject,
-                    mailBody, mailAttachmentPath, mailHTML);
+                    emailBody, mailAttachmentPath, mailHTML);
             }
             catch { return false; }
         }

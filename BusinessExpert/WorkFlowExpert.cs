@@ -132,7 +132,7 @@ namespace Carrington_Service.BusinessExpert
 
                 if (MortgageLoanBillingFile != null)
                 {
-                    if (transData != null || detData != null)
+                    if (transData.Count != 0 || detData.Count != 0)
                     {
                         if (EconsentData.Count != 0)
                         {
@@ -192,7 +192,7 @@ namespace Carrington_Service.BusinessExpert
                         }
                         else
                         {
-                            Logger.Trace("Account Matching Process: Failed No Account Exists in eConsent File !!.");
+                            Logger.Trace("Account Matching Process: Failed No Data Exists in eConsent File !!.");
                             EmailService.SendNotification("Failed No Account Exists in eConsent File");
                         }
                     }
