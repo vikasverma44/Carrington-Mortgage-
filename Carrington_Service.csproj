@@ -143,6 +143,7 @@
     <Compile Include="Infrastructure\IAgentApi.cs" />
     <Compile Include="Infrastructure\IConfigHelper.cs" />
     <Compile Include="Infrastructure\IEmailService.cs" />
+    <Compile Include="Infrastructure\IFileIOService.cs" />
     <Compile Include="Infrastructure\ILogger.cs" />
     <Compile Include="Infrastructure\IWorkFlowExpert.cs" />
     <Compile Include="Infrastructure\IWorkFlowService.cs" />

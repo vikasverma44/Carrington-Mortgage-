@@ -188,34 +188,34 @@ namespace Carrington_Service.Helpers
         }
         public void CreateNewLogFile()
         {
-            //string logPath;
+            string logPath;
             //DbService dbService = new DbService();
             //ConfigHelper.Model.DatabaseSetting = dbService.GetDataBaseSettings();
-            //if (!string.IsNullOrEmpty(ConfigHelper.Model.LoggingPath))
-            //{
-            //    logPath = ConfigHelper.Model.LoggingPath.Trim();
-            //    logPath = Path.Combine(logPath, "Logs");
-            //    if (!Directory.Exists(logPath))
-            //    { Directory.CreateDirectory(logPath); }
-            //}
-            //else
-            //{
-            //    string assemblyLocation = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Logs");
-            //    if (!Directory.Exists(assemblyLocation))
-            //    { Directory.CreateDirectory(assemblyLocation); }
-            //    logPath = assemblyLocation;
-            //}
+            if (!string.IsNullOrEmpty(ConfigHelper.Model.LoggingPath))
+            {
+                logPath = ConfigHelper.Model.LoggingPath.Trim();
+            }
+            else
+            {
+                string assemblyLocation = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Logs");
+                if (!Directory.Exists(assemblyLocation))
+                { Directory.CreateDirectory(assemblyLocation); }
+                logPath = assemblyLocation;
+            }
 
-            //LogFilename = logPath + Path.DirectorySeparatorChar +
-            //    System.Reflection.Assembly.GetExecutingAssembly().GetName().Name +
-            //    "_" + fileDate.ToString("ddMMMyyyy") + "_" + fileCounter + FileEXT;
 
-            //// Log file header line
-            //if (!System.IO.File.Exists(LogFilename))
-            //{
-            //    string logHeader = LogFilename + " is created.";
-            //    WriteLine(System.DateTime.Now.ToString(DatetimeFormat) + " " + logHeader, false);
-            //}
+
+            LogFilename = logPath + Path.DirectorySeparatorChar +
+                "Conversion_" + fileDate.ToString("ddMMMyyyy")  + FileEXT;
+
+
+
+            // Log file header line
+            if (!System.IO.File.Exists(LogFilename))
+            {
+                string logHeader = LogFilename + " is created.";
+                WriteLine(System.DateTime.Now.ToString(DatetimeFormat) + " " + logHeader, false);
+            }
         }
     }
 }
