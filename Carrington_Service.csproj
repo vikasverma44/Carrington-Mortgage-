@@ -75,6 +75,14 @@
       <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.1.1.1\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="NCP.WMS.Core, Version=20.5.11.1, Culture=neutral, PublicKeyToken=59b957cc45861930, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\NCP.WMS.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="NCP.WMS.Framework.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=59b957cc45861930, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\NCP.WMS.Framework.Data.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -113,6 +121,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Agents\AgentApi.cs" />
+    <Compile Include="BusinessExpert\CRL30FileGeneration.cs" />
     <Compile Include="BusinessExpert\WorkFlowExpert.cs" />
     <Compile Include="Calculation_Classes\StandardBillingStatement.cs" />
     <Compile Include="Calculation_Classes\OptionARMBillingStatement.cs" />
