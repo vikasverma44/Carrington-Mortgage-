@@ -134,7 +134,7 @@ namespace Carrington_Service.BusinessExpert
                 {
                     if (transData != null || detData != null)
                     {
-                        if (EconsentData != null)
+                        if (EconsentData.Count != 0)
                         {
                             if (MortgageLoanBillingFile.AccountModelList != null)
                             {
@@ -153,7 +153,7 @@ namespace Carrington_Service.BusinessExpert
                                             if (!anyAccountFound)
                                             {
                                                 anyAccountFound = true;
-                                            } 
+                                            }
                                         }
                                     }
                                     else if (transData.Any(df => df.LoanNumber == accountToMatch))
@@ -165,7 +165,7 @@ namespace Carrington_Service.BusinessExpert
                                             if (!anyAccountFound)
                                             {
                                                 anyAccountFound = true;
-                                            } 
+                                            }
                                         }
                                     }
                                     if (isAccountMatched)
@@ -567,7 +567,7 @@ namespace Carrington_Service.BusinessExpert
             }
             catch (Exception ex)
             {
-                Logger.Error(ex,"Econsent File Reading Error :");
+                Logger.Error(ex, "Econsent File Reading Error :");
                 return null;
             }
 
