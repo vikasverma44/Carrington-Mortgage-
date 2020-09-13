@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ODHS_EDelivery.Models.InputCopyBookModels
+namespace CarringtonMortgage.Models.InputCopyBookModels
 {
     public class EConsentModel
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace ODHS_EDelivery.Helpers
+namespace CarringtonMortgage.Helpers
 {
     public static class CommonHelper
     {

@@ -1,7 +1,7 @@
 ﻿
 using Carrington_Service.Infrastructure;
-using ODHS_EDelivery.Helpers;
-using ODHS_EDelivery.Models.InputCopyBookModels;
+using CarringtonMortgage.Helpers;
+using CarringtonMortgage.Models.InputCopyBookModels;
 using System;
 
 /// <summary>

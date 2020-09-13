@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ODHS_EDelivery.Models
+namespace CarringtonMortgage.Models
 {
     public class TransModel
     {
