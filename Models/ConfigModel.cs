@@ -19,5 +19,6 @@ namespace Carrington_Service.Models
         public string SMTP_Pwd { get; set; }
         public string SMTP_From { get; set; }
         public string SMTP_To { get; set; }
+        public string InputFilePathLocation_Local { get; set; }
     }
 }
