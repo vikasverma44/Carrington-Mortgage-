@@ -1,4 +1,6 @@
-﻿using ODHS_EDelivery.Models.InputCopyBookModels;
+﻿using Carrington_Service.Infrastructure;
+using ODHS_EDelivery.Helpers;
+using ODHS_EDelivery.Models.InputCopyBookModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +12,12 @@ namespace Carrington_Service.Calculation_Classes
 {
     public class OptionARMBillingStatement
     {
+        #region Object Declaration  ==>
+        public ILogger Logger;
+
+        #endregion
+
+        #region Public Property ==>
         public string AmountDueOption1 { get; set; }
         public string AmountDueOption2 { get; set; }
         public string AmountDueOption3 { get; set; }
@@ -109,7 +117,12 @@ namespace Carrington_Service.Calculation_Classes
         public string RecentPayment2 { get; set; }
         public string RecentPayment1 { get; set; }
 
+        #endregion
 
+        public OptionARMBillingStatement(ILogger logger)
+        {
+            Logger = logger;
+        }
 
 
         /* While Calculating Conditions must be applied*/
@@ -117,680 +130,993 @@ namespace Carrington_Service.Calculation_Classes
         #region Old Code ==>>
         public string GetTotalFeesChargedOption1(AccountsModel accountsModel)
         {
-            if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+            try
             {
-                TotalFeesChargedOption1 = "0";
-            }
-            else if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
-            {
-                TotalFeesChargedOption1 = "0";
-            }
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) == 0)
-            {
-                TotalFeesChargedOption1 = "0";
-            }
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
-            {
-                TotalFeesChargedOption1 = "null";
-            }
-            else
-            {
-                var Total = Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData)
-                + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData);
-
-                if (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5605
-                    && (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 67))
+                Logger.Trace("STARTED:  Execute to get Total Fees Charged Option1 operation.");
+                if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 {
-                    TotalFeesChargedOption1 = Convert.ToString(Total - Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
+                    TotalFeesChargedOption1 = "0";
                 }
-                else if ((Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5605
-                     || Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5707)
-                     && (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 198))
+                else if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                 {
-                    TotalFeesChargedOption1 = Convert.ToString(Total - Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
+                    TotalFeesChargedOption1 = "0";
+                }
+                else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) == 0)
+                {
+                    TotalFeesChargedOption1 = "0";
+                }
+                else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
+                {
+                    TotalFeesChargedOption1 = "null";
                 }
                 else
                 {
-                    TotalFeesChargedOption1 = Convert.ToString(Total);
-                }
-            }
+                    var Total = Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData)
+                    + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData);
 
+                    if (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5605
+                        && (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 67))
+                    {
+                        TotalFeesChargedOption1 = Convert.ToString(Total - Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
+                    }
+                    else if ((Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5605
+                         || Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5707)
+                         && (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 198))
+                    {
+                        TotalFeesChargedOption1 = Convert.ToString(Total - Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
+                    }
+                    else
+                    {
+                        TotalFeesChargedOption1 = Convert.ToString(Total);
+                    }
+                }
+                Logger.Trace("ENDED:    Total Fees Charged Option1 operation.");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
             return TotalFeesChargedOption1;
         }
         public string GetDeferredBalance(AccountsModel model)
         {
-            if (Convert.ToInt64(model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal) -
+            try
+            {
+                Logger.Trace("STARTED:  Execute to get Deferred Balance operation.");
+                if (Convert.ToInt64(model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal) -
                 Convert.ToInt64(model.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) == 0)
-            {
-                return "N/A";
+                {
+                    DeferredBalance = "N/A";
+                }
+                else
+                {
+                    DeferredBalance = Convert.ToString(Convert.ToInt64(model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal) -
+                        Convert.ToInt64(model.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData));
+                }
+                Logger.Trace("ENDED:    To Deferred Balance operation.");
+                return DeferredBalance;
             }
-            else
+            catch (Exception ex)
             {
-                return Convert.ToString(Convert.ToInt64(model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal) -
-                    Convert.ToInt64(model.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData));
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
         }
         public string GetTotalFeesChargedOption4(AccountsModel accountsModel)
         {
-            if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+            try
             {
-                TotalFeesChargedOption4 = "0";
-            }
-            else if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
-            {
-                TotalFeesChargedOption4 = "0";
-            }
-            else
-            {
-                var Total = Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData)
-                + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData);
-
-                if (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5605
-                    && (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 67))
+                Logger.Trace("STARTED:  Execute to get Total Fees Charged Option4 operation.");
+                if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 {
-                    TotalFeesChargedOption4 = Convert.ToString(Total - Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
+                    TotalFeesChargedOption4 = "0";
                 }
-                else if ((Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5605
-                     || Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5707)
-                     && (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 198))
+                else if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                 {
-                    TotalFeesChargedOption4 = Convert.ToString(Total - Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
+                    TotalFeesChargedOption4 = "0";
                 }
                 else
                 {
-                    TotalFeesChargedOption4 = Convert.ToString(Total);
+                    var Total = Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData)
+                    + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData);
+
+                    if (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5605
+                        && (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 67))
+                    {
+                        TotalFeesChargedOption4 = Convert.ToString(Total - Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
+                    }
+                    else if ((Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5605
+                         || Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5707)
+                         && (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 198))
+                    {
+                        TotalFeesChargedOption4 = Convert.ToString(Total - Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
+                    }
+                    else
+                    {
+                        TotalFeesChargedOption4 = Convert.ToString(Total);
+                    }
                 }
+                Logger.Trace("ENDED:   Total Fees Charged Option4 operation.");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return TotalFeesChargedOption4;
         }
         public string GetAmountDueOption1(AccountsModel model)
         {
+            try
+            {
+                Logger.Trace("STARTED:  Execute to Get Amount Due Option 1 operation.");
+                if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                {
+                    AmountDueOption1 = "0.00";
+                }
+                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) == 0)
+                {
+                    AmountDueOption1 = "N/A";
+                }
+                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) < Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
+                {
+                    AmountDueOption1 = "N/A";
+                }
+                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                {
+                    AmountDueOption1 = "N/A";
+                }
+                else
+                {
+                    AmountDueOption1 = Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) +
+                        Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData));
+                }
+                Logger.Trace("ENDED:   To Amount Due Option 1 operation.");
+                return AmountDueOption1;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
 
-            if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
-            {
-                return "0.00";
-            }
-            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) == 0)
-            {
-                return "N/A";
-            }
-            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) < Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
-            {
-                return "N/A";
-            }
-            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
-            {
-                return "N/A";
-            }
-            else
-            {
-                return Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) +
-                    Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData));
-            }
         }
         public string GetAmountDueOption2(AccountsModel model)
         {
-            if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+            try
             {
-                return "0.00";
+                Logger.Trace("STARTED:  Execute to Get Amount Due Option 2 operation.");
+                if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                {
+                    AmountDueOption2 = "0.00";
+                }
+                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) == 0)
+                {
+                    AmountDueOption2 = "N/A";
+                }
+                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) < Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
+                {
+                    AmountDueOption2 = "N/A";
+                }
+                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                {
+                    AmountDueOption2 = "N/A";
+                }
+                else
+                {
+                    AmountDueOption2 = Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) +
+                        Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData));
+                }
+                Logger.Trace("ENDED:   To Amount Due Option 2 operation.");
+                return AmountDueOption2;
             }
-            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) == 0)
+            catch (Exception ex)
             {
-                return "N/A";
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
-            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) < Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
-            {
-                return "N/A";
-            }
-            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
-            {
-                return "N/A";
-            }
-            else
-            {
-                return Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) +
-                    Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData));
-            }
+
         }
         public string GetAmountDueOption3(AccountsModel model)
         {
-            if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+            try
             {
-                return "0";
+                Logger.Trace("STARTED:  Execute to Get Amount Due Option 3 operation.");
+
+                if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                {
+                    AmountDueOption3 = "0";
+                }
+                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) == 0)
+                {
+                    AmountDueOption3 = "N/A";
+                }
+                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) < Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
+                {
+                    AmountDueOption3 = "N/A";
+                }
+                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                {
+                    AmountDueOption3 = "N/A";
+                }
+                else
+                {
+                    AmountDueOption3 = Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) +
+                        Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData));
+                }
+                Logger.Trace("ENDED:   To Amount Due Option 3 operation.");
+                return AmountDueOption3;
             }
-            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) == 0)
+            catch (Exception ex)
             {
-                return "N/A";
-            }
-            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) < Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
-            {
-                return "N/A";
-            }
-            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
-            {
-                return "N/A";
-            }
-            else
-            {
-                return Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) +
-                    Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData));
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
         }
 
         public string GetAmountDueOption4(AccountsModel model)
         {
-            if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+            try
             {
-                return "0";
+                Logger.Trace("STARTED:  Execute to Get Amount Due Option 4 operation.");
+
+                if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                {
+                    AmountDueOption4 = "0";
+                }
+                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                {
+                    AmountDueOption4 = "N/A";
+                }
+                else
+                {
+                    AmountDueOption4 = Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) +
+                        Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData));
+                }
+
+                Logger.Trace("ENDED:   To Amount Due Option 4 operation.");
+                return AmountDueOption4;
             }
-            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+            catch (Exception ex)
             {
-                return "N/A";
-            }
-            else
-            {
-                return Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) +
-                    Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData));
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
         }
         public string GetPrincipalOption1(AccountsModel model)
         {
+            try
+            {
+                Logger.Trace("STARTED:  Execute to Get Principal Option 1 operation.");
 
-            if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
-            {
-                return "0.00";
+                if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                {
+                    PrincipalOption1 = "0.00";
+                }
+                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) == 0)
+                {
+                    PrincipalOption1 = null;
+                }
+                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) < Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
+                {
+                    PrincipalOption1 = null;
+                }
+                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                {
+                    PrincipalOption1 = null;
+                }
+                else
+                {
+                    PrincipalOption1 = Convert.ToString(Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt4_PackedData) -
+                                            Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData));
+                }
+
+                Logger.Trace("ENDED:   To Principal Option 1 operation.");
+                return PrincipalOption1;
             }
-            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) == 0)
+            catch (Exception ex)
             {
-                return null;
-            }
-            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) < Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
-            {
-                return null;
-            }
-            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
-            {
-                return null;
-            }
-            else
-            {
-                return Convert.ToString(Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt4_PackedData) -
-                                        Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData));
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
         }
 
         public string GetOverduePaymentsOption1(AccountsModel model)
         {
-            if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
-                AmountDueOption1 = "0.00";
-
-            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) == 0)
-                AmountDueOption1 = "null";
-
-            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) < Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
-                AmountDueOption1 = "null";
-
-            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
-                AmountDueOption1 = "null";
-
-            else
+            try
             {
-                //not found total fees paid
-                AmountDueOption1 = Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData)
-                                 - Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData) - Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData));
+                Logger.Trace("STARTED:  Execute to Get Overdue Payments Option 1 operation.");
+                if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                    OverduePaymentsOption1 = "0.00";
+
+                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) == 0)
+                    OverduePaymentsOption1 = "null";
+
+                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) < Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
+                    OverduePaymentsOption1 = "null";
+
+                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                    OverduePaymentsOption1 = "null";
+
+                else
+                {
+                    //not found total fees paid
+                    OverduePaymentsOption1 = Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData)
+                                     - Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData) - Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData));
+                }
+                Logger.Trace("ENDED:   To Overdue Payments Option 1 operation.");
+                return OverduePaymentsOption1;
             }
-            return OverduePaymentsOption1;
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
         }
 
         public string GetTotalFeesPaidOption1(AccountsModel model)
         {
-
-            // need to check
-            if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
-                TotalFeesPaidOption1 = "0.00";
-
-            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) == 0)
-                TotalFeesPaidOption1 = "null";
-
-            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) < Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
-                TotalFeesPaidOption1 = "null";
-
-            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
-                TotalFeesPaidOption1 = "null";
-
-
-            else if ((Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
-                      + Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)) <
-                       Convert.ToInt64(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData))
+            try
             {
-                TotalFeesPaidOption1 = Convert.ToString((Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
-                    + Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)
-                    - Convert.ToInt64(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData)));
-            }
-            else
-                TotalFeesPaidOption1 = "0.00";
+                Logger.Trace("STARTED:  Execute to Get Total Fees Paid Option 1 operation.");
+                // need to check
+                if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                    TotalFeesPaidOption1 = "0.00";
 
-            return TotalFeesPaidOption1;
+                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) == 0)
+                    TotalFeesPaidOption1 = "null";
+
+                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) < Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
+                    TotalFeesPaidOption1 = "null";
+
+                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                    TotalFeesPaidOption1 = "null";
+
+
+                else if ((Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
+                          + Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)) <
+                           Convert.ToInt64(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData))
+                {
+                    TotalFeesPaidOption1 = Convert.ToString((Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
+                        + Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)
+                        - Convert.ToInt64(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData)));
+                }
+                else
+                    TotalFeesPaidOption1 = "0.00";
+                Logger.Trace("ENDED:   Total Fees Paid Option 1 operation.");
+                return TotalFeesPaidOption1;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
         }
         public string GetTotalAmountDueOption1(AccountsModel model)
         {
+            try
+            {
+                Logger.Trace("STARTED:  Execute to Get Total AmountDue Option 1 operation.");
 
-            if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
-                TotalFeesPaidOption1 = "0.00";
+                if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                    TotalFeesPaidOption1 = "0.00";
 
-            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) == 0)
-                TotalFeesPaidOption1 = "N/A";
+                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) == 0)
+                    TotalFeesPaidOption1 = "N/A";
 
-            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) < Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
-                TotalFeesPaidOption1 = "N/A";
+                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) < Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
+                    TotalFeesPaidOption1 = "N/A";
 
-            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
-                TotalFeesPaidOption1 = "N/A";
+                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                    TotalFeesPaidOption1 = "N/A";
 
-            else
-                TotalAmountDueOption1 = Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData)
-                               + Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData));
+                else
+                    TotalAmountDueOption1 = Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData)
+                                   + Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData));
 
-            return TotalAmountDueOption1;
+                Logger.Trace("ENDED:   Get Total AmountDue Option 1 operation.");
+                return TotalAmountDueOption1;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
         }
         public string GetPrincipalOption2(AccountsModel model)
         {
-
-            if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
-                PrincipalOption2 = "0.00";
-
-            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) == 0)
-                PrincipalOption2 = "null";
-
-            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) < Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
-                PrincipalOption2 = "null";
-
-            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
-                PrincipalOption2 = "null";
-
-
-            else
+            try
             {
-                PrincipalOption2 = Convert.ToString(Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt3_PackedData)
-                                 - Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData));
+                Logger.Trace("STARTED:  Execute to Get Principal Option2 operation.");
+
+                if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                    PrincipalOption2 = "0.00";
+
+                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) == 0)
+                    PrincipalOption2 = "null";
+
+                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) < Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
+                    PrincipalOption2 = "null";
+
+                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                    PrincipalOption2 = "null";
+                else
+                {
+                    PrincipalOption2 = Convert.ToString(Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt3_PackedData)
+                                     - Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData));
+                }
+                Logger.Trace("ENDED:   Get Principal Option2 operation.");
+                return PrincipalOption2;
+
             }
-            return PrincipalOption2;
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
         }
         public string GetAssistanceAmountOption2(AccountsModel model)
         {
-
-            if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0)
-                AssistanceAmountOption2 = "do not print the Assistance Amount line";
-
-            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
-                AssistanceAmountOption2 = "0.00";
-
-            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
-                AssistanceAmountOption2 = "null";
-
-            else
+            try
             {
-                AssistanceAmountOption2 = Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) * -1);
+                Logger.Trace("STARTED:  Execute to Get Assistance Amount Option 2 operation.");
+
+                if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0)
+                    AssistanceAmountOption2 = "do not print the Assistance Amount line";
+
+                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                    AssistanceAmountOption2 = "0.00";
+
+                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                    AssistanceAmountOption2 = "null";
+
+                else
+                {
+                    AssistanceAmountOption2 = Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) * -1);
+                }
+                Logger.Trace("ENDED:   Get Assistance Amount Option 2 operation.");
+                return AssistanceAmountOption2;
+
             }
-            return AssistanceAmountOption2;
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
         }
         public string GetReplacementReserveOption2(AccountsModel model)
         {
-
-            if ((Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData)
-               - Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt3_PackedData)
-                - Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData)
-               + Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0))
-                ReplacementReserveOption2 = "do not print the Replacement Reserve line";
-
-            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
-                ReplacementReserveOption2 = "0.00";
-
-            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
-                ReplacementReserveOption2 = "0.00";
-
-            else
+            try
             {
-                ReplacementReserveOption2 = Convert.ToString(Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData)
-                                            - Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt3_PackedData)
-                                            - Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData)
-                                            + Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData));
+                Logger.Trace("STARTED:  Execute to Get Replacement Reserve Option2 operation.");
 
+                if ((Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData)
+                   - Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt3_PackedData)
+                    - Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData)
+                   + Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0))
+                    ReplacementReserveOption2 = "do not print the Replacement Reserve line";
+
+                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                    ReplacementReserveOption2 = "0.00";
+
+                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                    ReplacementReserveOption2 = "0.00";
+
+                else
+                {
+                    ReplacementReserveOption2 = Convert.ToString(Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData)
+                                                - Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt3_PackedData)
+                                                - Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData)
+                                                + Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData));
+                }
+
+                Logger.Trace("ENDED:   Get Replacement Reserve Option2 operation.");
+                return ReplacementReserveOption2;
             }
-            return ReplacementReserveOption2;
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
         }
         public string GetOverduePaymentsOption2(AccountsModel model)
         {
             //what is - Total Fees Paid
-
-            if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
-                OverduePaymentsOption2 = "0.00";
-
-            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) == 0)
-                OverduePaymentsOption2 = "null";
-
-            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) < Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
-                OverduePaymentsOption2 = "null";
-
-            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
-                OverduePaymentsOption2 = "null";
-
-
-            else
+            try
             {
-                OverduePaymentsOption2 = Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData)
-                                 - Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData) - Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData));
+                Logger.Trace("STARTED:  Execute to Get Overdue Payments Option 2 operation.");
+
+                if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                    OverduePaymentsOption2 = "0.00";
+
+                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) == 0)
+                    OverduePaymentsOption2 = "null";
+
+                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) < Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
+                    OverduePaymentsOption2 = "null";
+
+                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                    OverduePaymentsOption2 = "null";
+
+
+                else
+                {
+                    OverduePaymentsOption2 = Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData)
+                                     - Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData) - Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData));
+                }
+                Logger.Trace("ENDED:   Get Overdue Payments Option 2 operation.");
+                return OverduePaymentsOption2;
             }
-            return OverduePaymentsOption2;
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
         }
 
         public string GetTotalFeesPaidOption2(AccountsModel model)
         {
-
-            // need to check
-            if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
-                TotalFeesPaidOption2 = "0.00";
-
-            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) == 0)
-                TotalFeesPaidOption2 = "null";
-
-            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) < Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
-                TotalFeesPaidOption2 = "null";
-
-            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
-                TotalFeesPaidOption2 = "null";
-
-            else if ((Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
-                      + Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)) <
-                       Convert.ToInt64(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData))
+            try
             {
-                TotalFeesPaidOption2 = Convert.ToString((Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
-                    + Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)
-                    - Convert.ToInt64(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData)));
-            }
-            else
-                TotalFeesPaidOption2 = "0.00";
+                Logger.Trace("STARTED:  Execute to Get Total Fees Paid Option 2 operation.");
 
-            return TotalFeesPaidOption2;
+                // need to check
+                if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                    TotalFeesPaidOption2 = "0.00";
+
+                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) == 0)
+                    TotalFeesPaidOption2 = "null";
+
+                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) < Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
+                    TotalFeesPaidOption2 = "null";
+
+                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                    TotalFeesPaidOption2 = "null";
+
+                else if ((Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
+                          + Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)) <
+                           Convert.ToInt64(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData))
+                {
+                    TotalFeesPaidOption2 = Convert.ToString((Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
+                        + Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)
+                        - Convert.ToInt64(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData)));
+                }
+                else
+                    TotalFeesPaidOption2 = "0.00";
+                Logger.Trace("ENDED:   Get Total Fees Paid Option 2 operation.");
+                return TotalFeesPaidOption2;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
         }
         public string GetTotalAmountDueOption2(AccountsModel model)
         {
+            try
+            {
+                Logger.Trace("STARTED:  Execute to Get Total Amount Due Option 2 operation.");
 
-            if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
-                TotalAmountDueOption2 = "0.00";
+                if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                    TotalAmountDueOption2 = "0.00";
 
-            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) == 0)
-                TotalAmountDueOption2 = "N/A";
+                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) == 0)
+                    TotalAmountDueOption2 = "N/A";
 
-            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) < Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
-                TotalAmountDueOption2 = "N/A";
+                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) < Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
+                    TotalAmountDueOption2 = "N/A";
 
-            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
-                TotalAmountDueOption2 = "N/A";
+                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                    TotalAmountDueOption2 = "N/A";
 
-            else
-                TotalAmountDueOption2 = Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData)
-                               + Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData));
-
-            return TotalAmountDueOption2;
+                else
+                    TotalAmountDueOption2 = Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData)
+                                   + Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData));
+                Logger.Trace("ENDED:   Get Total Amount Due Option 2 operation.");
+                return TotalAmountDueOption2;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
         }
 
         public string GetPrincipalOption3(AccountsModel model)
         {
-
-            if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
-                PrincipalOption3 = "0.00";
-
-            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) == 0)
-                PrincipalOption3 = "N/A";
-
-            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) < Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
-                PrincipalOption3 = "null";
-
-            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
-                PrincipalOption3 = "null";
-
-            else
+            try
             {
-                PrincipalOption3 = Convert.ToString(Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt2_PackedData)
-                                 - Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData));
+                Logger.Trace("STARTED:  Execute to Get Principal Option 3 operation.");
+
+                if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                    PrincipalOption3 = "0.00";
+
+                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) == 0)
+                    PrincipalOption3 = "N/A";
+
+                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) < Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
+                    PrincipalOption3 = "null";
+
+                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                    PrincipalOption3 = "null";
+
+                else
+                {
+                    PrincipalOption3 = Convert.ToString(Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt2_PackedData)
+                                     - Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData));
+                }
+                Logger.Trace("ENDED:   Get Principal Option 3 operation.");
+                return PrincipalOption3;
             }
-            return PrincipalOption3;
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
         }
         public string GetAssistanceAmountOption3(AccountsModel model)
         {
-            if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0)
+            try
             {
-                return "then do not print the Assistance Amount line.";
+                Logger.Trace("STARTED:  Execute to Get Assistance Amount Option 3 operation.");
+                if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0)
+                {
+                    AssistanceAmountOption3 = "then do not print the Assistance Amount line.";
+                }
+                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                {
+                    AssistanceAmountOption3 = "0.00";
+                }
+                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                {
+                    AssistanceAmountOption3 = "0.00";
+                }
+                else
+                {
+                    AssistanceAmountOption3 = Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData));
+                }
+                Logger.Trace("ENDED:   Get Assistance Amount Option 3 operation.");
+                return AssistanceAmountOption3;
             }
-            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+            catch (Exception ex)
             {
-                return "0.00";
-            }
-            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
-            {
-                return "0.00";
-            }
-            else
-            {
-                return Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData));
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
         }
         public string GetReplacementReserveOption3(AccountsModel model)
         {
-            if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) -
-                Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt2_PackedData) -
-                Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData) +
-                Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0)
+            try
             {
-                return "then do not print the Replacement Reserve line.";
+                Logger.Trace("STARTED:  Execute to Get Replacement Reserve Option 3 operation.");
+
+                if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) -
+                    Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt2_PackedData) -
+                    Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData) +
+                    Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0)
+                {
+                    ReplacementReserveOption3 = "then do not print the Replacement Reserve line.";
+                }
+                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                {
+                    ReplacementReserveOption3 = "0.00";
+                }
+                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                {
+                    ReplacementReserveOption3 = "0.00";
+                }
+                else
+                {
+                    ReplacementReserveOption3 = Convert.ToString(Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) -
+                                             Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt2_PackedData) -
+                                              Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData) +
+                                             Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData));
+                }
+                Logger.Trace("ENDED:   Get Replacement Reserve Option 3 operation.");
+                return ReplacementReserveOption3;
             }
-            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+            catch (Exception ex)
             {
-                return "0.00";
-            }
-            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
-            {
-                return "0.00";
-            }
-            else
-            {
-                return Convert.ToString(Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) -
-                                         Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt2_PackedData) -
-                                          Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData) +
-                                         Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData));
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
         }
         public string GetOverduePaymentsOption3(AccountsModel accountsModel)
         {
-            if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
-                OverduePaymentsOption2 = "0.00";
-
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) == 0)
-                OverduePaymentsOption2 = "null";
-
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
-                OverduePaymentsOption2 = "null";
-
-            else if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
-                OverduePaymentsOption2 = "null";
-            else
+            try
             {
-                OverduePaymentsOption2 = Convert.ToString(Convert.ToInt64(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Unpaid_PackedData)
-                                 - Convert.ToInt64(GetTotalFeesPaidOption3(accountsModel)));
+                Logger.Trace("STARTED:  Execute to Get Overdue Payments Option 3 operation.");
+
+                if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                    OverduePaymentsOption2 = "0.00";
+
+                else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) == 0)
+                    OverduePaymentsOption2 = "null";
+
+                else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
+                    OverduePaymentsOption2 = "null";
+
+                else if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                    OverduePaymentsOption2 = "null";
+                else
+                {
+                    OverduePaymentsOption2 = Convert.ToString(Convert.ToInt64(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Unpaid_PackedData)
+                                     - Convert.ToInt64(GetTotalFeesPaidOption3(accountsModel)));
+                }
+
+                Logger.Trace("ENDED:   Get Replacement Overdue Payments Option 3 operation.");
+                return OverduePaymentsOption3;
             }
-            return OverduePaymentsOption3;
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
         }
         public string GetTotalFeesPaidOption3(AccountsModel accountsModel)
         {
-            if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
-                TotalFeesPaidOption3 = "0.00";
-
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) == 0)
-                TotalFeesPaidOption3 = "null";
-
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
-                TotalFeesPaidOption3 = "null";
-
-            else if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
-                TotalFeesPaidOption3 = "null";
-
-
-            else if ((Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
-                      + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)) <
-                       Convert.ToInt64(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData))
+            try
             {
-                TotalFeesPaidOption3 = Convert.ToString((Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
-                    + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)
-                    - Convert.ToInt64(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData)));
+                Logger.Trace("STARTED:  Execute to Get Total Fees Paid Option 3 operation.");
+
+                if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                    TotalFeesPaidOption3 = "0.00";
+
+                else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) == 0)
+                    TotalFeesPaidOption3 = "null";
+
+                else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
+                    TotalFeesPaidOption3 = "null";
+
+                else if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                    TotalFeesPaidOption3 = "null";
+
+                else if ((Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
+                          + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)) <
+                           Convert.ToInt64(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData))
+                {
+                    TotalFeesPaidOption3 = Convert.ToString((Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
+                        + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)
+                        - Convert.ToInt64(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData)));
+                }
+                else
+                    TotalFeesPaidOption3 = "0.00";
+
+                Logger.Trace("ENDED:   Get Total Fees Paid Option 3 operation.");
+                return TotalFeesPaidOption3;
             }
-            else
-                TotalFeesPaidOption3 = "0.00";
-            return TotalFeesPaidOption3;
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
         }
         public string GetTotalAmountDueOption3(AccountsModel model)
         {
-            if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+            try
             {
-                return "0.00";
+                Logger.Trace("STARTED:  Execute to Get Total Amount Due Option 3 operation.");
+
+                if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                {
+                    TotalAmountDueOption3 = "0.00";
+                }
+                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) == 0)
+                {
+                    TotalAmountDueOption3 = "Option Not Available";
+                }
+                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) < Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
+                {
+                    TotalAmountDueOption3 = "Option Not Available";
+                }
+                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                {
+                    TotalAmountDueOption3 = "Option Not Available";
+                }
+                else
+                {
+                    TotalAmountDueOption3 = Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) -
+                        Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData));
+                }
+                Logger.Trace("ENDED:   Get Total Amount Due Option 3 operation.");
+                return TotalAmountDueOption3;
             }
-            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) == 0)
+            catch (Exception ex)
             {
-                return "Option Not Available";
-            }
-            else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) < Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
-            {
-                return "Option Not Available";
-            }
-            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
-            {
-                return "Option Not Available";
-            }
-            else
-            {
-                return Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) -
-                    Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData));
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
         }
         public string GetPrincipalOption4(AccountsModel model)
         {
-            if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+            try
             {
-                return "0.00";
+                Logger.Trace("STARTED:  Execute to Get Principal Option 4 operation.");
+                if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                {
+                    PrincipalOption4 = "0.00";
+                }
+                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData) > Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt1_PackedData))
+                {
+                    PrincipalOption4 = "0.00";
+                }
+                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                {
+                    PrincipalOption4 = "0.00";
+                }
+                else
+                {
+                    PrincipalOption4 = Convert.ToString(Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt1_PackedData) - Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData));
+                }
+                Logger.Trace("ENDED:   Get Principal Option 4 operation.");
+                return PrincipalOption4;
             }
-            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData) > Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt1_PackedData))
+            catch (Exception ex)
             {
-                return "0.00";
-            }
-            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
-            {
-                return "0.00";
-            }
-            else
-            {
-                return Convert.ToString(Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt1_PackedData) - Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData));
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
         }
         public string GetAssistanceAmountOption4(AccountsModel model)
         {
-            if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0)
+            try
             {
-                return "then do not print the Assistance Amount line.";
+                Logger.Trace("STARTED:  Execute to Get Assistance Amount Option 4 operation.");
+
+                if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0)
+                {
+                    AssistanceAmountOption4 = "then do not print the Assistance Amount line.";
+                }
+                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                {
+                    AssistanceAmountOption4 = "0.00";
+                }
+                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                {
+                    AssistanceAmountOption4 = "0.00";
+                }
+                else
+                {
+                    AssistanceAmountOption4 = Convert.ToString(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData);
+                }
+                Logger.Trace("ENDED:   Get Assistance Amount Option 4 operation.");
+                return AssistanceAmountOption4;
             }
-            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+            catch (Exception ex)
             {
-                return "0.00";
-            }
-            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
-            {
-                return "0.00";
-            }
-            else
-            {
-                return Convert.ToString(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
         }
         public string GetReplacementReserveOption4(AccountsModel model)
         {
-            if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData) -
-                Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt1_PackedData) -
-                Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData) +
-                Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0)
+            try
             {
-                return "then do not print the Replacement Reserve line.";
-            }
-            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
-            {
-                return "0.00";
-            }
-            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
-            {
-                return "0.00";
-            }
+                Logger.Trace("STARTED:  Execute to Get Replacement ReserveOption 4 operation.");
 
-            return ReplacementReserveOption4;
+                if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData) -
+                    Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt1_PackedData) -
+                    Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData) +
+                    Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0)
+                {
+                    return "then do not print the Replacement Reserve line.";
+                }
+                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                {
+                    return "0.00";
+                }
+                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                {
+                    return "0.00";
+                }
+                Logger.Trace("ENDED:   Get Replacement ReserveOption 4 operation.");
+                return ReplacementReserveOption4;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
         }
         public string GetOverduePaymentsOption4(AccountsModel model)
         {
-            if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+            try
             {
-                return "0.00";
-            }
-            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
-            {
-                return "0.00";
-            }
-            else
-            {
-                return
-                Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) -
-                    Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData) -
-                    Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData) -
-                 Convert.ToInt64(GetTotalFeesPaidOption3(model)));
-            }
+                Logger.Trace("STARTED:  Execute to Get Overdue Payments Option 4 operation.");
 
+                if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                {
+                    OverduePaymentsOption4 = "0.00";
+                }
+                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                {
+                    OverduePaymentsOption4 = "0.00";
+                }
+                else
+                {
+                    OverduePaymentsOption4 =
+                    Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) -
+                        Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData) -
+                        Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData) -
+                     Convert.ToInt64(GetTotalFeesPaidOption3(model)));
+                }
+                Logger.Trace("ENDED:   Get Overdue Payments Option 4 operation.");
+                return OverduePaymentsOption4;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
         }
 
         public string GetTotalFeesPaidOption4(AccountsModel model)
         {
-            var TotalFeeCharged = Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData)
-                + Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData);
+            try
+            {
+                Logger.Trace("STARTED:  Execute to Get Total Fees Paid Option 4 operation.");
 
-            if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
-            {
-                return TotalFeesPaidOption4 = "0";
+                var TotalFeeCharged = Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData)
+                    + Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData);
+
+                if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                {
+                    TotalFeesPaidOption4 = "0";
+                }
+                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                {
+                    TotalFeesPaidOption4 = "0";
+                }
+                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
+                    + Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)
+                    < Convert.ToInt64(TotalFeeCharged))
+                {
+                    TotalFeesPaidOption4 = Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
+                   + Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)
+                   - Convert.ToInt64(GetTotalFeesChargedOption4(model)));
+                }
+                else
+                {
+                    TotalFeesPaidOption4 = "0";
+                }
+                Logger.Trace("ENDED:   Get Total Fees Paid Option 4  operation.");
+                return TotalFeesPaidOption4;
             }
-            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+            catch (Exception ex)
             {
-                return TotalFeesPaidOption4 = "0";
-            }
-            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
-                + Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)
-                < Convert.ToInt64(TotalFeeCharged))
-            {
-                return TotalFeesPaidOption4 = Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
-                + Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)
-                - Convert.ToInt64(GetTotalFeesChargedOption4(model)));
-            }
-            else
-            {
-                return TotalFeesPaidOption4 = "0";
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
         }
         public string GetTotalAmountDueOption4(AccountsModel model)
         {
-            if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+            try
             {
-                return "0.00";
+                Logger.Trace("STARTED:  Execute to Get Total AmountDue Option4 operation.");
+
+                if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                {
+                    TotalAmountDueOption4 = "0.00";
+                }
+                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                {
+                    TotalAmountDueOption4 = "0.00";
+                }
+                else
+                {
+                    TotalAmountDueOption4 = Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) +
+                        Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData));
+                }
+                Logger.Trace("ENDED:   Get  Total AmountDue Option4   operation.");
+                return TotalAmountDueOption4;
+
             }
-            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+            catch (Exception ex)
             {
-                return "0.00";
-            }
-            else
-            {
-                return Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) +
-                    Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData));
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
         }
 
@@ -1423,7 +1749,7 @@ namespace Carrington_Service.Calculation_Classes
 
         public string GetInterestRateUntil(AccountsModel accountModel)
         {
-            if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Rate_Chg_Date) > 19000000)
+            if (Convert.ToUInt64(Convert.ToDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Rate_Chg_Date).IncludeCenturyDate(true)) > 19000000)
                 InterestRateUntil = "Until RSSI-RATE-CHG-DATE";
             else
                 InterestRateUntil = null;
@@ -1442,7 +1768,7 @@ namespace Carrington_Service.Calculation_Classes
         }
         public string GetModificationDate(AccountsModel accountModel)
         {
-            if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Modify_Date) > 19000000)
+            if (Convert.ToUInt64(Convert.ToDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Modify_Date).IncludeCenturyDate(true)) > 19000000)
                 ModificationDate = accountModel.MasterFileDataPart_1Model.Rssi_Modify_Date;
             else
                 ModificationDate = "N/A";
@@ -1451,7 +1777,7 @@ namespace Carrington_Service.Calculation_Classes
         }
         public string GetMaturityDate(AccountsModel accountModel)
         {
-            if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Balloon_Date) > 19000000)
+            if (Convert.ToUInt64(Convert.ToDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Balloon_Date).IncludeCenturyDate(true)) > 19000000)
                 MaturityDate = accountModel.MasterFileDataPart_1Model.Rssi_Balloon_Date;
             else
                 MaturityDate = accountModel.MasterFileDataPart_1Model.Rssi_Mat_Date;
@@ -1556,8 +1882,6 @@ namespace Carrington_Service.Calculation_Classes
 
         public string GetCMSPartialClaim(AccountsModel accountsModel)
         {
-
-
             String chargeOffNotice = string.Empty;
             if (int.Parse(accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) > 0 && accountsModel.UserFieldRecordModel.Rssi_Usr_88 == "C") { chargeOffNotice = "print CMS Partial Claim Message."; }
 
@@ -1566,11 +1890,8 @@ namespace Carrington_Service.Calculation_Classes
 
         public string GetHUDPartialClaim(AccountsModel accountsModel)
         {
-
             String hUDPartialClaim = string.Empty;
             if (int.Parse(accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) > 0 && accountsModel.UserFieldRecordModel.Rssi_Usr_88 == "H") { hUDPartialClaim = "print HUD Partial Claim Message."; }
-
-
             return hUDPartialClaim;
         }
 
@@ -1598,7 +1919,6 @@ namespace Carrington_Service.Calculation_Classes
 
             return paymentInformationMessage;
         }
-
 
 
 
