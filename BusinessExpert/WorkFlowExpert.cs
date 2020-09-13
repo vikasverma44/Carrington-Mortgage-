@@ -3,12 +3,14 @@ using Carrington_Service.Infrastructure;
 using Carrington_Service.Interfaces;
 using Carrington_Service.Services;
 using Microsoft.VisualBasic.Logging;
+using ODHS_EDelivery.Infrastructure;
 using ODHS_EDelivery.Models;
 using ODHS_EDelivery.Models.InputCopyBookModels;
 using ODHS_EDelivery.Models.InputCopyBookModels.MortgageLoanBillingModels;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -22,8 +24,12 @@ namespace Carrington_Service.BusinessExpert
         #region Class Members Definitions & Constructor
 
         public ILogger Logger;
+        private readonly IFileIOService FileIOService;
         private readonly IConfigHelper ConfigHelper;
         private readonly IAgentApi ApiAgent;
+        private string pmFilePath;
+        private string supplimentFilePath;
+        private string EConsentFilePath;
         public FileStream InputFileStream;
         public IEmailService EmailService;
         MortgageLoanBillingFileModel MortgageLoanBillingFile = new MortgageLoanBillingFileModel();
@@ -48,46 +54,155 @@ namespace Carrington_Service.BusinessExpert
 
         public bool StartWorkFlow()
         {
+            Logger.Trace("STARTED: File Reading Process Started");
             try
             {
-                Logger.Trace("STARTED: Start WorkFlow Service Method");
-                ReadPMFile(@"D:\Carrington\Mapping File\TESTDATA.ETOA");
-                (List<DetModel> detData, List<TransModel> transData) = ReadCMSBillInputFileDetRecord(@"D:\Carrington\Mapping File\CMS_BILLINPUT02_06232020.txt");
-                List<EConsentModel> EconsentData = ReadEConsentRecord(@"D:\Carrington\Mapping File\Carrington_Econsent_Setups_06232020.txt");
 
-                if (detData != null && transData != null)
+                string[] allFiles = Directory.GetFiles(ConfigHelper.Model.InputFilePathLocation_Local);
+                foreach (string file in allFiles)
                 {
-                    foreach (AccountsModel accountDetails in MortgageLoanBillingFile.AccountModelList)
+                    if (file.Contains("TESTDATA"))
                     {
-                        string accountToMatch = accountDetails.MasterFileDataPart_1Model.Rssi_Acct_No;
-                        bool isAccountMatched = false;
-                        if (detData.Any(df => df.LoanNumber == accountToMatch))
-                        {
-                            if (EconsentData.Any(df => df.LoanNumber == accountToMatch))
-                            {
-                                isAccountMatched = true;
-                            }
-                        }
-                        else if (transData.Any(df => df.LoanNumber == accountToMatch))
-                        {
-                            if (EconsentData.Any(df => df.LoanNumber == accountToMatch))
-                            {
-                                isAccountMatched = true;
-                            }
-                        }
-                        if (isAccountMatched)
-                        {
-                            accountDetails.IsMatched = true;
-                        }
+                        pmFilePath = Convert.ToString(ConfigHelper.Model.InputFilePathLocation_Local + file);
+                    }
+                    else if (file.Contains("CMS_BILLINPUT"))
+                    {
+                        supplimentFilePath = Convert.ToString(ConfigHelper.Model.InputFilePathLocation_Local + file);
+                    }
+                    else if (file.Contains("Carrington_Econsent"))
+                    {
+                        EConsentFilePath = Convert.ToString(ConfigHelper.Model.InputFilePathLocation_Local + file);
                     }
                 }
+                bool isFileMissing = false;
+                if (pmFilePath == null)
+                {
+                    Logger.Trace("ENDED: PM File Not Found");
+                    isFileMissing = true;
+                }
+                if (supplimentFilePath== null)
+                {
+                    Logger.Trace("ENDED: Suppliment  File Not Found");
+                    isFileMissing = true;
+                }
+                if (EConsentFilePath== null)
+                {
+                    Logger.Trace("ENDED: Econsent  File Not Found");
+                    isFileMissing = true;
+                }
+
+                if (!isFileMissing)
+                {
+                    AccountMatchingProcess(pmFilePath, supplimentFilePath, EConsentFilePath);
+                }
+               
                 TimeWatch();
+                Logger.Trace("ENDED: File Reading Process Completed");
                 return true;
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
+                Logger.Error(ex, "File Reading Process Failed");
                 return false;
+            }
+
+        }
+        public bool AccountMatchingProcess(string pmFilePath, string supplimentFilePath, string EConsentFilePath)
+        {
+            Logger.Trace("STARTED: Account Matching Process Started");
+            try
+            {
+                ReadPMFile(pmFilePath);
+                (List<DetModel> detData, List<TransModel> transData) = ReadCMSBillInputFileDetRecord(supplimentFilePath);
+                List<EConsentModel> EconsentData = ReadEConsentRecord(EConsentFilePath);
+
+                if (MortgageLoanBillingFile != null)
+                {
+                    if (transData != null || detData != null)
+                    {
+                        if (EconsentData != null)
+                        {
+                            if (MortgageLoanBillingFile.AccountModelList != null)
+                            {
+                                bool anyAccountFound = false;
+                                int countAccount = 0;
+                                foreach (AccountsModel accountDetails in MortgageLoanBillingFile.AccountModelList)
+                                {
+                                    string accountToMatch = accountDetails.MasterFileDataPart_1Model.Rssi_Acct_No;
+                                    bool isAccountMatched = false;
+                                    if (detData.Any(df => df.LoanNumber == accountToMatch))
+                                    {
+                                        if (EconsentData.Any(df => df.LoanNumber == accountToMatch))
+                                        {
+                                            isAccountMatched = true;
+                                            countAccount++;
+                                            if (!anyAccountFound)
+                                            {
+                                                anyAccountFound = true;
+                                            }
+                                            countAccount++;
+                                        }
+                                    }
+                                    else if (transData.Any(df => df.LoanNumber == accountToMatch))
+                                    {
+                                        if (EconsentData.Any(df => df.LoanNumber == accountToMatch))
+                                        {
+                                            isAccountMatched = true;
+                                            countAccount++;
+                                            if (!anyAccountFound)
+                                            {
+                                                anyAccountFound = true;
+                                            }
+                                            countAccount++;
+                                        }
+                                    }
+                                    if (isAccountMatched)
+                                    {
+                                        accountDetails.IsMatched = true;
+                                    }
+                                }
+                                if (anyAccountFound)
+                                {
+                                    Logger.Trace("Account Matching Process: Successfull Total Account Found = " + countAccount + ".");
+                                }
+                                else
+                                {
+                                    Logger.Trace("Account Matching Process: Failed No Matched Account Found in PM, Econsent and Suppliment File !!.");
+                                    EmailService.SendNotification("Failed No Matched Account Found in PM, Econsent and Suppliment File");
+                                    Logger.Trace("Email Notification: Failed Account Matching Notification Send");
+                                }
+                            }
+                            else
+                            {
+                                Logger.Trace("Account Matching Process: Failed No Account Exists in PM File !!.");
+                                EmailService.SendNotification("Failed No Account Exists in PM File");
+                            }
+                        }
+                        else
+                        {
+                            Logger.Trace("Account Matching Process: Failed No Account Exists in eConsent File !!.");
+                            EmailService.SendNotification("Failed No Account Exists in eConsent File");
+                        }
+                    }
+                    else
+                    {
+                        Logger.Trace("Account Matching Process: Failed No Data Found in Suppliment File !!.");
+                        EmailService.SendNotification("Failed No Data Found in Suppliment File");
+                    }
+
+                }
+                else
+                {
+                    Logger.Trace("Account Matching Process: Failed No Data Found in PM File !!.");
+                    EmailService.SendNotification("Failed No Data Found in PM File");
+                }
+                Logger.Trace("ENDED: Account Matching Complete");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Logger.Trace("Error : Account Matching Process Error :" + Convert.ToString(ex));
+                return true;
             }
         }
 
@@ -1729,27 +1844,27 @@ namespace Carrington_Service.BusinessExpert
                 Rssi_Tr_Store_Ovride = PackedTypeCheckAndUnPackData("Rssi_Tr_Store_Ovride", currentByte, 46, 1),
 
                 Rssi_Tr_Fill_03 = PackedTypeCheckAndUnPackData("Rssi_Tr_Fill_03", currentByte, 47, 1),
-                Rssi_Tr_Amt_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_PackedData", currentByte, 48, 8,2),
+                Rssi_Tr_Amt_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_PackedData", currentByte, 48, 8, 2),
 
-                Rssi_Tr_Cash_Amt_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Cash_Amt_PackedData", currentByte, 56, 8,2),
+                Rssi_Tr_Cash_Amt_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Cash_Amt_PackedData", currentByte, 56, 8, 2),
                 Rssi_Tr_Teller_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Teller_PackedData", currentByte, 64, 3),
 
                 Rssi_Tr_Unap_Cd_Before = PackedTypeCheckAndUnPackData("Rssi_Tr_Unap_Cd_Before", currentByte, 67, 5),
                 Rssi_Tr_Unap_Cd_After = PackedTypeCheckAndUnPackData("Rssi_Tr_Unap_Cd_After", currentByte, 72, 5),
 
-                Rssi_Tr_Amt_To_Prin_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Prin_PackedData", currentByte, 77, 6,2),
-                Rssi_Tr_Amt_To_Int_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Int_PackedData", currentByte, 83, 6,2),
+                Rssi_Tr_Amt_To_Prin_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Prin_PackedData", currentByte, 77, 6, 2),
+                Rssi_Tr_Amt_To_Int_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Int_PackedData", currentByte, 83, 6, 2),
 
-                Rssi_Tr_Amt_To_Esc_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Esc_PackedData", currentByte, 89, 5,2),
-                Rssi_Tr_Amt_To_Lc_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Lc_PackedData", currentByte, 94, 5,2),
+                Rssi_Tr_Amt_To_Esc_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Esc_PackedData", currentByte, 89, 5, 2),
+                Rssi_Tr_Amt_To_Lc_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Lc_PackedData", currentByte, 94, 5, 2),
 
-                Rssi_Tr_Amt_To_Pvar_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Pvar_PackedData", currentByte, 99, 5,2),
-                Rssi_Tr_Amt_To_Ivar_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Ivar_PackedData", currentByte, 104, 4,2),
+                Rssi_Tr_Amt_To_Pvar_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Pvar_PackedData", currentByte, 99, 5, 2),
+                Rssi_Tr_Amt_To_Ivar_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Ivar_PackedData", currentByte, 104, 4, 2),
 
-                Rssi_Tr_Amt_To_Evar_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_PackedData", currentByte, 109, 5,2),
-                Rssi_Tr_Amt_To_Lvar_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Lvar_PackedData", currentByte, 114, 5,2),
+                Rssi_Tr_Amt_To_Evar_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_PackedData", currentByte, 109, 5, 2),
+                Rssi_Tr_Amt_To_Lvar_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Lvar_PackedData", currentByte, 114, 5, 2),
 
-                Rssi_Tr_Amt_To_Lip_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Lip_PackedData", currentByte, 119, 5,2),
+                Rssi_Tr_Amt_To_Lip_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Lip_PackedData", currentByte, 119, 5, 2),
                 Rssi_Tr_Pymt_Ctr_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Pymt_Ctr_PackedData", currentByte, 124, 2),
 
                 Rssi_Tr_Amt_To_Cr_Ins_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Cr_Ins_PackedData", currentByte, 126, 5),
@@ -1886,35 +2001,35 @@ namespace Carrington_Service.BusinessExpert
                 Rssi_C_Alt_Type_Id = PackedTypeCheckAndUnPackData("Rssi_C_Alt_Type_Id", currentByte, 20, 1),
                 Rssi_Ml_Alt_Typ_Id_PackedData = PackedTypeCheckAndUnPackData("Rssi_Ml_Alt_Typ_Id_PackedData", currentByte, 21, 1),
 
-                Rssi_Alt_Chg_Amt1_PackedData = PackedTypeCheckAndUnPackData("Rssi_Alt_Chg_Amt1_PackedData", currentByte, 22, 6,2),
-                Rssi_Alt_Chg_Amt2_PackedData = PackedTypeCheckAndUnPackData("Rssi_Alt_Chg_Amt2_PackedData", currentByte, 28, 6,2),
+                Rssi_Alt_Chg_Amt1_PackedData = PackedTypeCheckAndUnPackData("Rssi_Alt_Chg_Amt1_PackedData", currentByte, 22, 6, 2),
+                Rssi_Alt_Chg_Amt2_PackedData = PackedTypeCheckAndUnPackData("Rssi_Alt_Chg_Amt2_PackedData", currentByte, 28, 6, 2),
 
-                Rssi_Alt_Chg_Amt3_PackedData = PackedTypeCheckAndUnPackData("Rssi_Alt_Chg_Amt3_PackedData", currentByte, 34, 6,2),
-                Rssi_Alt_Chg_Amt4_PackedData = PackedTypeCheckAndUnPackData("Rssi_Alt_Chg_Amt4_PackedData", currentByte, 40, 6,2),
+                Rssi_Alt_Chg_Amt3_PackedData = PackedTypeCheckAndUnPackData("Rssi_Alt_Chg_Amt3_PackedData", currentByte, 34, 6, 2),
+                Rssi_Alt_Chg_Amt4_PackedData = PackedTypeCheckAndUnPackData("Rssi_Alt_Chg_Amt4_PackedData", currentByte, 40, 6, 2),
 
-                Rssi_Alt_Pymt1_PackedData = PackedTypeCheckAndUnPackData("Rssi_Alt_Pymt1_PackedData", currentByte, 46, 6,2),
-                Rssi_Alt_Pymt2_PackedData = PackedTypeCheckAndUnPackData("Rssi_Alt_Pymt2_PackedData", currentByte, 52, 6,2),
+                Rssi_Alt_Pymt1_PackedData = PackedTypeCheckAndUnPackData("Rssi_Alt_Pymt1_PackedData", currentByte, 46, 6, 2),
+                Rssi_Alt_Pymt2_PackedData = PackedTypeCheckAndUnPackData("Rssi_Alt_Pymt2_PackedData", currentByte, 52, 6, 2),
 
-                Rssi_Alt_Pymt3_PackedData = PackedTypeCheckAndUnPackData("Rssi_Alt_Pymt3_PackedData", currentByte, 58, 6,2),
-                Rssi_Alt_Pymt4_PackedData = PackedTypeCheckAndUnPackData("Rssi_Alt_Pymt4_PackedData", currentByte, 64, 6,2),
+                Rssi_Alt_Pymt3_PackedData = PackedTypeCheckAndUnPackData("Rssi_Alt_Pymt3_PackedData", currentByte, 58, 6, 2),
+                Rssi_Alt_Pymt4_PackedData = PackedTypeCheckAndUnPackData("Rssi_Alt_Pymt4_PackedData", currentByte, 64, 6, 2),
 
-                Rssi_Alt_B_A_Rt_PackedData = PackedTypeCheckAndUnPackData("Rssi_Alt_B_A_Rt_PackedData", currentByte, 70, 4,5),
-                Rssi_Alt_B_F_Rate_PackedData = PackedTypeCheckAndUnPackData("Rssi_Alt_B_F_Rate_PackedData", currentByte, 74, 4,5),
+                Rssi_Alt_B_A_Rt_PackedData = PackedTypeCheckAndUnPackData("Rssi_Alt_B_A_Rt_PackedData", currentByte, 70, 4, 5),
+                Rssi_Alt_B_F_Rate_PackedData = PackedTypeCheckAndUnPackData("Rssi_Alt_B_F_Rate_PackedData", currentByte, 74, 4, 5),
 
-                Rssi_Alt_Ar_Rate_PackedData = PackedTypeCheckAndUnPackData("Rssi_Alt_Ar_Rate_PackedData", currentByte, 78, 4,5),
-                Rssi_Alt_Fr_Rate = PackedTypeCheckAndUnPackData("Rssi_Alt_Fr_Rate", currentByte, 82, 4,5),
+                Rssi_Alt_Ar_Rate_PackedData = PackedTypeCheckAndUnPackData("Rssi_Alt_Ar_Rate_PackedData", currentByte, 78, 4, 5),
+                Rssi_Alt_Fr_Rate = PackedTypeCheckAndUnPackData("Rssi_Alt_Fr_Rate", currentByte, 82, 4, 5),
 
                 Rssi_Alt_B_Rate_Flag_PackedData = PackedTypeCheckAndUnPackData("Rssi_Alt_B_Rate_Flag_PackedData", currentByte, 86, 1),
-                Rssi_Alt_B_Rt_Mgn_PackedData = PackedTypeCheckAndUnPackData("Rssi_Alt_B_Rt_Mgn_PackedData", currentByte, 87, 4,5),
+                Rssi_Alt_B_Rt_Mgn_PackedData = PackedTypeCheckAndUnPackData("Rssi_Alt_B_Rt_Mgn_PackedData", currentByte, 87, 4, 5),
 
                 Rssi_Alt_B_Rt_Term_PackedData = PackedTypeCheckAndUnPackData("Rssi_Alt_B_Rt_Term_PackedData", currentByte, 91, 2),
-                Rssi_Alt_Adj_Pct_PackedData = PackedTypeCheckAndUnPackData("Rssi_Alt_Adj_Pct_PackedData", currentByte, 93, 4,5),
+                Rssi_Alt_Adj_Pct_PackedData = PackedTypeCheckAndUnPackData("Rssi_Alt_Adj_Pct_PackedData", currentByte, 93, 4, 5),
 
-                Rssi_Alt_Fix_Pct = PackedTypeCheckAndUnPackData("Rssi_Alt_Fix_Pct", currentByte, 97, 4,5),
+                Rssi_Alt_Fix_Pct = PackedTypeCheckAndUnPackData("Rssi_Alt_Fix_Pct", currentByte, 97, 4, 5),
                 Rssi_Alt_B_Opt_Flag = PackedTypeCheckAndUnPackData("Rssi_Alt_B_Opt_Flag", currentByte, 101, 1),
 
-                Rssi_Alt_B_Opt_Curr_Fix = PackedTypeCheckAndUnPackData("Rssi_Alt_B_Opt_Curr_Fix", currentByte, 102, 11,2),
-                Rssi_Alt_B_Curr_Adj = PackedTypeCheckAndUnPackData("Rssi_Alt_B_Curr_Adj", currentByte, 113, 11,2),
+                Rssi_Alt_B_Opt_Curr_Fix = PackedTypeCheckAndUnPackData("Rssi_Alt_B_Opt_Curr_Fix", currentByte, 102, 11, 2),
+                Rssi_Alt_B_Curr_Adj = PackedTypeCheckAndUnPackData("Rssi_Alt_B_Curr_Adj", currentByte, 113, 11, 2),
                 FILLER_124_400 = PackedTypeCheckAndUnPackData("FILLER_124_400", currentByte, 124, 277),
             };
         }
@@ -1926,7 +2041,7 @@ namespace Carrington_Service.BusinessExpert
             acc.CoBorrowerRecordModel = new CoBorrowerRecordModel()
             {
                 Rssi_Rcd_Id = PackedTypeCheckAndUnPackData("Rssi_Rcd_Id", currentByte, 1, 1),
-                Rssi_Inst = PackedTypeCheckAndUnPackData("Rssi_Inst", currentByte, 2, 3), 
+                Rssi_Inst = PackedTypeCheckAndUnPackData("Rssi_Inst", currentByte, 2, 3),
 
                 Rssi_Acct_No = PackedTypeCheckAndUnPackData("Rssi_Acct_No", currentByte, 5, 10),
                 Rssi_Seq_No = PackedTypeCheckAndUnPackData("Rssi_Seq_No", currentByte, 15, 5),
@@ -2114,7 +2229,7 @@ namespace Carrington_Service.BusinessExpert
                 Rssi_Lci_Ind = PackedTypeCheckAndUnPackData("Rssi_Lci_Ind", currentByte, 25, 1),
                 Rssi_Lci_Ptd_PackedData = PackedTypeCheckAndUnPackData("Rssi_Lci_Ptd_PackedData", currentByte, 26, 4),
                 Rssi_Lci_Coll_Meth = PackedTypeCheckAndUnPackData("Rssi_Lci_Coll_Meth", currentByte, 30, 1),
-                Rssi_Lci_Factor_PackedData = PackedTypeCheckAndUnPackData("Rssi_Lci_Factor_PackedData", currentByte, 31, 3,2),
+                Rssi_Lci_Factor_PackedData = PackedTypeCheckAndUnPackData("Rssi_Lci_Factor_PackedData", currentByte, 31, 3, 2),
                 Rssi_Lci_Assess_Meth = PackedTypeCheckAndUnPackData("Rssi_Lci_Assess_Meth", currentByte, 34, 1),
                 Rssi_Lci_Max_PackedData = PackedTypeCheckAndUnPackData("Rssi_Lci_Max_PackedData", currentByte, 35, 4, 2),
                 Rssi_Lci_Min_PackedData = PackedTypeCheckAndUnPackData("Rssi_Lci_Min_PackedData", currentByte, 39, 4, 2),
@@ -2161,11 +2276,11 @@ namespace Carrington_Service.BusinessExpert
                 Rssi_Lcd_Paid_Amt = PackedTypeCheckAndUnPackData("Rssi_Lcd_Paid_Amt", currentByte, 54, 5, 2),
                 Rssi_Lcd_Waive_Amt = PackedTypeCheckAndUnPackData("Rssi_Lcd_Waive_Amt", currentByte, 59, 5, 2),
 
-                Rssi_Lcd_Rev_Amt = PackedTypeCheckAndUnPackData("Rssi_Lcd_Rev_Amt", currentByte, 64, 5,2),
+                Rssi_Lcd_Rev_Amt = PackedTypeCheckAndUnPackData("Rssi_Lcd_Rev_Amt", currentByte, 64, 5, 2),
                 Rssi_Lcd_Lc_Adj_Dt_PackedData = PackedTypeCheckAndUnPackData("Rssi_Lcd_Lc_Adj_Dt_PackedData", currentByte, 69, 4),
                 Rssi_Lcd_Lc_Adj_Amt_PackedData = PackedTypeCheckAndUnPackData("Rssi_Lcd_Lc_Adj_Amt_PackedData", currentByte, 73, 5, 2),
 
-                Rssi_Lcd_Rem_Bal_PackedData = PackedTypeCheckAndUnPackData("Rssi_Lcd_Rem_Bal_PackedData", currentByte, 78, 5,2),
+                Rssi_Lcd_Rem_Bal_PackedData = PackedTypeCheckAndUnPackData("Rssi_Lcd_Rem_Bal_PackedData", currentByte, 78, 5, 2),
                 Filler = PackedTypeCheckAndUnPackData("Filler", currentByte, 83, 123),
 
             };

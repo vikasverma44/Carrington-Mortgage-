@@ -23,6 +23,7 @@ namespace Carrington_Service.Helpers
                 SMTP_Pwd = GetSetting<string>("SMTP_Pwd"),
                 SMTP_From = GetSetting<string>("SMTP_From"),
                 SMTP_To = GetSetting<string>("SMTP_To"),
+                InputFilePathLocation_Local = GetSetting<string>("InputFilePathLocation_Local"),
             };
         }
 
