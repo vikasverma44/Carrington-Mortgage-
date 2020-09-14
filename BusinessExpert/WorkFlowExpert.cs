@@ -17,6 +17,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ODHS_EDelivery.BusinessExpert;
 
 namespace Carrington_Service.BusinessExpert
 {
@@ -110,6 +111,9 @@ namespace Carrington_Service.BusinessExpert
                 {
                     AccountMatchingProcess(pmFilePath, supplimentFilePath, EConsentFilePath);
                 }
+              
+                CRL30FileGeneration c = new CRL30FileGeneration(Logger, ConfigHelper);
+                c.GenerateCRL30File(MortgageLoanBillingFile);
 
                 TimeWatch();
                 Logger.Trace("ENDED: File Reading Process Completed");
