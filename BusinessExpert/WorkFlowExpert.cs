@@ -58,6 +58,7 @@ namespace Carrington_Service.BusinessExpert
             try
             {
                 return FileReadingProcess();
+
             }
             catch (Exception ex)
             {
@@ -89,26 +90,44 @@ namespace Carrington_Service.BusinessExpert
                         EConsentFilePath = file;
                     }
                 }
-                bool isFileMissing = false;
-                if (pmFilePath == null)
+           
+                if (DateTime.Now.Hour > Convert.ToInt32(ConfigHelper.Model.WatcherStartTime) && DateTime.Now.Hour < Convert.ToInt32(ConfigHelper.Model.WatcherEndTime))
                 {
-                    Logger.Trace("ERROR: PM File Not Found");
-                    isFileMissing = true;
+                    bool isFileMissing = false;
+                    if (pmFilePath == null)
+                    {
+                        Logger.Trace("ERROR: PM File Not Found");
+                        isFileMissing = true;
+                    }
+                    if (supplimentFilePath == null)
+                    {
+                        Logger.Trace("ERROR: Suppliment  File Not Found");
+                        isFileMissing = true;
+                    }
+                    if (EConsentFilePath == null)
+                    {
+                        Logger.Trace("ERROR: Econsent  File Not Found");
+                        isFileMissing = true;
+                    }
+                    if (!isFileMissing)
+                    {
+                        AccountMatchingProcess(pmFilePath, supplimentFilePath, EConsentFilePath);
+                    }
                 }
-                if (supplimentFilePath == null)
+                else
                 {
-                    Logger.Trace("ERROR: Suppliment  File Not Found");
-                    isFileMissing = true;
-                }
-                if (EConsentFilePath == null)
-                {
-                    Logger.Trace("ERROR: Econsent  File Not Found");
-                    isFileMissing = true;
-                }
-
-                if (!isFileMissing)
-                {
-                    AccountMatchingProcess(pmFilePath, supplimentFilePath, EConsentFilePath);
+                    if (pmFilePath != null)
+                    {
+                        Logger.Trace("SUCCESS: PM File Found "+DateTime.Now.ToString());
+                    }
+                    if (supplimentFilePath != null)
+                    {
+                        Logger.Trace("SUCCESS: Suppliment File Found " + DateTime.Now.ToString());
+                    }
+                    if (EConsentFilePath != null)
+                    {
+                        Logger.Trace("SUCCESS: Econsent File Found " + DateTime.Now.ToString());
+                    }
                 }
 
                 TimeWatch();
@@ -1218,104 +1237,105 @@ namespace Carrington_Service.BusinessExpert
 
             acc.MasterFileDataPart2Model = new MasterFileDataPart2Model()
             {
-                Rssi_Rcd_Id = PackedTypeCheckAndUnPackData("", currentByte, 1, 1),
-                Rssi_Inst = PackedTypeCheckAndUnPackData("", currentByte, 2, 3),
-                Rssi_Acct_No = PackedTypeCheckAndUnPackData("", currentByte, 5, 10),
-                Rssi_Seq_No = PackedTypeCheckAndUnPackData("", currentByte, 15, 5),
+                Rssi_Rcd_Id = PackedTypeCheckAndUnPackData("Rssi_Rcd_Id", currentByte, 1, 1),
+                Rssi_Inst = PackedTypeCheckAndUnPackData("Rssi_Inst", currentByte, 2, 3),
 
-                Rssi_Unap_Bal_2_PackedData = PackedTypeCheckAndUnPackData("Rssi_Unap_Bal_2_PackedData", currentByte, 20, 5),
-                Rssi_Unap_Cd_2 = PackedTypeCheckAndUnPackData("", currentByte, 25, 1),
+                Rssi_Acct_No = PackedTypeCheckAndUnPackData("Rssi_Acct_No", currentByte, 5, 10),
+                Rssi_Seq_No = PackedTypeCheckAndUnPackData("Rssi_Seq_No", currentByte, 15, 5, 2),
 
-                Rssi_Unap_Bal_3_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 26, 5),
-                Rssi_Unap_Cd_3 = PackedTypeCheckAndUnPackData("", currentByte, 31, 1),
+                Rssi_Unap_Bal_2_PackedData = PackedTypeCheckAndUnPackData("Rssi_Unap_Bal_2_PackedData", currentByte, 20, 5, 2),
+                Rssi_Unap_Cd_2 = PackedTypeCheckAndUnPackData("Rssi_Unap_Cd_2", currentByte, 25, 1),
 
-                Rssi_Unap_Bal_4_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 32, 5),
-                Rssi_Unap_Cd_4 = PackedTypeCheckAndUnPackData("", currentByte, 37, 1),
+                Rssi_Unap_Bal_3_PackedData = PackedTypeCheckAndUnPackData("Rssi_Unap_Bal_3_PackedData", currentByte, 26, 5, 2),
+                Rssi_Unap_Cd_3 = PackedTypeCheckAndUnPackData("Rssi_Unap_Cd_3", currentByte, 31, 1),
 
-                Rssi_Unap_Bal_5_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 38, 5),
-                Rssi_Unap_Cd_5 = PackedTypeCheckAndUnPackData("", currentByte, 43, 1),
+                Rssi_Unap_Bal_4_PackedData = PackedTypeCheckAndUnPackData("Rssi_Unap_Bal_4_PackedData", currentByte, 32, 5, 2),
+                Rssi_Unap_Cd_4 = PackedTypeCheckAndUnPackData("Rssi_Unap_Cd_4", currentByte, 37, 1),
 
-                Rssi_Unap_Bal_Tot_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 44, 6),
-                Rssi_Tot_Draft_Amt_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 50, 6),
+                Rssi_Unap_Bal_5_PackedData = PackedTypeCheckAndUnPackData("Rssi_Unap_Bal_5_PackedData", currentByte, 38, 5, 2),
+                Rssi_Unap_Cd_5 = PackedTypeCheckAndUnPackData("Rssi_Unap_Cd_5", currentByte, 43, 1),
 
-                Rssi_Rd_Bk_Draft_Amt_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 56, 6),
-                Filler = PackedTypeCheckAndUnPackData("", currentByte, 62, 26),
+                Rssi_Unap_Bal_Tot_PackedData = PackedTypeCheckAndUnPackData("Rssi_Unap_Bal_Tot_PackedData", currentByte, 44, 6, 2),
+                Rssi_Tot_Draft_Amt_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tot_Draft_Amt_PackedData", currentByte, 50, 6, 2),
 
-                Rssi_Uncoll_Pi_Adv_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 88, 6),
-                Rssi_Orig_Mat_Date = PackedTypeCheckAndUnPackData("", currentByte, 94, 5),
+                Rssi_Rd_Bk_Draft_Amt_PackedData = PackedTypeCheckAndUnPackData("Rssi_Rd_Bk_Draft_Amt_PackedData", currentByte, 56, 6, 2),
+                Filler = PackedTypeCheckAndUnPackData("Filler", currentByte, 62, 26),
 
-                Rssi_Delq_Couns = PackedTypeCheckAndUnPackData("", currentByte, 99, 3),
-                Rssi_Bmsg_Code_01 = PackedTypeCheckAndUnPackData("", currentByte, 102, 6),
+                Rssi_Uncoll_Pi_Adv_PackedData = PackedTypeCheckAndUnPackData("Rssi_Uncoll_Pi_Adv_PackedData", currentByte, 88, 6, 2),
+                Rssi_Orig_Mat_Date = PackedTypeCheckAndUnPackData("Rssi_Orig_Mat_Date", currentByte, 94, 5),
 
-                Rssi_Bmsg_Code_02 = PackedTypeCheckAndUnPackData("", currentByte, 108, 6),
-                Rssi_Bmsg_Code_03 = PackedTypeCheckAndUnPackData("", currentByte, 114, 6),
+                Rssi_Delq_Couns = PackedTypeCheckAndUnPackData("Rssi_Delq_Couns", currentByte, 99, 3),
+                Rssi_Bmsg_Code_01 = PackedTypeCheckAndUnPackData("Rssi_Bmsg_Code_01", currentByte, 102, 6),
 
-                Rssi_Bmsg_Code_04 = PackedTypeCheckAndUnPackData("", currentByte, 120, 6),
-                Rssi_Bmsg_Code_05 = PackedTypeCheckAndUnPackData("", currentByte, 126, 6),
+                Rssi_Bmsg_Code_02 = PackedTypeCheckAndUnPackData("Rssi_Bmsg_Code_02", currentByte, 108, 6),
+                Rssi_Bmsg_Code_03 = PackedTypeCheckAndUnPackData("Rssi_Bmsg_Code_03", currentByte, 114, 6),
 
-                Rssi_Bmsg_Code_06 = PackedTypeCheckAndUnPackData("", currentByte, 132, 6),
-                Rssi_Bmsg_Code_07 = PackedTypeCheckAndUnPackData("", currentByte, 138, 6),
+                Rssi_Bmsg_Code_04 = PackedTypeCheckAndUnPackData("Rssi_Bmsg_Code_04", currentByte, 120, 6),
+                Rssi_Bmsg_Code_05 = PackedTypeCheckAndUnPackData("Rssi_Bmsg_Code_05", currentByte, 126, 6),
 
-                Rssi_Bmsg_Code_08 = PackedTypeCheckAndUnPackData("", currentByte, 144, 6),
-                Rssi_Bmsg_Code_09 = PackedTypeCheckAndUnPackData("", currentByte, 150, 6),
+                Rssi_Bmsg_Code_06 = PackedTypeCheckAndUnPackData("Rssi_Bmsg_Code_06", currentByte, 132, 6),
+                Rssi_Bmsg_Code_07 = PackedTypeCheckAndUnPackData("Rssi_Bmsg_Code_07", currentByte, 138, 6),
 
-                Rssi_Bmsg_Code_10 = PackedTypeCheckAndUnPackData("", currentByte, 156, 6),
-                Rssi_Bmsg_Code_11 = PackedTypeCheckAndUnPackData("", currentByte, 162, 6),
+                Rssi_Bmsg_Code_08 = PackedTypeCheckAndUnPackData("Rssi_Bmsg_Code_08", currentByte, 144, 6),
+                Rssi_Bmsg_Code_09 = PackedTypeCheckAndUnPackData("Rssi_Bmsg_Code_09", currentByte, 150, 6),
 
-                Rssi_Bmsg_Code_12 = PackedTypeCheckAndUnPackData("", currentByte, 168, 6),
-                Rssi_Bmsg_Code_13 = PackedTypeCheckAndUnPackData("", currentByte, 174, 6),
+                Rssi_Bmsg_Code_10 = PackedTypeCheckAndUnPackData("Rssi_Bmsg_Code_10", currentByte, 156, 6),
+                Rssi_Bmsg_Code_11 = PackedTypeCheckAndUnPackData("Rssi_Bmsg_Code_11", currentByte, 162, 6),
 
-                Rssi_Bmsg_Code_14 = PackedTypeCheckAndUnPackData("", currentByte, 180, 6),
-                Rssi_Bmsg_Code_15 = PackedTypeCheckAndUnPackData("", currentByte, 186, 6),
+                Rssi_Bmsg_Code_12 = PackedTypeCheckAndUnPackData("Rssi_Bmsg_Code_12", currentByte, 168, 6),
+                Rssi_Bmsg_Code_13 = PackedTypeCheckAndUnPackData("Rssi_Bmsg_Code_13", currentByte, 174, 6),
 
-                Rssi_Bmsg_Code_16 = PackedTypeCheckAndUnPackData("", currentByte, 192, 6),
-                Rssi_Bmsg_Code_17 = PackedTypeCheckAndUnPackData("", currentByte, 198, 6),
+                Rssi_Bmsg_Code_14 = PackedTypeCheckAndUnPackData("Rssi_Bmsg_Code_14", currentByte, 180, 6),
+                Rssi_Bmsg_Code_15 = PackedTypeCheckAndUnPackData("Rssi_Bmsg_Code_15", currentByte, 186, 6),
 
-                Rssi_Bmsg_Code_18 = PackedTypeCheckAndUnPackData("", currentByte, 204, 6),
-                Rssi_Bmsg_Code_19 = PackedTypeCheckAndUnPackData("", currentByte, 210, 6),
-                Rssi_Bmsg_Code_20 = PackedTypeCheckAndUnPackData("", currentByte, 216, 6),
+                Rssi_Bmsg_Code_16 = PackedTypeCheckAndUnPackData("Rssi_Bmsg_Code_16", currentByte, 192, 6),
+                Rssi_Bmsg_Code_17 = PackedTypeCheckAndUnPackData("Rssi_Bmsg_Code_17", currentByte, 198, 6),
 
-                Rssi_Prim_Forgn_Flag = PackedTypeCheckAndUnPackData("", currentByte, 222, 1),
-                Rssi_Altr_Forgn_Flag = PackedTypeCheckAndUnPackData("", currentByte, 223, 1),
+                Rssi_Bmsg_Code_18 = PackedTypeCheckAndUnPackData("Rssi_Bmsg_Code_18", currentByte, 204, 6),
+                Rssi_Bmsg_Code_19 = PackedTypeCheckAndUnPackData("Rssi_Bmsg_Code_19", currentByte, 210, 6),
+                Rssi_Bmsg_Code_20 = PackedTypeCheckAndUnPackData("Rssi_Bmsg_Code_20", currentByte, 216, 6),
 
-                Rssi_Appl_Foreign_Flag = PackedTypeCheckAndUnPackData("", currentByte, 224, 1),
-                Rssi_Def_Tot_Bal = PackedTypeCheckAndUnPackData("", currentByte, 225, 7),
+                Rssi_Prim_Forgn_Flag = PackedTypeCheckAndUnPackData("Rssi_Prim_Forgn_Flag", currentByte, 222, 1),
+                Rssi_Altr_Forgn_Flag = PackedTypeCheckAndUnPackData("Rssi_Altr_Forgn_Flag", currentByte, 223, 1),
 
-                Rssi_Def_Int_Bal_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 232, 6),
-                Rssi_Def_Late_Chrg_Bal_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 238, 4),
+                Rssi_Appl_Foreign_Flag = PackedTypeCheckAndUnPackData("Rssi_Appl_Foreign_Flag", currentByte, 224, 1, 2),
+                Rssi_Def_Tot_Bal = PackedTypeCheckAndUnPackData("Rssi_Def_Tot_Bal", currentByte, 225, 7, 2),
 
-                Rssi_Def_Escrow_Adv_Bal_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 242, 6),
-                Rssi_Def_Paid_Exp_Adv_Bal_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 248, 6),
+                Rssi_Def_Int_Bal_PackedData = PackedTypeCheckAndUnPackData("Rssi_Def_Int_Bal_PackedData", currentByte, 232, 6, 2),
+                Rssi_Def_Late_Chrg_Bal_PackedData = PackedTypeCheckAndUnPackData("Rssi_Def_Late_Chrg_Bal_PackedData", currentByte, 238, 4, 2),
 
-                Rssi_Def_Unpd_Exp_Adv_Bal_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 254, 6),
-                Rssi_Def_Admn_Fees_Bal = PackedTypeCheckAndUnPackData("", currentByte, 260, 6),
+                Rssi_Def_Escrow_Adv_Bal_PackedData = PackedTypeCheckAndUnPackData("Rssi_Def_Escrow_Adv_Bal_PackedData", currentByte, 242, 6, 2),
+                Rssi_Def_Paid_Exp_Adv_Bal_PackedData = PackedTypeCheckAndUnPackData("Rssi_Def_Paid_Exp_Adv_Bal_PackedData", currentByte, 248, 6, 2),
 
-                Rssi_Borr_Lnge = PackedTypeCheckAndUnPackData("", currentByte, 266, 1),
-                Rssi_Uncoll_Esc_Short = PackedTypeCheckAndUnPackData("", currentByte, 267, 6),
+                Rssi_Def_Unpd_Exp_Adv_Bal_PackedData = PackedTypeCheckAndUnPackData("Rssi_Def_Unpd_Exp_Adv_Bal_PackedData", currentByte, 254, 6, 2),
+                Rssi_Def_Admn_Fees_Bal = PackedTypeCheckAndUnPackData("Rssi_Def_Admn_Fees_Bal", currentByte, 260, 6),
 
-                Rssi_Def_Opt_Ins_Bal_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 273, 5),
-                Rssi_Clo_Agent_Cd = PackedTypeCheckAndUnPackData("", currentByte, 278, 5),
+                Rssi_Borr_Lnge = PackedTypeCheckAndUnPackData("Rssi_Borr_Lnge", currentByte, 266, 1),
+                Rssi_Uncoll_Esc_Short = PackedTypeCheckAndUnPackData("Rssi_Uncoll_Esc_Short", currentByte, 267, 6),
+
+                Rssi_Def_Opt_Ins_Bal_PackedData = PackedTypeCheckAndUnPackData("Rssi_Def_Opt_Ins_Bal_PackedData", currentByte, 273, 5, 2),
+                Rssi_Clo_Agent_Cd = PackedTypeCheckAndUnPackData("Rssi_Clo_Agent_Cd", currentByte, 278, 5),
 
                 FillerPart2 = PackedTypeCheckAndUnPackData("", currentByte, 283, 13),
-                Rssi_Def_Prin_Bal_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 296, 6),
+                Rssi_Def_Prin_Bal_PackedData = PackedTypeCheckAndUnPackData("Rssi_Def_Prin_Bal_PackedData", currentByte, 296, 6, 2),
 
-                Rssi_Comb_Prin_Bal_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 302, 6),
-                Rssi_Pra_Original_Amount_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 308, 6),
+                Rssi_Comb_Prin_Bal_PackedData = PackedTypeCheckAndUnPackData("Rssi_Comb_Prin_Bal_PackedData", currentByte, 302, 6, 2),
+                Rssi_Pra_Original_Amount_PackedData = PackedTypeCheckAndUnPackData("Rssi_Pra_Original_Amount_PackedData", currentByte, 308, 6, 2),
 
-                Rssi_Pra_Remain_Amt_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 314, 6),
-                Rssi_Pra_Taken_Amt_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 320, 6),
+                Rssi_Pra_Remain_Amt_PackedData = PackedTypeCheckAndUnPackData("Rssi_Pra_Remain_Amt_PackedData", currentByte, 314, 6, 2),
+                Rssi_Pra_Taken_Amt_PackedData = PackedTypeCheckAndUnPackData("Rssi_Pra_Taken_Amt_PackedData", currentByte, 320, 6, 2),
 
-                Rssi_Lmt_Program = PackedTypeCheckAndUnPackData("", currentByte, 326, 3),
-                Rssi_Fcl_Start_Date = PackedTypeCheckAndUnPackData("", currentByte, 329, 6),
+                Rssi_Lmt_Program = PackedTypeCheckAndUnPackData("Rssi_Lmt_Program", currentByte, 326, 3),
+                Rssi_Fcl_Start_Date = PackedTypeCheckAndUnPackData("Rssi_Fcl_Start_Date", currentByte, 329, 6),
 
-                Rssi_Breach_Ltr_Dt = PackedTypeCheckAndUnPackData("", currentByte, 335, 6),
-                Rssi_Higher_Priced_Flag = PackedTypeCheckAndUnPackData("", currentByte, 341, 1),
+                Rssi_Breach_Ltr_Dt = PackedTypeCheckAndUnPackData("Rssi_Breach_Ltr_Dt", currentByte, 335, 6),
+                Rssi_Higher_Priced_Flag = PackedTypeCheckAndUnPackData("Rssi_Higher_Priced_Flag", currentByte, 341, 1),
 
-                Rssi_Hpml_Escrow_Reqd_Thru_Dt = PackedTypeCheckAndUnPackData("", currentByte, 342, 8),
-                Filler_350_536 = PackedTypeCheckAndUnPackData("", currentByte, 350, 187),
+                Rssi_Hpml_Escrow_Reqd_Thru_Dt = PackedTypeCheckAndUnPackData("Rssi_Hpml_Escrow_Reqd_Thru_Dt", currentByte, 342, 8),
+                Filler_350_536 = PackedTypeCheckAndUnPackData("Filler_350_536", currentByte, 350, 187),
 
-                Rssi_Ml_Curr_Occ_Code = PackedTypeCheckAndUnPackData("", currentByte, 537, 1),
-                Filler_538_1500 = PackedTypeCheckAndUnPackData("", currentByte, 538, 965),
+                Rssi_Ml_Curr_Occ_Code = PackedTypeCheckAndUnPackData("Rssi_Ml_Curr_Occ_Code", currentByte, 537, 1),
+                Filler_538_1500 = PackedTypeCheckAndUnPackData("Filler_538_1500", currentByte, 538, 965),
 
             };
         }
@@ -1325,381 +1345,567 @@ namespace Carrington_Service.BusinessExpert
         {
             acc.UserFieldRecordModel = new UserFieldRecordModel()
             {
-                Rssi_Rcd_Id = PackedTypeCheckAndUnPackData("", currentByte, 1, 1),
-                Rssi_Inst = PackedTypeCheckAndUnPackData("", currentByte, 2, 3),
-                Rssi_Acct_No = PackedTypeCheckAndUnPackData("", currentByte, 5, 10),
-                Rssi_Seq_No = PackedTypeCheckAndUnPackData("", currentByte, 15, 5),
-                Rssi_Usr_02_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 20, 4),
-                Rssi_Usr_03 = PackedTypeCheckAndUnPackData("", currentByte, 24, 1),
-                Rssi_Usr_04 = PackedTypeCheckAndUnPackData("", currentByte, 25, 1),
-                Rssi_Usr_05 = PackedTypeCheckAndUnPackData("", currentByte, 26, 1),
-                Rssi_Usr_06 = PackedTypeCheckAndUnPackData("", currentByte, 27, 1),
-                Rssi_Usr_08 = PackedTypeCheckAndUnPackData("", currentByte, 28, 2),
-                Rssi_Usr_09 = PackedTypeCheckAndUnPackData("", currentByte, 30, 2),
-                Rssi_Usr_10 = PackedTypeCheckAndUnPackData("", currentByte, 32, 2),
-                Rssi_Usr_11 = PackedTypeCheckAndUnPackData("", currentByte, 34, 3),
-                Rssi_Usr_12 = PackedTypeCheckAndUnPackData("", currentByte, 37, 3),
-                Rssi_Usr_13 = PackedTypeCheckAndUnPackData("", currentByte, 40, 3),
-                Rssi_Usr_14 = PackedTypeCheckAndUnPackData("", currentByte, 43, 6),
-                Rssi_Usr_15_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 49, 4),
-                Rssi_Usr_16_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 53, 4),
-                Rssi_Usr_17_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 57, 5),
-                Rssi_Usr_18 = PackedTypeCheckAndUnPackData("", currentByte, 62, 15),
-                Rssi_Usr_19 = PackedTypeCheckAndUnPackData("", currentByte, 77, 5),
-                Rssi_Usr_20_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 82, 2),
-                Rssi_Usr_21 = PackedTypeCheckAndUnPackData("", currentByte, 84, 10),
-                Rssi_Usr_22 = PackedTypeCheckAndUnPackData("", currentByte, 94, 10),
-                Rssi_Usr_23 = PackedTypeCheckAndUnPackData("", currentByte, 104, 6),
-                Rssi_Usr_24 = PackedTypeCheckAndUnPackData("", currentByte, 110, 6),
-                Rssi_Usr_25_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 116, 4),
-                Rssi_Usr_26_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 120, 4),
-                Rssi_Usr_27_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 124, 4),
-                Rssi_Usr_28_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 128, 4),
-                Rssi_Usr_29_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 132, 4),
-                Rssi_Usr_30_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 136, 4),
-                Rssi_Usr_31_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 140, 6),
-                Rssi_Usr_32_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 146, 6),
-                Rssi_Usr_33_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 152, 6),
-                Rssi_Usr_34_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 158, 6),
-                Rssi_Usr_35 = PackedTypeCheckAndUnPackData("", currentByte, 164, 1),
-                Rssi_Usr_37 = PackedTypeCheckAndUnPackData("", currentByte, 165, 1),
-                Rssi_Usr_38 = PackedTypeCheckAndUnPackData("", currentByte, 166, 1),
-                Rssi_Usr_39 = PackedTypeCheckAndUnPackData("", currentByte, 167, 2),
-                Rssi_Usr_40 = PackedTypeCheckAndUnPackData("", currentByte, 169, 2),
-                Rssi_Usr_41 = PackedTypeCheckAndUnPackData("", currentByte, 171, 2),
-                Rssi_Usr_42 = PackedTypeCheckAndUnPackData("", currentByte, 173, 2),
-                Rssi_Usr_43 = PackedTypeCheckAndUnPackData("", currentByte, 175, 3),
-                Rssi_Usr_44 = PackedTypeCheckAndUnPackData("", currentByte, 178, 6),
-                Rssi_Usr_45 = PackedTypeCheckAndUnPackData("", currentByte, 184, 6),
-                Rssi_Usr_46 = PackedTypeCheckAndUnPackData("", currentByte, 190, 15),
-                Rssi_Usr_47 = PackedTypeCheckAndUnPackData("", currentByte, 205, 15),
-                Rssi_Usr_48 = PackedTypeCheckAndUnPackData("", currentByte, 220, 15),
-                Rssi_Usr_49 = PackedTypeCheckAndUnPackData("", currentByte, 235, 15),
-                Rssi_Usr_50 = PackedTypeCheckAndUnPackData("", currentByte, 250, 15),
-                Rssi_Usr_51 = PackedTypeCheckAndUnPackData("", currentByte, 265, 35),
-                Rssi_Usr_52 = PackedTypeCheckAndUnPackData("", currentByte, 300, 35),
-                Rssi_Usr_53 = PackedTypeCheckAndUnPackData("", currentByte, 335, 35),
-                Rssi_Usr_54 = PackedTypeCheckAndUnPackData("", currentByte, 370, 1),
-                Rssi_Usr_55 = PackedTypeCheckAndUnPackData("", currentByte, 371, 1),
-                Rssi_Usr_56 = PackedTypeCheckAndUnPackData("", currentByte, 372, 1),
-                Rssi_Usr_57 = PackedTypeCheckAndUnPackData("", currentByte, 373, 1),
-                Rssi_Usr_58 = PackedTypeCheckAndUnPackData("", currentByte, 374, 1),
-                Rssi_Usr_59 = PackedTypeCheckAndUnPackData("", currentByte, 375, 1),
-                Rssi_Usr_60 = PackedTypeCheckAndUnPackData("", currentByte, 376, 1),
-                Rssi_Usr_61 = PackedTypeCheckAndUnPackData("", currentByte, 377, 1),
-                Rssi_Usr_62 = PackedTypeCheckAndUnPackData("", currentByte, 378, 1),
-                Rssi_Usr_63 = PackedTypeCheckAndUnPackData("", currentByte, 379, 1),
-                Rssi_Usr_64 = PackedTypeCheckAndUnPackData("", currentByte, 380, 1),
-                Rssi_Usr_65 = PackedTypeCheckAndUnPackData("", currentByte, 381, 1),
-                Rssi_Usr_66 = PackedTypeCheckAndUnPackData("", currentByte, 382, 1),
-                Rssi_Usr_67 = PackedTypeCheckAndUnPackData("", currentByte, 383, 1),
-                Rssi_Usr_68 = PackedTypeCheckAndUnPackData("", currentByte, 384, 1),
-                Rssi_Usr_69 = PackedTypeCheckAndUnPackData("", currentByte, 385, 1),
-                Rssi_Usr_70 = PackedTypeCheckAndUnPackData("", currentByte, 386, 1),
-                Rssi_Usr_71 = PackedTypeCheckAndUnPackData("", currentByte, 387, 1),
-                Rssi_Usr_72 = PackedTypeCheckAndUnPackData("", currentByte, 388, 1),
-                Rssi_Usr_73 = PackedTypeCheckAndUnPackData("", currentByte, 389, 1),
-                Rssi_Usr_74 = PackedTypeCheckAndUnPackData("", currentByte, 390, 2),
-                Rssi_Usr_75 = PackedTypeCheckAndUnPackData("", currentByte, 392, 2),
-                Rssi_Usr_76 = PackedTypeCheckAndUnPackData("", currentByte, 394, 2),
-                Rssi_Usr_77 = PackedTypeCheckAndUnPackData("", currentByte, 396, 2),
-                Rssi_Usr_78 = PackedTypeCheckAndUnPackData("", currentByte, 398, 2),
-                Rssi_Usr_79 = PackedTypeCheckAndUnPackData("", currentByte, 400, 2),
-                Rssi_Usr_80 = PackedTypeCheckAndUnPackData("", currentByte, 402, 2),
-                Rssi_Usr_81 = PackedTypeCheckAndUnPackData("", currentByte, 404, 2),
-                Rssi_Usr_82 = PackedTypeCheckAndUnPackData("", currentByte, 406, 2),
-                Rssi_Usr_83 = PackedTypeCheckAndUnPackData("", currentByte, 408, 2),
-                Rssi_Usr_84 = PackedTypeCheckAndUnPackData("", currentByte, 410, 2),
-                Rssi_Usr_85 = PackedTypeCheckAndUnPackData("", currentByte, 412, 2),
-                Rssi_Usr_86 = PackedTypeCheckAndUnPackData("", currentByte, 414, 2),
-                Rssi_Usr_87 = PackedTypeCheckAndUnPackData("", currentByte, 416, 2),
-                Rssi_Usr_88 = PackedTypeCheckAndUnPackData("", currentByte, 418, 2),
-                Rssi_Usr_89 = PackedTypeCheckAndUnPackData("", currentByte, 420, 2),
-                Rssi_Usr_90 = PackedTypeCheckAndUnPackData("", currentByte, 422, 2),
-                Rssi_Usr_91 = PackedTypeCheckAndUnPackData("", currentByte, 424, 2),
-                Rssi_Usr_92 = PackedTypeCheckAndUnPackData("", currentByte, 426, 2),
-                Rssi_Usr_93 = PackedTypeCheckAndUnPackData("", currentByte, 428, 2),
-                Rssi_Usr_94 = PackedTypeCheckAndUnPackData("", currentByte, 430, 6),
-                Rssi_Usr_95 = PackedTypeCheckAndUnPackData("", currentByte, 436, 6),
-                Rssi_Usr_96 = PackedTypeCheckAndUnPackData("", currentByte, 442, 6),
-                Rssi_Usr_97 = PackedTypeCheckAndUnPackData("", currentByte, 448, 6),
-                Rssi_Usr_98 = PackedTypeCheckAndUnPackData("", currentByte, 454, 6),
-                Rssi_Usr_99 = PackedTypeCheckAndUnPackData("", currentByte, 460, 6),
-                Rssi_Usr_100 = PackedTypeCheckAndUnPackData("", currentByte, 466, 6),
-                Rssi_Usr_101 = PackedTypeCheckAndUnPackData("", currentByte, 472, 6),
-                Rssi_Usr_102 = PackedTypeCheckAndUnPackData("", currentByte, 478, 6),
-                Rssi_Usr_103 = PackedTypeCheckAndUnPackData("", currentByte, 484, 6),
-                Rssi_Usr_104 = PackedTypeCheckAndUnPackData("", currentByte, 490, 6),
-                Rssi_Usr_105 = PackedTypeCheckAndUnPackData("", currentByte, 496, 6),
-                Rssi_Usr_106 = PackedTypeCheckAndUnPackData("", currentByte, 502, 6),
-                Rssi_Usr_107 = PackedTypeCheckAndUnPackData("", currentByte, 508, 6),
-                Rssi_Usr_108 = PackedTypeCheckAndUnPackData("", currentByte, 514, 6),
-                Rssi_Usr_109 = PackedTypeCheckAndUnPackData("", currentByte, 520, 6),
-                Rssi_Usr_110 = PackedTypeCheckAndUnPackData("", currentByte, 526, 6),
-                Rssi_Usr_111 = PackedTypeCheckAndUnPackData("", currentByte, 532, 6),
-                Rssi_Usr_112 = PackedTypeCheckAndUnPackData("", currentByte, 538, 6),
-                Rssi_Usr_113 = PackedTypeCheckAndUnPackData("", currentByte, 544, 10),
-                Rssi_Usr_114 = PackedTypeCheckAndUnPackData("", currentByte, 554, 10),
-                Rssi_Usr_115 = PackedTypeCheckAndUnPackData("", currentByte, 564, 10),
-                Rssi_Usr_116 = PackedTypeCheckAndUnPackData("", currentByte, 574, 10),
-                Rssi_Usr_117 = PackedTypeCheckAndUnPackData("", currentByte, 584, 10),
-                Rssi_Usr_118 = PackedTypeCheckAndUnPackData("", currentByte, 594, 10),
-                Rssi_Usr_119 = PackedTypeCheckAndUnPackData("", currentByte, 604, 10),
-                Rssi_Usr_120 = PackedTypeCheckAndUnPackData("", currentByte, 614, 10),
-                Rssi_Usr_121 = PackedTypeCheckAndUnPackData("", currentByte, 624, 10),
-                Rssi_Usr_122 = PackedTypeCheckAndUnPackData("", currentByte, 634, 10),
-                Rssi_Usr_123 = PackedTypeCheckAndUnPackData("", currentByte, 644, 10),
-                Rssi_Usr_124 = PackedTypeCheckAndUnPackData("", currentByte, 654, 10),
-                Rssi_Usr_125 = PackedTypeCheckAndUnPackData("", currentByte, 664, 10),
-                Rssi_Usr_126 = PackedTypeCheckAndUnPackData("", currentByte, 674, 10),
-                Rssi_Usr_127 = PackedTypeCheckAndUnPackData("", currentByte, 684, 10),
-                Rssi_Usr_128 = PackedTypeCheckAndUnPackData("", currentByte, 694, 10),
-                Rssi_Usr_129 = PackedTypeCheckAndUnPackData("", currentByte, 704, 10),
-                Rssi_Usr_130 = PackedTypeCheckAndUnPackData("", currentByte, 714, 10),
-                Rssi_Usr_131 = PackedTypeCheckAndUnPackData("", currentByte, 724, 10),
-                Rssi_Usr_132 = PackedTypeCheckAndUnPackData("", currentByte, 734, 10),
-                Rssi_Usr_133 = PackedTypeCheckAndUnPackData("", currentByte, 744, 15),
-                Rssi_Usr_134 = PackedTypeCheckAndUnPackData("", currentByte, 759, 15),
-                Rssi_Usr_135 = PackedTypeCheckAndUnPackData("", currentByte, 774, 15),
-                Rssi_Usr_136 = PackedTypeCheckAndUnPackData("", currentByte, 789, 15),
-                Rssi_Usr_137 = PackedTypeCheckAndUnPackData("", currentByte, 804, 15),
-                Rssi_Usr_138 = PackedTypeCheckAndUnPackData("", currentByte, 819, 15),
-                Rssi_Usr_139 = PackedTypeCheckAndUnPackData("", currentByte, 834, 15),
-                Rssi_Usr_140 = PackedTypeCheckAndUnPackData("", currentByte, 849, 15),
-                Rssi_Usr_141 = PackedTypeCheckAndUnPackData("", currentByte, 864, 15),
-                Rssi_Usr_142 = PackedTypeCheckAndUnPackData("", currentByte, 879, 15),
-                Rssi_Usr_143 = PackedTypeCheckAndUnPackData("", currentByte, 894, 15),
-                Rssi_Usr_144 = PackedTypeCheckAndUnPackData("", currentByte, 909, 15),
-                Rssi_Usr_145 = PackedTypeCheckAndUnPackData("", currentByte, 924, 15),
-                Rssi_Usr_146 = PackedTypeCheckAndUnPackData("", currentByte, 939, 0),
-                Rssi_Usr_147 = PackedTypeCheckAndUnPackData("", currentByte, 954, 15),
-                Rssi_Usr_148 = PackedTypeCheckAndUnPackData("", currentByte, 969, 15),
-                Rssi_Usr_149 = PackedTypeCheckAndUnPackData("", currentByte, 984, 15),
-                Rssi_Usr_150 = PackedTypeCheckAndUnPackData("", currentByte, 999, 15),
-                Rssi_Usr_151 = PackedTypeCheckAndUnPackData("", currentByte, 1014, 15),
-                Rssi_Usr_152 = PackedTypeCheckAndUnPackData("", currentByte, 1029, 15),
-                Rssi_Usr_153 = PackedTypeCheckAndUnPackData("", currentByte, 1044, 35),
-                Rssi_Usr_154 = PackedTypeCheckAndUnPackData("", currentByte, 1079, 35),
-                Rssi_Usr_155 = PackedTypeCheckAndUnPackData("", currentByte, 1114, 35),
-                Rssi_Usr_156 = PackedTypeCheckAndUnPackData("", currentByte, 1149, 35),
-                Rssi_Usr_157 = PackedTypeCheckAndUnPackData("", currentByte, 1184, 35),
-                Rssi_Usr_158 = PackedTypeCheckAndUnPackData("", currentByte, 1219, 35),
-                Rssi_Usr_159 = PackedTypeCheckAndUnPackData("", currentByte, 1254, 35),
-                Rssi_Usr_160 = PackedTypeCheckAndUnPackData("", currentByte, 1289, 35),
-                Rssi_Usr_161 = PackedTypeCheckAndUnPackData("", currentByte, 1324, 35),
-                Rssi_Usr_162 = PackedTypeCheckAndUnPackData("", currentByte, 1359, 35),
-                Rssi_Usr_163 = PackedTypeCheckAndUnPackData("", currentByte, 1394, 35),
-                Rssi_Usr_164 = PackedTypeCheckAndUnPackData("", currentByte, 1429, 35),
-                Rssi_Usr_165 = PackedTypeCheckAndUnPackData("", currentByte, 1464, 35),
-                Rssi_Usr_166 = PackedTypeCheckAndUnPackData("", currentByte, 1499, 35),
-                Rssi_Usr_167 = PackedTypeCheckAndUnPackData("", currentByte, 1534, 35),
-                Rssi_Usr_168 = PackedTypeCheckAndUnPackData("", currentByte, 1569, 35),
-                Rssi_Usr_169 = PackedTypeCheckAndUnPackData("", currentByte, 1604, 35),
-                Rssi_Usr_170 = PackedTypeCheckAndUnPackData("", currentByte, 1639, 35),
-                Rssi_Usr_171 = PackedTypeCheckAndUnPackData("", currentByte, 1674, 35),
-                Rssi_Usr_172 = PackedTypeCheckAndUnPackData("", currentByte, 1709, 35),
-                Rssi_Usr_173 = PackedTypeCheckAndUnPackData("", currentByte, 1744, 60),
-                Rssi_Usr_174 = PackedTypeCheckAndUnPackData("", currentByte, 1804, 60),
-                Rssi_Usr_175 = PackedTypeCheckAndUnPackData("", currentByte, 1864, 60),
-                Rssi_Usr_176 = PackedTypeCheckAndUnPackData("", currentByte, 1924, 60),
-                Rssi_Usr_177 = PackedTypeCheckAndUnPackData("", currentByte, 1984, 60),
-                Rssi_Usr_178 = PackedTypeCheckAndUnPackData("", currentByte, 2044, 60),
-                Rssi_Usr_179 = PackedTypeCheckAndUnPackData("", currentByte, 2104, 60),
-                Rssi_Usr_180 = PackedTypeCheckAndUnPackData("", currentByte, 2164, 60),
-                Rssi_Usr_181 = PackedTypeCheckAndUnPackData("", currentByte, 2224, 60),
-                Rssi_Usr_182 = PackedTypeCheckAndUnPackData("", currentByte, 2284, 60),
-                Rssi_Usr_183 = PackedTypeCheckAndUnPackData("", currentByte, 2344, 60),
-                Rssi_Usr_184 = PackedTypeCheckAndUnPackData("", currentByte, 2404, 60),
-                Rssi_Usr_185 = PackedTypeCheckAndUnPackData("", currentByte, 2464, 60),
-                Rssi_Usr_186 = PackedTypeCheckAndUnPackData("", currentByte, 2524, 60),
-                Rssi_Usr_187 = PackedTypeCheckAndUnPackData("", currentByte, 2584, 60),
-                Rssi_Usr_188 = PackedTypeCheckAndUnPackData("", currentByte, 2644, 60),
-                Rssi_Usr_189 = PackedTypeCheckAndUnPackData("", currentByte, 2704, 60),
-                Rssi_Usr_190 = PackedTypeCheckAndUnPackData("", currentByte, 2764, 60),
-                Rssi_Usr_191 = PackedTypeCheckAndUnPackData("", currentByte, 2824, 60),
-                Rssi_Usr_192 = PackedTypeCheckAndUnPackData("", currentByte, 2884, 60),
-                Rssi_Usr_193 = PackedTypeCheckAndUnPackData("", currentByte, 2944, 75),
-                Rssi_Usr_194 = PackedTypeCheckAndUnPackData("", currentByte, 3019, 75),
-                Rssi_Usr_195 = PackedTypeCheckAndUnPackData("", currentByte, 3094, 1),
-                Rssi_Usr_196 = PackedTypeCheckAndUnPackData("", currentByte, 3095, 1),
-                Rssi_Usr_197 = PackedTypeCheckAndUnPackData("", currentByte, 3096, 1),
-                Rssi_Usr_198 = PackedTypeCheckAndUnPackData("", currentByte, 3097, 1),
-                Rssi_Usr_199 = PackedTypeCheckAndUnPackData("", currentByte, 3098, 1),
-                Rssi_Usr_200 = PackedTypeCheckAndUnPackData("", currentByte, 3099, 1),
-                Rssi_Usr_201 = PackedTypeCheckAndUnPackData("", currentByte, 3100, 1),
-                Rssi_Usr_202 = PackedTypeCheckAndUnPackData("", currentByte, 3101, 1),
-                Rssi_Usr_203 = PackedTypeCheckAndUnPackData("", currentByte, 3102, 1),
-                Rssi_Usr_204 = PackedTypeCheckAndUnPackData("", currentByte, 3103, 1),
-                Rssi_Usr_205 = PackedTypeCheckAndUnPackData("", currentByte, 3104, 1),
-                Rssi_Usr_206 = PackedTypeCheckAndUnPackData("", currentByte, 3105, 1),
-                Rssi_Usr_207 = PackedTypeCheckAndUnPackData("", currentByte, 3106, 1),
-                Rssi_Usr_208 = PackedTypeCheckAndUnPackData("", currentByte, 3107, 1),
-                Rssi_Usr_209 = PackedTypeCheckAndUnPackData("", currentByte, 3108, 1),
-                Rssi_Usr_210 = PackedTypeCheckAndUnPackData("", currentByte, 3109, 1),
-                Rssi_Usr_211 = PackedTypeCheckAndUnPackData("", currentByte, 3110, 1),
-                Rssi_Usr_212 = PackedTypeCheckAndUnPackData("", currentByte, 3111, 1),
-                Rssi_Usr_213 = PackedTypeCheckAndUnPackData("", currentByte, 3112, 1),
-                Rssi_Usr_214 = PackedTypeCheckAndUnPackData("", currentByte, 3113, 1),
-                Rssi_Usr_215_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3114, 2),
-                Rssi_Usr_216_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3116, 2),
-                Rssi_Usr_217_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3118, 2),
-                Rssi_Usr_218_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3120, 2),
-                Rssi_Usr_219_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3122, 2),
-                Rssi_Usr_220_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3124, 2),
-                Rssi_Usr_221_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3126, 2),
-                Rssi_Usr_222_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3128, 2),
-                Rssi_Usr_223_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3130, 2),
-                Rssi_Usr_224_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3132, 2),
-                Rssi_Usr_225_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3134, 2),
-                Rssi_Usr_226_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3136, 2),
-                Rssi_Usr_227_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3138, 2),
-                Rssi_Usr_228_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3140, 2),
-                Rssi_Usr_229_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3142, 2),
-                Rssi_Usr_230_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3144, 2),
-                Rssi_Usr_231_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3146, 2),
-                Rssi_Usr_232_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3148, 2),
-                Rssi_Usr_233_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3150, 2),
-                Rssi_Usr_234_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3152, 2),
-                Rssi_Usr_235_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3154, 4),
-                Rssi_Usr_236_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3158, 4),
-                Rssi_Usr_237_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3162, 4),
-                Rssi_Usr_238_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3166, 4),
-                Rssi_Usr_239_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3170, 4),
-                Rssi_Usr_240_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3174, 4),
-                Rssi_Usr_241_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3178, 4),
-                Rssi_Usr_242_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3182, 4),
-                Rssi_Usr_243_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3186, 4),
-                Rssi_Usr_244_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3190, 4),
-                Rssi_Usr_245_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3194, 4),
-                Rssi_Usr_246_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3198, 4),
-                Rssi_Usr_247_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3202, 4),
-                Rssi_Usr_248_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3206, 4),
-                Rssi_Usr_249_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3210, 4),
-                Rssi_Usr_250_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3214, 4),
-                Rssi_Usr_251_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3218, 4),
-                Rssi_Usr_252_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3222, 4),
-                Rssi_Usr_253_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3226, 4),
-                Rssi_Usr_254_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3230, 4),
-                Rssi_Usr_255_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3234, 6),
-                Rssi_Usr_256_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3240, 6),
-                Rssi_Usr_257_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3246, 6),
-                Rssi_Usr_258_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3252, 6),
-                Rssi_Usr_259_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3258, 6),
-                Rssi_Usr_260_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3264, 6),
-                Rssi_Usr_261_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3270, 6),
-                Rssi_Usr_262_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3276, 6),
-                Rssi_Usr_263_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3282, 6),
-                Rssi_Usr_264_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3288, 6),
-                Rssi_Usr_265_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3294, 6),
-                Rssi_Usr_266_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3300, 6),
-                Rssi_Usr_267_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3306, 6),
-                Rssi_Usr_268_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3312, 6),
-                Rssi_Usr_269_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3318, 6),
-                Rssi_Usr_270_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3324, 6),
-                Rssi_Usr_271_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3330, 6),
-                Rssi_Usr_272_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3336, 6),
-                Rssi_Usr_273_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3342, 6),
-                Rssi_Usr_274_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3348, 6),
-                Rssi_Usr_275_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3354, 4),
-                Rssi_Usr_276_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3358, 4),
-                Rssi_Usr_277_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3362, 4),
-                Rssi_Usr_278_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3366, 4),
-                Rssi_Usr_279_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3370, 4),
-                Rssi_Usr_280_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3374, 4),
-                Rssi_Usr_281_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3378, 4),
-                Rssi_Usr_282_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3382, 4),
-                Rssi_Usr_283_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3386, 4),
-                Rssi_Usr_284_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3390, 4),
-                Rssi_Usr_285_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3394, 4),
-                Rssi_Usr_286_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3398, 4),
-                Rssi_Usr_287_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3402, 4),
-                Rssi_Usr_288_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3406, 4),
-                Rssi_Usr_289_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3410, 4),
-                Rssi_Usr_290_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3414, 4),
-                Rssi_Usr_291_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3418, 4),
-                Rssi_Usr_292_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3422, 4),
-                Rssi_Usr_293_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3426, 4),
-                Rssi_Usr_294_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3430, 4),
-                Rssi_Usr_295_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3434, 5),
-                Rssi_Usr_296_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3439, 5),
-                Rssi_Usr_297_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3444, 5),
-                Rssi_Usr_298_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3449, 5),
-                Rssi_Usr_299_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3454, 5),
-                Rssi_Usr_300_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3459, 5),
-                Rssi_Usr_301_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3464, 5),
-                Rssi_Usr_302_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3469, 5),
-                Rssi_Usr_303_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3474, 5),
-                Rssi_Usr_304_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3479, 5),
-                Rssi_Usr_305_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3484, 5),
-                Rssi_Usr_306_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3489, 5),
-                Rssi_Usr_307_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3494, 5),
-                Rssi_Usr_308_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3499, 5),
-                Rssi_Usr_309_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3504, 5),
-                Rssi_Usr_310_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3509, 5),
-                Rssi_Usr_311_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3514, 5),
-                Rssi_Usr_312_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3519, 5),
-                Rssi_Usr_313_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3524, 5),
-                Rssi_Usr_314_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3529, 5),
-                Rssi_Usr_315_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3534, 6),
-                Rssi_Usr_316_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3540, 6),
-                Rssi_Usr_317_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3546, 6),
-                Rssi_Usr_318_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3552, 6),
-                Rssi_Usr_319_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3558, 6),
-                Rssi_Usr_320_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3564, 6),
-                Rssi_Usr_321_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3570, 6),
-                Rssi_Usr_322_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3576, 6),
-                Rssi_Usr_323_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3582, 6),
-                Rssi_Usr_324_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3588, 6),
-                Rssi_Usr_325_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3594, 6),
-                Rssi_Usr_326_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3600, 6),
-                Rssi_Usr_327_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3606, 6),
-                Rssi_Usr_328_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3612, 6),
-                Rssi_Usr_329_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3618, 6),
-                Rssi_Usr_330_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3624, 6),
-                Rssi_Usr_331_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3630, 6),
-                Rssi_Usr_332_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3636, 6),
-                Rssi_Usr_333_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3642, 6),
-                Rssi_Usr_334_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3648, 6),
-                Rssi_Usr_335_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3654, 7),
-                Rssi_Usr_336_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3661, 7),
-                Rssi_Usr_337_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3668, 7),
-                Rssi_Usr_338_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3675, 7),
-                Rssi_Usr_339_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3682, 7),
-                Rssi_Usr_340_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3689, 7),
-                Rssi_Usr_341_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3696, 7),
-                Rssi_Usr_342_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3703, 7),
-                Rssi_Usr_343_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3710, 7),
-                Rssi_Usr_344_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3717, 7),
-                Rssi_Usr_345_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 2724, 7),
-                Rssi_Usr_346_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3731, 7),
-                Rssi_Usr_347_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3738, 7),
-                Rssi_Usr_348_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3745, 7),
-                Rssi_Usr_349_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3752, 7),
-                Rssi_Usr_350_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3759, 7),
-                Rssi_Usr_351_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3766, 7),
-                Rssi_Usr_352_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3773, 7),
-                Rssi_Usr_353_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3780, 7),
-                Rssi_Usr_354_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3787, 4),
-                Rssi_Usr_355_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3791, 4),
-                Rssi_Usr_356_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3795, 4),
-                Rssi_Usr_357_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3799, 4),
-                Rssi_Usr_358_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3803, 4),
-                Rssi_Usr_359_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3807, 4),
-                Rssi_Usr_360_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3811, 4),
-                Rssi_Usr_361_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3815, 4),
-                Rssi_Usr_362_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3819, 4),
-                Rssi_Usr_363_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3823, 4),
-                Rssi_Usr_364_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3827, 4),
-                Rssi_Usr_365_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3831, 4),
-                Rssi_Usr_366_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3835, 4),
-                Rssi_Usr_367_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3839, 4),
-                Rssi_Usr_368_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3843, 4),
-                Rssi_Usr_369_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3847, 4),
-                Rssi_Usr_370_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3851, 4),
-                Rssi_Usr_371_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3855, 4),
-                Rssi_Usr_372_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3859, 4),
-                Rssi_Usr_373_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 3863, 4),
-                FillerPart3 = PackedTypeCheckAndUnPackData("", currentByte, 3867, 144),
+                Rssi_Rcd_Id = PackedTypeCheckAndUnPackData("Rssi_Rcd_Id", currentByte, 1, 1),
+                Rssi_Inst = PackedTypeCheckAndUnPackData("Rssi_Inst", currentByte, 2, 3),
+
+                Rssi_Acct_No = PackedTypeCheckAndUnPackData("Rssi_Acct_No", currentByte, 5, 10),
+                Rssi_Seq_No = PackedTypeCheckAndUnPackData("Rssi_Seq_No", currentByte, 15, 5),
+
+                Rssi_Usr_02_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_02_PackedData", currentByte, 20, 4),
+                Rssi_Usr_03 = PackedTypeCheckAndUnPackData("Rssi_Usr_03", currentByte, 24, 1),
+
+                Rssi_Usr_04 = PackedTypeCheckAndUnPackData("Rssi_Usr_04", currentByte, 25, 1),
+                Rssi_Usr_05 = PackedTypeCheckAndUnPackData("Rssi_Usr_05", currentByte, 26, 1),
+
+                Rssi_Usr_06 = PackedTypeCheckAndUnPackData("Rssi_Usr_06", currentByte, 27, 1),
+                Rssi_Usr_08 = PackedTypeCheckAndUnPackData("Rssi_Usr_08", currentByte, 28, 2),
+
+                Rssi_Usr_09 = PackedTypeCheckAndUnPackData("Rssi_Usr_09", currentByte, 30, 2),
+                Rssi_Usr_10 = PackedTypeCheckAndUnPackData("Rssi_Usr_10", currentByte, 32, 2),
+
+                Rssi_Usr_11 = PackedTypeCheckAndUnPackData("Rssi_Usr_11", currentByte, 34, 3),
+                Rssi_Usr_12 = PackedTypeCheckAndUnPackData("Rssi_Usr_12", currentByte, 37, 3),
+
+                Rssi_Usr_13 = PackedTypeCheckAndUnPackData("Rssi_Usr_13", currentByte, 40, 3),
+                Rssi_Usr_14 = PackedTypeCheckAndUnPackData("Rssi_Usr_14", currentByte, 43, 6),
+
+                Rssi_Usr_15_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_15_PackedData", currentByte, 49, 4),
+                Rssi_Usr_16_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_16_PackedData", currentByte, 53, 4),
+
+                Rssi_Usr_17_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_17_PackedData", currentByte, 57, 5),
+                Rssi_Usr_18 = PackedTypeCheckAndUnPackData("Rssi_Usr_18", currentByte, 62, 15),
+
+                Rssi_Usr_19 = PackedTypeCheckAndUnPackData("Rssi_Usr_19", currentByte, 77, 5),
+                Rssi_Usr_20_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_20_PackedData", currentByte, 82, 2),
+
+                Rssi_Usr_21 = PackedTypeCheckAndUnPackData("Rssi_Usr_21", currentByte, 84, 10),
+                Rssi_Usr_22 = PackedTypeCheckAndUnPackData("Rssi_Usr_22", currentByte, 94, 10),
+
+                Rssi_Usr_23 = PackedTypeCheckAndUnPackData("Rssi_Usr_23", currentByte, 104, 6),
+                Rssi_Usr_24 = PackedTypeCheckAndUnPackData("Rssi_Usr_24", currentByte, 110, 6),
+
+                Rssi_Usr_25_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_25_PackedData", currentByte, 116, 4),
+                Rssi_Usr_26_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_26_PackedData", currentByte, 120, 4),
+
+                Rssi_Usr_27_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_27_PackedData", currentByte, 124, 4),
+                Rssi_Usr_28_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_28_PackedData", currentByte, 128, 4),
+
+                Rssi_Usr_29_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_29_PackedData", currentByte, 132, 4),
+                Rssi_Usr_30_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_30_PackedData", currentByte, 136, 4),
+
+                Rssi_Usr_31_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_31_PackedData", currentByte, 140, 6),
+                Rssi_Usr_32_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_32_PackedData", currentByte, 146, 6),
+
+                Rssi_Usr_33_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_33_PackedData", currentByte, 152, 6),
+                Rssi_Usr_34_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_34_PackedData", currentByte, 158, 6),
+
+                Rssi_Usr_35 = PackedTypeCheckAndUnPackData("Rssi_Usr_35", currentByte, 164, 1),
+                Rssi_Usr_37 = PackedTypeCheckAndUnPackData("Rssi_Usr_37", currentByte, 165, 1),
+
+                Rssi_Usr_38 = PackedTypeCheckAndUnPackData("Rssi_Usr_38", currentByte, 166, 1),
+                Rssi_Usr_39 = PackedTypeCheckAndUnPackData("Rssi_Usr_39", currentByte, 167, 2),
+
+                Rssi_Usr_40 = PackedTypeCheckAndUnPackData("Rssi_Usr_40", currentByte, 169, 2),
+                Rssi_Usr_41 = PackedTypeCheckAndUnPackData("Rssi_Usr_41", currentByte, 171, 2),
+
+                Rssi_Usr_42 = PackedTypeCheckAndUnPackData("Rssi_Usr_42", currentByte, 173, 2),
+                Rssi_Usr_43 = PackedTypeCheckAndUnPackData("Rssi_Usr_43", currentByte, 175, 3),
+
+                Rssi_Usr_44 = PackedTypeCheckAndUnPackData("Rssi_Usr_44", currentByte, 178, 6),
+                Rssi_Usr_45 = PackedTypeCheckAndUnPackData("Rssi_Usr_45", currentByte, 184, 6),
+
+                Rssi_Usr_46 = PackedTypeCheckAndUnPackData("Rssi_Usr_46", currentByte, 190, 15),
+                Rssi_Usr_47 = PackedTypeCheckAndUnPackData("Rssi_Usr_47", currentByte, 205, 15),
+
+                Rssi_Usr_48 = PackedTypeCheckAndUnPackData("Rssi_Usr_48", currentByte, 220, 15),
+                Rssi_Usr_49 = PackedTypeCheckAndUnPackData("Rssi_Usr_49", currentByte, 235, 15),
+
+                Rssi_Usr_50 = PackedTypeCheckAndUnPackData("Rssi_Usr_50", currentByte, 250, 15),
+                Rssi_Usr_51 = PackedTypeCheckAndUnPackData("Rssi_Usr_51", currentByte, 265, 35),
+
+                Rssi_Usr_52 = PackedTypeCheckAndUnPackData("Rssi_Usr_52", currentByte, 300, 35),
+                Rssi_Usr_53 = PackedTypeCheckAndUnPackData("Rssi_Usr_53", currentByte, 335, 35),
+
+                Rssi_Usr_54 = PackedTypeCheckAndUnPackData("Rssi_Usr_54", currentByte, 370, 1),
+                Rssi_Usr_55 = PackedTypeCheckAndUnPackData("Rssi_Usr_55", currentByte, 371, 1),
+
+                Rssi_Usr_56 = PackedTypeCheckAndUnPackData("Rssi_Usr_56", currentByte, 372, 1),
+                Rssi_Usr_57 = PackedTypeCheckAndUnPackData("Rssi_Usr_57", currentByte, 373, 1),
+
+                Rssi_Usr_58 = PackedTypeCheckAndUnPackData("Rssi_Usr_58", currentByte, 374, 1),
+                Rssi_Usr_59 = PackedTypeCheckAndUnPackData("Rssi_Usr_59", currentByte, 375, 1),
+
+                Rssi_Usr_60 = PackedTypeCheckAndUnPackData("Rssi_Usr_60", currentByte, 376, 1),
+                Rssi_Usr_61 = PackedTypeCheckAndUnPackData("Rssi_Usr_61", currentByte, 377, 1),
+
+                Rssi_Usr_62 = PackedTypeCheckAndUnPackData("Rssi_Usr_62", currentByte, 378, 1),
+                Rssi_Usr_63 = PackedTypeCheckAndUnPackData("Rssi_Usr_63", currentByte, 379, 1),
+
+                Rssi_Usr_64 = PackedTypeCheckAndUnPackData("Rssi_Usr_64", currentByte, 380, 1),
+                Rssi_Usr_65 = PackedTypeCheckAndUnPackData("Rssi_Usr_65", currentByte, 381, 1),
+
+                Rssi_Usr_66 = PackedTypeCheckAndUnPackData("Rssi_Usr_66", currentByte, 382, 1),
+                Rssi_Usr_67 = PackedTypeCheckAndUnPackData("Rssi_Usr_67", currentByte, 383, 1),
+
+                Rssi_Usr_68 = PackedTypeCheckAndUnPackData("Rssi_Usr_68", currentByte, 384, 1),
+                Rssi_Usr_69 = PackedTypeCheckAndUnPackData("Rssi_Usr_69", currentByte, 385, 1),
+
+                Rssi_Usr_70 = PackedTypeCheckAndUnPackData("Rssi_Usr_70", currentByte, 386, 1),
+                Rssi_Usr_71 = PackedTypeCheckAndUnPackData("Rssi_Usr_71", currentByte, 387, 1),
+
+                Rssi_Usr_72 = PackedTypeCheckAndUnPackData("Rssi_Usr_72", currentByte, 388, 1),
+                Rssi_Usr_73 = PackedTypeCheckAndUnPackData("Rssi_Usr_73", currentByte, 389, 1),
+
+                Rssi_Usr_74 = PackedTypeCheckAndUnPackData("Rssi_Usr_74", currentByte, 390, 2),
+                Rssi_Usr_75 = PackedTypeCheckAndUnPackData("Rssi_Usr_75", currentByte, 392, 2),
+
+                Rssi_Usr_76 = PackedTypeCheckAndUnPackData("Rssi_Usr_76", currentByte, 394, 2),
+                Rssi_Usr_77 = PackedTypeCheckAndUnPackData("Rssi_Usr_77", currentByte, 396, 2),
+
+                Rssi_Usr_78 = PackedTypeCheckAndUnPackData("Rssi_Usr_78", currentByte, 398, 2),
+                Rssi_Usr_79 = PackedTypeCheckAndUnPackData("Rssi_Usr_79", currentByte, 400, 2),
+
+                Rssi_Usr_80 = PackedTypeCheckAndUnPackData("Rssi_Usr_80", currentByte, 402, 2),
+                Rssi_Usr_81 = PackedTypeCheckAndUnPackData("Rssi_Usr_81", currentByte, 404, 2),
+
+                Rssi_Usr_82 = PackedTypeCheckAndUnPackData("Rssi_Usr_82", currentByte, 406, 2),
+                Rssi_Usr_83 = PackedTypeCheckAndUnPackData("Rssi_Usr_83", currentByte, 408, 2),
+
+                Rssi_Usr_84 = PackedTypeCheckAndUnPackData("Rssi_Usr_84", currentByte, 410, 2),
+                Rssi_Usr_85 = PackedTypeCheckAndUnPackData("Rssi_Usr_85", currentByte, 412, 2),
+
+                Rssi_Usr_86 = PackedTypeCheckAndUnPackData("Rssi_Usr_86", currentByte, 414, 2),
+                Rssi_Usr_87 = PackedTypeCheckAndUnPackData("Rssi_Usr_87", currentByte, 416, 2),
+
+                Rssi_Usr_88 = PackedTypeCheckAndUnPackData("Rssi_Usr_88", currentByte, 418, 2),
+                Rssi_Usr_89 = PackedTypeCheckAndUnPackData("Rssi_Usr_89", currentByte, 420, 2),
+
+                Rssi_Usr_90 = PackedTypeCheckAndUnPackData("Rssi_Usr_90", currentByte, 422, 2),
+                Rssi_Usr_91 = PackedTypeCheckAndUnPackData("Rssi_Usr_91", currentByte, 424, 2),
+
+                Rssi_Usr_92 = PackedTypeCheckAndUnPackData("Rssi_Usr_92", currentByte, 426, 2),
+                Rssi_Usr_93 = PackedTypeCheckAndUnPackData("Rssi_Usr_93", currentByte, 428, 2),
+
+                Rssi_Usr_94 = PackedTypeCheckAndUnPackData("Rssi_Usr_94", currentByte, 430, 6),
+                Rssi_Usr_95 = PackedTypeCheckAndUnPackData("Rssi_Usr_95", currentByte, 436, 6),
+
+                Rssi_Usr_96 = PackedTypeCheckAndUnPackData("Rssi_Usr_96", currentByte, 442, 6),
+                Rssi_Usr_97 = PackedTypeCheckAndUnPackData("Rssi_Usr_97", currentByte, 448, 6),
+
+                Rssi_Usr_98 = PackedTypeCheckAndUnPackData("Rssi_Usr_98", currentByte, 454, 6),
+                Rssi_Usr_99 = PackedTypeCheckAndUnPackData("Rssi_Usr_99", currentByte, 460, 6),
+
+                Rssi_Usr_100 = PackedTypeCheckAndUnPackData("Rssi_Usr_100", currentByte, 466, 6),
+                Rssi_Usr_101 = PackedTypeCheckAndUnPackData("Rssi_Usr_101", currentByte, 472, 6),
+
+                Rssi_Usr_102 = PackedTypeCheckAndUnPackData("Rssi_Usr_102", currentByte, 478, 6),
+                Rssi_Usr_103 = PackedTypeCheckAndUnPackData("Rssi_Usr_103", currentByte, 484, 6),
+
+                Rssi_Usr_104 = PackedTypeCheckAndUnPackData("Rssi_Usr_104", currentByte, 490, 6),
+                Rssi_Usr_105 = PackedTypeCheckAndUnPackData("Rssi_Usr_105", currentByte, 496, 6),
+
+                Rssi_Usr_106 = PackedTypeCheckAndUnPackData("Rssi_Usr_106", currentByte, 502, 6),
+                Rssi_Usr_107 = PackedTypeCheckAndUnPackData("Rssi_Usr_107", currentByte, 508, 6),
+
+                Rssi_Usr_108 = PackedTypeCheckAndUnPackData("Rssi_Usr_108", currentByte, 514, 6),
+                Rssi_Usr_109 = PackedTypeCheckAndUnPackData("Rssi_Usr_109", currentByte, 520, 6),
+
+                Rssi_Usr_110 = PackedTypeCheckAndUnPackData("Rssi_Usr_110", currentByte, 526, 6),
+                Rssi_Usr_111 = PackedTypeCheckAndUnPackData("Rssi_Usr_111", currentByte, 532, 6),
+
+                Rssi_Usr_112 = PackedTypeCheckAndUnPackData("Rssi_Usr_112", currentByte, 538, 6),
+                Rssi_Usr_113 = PackedTypeCheckAndUnPackData("Rssi_Usr_113", currentByte, 544, 10),
+
+                Rssi_Usr_114 = PackedTypeCheckAndUnPackData("Rssi_Usr_114", currentByte, 554, 10),
+                Rssi_Usr_115 = PackedTypeCheckAndUnPackData("Rssi_Usr_115", currentByte, 564, 10),
+
+                Rssi_Usr_116 = PackedTypeCheckAndUnPackData("Rssi_Usr_116", currentByte, 574, 10),
+                Rssi_Usr_117 = PackedTypeCheckAndUnPackData("Rssi_Usr_117", currentByte, 584, 10),
+
+                Rssi_Usr_118 = PackedTypeCheckAndUnPackData("Rssi_Usr_118", currentByte, 594, 10),
+                Rssi_Usr_119 = PackedTypeCheckAndUnPackData("Rssi_Usr_119", currentByte, 604, 10),
+
+                Rssi_Usr_120 = PackedTypeCheckAndUnPackData("Rssi_Usr_120", currentByte, 614, 10),
+                Rssi_Usr_121 = PackedTypeCheckAndUnPackData("Rssi_Usr_121", currentByte, 624, 10),
+
+                Rssi_Usr_122 = PackedTypeCheckAndUnPackData("Rssi_Usr_122", currentByte, 634, 10),
+                Rssi_Usr_123 = PackedTypeCheckAndUnPackData("Rssi_Usr_123", currentByte, 644, 10),
+
+                Rssi_Usr_124 = PackedTypeCheckAndUnPackData("Rssi_Usr_124", currentByte, 654, 10),
+                Rssi_Usr_125 = PackedTypeCheckAndUnPackData("Rssi_Usr_125", currentByte, 664, 10),
+
+                Rssi_Usr_126 = PackedTypeCheckAndUnPackData("Rssi_Usr_126", currentByte, 674, 10),
+                Rssi_Usr_127 = PackedTypeCheckAndUnPackData("Rssi_Usr_127", currentByte, 684, 10),
+
+                Rssi_Usr_128 = PackedTypeCheckAndUnPackData("Rssi_Usr_128", currentByte, 694, 10),
+                Rssi_Usr_129 = PackedTypeCheckAndUnPackData("Rssi_Usr_129", currentByte, 704, 10),
+
+                Rssi_Usr_130 = PackedTypeCheckAndUnPackData("Rssi_Usr_130", currentByte, 714, 10),
+                Rssi_Usr_131 = PackedTypeCheckAndUnPackData("Rssi_Usr_131", currentByte, 724, 10),
+
+                Rssi_Usr_132 = PackedTypeCheckAndUnPackData("Rssi_Usr_132", currentByte, 734, 10),
+                Rssi_Usr_133 = PackedTypeCheckAndUnPackData("Rssi_Usr_133", currentByte, 744, 15),
+
+                Rssi_Usr_134 = PackedTypeCheckAndUnPackData("Rssi_Usr_134", currentByte, 759, 15),
+                Rssi_Usr_135 = PackedTypeCheckAndUnPackData("Rssi_Usr_135", currentByte, 774, 15),
+
+                Rssi_Usr_136 = PackedTypeCheckAndUnPackData("Rssi_Usr_136", currentByte, 789, 15),
+                Rssi_Usr_137 = PackedTypeCheckAndUnPackData("Rssi_Usr_137", currentByte, 804, 15),
+
+                Rssi_Usr_138 = PackedTypeCheckAndUnPackData("Rssi_Usr_138", currentByte, 819, 15),
+                Rssi_Usr_139 = PackedTypeCheckAndUnPackData("Rssi_Usr_139", currentByte, 834, 15),
+
+                Rssi_Usr_140 = PackedTypeCheckAndUnPackData("Rssi_Usr_140", currentByte, 849, 15),
+                Rssi_Usr_141 = PackedTypeCheckAndUnPackData("Rssi_Usr_141", currentByte, 864, 15),
+
+                Rssi_Usr_142 = PackedTypeCheckAndUnPackData("Rssi_Usr_142", currentByte, 879, 15),
+                Rssi_Usr_143 = PackedTypeCheckAndUnPackData("Rssi_Usr_143", currentByte, 894, 15),
+
+                Rssi_Usr_144 = PackedTypeCheckAndUnPackData("Rssi_Usr_144", currentByte, 909, 15),
+                Rssi_Usr_145 = PackedTypeCheckAndUnPackData("Rssi_Usr_145", currentByte, 924, 15),
+
+                Rssi_Usr_146 = PackedTypeCheckAndUnPackData("Rssi_Usr_146", currentByte, 939, 0),
+                Rssi_Usr_147 = PackedTypeCheckAndUnPackData("Rssi_Usr_147", currentByte, 954, 15),
+
+                Rssi_Usr_148 = PackedTypeCheckAndUnPackData("Rssi_Usr_148", currentByte, 969, 15),
+                Rssi_Usr_149 = PackedTypeCheckAndUnPackData("Rssi_Usr_149", currentByte, 984, 15),
+
+                Rssi_Usr_150 = PackedTypeCheckAndUnPackData("Rssi_Usr_150", currentByte, 999, 15),
+                Rssi_Usr_151 = PackedTypeCheckAndUnPackData("Rssi_Usr_151", currentByte, 1014, 15),
+
+                Rssi_Usr_152 = PackedTypeCheckAndUnPackData("Rssi_Usr_152", currentByte, 1029, 15),
+                Rssi_Usr_153 = PackedTypeCheckAndUnPackData("Rssi_Usr_153", currentByte, 1044, 35),
+
+                Rssi_Usr_154 = PackedTypeCheckAndUnPackData("Rssi_Usr_154", currentByte, 1079, 35),
+                Rssi_Usr_155 = PackedTypeCheckAndUnPackData("Rssi_Usr_155", currentByte, 1114, 35),
+
+                Rssi_Usr_156 = PackedTypeCheckAndUnPackData("Rssi_Usr_156", currentByte, 1149, 35),
+                Rssi_Usr_157 = PackedTypeCheckAndUnPackData("Rssi_Usr_157", currentByte, 1184, 35),
+
+                Rssi_Usr_158 = PackedTypeCheckAndUnPackData("Rssi_Usr_158", currentByte, 1219, 35),
+                Rssi_Usr_159 = PackedTypeCheckAndUnPackData("Rssi_Usr_159", currentByte, 1254, 35),
+
+                Rssi_Usr_160 = PackedTypeCheckAndUnPackData("Rssi_Usr_160", currentByte, 1289, 35),
+                Rssi_Usr_161 = PackedTypeCheckAndUnPackData("Rssi_Usr_161", currentByte, 1324, 35),
+
+                Rssi_Usr_162 = PackedTypeCheckAndUnPackData("Rssi_Usr_162", currentByte, 1359, 35),
+                Rssi_Usr_163 = PackedTypeCheckAndUnPackData("Rssi_Usr_163", currentByte, 1394, 35),
+
+                Rssi_Usr_164 = PackedTypeCheckAndUnPackData("Rssi_Usr_164", currentByte, 1429, 35),
+                Rssi_Usr_165 = PackedTypeCheckAndUnPackData("Rssi_Usr_165", currentByte, 1464, 35),
+
+                Rssi_Usr_166 = PackedTypeCheckAndUnPackData("Rssi_Usr_166", currentByte, 1499, 35),
+                Rssi_Usr_167 = PackedTypeCheckAndUnPackData("Rssi_Usr_167", currentByte, 1534, 35),
+
+                Rssi_Usr_168 = PackedTypeCheckAndUnPackData("Rssi_Usr_168", currentByte, 1569, 35),
+                Rssi_Usr_169 = PackedTypeCheckAndUnPackData("Rssi_Usr_169", currentByte, 1604, 35),
+
+                Rssi_Usr_170 = PackedTypeCheckAndUnPackData("Rssi_Usr_170", currentByte, 1639, 35),
+                Rssi_Usr_171 = PackedTypeCheckAndUnPackData("Rssi_Usr_171", currentByte, 1674, 35),
+
+                Rssi_Usr_172 = PackedTypeCheckAndUnPackData("Rssi_Usr_172", currentByte, 1709, 35),
+                Rssi_Usr_173 = PackedTypeCheckAndUnPackData("Rssi_Usr_173", currentByte, 1744, 60),
+
+                Rssi_Usr_174 = PackedTypeCheckAndUnPackData("Rssi_Usr_174", currentByte, 1804, 60),
+                Rssi_Usr_175 = PackedTypeCheckAndUnPackData("Rssi_Usr_175", currentByte, 1864, 60),
+
+                Rssi_Usr_176 = PackedTypeCheckAndUnPackData("Rssi_Usr_176", currentByte, 1924, 60),
+                Rssi_Usr_177 = PackedTypeCheckAndUnPackData("Rssi_Usr_177", currentByte, 1984, 60),
+
+                Rssi_Usr_178 = PackedTypeCheckAndUnPackData("Rssi_Usr_178", currentByte, 2044, 60),
+                Rssi_Usr_179 = PackedTypeCheckAndUnPackData("Rssi_Usr_179", currentByte, 2104, 60),
+
+                Rssi_Usr_180 = PackedTypeCheckAndUnPackData("Rssi_Usr_180", currentByte, 2164, 60),
+                Rssi_Usr_181 = PackedTypeCheckAndUnPackData("Rssi_Usr_181", currentByte, 2224, 60),
+
+                Rssi_Usr_182 = PackedTypeCheckAndUnPackData("Rssi_Usr_182", currentByte, 2284, 60),
+                Rssi_Usr_183 = PackedTypeCheckAndUnPackData("Rssi_Usr_183", currentByte, 2344, 60),
+
+                Rssi_Usr_184 = PackedTypeCheckAndUnPackData("Rssi_Usr_184", currentByte, 2404, 60),
+                Rssi_Usr_185 = PackedTypeCheckAndUnPackData("Rssi_Usr_185", currentByte, 2464, 60),
+
+                Rssi_Usr_186 = PackedTypeCheckAndUnPackData("Rssi_Usr_186", currentByte, 2524, 60),
+                Rssi_Usr_187 = PackedTypeCheckAndUnPackData("Rssi_Usr_187", currentByte, 2584, 60),
+
+                Rssi_Usr_188 = PackedTypeCheckAndUnPackData("Rssi_Usr_188", currentByte, 2644, 60),
+                Rssi_Usr_189 = PackedTypeCheckAndUnPackData("Rssi_Usr_189", currentByte, 2704, 60),
+
+                Rssi_Usr_190 = PackedTypeCheckAndUnPackData("Rssi_Usr_190", currentByte, 2764, 60),
+                Rssi_Usr_191 = PackedTypeCheckAndUnPackData("Rssi_Usr_191", currentByte, 2824, 60),
+
+                Rssi_Usr_192 = PackedTypeCheckAndUnPackData("Rssi_Usr_192", currentByte, 2884, 60),
+                Rssi_Usr_193 = PackedTypeCheckAndUnPackData("Rssi_Usr_193", currentByte, 2944, 75),
+
+                Rssi_Usr_194 = PackedTypeCheckAndUnPackData("Rssi_Usr_194", currentByte, 3019, 75),
+                Rssi_Usr_195 = PackedTypeCheckAndUnPackData("Rssi_Usr_195", currentByte, 3094, 1),
+
+                Rssi_Usr_196 = PackedTypeCheckAndUnPackData("Rssi_Usr_196", currentByte, 3095, 1),
+                Rssi_Usr_197 = PackedTypeCheckAndUnPackData("Rssi_Usr_197", currentByte, 3096, 1),
+
+                Rssi_Usr_198 = PackedTypeCheckAndUnPackData("Rssi_Usr_198", currentByte, 3097, 1),
+                Rssi_Usr_199 = PackedTypeCheckAndUnPackData("Rssi_Usr_199", currentByte, 3098, 1),
+
+                Rssi_Usr_200 = PackedTypeCheckAndUnPackData("Rssi_Usr_200", currentByte, 3099, 1),
+                Rssi_Usr_201 = PackedTypeCheckAndUnPackData("Rssi_Usr_201", currentByte, 3100, 1),
+
+                Rssi_Usr_202 = PackedTypeCheckAndUnPackData("Rssi_Usr_202", currentByte, 3101, 1),
+                Rssi_Usr_203 = PackedTypeCheckAndUnPackData("Rssi_Usr_203", currentByte, 3102, 1),
+
+                Rssi_Usr_204 = PackedTypeCheckAndUnPackData("Rssi_Usr_204", currentByte, 3103, 1),
+                Rssi_Usr_205 = PackedTypeCheckAndUnPackData("Rssi_Usr_205", currentByte, 3104, 1),
+
+                Rssi_Usr_206 = PackedTypeCheckAndUnPackData("Rssi_Usr_206", currentByte, 3105, 1),
+                Rssi_Usr_207 = PackedTypeCheckAndUnPackData("Rssi_Usr_207", currentByte, 3106, 1),
+
+                Rssi_Usr_208 = PackedTypeCheckAndUnPackData("Rssi_Usr_208", currentByte, 3107, 1),
+                Rssi_Usr_209 = PackedTypeCheckAndUnPackData("Rssi_Usr_209", currentByte, 3108, 1),
+
+                Rssi_Usr_210 = PackedTypeCheckAndUnPackData("Rssi_Usr_210", currentByte, 3109, 1),
+                Rssi_Usr_211 = PackedTypeCheckAndUnPackData("Rssi_Usr_211", currentByte, 3110, 1),
+
+                Rssi_Usr_212 = PackedTypeCheckAndUnPackData("Rssi_Usr_212", currentByte, 3111, 1),
+                Rssi_Usr_213 = PackedTypeCheckAndUnPackData("Rssi_Usr_213", currentByte, 3112, 1),
+
+                Rssi_Usr_214 = PackedTypeCheckAndUnPackData("Rssi_Usr_214", currentByte, 3113, 1),
+                Rssi_Usr_215_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_215_PackedData", currentByte, 3114, 2),
+
+                Rssi_Usr_216_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_216_PackedData", currentByte, 3116, 2),
+                Rssi_Usr_217_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_217_PackedData", currentByte, 3118, 2),
+
+                Rssi_Usr_218_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_218_PackedData", currentByte, 3120, 2),
+                Rssi_Usr_219_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_219_PackedData", currentByte, 3122, 2),
+
+                Rssi_Usr_220_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_220_PackedData", currentByte, 3124, 2),
+                Rssi_Usr_221_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_221_PackedData", currentByte, 3126, 2),
+
+                Rssi_Usr_222_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_222_PackedData", currentByte, 3128, 2),
+                Rssi_Usr_223_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_223_PackedData", currentByte, 3130, 2),
+
+                Rssi_Usr_224_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_224_PackedData", currentByte, 3132, 2),
+                Rssi_Usr_225_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_225_PackedData", currentByte, 3134, 2),
+
+                Rssi_Usr_226_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_226_PackedData", currentByte, 3136, 2),
+                Rssi_Usr_227_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_227_PackedData", currentByte, 3138, 2),
+
+                Rssi_Usr_228_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_228_PackedData", currentByte, 3140, 2),
+                Rssi_Usr_229_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_229_PackedData", currentByte, 3142, 2),
+
+                Rssi_Usr_230_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_230_PackedData", currentByte, 3144, 2),
+                Rssi_Usr_231_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_231_PackedData", currentByte, 3146, 2),
+
+                Rssi_Usr_232_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_232_PackedData", currentByte, 3148, 2),
+                Rssi_Usr_233_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_233_PackedData", currentByte, 3150, 2),
+
+                Rssi_Usr_234_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_234_PackedData", currentByte, 3152, 2),
+                Rssi_Usr_235_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_235_PackedData", currentByte, 3154, 4),
+
+                Rssi_Usr_236_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_236_PackedData", currentByte, 3158, 4),
+                Rssi_Usr_237_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_237_PackedData", currentByte, 3162, 4),
+
+                Rssi_Usr_238_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_238_PackedData", currentByte, 3166, 4),
+                Rssi_Usr_239_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_239_PackedData", currentByte, 3170, 4),
+
+                Rssi_Usr_240_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_240_PackedData", currentByte, 3174, 4),
+                Rssi_Usr_241_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_241_PackedData", currentByte, 3178, 4),
+
+                Rssi_Usr_242_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_242_PackedData", currentByte, 3182, 4),
+                Rssi_Usr_243_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_243_PackedData", currentByte, 3186, 4),
+
+                Rssi_Usr_244_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_244_PackedData", currentByte, 3190, 4),
+                Rssi_Usr_245_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_245_PackedData", currentByte, 3194, 4),
+
+                Rssi_Usr_246_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_246_PackedData", currentByte, 3198, 4),
+                Rssi_Usr_247_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_247_PackedData", currentByte, 3202, 4),
+
+                Rssi_Usr_248_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_248_PackedData", currentByte, 3206, 4),
+                Rssi_Usr_249_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_249_PackedData", currentByte, 3210, 4),
+
+                Rssi_Usr_250_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_250_PackedData", currentByte, 3214, 4),
+                Rssi_Usr_251_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_251_PackedData", currentByte, 3218, 4),
+
+                Rssi_Usr_252_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_252_PackedData", currentByte, 3222, 4),
+                Rssi_Usr_253_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_253_PackedData", currentByte, 3226, 4),
+
+                Rssi_Usr_254_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_254_PackedData", currentByte, 3230, 4),
+                Rssi_Usr_255_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_255_PackedData", currentByte, 3234, 6),
+
+                Rssi_Usr_256_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_256_PackedData", currentByte, 3240, 6),
+                Rssi_Usr_257_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_257_PackedData", currentByte, 3246, 6),
+
+                Rssi_Usr_258_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_258_PackedData", currentByte, 3252, 6),
+                Rssi_Usr_259_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_259_PackedData", currentByte, 3258, 6),
+
+                Rssi_Usr_260_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_260_PackedData", currentByte, 3264, 6),
+                Rssi_Usr_261_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_261_PackedData", currentByte, 3270, 6),
+
+                Rssi_Usr_262_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_262_PackedData", currentByte, 3276, 6),
+                Rssi_Usr_263_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_263_PackedData", currentByte, 3282, 6),
+
+                Rssi_Usr_264_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_264_PackedData", currentByte, 3288, 6),
+                Rssi_Usr_265_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_265_PackedData", currentByte, 3294, 6),
+
+                Rssi_Usr_266_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_266_PackedData", currentByte, 3300, 6),
+                Rssi_Usr_267_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_267_PackedData", currentByte, 3306, 6),
+
+                Rssi_Usr_268_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_268_PackedData", currentByte, 3312, 6),
+                Rssi_Usr_269_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_269_PackedData", currentByte, 3318, 6),
+
+                Rssi_Usr_270_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_270_PackedData", currentByte, 3324, 6),
+                Rssi_Usr_271_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_271_PackedData", currentByte, 3330, 6),
+
+                Rssi_Usr_272_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_272_PackedData", currentByte, 3336, 6),
+                Rssi_Usr_273_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_273_PackedData", currentByte, 3342, 6),
+
+                Rssi_Usr_274_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_274_PackedData", currentByte, 3348, 6),
+                Rssi_Usr_275_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_275_PackedData", currentByte, 3354, 4, 2),
+
+                Rssi_Usr_276_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_276_PackedData", currentByte, 3358, 4, 2),
+                Rssi_Usr_277_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_277_PackedData", currentByte, 3362, 4, 2),
+
+                Rssi_Usr_278_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_278_PackedData", currentByte, 3366, 4, 2),
+                Rssi_Usr_279_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_279_PackedData", currentByte, 3370, 4, 2),
+
+                Rssi_Usr_280_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_280_PackedData", currentByte, 3374, 4, 2),
+                Rssi_Usr_281_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_281_PackedData", currentByte, 3378, 4, 2),
+
+                Rssi_Usr_282_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_282_PackedData", currentByte, 3382, 4, 2),
+                Rssi_Usr_283_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_283_PackedData", currentByte, 3386, 4, 2),
+
+                Rssi_Usr_284_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_284_PackedData", currentByte, 3390, 4, 2),
+                Rssi_Usr_285_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_285_PackedData", currentByte, 3394, 4, 2),
+
+                Rssi_Usr_286_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_286_PackedData", currentByte, 3398, 4, 2),
+                Rssi_Usr_287_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_287_PackedData", currentByte, 3402, 4, 2),
+
+                Rssi_Usr_288_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_288_PackedData", currentByte, 3406, 4, 2),
+                Rssi_Usr_289_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_289_PackedData", currentByte, 3410, 4, 2),
+
+                Rssi_Usr_290_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_290_PackedData", currentByte, 3414, 4, 2),
+                Rssi_Usr_291_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_291_PackedData", currentByte, 3418, 4, 2),
+
+                Rssi_Usr_292_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_292_PackedData", currentByte, 3422, 4, 2),
+                Rssi_Usr_293_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_293_PackedData", currentByte, 3426, 4, 2),
+
+                Rssi_Usr_294_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_294_PackedData", currentByte, 3430, 4, 2),
+                Rssi_Usr_295_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_295_PackedData", currentByte, 3434, 5, 2),
+
+                Rssi_Usr_296_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_296_PackedData", currentByte, 3439, 5, 2),
+                Rssi_Usr_297_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_297_PackedData", currentByte, 3444, 5, 2),
+
+                Rssi_Usr_298_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_298_PackedData", currentByte, 3449, 5, 2),
+                Rssi_Usr_299_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_299_PackedData", currentByte, 3454, 5, 2),
+
+                Rssi_Usr_300_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_300_PackedData", currentByte, 3459, 5, 2),
+                Rssi_Usr_301_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_301_PackedData", currentByte, 3464, 5, 2),
+
+                Rssi_Usr_302_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_302_PackedData", currentByte, 3469, 5, 2),
+                Rssi_Usr_303_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_303_PackedData", currentByte, 3474, 5, 2),
+
+                Rssi_Usr_304_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_304_PackedData", currentByte, 3479, 5, 2),
+                Rssi_Usr_305_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_305_PackedData", currentByte, 3484, 5, 2),
+
+                Rssi_Usr_306_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_306_PackedData", currentByte, 3489, 5, 2),
+                Rssi_Usr_307_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_307_PackedData", currentByte, 3494, 5, 2),
+
+                Rssi_Usr_308_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_308_PackedData", currentByte, 3499, 5, 2),
+                Rssi_Usr_309_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_309_PackedData", currentByte, 3504, 5, 2),
+
+                Rssi_Usr_310_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_310_PackedData", currentByte, 3509, 5, 2),
+                Rssi_Usr_311_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_311_PackedData", currentByte, 3514, 5, 2),
+
+                Rssi_Usr_312_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_312_PackedData", currentByte, 3519, 5, 2),
+                Rssi_Usr_313_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_313_PackedData", currentByte, 3524, 5, 2),
+
+                Rssi_Usr_314_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_314_PackedData", currentByte, 3529, 5, 2),
+                Rssi_Usr_315_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_315_PackedData", currentByte, 3534, 6, 2),
+
+                Rssi_Usr_316_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_316_PackedData", currentByte, 3540, 6, 2),
+                Rssi_Usr_317_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_317_PackedData", currentByte, 3546, 6, 2),
+
+                Rssi_Usr_318_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_318_PackedData", currentByte, 3552, 6, 2),
+                Rssi_Usr_319_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_319_PackedData", currentByte, 3558, 6, 2),
+
+                Rssi_Usr_320_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_320_PackedData", currentByte, 3564, 6, 2),
+                Rssi_Usr_321_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_321_PackedData", currentByte, 3570, 6, 2),
+
+                Rssi_Usr_322_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_322_PackedData", currentByte, 3576, 6, 2),
+                Rssi_Usr_323_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_323_PackedData", currentByte, 3582, 6, 2),
+
+                Rssi_Usr_324_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_324_PackedData", currentByte, 3588, 6, 2),
+                Rssi_Usr_325_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_325_PackedData", currentByte, 3594, 6, 2),
+
+                Rssi_Usr_326_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_326_PackedData", currentByte, 3600, 6, 2),
+                Rssi_Usr_327_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_327_PackedData", currentByte, 3606, 6, 2),
+
+                Rssi_Usr_328_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_328_PackedData", currentByte, 3612, 6, 2),
+                Rssi_Usr_329_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_329_PackedData", currentByte, 3618, 6, 2),
+
+                Rssi_Usr_330_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_330_PackedData", currentByte, 3624, 6, 2),
+                Rssi_Usr_331_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_331_PackedData", currentByte, 3630, 6, 2),
+
+                Rssi_Usr_332_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_332_PackedData", currentByte, 3636, 6, 2),
+                Rssi_Usr_333_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_333_PackedData", currentByte, 3642, 6, 2),
+
+                Rssi_Usr_334_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_334_PackedData", currentByte, 3648, 6, 2),
+                Rssi_Usr_335_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_335_PackedData", currentByte, 3654, 7, 2),
+
+                Rssi_Usr_336_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_336_PackedData", currentByte, 3661, 7, 2),
+                Rssi_Usr_337_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_337_PackedData", currentByte, 3668, 7, 2),
+
+                Rssi_Usr_338_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_338_PackedData", currentByte, 3675, 7, 2),
+                Rssi_Usr_339_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_339_PackedData", currentByte, 3682, 7, 2),
+
+                Rssi_Usr_340_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_340_PackedData", currentByte, 3689, 7, 2),
+                Rssi_Usr_341_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_341_PackedData", currentByte, 3696, 7, 2),
+
+                Rssi_Usr_342_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_342_PackedData", currentByte, 3703, 7, 2),
+                Rssi_Usr_343_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_343_PackedData", currentByte, 3710, 7, 2),
+
+                Rssi_Usr_344_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_344_PackedData", currentByte, 3717, 7, 2),
+                Rssi_Usr_345_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_345_PackedData", currentByte, 2724, 7, 2),
+
+                Rssi_Usr_346_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_346_PackedData", currentByte, 3731, 7, 2),
+                Rssi_Usr_347_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_347_PackedData", currentByte, 3738, 7, 2),
+
+                Rssi_Usr_348_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_348_PackedData", currentByte, 3745, 7, 2),
+                Rssi_Usr_349_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_349_PackedData", currentByte, 3752, 7, 2),
+
+                Rssi_Usr_350_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_350_PackedData", currentByte, 3759, 7, 2),
+                Rssi_Usr_351_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_351_PackedData", currentByte, 3766, 7, 2),
+
+                Rssi_Usr_352_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_352_PackedData", currentByte, 3773, 7, 2),
+                Rssi_Usr_353_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_353_PackedData", currentByte, 3780, 7, 2),
+
+                Rssi_Usr_354_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_354_PackedData", currentByte, 3787, 4, 5),
+                Rssi_Usr_355_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_355_PackedData", currentByte, 3791, 4, 5),
+
+                Rssi_Usr_356_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_356_PackedData", currentByte, 3795, 4, 5),
+                Rssi_Usr_357_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_357_PackedData", currentByte, 3799, 4, 5),
+
+                Rssi_Usr_358_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_358_PackedData", currentByte, 3803, 4, 5),
+                Rssi_Usr_359_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_359_PackedData", currentByte, 3807, 4, 5),
+
+                Rssi_Usr_360_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_360_PackedData", currentByte, 3811, 4, 5),
+                Rssi_Usr_361_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_361_PackedData", currentByte, 3815, 4, 5),
+
+                Rssi_Usr_362_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_362_PackedData", currentByte, 3819, 4, 5),
+                Rssi_Usr_363_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_363_PackedData", currentByte, 3823, 4, 5),
+
+                Rssi_Usr_364_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_364_PackedData", currentByte, 3827, 4, 5),
+                Rssi_Usr_365_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_365_PackedData", currentByte, 3831, 4, 5),
+
+                Rssi_Usr_366_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_366_PackedData", currentByte, 3835, 4, 5),
+                Rssi_Usr_367_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_367_PackedData", currentByte, 3839, 4, 5),
+
+                Rssi_Usr_368_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_368_PackedData", currentByte, 3843, 4, 5),
+                Rssi_Usr_369_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_369_PackedData", currentByte, 3847, 4, 5),
+
+                Rssi_Usr_370_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_370_PackedData", currentByte, 3851, 4, 5),
+                Rssi_Usr_371_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_371_PackedData", currentByte, 3855, 4, 5),
+
+                Rssi_Usr_372_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_372_PackedData", currentByte, 3859, 4, 5),
+                Rssi_Usr_373_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_373_PackedData", currentByte, 3863, 4, 5),
+                Filler = PackedTypeCheckAndUnPackData("Filler", currentByte, 3867, 144),
 
             };
         }
@@ -1709,16 +1915,20 @@ namespace Carrington_Service.BusinessExpert
         {
             acc.MultiLockboxRecordModel = new MultiLockboxRecordModel()
             {
-                Rssi_Rcd_Id = PackedTypeCheckAndUnPackData("", currentByte, 1, 1),
-                Rssi_Inst = PackedTypeCheckAndUnPackData("", currentByte, 2, 3),
-                Rssi_Acct_No = PackedTypeCheckAndUnPackData("", currentByte, 5, 10),
-                Rssi_Seq_No = PackedTypeCheckAndUnPackData("", currentByte, 15, 5),
-                Rssi_Il_Lkbx_Id_Data = PackedTypeCheckAndUnPackData("", currentByte, 20, 1),
-                Rssi_Il_Lkbx_Addr_1 = PackedTypeCheckAndUnPackData("", currentByte, 21, 35),
-                Rssi_Il_Lkbx_Addr_2 = PackedTypeCheckAndUnPackData("", currentByte, 56, 35),
-                Rssi_Il_Lkbx_City = PackedTypeCheckAndUnPackData("", currentByte, 91, 20),
-                Rssi_Il_Lkbx_State = PackedTypeCheckAndUnPackData("", currentByte, 111, 2),
-                Rssi_Il_Lkbx_Zip = PackedTypeCheckAndUnPackData("", currentByte, 113, 10),
+                Rssi_Rcd_Id = PackedTypeCheckAndUnPackData("Rssi_Rcd_Id", currentByte, 1, 1),
+                Rssi_Inst = PackedTypeCheckAndUnPackData("Rssi_Inst", currentByte, 2, 3),
+
+                Rssi_Acct_No = PackedTypeCheckAndUnPackData("Rssi_Acct_No", currentByte, 5, 10),
+                Rssi_Seq_No = PackedTypeCheckAndUnPackData("Rssi_Seq_No", currentByte, 15, 5),
+
+                Rssi_Il_Lkbx_Id_Data = PackedTypeCheckAndUnPackData("Rssi_Il_Lkbx_Id_Data", currentByte, 20, 1),
+                Rssi_Il_Lkbx_Addr_1 = PackedTypeCheckAndUnPackData("Rssi_Il_Lkbx_Addr_1", currentByte, 21, 35),
+
+                Rssi_Il_Lkbx_Addr_2 = PackedTypeCheckAndUnPackData("Rssi_Il_Lkbx_Addr_2", currentByte, 56, 35),
+                Rssi_Il_Lkbx_City = PackedTypeCheckAndUnPackData("Rssi_Il_Lkbx_City", currentByte, 91, 20),
+
+                Rssi_Il_Lkbx_State = PackedTypeCheckAndUnPackData("Rssi_Il_Lkbx_State", currentByte, 111, 2),
+                Rssi_Il_Lkbx_Zip = PackedTypeCheckAndUnPackData("Rssi_Il_Lkbx_Zip", currentByte, 113, 10),
 
             };
         }
@@ -1728,32 +1938,32 @@ namespace Carrington_Service.BusinessExpert
         {
             acc.RateReductionRecordModel = new RateReductionRecordModel()
             {
-                Rssi_Rcd_Id = PackedTypeCheckAndUnPackData("", currentByte, 1, 1),
-                Rssi_Inst = PackedTypeCheckAndUnPackData("", currentByte, 2, 3),
-                Rssi_Acct_No = PackedTypeCheckAndUnPackData("", currentByte, 5, 10),
-                Rssi_Seq_No = PackedTypeCheckAndUnPackData("", currentByte, 15, 5),
-                Rssi_Loan_Plan_Nbr = PackedTypeCheckAndUnPackData("", currentByte, 20, 6),
-                Rssi_Loan_Status = PackedTypeCheckAndUnPackData("", currentByte, 26, 1),
-                Rssi_Tot_Red_To_Date = PackedTypeCheckAndUnPackData("", currentByte, 27, 7),
-                Rssi_Tot_Tiers_Comp = PackedTypeCheckAndUnPackData("", currentByte, 34, 2),
-                Rssi_Tier_Status = PackedTypeCheckAndUnPackData("", currentByte, 36, 1),
-                Rssi_Disql_Dt = PackedTypeCheckAndUnPackData("", currentByte, 37, 8),
-                Rssi_Disql_Due_Dt = PackedTypeCheckAndUnPackData("", currentByte, 45, 8),
-                Rssi_Cpltn_Date = PackedTypeCheckAndUnPackData("", currentByte, 53, 8),
-                Rssi_Cpltn_Due_Dt = PackedTypeCheckAndUnPackData("", currentByte, 61, 8),
-                Rssi_Reql_Dt = PackedTypeCheckAndUnPackData("", currentByte, 69, 8),
-                Rssi_Reql_Due_Dt = PackedTypeCheckAndUnPackData("", currentByte, 77, 8),
-                Rssi_Total_Rq = PackedTypeCheckAndUnPackData("", currentByte, 85, 3),
-                Rssi_Ot_Pmts_Ctr = PackedTypeCheckAndUnPackData("", currentByte, 88, 2),
-                Rssi_Rem_Pmts_Ctr = PackedTypeCheckAndUnPackData("", currentByte, 90, 2),
-                Rssi_New_Rate = PackedTypeCheckAndUnPackData("", currentByte, 92, 7),
-                Rssi_New_Pmt = PackedTypeCheckAndUnPackData("", currentByte, 99, 7),
-                Rssi_New_Eff_Dt = PackedTypeCheckAndUnPackData("", currentByte, 106, 8),
-                Rssi_Pmt_Diff = PackedTypeCheckAndUnPackData("", currentByte, 114, 9),
-                Rssi_Reset_Date = PackedTypeCheckAndUnPackData("", currentByte, 123, 8),
-                Rssi_Reset_Due_Dt = PackedTypeCheckAndUnPackData("", currentByte, 131, 8),
-                Rssi_Beg_Due_Dt = PackedTypeCheckAndUnPackData("", currentByte, 139, 8),
-                Rssi_Reduct_Amt = PackedTypeCheckAndUnPackData("", currentByte, 147, 7),
+                Rssi_Rcd_Id = PackedTypeCheckAndUnPackData("Rssi_Rcd_Id", currentByte, 1, 1),
+                Rssi_Inst = PackedTypeCheckAndUnPackData("Rssi_Inst", currentByte, 2, 3),
+                Rssi_Acct_No = PackedTypeCheckAndUnPackData("Rssi_Acct_No", currentByte, 5, 10),
+                Rssi_Seq_No = PackedTypeCheckAndUnPackData("Rssi_Seq_No", currentByte, 15, 5),
+                Rssi_Loan_Plan_Nbr = PackedTypeCheckAndUnPackData("Rssi_Loan_Plan_Nbr", currentByte, 20, 6),
+                Rssi_Loan_Status = PackedTypeCheckAndUnPackData("Rssi_Loan_Status", currentByte, 26, 1),
+                Rssi_Tot_Red_To_Date = PackedTypeCheckAndUnPackData("Rssi_Tot_Red_To_Date", currentByte, 27, 7),
+                Rssi_Tot_Tiers_Comp = PackedTypeCheckAndUnPackData("Rssi_Tot_Tiers_Comp", currentByte, 34, 2),
+                Rssi_Tier_Status = PackedTypeCheckAndUnPackData("Rssi_Tier_Status", currentByte, 36, 1),
+                Rssi_Disql_Dt = PackedTypeCheckAndUnPackData("Rssi_Disql_Dt", currentByte, 37, 8),
+                Rssi_Disql_Due_Dt = PackedTypeCheckAndUnPackData("Rssi_Disql_Due_Dt", currentByte, 45, 8),
+                Rssi_Cpltn_Date = PackedTypeCheckAndUnPackData("Rssi_Cpltn_Date", currentByte, 53, 8),
+                Rssi_Cpltn_Due_Dt = PackedTypeCheckAndUnPackData("Rssi_Cpltn_Due_Dt", currentByte, 61, 8),
+                Rssi_Reql_Dt = PackedTypeCheckAndUnPackData("Rssi_Reql_Dt", currentByte, 69, 8),
+                Rssi_Reql_Due_Dt = PackedTypeCheckAndUnPackData("Rssi_Reql_Due_Dt", currentByte, 77, 8),
+                Rssi_Total_Rq = PackedTypeCheckAndUnPackData("Rssi_Total_Rq", currentByte, 85, 3),
+                Rssi_Ot_Pmts_Ctr = PackedTypeCheckAndUnPackData("Rssi_Ot_Pmts_Ctr", currentByte, 88, 2),
+                Rssi_Rem_Pmts_Ctr = PackedTypeCheckAndUnPackData("Rssi_Rem_Pmts_Ctr", currentByte, 90, 2),
+                Rssi_New_Rate = PackedTypeCheckAndUnPackData("Rssi_New_Rate", currentByte, 92, 7),
+                Rssi_New_Pmt = PackedTypeCheckAndUnPackData("Rssi_New_Pmt", currentByte, 99, 7),
+                Rssi_New_Eff_Dt = PackedTypeCheckAndUnPackData("Rssi_New_Eff_Dt", currentByte, 106, 8),
+                Rssi_Pmt_Diff = PackedTypeCheckAndUnPackData("Rssi_Pmt_Diff", currentByte, 114, 9),
+                Rssi_Reset_Date = PackedTypeCheckAndUnPackData("Rssi_Reset_Date", currentByte, 123, 8),
+                Rssi_Reset_Due_Dt = PackedTypeCheckAndUnPackData("Rssi_Reset_Due_Dt", currentByte, 131, 8),
+                Rssi_Beg_Due_Dt = PackedTypeCheckAndUnPackData("Rssi_Beg_Due_Dt", currentByte, 139, 8),
+                Rssi_Reduct_Amt = PackedTypeCheckAndUnPackData("Rssi_Reduct_Amt", currentByte, 147, 7),
 
 
             };
@@ -1765,19 +1975,19 @@ namespace Carrington_Service.BusinessExpert
 
             acc.EscrowRecordModel = new EscrowRecordModel()
             {
-                Rssi_Rcd_Id = PackedTypeCheckAndUnPackData("", currentByte, 1, 1),
-                Rssi_Inst = PackedTypeCheckAndUnPackData("", currentByte, 2, 3),
-                Rssi_Acnt_Rem = PackedTypeCheckAndUnPackData("", currentByte, 5, 10),
-                Rssi_Seq_No = PackedTypeCheckAndUnPackData("", currentByte, 15, 5),
-                Rssi_Esc_Type = PackedTypeCheckAndUnPackData("", currentByte, 20, 2),
-                Rssi_Ins_Co = PackedTypeCheckAndUnPackData("", currentByte, 22, 4),
-                Rssi_Ins_Ag = PackedTypeCheckAndUnPackData("", currentByte, 26, 5),
-                Rssi_Payee_Name = PackedTypeCheckAndUnPackData("", currentByte, 31, 35),
-                Rssi_Payee_Phone = PackedTypeCheckAndUnPackData("", currentByte, 66, 11),
-                Rssi_Prod_Name = PackedTypeCheckAndUnPackData("", currentByte, 77, 35),
-                Rssi_Pymt_Due = PackedTypeCheckAndUnPackData("", currentByte, 112, 11),
-                Rssi_Num_Due = PackedTypeCheckAndUnPackData("", currentByte, 123, 2),
-                Rssi_Esc_Expir_Dt = PackedTypeCheckAndUnPackData("", currentByte, 125, 6),
+                Rssi_Rcd_Id = PackedTypeCheckAndUnPackData("Rssi_Rcd_Id", currentByte, 1, 1),
+                Rssi_Inst = PackedTypeCheckAndUnPackData("Rssi_Inst", currentByte, 2, 3),
+                Rssi_Acnt_Rem = PackedTypeCheckAndUnPackData("Rssi_Acnt_Rem", currentByte, 5, 10),
+                Rssi_Seq_No = PackedTypeCheckAndUnPackData("Rssi_Seq_No", currentByte, 15, 5),
+                Rssi_Esc_Type = PackedTypeCheckAndUnPackData("Rssi_Esc_Type", currentByte, 20, 2),
+                Rssi_Ins_Co = PackedTypeCheckAndUnPackData("Rssi_Ins_Co", currentByte, 22, 4),
+                Rssi_Ins_Ag = PackedTypeCheckAndUnPackData("Rssi_Ins_Ag", currentByte, 26, 5),
+                Rssi_Payee_Name = PackedTypeCheckAndUnPackData("Rssi_Payee_Name", currentByte, 31, 35),
+                Rssi_Payee_Phone = PackedTypeCheckAndUnPackData("Rssi_Payee_Phone", currentByte, 66, 11),
+                Rssi_Prod_Name = PackedTypeCheckAndUnPackData("Rssi_Prod_Name", currentByte, 77, 35),
+                Rssi_Pymt_Due = PackedTypeCheckAndUnPackData("Rssi_Pymt_Due", currentByte, 112, 11),
+                Rssi_Num_Due = PackedTypeCheckAndUnPackData("Rssi_Num_Due", currentByte, 123, 2),
+                Rssi_Esc_Expir_Dt = PackedTypeCheckAndUnPackData("Rssi_Esc_Expir_Dt", currentByte, 125, 6),
 
             };
         }
@@ -1788,17 +1998,17 @@ namespace Carrington_Service.BusinessExpert
 
             acc.OptionalItemEscrowRecordModel = new OptionalItemEscrowRecordModel()
             {
-                Rssi_Rcd_Id = PackedTypeCheckAndUnPackData("", currentByte, 1, 1),
-                Rssi_Inst = PackedTypeCheckAndUnPackData("", currentByte, 2, 3),
-                Rssi_Acnt_Rem = PackedTypeCheckAndUnPackData("", currentByte, 5, 10),
-                Rssi_Seq_No = PackedTypeCheckAndUnPackData("", currentByte, 15, 5),
-                Rssi_Oed_Prod_Name = PackedTypeCheckAndUnPackData("", currentByte, 20, 35),
-                Rssi_Oed_Cur_Amt = PackedTypeCheckAndUnPackData("", currentByte, 55, 11),
-                Rssi_Oed_Pend_Amt = PackedTypeCheckAndUnPackData("", currentByte, 66, 11),
-                Rssi_Oed_Pend_Date = PackedTypeCheckAndUnPackData("", currentByte, 77, 4),
-                Rssi_Oed_Prod_Type = PackedTypeCheckAndUnPackData("", currentByte, 81, 2),
-                Rssi_Oed_Tot_Prem_Due = PackedTypeCheckAndUnPackData("", currentByte, 83, 7),
-                Rssi_Oed_Filler = PackedTypeCheckAndUnPackData("", currentByte, 90, 11),
+                Rssi_Rcd_Id = PackedTypeCheckAndUnPackData("Rssi_Rcd_Id", currentByte, 1, 1),
+                Rssi_Inst = PackedTypeCheckAndUnPackData("Rssi_Inst", currentByte, 2, 3),
+                Rssi_Acnt_Rem = PackedTypeCheckAndUnPackData("Rssi_Acnt_Rem", currentByte, 5, 10),
+                Rssi_Seq_No = PackedTypeCheckAndUnPackData("Rssi_Seq_No", currentByte, 15, 5),
+                Rssi_Oed_Prod_Name = PackedTypeCheckAndUnPackData("Rssi_Oed_Prod_Name", currentByte, 20, 35),
+                Rssi_Oed_Cur_Amt = PackedTypeCheckAndUnPackData("Rssi_Oed_Cur_Amt", currentByte, 55, 11),
+                Rssi_Oed_Pend_Amt = PackedTypeCheckAndUnPackData("Rssi_Oed_Pend_Amt", currentByte, 66, 11),
+                Rssi_Oed_Pend_Date = PackedTypeCheckAndUnPackData("Rssi_Oed_Pend_Date", currentByte, 77, 4),
+                Rssi_Oed_Prod_Type = PackedTypeCheckAndUnPackData("Rssi_Oed_Prod_Type", currentByte, 81, 2),
+                Rssi_Oed_Tot_Prem_Due = PackedTypeCheckAndUnPackData("Rssi_Oed_Tot_Prem_Due", currentByte, 83, 7),
+                Rssi_Oed_Filler = PackedTypeCheckAndUnPackData("Rssi_Oed_Filler", currentByte, 90, 11),
 
             };
         }
@@ -1808,38 +2018,53 @@ namespace Carrington_Service.BusinessExpert
         {
             acc.FeeRecordModel = new FeeRecordModel()
             {
-                Rssi_Rcd_Id = PackedTypeCheckAndUnPackData("", currentByte, 1, 1),
-                Rssi_Inst = PackedTypeCheckAndUnPackData("", currentByte, 2, 3),
-                Rssi_Acnt_Rem = PackedTypeCheckAndUnPackData("", currentByte, 5, 10),
-                Rssi_Seq_No = PackedTypeCheckAndUnPackData("", currentByte, 15, 5),
-                Rssi_Fd_Fee_Type = PackedTypeCheckAndUnPackData("", currentByte, 20, 3),
-                Rssi_Fd_Fee_Desc = PackedTypeCheckAndUnPackData("", currentByte, 23, 23),
-                Rssi_Fd_Fee_Amort_Pymt = PackedTypeCheckAndUnPackData("", currentByte, 46, 7),
-                Rssi_Fd_Prev_Fee_Bal = PackedTypeCheckAndUnPackData("", currentByte, 53, 7),
-                Rssi_Fd_Assess_Amt = PackedTypeCheckAndUnPackData("", currentByte, 60, 7),
-                Rssi_Fd_Assess_Date = PackedTypeCheckAndUnPackData("", currentByte, 67, 7),
-                Rssi_Fd_Coll_Assess = PackedTypeCheckAndUnPackData("", currentByte, 74, 9),
-                Rssi_Fd_Coll_Non_Assess = PackedTypeCheckAndUnPackData("", currentByte, 83, 7),
-                Rssi_Fd_Waived = PackedTypeCheckAndUnPackData("", currentByte, 90, 7),
-                Rssi_Fd_Curr_Fee_Bal = PackedTypeCheckAndUnPackData("", currentByte, 97, 7),
-                Rssi_Fd_Coll_Date = PackedTypeCheckAndUnPackData("", currentByte, 104, 7),
-                Rssi_Fd_Waived_Date = PackedTypeCheckAndUnPackData("", currentByte, 111, 7),
-                Rssi_Fd_Recur_Total_Due = PackedTypeCheckAndUnPackData("", currentByte, 118, 9),
-                Rssi_Fd_Recur_Pmts_Past_Due = PackedTypeCheckAndUnPackData("", currentByte, 127, 2),
-                Rssi_Fd_Filler2 = PackedTypeCheckAndUnPackData("", currentByte, 129, 4),
-                Rssi_Expi_Type = PackedTypeCheckAndUnPackData("", currentByte, 133, 1),
-                Rssi_Expi_Po_No = PackedTypeCheckAndUnPackData("", currentByte, 134, 12),
-                Rssi_Expi_Amt_Billed_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 146, 4),
-                Rssi_Expi_Amt_Paid_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 150, 4),
-                Rssi_Expi_Rec_Or_Nonrec = PackedTypeCheckAndUnPackData("", currentByte, 154, 1),
-                Rssi_Expi_Invoice_Date_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 155, 4),
-                Rssi_Fee2_Inv_Paid_Date_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 159, 4),
-                Rssi_Expi_Vend = PackedTypeCheckAndUnPackData("", currentByte, 163, 7),
-                Rssi_Expi_Vend_Resp_Cd = PackedTypeCheckAndUnPackData("", currentByte, 170, 2),
-                Rssi_Cinv_Exp_Code_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 172, 2),
-                Rssi_Cinv_Inv_No = PackedTypeCheckAndUnPackData("", currentByte, 174, 15),
-                Rssi_Cinv_Area = PackedTypeCheckAndUnPackData("", currentByte, 189, 5),
-                Rssi_Fd_Filler = PackedTypeCheckAndUnPackData("", currentByte, 194, 207),
+                Rssi_Rcd_Id = PackedTypeCheckAndUnPackData("Rssi_Rcd_Id", currentByte, 1, 1),
+                Rssi_Inst = PackedTypeCheckAndUnPackData("Rssi_Inst", currentByte, 2, 3),
+
+                Rssi_Acnt_Rem = PackedTypeCheckAndUnPackData("Rssi_Acnt_Rem", currentByte, 5, 10),
+                Rssi_Seq_No = PackedTypeCheckAndUnPackData("Rssi_Seq_No", currentByte, 15, 5),
+
+                Rssi_Fd_Fee_Type = PackedTypeCheckAndUnPackData("Rssi_Fd_Fee_Type", currentByte, 20, 3),
+                Rssi_Fd_Fee_Desc = PackedTypeCheckAndUnPackData("Rssi_Fd_Fee_Desc", currentByte, 23, 23),
+
+                Rssi_Fd_Fee_Amort_Pymt = PackedTypeCheckAndUnPackData("Rssi_Fd_Fee_Amort_Pymt", currentByte, 46, 7),
+                Rssi_Fd_Prev_Fee_Bal = PackedTypeCheckAndUnPackData("Rssi_Fd_Prev_Fee_Bal", currentByte, 53, 7),
+
+                Rssi_Fd_Assess_Amt = PackedTypeCheckAndUnPackData("Rssi_Fd_Assess_Amt", currentByte, 60, 7),
+                Rssi_Fd_Assess_Date = PackedTypeCheckAndUnPackData("Rssi_Fd_Assess_Date", currentByte, 67, 7),
+
+                Rssi_Fd_Coll_Assess = PackedTypeCheckAndUnPackData("Rssi_Fd_Coll_Assess", currentByte, 74, 9),
+                Rssi_Fd_Coll_Non_Assess = PackedTypeCheckAndUnPackData("Rssi_Fd_Coll_Non_Assess", currentByte, 83, 7),
+
+                Rssi_Fd_Waived = PackedTypeCheckAndUnPackData("Rssi_Fd_Waived", currentByte, 90, 7),
+                Rssi_Fd_Curr_Fee_Bal = PackedTypeCheckAndUnPackData("Rssi_Fd_Curr_Fee_Bal", currentByte, 97, 7),
+
+                Rssi_Fd_Coll_Date = PackedTypeCheckAndUnPackData("Rssi_Fd_Coll_Date", currentByte, 104, 7),
+                Rssi_Fd_Waived_Date = PackedTypeCheckAndUnPackData("Rssi_Fd_Waived_Date", currentByte, 111, 7),
+
+                Rssi_Fd_Recur_Total_Due = PackedTypeCheckAndUnPackData("Rssi_Fd_Recur_Total_Due", currentByte, 118, 9),
+                Rssi_Fd_Recur_Pmts_Past_Due = PackedTypeCheckAndUnPackData("Rssi_Fd_Recur_Pmts_Past_Due", currentByte, 127, 2),
+
+                Rssi_Fd_Filler2 = PackedTypeCheckAndUnPackData("Rssi_Fd_Filler2", currentByte, 129, 4),
+                Rssi_Expi_Type = PackedTypeCheckAndUnPackData("Rssi_Expi_Type", currentByte, 133, 1),
+
+                Rssi_Expi_Po_No = PackedTypeCheckAndUnPackData("Rssi_Expi_Po_No", currentByte, 134, 12),
+                Rssi_Expi_Amt_Billed_PackedData = PackedTypeCheckAndUnPackData("Rssi_Expi_Amt_Billed_PackedData", currentByte, 146, 4, 2),
+
+                Rssi_Expi_Amt_Paid_PackedData = PackedTypeCheckAndUnPackData("Rssi_Expi_Amt_Paid_PackedData", currentByte, 150, 4, 2),
+                Rssi_Expi_Rec_Or_Nonrec = PackedTypeCheckAndUnPackData("Rssi_Expi_Rec_Or_Nonrec", currentByte, 154, 1),
+
+                Rssi_Expi_Invoice_Date_PackedData = PackedTypeCheckAndUnPackData("Rssi_Expi_Invoice_Date_PackedData", currentByte, 155, 4),
+                Rssi_Fee2_Inv_Paid_Date_PackedData = PackedTypeCheckAndUnPackData("Rssi_Fee2_Inv_Paid_Date_PackedData", currentByte, 159, 4),
+
+                Rssi_Expi_Vend = PackedTypeCheckAndUnPackData("Rssi_Expi_Vend", currentByte, 163, 7),
+                Rssi_Expi_Vend_Resp_Cd = PackedTypeCheckAndUnPackData("Rssi_Expi_Vend_Resp_Cd", currentByte, 170, 2),
+
+                Rssi_Cinv_Exp_Code_PackedData = PackedTypeCheckAndUnPackData("Rssi_Cinv_Exp_Code_PackedData", currentByte, 172, 2),
+                Rssi_Cinv_Inv_No = PackedTypeCheckAndUnPackData("Rssi_Cinv_Inv_No", currentByte, 174, 15),
+
+                Rssi_Cinv_Area = PackedTypeCheckAndUnPackData("Rssi_Cinv_Area", currentByte, 189, 5),
+                Rssi_Fd_Filler = PackedTypeCheckAndUnPackData("Rssi_Fd_Filler", currentByte, 194, 207),
 
             };
         }
@@ -1849,13 +2074,13 @@ namespace Carrington_Service.BusinessExpert
         {
             acc.SolicitationRecordModel = new SolicitationRecordModel()
             {
-                Rssi_Rcd_Id = PackedTypeCheckAndUnPackData("", currentByte, 1, 1),
-                Rssi_Inst = PackedTypeCheckAndUnPackData("", currentByte, 2, 3),
-                Rssi_Acct_No = PackedTypeCheckAndUnPackData("", currentByte, 5, 10),
-                Rssi_Seq_No = PackedTypeCheckAndUnPackData("", currentByte, 15, 5),
-                Rssi_Campgn_Id = PackedTypeCheckAndUnPackData("", currentByte, 20, 5),
-                Rssi_Campgncntl = PackedTypeCheckAndUnPackData("", currentByte, 25, 3),
-                Rssi_Campgnmeth = PackedTypeCheckAndUnPackData("", currentByte, 28, 3),
+                Rssi_Rcd_Id = PackedTypeCheckAndUnPackData("Rssi_Rcd_Id", currentByte, 1, 1),
+                Rssi_Inst = PackedTypeCheckAndUnPackData("Rssi_Inst", currentByte, 2, 3),
+                Rssi_Acct_No = PackedTypeCheckAndUnPackData("Rssi_Acct_No", currentByte, 5, 10),
+                Rssi_Seq_No = PackedTypeCheckAndUnPackData("Rssi_Seq_No", currentByte, 15, 5),
+                Rssi_Campgn_Id = PackedTypeCheckAndUnPackData("Rssi_Campgn_Id", currentByte, 20, 5),
+                Rssi_Campgncntl = PackedTypeCheckAndUnPackData("Rssi_Campgncntl", currentByte, 25, 3),
+                Rssi_Campgnmeth = PackedTypeCheckAndUnPackData("Rssi_Campgnmeth", currentByte, 28, 3),
 
             };
         }
@@ -2619,18 +2844,6 @@ namespace Carrington_Service.BusinessExpert
             };
         }
 
-        public string GetPositionData(byte[] currentByte, int startPos, int fieldLength)
-        {
-            try
-            {
-                return Encoding.Default.GetString(currentByte, startPos - 1, fieldLength);
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, "Error at Start Pos" + startPos + "And Field Lenght " + fieldLength);
-                return "";
-            }
-        }
         public void GenerateCRL30File()
         {
             //List<AccountsModel> account = new List<AccountsModel>();
@@ -2702,6 +2915,19 @@ namespace Carrington_Service.BusinessExpert
             catch (Exception ex)
             {
                 Logger.Error(ex, "Error :" + propertyName);
+                return "";
+            }
+        }
+
+        public string GetPositionData(byte[] currentByte, int startPos, int fieldLength)
+        {
+            try
+            {
+                return Encoding.Default.GetString(currentByte, startPos - 1, fieldLength);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "Error at Start Pos" + startPos + "And Field Lenght " + fieldLength);
                 return "";
             }
         }

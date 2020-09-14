@@ -1,16 +1,18 @@
 ﻿using Carrington_Service.Infrastructure;
-using System; 
+using System;
 using System.Timers;
+using System.Diagnostics;
 namespace Carrington_Service.Services
 {
     public class WorkFlowService : IWorkFlowService
     {
         #region Class Members Definitions & Constructor
-        public readonly ILogger logger;
+        public ILogger logger;
         public readonly IConfigHelper configHelper;
         private bool result = default;
         private readonly IWorkFlowExpert workFlowExpert;
         private readonly Timer TimerPurge;
+        static System.Timers.Timer _timer; 
         #endregion
 
         public WorkFlowService(IWorkFlowExpert workFlowExpert, IConfigHelper configHelper, ILogger logger)
@@ -26,53 +28,48 @@ namespace Carrington_Service.Services
         public bool StartWorkFlowService()
         {
             try
-
             {
-                result = workFlowExpert.StartWorkFlow();
-                Timer timer;
-                DateTime time = DateTime.Now;
-
-                time = DateTime.Now.AddMinutes(2);
-                TimeSpan span = time - DateTime.Now;
-                timer = new Timer { Interval = span.TotalMilliseconds < 1 ? 10 : span.TotalMilliseconds, AutoReset = false };
-                //   Logger.Trace("Service Processing will be started at :" + DateTime.Now.AddMilliseconds(timer.Interval).ToString());
-
-
-                timer.Elapsed += (sender, e) => { InitializeServiceTimers(); };
-                timer.Start();
+                _timer = new System.Timers.Timer();
+                _timer.Interval = TimeSpan.FromSeconds(5).TotalMilliseconds;//Every one minute
+                _timer.Elapsed += new System.Timers.ElapsedEventHandler(timer_Elapsed);
+                _timer.Start();
                 return true;
             }
             catch (Exception ex)
             {
                 logger.Error(ex, ex.TargetSite.Name);
-                return false; ;
+                return false;
             }
         }
-        private void InitializeServiceTimers()
+        public void timer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            TimerPurge.Elapsed += new System.Timers.ElapsedEventHandler(PurgeTimer_Elapsed);
-            TimerPurge.Enabled = true;
-            TimerPurge.AutoReset = true;
-            TimerPurge.Interval = 60 * 1000;
-
-            TimerPurge.Start();
-           //  Logger.Trace("Service Processing Timers Initialized");
-
-
+            result = workFlowExpert.StartWorkFlow();
         }
+        //private void InitializeServiceTimers()
+        //{
+        //    TimerPurge.Elapsed += new System.Timers.ElapsedEventHandler(PurgeTimer_Elapsed);
+        //    TimerPurge.Enabled = true;
+        //    TimerPurge.AutoReset = true;
+        //    TimerPurge.Interval = 10000;
 
-        public void PurgeTimer_Elapsed(object sender, ElapsedEventArgs e)
-        {
-            if (DateTime.Now.Hour > 12 && DateTime.Now.Hour < 8)
-            {
-                result = workFlowExpert.StartWorkFlow();
-            }
-            else
-            {
-                
-            }
+        //    TimerPurge.Start();
+        //    logger.Trace("Service Processing Timers Initialized");
 
-        }
+
+        //}
+
+        //public void PurgeTimer_Elapsed(object sender, ElapsedEventArgs e)
+        //{
+        //    if (DateTime.Now.Hour > 12 && DateTime.Now.Hour < 8)
+        //    {
+        //        result = workFlowExpert.StartWorkFlow();
+        //    }
+        //    else
+        //    {
+
+        //    }
+        //    logger.Trace("Service Processing Timers Initialized");
+        //}
 
 
         #endregion
