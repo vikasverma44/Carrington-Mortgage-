@@ -20,16 +20,14 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
             var accMod = new List<AccountsModel> { };
 
-            var modifiedTests = accMod.Where(x =>
+            var accountModelList = accMod.Where(x =>
                 x.EConsentModel.LoanNumber == x.CmsBillInput.DetRecord.LoanNumber
                 && x.EConsentModel.LoanNumber == x.CmsBillInput.TransRecord.LoanNumber);
 
-            accountModel = modifiedTests.FirstOrDefault();
+            accountModel = accountModelList.FirstOrDefault();
 
         }
         public bool ClearedPrivousPrimaryStandardStatementCondition = false;
-
-     
 
         public List<Borrower> GetPrimaryStandardStatement(AccountsModel accountModel)
         {
@@ -68,7 +66,6 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
         }
 
-
         public static List<Borrower> GetPrimaryForeignStandardStatement(AccountsModel accountModel)
         {
             List<Borrower> lstBrw = new List<Borrower>();
@@ -96,7 +93,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                    && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                     && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO_DVL"// need to check
                     )
@@ -108,7 +105,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTARCHIVEONLYNYDVL(accountModel);
+                    lstBrw = GetOptionArmStmtArchiveOnlyNyDvl(accountModel);
                     return lstBrw;
                 }
 
@@ -126,7 +123,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO_DVL"
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "Y"
@@ -138,7 +135,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTARCHIVEONLYNYDVL(accountModel);
+                    lstBrw = GetOptionArmStmtArchiveOnlyNyDvl(accountModel);
                     return lstBrw;
                 }
 
@@ -157,7 +154,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO_DVL"
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "Y"
@@ -169,7 +166,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTARCHIVEONLYNYDVL(accountModel);
+                    lstBrw = GetOptionArmStmtArchiveOnlyNyDvl(accountModel);
                     return lstBrw;
                 }
 
@@ -187,7 +184,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                   && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                  && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                  && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                   && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                   && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO_DVL"
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "Y"
@@ -199,7 +196,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTARCHIVEONLYNYDVL(accountModel);
+                    lstBrw = GetOptionArmStmtArchiveOnlyNyDvl(accountModel);
                     return lstBrw;
                 }
 
@@ -217,7 +214,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                   && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                  && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                  && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                   && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                   && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO_DVL"
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "Y"
@@ -229,7 +226,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTARCHIVEONLYNYDVL(accountModel);
+                    lstBrw = GetOptionArmStmtArchiveOnlyNyDvl(accountModel);
                     return lstBrw;
                 }
 
@@ -247,7 +244,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                   && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                  && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                  && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                   && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                   && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO_DVL"
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "Y"
@@ -259,7 +256,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTARCHIVEONLYNYDVL(accountModel);
+                    lstBrw = GetOptionArmStmtArchiveOnlyNyDvl(accountModel);
                     return lstBrw;
                 }
 
@@ -277,7 +274,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                   && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                  && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                  && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                   && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                   && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO_DVL"
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "Y"
@@ -289,7 +286,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTARCHIVEONLYNYDVL(accountModel);
+                    lstBrw = GetOptionArmStmtArchiveOnlyNyDvl(accountModel);
                     return lstBrw;
                 }
 
@@ -307,7 +304,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                   && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                  && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                  && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                   && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                   && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO_DVL"
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "Y"
@@ -319,7 +316,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTARCHIVEONLYNYDVL(accountModel);
+                    lstBrw = GetOptionArmStmtArchiveOnlyNyDvl(accountModel);
                     return lstBrw;
                 }
 
@@ -337,7 +334,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                   && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                  && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                  && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                   && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                   && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO_DVL"
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "Y"
@@ -349,7 +346,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTARCHIVEONLYNYDVL(accountModel);
+                    lstBrw = GetOptionArmStmtArchiveOnlyNyDvl(accountModel);
                     return lstBrw;
                 }
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
@@ -366,7 +363,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                   && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                  && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                  && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                   && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                   && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO_DVL"
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "Y"
@@ -378,7 +375,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTARCHIVEONLYNYDVL(accountModel);
+                    lstBrw = GetOptionArmStmtArchiveOnlyNyDvl(accountModel);
                     return lstBrw;
                 }
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
@@ -395,7 +392,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                   && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                  && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                  && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                   && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                   && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO_DVL"
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "Y"
@@ -407,7 +404,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTARCHIVEONLYNYDVL(accountModel);
+                    lstBrw = GetOptionArmStmtArchiveOnlyNyDvl(accountModel);
                     return lstBrw;
                 }
                 if (ClearedPrivousPrimaryStandardStatementCondition)
@@ -423,7 +420,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
             }
             return lstBrw;
         }
-        public List<Borrower> GetOptionARMSTMTARCHIVEONLYNYDVL(AccountsModel accountModel)
+        public List<Borrower> GetOptionArmStmtArchiveOnlyNyDvl(AccountsModel accountModel)
         {
             List<Borrower> lstBrw = new List<Borrower>();
             try
@@ -444,7 +441,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                    && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                     && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "DVL"// need to check
                     )
@@ -456,7 +453,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTNYandHelloLetter(accountModel);
+                    lstBrw = GetOptionArmStmtNyandHelloLetter(accountModel);
                     return lstBrw;
                 }
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
@@ -473,7 +470,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                    && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                     && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "DVL"// need to check
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "Y"
@@ -486,7 +483,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTNYandHelloLetter(accountModel);
+                    lstBrw = GetOptionArmStmtNyandHelloLetter(accountModel);
                     return lstBrw;
                 }
 
@@ -504,7 +501,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                    && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                     && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "DVL"// need to check
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "Y"
@@ -517,7 +514,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTNYandHelloLetter(accountModel);
+                    lstBrw = GetOptionArmStmtNyandHelloLetter(accountModel);
                     return lstBrw;
                 }
 
@@ -535,7 +532,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                    && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                     && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "DVL"// need to check
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "Y"
@@ -548,7 +545,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTNYandHelloLetter(accountModel);
+                    lstBrw = GetOptionArmStmtNyandHelloLetter(accountModel);
                     return lstBrw;
                 }
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
@@ -565,7 +562,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                    && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                     && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "DVL"// need to check
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "Y"
@@ -578,7 +575,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTNYandHelloLetter(accountModel);
+                    lstBrw = GetOptionArmStmtNyandHelloLetter(accountModel);
                     return lstBrw;
                 }
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
@@ -595,7 +592,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                    && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                     && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "DVL"// need to check
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "Y"
@@ -608,7 +605,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTNYandHelloLetter(accountModel);
+                    lstBrw = GetOptionArmStmtNyandHelloLetter(accountModel);
                     return lstBrw;
                 }
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
@@ -625,7 +622,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                    && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                     && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "DVL"// need to check
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "Y"
@@ -638,7 +635,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTNYandHelloLetter(accountModel);
+                    lstBrw = GetOptionArmStmtNyandHelloLetter(accountModel);
                     return lstBrw;
                 }
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
@@ -655,7 +652,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                    && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                     && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "DVL"// need to check
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "Y"
@@ -668,7 +665,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTNYandHelloLetter(accountModel);
+                    lstBrw = GetOptionArmStmtNyandHelloLetter(accountModel);
                     return lstBrw;
                 }
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
@@ -685,7 +682,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                    && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                     && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "DVL"// need to check
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "Y"
@@ -698,7 +695,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTNYandHelloLetter(accountModel);
+                    lstBrw = GetOptionArmStmtNyandHelloLetter(accountModel);
                     return lstBrw;
                 }
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
@@ -715,7 +712,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                    && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                     && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "DVL"// need to check
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "Y"
@@ -728,7 +725,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTNYandHelloLetter(accountModel);
+                    lstBrw = GetOptionArmStmtNyandHelloLetter(accountModel);
                     return lstBrw;
                 }
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
@@ -745,7 +742,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                    && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                     && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "DVL"// need to check
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "Y"
@@ -758,7 +755,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTNYandHelloLetter(accountModel);
+                    lstBrw = GetOptionArmStmtNyandHelloLetter(accountModel);
                     return lstBrw;
                 }
                 if (ClearedPrivousPrimaryStandardStatementCondition)
@@ -773,7 +770,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
             }
             return lstBrw;
         }
-        public List<Borrower> GetOptionARMSTMTNYandHelloLetter(AccountsModel accountModel)
+        public List<Borrower> GetOptionArmStmtNyandHelloLetter(AccountsModel accountModel)
         {
             List<Borrower> lstBrw = new List<Borrower>();
             try
@@ -792,7 +789,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    || Convert.ToInt64(accountModel.UserFieldRecordModel.Rssi_Usr_93) != 11
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO"// need to check
                    )
@@ -804,7 +801,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTNYandHelloDVLLetter(accountModel);
+                    lstBrw = GetOptionArmStmtNyandHelloDVLLetter(accountModel);
                     return lstBrw;
                 }
 
@@ -822,7 +819,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO"// need to check
                    )
@@ -834,7 +831,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTNYandHelloDVLLetter(accountModel);
+                    lstBrw = GetOptionArmStmtNyandHelloDVLLetter(accountModel);
                     return lstBrw;
                 }
 
@@ -852,7 +849,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO"// need to check
                    )
@@ -864,7 +861,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTNYandHelloDVLLetter(accountModel);
+                    lstBrw = GetOptionArmStmtNyandHelloDVLLetter(accountModel);
                     return lstBrw;
                 }
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
@@ -881,7 +878,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO"// need to check
                    )
@@ -893,7 +890,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTNYandHelloDVLLetter(accountModel);
+                    lstBrw = GetOptionArmStmtNyandHelloDVLLetter(accountModel);
                     return lstBrw;
                 }
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
@@ -910,7 +907,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO"// need to check
                    )
@@ -922,7 +919,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTNYandHelloDVLLetter(accountModel);
+                    lstBrw = GetOptionArmStmtNyandHelloDVLLetter(accountModel);
                     return lstBrw;
                 }
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
@@ -939,7 +936,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO"// need to check
                    )
@@ -951,7 +948,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTNYandHelloDVLLetter(accountModel);
+                    lstBrw = GetOptionArmStmtNyandHelloDVLLetter(accountModel);
                     return lstBrw;
                 }
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
@@ -968,7 +965,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO"// need to check
                    )
@@ -980,7 +977,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTNYandHelloDVLLetter(accountModel);
+                    lstBrw = GetOptionArmStmtNyandHelloDVLLetter(accountModel);
                     return lstBrw;
                 }
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
@@ -997,7 +994,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO"// need to check
                    )
@@ -1009,7 +1006,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTNYandHelloDVLLetter(accountModel);
+                    lstBrw = GetOptionArmStmtNyandHelloDVLLetter(accountModel);
                     return lstBrw;
                 }
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
@@ -1026,7 +1023,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO"// need to check
                    )
@@ -1038,7 +1035,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTNYandHelloDVLLetter(accountModel);
+                    lstBrw = GetOptionArmStmtNyandHelloDVLLetter(accountModel);
                     return lstBrw;
                 }
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
@@ -1055,7 +1052,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO"// need to check
                    )
@@ -1067,7 +1064,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTNYandHelloDVLLetter(accountModel);
+                    lstBrw = GetOptionArmStmtNyandHelloDVLLetter(accountModel);
                     return lstBrw;
                 }
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
@@ -1084,7 +1081,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO"// need to check
                    )
@@ -1096,7 +1093,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTNYandHelloDVLLetter(accountModel);
+                    lstBrw = GetOptionArmStmtNyandHelloDVLLetter(accountModel);
                     return lstBrw;
                 }
                 if (ClearedPrivousPrimaryStandardStatementCondition)
@@ -1112,7 +1109,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
             }
             return lstBrw;
         }
-        public List<Borrower> GetOptionARMSTMTNYandHelloDVLLetter(AccountsModel accountModel)
+        public List<Borrower> GetOptionArmStmtNyandHelloDVLLetter(AccountsModel accountModel)
         {
             List<Borrower> lstBrw = new List<Borrower>();
             try
@@ -1131,7 +1128,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    || Convert.ToInt64(accountModel.UserFieldRecordModel.Rssi_Usr_93) != 11
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO_DVL"// need to check
                    )
@@ -1143,7 +1140,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTNYandDVLLetter(accountModel);
+                    lstBrw = GetOptionArmStmtNyandDVLLetter(accountModel);
                     return lstBrw;
                 }
 
@@ -1161,7 +1158,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO_DVL"// need to check
                    )
@@ -1173,7 +1170,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTNYandDVLLetter(accountModel);
+                    lstBrw = GetOptionArmStmtNyandDVLLetter(accountModel);
                     return lstBrw;
                 }
 
@@ -1191,7 +1188,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO_DVL"// need to check
                    )
@@ -1203,7 +1200,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTNYandDVLLetter(accountModel);
+                    lstBrw = GetOptionArmStmtNyandDVLLetter(accountModel);
                     return lstBrw;
                 }
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
@@ -1220,7 +1217,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO_DVL"// need to check
                    )
@@ -1232,7 +1229,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTNYandDVLLetter(accountModel);
+                    lstBrw = GetOptionArmStmtNyandDVLLetter(accountModel);
                     return lstBrw;
                 }
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
@@ -1249,7 +1246,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO_DVL"// need to check
                    )
@@ -1261,7 +1258,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTNYandDVLLetter(accountModel);
+                    lstBrw = GetOptionArmStmtNyandDVLLetter(accountModel);
                     return lstBrw;
                 }
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
@@ -1278,7 +1275,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO_DVL"// need to check
                    )
@@ -1290,7 +1287,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTNYandDVLLetter(accountModel);
+                    lstBrw = GetOptionArmStmtNyandDVLLetter(accountModel);
                     return lstBrw;
                 }
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
@@ -1307,7 +1304,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO_DVL"// need to check
                    )
@@ -1319,7 +1316,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTNYandDVLLetter(accountModel);
+                    lstBrw = GetOptionArmStmtNyandDVLLetter(accountModel);
                     return lstBrw;
                 }
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
@@ -1336,7 +1333,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO_DVL"// need to check
                    )
@@ -1348,7 +1345,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTNYandDVLLetter(accountModel);
+                    lstBrw = GetOptionArmStmtNyandDVLLetter(accountModel);
                     return lstBrw;
                 }
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
@@ -1365,7 +1362,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO_DVL"// need to check
                    )
@@ -1377,7 +1374,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTNYandDVLLetter(accountModel);
+                    lstBrw = GetOptionArmStmtNyandDVLLetter(accountModel);
                     return lstBrw;
                 }
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
@@ -1394,7 +1391,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO_DVL"// need to check
                    )
@@ -1406,7 +1403,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTNYandDVLLetter(accountModel);
+                    lstBrw = GetOptionArmStmtNyandDVLLetter(accountModel);
                     return lstBrw;
                 }
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
@@ -1423,7 +1420,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO_DVL"// need to check
                    )
@@ -1435,7 +1432,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = false;
-                    lstBrw = GetOptionARMSTMTNYandDVLLetter(accountModel);
+                    lstBrw = GetOptionArmStmtNyandDVLLetter(accountModel);
                     return lstBrw;
                 }
                 if (ClearedPrivousPrimaryStandardStatementCondition)
@@ -1451,7 +1448,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
             }
             return lstBrw;
         }
-        public List<Borrower> GetOptionARMSTMTNYandDVLLetter(AccountsModel accountModel)
+        public List<Borrower> GetOptionArmStmtNyandDVLLetter(AccountsModel accountModel)
         {
             List<Borrower> lstBrw = new List<Borrower>();
             try
@@ -1470,7 +1467,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    || Convert.ToInt64(accountModel.UserFieldRecordModel.Rssi_Usr_93) != 11
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO_DVL"// need to check
                    )
@@ -1500,7 +1497,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO_DVL"// need to check
                    )
@@ -1530,7 +1527,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO_DVL"// need to check
                    )
@@ -1559,7 +1556,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO_DVL"// need to check
                    )
@@ -1588,7 +1585,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO_DVL"// need to check
                    )
@@ -1617,7 +1614,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO_DVL"// need to check
                    )
@@ -1646,7 +1643,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO_DVL"// need to check
                    )
@@ -1675,7 +1672,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO_DVL"// need to check
                    )
@@ -1704,7 +1701,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO_DVL"// need to check
                    )
@@ -1733,7 +1730,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO_DVL"// need to check
                    )
@@ -1762,7 +1759,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO_DVL"// need to check
                    )
@@ -2111,7 +2108,6 @@ namespace CarringtonMortgage.FlexFields_Calculation
             return lstBrw;
         }
 
-
         public List<Borrower> GetOptionArmBkChpt7StmtArchiveOnlyPrimary(AccountsModel accountModel)
         {
             List<Borrower> lstBrw = new List<Borrower>();
@@ -2296,7 +2292,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind =="Y"
                      && "The Loannumber Is Not On PM-400 - 661 File Or The Proposed Supplemental CCF Layout_050820" == "")
                 {
@@ -2336,7 +2332,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                      && "The Loannumber Is Not On PM-400 - 661 File Or The Proposed Supplemental CCF Layout_050820" == "")
                 {
@@ -2373,7 +2369,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                      && "The Loannumber Is Not On PM-400 - 661 File Or The Proposed Supplemental CCF Layout_050820" == "")
                 {
@@ -2411,7 +2407,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                      && "The Loannumber Is Not On PM-400 - 661 File Or The Proposed Supplemental CCF Layout_050820" == "")
                 {
@@ -2453,7 +2449,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                      && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO")
                 {
@@ -2495,7 +2491,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                      && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO")
                 {
@@ -2533,7 +2529,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                      && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO")
                 {
@@ -2572,7 +2568,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                      && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO")
                 {
@@ -2614,7 +2610,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                      && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO_DVL")
                 {
@@ -2656,7 +2652,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                      && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO_DVL")
                 {
@@ -2694,7 +2690,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                      && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO_DVL")
                 {
@@ -2733,7 +2729,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                      && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO_DVL")
                 {
@@ -2775,7 +2771,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                      && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "DVL")
                 {
@@ -2817,7 +2813,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                      && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "DVL")
                 {
@@ -2855,7 +2851,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                      && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "DVL")
                 {
@@ -2894,7 +2890,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                      && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "DVL")
                 {
@@ -2935,7 +2931,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
-                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                      && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO")
                 {
@@ -2976,7 +2972,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
-                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                      && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO")
                 {
@@ -3013,7 +3009,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
-                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                      && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO")
                 {
@@ -3051,7 +3047,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
-                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                      && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO")
                 {
@@ -3092,7 +3088,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
-                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                      && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO_DVL")
                 {
@@ -3133,7 +3129,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
-                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                      && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO_DVL")
                 {
@@ -3170,7 +3166,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
-                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                      && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO_DVL")
                 {
@@ -3208,7 +3204,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
-                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                      && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "HELLO_DVL")
                 {
@@ -3249,7 +3245,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
-                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                      && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "DVL")
                 {
@@ -3290,7 +3286,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
-                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                      && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "DVL")
                 {
@@ -3327,7 +3323,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
-                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                      && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "DVL")
                 {
@@ -3365,7 +3361,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
-                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date) == 0
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                      && "when field 8 on the “Proposed Supplemental CCF Layout_050820”" == "DVL")
                 {
@@ -3388,38 +3384,1176 @@ namespace CarringtonMortgage.FlexFields_Calculation
             return lstBrw;
         }
 
-        public List<Borrower> GetOptionArmBkChpt7EDeliveryArchivePrimary(AccountsModel accountModel) { List<Borrower> lstBrw = new List<Borrower>(); try { Logger.Trace("STARTED:  Execute"); Logger.Trace("ENDED: "); } catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; } return lstBrw; }
-        public List<Borrower> GetOptionArmBkChpt7EDeliveryArchiveVend(AccountsModel accountModel) { List<Borrower> lstBrw = new List<Borrower>(); try { Logger.Trace("STARTED:  Execute"); Logger.Trace("ENDED: "); } catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; } return lstBrw; }
-        public List<Borrower> GetOptionArmBkChpt7EDeliveryArchiveCopy1(AccountsModel accountModel) { List<Borrower> lstBrw = new List<Borrower>(); try { Logger.Trace("STARTED:  Execute"); Logger.Trace("ENDED: "); } catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; } return lstBrw; }
-        public List<Borrower> GetOptionArmBkChpt7EDeliveryMailCopy2Vend(AccountsModel accountModel) { List<Borrower> lstBrw = new List<Borrower>(); try { Logger.Trace("STARTED:  Execute"); Logger.Trace("ENDED: "); } catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; } return lstBrw; }
-        public List<Borrower> GetOptionArmBkChpt13StmtPrimary(AccountsModel accountModel) { List<Borrower> lstBrw = new List<Borrower>(); try { Logger.Trace("STARTED:  Execute"); Logger.Trace("ENDED: "); } catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; } return lstBrw; }
-        public List<Borrower> GetOptionArmBkChpt13StmtVend(AccountsModel accountModel) { List<Borrower> lstBrw = new List<Borrower>(); try { Logger.Trace("STARTED:  Execute"); Logger.Trace("ENDED: "); } catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; } return lstBrw; }
-        public List<Borrower> GetOptionArmBkChpt13StmtCopy1Primary(AccountsModel accountModel) { List<Borrower> lstBrw = new List<Borrower>(); try { Logger.Trace("STARTED:  Execute"); Logger.Trace("ENDED: "); } catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; } return lstBrw; }
-        public List<Borrower> GetOptionArmBkChpt13StmtCopy2Vend(AccountsModel accountModel) { List<Borrower> lstBrw = new List<Borrower>(); try { Logger.Trace("STARTED:  Execute"); Logger.Trace("ENDED: "); } catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; } return lstBrw; }
-        public List<Borrower> GetOptionArmBkChpt13StmtPrimaryForeign(AccountsModel accountModel) { List<Borrower> lstBrw = new List<Borrower>(); try { Logger.Trace("STARTED:  Execute"); Logger.Trace("ENDED: "); } catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; } return lstBrw; }
-        public List<Borrower> GetOptionArmBkChpt13StmtVendForeign(AccountsModel accountModel) { List<Borrower> lstBrw = new List<Borrower>(); try { Logger.Trace("STARTED:  Execute"); Logger.Trace("ENDED: "); } catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; } return lstBrw; }
-        public List<Borrower> GetOptionArmBkChpt13StmtCopy1PrimaryForeign(AccountsModel accountModel) { List<Borrower> lstBrw = new List<Borrower>(); try { Logger.Trace("STARTED:  Execute"); Logger.Trace("ENDED: "); } catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; } return lstBrw; }
-        public List<Borrower> GetOptionArmBkChpt13StmtCopy2VendForeign(AccountsModel accountModel) { List<Borrower> lstBrw = new List<Borrower>(); try { Logger.Trace("STARTED:  Execute"); Logger.Trace("ENDED: "); } catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; } return lstBrw; }
-        public List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyPrimary(AccountsModel accountModel) { List<Borrower> lstBrw = new List<Borrower>(); try { Logger.Trace("STARTED:  Execute"); Logger.Trace("ENDED: "); } catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; } return lstBrw; }
-        public List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyVend(AccountsModel accountModel) { List<Borrower> lstBrw = new List<Borrower>(); try { Logger.Trace("STARTED:  Execute"); Logger.Trace("ENDED: "); } catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; } return lstBrw; }
-        public List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyCopy1Primary(AccountsModel accountModel) { List<Borrower> lstBrw = new List<Borrower>(); try { Logger.Trace("STARTED:  Execute"); Logger.Trace("ENDED: "); } catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; } return lstBrw; }
-        public List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyCopy2Vend(AccountsModel accountModel) { List<Borrower> lstBrw = new List<Borrower>(); try { Logger.Trace("STARTED:  Execute"); Logger.Trace("ENDED: "); } catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; } return lstBrw; }
-        public List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyNyPrimary(AccountsModel accountModel) { List<Borrower> lstBrw = new List<Borrower>(); try { Logger.Trace("STARTED:  Execute"); Logger.Trace("ENDED: "); } catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; } return lstBrw; }
-        public List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyNyVend(AccountsModel accountModel) { List<Borrower> lstBrw = new List<Borrower>(); try { Logger.Trace("STARTED:  Execute"); Logger.Trace("ENDED: "); } catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; } return lstBrw; }
-        public List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyNyCopy1Primary(AccountsModel accountModel) { List<Borrower> lstBrw = new List<Borrower>(); try { Logger.Trace("STARTED:  Execute"); Logger.Trace("ENDED: "); } catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; } return lstBrw; }
-        public List<Borrower> GetOptionArmbkChpt13StmtArchiveOnlyNyCopy2Vend(AccountsModel accountModel) { List<Borrower> lstBrw = new List<Borrower>(); try { Logger.Trace("STARTED:  Execute"); Logger.Trace("ENDED: "); } catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; } return lstBrw; }
-        public List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyNyHelloPrimary(AccountsModel accountModel) { List<Borrower> lstBrw = new List<Borrower>(); try { Logger.Trace("STARTED:  Execute"); Logger.Trace("ENDED: "); } catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; } return lstBrw; }
-        public List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyNyHelloVend(AccountsModel accountModel) { List<Borrower> lstBrw = new List<Borrower>(); try { Logger.Trace("STARTED:  Execute"); Logger.Trace("ENDED: "); } catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; } return lstBrw; }
-        public List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyNyCopy1HelloPrimary(AccountsModel accountModel) { List<Borrower> lstBrw = new List<Borrower>(); try { Logger.Trace("STARTED:  Execute"); Logger.Trace("ENDED: "); } catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; } return lstBrw; }
-        public List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyNyCopy2HelloVend(AccountsModel accountModel) { List<Borrower> lstBrw = new List<Borrower>(); try { Logger.Trace("STARTED:  Execute"); Logger.Trace("ENDED: "); } catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; } return lstBrw; }
-        public List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyNyHelloDvlPrimary(AccountsModel accountModel) { List<Borrower> lstBrw = new List<Borrower>(); try { Logger.Trace("STARTED:  Execute"); Logger.Trace("ENDED: "); } catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; } return lstBrw; }
-        public List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyNyHelloDvlVend(AccountsModel accountModel) { List<Borrower> lstBrw = new List<Borrower>(); try { Logger.Trace("STARTED:  Execute"); Logger.Trace("ENDED: "); } catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; } return lstBrw; }
-        public List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyNyCopy1HelloDvlPrimary(AccountsModel accountModel) { List<Borrower> lstBrw = new List<Borrower>(); try { Logger.Trace("STARTED:  Execute"); Logger.Trace("ENDED: "); } catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; } return lstBrw; }
-        public List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyNyCopy2HelloDvlVend(AccountsModel accountModel) { List<Borrower> lstBrw = new List<Borrower>(); try { Logger.Trace("STARTED:  Execute"); Logger.Trace("ENDED: "); } catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; } return lstBrw; }
-        public List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyNyDvlPrimary(AccountsModel accountModel) { List<Borrower> lstBrw = new List<Borrower>(); try { Logger.Trace("STARTED:  Execute"); Logger.Trace("ENDED: "); } catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; } return lstBrw; }
-        public List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyNyDvlVend(AccountsModel accountModel) { List<Borrower> lstBrw = new List<Borrower>(); try { Logger.Trace("STARTED:  Execute"); Logger.Trace("ENDED: "); } catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; } return lstBrw; }
-        public List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyNyCopy1DvlPrimary(AccountsModel accountModel) { List<Borrower> lstBrw = new List<Borrower>(); try { Logger.Trace("STARTED:  Execute"); Logger.Trace("ENDED: "); } catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; } return lstBrw; }
-        public List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyNyCopy2DvlVend(AccountsModel accountModel) { List<Borrower> lstBrw = new List<Borrower>(); try { Logger.Trace("STARTED:  Execute"); Logger.Trace("ENDED: "); } catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; } return lstBrw; }
+        public List<Borrower> GetOptionArmBkChpt7EDeliveryArchivePrimary(AccountsModel accountModel) {
+            List<Borrower> lstBrw = new List<Borrower>();
+            try
+            {
+                Logger.Trace("STARTED:  Execute");
+                if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
+                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
+                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "00/00/00"
+
+                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
+                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
+                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"
+                     && "DocumentType" == "Bill"
+                     && "eConset Flag" == "Y")
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A07", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = false;
+                    lstBrw = GetOptionArmBkChpt7EDeliveryArchiveVend(accountModel);
+                    return lstBrw;
+                }
+                if (ClearedPrivousPrimaryStandardStatementCondition)
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                }
+                Logger.Trace("ENDED: ");
+            }
+            catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; }
+            return lstBrw; 
+        }
+        public List<Borrower> GetOptionArmBkChpt7EDeliveryArchiveVend(AccountsModel accountModel) {
+            List<Borrower> lstBrw = new List<Borrower>();
+            try
+            {
+                Logger.Trace("STARTED:  Execute");
+                if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
+                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
+                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "00/00/00"
+
+                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
+                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
+                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
+                     && "DocumentType" == "Bill"
+                     && "eConset Flag" == "Y")
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A07", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = false;
+                    lstBrw = GetOptionArmBkChpt7EDeliveryArchiveCopy1(accountModel);
+                    return lstBrw;
+                }
+                if (ClearedPrivousPrimaryStandardStatementCondition)
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                }
+                Logger.Trace("ENDED: ");
+            }
+            catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; }
+            return lstBrw;
+        }
+        public List<Borrower> GetOptionArmBkChpt7EDeliveryArchiveCopy1(AccountsModel accountModel) {
+            List<Borrower> lstBrw = new List<Borrower>();
+            try
+            {
+                Logger.Trace("STARTED:  Execute");
+                if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
+                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
+                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "00/00/00"
+
+                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
+                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
+                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
+                     && "DocumentType" == "Bill"
+                     && "eConset Flag" == "Y")
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A07", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = false;
+                    lstBrw = GetOptionArmBkChpt7EDeliveryMailCopy2Vend(accountModel);
+                    return lstBrw;
+                }
+                if (ClearedPrivousPrimaryStandardStatementCondition)
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                }
+                Logger.Trace("ENDED: ");
+            }
+            catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; }
+            return lstBrw;
+        }
+        public List<Borrower> GetOptionArmBkChpt7EDeliveryMailCopy2Vend(AccountsModel accountModel) {
+            List<Borrower> lstBrw = new List<Borrower>();
+            try
+            {
+                Logger.Trace("STARTED:  Execute to Get Option Arm Bk Chpt7 E Delivery Mail Copy2 Vend");
+                if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
+                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
+                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "00/00/00"
+
+                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
+                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
+                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O")
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
+                     && "DocumentType" == "Bill"
+                     && "eConset Flag" == "Y")
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Copy2Vend", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = false;
+                    lstBrw = GetOptionArmBkChpt13StmtPrimary(accountModel);
+                    return lstBrw;
+                }
+                if (ClearedPrivousPrimaryStandardStatementCondition)
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                }
+                Logger.Trace("ENDED: To Get Option Arm Bk Chpt 7 E Delivery Mail Copy2 Vend");
+            }
+            catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; }
+            return lstBrw;
+        }
+
+        public List<Borrower> GetOptionArmBkChpt13StmtPrimary(AccountsModel accountModel) {
+            List<Borrower> lstBrw = new List<Borrower>(); 
+            try { 
+                Logger.Trace("STARTED:  Execute");
+                if ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
+                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
+                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B")
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A13", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = false;
+                    lstBrw = GetOptionArmBkChpt13StmtVend(accountModel);
+                    return lstBrw;
+                }
+                if (ClearedPrivousPrimaryStandardStatementCondition)
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                }
+                Logger.Trace("ENDED: "); 
+            } 
+            catch (Exception ex) 
+            { 
+                Logger.Error(ex, ex.TargetSite.Name); 
+                throw; 
+            } 
+            return lstBrw; 
+        }
+        public List<Borrower> GetOptionArmBkChpt13StmtVend(AccountsModel accountModel) {
+            List<Borrower> lstBrw = new List<Borrower>();
+            try
+            {
+                Logger.Trace("STARTED:  Execute");
+                if ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
+                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
+                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L")
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A13", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = false;
+                    lstBrw = GetOptionArmBkChpt13StmtCopy1Primary(accountModel);
+                    return lstBrw;
+                }
+                if (ClearedPrivousPrimaryStandardStatementCondition)
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                }
+                Logger.Trace("ENDED: ");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+        }
+        public List<Borrower> GetOptionArmBkChpt13StmtCopy1Primary(AccountsModel accountModel) {
+            List<Borrower> lstBrw = new List<Borrower>();
+            try
+            {
+                Logger.Trace("STARTED:  Execute");
+                if ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
+                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
+                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y")
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A13", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = false;
+                    lstBrw = GetOptionArmBkChpt13StmtCopy2Vend(accountModel);
+                    return lstBrw;
+                }
+                if (ClearedPrivousPrimaryStandardStatementCondition)
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                }
+                Logger.Trace("ENDED: ");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+        }
+        public List<Borrower> GetOptionArmBkChpt13StmtCopy2Vend(AccountsModel accountModel) {
+            List<Borrower> lstBrw = new List<Borrower>();
+            try
+            {
+                Logger.Trace("STARTED:  Execute");
+                if ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
+                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
+                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L")
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Copy2Vend", FlexField2 = "A13", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = false;
+                    lstBrw = GetOptionArmBkChpt13StmtPrimaryForeign(accountModel);
+                    return lstBrw;
+                }
+                if (ClearedPrivousPrimaryStandardStatementCondition)
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                }
+                Logger.Trace("ENDED: ");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+        }
+
+        public List<Borrower> GetOptionArmBkChpt13StmtPrimaryForeign(AccountsModel accountModel)
+        {
+            List<Borrower> lstBrw = new List<Borrower>();
+            try
+            {
+                Logger.Trace("STARTED:  Execute");
+                if ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
+                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
+                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"
+                     && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A13", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = false;
+                    lstBrw = GetOptionArmBkChpt13StmtVendForeign(accountModel);
+                    return lstBrw;
+                }
+                if (ClearedPrivousPrimaryStandardStatementCondition)
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                }
+                Logger.Trace("ENDED: ");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+        }
+        public List<Borrower> GetOptionArmBkChpt13StmtVendForeign(AccountsModel accountModel)
+        {
+            List<Borrower> lstBrw = new List<Borrower>();
+            try
+            {
+                Logger.Trace("STARTED:  Execute");
+                if ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
+                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
+                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
+                     && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A13", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = false;
+                    lstBrw = GetOptionArmBkChpt13StmtCopy1PrimaryForeign(accountModel);
+                    return lstBrw;
+                }
+                if (ClearedPrivousPrimaryStandardStatementCondition)
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                }
+                Logger.Trace("ENDED: ");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+        }
+        public List<Borrower> GetOptionArmBkChpt13StmtCopy1PrimaryForeign(AccountsModel accountModel)
+        {
+            List<Borrower> lstBrw = new List<Borrower>();
+            try
+            {
+                Logger.Trace("STARTED:  Execute");
+                if ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
+                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
+                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
+                     && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A13", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = false;
+                    lstBrw = GetOptionArmBkChpt13StmtCopy2VendForeign(accountModel);
+                    return lstBrw;
+                }
+                if (ClearedPrivousPrimaryStandardStatementCondition)
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                }
+                Logger.Trace("ENDED: ");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+        }
+        public List<Borrower> GetOptionArmBkChpt13StmtCopy2VendForeign(AccountsModel accountModel)
+        {
+            List<Borrower> lstBrw = new List<Borrower>();
+            try
+            {
+                Logger.Trace("STARTED:  Execute");
+                if ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
+                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
+                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
+                     && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Copy2Vend", FlexField2 = "A13", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = false;
+                    lstBrw = GetOptionArmBkChpt13StmtArchiveOnlyPrimary(accountModel);
+                    return lstBrw;
+                }
+                if (ClearedPrivousPrimaryStandardStatementCondition)
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                }
+                Logger.Trace("ENDED: ");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+        }
+
+        public List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyPrimary(AccountsModel accountModel)
+        {
+            List<Borrower> lstBrw = new List<Borrower>();
+            try
+            {
+                Logger.Trace("STARTED:  Execute");
+                if ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
+                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
+                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"
+                     && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H")
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = false;
+                    lstBrw = GetOptionArmBkChpt13StmtArchiveOnlyVend(accountModel);
+                    return lstBrw;
+                }
+                if (ClearedPrivousPrimaryStandardStatementCondition)
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                }
+                Logger.Trace("ENDED: ");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+        }
+        public List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyVend(AccountsModel accountModel)
+        {
+            List<Borrower> lstBrw = new List<Borrower>();
+            try
+            {
+                Logger.Trace("STARTED:  Execute");
+                if ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
+                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
+                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
+                     && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H")
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = false;
+                    lstBrw = GetOptionArmBkChpt13StmtArchiveOnlyCopy1Primary(accountModel);
+                    return lstBrw;
+                }
+                if (ClearedPrivousPrimaryStandardStatementCondition)
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                }
+                Logger.Trace("ENDED: ");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+        }
+        public List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyCopy1Primary(AccountsModel accountModel)
+        {
+            List<Borrower> lstBrw = new List<Borrower>();
+            try
+            {
+                Logger.Trace("STARTED:  Execute");
+                if ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
+                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
+                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
+                     && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H")
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = false;
+                    lstBrw = GetOptionArmBkChpt13StmtArchiveOnlyCopy2Vend(accountModel);
+                    return lstBrw;
+                }
+                if (ClearedPrivousPrimaryStandardStatementCondition)
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                }
+                Logger.Trace("ENDED: ");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+        }
+        public List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyCopy2Vend(AccountsModel accountModel)
+        {
+            List<Borrower> lstBrw = new List<Borrower>();
+            try
+            {
+                Logger.Trace("STARTED:  Execute");
+                if ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
+                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
+                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H")
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Copy2Vend", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = false;
+                    lstBrw = GetOptionArmBkChpt13StmtArchiveOnlyNyPrimary(accountModel);
+                    return lstBrw;
+                }
+                if (ClearedPrivousPrimaryStandardStatementCondition)
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                }
+                Logger.Trace("ENDED: ");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+        }
+
+        public List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyNyPrimary(AccountsModel accountModel)
+        {
+            List<Borrower> lstBrw = new List<Borrower>();
+            try
+            {
+                Logger.Trace("STARTED:  Execute");
+                if ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
+                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
+                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"
+                     && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") 
+                     //&& '"LoanNumber" is not on PM-400-661 file or the “Proposed Supplemental CCF Layout_050820”')
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = false;
+                    lstBrw = GetOptionArmBkChpt13StmtArchiveOnlyNyVend(accountModel);
+                    return lstBrw;
+                }
+                if (ClearedPrivousPrimaryStandardStatementCondition)
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                }
+                Logger.Trace("ENDED: ");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+        }
+        public List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyNyVend(AccountsModel accountModel)
+        {
+            List<Borrower> lstBrw = new List<Borrower>();
+            try
+            {
+                Logger.Trace("STARTED:  Execute");
+                if ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
+                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
+                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
+                     && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")
+                //&& '"LoanNumber" is not on PM-400-661 file or the “Proposed Supplemental CCF Layout_050820”')
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = false;
+                    lstBrw = GetOptionArmBkChpt13StmtArchiveOnlyNyCopy1Primary(accountModel);
+                    return lstBrw;
+                }
+                if (ClearedPrivousPrimaryStandardStatementCondition)
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                }
+                Logger.Trace("ENDED: ");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+        }
+        public List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyNyCopy1Primary(AccountsModel accountModel)
+        {
+            List<Borrower> lstBrw = new List<Borrower>();
+            try
+            {
+                Logger.Trace("STARTED:  Execute");
+                if ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
+                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
+                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
+                     && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")
+                    //&& '"LoanNumber" is not on PM-400-661 file or the “Proposed Supplemental CCF Layout_050820”')
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = false;
+                    lstBrw = GetOptionArmbkChpt13StmtArchiveOnlyNyCopy2Vend(accountModel);
+                    return lstBrw;
+                }
+                if (ClearedPrivousPrimaryStandardStatementCondition)
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                }
+                Logger.Trace("ENDED: ");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+        }
+        public List<Borrower> GetOptionArmbkChpt13StmtArchiveOnlyNyCopy2Vend(AccountsModel accountModel)
+        {
+            List<Borrower> lstBrw = new List<Borrower>();
+            try
+            {
+                Logger.Trace("STARTED:  Execute");
+                if ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
+                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
+                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")
+                    //&& '"LoanNumber" is not on PM-400-661 file or the “Proposed Supplemental CCF Layout_050820”')
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Copy2Vend", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = false;
+                    lstBrw = GetOptionArmBkChpt13StmtArchiveOnlyNyHelloPrimary(accountModel);
+                    return lstBrw;
+                }
+                if (ClearedPrivousPrimaryStandardStatementCondition)
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                }
+                Logger.Trace("ENDED: ");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+        }
+
+        public List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyNyHelloPrimary(AccountsModel accountModel)
+        {
+            List<Borrower> lstBrw = new List<Borrower>();
+            try
+            {
+                Logger.Trace("STARTED:  Execute");
+                if ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
+                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
+                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"
+                     && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")
+                //&& 'when field 8 on the “Proposed Supplemental CCF Layout_050820” = HELLO')
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = false;
+                    lstBrw = GetOptionArmBkChpt13StmtArchiveOnlyNyHelloVend(accountModel);
+                    return lstBrw;
+                }
+                if (ClearedPrivousPrimaryStandardStatementCondition)
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                }
+                Logger.Trace("ENDED: ");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+        }
+        public List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyNyHelloVend(AccountsModel accountModel)
+        {
+            List<Borrower> lstBrw = new List<Borrower>();
+            try
+            {
+                Logger.Trace("STARTED:  Execute");
+                if ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
+                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
+                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
+                     && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")
+                //&& 'when field 8 on the “Proposed Supplemental CCF Layout_050820” = HELLO')
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = false;
+                    lstBrw = GetOptionArmBkChpt13StmtArchiveOnlyNyCopy1HelloPrimary(accountModel);
+                    return lstBrw;
+                }
+                if (ClearedPrivousPrimaryStandardStatementCondition)
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                }
+                Logger.Trace("ENDED: ");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+        }
+        public List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyNyCopy1HelloPrimary(AccountsModel accountModel)
+        {
+            List<Borrower> lstBrw = new List<Borrower>();
+            try
+            {
+                Logger.Trace("STARTED:  Execute");
+                if ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
+                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
+                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
+                     && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")
+                //&& 'when field 8 on the “Proposed Supplemental CCF Layout_050820” = HELLO')
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = false;
+                    lstBrw = GetOptionArmBkChpt13StmtArchiveOnlyNyCopy2HelloVend(accountModel);
+                    return lstBrw;
+                }
+                if (ClearedPrivousPrimaryStandardStatementCondition)
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                }
+                Logger.Trace("ENDED: ");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+        }
+        public List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyNyCopy2HelloVend(AccountsModel accountModel)
+        {
+            List<Borrower> lstBrw = new List<Borrower>();
+            try
+            {
+                Logger.Trace("STARTED:  Execute");
+                if ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
+                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
+                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")
+                //&& 'when field 8 on the “Proposed Supplemental CCF Layout_050820” = HELLO')
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Copy2Vend", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = false;
+                    lstBrw = GetOptionArmBkChpt13StmtArchiveOnlyNyHelloDvlPrimary(accountModel);
+                    return lstBrw;
+                }
+                if (ClearedPrivousPrimaryStandardStatementCondition)
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                }
+                Logger.Trace("ENDED: ");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+        }
+
+        public List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyNyHelloDvlPrimary(AccountsModel accountModel)
+        {
+            List<Borrower> lstBrw = new List<Borrower>();
+            try
+            {
+                Logger.Trace("STARTED:  Execute");
+                if ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
+                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
+                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"
+                     && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")
+                //&& 'when field 8 on the “Proposed Supplemental CCF Layout_050820” = HELLO_DVL')
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = false;
+                    lstBrw = GetOptionArmBkChpt13StmtArchiveOnlyNyHelloDvlVend(accountModel);
+                    return lstBrw;
+                }
+                if (ClearedPrivousPrimaryStandardStatementCondition)
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                }
+                Logger.Trace("ENDED: ");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+        }
+        public List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyNyHelloDvlVend(AccountsModel accountModel)
+        {
+            List<Borrower> lstBrw = new List<Borrower>();
+            try
+            {
+                Logger.Trace("STARTED:  Execute");
+                if ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
+                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
+                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
+                     && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")
+                //&& 'when field 8 on the “Proposed Supplemental CCF Layout_050820” = HELLO_DVL')
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = false;
+                    lstBrw = GetOptionArmBkChpt13StmtArchiveOnlyNyCopy1HelloDvlPrimary(accountModel);
+                    return lstBrw;
+                }
+                if (ClearedPrivousPrimaryStandardStatementCondition)
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                }
+                Logger.Trace("ENDED: ");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+        }
+        public List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyNyCopy1HelloDvlPrimary(AccountsModel accountModel)
+        {
+            List<Borrower> lstBrw = new List<Borrower>();
+            try
+            {
+                Logger.Trace("STARTED:  Execute");
+                if ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
+                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
+                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
+                     && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")
+                //&& 'when field 8 on the “Proposed Supplemental CCF Layout_050820” = HELLO')
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = false;
+                    lstBrw = GetOptionArmBkChpt13StmtArchiveOnlyNyCopy2HelloDvlVend(accountModel);
+                    return lstBrw;
+                }
+                if (ClearedPrivousPrimaryStandardStatementCondition)
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                }
+                Logger.Trace("ENDED: ");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+        }
+        public List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyNyCopy2HelloDvlVend(AccountsModel accountModel)
+        {
+            List<Borrower> lstBrw = new List<Borrower>();
+            try
+            {
+                Logger.Trace("STARTED:  Execute");
+                if ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
+                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
+                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")
+                //&& 'when field 8 on the “Proposed Supplemental CCF Layout_050820” = HELLO_DVL')
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Copy2Vend", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = false;
+                    lstBrw = GetOptionArmBkChpt13StmtArchiveOnlyNyDvlPrimary(accountModel);
+                    return lstBrw;
+                }
+                if (ClearedPrivousPrimaryStandardStatementCondition)
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                }
+                Logger.Trace("ENDED: ");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+        }
+
+        public List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyNyDvlPrimary(AccountsModel accountModel)
+        {
+            List<Borrower> lstBrw = new List<Borrower>();
+            try
+            {
+                Logger.Trace("STARTED:  Execute");
+                if ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
+                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
+                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"
+                     && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")
+                //&& 'when field 8 on the “Proposed Supplemental CCF Layout_050820” = DVL')
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = false;
+                    lstBrw = GetOptionArmBkChpt13StmtArchiveOnlyNyDvlVend(accountModel);
+                    return lstBrw;
+                }
+                if (ClearedPrivousPrimaryStandardStatementCondition)
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                }
+                Logger.Trace("ENDED: ");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+        }
+        public List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyNyDvlVend(AccountsModel accountModel)
+        {
+            List<Borrower> lstBrw = new List<Borrower>();
+            try
+            {
+                Logger.Trace("STARTED:  Execute");
+                if ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
+                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
+                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
+                     && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")
+                //&& 'when field 8 on the “Proposed Supplemental CCF Layout_050820” = DVL')
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = false;
+                    lstBrw = GetOptionArmBkChpt13StmtArchiveOnlyNyCopy1DvlPrimary(accountModel);
+                    return lstBrw;
+                }
+                if (ClearedPrivousPrimaryStandardStatementCondition)
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                }
+                Logger.Trace("ENDED: ");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+        }
+        public List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyNyCopy1DvlPrimary(AccountsModel accountModel)
+        {
+            List<Borrower> lstBrw = new List<Borrower>();
+            try
+            {
+                Logger.Trace("STARTED:  Execute");
+                if ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
+                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
+                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
+                     && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")
+                //&& 'when field 8 on the “Proposed Supplemental CCF Layout_050820” = DVL')
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = false;
+                    lstBrw = GetOptionArmBkChpt13StmtArchiveOnlyNyCopy2DvlVend(accountModel);
+                    return lstBrw;
+                }
+                if (ClearedPrivousPrimaryStandardStatementCondition)
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                }
+                Logger.Trace("ENDED: ");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+        }
+        public List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyNyCopy2DvlVend(AccountsModel accountModel)
+        {
+            List<Borrower> lstBrw = new List<Borrower>();
+            try
+            {
+                Logger.Trace("STARTED:  Execute");
+                if ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
+                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
+                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id_PackedData == "O"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")
+                //&& 'when field 8 on the “Proposed Supplemental CCF Layout_050820” = DVL')
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Copy2Vend", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = false;
+                    lstBrw = GetOptionArmBkChpt13StmtNyAndHelloLetterPrimary(accountModel);
+                    return lstBrw;
+                }
+                if (ClearedPrivousPrimaryStandardStatementCondition)
+                {
+                    ClearedPrivousPrimaryStandardStatementCondition = true;
+                }
+                Logger.Trace("ENDED: ");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+        }
+
         public List<Borrower> GetOptionArmBkChpt13StmtNyAndHelloLetterPrimary(AccountsModel accountModel) { List<Borrower> lstBrw = new List<Borrower>(); try { Logger.Trace("STARTED:  Execute"); Logger.Trace("ENDED: "); } catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; } return lstBrw; }
         public List<Borrower> GetOptionArmBkChpt13StmtNyHelloLetterVend(AccountsModel accountModel) { List<Borrower> lstBrw = new List<Borrower>(); try { Logger.Trace("STARTED:  Execute"); Logger.Trace("ENDED: "); } catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; } return lstBrw; }
         public List<Borrower> GetOptionArmBkChpt13StmtNyHelloLetterCopy1Primary(AccountsModel accountModel) { List<Borrower> lstBrw = new List<Borrower>(); try { Logger.Trace("STARTED:  Execute"); Logger.Trace("ENDED: "); } catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; } return lstBrw; }
@@ -3432,11 +4566,10 @@ namespace CarringtonMortgage.FlexFields_Calculation
         public List<Borrower> GetOptionArmbkChpt13StmtNyAndDvlLetterVend(AccountsModel accountModel) { List<Borrower> lstBrw = new List<Borrower>(); try { Logger.Trace("STARTED:  Execute"); Logger.Trace("ENDED: "); } catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; } return lstBrw; }
         public List<Borrower> GetOptionArmBkChpt13StmtNyAndDvlLetterCopy1Primary(AccountsModel accountModel) { List<Borrower> lstBrw = new List<Borrower>(); try { Logger.Trace("STARTED:  Execute"); Logger.Trace("ENDED: "); } catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; } return lstBrw; }
         public List<Borrower> GetOptionArmbkChpt13StmtNyAndDvlLetterCopy2Vend(AccountsModel accountModel) { List<Borrower> lstBrw = new List<Borrower>(); try { Logger.Trace("STARTED:  Execute"); Logger.Trace("ENDED: "); } catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; } return lstBrw; }
+        
         public List<Borrower> GetOptionArmBkChpt13EDeliveryArchivePrimary(AccountsModel accountModel) { List<Borrower> lstBrw = new List<Borrower>(); try { Logger.Trace("STARTED:  Execute"); Logger.Trace("ENDED: "); } catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; } return lstBrw; }
         public List<Borrower> GetOptionArmBkChpt13EDeliveryArchiveVend(AccountsModel accountModel) { List<Borrower> lstBrw = new List<Borrower>(); try { Logger.Trace("STARTED:  Execute"); Logger.Trace("ENDED: "); } catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; } return lstBrw; }
         public List<Borrower> GetOptionArmBkChpt13EDeliveryArchiveCopy1(AccountsModel accountModel) { List<Borrower> lstBrw = new List<Borrower>(); try { Logger.Trace("STARTED:  Execute"); Logger.Trace("ENDED: "); } catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; } return lstBrw; }
         public List<Borrower> GetOptionArmBkChpt13EDeliveryMailCopy2Vend(AccountsModel accountModel) { List<Borrower> lstBrw = new List<Borrower>(); try { Logger.Trace("STARTED:  Execute"); Logger.Trace("ENDED: "); } catch (Exception ex) { Logger.Error(ex, ex.TargetSite.Name); throw; } return lstBrw; }
-
-
     }
 }
