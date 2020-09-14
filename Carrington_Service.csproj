@@ -31,7 +31,7 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -71,10 +71,21 @@
     <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Common">
+      <HintPath>Library\Common.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.1.1.1\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="NCP.WMS.Core, Version=20.5.11.1, Culture=neutral, PublicKeyToken=59b957cc45861930, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\NCP.WMS.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="NCP.WMS.Framework.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=59b957cc45861930, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\NCP.WMS.Framework.Data.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -113,7 +124,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Agents\AgentApi.cs" />
+    <Compile Include="BusinessExpert\CRL30FileGeneration.cs" />
     <Compile Include="BusinessExpert\WorkFlowExpert.cs" />
+    <Compile Include="Calculation_Classes\RejectStatement.cs" />
     <Compile Include="Calculation_Classes\StandardBillingStatement.cs" />
     <Compile Include="Calculation_Classes\OptionARMBillingStatement.cs" />
     <Compile Include="Calculation_Classes\ChapterThirteenOptionARMStatement.cs" />
@@ -219,6 +232,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Input\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Library\NCP.WMS.Core.dll" />
+    <Content Include="Library\NCP.WMS.Framework.Data.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

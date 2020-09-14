@@ -17,5 +17,12 @@ namespace CarringtonMortgage.Models.InputCopyBookModels.MortgageLoanBillingModel
         public HeaderRecordModel HeaderRecords { get; set; }
         public InstitutionRecordModel InstitutionRecords { get; set; }
         public List<AccountsModel> AccountModelList { get; set; }
+
+        public string InputFileName { get; set; }
+        public long InputFileSize { get; set; }
+        public DateTime InputFileDate { get; set; }
+
+        public int TotalNumberOfAccount { get; set; }
+
     }
 }
