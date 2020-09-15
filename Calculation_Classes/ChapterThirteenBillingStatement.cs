@@ -170,10 +170,10 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Past Unpaid Amount operation.");
+                Logger.Trace("STARTED:  Execute to Get Past Unpaid Amount.");
                 PastUnpaidAmount = Convert.ToString(Convert.ToInt64(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Unpaid_PackedData) - GetTotalFeesPaid(accountsModel));
 
-                Logger.Trace("ENDED:    Get to Past Unpaid Amount operation.");
+                Logger.Trace("ENDED:    Get to Past Unpaid Amount.");
                 return PastUnpaidAmount;
             }
             catch (Exception ex)
@@ -192,7 +192,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Total Fees Paid operation.");
+                Logger.Trace("STARTED:  Execute to Get Total Fees Paid.");
                 if ((Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_PackedData) +
                                Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)) <
                                Convert.ToInt64(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData))
@@ -206,7 +206,7 @@ namespace Carrington_Service.Calculation_Classes
                 {
                     TotalFeesPaid = Convert.ToInt64(0.00);
                 }
-                Logger.Trace("ENDED:    Get to Total Fees Paid operation.");
+                Logger.Trace("ENDED:    Get to Total Fees Paid.");
                 return TotalFeesPaid;
             }
             catch (Exception ex)
@@ -225,7 +225,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Total Payment Amount operation.");
+                Logger.Trace("STARTED:  Execute to Get Total Payment Amount.");
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     TotalPaymentAmount = "0.00";
 
@@ -239,7 +239,7 @@ namespace Carrington_Service.Calculation_Classes
                     TotalPaymentAmount = Convert.ToString(Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) +
                         Convert.ToInt64(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Unpaid_PackedData) +
                         Convert.ToInt64(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData));
-                Logger.Trace("ENDED:    Get to Total Payment Amount operation.");
+                Logger.Trace("ENDED:    Get to Total Payment Amount.");
                 return TotalPaymentAmount;
             }
             catch (Exception ex)
@@ -258,7 +258,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Fees And Charges Paid Last Month operation.");
+                Logger.Trace("STARTED:  Execute to Get Fees And Charges Paid Last Month.");
                 if ((Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5705 || Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5707)
                  &&
                 (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 67 || Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 198))
@@ -267,7 +267,7 @@ namespace Carrington_Service.Calculation_Classes
                     Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Lc_Pd_Since_Lst_Stmt_PackedData) -
                     Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
                 }
-                Logger.Trace("ENDED:    Get to Fees And Charges Paid Last Month operation.");
+                Logger.Trace("ENDED:    Get to Fees And Charges Paid Last Month.");
                 return FeesAndChargesPaidLastMonth;
             }
             catch (Exception ex)
@@ -286,9 +286,9 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Unapplied Funds Paid Last Month operation.");
+                Logger.Trace("STARTED:  Execute to Get Unapplied Funds Paid Last Month.");
                 UnappliedFundsPaidLastMonth = Convert.ToString(Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_04) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05));
-                Logger.Trace("ENDED:    Get to Unapplied Funds Paid Last Month operation.");
+                Logger.Trace("ENDED:    Get to Unapplied Funds Paid Last Month.");
                 return UnappliedFundsPaidLastMonth;
 
             }
@@ -302,7 +302,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Total Paid Last Month operation.");
+                Logger.Trace("STARTED:  Execute to Get Total Paid Last Month.");
                 if ((Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5705 || Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5707)
                     &&
                     (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 67 || Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 198))
@@ -314,7 +314,7 @@ namespace Carrington_Service.Calculation_Classes
                 {
                     TotalPaidLastMonth = Convert.ToString(Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Tot_Pd_Since_Lst_Stmt_PackedData) - Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
                 }
-                Logger.Trace("ENDED:    Get to Total Paid Last Month operation.");
+                Logger.Trace("ENDED:    Get to Total Paid Last Month.");
             }
             catch (Exception ex)
             {
@@ -327,7 +327,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Fees And Charges Paid Year to Date operation.");
+                Logger.Trace("STARTED:  Execute to Get Fees And Charges Paid Year to Date.");
                 Decimal total = Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Fees_Paid_Ytd_PackedData) + Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Late_Chg_Paid_Ytd_PackedData) - Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData);
                 if ((Convert.ToInt32(accountModel.TransactionRecordModel.Rssi_Log_Tran) == 5705 || Convert.ToInt32(accountModel.TransactionRecordModel.Rssi_Log_Tran) == 5707) && (Convert.ToInt32(accountModel.TransactionRecordModel.Rssi_Tr_Fee_Code) == 67 || Convert.ToInt32(accountModel.TransactionRecordModel.Rssi_Tr_Fee_Code) == 198))
                 {
@@ -337,7 +337,7 @@ namespace Carrington_Service.Calculation_Classes
                 {
                     FeesAndChargesPaidYeartoDate = string.Empty;
                 }
-                Logger.Trace("ENDED:    Get to Fees And Charges Paid Year to Date operation.");
+                Logger.Trace("ENDED:    Get to Fees And Charges Paid Year to Date.");
                 return FeesAndChargesPaidYeartoDate;
             }
             catch (Exception ex)
@@ -350,9 +350,9 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Unapplied Funds Paid Year To Date operation.");
+                Logger.Trace("STARTED:  Execute to Get Unapplied Funds Paid Year To Date.");
                 UnappliedFundsPaidYearToDate = Convert.ToString((accountModel.MasterFileDataPart_1Model.Rssi_Unap_Fund_Cd != "L" ? Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Esc_Var_PackedData) : 0) + (accountModel.MasterFileDataPart2Model.Rssi_Unap_Cd_2 != "L" ? Convert.ToDecimal(accountModel.MasterFileDataPart2Model.Rssi_Unap_Bal_2_PackedData) : 0) + (accountModel.MasterFileDataPart2Model.Rssi_Unap_Cd_3 != "L" ? Convert.ToDecimal(accountModel.MasterFileDataPart2Model.Rssi_Unap_Bal_3_PackedData) : 0) + (accountModel.MasterFileDataPart2Model.Rssi_Unap_Cd_4 != "L" ? Convert.ToDecimal(accountModel.MasterFileDataPart2Model.Rssi_Unap_Bal_4_PackedData) : 0) + (accountModel.MasterFileDataPart2Model.Rssi_Unap_Cd_5 != "L" ? Convert.ToDecimal(accountModel.MasterFileDataPart2Model.Rssi_Unap_Bal_5_PackedData) : 0));
-                Logger.Trace("ENDED:    Get to Unapplied Funds Paid Year To Date operation.");
+                Logger.Trace("ENDED:    Get to Unapplied Funds Paid Year To Date.");
                 return UnappliedFundsPaidYearToDate;
             }
             catch (Exception ex)
@@ -365,9 +365,9 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Total Paid Year To Date operation.");
+                Logger.Trace("STARTED:  Execute to Get Total Paid Year To Date.");
                 TotalPaidYearToDate = Convert.ToString(Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Paid_Ytd_PackedData) + Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Int_Pd_Ytd_PackedData) + Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Esc_Paid_Ytd_PackedData) + Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Fees_Paid_Ytd_PackedData) + Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Late_Chg_Paid_Ytd_PackedData) + (accountModel.MasterFileDataPart_1Model.Rssi_Unap_Fund_Cd != "L" ? Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Esc_Var_PackedData) : 0) + (accountModel.MasterFileDataPart2Model.Rssi_Unap_Cd_2 != "L" ? Convert.ToDecimal(accountModel.MasterFileDataPart2Model.Rssi_Unap_Bal_2_PackedData) : 0) + (accountModel.MasterFileDataPart2Model.Rssi_Unap_Cd_3 != "L" ? Convert.ToDecimal(accountModel.MasterFileDataPart2Model.Rssi_Unap_Bal_3_PackedData) : 0) + (accountModel.MasterFileDataPart2Model.Rssi_Unap_Cd_4 != "L" ? Convert.ToDecimal(accountModel.MasterFileDataPart2Model.Rssi_Unap_Bal_4_PackedData) : 0) + (accountModel.MasterFileDataPart2Model.Rssi_Unap_Cd_5 != "L" ? Convert.ToDecimal(accountModel.MasterFileDataPart2Model.Rssi_Unap_Bal_5_PackedData) : 0) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Optins_PackedData));
-                Logger.Trace("ENDED:    Get to Get Total Paid Year To Date operation.");
+                Logger.Trace("ENDED:    Get to Get Total Paid Year To Date.");
                 return TotalPaidYearToDate;
             }
             catch (Exception ex)
@@ -381,9 +381,9 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Get Suspense operation.");
+                Logger.Trace("STARTED:  Execute to Get Get Suspense.");
                 Suspense = Convert.ToString(Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_04) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05));
-                Logger.Trace("ENDED:    Get to Get Total Paid Year To Date operation.");
+                Logger.Trace("ENDED:    Get to Get Total Paid Year To Date.");
                 return Suspense;
             }
             catch (Exception ex)
@@ -396,9 +396,9 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Miscellaneous operation.");
+                Logger.Trace("STARTED:  Execute to Miscellaneous.");
                 Miscellaneous = Convert.ToString(Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Lip_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Cr_Ins_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Pi_Shrtg) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Prin_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Int_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Late_Chrg_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Esc_Adv_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Pd_Exp_Adv_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Unp_Exp_Adv_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Admin_Fees_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Optins_PackedData));
-                Logger.Trace("ENDED:    To Miscellaneous operation.");
+                Logger.Trace("ENDED:    get Miscellaneous.");
                 return Miscellaneous;
             }
             catch (Exception ex)
@@ -416,10 +416,10 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Print Statement operation.");
+                Logger.Trace("STARTED:  Execute to Print Statement.");
                 if (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H")
                     PrintStatement = "Create image but do not mail.";
-                Logger.Trace("ENDED:    To Print Statement operation.");
+                Logger.Trace("ENDED:    get Print Statement.");
                 return PrintStatement;
             }
             catch (Exception ex)
@@ -432,7 +432,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Primary Borrower BK Attorney operation.");
+                Logger.Trace("STARTED:  Execute to Primary Borrower BK Attorney.");
                 if (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B")
                     PrimaryBorrowerBKAttorney = accountModel.MasterFileDataPart_1Model.Rssi_Primary_Name;
                 else if (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L")
