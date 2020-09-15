@@ -14,6 +14,7 @@ namespace Carrington_Service
             try
             {
                 objWFservice.logger.Trace("STARTED: Main");
+               
                 if (objWFservice.StartWorkFlowService())
                 {
                     objWFservice.logger.Trace("SUCCESS: Application succcesfully executed with 0 error."); 
