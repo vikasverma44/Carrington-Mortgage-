@@ -2,19 +2,19 @@
 
 namespace CarritonMortgage.Calculation_Classes
 {
-    public class RejectStatement
+    public static class RejectStatement
     {
-        public RejectStatement()
-        {
+        //public RejectStatement()
+        //{
 
-        }
+        //}
 
         /// <summary>
         /// This method check if an account needs to be rejected
         /// </summary>
         /// <param name="accountModel"></param>
         /// <returns></returns>
-        public bool IsRejectAccount(AccountsModel accountModel)
+        public static bool IsRejectAccount(AccountsModel accountModel)
         {
             bool isReject = false;
 
@@ -44,7 +44,7 @@ namespace CarritonMortgage.Calculation_Classes
                 isReject = true;
             }
             //Rejection condition 4
-            else ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13")
+            else if ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13")
             && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
             && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "N" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "null"))
             {

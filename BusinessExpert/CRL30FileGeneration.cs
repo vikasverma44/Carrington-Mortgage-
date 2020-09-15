@@ -1,5 +1,6 @@
 ﻿using Carrington_Service.Infrastructure;
 using CarringtonMortgage.Models.InputCopyBookModels.MortgageLoanBillingModels;
+using CarritonMortgage.Calculation_Classes;
 using Common;
 using System;
 using System.Collections.Generic;
@@ -132,12 +133,7 @@ namespace ODHS_EDelivery.BusinessExpert
                     account.Standard.AccountSequenceNumber = primaryIndex;
 
 
-
-                    if (extractAccount.MasterFileDataPart_1Model.Rssi_Acct_No == "0000000011")
-                    {
-                        RejectAccount(account, "Invalid Statement Date");
-                       // continue;
-                    }
+                  
 
                     lineCnt++;
 
@@ -181,7 +177,14 @@ namespace ODHS_EDelivery.BusinessExpert
                     //}
 
                     // End DE8558
-                   
+
+                    //Check account is rejected or not 
+                    if (RejectStatement.IsRejectAccount(extractAccount))
+                    {
+                        RejectAccount(account, "Invalid Statement Date");
+                        // continue;
+                    }
+
                     account.SequenceTransactions();
                     output.AddAccount(account);
                     primaryIndex++;
