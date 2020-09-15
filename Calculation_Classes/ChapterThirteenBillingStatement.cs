@@ -12,55 +12,55 @@ namespace Carrington_Service.Calculation_Classes
     public class ChapterThirteenBillingStatement
     {
         #region Object Declaration  ==>
-        private ILogger Logger;
+        public ILogger Logger;
 
         #endregion
 
-        #region private Property ==>
-        private string PaymentAmount { get; set; }
-        private string Principal { get; set; }
-        private string PastUnpaidAmount { get; set; }
-        private decimal TotalFeesPaid { get; set; }
-        private string TotalPaymentAmount { get; set; }
-        private string DeferredBalance { get; set; }
-        private string FeesAndChargesPaidLastMonth { get; set; }
-        private string UnappliedFundsPaidLastMonth { get; set; }
-        private string TotalPaidLastMonth { get; set; }
-        private string FeesAndChargesPaidYeartoDate { get; set; }
-        private string UnappliedFundsPaidYearToDate { get; set; }
-        private string TotalPaidYearToDate { get; set; }
-        private string Suspense { get; set; }
-        private string Miscellaneous { get; set; }
+        #region public Property ==>
+        public string PaymentAmount { get; set; }
+        public string Principal { get; set; }
+        public string PastUnpaidAmount { get; set; }
+        public decimal TotalFeesPaid { get; set; }
+        public string TotalPaymentAmount { get; set; }
+        public string DeferredBalance { get; set; }
+        public string FeesAndChargesPaidLastMonth { get; set; }
+        public string UnappliedFundsPaidLastMonth { get; set; }
+        public string TotalPaidLastMonth { get; set; }
+        public string FeesAndChargesPaidYeartoDate { get; set; }
+        public string UnappliedFundsPaidYearToDate { get; set; }
+        public string TotalPaidYearToDate { get; set; }
+        public string Suspense { get; set; }
+        public string Miscellaneous { get; set; }
 
 
-        private string PrintStatement { get; set; }
-        private string PrimaryBorrowerBKAttorney { get; set; }
-        private string SecondaryBorrower { get; set; }
-        private string MailingBKAttorneyAddressLine1 { get; set; }
-        private string MailingBKAttorneyAddressLine2 { get; set; }
-        private string BorrowerAttorneyMailingCityStateZip { get; set; }
-        private string MailingCountry { get; set; }
-        private string Interest { get; set; }
-        private string EscrowTaxesandInsurance { get; set; }
-        private string RegularMonthlyPayment { get; set; }
-        private string BuydownBalance { get; set; }
-        private string PartialClaim { get; set; }
-        private string InterestRateUntil { get; set; }
-        private string PrepaymentPenalty { get; set; }
-        private string CarringtonFoundationDonationPaidLastMonth { get; set; }
-        private string CarringtonFoundationDonationPaidYearToDate { get; set; }
-        private string PostPetitonPastDueMessage { get; set; }
-        private string CMSPartialClaim { get; set; }
-        private string HUDPartialClaim { get; set; }
-        private string POBoxAddress { get; set; }
-        private string Date { get; set; }
-        private string Amount { get; set; }
-        private string LenderPlacedInsuranceMessage { get; set; }
-        private string StateNSF { get; set; }
-        private string AutodraftMessage { get; set; }
-        private string StateDisclosures { get; set; }
-        private string CarringtonCharitableFoundation { get; set; }
-        private string PaymentInformationMessage { get; set; }
+        public string PrintStatement { get; set; }
+        public string PrimaryBorrowerBKAttorney { get; set; }
+        public string SecondaryBorrower { get; set; }
+        public string MailingBKAttorneyAddressLine1 { get; set; }
+        public string MailingBKAttorneyAddressLine2 { get; set; }
+        public string BorrowerAttorneyMailingCityStateZip { get; set; }
+        public string MailingCountry { get; set; }
+        public string Interest { get; set; }
+        public string EscrowTaxesandInsurance { get; set; }
+        public string RegularMonthlyPayment { get; set; }
+        public string BuydownBalance { get; set; }
+        public string PartialClaim { get; set; }
+        public string InterestRateUntil { get; set; }
+        public string PrepaymentPenalty { get; set; }
+        public string CarringtonFoundationDonationPaidLastMonth { get; set; }
+        public string CarringtonFoundationDonationPaidYearToDate { get; set; }
+        public string PostPetitonPastDueMessage { get; set; }
+        public string CMSPartialClaim { get; set; }
+        public string HUDPartialClaim { get; set; }
+        public string POBoxAddress { get; set; }
+        public string Date { get; set; }
+        public string Amount { get; set; }
+        public string LenderPlacedInsuranceMessage { get; set; }
+        public string StateNSF { get; set; }
+        public string AutodraftMessage { get; set; }
+        public string StateDisclosures { get; set; }
+        public string CarringtonCharitableFoundation { get; set; }
+        public string PaymentInformationMessage { get; set; }
 
         #endregion
 
@@ -71,7 +71,7 @@ namespace Carrington_Service.Calculation_Classes
         }
 
         /* While Calculating Conditions must be applied and copybook fields must be verified twice*/
-        private string GetPaymentAmount(AccountsModel accountsModel)
+        public string GetPaymentAmount(AccountsModel accountsModel)
         {
             try
             {
@@ -106,7 +106,7 @@ namespace Carrington_Service.Calculation_Classes
         /// </summary>
         /// <param name="accountsModel"></param>
         /// <returns></returns>
-        private string GetDeferredBalance(AccountsModel accountsModel)
+        public string GetDeferredBalance(AccountsModel accountsModel)
         {
             try
             {
@@ -133,7 +133,7 @@ namespace Carrington_Service.Calculation_Classes
         /// </summary>
         /// <param name="accountsModel"></param>
         /// <returns></returns>
-        private string GetPrincipal(AccountsModel accountsModel)
+        public string GetPrincipal(AccountsModel accountsModel)
         {
             try
             {
@@ -166,7 +166,7 @@ namespace Carrington_Service.Calculation_Classes
         /// </summary>
         /// <param name="accountsModel"></param>
         /// <returns></returns>
-        private string GetPastUnpaidAmount(AccountsModel accountsModel)
+        public string GetPastUnpaidAmount(AccountsModel accountsModel)
         {
             try
             {
@@ -188,7 +188,7 @@ namespace Carrington_Service.Calculation_Classes
         /// </summary>
         /// <param name="accountsModel"></param>
         /// <returns></returns>
-        private decimal GetTotalFeesPaid(AccountsModel accountsModel)
+        public decimal GetTotalFeesPaid(AccountsModel accountsModel)
         {
             try
             {
@@ -221,7 +221,7 @@ namespace Carrington_Service.Calculation_Classes
         /// </summary>
         /// <param name="accountsModel"></param>
         /// <returns></returns>
-        private string GetTotalPaymentAmount(AccountsModel accountsModel)
+        public string GetTotalPaymentAmount(AccountsModel accountsModel)
         {
             try
             {
@@ -254,7 +254,7 @@ namespace Carrington_Service.Calculation_Classes
         /// </summary>
         /// <param name="accountsModel"></param>
         /// <returns></returns>
-        private string GetFeesAndChargesPaidLastMonth(AccountsModel accountsModel)
+        public string GetFeesAndChargesPaidLastMonth(AccountsModel accountsModel)
         {
             try
             {
@@ -282,7 +282,7 @@ namespace Carrington_Service.Calculation_Classes
         /// </summary>
         /// <param name="accountModel"></param>
         /// <returns></returns>
-        private string GetUnappliedFundsPaidLastMonth(AccountsModel accountModel)
+        public string GetUnappliedFundsPaidLastMonth(AccountsModel accountModel)
         {
             try
             {
@@ -298,7 +298,7 @@ namespace Carrington_Service.Calculation_Classes
                 throw;
             }
         }
-        private string GetTotalPaidLastMonth(AccountsModel accountsModel)
+        public string GetTotalPaidLastMonth(AccountsModel accountsModel)
         {
             try
             {
@@ -323,7 +323,7 @@ namespace Carrington_Service.Calculation_Classes
             }
             return TotalPaidLastMonth;
         }
-        private string GetFeesAndChargesPaidYeartoDate(AccountsModel accountModel)
+        public string GetFeesAndChargesPaidYeartoDate(AccountsModel accountModel)
         {
             try
             {
@@ -346,7 +346,7 @@ namespace Carrington_Service.Calculation_Classes
                 throw;
             }
         }
-        private string GetUnappliedFundsPaidYearToDate(AccountsModel accountModel)
+        public string GetUnappliedFundsPaidYearToDate(AccountsModel accountModel)
         {
             try
             {
@@ -361,7 +361,7 @@ namespace Carrington_Service.Calculation_Classes
                 throw;
             }
         }
-        private string GetTotalPaidYearToDate(AccountsModel accountModel)
+        public string GetTotalPaidYearToDate(AccountsModel accountModel)
         {
             try
             {
@@ -377,7 +377,7 @@ namespace Carrington_Service.Calculation_Classes
             }
         }
 
-        private string GetSuspense(AccountsModel accountModel)
+        public string GetSuspense(AccountsModel accountModel)
         {
             try
             {
@@ -392,7 +392,7 @@ namespace Carrington_Service.Calculation_Classes
                 throw;
             }
         }
-        private string GetMiscellaneous(AccountsModel accountModel)
+        public string GetMiscellaneous(AccountsModel accountModel)
         {
             try
             {
@@ -412,7 +412,7 @@ namespace Carrington_Service.Calculation_Classes
 
         #region  New Method ==>
 
-        private string GetPrintStatement(AccountsModel accountModel)
+        public string GetPrintStatement(AccountsModel accountModel)
         {
             try
             {
@@ -428,7 +428,7 @@ namespace Carrington_Service.Calculation_Classes
                 throw;
             }
         }
-        private string GetPrimaryBorrowerBKAttorney(AccountsModel accountModel)
+        public string GetPrimaryBorrowerBKAttorney(AccountsModel accountModel)
         {
             try
             {
@@ -449,7 +449,7 @@ namespace Carrington_Service.Calculation_Classes
             }
         }
 
-        private string GetSecondaryBorrower(AccountsModel accountModel)
+        public string GetSecondaryBorrower(AccountsModel accountModel)
         {
             try
             {
@@ -468,7 +468,7 @@ namespace Carrington_Service.Calculation_Classes
             }
         }
 
-        private string GetMailingBKAttorneyAddressLine1(AccountsModel accountModel)
+        public string GetMailingBKAttorneyAddressLine1(AccountsModel accountModel)
         {
             try
             {
@@ -489,7 +489,7 @@ namespace Carrington_Service.Calculation_Classes
             }
         }
 
-        private string GetMailingBKAttorneyAddressLine2(AccountsModel accountModel)
+        public string GetMailingBKAttorneyAddressLine2(AccountsModel accountModel)
         {
             try
             {
@@ -509,7 +509,7 @@ namespace Carrington_Service.Calculation_Classes
                 throw;
             }
         }
-        private string GetBorrowerAttorneyMailingCityStateZip(AccountsModel accountModel)
+        public string GetBorrowerAttorneyMailingCityStateZip(AccountsModel accountModel)
         {
             try
             {
@@ -532,7 +532,7 @@ namespace Carrington_Service.Calculation_Classes
             }
         }
 
-        private string GetMailingCountry(AccountsModel accountModel)
+        public string GetMailingCountry(AccountsModel accountModel)
         {
             try
             {
@@ -555,7 +555,7 @@ namespace Carrington_Service.Calculation_Classes
             }
         }
 
-        private string GetInterest(AccountsModel accountModel)
+        public string GetInterest(AccountsModel accountModel)
         {
             try
             {
@@ -575,7 +575,7 @@ namespace Carrington_Service.Calculation_Classes
                 throw;
             }
         }
-        private string GetEscrowTaxesandInsurance(AccountsModel accountModel)
+        public string GetEscrowTaxesandInsurance(AccountsModel accountModel)
         {
             try
             {
@@ -595,7 +595,7 @@ namespace Carrington_Service.Calculation_Classes
                 throw;
             }
         }
-        private string GetRegularMonthlyPayment(AccountsModel accountModel)
+        public string GetRegularMonthlyPayment(AccountsModel accountModel)
         {
             try
             {
@@ -613,7 +613,7 @@ namespace Carrington_Service.Calculation_Classes
                 throw;
             }
         }
-        private string GetBuydownBalance(AccountsModel accountModel)
+        public string GetBuydownBalance(AccountsModel accountModel)
         {
             try
             {
@@ -632,7 +632,7 @@ namespace Carrington_Service.Calculation_Classes
                 throw;
             }
         }
-        private string GetPartialClaim(AccountsModel accountModel)
+        public string GetPartialClaim(AccountsModel accountModel)
         {
             try
             {
@@ -650,7 +650,7 @@ namespace Carrington_Service.Calculation_Classes
                 throw;
             }
         }
-        private string GetInterestRateUntil(AccountsModel accountModel)
+        public string GetInterestRateUntil(AccountsModel accountModel)
         {
             try
             {
@@ -669,7 +669,7 @@ namespace Carrington_Service.Calculation_Classes
             }
         }
 
-        private string GetPrepaymentPenalty(AccountsModel accountModel)
+        public string GetPrepaymentPenalty(AccountsModel accountModel)
         {
             try
             {
@@ -687,7 +687,7 @@ namespace Carrington_Service.Calculation_Classes
                 throw;
             }
         }
-        private string GetCarringtonFoundationDonationPaidLastMonth(AccountsModel accountModel)
+        public string GetCarringtonFoundationDonationPaidLastMonth(AccountsModel accountModel)
         {
             try
             {
@@ -703,7 +703,7 @@ namespace Carrington_Service.Calculation_Classes
                 throw;
             }
         }
-        private string GetCarringtonFoundationDonationPaidYearToDate(AccountsModel accountModel)
+        public string GetCarringtonFoundationDonationPaidYearToDate(AccountsModel accountModel)
         {
             try
             {
@@ -720,7 +720,7 @@ namespace Carrington_Service.Calculation_Classes
             }
         }
 
-        private string GetPostPetitonPastDueMessage(AccountsModel accountModel)
+        public string GetPostPetitonPastDueMessage(AccountsModel accountModel)
         {
             try
             {
@@ -739,7 +739,7 @@ namespace Carrington_Service.Calculation_Classes
             }
         }
 
-        private string GetCMSPartialClaim(AccountsModel accountModel)
+        public string GetCMSPartialClaim(AccountsModel accountModel)
         {
             try
             {
@@ -755,7 +755,7 @@ namespace Carrington_Service.Calculation_Classes
                 throw;
             }
         }
-        private string GetHUDPartialClaim(AccountsModel accountModel)
+        public string GetHUDPartialClaim(AccountsModel accountModel)
         {
             try
             {
@@ -772,7 +772,7 @@ namespace Carrington_Service.Calculation_Classes
             }
         }
         // This condition statement is not cleared ===>  If Mailing State = KS, LA, NM, OK, or TX then Dallas P.O.Box Address else Pasadena P.O.Box  Address
-        private string GetPOBoxAddress(AccountsModel accountModel)
+        public string GetPOBoxAddress(AccountsModel accountModel)
         {
             try
             {
@@ -792,7 +792,7 @@ namespace Carrington_Service.Calculation_Classes
                 throw;
             }
         }
-        //private string GetDate(AccountsModel accountModel)
+        //public string GetDate(AccountsModel accountModel)
         //{
         //    if (accountModel.FeeRecordModel.RSSI_FT_TYPE_CODE == "000")
         //        Date = accountModel.FeeRecordModel.RSSI_FEE_DATE_ASSESSED;
@@ -801,7 +801,7 @@ namespace Carrington_Service.Calculation_Classes
         //    return Date;
 
         //}
-        //private string GetAmount(AccountsModel accountModel)
+        //public string GetAmount(AccountsModel accountModel)
         //{
         //    if (Convert.ToInt64(accountModel.TransactionRecordModel.Rssi_Tr_Exp_Fee_Amt_PackedData) != 0)
         //        Amount = accountModel.TransactionRecordModel.Rssi_Tr_Exp_Fee_Amt_PackedData;
@@ -812,7 +812,7 @@ namespace Carrington_Service.Calculation_Classes
         //    return Amount;
 
         //}
-        private string GetLenderPlacedInsuranceMessage(AccountsModel accountModel)
+        public string GetLenderPlacedInsuranceMessage(AccountsModel accountModel)
         {
             try
             {
@@ -833,7 +833,7 @@ namespace Carrington_Service.Calculation_Classes
                 throw;
             }
         }
-        private string GetStateNSF(AccountsModel accountModel)
+        public string GetStateNSF(AccountsModel accountModel)
         {
             try
             {
@@ -853,7 +853,7 @@ namespace Carrington_Service.Calculation_Classes
             }
         }
 
-        private string GetAutodraftMessage(AccountsModel accountModel)
+        public string GetAutodraftMessage(AccountsModel accountModel)
         {
             try
             {
@@ -873,7 +873,7 @@ namespace Carrington_Service.Calculation_Classes
         }
 
         //What to do if the condition is satisfied
-        private string GetStateDisclosures(AccountsModel accountModel)
+        public string GetStateDisclosures(AccountsModel accountModel)
         {
             try
             {
@@ -892,7 +892,7 @@ namespace Carrington_Service.Calculation_Classes
             }
         }
 
-        private string GetCarringtonCharitableFoundation(AccountsModel accountModel)
+        public string GetCarringtonCharitableFoundation(AccountsModel accountModel)
         {
             try
             {
@@ -909,7 +909,7 @@ namespace Carrington_Service.Calculation_Classes
             }
         }
 
-        private string GetPaymentInformationMessage(AccountsModel accountModel)
+        public string GetPaymentInformationMessage(AccountsModel accountModel)
         {
             try
             {
