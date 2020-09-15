@@ -150,7 +150,6 @@
     <Compile Include="CRLClasses\NCPPipeCreatedByComposerModel.cs" />
     <Compile Include="CRLClasses\NCPPipeCreatedByRubikaModel.cs" />
     <Compile Include="DIContainer.cs" />
-    <Compile Include="FlexFields_Calculation\StatementType _Copy.cs" />
     <Compile Include="Helpers\CommonHelper.cs" />
     <Compile Include="FlexFields_Calculation\Borrower.cs" />
     <Compile Include="FlexFields_Calculation\StatementType.cs" />
