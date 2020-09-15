@@ -382,7 +382,7 @@ namespace CarringtonMortgage.Models.InputCopyBookModels.MortgageLoanBillingModel
         public string Rssi_Usr_371_PackedData { get; set; }
         public string Rssi_Usr_372_PackedData { get; set; }
         public string Rssi_Usr_373_PackedData { get; set; }
-        public string FillerPart3 { get; set; }
+        public string Filler { get; set; }
 
     }
 }

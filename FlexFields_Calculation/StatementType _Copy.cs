@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace CarringtonMortgage.FlexFields_Calculation
 {
-    public class StatementType
+    public class StatementType_Copy
     {
         #region Object Declaration ==>
         public ILogger Logger;
         public AccountsModel accountModel;
         #endregion
-        public StatementType(ILogger logger)
+        public StatementType_Copy(ILogger logger)
         {
             Logger = logger;
 
