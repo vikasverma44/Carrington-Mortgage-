@@ -1,5 +1,6 @@
 ﻿using Carrington_Service;
 using Carrington_Service.BusinessExpert;
+using Carrington_Service.Helpers;
 using Carrington_Service.Infrastructure;
 using Carrington_Service.Interfaces;
 using Carrington_Service.Services;
@@ -23,39 +24,43 @@ namespace Carrington_Service
         private static void Main(string[] args)
         {
             DIContainer.SetupInjector();
-            WorkFlowService objWFservice = DIContainer.GetWorkFlowServiceInstance();
-            //  WorkFlowExpert objWFexpert = DIContainer.GetWorkFlowExpertInstance();
+            WorkFlowExpert objWFservice = DIContainer.GetWorkFlowServiceInstance();
+  
+
             try
-            {
-                //bool status = objWFexpert.FileReadingProcess(_inputFile, _trackingId);
+            { 
+               // objWFservice.logger.Trace("STARTED: Main");
+               // if (args.Length >= 4)
+              //  {
+                    //_inputFile = args[0];
+                    //_inputRecordLength = args[1];
+                    //_dataCenter = args[2];
+                    //_trackingId = args[3];
 
-                objWFservice.logger.Trace("STARTED: Main");
-                if (args.Length >= 4)
-                {
-                    _inputFile = args[0];
-                    _inputRecordLength = args[1];
-                    _dataCenter = args[2];
-                    _trackingId = args[3];
+                    _inputFile = "TESTDATA.ETOA";
+                    _trackingId = "1";
+                    Console.WriteLine("service started");
+                    bool status = objWFservice.FileReadingProcess(_inputFile, _trackingId);
 
-                    objWFservice.logger.Trace("Input file name: " + _inputFile + "");
-                    objWFservice.logger.Trace("Input record length: " + _inputRecordLength);
-                    objWFservice.logger.Trace("Data Center: {0}" + _dataCenter);
-                    objWFservice.logger.Trace("Tracking Id: {0}" + _trackingId);
+                    //Logger.Trace("Input file name: " + _inputFile + "");
+                    //Logger.Trace("Input record length: " + _inputRecordLength);
+                    //Logger.Trace("Data Center: {0}" + _dataCenter);
+                    //Logger.Trace("Tracking Id: {0}" + _trackingId);
 
-                    if (!File.Exists(_inputFile))
-                    {
-                        objWFservice.logger.Trace($"Input file does not exist: {_inputFile}.");
-                        throw new FileNotFoundException($"FirstTech_HELOC_Mortgage: file {_inputFile}");
-                    }
-                }
-                else
-                {
-                    objWFservice.logger.Trace("Invalid number of parameters supplied.");
-                }
+                    //if (!File.Exists(_inputFile))
+                    //{
+                    //    objWFservice.logger.Trace($"Input file does not exist: {_inputFile}.");
+                    //    throw new FileNotFoundException($"FirstTech_HELOC_Mortgage: file {_inputFile}");
+                    //}
+               // }
+             //   else
+              //  {
+                  //  objWFservice.logger.Trace("Invalid number of parameters supplied.");
+              //  }
             }
             catch (Exception ex)
             {
-                objWFservice.logger.Error(ex, ex.TargetSite.Name);
+              //  objWFservice.logger.Error(ex, ex.TargetSite.Name);
             }
         }
         //public void ProcessStart();

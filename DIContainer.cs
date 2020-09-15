@@ -30,12 +30,12 @@ namespace Carrington_Service
             container.Register<IChapterThirteenBillingStatement, ChapterThirteenBillingStatement>(lifestyle);
             container.Register<IStandardBillingStatement, StandardBillingStatement>(lifestyle);
             container.Register<IOptionARMBillingStatement, OptionARMBillingStatement>(lifestyle);
-            container.Register<IChapterThirteenBillingStatement, ChapterThirteenBillingStatement>(lifestyle);
+            //container.Register<IChapterThirteenBillingStatement, ChapterThirteenBillingStatement>(lifestyle);
         }
 
-        public static WorkFlowService GetWorkFlowServiceInstance()
+        public static WorkFlowExpert GetWorkFlowServiceInstance()
         {
-            return container.GetInstance<WorkFlowService>();
+            return container.GetInstance<WorkFlowExpert>();
         }
     }
 }
