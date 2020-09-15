@@ -4,6 +4,7 @@ using CarringtonMortgage.Infrastructure;
 using CarringtonMortgage.Models;
 using CarringtonMortgage.Models.InputCopyBookModels;
 using CarringtonMortgage.Models.InputCopyBookModels.MortgageLoanBillingModels;
+using ODHS_EDelivery.BusinessExpert;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -22,6 +23,7 @@ namespace Carrington_Service.BusinessExpert
         public ILogger Logger;
         private readonly IFileIOService FileIOService;
         private readonly IConfigHelper ConfigHelper;
+        private readonly ICRL30FileGeneration CRL30FileGeneration;
         private readonly IAgentApi ApiAgent;
         private string pmFilePath;
         private string supplimentFilePath;
@@ -37,12 +39,13 @@ namespace Carrington_Service.BusinessExpert
 
         /// <summary>The delimiter.</summary>
         private const string Delimiter = "|";
-        public WorkFlowExpert(IConfigHelper configHelper, ILogger logger, IAgentApi apiAgent, IEmailService emailService)
+        public WorkFlowExpert(IConfigHelper configHelper, ILogger logger, IAgentApi apiAgent, IEmailService emailService, ICRL30FileGeneration cRL30FileGeneration)
         {
             ConfigHelper = configHelper;
             Logger = logger;
             ApiAgent = apiAgent;
             EmailService = emailService;
+            CRL30FileGeneration = cRL30FileGeneration;
             //configHelper.Model.DatabaseSetting = DbService.GetDataBaseSettings();
         }
 
@@ -127,7 +130,7 @@ namespace Carrington_Service.BusinessExpert
 
                 //CRL30FileGeneration c = new CRL30FileGeneration(Logger, ConfigHelper);
                 //c.GenerateCRL30File(MortgageLoanBillingFile);
-
+                CRL30FileGeneration.GenerateCRL30File(MortgageLoanBillingFile);
                 TimeWatch();
                 Logger.Trace("ENDED: File Reading Process Completed");
                 return true;

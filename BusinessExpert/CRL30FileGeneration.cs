@@ -12,17 +12,17 @@ using WMS.Framework.Data;
 
 namespace ODHS_EDelivery.BusinessExpert
 {
-    public class CRL30FileGeneration
+    public class CRL30FileGeneration : ICRL30FileGeneration
     {
         public ILogger Logger;
         private readonly IConfigHelper ConfigHelper;
         private readonly StatementType StatementType;
-        private readonly ChapterSevenBillingStatement ChapterSevenBillingStatement;
-        private readonly ChapterSevenOptionARMStatement ChapterSevenOptionARMStatement;
-        private readonly ChapterThirteenBillingStatement ChapterThirteenBillingStatement;
-        private readonly ChapterThirteenOptionARMStatement ChapterThirteenOptionARMStatement;
-        private readonly OptionARMBillingStatement OptionARMBillingStatement;
-        private readonly StandardBillingStatement StandardBillingStatement;
+        private readonly IChapterSevenBillingStatement ChapterSevenBillingStatement;
+        private readonly IChapterSevenOptionARMStatement ChapterSevenOptionARMStatement;
+        private readonly IChapterThirteenBillingStatement ChapterThirteenBillingStatement;
+        private readonly IChapterThirteenOptionARMStatement ChapterThirteenOptionARMStatement;
+        private readonly IOptionARMBillingStatement OptionARMBillingStatement;
+        private readonly IStandardBillingStatement StandardBillingStatement;
         /// <summary>The output file.</summary>
         private const string OutputFile = "output.ncp";
 
@@ -62,10 +62,10 @@ namespace ODHS_EDelivery.BusinessExpert
         /// </summary>
         /// <param name="logger"></param>
         /// <param name="configHelper"></param>
-        public CRL30FileGeneration(ILogger logger, IConfigHelper configHelper, StandardBillingStatement standardBillingStatement, StatementType statementType,
-            ChapterSevenBillingStatement chapterSevenBillingStatement, ChapterSevenOptionARMStatement chapterSevenOptionARMStatement,
-            ChapterThirteenBillingStatement chapterThirteenBillingStatement, ChapterThirteenOptionARMStatement
-            chapterThirteenOptionARMStatement, OptionARMBillingStatement optionARMBillingStatement)
+        public CRL30FileGeneration(ILogger logger, IConfigHelper configHelper, IStandardBillingStatement standardBillingStatement, StatementType statementType,
+            IChapterSevenBillingStatement chapterSevenBillingStatement, IChapterSevenOptionARMStatement chapterSevenOptionARMStatement,
+            IChapterThirteenBillingStatement chapterThirteenBillingStatement, IChapterThirteenOptionARMStatement
+            chapterThirteenOptionARMStatement, IOptionARMBillingStatement optionARMBillingStatement)
         {
             Logger = logger;
             ConfigHelper = configHelper;
@@ -106,18 +106,11 @@ namespace ODHS_EDelivery.BusinessExpert
                 //TODO: Revisit
                 output.AddLogRecord("CONV", "START", "Carrington_Mortgage + CONVERSION STARTED.");
                 output.AddLogRecord("CONV", "INFO", $"LoanBillExtractInfo - FileDate = {mortgageLoanBillingFileModel.InputFileDate}");
-                //output.AddLogRecord("CONV", "INFO", $"LoanBillExtractInfo - MessageText = {loanBillExtract.MessageText}");
-                //output.AddLogRecord("CONV", "INFO", $"LoanBillExtractInfo - ProgramName = {loanBillExtract.ProgramName}");
-                //output.AddLogRecord("CONV", "INFO", $"LoanBillExtractInfo - QueNbr = {loanBillExtract.QueNbr}");
-                //output.AddLogRecord("CONV", "INFO", $"LoanBillExtractInfo - ApplNbr = {loanBillExtract.ApplNbr}");
-                //output.AddLogRecord("CONV", "INFO", $"LoanBillExtractInfo - QueSubNbr = {loanBillExtract.QueSubNbr}");
                 output.AddLogRecord("CONV", "INFO", $"LoanBillExtractInfo - Institution = {mortgageLoanBillingFileModel.InstitutionRecords.Rssi_Institution_Name}");
                 output.AddLogRecord("CONV", "INFO",
                     mortgageLoanBillingFileModel.InstitutionRecords.Rssi_Inst_Phone != null
                         ? $"LoanBillExtractInfo - Institution Phone = {mortgageLoanBillingFileModel.InstitutionRecords.Rssi_Inst_Phone}"
                         : $"LoanBillExtractInfo - Institution Phone = {mortgageLoanBillingFileModel.InstitutionRecords.Rssi_Alt_Coup_Ph_No_1}");
-                //output.AddLogRecord("CONV", "INFO", $"LoanBillExtractInfo - Institution Website = {loanBillExtract.Institution.WebSite}");
-                //output.AddLogRecord("CONV", "INFO", $"LoanBillExtractInfo - Accounts Total Count = {loanBillExtract.NbrOfAcctExtracted}");
                 lineCnt += 10;
 
                 Logger.Info("Creating NCP09 records...");
