@@ -5,6 +5,7 @@ using Carrington_Service.Helpers;
 using Carrington_Service.Infrastructure;
 using Carrington_Service.Interfaces;
 using Carrington_Service.Services;
+using ODHS_EDelivery.BusinessExpert;
 using SimpleInjector;
 
 namespace Carrington_Service
@@ -30,7 +31,7 @@ namespace Carrington_Service
             container.Register<IChapterThirteenBillingStatement, ChapterThirteenBillingStatement>(lifestyle);
             container.Register<IStandardBillingStatement, StandardBillingStatement>(lifestyle);
             container.Register<IOptionARMBillingStatement, OptionARMBillingStatement>(lifestyle);
-            //container.Register<IChapterThirteenBillingStatement, ChapterThirteenBillingStatement>(lifestyle);
+            container.Register<IChapterThirteenBillingStatement, ChapterThirteenBillingStatement>(lifestyle);
         }
 
         public static WorkFlowExpert GetWorkFlowServiceInstance()

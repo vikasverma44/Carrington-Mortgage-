@@ -7,7 +7,7 @@ using System.Text;
 /// </summary>
 namespace Carrington_Service.Calculation_Classes
 {
-    public class ChapterSevenBillingStatement : IChapterSevenBillingStatement
+       public class ChapterSevenBillingStatement : IChapterSevenBillingStatement
     {
         private string PaymentAmount { get; set; }
         private string DeferredBalance { get; set; }
@@ -28,7 +28,7 @@ namespace Carrington_Service.Calculation_Classes
         private string ExMessage { get; set; }
         private StringBuilder finalLine;
         private ILogger Logger;
-        public string GetFinalChapterSevenBillingStatement(AccountsModel accountModel)
+        public StringBuilder GetFinalChapterSevenBillingStatement(AccountsModel accountModel)
         {
             ExMessage = "Error Message";
             finalLine = new StringBuilder();
@@ -88,7 +88,7 @@ namespace Carrington_Service.Calculation_Classes
             finalLine.Append(GetCarringtonCharitableFoundation(accountModel) + "|");
             finalLine.Append(GetPaymentInformationMessage(accountModel) + "|");
 
-            return Convert.ToString(finalLine);
+            return finalLine;
         }
 
         /* While Calculating Conditions must be applied*/
@@ -443,7 +443,7 @@ namespace Carrington_Service.Calculation_Classes
             return secondaryBorrower;
         }
 
-        private string GetMailingBKAttorneyAddressLine1(AccountsModel accountModel)
+        public string GetMailingBKAttorneyAddressLine1(AccountsModel accountModel)
         {
 
             String mailingBKAttorneyAddressLine1 = String.Empty;
@@ -466,7 +466,7 @@ namespace Carrington_Service.Calculation_Classes
             return mailingBKAttorneyAddressLine1;
         }
 
-        private string GetMailingBKAttorneyAddressLine2(AccountsModel accountModel)
+        public string GetMailingBKAttorneyAddressLine2(AccountsModel accountModel)
         {
 
             String mailingBKAttorneyAddressLine2 = String.Empty;
