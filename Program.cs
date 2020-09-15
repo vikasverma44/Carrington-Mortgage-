@@ -4,6 +4,7 @@ using Carrington_Service.Infrastructure;
 using Carrington_Service.Interfaces;
 using Carrington_Service.Services;
 using System;
+using System.IO;
 
 namespace Carrington_Service
 {
@@ -18,20 +19,16 @@ namespace Carrington_Service
         public IAgentApi ApiAgent;
         public IEmailService EmailService;
 
-        public Program(IEmailService emailService, IConfigHelper configHelper, ILogger logger, IAgentApi apiAgent)
-        {
-            Logger = logger;
-            ConfigHelper = configHelper;
-            EmailService = emailService;
-            ApiAgent = apiAgent;
-        }
+
         private static void Main(string[] args)
         {
             DIContainer.SetupInjector();
             WorkFlowService objWFservice = DIContainer.GetWorkFlowServiceInstance();
-            WorkFlowExpert objWFexpert = DIContainer.GetWorkFlowExpertInstance();
+            //  WorkFlowExpert objWFexpert = DIContainer.GetWorkFlowExpertInstance();
             try
             {
+                //bool status = objWFexpert.FileReadingProcess(_inputFile, _trackingId);
+
                 objWFservice.logger.Trace("STARTED: Main");
                 if (args.Length >= 4)
                 {
@@ -45,21 +42,21 @@ namespace Carrington_Service
                     objWFservice.logger.Trace("Data Center: {0}" + _dataCenter);
                     objWFservice.logger.Trace("Tracking Id: {0}" + _trackingId);
 
-                 bool status= objWFexpert.FileReadingProcess(_inputFile, _trackingId);
-
-
+                    if (!File.Exists(_inputFile))
+                    {
+                        objWFservice.logger.Trace($"Input file does not exist: {_inputFile}.");
+                        throw new FileNotFoundException($"FirstTech_HELOC_Mortgage: file {_inputFile}");
+                    }
                 }
                 else
                 {
                     objWFservice.logger.Trace("Invalid number of parameters supplied.");
-
                 }
             }
             catch (Exception ex)
             {
                 objWFservice.logger.Error(ex, ex.TargetSite.Name);
             }
-
         }
         //public void ProcessStart();
         //{

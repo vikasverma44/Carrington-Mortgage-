@@ -25,11 +25,11 @@ namespace Carrington_Service.Services
 
         #region Public Methods
 
-        public bool StartWorkFlowService(string _inputifle, string _trackingId)
+        public bool StartWorkFlowService()
         {
             try
             {
-                result = workFlowExpert.StartWorkFlow();
+               // result = workFlowExpert.StartWorkFlow();
 
                 //_timer = new System.Timers.Timer();
                 //_timer.Interval = TimeSpan.FromSeconds(5).TotalMilliseconds;//Every one minute
