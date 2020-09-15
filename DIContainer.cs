@@ -1,5 +1,6 @@
 ﻿using Carrington_Service.Agents;
 using Carrington_Service.BusinessExpert;
+using Carrington_Service.Calculation_Classes;
 using Carrington_Service.Helpers;
 using Carrington_Service.Infrastructure;
 using Carrington_Service.Interfaces;
@@ -23,6 +24,7 @@ namespace Carrington_Service
             container.Register<ILogger, Logger>(lifestyle);
             container.Register<IWorkFlowService, WorkFlowService>(lifestyle);
             container.Register<IEmailService, EmailService>(lifestyle);
+            container.Register<IChapterThirteenOptionARMStatement, ChapterThirteenOptionARMStatement>(lifestyle);
         }
 
         public static WorkFlowService GetWorkFlowServiceInstance()
