@@ -31,5 +31,9 @@ namespace Carrington_Service
         {
             return container.GetInstance<WorkFlowService>();
         }
+        public static WorkFlowExpert GetWorkFlowExpertInstance()
+        {
+            return container.GetInstance<WorkFlowExpert>();
+        }
     }
 }

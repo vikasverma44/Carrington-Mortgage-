@@ -29,7 +29,7 @@ namespace CarringtonMortgage.Models.InputCopyBookModels.MortgageLoanBillingModel
         public string Rssi_New_Rate { get; set; }
         public string Rssi_New_Pmt { get; set; }
         public string Rssi_New_Eff_Dt { get; set; }
-        public string Rssi_Pmt_Diff { get; set; }
+        public string Rssi_New_Pmt_Diff { get; set; }
         public string Rssi_Reset_Date { get; set; }
         public string Rssi_Reset_Due_Dt { get; set; }
         public string Rssi_Beg_Due_Dt { get; set; }

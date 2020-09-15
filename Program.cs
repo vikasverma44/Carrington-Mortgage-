@@ -1,4 +1,7 @@
 ﻿using Carrington_Service;
+using Carrington_Service.BusinessExpert;
+using Carrington_Service.Infrastructure;
+using Carrington_Service.Interfaces;
 using Carrington_Service.Services;
 using System;
 
@@ -6,31 +9,85 @@ namespace Carrington_Service
 {
     public class Program
     {
-        private static void Main()
+        private static string _inputFile;
+        private static string _inputRecordLength;
+        private static string _dataCenter;
+        private static string _trackingId;
+        public ILogger Logger;
+        public IConfigHelper ConfigHelper;
+        public IAgentApi ApiAgent;
+        public IEmailService EmailService;
+
+        public Program(IEmailService emailService, IConfigHelper configHelper, ILogger logger, IAgentApi apiAgent)
+        {
+            Logger = logger;
+            ConfigHelper = configHelper;
+            EmailService = emailService;
+            ApiAgent = apiAgent;
+        }
+        private static void Main(string[] args)
         {
             DIContainer.SetupInjector();
             WorkFlowService objWFservice = DIContainer.GetWorkFlowServiceInstance();
-
+            WorkFlowExpert objWFexpert = DIContainer.GetWorkFlowExpertInstance();
             try
             {
                 objWFservice.logger.Trace("STARTED: Main");
-               
-                if (objWFservice.StartWorkFlowService())
+                if (args.Length >= 4)
                 {
-                    objWFservice.logger.Trace("SUCCESS: Application succcesfully executed with 0 error."); 
-                    objWFservice.logger.Trace("ENDED:   Main");
+                    _inputFile = args[0];
+                    _inputRecordLength = args[1];
+                    _dataCenter = args[2];
+                    _trackingId = args[3];
+
+                    objWFservice.logger.Trace("Input file name: " + _inputFile + "");
+                    objWFservice.logger.Trace("Input record length: " + _inputRecordLength);
+                    objWFservice.logger.Trace("Data Center: {0}" + _dataCenter);
+                    objWFservice.logger.Trace("Tracking Id: {0}" + _trackingId);
+
+                 bool status= objWFexpert.FileReadingProcess(_inputFile, _trackingId);
+
+
                 }
                 else
                 {
-                    objWFservice.logger.Trace("ERROR:   Application aborted with 1 error.");
+                    objWFservice.logger.Trace("Invalid number of parameters supplied.");
+
                 }
-                Console.ReadKey();
             }
             catch (Exception ex)
             {
                 objWFservice.logger.Error(ex, ex.TargetSite.Name);
             }
+
         }
+        //public void ProcessStart();
+        //{
+        //     WorkFlowExpert wkl = new WorkFlowExpert(Prog.ConfigHelper, Logger, ApiAgent, EmailService);
+        //wkl.FileReadingProcess(_inputFile, _trackingId);
+
+        //}
+
+        //try
+        //{
+        //    objWFservice.logger.Trace("STARTED: Main");
+
+        //    if (objWFservice.StartWorkFlowService())
+        //    {
+        //        objWFservice.logger.Trace("SUCCESS: Application succcesfully executed with 0 error."); 
+        //        objWFservice.logger.Trace("ENDED:   Main");
+        //    }
+        //    else
+        //    {
+        //        objWFservice.logger.Trace("ERROR:   Application aborted with 1 error.");
+        //    }
+        //    Console.ReadKey();
+        //}
+        //catch (Exception ex)
+        //{
+        //    objWFservice.logger.Error(ex, ex.TargetSite.Name);
+        //}
+
     }
 }
 
