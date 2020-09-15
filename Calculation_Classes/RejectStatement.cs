@@ -2,19 +2,19 @@
 
 namespace CarritonMortgage.Calculation_Classes
 {
-    public class RejectStatement
+    public static class RejectStatement
     {
-        public RejectStatement()
-        {
+        //public RejectStatement()
+        //{
 
-        }
+        //}
 
         /// <summary>
         /// This method check if an account needs to be rejected
         /// </summary>
         /// <param name="accountModel"></param>
         /// <returns></returns>
-        public bool IsRejectAccount(AccountsModel accountModel)
+        public static bool IsRejectAccount(AccountsModel accountModel)
         {
             bool isReject = false;
 
