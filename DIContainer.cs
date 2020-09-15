@@ -24,7 +24,13 @@ namespace Carrington_Service
             container.Register<ILogger, Logger>(lifestyle);
             container.Register<IWorkFlowService, WorkFlowService>(lifestyle);
             container.Register<IEmailService, EmailService>(lifestyle);
+
             container.Register<IChapterThirteenOptionARMStatement, ChapterThirteenOptionARMStatement>(lifestyle);
+            container.Register<IChapterSevenBillingStatement, ChapterSevenBillingStatement>(lifestyle);
+            container.Register<IChapterThirteenBillingStatement, ChapterThirteenBillingStatement>(lifestyle);
+            container.Register<IStandardBillingStatement, StandardBillingStatement>(lifestyle);
+            container.Register<IOptionARMBillingStatement, OptionARMBillingStatement>(lifestyle);
+            container.Register<IChapterThirteenBillingStatement, ChapterThirteenBillingStatement>(lifestyle);
         }
 
         public static WorkFlowService GetWorkFlowServiceInstance()
