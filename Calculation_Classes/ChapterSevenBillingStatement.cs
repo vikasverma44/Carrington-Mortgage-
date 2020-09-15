@@ -31,7 +31,7 @@ namespace Carrington_Service.Calculation_Classes
         public string ExMessage { get; set; }
         public StringBuilder finalLine;
         public ILogger Logger;
-        public string GetFinalChapterSevenBillingStatement(AccountsModel accountModel)
+        public StringBuilder GetFinalChapterSevenBillingStatement(AccountsModel accountModel)
         {
             ExMessage = "Error Message";
             finalLine = new StringBuilder();
@@ -91,7 +91,7 @@ namespace Carrington_Service.Calculation_Classes
             finalLine.Append(GetCarringtonCharitableFoundation(accountModel) + "|");
             finalLine.Append(GetPaymentInformationMessage(accountModel) + "|");
 
-            return Convert.ToString(finalLine);
+            return finalLine;
         }
 
         /* While Calculating Conditions must be applied*/

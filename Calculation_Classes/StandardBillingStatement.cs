@@ -36,7 +36,7 @@ namespace Carrington_Service.Calculation_Classes
         public string ExMessage { get; set; }
         public ILogger Logger;
         public StringBuilder finalLine;
-        public string GetFinalStringStandardBilling(AccountsModel accountModel)
+        public StringBuilder GetFinalStringStandardBilling(AccountsModel accountModel)
         {
             ExMessage = "Error Message";
             finalLine = new StringBuilder();
@@ -121,7 +121,7 @@ namespace Carrington_Service.Calculation_Classes
 
 
 
-            return Convert.ToString(finalLine);
+            return finalLine;
         }
         /* While Calculating Conditions must be applied*/
         public string GetAmountDue(AccountsModel accountsModel)

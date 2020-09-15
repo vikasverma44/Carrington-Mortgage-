@@ -29,6 +29,7 @@ namespace Carrington_Service.BusinessExpert
         private readonly IFileIOService FileIOService;
         private readonly IConfigHelper ConfigHelper;
         private readonly IAgentApi ApiAgent;
+        private readonly CRL30FileGeneration CRL30FileGeneration;
         private string pmFilePath;
         private string supplimentFilePath;
         private string EConsentFilePath;
@@ -43,12 +44,13 @@ namespace Carrington_Service.BusinessExpert
 
         /// <summary>The delimiter.</summary>
         private const string Delimiter = "|";
-        public WorkFlowExpert(IConfigHelper configHelper, ILogger logger, IAgentApi apiAgent, IEmailService emailService)
+        public WorkFlowExpert(IConfigHelper configHelper, ILogger logger, IAgentApi apiAgent, IEmailService emailService,CRL30FileGeneration cRL30FileGeneration)
         {
             ConfigHelper = configHelper;
             Logger = logger;
             ApiAgent = apiAgent;
             EmailService = emailService;
+            CRL30FileGeneration = cRL30FileGeneration;
             //configHelper.Model.DatabaseSetting = DbService.GetDataBaseSettings();
         }
 
@@ -130,9 +132,8 @@ namespace Carrington_Service.BusinessExpert
                         Logger.Trace("SUCCESS: Econsent File Found " + DateTime.Now.ToString());
                     }
                 }
-              
-                CRL30FileGeneration c = new CRL30FileGeneration(Logger, ConfigHelper);
-                c.GenerateCRL30File(MortgageLoanBillingFile);
+                //TODO: Call at appriopriate position
+                CRL30FileGeneration.GenerateCRL30File(MortgageLoanBillingFile);
 
                 TimeWatch();
                 Logger.Trace("ENDED: File Reading Process Completed");

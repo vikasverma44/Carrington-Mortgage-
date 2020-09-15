@@ -105,7 +105,7 @@ namespace Carrington_Service.Calculation_Classes
 
         public ILogger Logger;
 
-        public string GetFinalChapterSevenOptionARMStatement(AccountsModel accountModel)
+        public StringBuilder GetFinalChapterSevenOptionARMStatement(AccountsModel accountModel)
         {
             ExMessage = "Error Message";
             finalLine = new StringBuilder();
@@ -200,7 +200,7 @@ namespace Carrington_Service.Calculation_Classes
             finalLine.Append(GetStateDisclosures(accountModel) + "|");
             finalLine.Append(GetPaymentInformationMessage(accountModel) + "|");
 
-            return Convert.ToString(finalLine);
+            return finalLine;
         }
 
         /* While Calculating Conditions must be applied*/
