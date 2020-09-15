@@ -474,7 +474,7 @@ namespace Carrington_Service.Calculation_Classes
             }
         }
 
-        private string GetMailingBKAttorneyAddressLine1(AccountsModel accountModel)
+        public string GetMailingBKAttorneyAddressLine1(AccountsModel accountModel)
         {
             try
             {
@@ -495,7 +495,7 @@ namespace Carrington_Service.Calculation_Classes
             }
         }
 
-        private string GetMailingBKAttorneyAddressLine2(AccountsModel accountModel)
+        public string GetMailingBKAttorneyAddressLine2(AccountsModel accountModel)
         {
             try
             {

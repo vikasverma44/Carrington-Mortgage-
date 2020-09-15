@@ -1,23 +1,17 @@
-﻿using Carrington_Service.Helpers;
-using Carrington_Service.Infrastructure;
+﻿using Carrington_Service.Infrastructure;
 using Carrington_Service.Interfaces;
-using Carrington_Service.Services;
-using Microsoft.VisualBasic.Logging;
 using CarringtonMortgage.Infrastructure;
 using CarringtonMortgage.Models;
 using CarringtonMortgage.Models.InputCopyBookModels;
 using CarringtonMortgage.Models.InputCopyBookModels.MortgageLoanBillingModels;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ODHS_EDelivery.BusinessExpert;
 
 namespace Carrington_Service.BusinessExpert
 {
@@ -131,8 +125,8 @@ namespace Carrington_Service.BusinessExpert
                     }
                 }
 
-                CRL30FileGeneration c = new CRL30FileGeneration(Logger, ConfigHelper);
-                c.GenerateCRL30File(MortgageLoanBillingFile);
+                //CRL30FileGeneration c = new CRL30FileGeneration(Logger, ConfigHelper);
+                //c.GenerateCRL30File(MortgageLoanBillingFile);
 
                 TimeWatch();
                 Logger.Trace("ENDED: File Reading Process Completed");
