@@ -25,14 +25,16 @@ namespace Carrington_Service.Services
 
         #region Public Methods
 
-        public bool StartWorkFlowService()
+        public bool StartWorkFlowService(string _inputifle, string _trackingId)
         {
             try
             {
-                _timer = new System.Timers.Timer();
-                _timer.Interval = TimeSpan.FromSeconds(5).TotalMilliseconds;//Every one minute
-                _timer.Elapsed += new System.Timers.ElapsedEventHandler(timer_Elapsed);
-                _timer.Start();
+                result = workFlowExpert.StartWorkFlow();
+
+                //_timer = new System.Timers.Timer();
+                //_timer.Interval = TimeSpan.FromSeconds(5).TotalMilliseconds;//Every one minute
+                //_timer.Elapsed += new System.Timers.ElapsedEventHandler(timer_Elapsed);
+                //_timer.Start();
                 return true;
             }
             catch (Exception ex)
@@ -43,7 +45,7 @@ namespace Carrington_Service.Services
         }
         public void timer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            result = workFlowExpert.StartWorkFlow();
+         
         }
         //private void InitializeServiceTimers()
         //{

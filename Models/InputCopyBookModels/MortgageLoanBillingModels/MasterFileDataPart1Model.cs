@@ -374,6 +374,6 @@ namespace CarringtonMortgage.Models.InputCopyBookModels.MortgageLoanBillingModel
 
         public string Rssi_Promise_Broken_Dt_PackedData { get; set; }
         public string Rssi_Promise_Kept_Date_PackedData { get; set; }
-        public string FillerPart4 { get; set; }
+        public string Filler { get; set; }
     }
 }

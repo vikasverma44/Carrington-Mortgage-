@@ -5,105 +5,105 @@ using System.Text;
 
 namespace Carrington_Service.Calculation_Classes
 {
-    public class ChapterSevenOptionARMStatement
+    public class ChapterSevenOptionARMStatement : IChapterSevenOptionARMStatement
     {
-        public string AmountDueOption1 { get; set; }
-        public string AmountDueOption2 { get; set; }
-        public string AmountDueOption3 { get; set; }
-        public string AmountDueOption4 { get; set; }
-        public string PrincipalOption1 { get; set; }
-        public string AssistanceAmount { get; set; }
-        public string ReplacementReserve { get; set; }
-        public string OverduePaymentsOption1 { get; set; }
-        public string TotalFeesChargedOption1 { get; set; }
-        public string TotalFeesPaidOption1 { get; set; }
-        public string TotalAmountDueOption1 { get; set; }
-        public string PrincipalOption2 { get; set; }
-        public string AssistanceAmountOption2 { get; set; }
-        public string ReplacementReserveOption2 { get; set; }
-        public string OverduePaymentsOption2 { get; set; }
-        public string TotalFeesChargedOption2 { get; set; }
+        private string AmountDueOption1 { get; set; }
+        private string AmountDueOption2 { get; set; }
+        private string AmountDueOption3 { get; set; }
+        private string AmountDueOption4 { get; set; }
+        private string PrincipalOption1 { get; set; }
+        private string AssistanceAmount { get; set; }
+        private string ReplacementReserve { get; set; }
+        private string OverduePaymentsOption1 { get; set; }
+        private string TotalFeesChargedOption1 { get; set; }
+        private string TotalFeesPaidOption1 { get; set; }
+        private string TotalAmountDueOption1 { get; set; }
+        private string PrincipalOption2 { get; set; }
+        private string AssistanceAmountOption2 { get; set; }
+        private string ReplacementReserveOption2 { get; set; }
+        private string OverduePaymentsOption2 { get; set; }
+        private string TotalFeesChargedOption2 { get; set; }
 
-        public string TotalFeesPaidOption2 { get; set; }
-        public string TotalAmountDueOption2 { get; set; }
-        public string PrincipalOption3 { get; set; }
-        public string AssistanceAmountOption3 { get; set; }
-        public string ReplacementReserveOption3 { get; set; }
-        public string OverduePaymentsOption3 { get; set; }
-        public string TotalFeesChargedOption3 { get; set; }
-        public string TotalFeesPaidOption3 { get; set; }
-        public string TotalAmountDueOption3 { get; set; }
-        public string PrincipalOption4 { get; set; }
-        public string AssistanceAmountOption4 { get; set; }
-        public string ReplacementReserveOption4 { get; set; }
-        public string OverduePaymentsOption4 { get; set; }
-        public string TotalFeesChargedOption4 { get; set; }
-        public string TotalFeesPaidOption4 { get; set; }
-        public string TotalAmountDueOption4 { get; set; }
-        public string FeesandChargesPaidLastMonth { get; set; }
-        public string UnappliedFundsPaidLastMonth { get; set; }
-        public string FeesandChargesPaidYeartoDate { get; set; }
-        public string UnappliedFundsPaidYearToDate { get; set; }
-        public string PaymentAmountOption1 { get; set; }
-        public string PaymentAmountOption2 { get; set; }
-        public string PaymentAmountOption3 { get; set; }
-        public string PaymentAmountOption4 { get; set; }
-        public string Suspense { get; set; }
-        public string Miscellaneous { get; set; }
-        public string DeferredBalance { get; set; }
-        public string TotalDue { get; set; }
+        private string TotalFeesPaidOption2 { get; set; }
+        private string TotalAmountDueOption2 { get; set; }
+        private string PrincipalOption3 { get; set; }
+        private string AssistanceAmountOption3 { get; set; }
+        private string ReplacementReserveOption3 { get; set; }
+        private string OverduePaymentsOption3 { get; set; }
+        private string TotalFeesChargedOption3 { get; set; }
+        private string TotalFeesPaidOption3 { get; set; }
+        private string TotalAmountDueOption3 { get; set; }
+        private string PrincipalOption4 { get; set; }
+        private string AssistanceAmountOption4 { get; set; }
+        private string ReplacementReserveOption4 { get; set; }
+        private string OverduePaymentsOption4 { get; set; }
+        private string TotalFeesChargedOption4 { get; set; }
+        private string TotalFeesPaidOption4 { get; set; }
+        private string TotalAmountDueOption4 { get; set; }
+        private string FeesandChargesPaidLastMonth { get; set; }
+        private string UnappliedFundsPaidLastMonth { get; set; }
+        private string FeesandChargesPaidYeartoDate { get; set; }
+        private string UnappliedFundsPaidYearToDate { get; set; }
+        private string PaymentAmountOption1 { get; set; }
+        private string PaymentAmountOption2 { get; set; }
+        private string PaymentAmountOption3 { get; set; }
+        private string PaymentAmountOption4 { get; set; }
+        private string Suspense { get; set; }
+        private string Miscellaneous { get; set; }
+        private string DeferredBalance { get; set; }
+        private string TotalDue { get; set; }
 
 
-        public string FieldonStatement { get; set; }
-        public string Hold { get; set; }
-        public string PrimaryBorrowerBKAttorney { get; set; }
-        public string SecondaryBorrower { get; set; }
-        public string MailingBKAttorneyAddressLine1 { get; set; }
-        public string MailingBKAttorneyAddressLine2 { get; set; }
-        public string BorrowerAttorneyMailingCityStateZip { get; set; }
-        public string MailingCountry { get; set; }
-        public string PaymentDate { get; set; }
-        public string InterestOption1 { get; set; }
-        public string EscrowOption1 { get; set; }
-        public string RegularMonthlyPaymentOption1 { get; set; }
-        public string InterestOption2 { get; set; }
-        public string EscrowOption2 { get; set; }
-        public string RegularMonthlyPaymentOption2 { get; set; }
-        public string InterestOption3 { get; set; }
-        public string EscrowOption3 { get; set; }
-        public string RegularMonthlyPaymentOption3 { get; set; }
-        public string InterestOption4 { get; set; }
-        public string EscrowOption4 { get; set; }
-        public string RegularMonthlyPaymentOption4 { get; set; }
-        public string Option4MinimumDescription { get; set; }
-        public string POBoxAddress { get; set; }
-        //public string PaymentDate { get; set; }
-        public string Date { get; set; }
-        public string Amount { get; set; }
-        public string BuydownBalance { get; set; }
-        public string PartialClaim { get; set; }
-        public string InterestRateUntil { get; set; }
-        public string PrepaymentPenalty { get; set; }
-        public string AccountHistoryInformationbox { get; set; }
-        public string RecentPayment6 { get; set; }
-        public string RecentPayment5 { get; set; }
-        public string RecentPayment4 { get; set; }
-        public string RecentPayment3 { get; set; }
-        public string RecentPayment2 { get; set; }
-        public string RecentPayment1 { get; set; }
-        public string LenderPlacedInsuranceMessage { get; set; }
-        public string StateNSF { get; set; }
-        public string AutodraftMessage { get; set; }
-        public string CMSPartialClaim { get; set; }
-        public string HUDPartialClaim { get; set; }
-        public string StateDisclosures { get; set; }
-        public string PaymentInformationMessage { get; set; }
+        private string FieldonStatement { get; set; }
+        private string Hold { get; set; }
+        private string PrimaryBorrowerBKAttorney { get; set; }
+        private string SecondaryBorrower { get; set; }
+        private string MailingBKAttorneyAddressLine1 { get; set; }
+        private string MailingBKAttorneyAddressLine2 { get; set; }
+        private string BorrowerAttorneyMailingCityStateZip { get; set; }
+        private string MailingCountry { get; set; }
+        private string PaymentDate { get; set; }
+        private string InterestOption1 { get; set; }
+        private string EscrowOption1 { get; set; }
+        private string RegularMonthlyPaymentOption1 { get; set; }
+        private string InterestOption2 { get; set; }
+        private string EscrowOption2 { get; set; }
+        private string RegularMonthlyPaymentOption2 { get; set; }
+        private string InterestOption3 { get; set; }
+        private string EscrowOption3 { get; set; }
+        private string RegularMonthlyPaymentOption3 { get; set; }
+        private string InterestOption4 { get; set; }
+        private string EscrowOption4 { get; set; }
+        private string RegularMonthlyPaymentOption4 { get; set; }
+        private string Option4MinimumDescription { get; set; }
+        private string POBoxAddress { get; set; }
+        //private string PaymentDate { get; set; }
+        private string Date { get; set; }
+        private string Amount { get; set; }
+        private string BuydownBalance { get; set; }
+        private string PartialClaim { get; set; }
+        private string InterestRateUntil { get; set; }
+        private string PrepaymentPenalty { get; set; }
+        private string AccountHistoryInformationbox { get; set; }
+        private string RecentPayment6 { get; set; }
+        private string RecentPayment5 { get; set; }
+        private string RecentPayment4 { get; set; }
+        private string RecentPayment3 { get; set; }
+        private string RecentPayment2 { get; set; }
+        private string RecentPayment1 { get; set; }
+        private string LenderPlacedInsuranceMessage { get; set; }
+        private string StateNSF { get; set; }
+        private string AutodraftMessage { get; set; }
+        private string CMSPartialClaim { get; set; }
+        private string HUDPartialClaim { get; set; }
+        private string StateDisclosures { get; set; }
+        private string PaymentInformationMessage { get; set; }
 
-        public string ExMessage { get; set; }
+        private string ExMessage { get; set; }
 
-        public StringBuilder finalLine;
+        private StringBuilder finalLine;
 
-        public ILogger Logger;
+        private ILogger Logger;
 
         public string GetFinalChapterSevenOptionARMStatement(AccountsModel accountModel)
         {
@@ -204,9 +204,9 @@ namespace Carrington_Service.Calculation_Classes
         }
 
         /* While Calculating Conditions must be applied*/
-        public string GetAmountDueOption1(AccountsModel accountsModel)
+        private string GetAmountDueOption1(AccountsModel accountsModel)
         {
-            
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
@@ -233,13 +233,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetAmountDueOption1" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return AmountDueOption1;
         }
-        public string GetAmountDueOption2(AccountsModel accountsModel)
+        private string GetAmountDueOption2(AccountsModel accountsModel)
         {
-           
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
@@ -267,13 +268,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetAmountDueOption2" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return AmountDueOption2;
         }
-        public string GetAmountDueOption3(AccountsModel accountsModel)
+        private string GetAmountDueOption3(AccountsModel accountsModel)
         {
-            
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
@@ -300,13 +302,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetAmountDueOption3" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return AmountDueOption3;
         }
-        public string GetAmountDueOption4(AccountsModel accountsModel)
+        private string GetAmountDueOption4(AccountsModel accountsModel)
         {
-            
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
@@ -325,15 +328,16 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetAmountDueOption4" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return AmountDueOption4;
         }
 
 
-        public string GetPrincipalOption1(AccountsModel accountsModel)
+        private string GetPrincipalOption1(AccountsModel accountsModel)
         {
-            
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
@@ -357,13 +361,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetPrincipalOption1" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return PrincipalOption1;
         }
-        public string GetAssistanceAmount(AccountsModel accountsModel)
+        private string GetAssistanceAmount(AccountsModel accountsModel)
         {
-           
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0)
@@ -383,13 +388,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetAssistanceAmount" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return AssistanceAmount;
         }
-        public string GetReplacementReserve(AccountsModel accountsModel)
+        private string GetReplacementReserve(AccountsModel accountsModel)
         {
-            
+
             try
             {
                 if ((Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData)
@@ -416,13 +422,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetReplacementReserve" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return ReplacementReserve;
         }
-        public string GetOverduePaymentsOption1(AccountsModel accountsModel)
+        private string GetOverduePaymentsOption1(AccountsModel accountsModel)
         {
-           
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
@@ -446,13 +453,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetOverduePaymentsOption1" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return OverduePaymentsOption1;
         }
-        public string GetTotalFeesChargedOption1(AccountsModel accountsModel)//Issue
+        private string GetTotalFeesChargedOption1(AccountsModel accountsModel)//Issue
         {
-            
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
@@ -495,13 +503,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetTotalFeesChargedOption1" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return TotalFeesChargedOption1;
         }
-        public string GetTotalFeesPaidOption1(AccountsModel accountsModel)// Issue
+        private string GetTotalFeesPaidOption1(AccountsModel accountsModel)// Issue
         {
-           
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
@@ -531,11 +540,12 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetTotalFeesPaidOption1" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return TotalFeesPaidOption1;
         }
-        public string GetTotalAmountDueOption1(AccountsModel accountsModel)
+        private string GetTotalAmountDueOption1(AccountsModel accountsModel)
         {
             try
             {
@@ -560,15 +570,16 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetTotalAmountDueOption1" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return TotalAmountDueOption1;
         }
 
 
-        public string GetPrincipalOption2(AccountsModel accountsModel)
+        private string GetPrincipalOption2(AccountsModel accountsModel)
         {
-            
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
@@ -590,13 +601,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetPrincipalOption2" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return PrincipalOption2;
         }
-        public string GetAssistanceAmountOption2(AccountsModel accountsModel)
+        private string GetAssistanceAmountOption2(AccountsModel accountsModel)
         {
-            
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0)
@@ -614,13 +626,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetAssistanceAmountOption2" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return AssistanceAmountOption2;
         }
-        public string GetReplacementReserveOption2(AccountsModel accountsModel)
+        private string GetReplacementReserveOption2(AccountsModel accountsModel)
         {
-            
+
             try
             {
                 if ((Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData)
@@ -646,13 +659,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetReplacementReserveOption2" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return ReplacementReserveOption2;
         }
-        public string GetOverduePaymentsOption2(AccountsModel accountsModel)
+        private string GetOverduePaymentsOption2(AccountsModel accountsModel)
         {
-            
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
@@ -675,13 +689,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetOverduePaymentsOption2" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return OverduePaymentsOption2;
         }
-        public string GetTotalFeesChargedOption2(AccountsModel accountsModel)
+        private string GetTotalFeesChargedOption2(AccountsModel accountsModel)
         {
-           
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
@@ -724,13 +739,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetTotalFeesChargedOption2" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return TotalFeesChargedOption2;
         }
-        public string GetTotalFeesPaidOption2(AccountsModel accountsModel)
+        private string GetTotalFeesPaidOption2(AccountsModel accountsModel)
         {
-  
+
             try
             {
                 // need to check
@@ -759,11 +775,12 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetTotalFeesPaidOption2" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return TotalFeesPaidOption2;
         }
-        public string GetTotalAmountDueOption2(AccountsModel accountsModel)
+        private string GetTotalAmountDueOption2(AccountsModel accountsModel)
         {
             try
             {
@@ -787,15 +804,16 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetTotalAmountDueOption2" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return TotalAmountDueOption2;
         }
 
 
-        public string GetPrincipalOption3(AccountsModel accountsModel)
+        private string GetPrincipalOption3(AccountsModel accountsModel)
         {
-           
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
@@ -817,13 +835,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetPrincipalOption3" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return PrincipalOption3;
         }
-        public string GetAssistanceAmountOption3(AccountsModel accountsModel)
+        private string GetAssistanceAmountOption3(AccountsModel accountsModel)
         {
-            
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0)
@@ -841,13 +860,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetAssistanceAmountOption3" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return AssistanceAmountOption3;
         }
-        public string GetReplacementReserveOption3(AccountsModel accountsModel)
+        private string GetReplacementReserveOption3(AccountsModel accountsModel)
         {
-            
+
             try
             {
                 if ((Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData)
@@ -872,13 +892,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetReplacementReserveOption3" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return ReplacementReserveOption3;
         }
-        public string GetOverduePaymentsOption3(AccountsModel accountsModel)
+        private string GetOverduePaymentsOption3(AccountsModel accountsModel)
         {
-           
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
@@ -900,13 +921,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetOverduePaymentsOption3" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return OverduePaymentsOption3;
         }
-        public string GetTotalFeesChargedOption3(AccountsModel accountsModel)
+        private string GetTotalFeesChargedOption3(AccountsModel accountsModel)
         {
-            
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
@@ -949,13 +971,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetTotalFeesChargedOption3" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return TotalFeesChargedOption3;
         }
-        public string GetTotalFeesPaidOption3(AccountsModel accountsModel)
+        private string GetTotalFeesPaidOption3(AccountsModel accountsModel)
         {
-       
+
             try
             {
                 // need to check
@@ -985,11 +1008,12 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetTotalFeesPaidOption3" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return TotalFeesPaidOption3;
         }
-        public string GetTotalAmountDueOption3(AccountsModel accountsModel)
+        private string GetTotalAmountDueOption3(AccountsModel accountsModel)
         {
             try
             {
@@ -1014,15 +1038,16 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetTotalAmountDueOption3" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return TotalAmountDueOption3;
         }
 
 
-        public string GetPrincipalOption4(AccountsModel accountsModel)
+        private string GetPrincipalOption4(AccountsModel accountsModel)
         {
-            
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
@@ -1043,11 +1068,12 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetPrincipalOption4" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return PrincipalOption4;
         }
-        public string GetAssistanceAmountOption4(AccountsModel accountsModel)
+        private string GetAssistanceAmountOption4(AccountsModel accountsModel)
         {
             try
             {
@@ -1068,13 +1094,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetAssistanceAmountOption4" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return AssistanceAmountOption4;
         }
-        public string GetReplacementReserveOption4(AccountsModel accountsModel)
+        private string GetReplacementReserveOption4(AccountsModel accountsModel)
         {
-            
+
             try
             {
                 if ((Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData)
@@ -1101,13 +1128,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetReplacementReserveOption4" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return ReplacementReserveOption4;
         }
-        public string GetOverduePaymentsOption4(AccountsModel accountsModel)
+        private string GetOverduePaymentsOption4(AccountsModel accountsModel)
         {
-            
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
@@ -1123,13 +1151,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetOverduePaymentsOption4" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return OverduePaymentsOption4;
         }
-        public string GetTotalFeesChargedOption4(AccountsModel accountsModel)// issue
+        private string GetTotalFeesChargedOption4(AccountsModel accountsModel)// issue
         {
-            
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
@@ -1164,14 +1193,15 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetTotalFeesChargedOption4" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return TotalFeesChargedOption4;
         }
-        public string GetTotalFeesPaidOption4(AccountsModel accountsModel)
+        private string GetTotalFeesPaidOption4(AccountsModel accountsModel)
         {
             // need to check
-            
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
@@ -1193,11 +1223,12 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetTotalFeesPaidOption4" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return TotalFeesPaidOption4;
         }
-        public string GetTotalAmountDueOption4(AccountsModel accountsModel)
+        private string GetTotalAmountDueOption4(AccountsModel accountsModel)
         {
             try
             {
@@ -1216,15 +1247,16 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetTotalAmountDueOption4" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return TotalAmountDueOption4;
         }
 
 
-        public string GetFeesandChargesPaidLastMonth(AccountsModel accountsModel)//Issue
+        private string GetFeesandChargesPaidLastMonth(AccountsModel accountsModel)//Issue
         {
-           
+
             try
             {
                 var Total = Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Pd_Since_Lst_Stmt_PackedData)
@@ -1245,13 +1277,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetFeesandChargesPaidLastMonth" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return FeesandChargesPaidLastMonth;
         }
-        public string GeUnappliedFundsPaidLastMonth(AccountsModel accountsModel)
+        private string GeUnappliedFundsPaidLastMonth(AccountsModel accountsModel)
         {
-            
+
             try
             {
                 UnappliedFundsPaidLastMonth = Convert.ToString(Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData)
@@ -1262,13 +1295,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetUnappliedFundsPaidLastMonth" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return UnappliedFundsPaidLastMonth;
         }
-        public string GetFeesandChargesPaidYeartoDate(AccountsModel accountsModel)//Issue
+        private string GetFeesandChargesPaidYeartoDate(AccountsModel accountsModel)//Issue
         {
-            
+
             try
             {
                 var Total = Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Paid_Ytd_PackedData)
@@ -1289,13 +1323,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetFeesandChargesPaidYeartoDate" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return FeesandChargesPaidYeartoDate;
         }
-        public string GetUnappliedFundsPaidYearToDate(AccountsModel accountsModel)//Issue
+        private string GetUnappliedFundsPaidYearToDate(AccountsModel accountsModel)//Issue
         {
-                        try
+            try
             {
                 UnappliedFundsPaidYearToDate = Convert.ToString(accountsModel.MasterFileDataPart_1Model.Rssi_Unap_Fund_Cd != "L" ? Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Unap_Fund_Cd) : 0
           + accountsModel.MasterFileDataPart2Model.Rssi_Unap_Cd_2 != "L" ? Convert.ToInt64(accountsModel.MasterFileDataPart2Model.Rssi_Unap_Bal_2_PackedData) : 0
@@ -1306,14 +1341,15 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetUnappliedFundsPaidYearToDate" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return UnappliedFundsPaidYearToDate;
 
         }
-        public string GetPaymentAmountOption1(AccountsModel accountsModel)
+        private string GetPaymentAmountOption1(AccountsModel accountsModel)
         {
-            
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
@@ -1340,13 +1376,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetPaymentAmountOption1" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return PaymentAmountOption1;
         }
-        public string GetPaymentAmountOption2(AccountsModel accountsModel)
+        private string GetPaymentAmountOption2(AccountsModel accountsModel)
         {
-          
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
@@ -1373,13 +1410,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetPaymentAmountOption2" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return PaymentAmountOption2;
         }
-        public string GetPaymentAmountOption3(AccountsModel accountsModel)
+        private string GetPaymentAmountOption3(AccountsModel accountsModel)
         {
-            
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
@@ -1406,13 +1444,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetPaymentAmountOption3" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return PaymentAmountOption3;
         }
-        public string GetPaymentAmountOption4(AccountsModel accountsModel)
+        private string GetPaymentAmountOption4(AccountsModel accountsModel)
         {
-            
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
@@ -1431,13 +1470,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetPaymentAmountOption4" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return PaymentAmountOption4;
         }
-        public string GetSuspense(AccountsModel accountsModel)
+        private string GetSuspense(AccountsModel accountsModel)
         {
-            
+
             try
             {
                 Suspense = Convert.ToString(Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData)
@@ -1448,12 +1488,13 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetSuspense" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return Suspense;
         }
-        public string GetMiscellaneous(AccountsModel accountsModel)
-        { 
+        private string GetMiscellaneous(AccountsModel accountsModel)
+        {
             try
             {
                 Miscellaneous = Convert.ToString(Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Lip_PackedData)
@@ -1471,13 +1512,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetMiscellaneous" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return Miscellaneous;
         }
-        public string GetDeferredBalance(AccountsModel accountsModel)
+        private string GetDeferredBalance(AccountsModel accountsModel)
         {
-            
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal)
@@ -1493,13 +1535,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetDeferredBalance" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return DeferredBalance;
         }
-        public string GetTotalDue(AccountsModel accountsModel)
+        private string GetTotalDue(AccountsModel accountsModel)
         {
-            
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
@@ -1514,13 +1557,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetTotalDue" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return TotalDue;
         }
-        public string GetHold(AccountsModel accountsModel)
+        private string GetHold(AccountsModel accountsModel)
         {
-            
+
             try
             {
                 if (accountsModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H")
@@ -1534,14 +1578,15 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetHold" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return Hold;
         }
-        public string GetPrimaryBorrowerBKAttorney(AccountsModel accountsModel)
+        private string GetPrimaryBorrowerBKAttorney(AccountsModel accountsModel)
         {
 
-            
+
 
             //If RSSI-POC - STATEMENT - FLAG = Y, then copy 1 to RSSI-PRIMARY - NAME and copy 2 to
             //RSSI - VEND - NAME1"
@@ -1568,11 +1613,12 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetPrimaryBorrowerBKAttorney" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return PrimaryBorrowerBKAttorney;
         }
-        public string GetSecondaryBorrower(AccountsModel accountsModel)
+        private string GetSecondaryBorrower(AccountsModel accountsModel)
         {
             if (accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                 || accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B")
@@ -1581,7 +1627,7 @@ namespace Carrington_Service.Calculation_Classes
             }
             return SecondaryBorrower;
         }
-        public string GetMailingBKAttorneyAddressLine1(AccountsModel accountsModel)
+        private string GetMailingBKAttorneyAddressLine1(AccountsModel accountsModel)
         {
             try
             {
@@ -1601,12 +1647,13 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetMailingBKAttorneyAddressLine1" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return MailingBKAttorneyAddressLine1;
         }
-        public string GetMailingBKAttorneyAddressLine2(AccountsModel accountsModel)
-        { 
+        private string GetMailingBKAttorneyAddressLine2(AccountsModel accountsModel)
+        {
             try
             {
                 if (accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B")
@@ -1625,11 +1672,12 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetMailingBKAttorneyAddressLine2" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return MailingBKAttorneyAddressLine2;
         }
-        public string GetBorrowerAttorneyMailingCityStateZip(AccountsModel accountsModel)
+        private string GetBorrowerAttorneyMailingCityStateZip(AccountsModel accountsModel)
         {
             try
             {
@@ -1653,11 +1701,12 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetBorrowerAttorneyMailingCityStateZip" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return BorrowerAttorneyMailingCityStateZip;
         }
-        public string GetMailingCountry(AccountsModel accountsModel)
+        private string GetMailingCountry(AccountsModel accountsModel)
         {
             try
             {
@@ -1680,11 +1729,13 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetMailingCountry" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return MailingCountry;
         }
-        public string GetPaymentDate(AccountsModel accountsModel) {
+        private string GetPaymentDate(AccountsModel accountsModel)
+        {
             try
             {
                 PaymentDate = accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte;
@@ -1693,10 +1744,11 @@ namespace Carrington_Service.Calculation_Classes
             {
                 Logger.Error(ex, "Method name : GetPaymentDate" + ExMessage);
             }
-            return PaymentDate; 
+            return PaymentDate;
         }
-        public string GetInterestOption1(AccountsModel accountsModel) {
-            
+        private string GetInterestOption1(AccountsModel accountsModel)
+        {
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
@@ -1723,12 +1775,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetInterestOption1" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return InterestOption1;
         }
-        public string GetEscrowOption1(AccountsModel accountsModel) {
-            
+        private string GetEscrowOption1(AccountsModel accountsModel)
+        {
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
@@ -1756,12 +1810,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetEscrowOption1" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return EscrowOption1;
-         }
-        public string GetRegularMonthlyPaymentOption1(AccountsModel accountsModel) {
-            
+        }
+        private string GetRegularMonthlyPaymentOption1(AccountsModel accountsModel)
+        {
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
@@ -1788,14 +1844,16 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetRegularMonthlyPaymentOption1" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return RegularMonthlyPaymentOption1;
         }
 
 
-        public string GetInterestOption2(AccountsModel accountsModel) {
-            
+        private string GetInterestOption2(AccountsModel accountsModel)
+        {
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
@@ -1823,12 +1881,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetInterestOption2" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return InterestOption2;
         }
-        public string GetEscrowOption2(AccountsModel accountsModel) {
-            
+        private string GetEscrowOption2(AccountsModel accountsModel)
+        {
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
@@ -1856,12 +1916,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetEscrowOption2" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return EscrowOption2;
         }
-        public string GetRegularMonthlyPaymentOption2(AccountsModel accountsModel) {
-           
+        private string GetRegularMonthlyPaymentOption2(AccountsModel accountsModel)
+        {
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
@@ -1889,12 +1951,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetRegularMonthlyPaymentOption2" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return RegularMonthlyPaymentOption2;
         }
 
-        public string GetInterestOption3(AccountsModel accountsModel) {
+        private string GetInterestOption3(AccountsModel accountsModel)
+        {
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
@@ -1922,13 +1986,15 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetInterestOption3" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return InterestOption3;
 
         }
-        public string GetEscrowOption3(AccountsModel accountsModel) {
-            
+        private string GetEscrowOption3(AccountsModel accountsModel)
+        {
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
@@ -1956,12 +2022,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetEscrowOption3" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return EscrowOption3;
         }
-        public string GetRegularMonthlyPaymentOption3(AccountsModel accountsModel) {
-            
+        private string GetRegularMonthlyPaymentOption3(AccountsModel accountsModel)
+        {
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
@@ -1989,13 +2057,15 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetRegularMonthlyPaymentOption3" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return RegularMonthlyPaymentOption3;
         }
 
-        public string GetInterestOption4(AccountsModel accountsModel) {
-           
+        private string GetInterestOption4(AccountsModel accountsModel)
+        {
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
@@ -2014,12 +2084,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetInterestOption4" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return InterestOption4;
         }
-        public string GetEscrowOption4(AccountsModel accountsModel) {
-            
+        private string GetEscrowOption4(AccountsModel accountsModel)
+        {
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
@@ -2038,12 +2110,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetEscrowOption4" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return EscrowOption4;
         }
-        public string GetRegularMonthlyPaymentOption4(AccountsModel accountsModel) {
-           
+        private string GetRegularMonthlyPaymentOption4(AccountsModel accountsModel)
+        {
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
@@ -2062,14 +2136,16 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetRegularMonthlyPaymentOption4" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return RegularMonthlyPaymentOption4;
         }
 
-        public string GetOption4MinimumDescription(AccountsModel accountsModel) {
-            
-           
+        private string GetOption4MinimumDescription(AccountsModel accountsModel)
+        {
+
+
             try
             {
                 if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt1_PackedData)
@@ -2095,12 +2171,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetOption4MinimumDescription" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return Option4MinimumDescription;
         }
-        public string GetPOBoxAddress(AccountsModel accountsModel) {
-            
+        private string GetPOBoxAddress(AccountsModel accountsModel)
+        {
+
             try
             {
                 if (accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "KS"
@@ -2118,13 +2196,15 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetPOBoxAddress" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return POBoxAddress;
         }
-        public string GetDate(AccountsModel accountsModel) {
-            
-           
+        private string GetDate(AccountsModel accountsModel)
+        {
+
+
             try
             {
                 if (accountsModel.FeeRecordModel.Rssi_Fd_Fee_Type == "000")
@@ -2138,13 +2218,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetDate" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return Date;
         }
-        public string GetAmount(AccountsModel accountsModel)
+        private string GetAmount(AccountsModel accountsModel)
         {
-            
+
             try
             {
                 if (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Exp_Fee_Amt_PackedData) != 0)
@@ -2162,12 +2243,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetAmount" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return Amount;
         }
-        public string GetBuydownBalance(AccountsModel accountsModel) {
-            
+        private string GetBuydownBalance(AccountsModel accountsModel)
+        {
+
             try
             {
                 if (Convert.ToInt64(accountsModel.UserFieldRecordModel.Rssi_Usr_303_PackedData) <= 0)
@@ -2181,12 +2264,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetBuydownBalance" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return BuydownBalance;
         }
-        public string GetPartialClaim(AccountsModel accountsModel) {
-           
+        private string GetPartialClaim(AccountsModel accountsModel)
+        {
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) == 0)
@@ -2200,12 +2285,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetPartialClaim" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return PartialClaim;
         }
-        public string GetInterestRateUntil(AccountsModel accountsModel) {
-            
+        private string GetInterestRateUntil(AccountsModel accountsModel)
+        {
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Rate_Chg_Date) > 19000000)
@@ -2219,12 +2306,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetInterestRateUntil" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return InterestRateUntil;
         }
-        public string GetPrepaymentPenalty(AccountsModel accountsModel) {
-            
+        private string GetPrepaymentPenalty(AccountsModel accountsModel)
+        {
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prepay_Pen_Amt_PackedData) > 0)
@@ -2238,12 +2327,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetPrepaymentPenalty" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return PrepaymentPenalty;
         }
-        public string GetAccountHistoryInformationbox(AccountsModel accountsModel) {
-           
+        private string GetAccountHistoryInformationbox(AccountsModel accountsModel)
+        {
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Num_Days_Delq) >= 30
@@ -2258,170 +2349,244 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetAccountHistoryInformationbox" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return AccountHistoryInformationbox;
         }
-        public string GetRecentPayment6(AccountsModel accountModel)
+        private string GetRecentPayment6(AccountsModel accountModel)
         {
             try
             {
                 if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 1)
-                { RecentPayment6 = "RSSI-PMT-DUE-5-DATE: Fully paid on RSSI-PMT-PAID-5-DATE"; }
+                {
+                    RecentPayment6 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_5 + ": Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_5;
+                }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 2)
-                { RecentPayment6 = "RSSI - PMT - DUE - 4 - DATE: Fully paid on RSSI-PMT - PAID - 4 - DATE"; }
+                {
+                    RecentPayment6 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_4 + ": Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_4;
+                }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 3)
-                { RecentPayment6 = "RSSI - PMT - DUE - 3 - DATE: Fully paid on RSSI-PMT - PAID - 3 - DATE"; }
+                {
+                    RecentPayment6 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_3 + ": Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_3;
+                }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 4)
-                { RecentPayment6 = "RSSI - PMT - DUE - 2 - DATE: Fully paid on RSSI-PMT - PAID - 2 - DATE"; }
+                {
+                    RecentPayment6 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_2 + ": Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_2;
+                }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 5)
-                { RecentPayment6 = "RSSI - PMT - DUE - 1 - DATE: Fully paid on RSSI-PMT - PAID - 1 - DATE"; }
+                {
+                    RecentPayment6 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_1 + ": Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_1;
+                }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
-                { RecentPayment6 = "RSSI - PAST - DATE(1): Unpaid balance of $RSSI - REG - AMT(1)"; }
+                {
+                    RecentPayment6 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(1): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(1)"; ;
+                }
 
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetRecentPayment6" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return RecentPayment6;
         }
 
-        public string GetRecentPayment5(AccountsModel accountModel)
+        private string GetRecentPayment5(AccountsModel accountModel)
         {
 
             try
             {
 
                 if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 1)
-                { RecentPayment5 = "RSSI-PMT-DUE-4-DATE: Fully paid on RSSI-PMT-PAID-4-DATE"; }
+                {
+                    RecentPayment5 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_4 + ": Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_4;
+                }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 2)
-                { RecentPayment5 = "RSSI - PMT - DUE - 3 - DATE: Fully paid on RSSI-PMT - PAID - 3 - DATE"; }
+                {
+                    RecentPayment5 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_3 + ": Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_3;
+                }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 3)
-                { RecentPayment5 = "RSSI - PMT - DUE - 2 - DATE: Fully paid on RSSI-PMT - PAID - 2 - DATE"; }
+                {
+                    RecentPayment5 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_2 + ": Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_2;
+                }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 4)
-                { RecentPayment5 = "RSSI - PMT - DUE - 1 - DATE: Fully paid on RSSI-PMT - PAID - 1 - DATE"; }
+                {
+                    RecentPayment5 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_1 + ": Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_1;
+                }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 5 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
-                { RecentPayment5 = "RSSI - PAST - DATE(1): Unpaid balance of $RSSI - REG - AMT(1)"; }
+                {
+                    RecentPayment5 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(1): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(1)";
+                }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
-                { RecentPayment5 = "RSSI - PAST - DATE(2): Unpaid balance of $RSSI - REG - AMT(2)"; }
+                {
+                    RecentPayment5 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(2): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(2)";
+                }
 
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetRecentPayment5" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
 
             return RecentPayment5;
         }
 
-        public string GetRecentPayment4(AccountsModel accountModel)
+        private string GetRecentPayment4(AccountsModel accountModel)
         {
             try
             {
                 if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 1)
-                { RecentPayment4 = "RSSI-PMT-DUE-3-DATE: Fully paid on RSSI-PMT-PAID-3-DATE"; }
+                {
+                    RecentPayment4 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_3 + ": Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_3;
+                }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 2)
-                { RecentPayment4 = "RSSI - PMT - DUE - 2 - DATE: Fully paid on RSSI-PMT - PAID - 2 - DATE"; }
+                {
+                    RecentPayment4 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_2 + ": Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_2;
+                }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 3)
-                { RecentPayment4 = "RSSI - PMT - DUE - 1 - DATE: Fully paid on RSSI-PMT - PAID - 1 - DATE"; }
+                {
+                    RecentPayment4 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_1 + ": Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_1;
+                }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 4 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
-                { RecentPayment4 = "RSSI - PAST - DATE(1): Unpaid balance of $RSSI - REG - AMT(1)"; }
+                {
+                    RecentPayment4 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(1): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(1)";
+                }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 5 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
-                { RecentPayment4 = "RSSI - PAST - DATE(2): Unpaid balance of $RSSI - REG - AMT(2)"; }
+                {
+                    RecentPayment4 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(2): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(2)";
+                }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
-                { RecentPayment4 = "RSSI - PAST - DATE(3): Unpaid balance of $RSSI - REG - AMT(3)"; }
+                {
+                    RecentPayment4 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(3): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(3)";
+                }
 
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetRecentPayment4" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
 
             return RecentPayment4;
         }
 
-        public string GetRecentPayment3(AccountsModel accountModel)
+        private string GetRecentPayment3(AccountsModel accountModel)
         {
-
-            
             try
             {
-               
-
                 if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 1)
-                { RecentPayment3 = "RSSI-PMT-DUE-2-DATE: Fully paid on RSSI-PMT-PAID-2-DATE"; }
+                {
+                    RecentPayment3 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_2 + ": Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_2;
+                }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 2)
-                { RecentPayment3 = "RSSI - PMT - DUE - 1 - DATE: Fully paid on RSSI-PMT - PAID - 1 - DATE"; }
+                {
+                    RecentPayment3 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_1 + ": Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_1;
+                }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 3 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
-                { RecentPayment3 = "RSSI - PAST - DATE(1): Unpaid balance of $RSSI - REG - AMT(1)"; }
+                {
+                    RecentPayment3 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(1): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(1)";
+                }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 4 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
-                { RecentPayment3 = "RSSI - PAST - DATE(2): Unpaid balance of $RSSI - REG - AMT(2)"; }
+                {
+                    RecentPayment3 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(2): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(2)";
+                }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 5 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
-                { RecentPayment3 = "RSSI - PAST - DATE(3): Unpaid balance of $RSSI - REG - AMT(3)"; }
+                {
+                    RecentPayment3 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(3): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(3)";
+                }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
-                { RecentPayment3 = "RSSI - PAST - DATE(4): Unpaid balance of $RSSI - REG - AMT(4)"; }
+                {
+                    RecentPayment3 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(4): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(4)";
+                }
 
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetRecentPayment3" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return RecentPayment3;
         }
 
-        public string GetRecentPayment2(AccountsModel accountModel)
+        private string GetRecentPayment2(AccountsModel accountModel)
         {
             try
             {
-
                 if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 1)
-                { RecentPayment2 = "RSSI-PMT-DUE-1-DATE: Fully paid on RSSI-PMT-PAID-1-DATE"; }
+                {
+                    RecentPayment2 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_1 + ": Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_1;
+                }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 2 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
-                { RecentPayment2 = "RSSI - PAST - DATE(1): Unpaid balance of $RSSI - REG - AMT(1)"; }
+                {
+                    RecentPayment2 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(1): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(1)";
+                }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 3 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
-                { RecentPayment2 = "RSSI - PAST - DATE(2): Unpaid balance of $RSSI - REG - AMT(2)"; }
+                {
+                    RecentPayment2 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(2): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(2)";
+                }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 4 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
-                { RecentPayment2 = "RSSI - PAST - DATE(3): Unpaid balance of $RSSI - REG - AMT(3)"; }
+                {
+                    RecentPayment2 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(3): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(3)";
+                }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 5 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
-                { RecentPayment2 = "RSSI - PAST - DATE(4): Unpaid balance of $RSSI - REG - AMT(4)"; }
+                {
+                    RecentPayment2 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(4): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(4)";
+                }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
-                { RecentPayment2 = "RSSI - PAST - DATE(5): Unpaid balance of $RSSI - REG - AMT(5)"; }
+                {
+                    RecentPayment2 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(5): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(5)";
+                }
 
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetRecentPayment2" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return RecentPayment2;
         }
 
-        public string GetRecentPayment1(AccountsModel accountModel)
+        private string GetRecentPayment1(AccountsModel accountModel)
         {
             try
             {
-
                 if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 1 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
-                { RecentPayment1 = "RSSI-PAST-DATE (1): Unpaid balance of $RSSI-REG-AMT (1)"; }
+                {
+                    RecentPayment1 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(1): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(1)";
+                }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 2 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
-                { RecentPayment1 = "RSSI - PAST - DATE(2): Unpaid balance of $RSSI - REG - AMT(2)"; }
+                {
+                    RecentPayment1 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(2): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(2)";
+                }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 3 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
-                { RecentPayment1 = "RSSI - PAST - DATE(3): Unpaid balance of $RSSI - REG - AMT(3)"; }
+                {
+                    RecentPayment1 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(3): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(3)";
+                }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 4 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
-                { RecentPayment1 = "RSSI - PAST - DATE(4): Unpaid balance of $RSSI - REG - AMT(4)"; }
-                else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 5 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
-                { RecentPayment1 = "RSSI - PAST - DATE(5): Unpaid balance of $RSSI - REG - AMT(5)"; }
-                else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
-                { RecentPayment1 = "RSSI - PAST - DATE(5): Unpaid balance of $RSSI - REG - AMT(5)"; }
+                {
+                    RecentPayment1 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(4): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(4)";
 
+                }
+                else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 5 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
+                {
+                    RecentPayment1 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(5): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(5)";
+                }
+                else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
+                {
+                    RecentPayment1 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(5): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(5)";
+                }
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetRecentPayment1" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return RecentPayment1;
         }
-        public string GetLenderPlacedInsuranceMessage(AccountsModel accountsModel) {
+        private string GetLenderPlacedInsuranceMessage(AccountsModel accountsModel)
+        {
             try
             {
                 if ((Convert.ToInt64(accountsModel.EscrowRecordModel.Rssi_Esc_Type) == 20
@@ -2437,12 +2602,13 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetLenderPlacedInsuranceMessage" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
             }
             return LenderPlacedInsuranceMessage;
         }
-        public string GetStateNSF(AccountsModel accountsModel) { 
-            
+        private string GetStateNSF(AccountsModel accountsModel)
+        {
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 6
@@ -2456,12 +2622,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetStateNSF" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return StateNSF;
         }
-        public string GetAutodraftMessage(AccountsModel accountsModel) { 
-            
+        private string GetAutodraftMessage(AccountsModel accountsModel)
+        {
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart2Model.Rssi_Tot_Draft_Amt_PackedData) > 0
@@ -2472,12 +2640,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetAutodraftMessage" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return AutodraftMessage;
         }
-        public string GetCMSPartialClaim(AccountsModel accountsModel) {
-           
+        private string GetCMSPartialClaim(AccountsModel accountsModel)
+        {
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) > 0
@@ -2488,12 +2658,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetCMSPartialClaim" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return CMSPartialClaim;
         }
-        public string GetHUDPartialClaim(AccountsModel accountsModel) {
-           
+        private string GetHUDPartialClaim(AccountsModel accountsModel)
+        {
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) > 0
@@ -2504,13 +2676,15 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetHUDPartialClaim" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return HUDPartialClaim;
         }
-        public string GetStateDisclosures(AccountsModel accountsModel) {
+        private string GetStateDisclosures(AccountsModel accountsModel)
+        {
 
-               
+
             try
             {
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3) == 4
@@ -2539,12 +2713,14 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetStateDisclosures" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return StateDisclosures;
         }
-        public string GetPaymentInformationMessage(AccountsModel accountsModel) {
-            
+        private string GetPaymentInformationMessage(AccountsModel accountsModel)
+        {
+
             try
             {
                 if (accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "KS"
@@ -2562,7 +2738,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetPaymentInformationMessage" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
             return PaymentInformationMessage;
         }
