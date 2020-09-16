@@ -125,14 +125,9 @@
   <ItemGroup>
     <Compile Include="Agents\AgentApi.cs" />
     <Compile Include="BusinessExpert\CRL30FileGeneration.cs" />
-    <Compile Include="BusinessExpert\ICRL30FileGeneration.cs" />
     <Compile Include="BusinessExpert\WorkFlowExpert.cs" />
-    <Compile Include="Calculation_Classes\IChapterSevenBillingStatement.cs" />
     <Compile Include="Calculation_Classes\IChapterSevenOptionARMStatement.cs" />
-    <Compile Include="Calculation_Classes\IChapterThirteenBillingStatement.cs" />
     <Compile Include="Calculation_Classes\IChapterThirteenOptionARMStatement.cs" />
-    <Compile Include="Calculation_Classes\IOptionARMBillingStatement.cs" />
-    <Compile Include="Calculation_Classes\IStandardBillingStatement.cs" />
     <Compile Include="Calculation_Classes\RejectStatement.cs" />
     <Compile Include="Calculation_Classes\StandardBillingStatement.cs" />
     <Compile Include="Calculation_Classes\OptionARMBillingStatement.cs" />
