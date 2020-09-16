@@ -1,6 +1,7 @@
 ﻿using Carrington_Service.Calculation_Classes;
 using Carrington_Service.Infrastructure;
 using CarringtonMortgage.FlexFields_Calculation;
+using CarringtonMortgage.Helpers;
 using CarringtonMortgage.Models.InputCopyBookModels.MortgageLoanBillingModels;
 using CarritonMortgage.Calculation_Classes;
 using Common;
@@ -168,13 +169,13 @@ namespace ODHS_EDelivery.BusinessExpert
                        
 
                         account.Standard.SSN = extractAccount.MasterFileDataPart_1Model.Rssi_Primary_Social_Sec;
-                        account.Standard.StatementDate = GetFormatedDateTime(extractAccount.MasterFileDataPart_1Model.Rssi_Run_Date);
+                        account.Standard.StatementDate = CommonHelper.GetFormatedDateTime(extractAccount.MasterFileDataPart_1Model.Rssi_Run_Date);
 
-                        account.Standard.PaymentDueDate = GetFormatedDateTime(extractAccount.MasterFileDataPart_1Model.Rssi_Due_Date) >
-                            GetFormatedDateTime(extractAccount.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte) ?
-                            GetFormatedDateTime(extractAccount.MasterFileDataPart_1Model.Rssi_Run_Date) :
-                            GetFormatedDateTime(extractAccount.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte);
-                        account.Standard.LatePaymentDueDate = GetFormatedDateTime(extractAccount.LateChargeDetailRecordModel.Rssi_Lcd_Pymt_Due_Dt_PackedData);
+                        account.Standard.PaymentDueDate = CommonHelper.GetFormatedDateTime(extractAccount.MasterFileDataPart_1Model.Rssi_Due_Date) >
+                            CommonHelper.GetFormatedDateTime(extractAccount.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte) ?
+                            CommonHelper.GetFormatedDateTime(extractAccount.MasterFileDataPart_1Model.Rssi_Run_Date) :
+                            CommonHelper.GetFormatedDateTime(extractAccount.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte);
+                        account.Standard.LatePaymentDueDate = CommonHelper.GetFormatedDateTime(extractAccount.LateChargeDetailRecordModel.Rssi_Lcd_Pymt_Due_Dt_PackedData);
 
                         //account.Standard.LatePaymentAmount = StandardBillingStatement.GetLatePaymentAmount(extractAccount) != null ? Convert.ToDecimal(StandardBillingStatement.GetLatePaymentAmount(extractAccount)): 0;//TODO: Convert the calling method
                         account.Standard.EmailAddress = extractAccount.MasterFileDataPart_1Model.Rssi_Primary_Email_Adr;
@@ -361,21 +362,5 @@ namespace ODHS_EDelivery.BusinessExpert
                 Logger.Info($"Output file name: {_outputFile}");
             }
         }
-        private DateTime GetFormatedDateTime(string dateTime)
-        {
-            try
-            {
-                var parsedDate = DateTime.ParseExact(dateTime, "yyMMdd", System.Globalization.CultureInfo.InvariantCulture);
-                var formattedDate = parsedDate.ToString("MM-dd-yy", System.Globalization.CultureInfo.InvariantCulture);
-                return Convert.ToDateTime(formattedDate);
-            }
-            catch (Exception ex)
-            {
-                return DateTime.MinValue;
-            }
-        }
-
-
-
     }
 }
