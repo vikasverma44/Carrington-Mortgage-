@@ -37,17 +37,17 @@ namespace Carrington_Service
 
                     objWFservice.logger.Trace("Input file name: " + _inputFile + "");
                     objWFservice.logger.Trace("Input record length: " + _inputRecordLength);
-                    objWFservice.logger.Trace("Data Center: {0}" + _dataCenter);
-                    objWFservice.logger.Trace("Tracking Id: {0}" + _trackingId);
+                    objWFservice.logger.Trace("Data Center:  " + _dataCenter);
+                    objWFservice.logger.Trace("Tracking Id:  " + _trackingId);
 
                     if (!File.Exists(_inputFile))
                     {
                         objWFservice.logger.Trace($"Input file does not exist: {_inputFile}.");
-                        throw new FileNotFoundException($"Carrington Mortgage: file Not Found {_inputFile}");
+                        throw new FileNotFoundException($"Carrington Mortgage: File not found at location = {_inputFile}");
                     }
                     if (objWFservice.StartWorkFlowService(_inputFile, _trackingId))
                     {
-                        objWFservice.logger.Trace("SUCCESS: Application succcesfully executed with 0 error.");
+                      //  objWFservice.logger.Trace("SUCCESS: Application succcesfully executed with 0 error.");
                         objWFservice.logger.Trace("ENDED:   Main");
                     }
                     else
