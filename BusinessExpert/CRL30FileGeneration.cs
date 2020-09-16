@@ -16,7 +16,7 @@ namespace ODHS_EDelivery.BusinessExpert
     {
         public ILogger Logger;
         private readonly IConfigHelper ConfigHelper;
-        private readonly StatementType StatementType;
+        private readonly IStatementType StatementType;
         private readonly IChapterSevenBillingStatement ChapterSevenBillingStatement;
         private readonly IChapterSevenOptionARMStatement ChapterSevenOptionARMStatement;
         private readonly IChapterThirteenBillingStatement ChapterThirteenBillingStatement;
@@ -62,7 +62,7 @@ namespace ODHS_EDelivery.BusinessExpert
         /// </summary>
         /// <param name="logger"></param>
         /// <param name="configHelper"></param>
-        public CRL30FileGeneration(ILogger logger, IConfigHelper configHelper, IStandardBillingStatement standardBillingStatement, StatementType statementType,
+        public CRL30FileGeneration(ILogger logger, IConfigHelper configHelper, IStandardBillingStatement standardBillingStatement, IStatementType statementType,
             IChapterSevenBillingStatement chapterSevenBillingStatement, IChapterSevenOptionARMStatement chapterSevenOptionARMStatement,
             IChapterThirteenBillingStatement chapterThirteenBillingStatement, IChapterThirteenOptionARMStatement
             chapterThirteenOptionARMStatement, IOptionARMBillingStatement optionARMBillingStatement)

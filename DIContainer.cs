@@ -5,6 +5,7 @@ using Carrington_Service.Helpers;
 using Carrington_Service.Infrastructure;
 using Carrington_Service.Interfaces;
 using Carrington_Service.Services;
+using CarringtonMortgage.FlexFields_Calculation;
 using ODHS_EDelivery.BusinessExpert;
 using SimpleInjector;
 
@@ -25,18 +26,20 @@ namespace Carrington_Service
             container.Register<ILogger, Logger>(lifestyle);
             container.Register<IWorkFlowService, WorkFlowService>(lifestyle);
             container.Register<IEmailService, EmailService>(lifestyle);
-
             container.Register<IChapterThirteenOptionARMStatement, ChapterThirteenOptionARMStatement>(lifestyle);
             container.Register<IChapterSevenBillingStatement, ChapterSevenBillingStatement>(lifestyle);
             container.Register<IChapterThirteenBillingStatement, ChapterThirteenBillingStatement>(lifestyle);
             container.Register<IStandardBillingStatement, StandardBillingStatement>(lifestyle);
             container.Register<IOptionARMBillingStatement, OptionARMBillingStatement>(lifestyle);
-            container.Register<IChapterThirteenBillingStatement, ChapterThirteenBillingStatement>(lifestyle);
+            container.Register<ICRL30FileGeneration, CRL30FileGeneration>(lifestyle);
+            container.Register<IStatementType, StatementType>(lifestyle);
+            container.Register<IChapterSevenOptionARMStatement, ChapterSevenOptionARMStatement>(lifestyle);
+
         }
 
-        public static WorkFlowExpert GetWorkFlowServiceInstance()
+        public static WorkFlowService GetWorkFlowServiceInstance()
         {
-            return container.GetInstance<WorkFlowExpert>();
+            return container.GetInstance<WorkFlowService>();
         }
     }
 }

@@ -2,7 +2,7 @@
 {
     public interface IWorkFlowService
     {
-        bool StartWorkFlowService();
-         
+        bool StartWorkFlowService(string _inputFile, string _trackingId);
+
     }
 }

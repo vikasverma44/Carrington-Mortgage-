@@ -50,12 +50,12 @@ namespace Carrington_Service.BusinessExpert
 
         #endregion
 
-        public bool StartWorkFlow()
+        public bool StartWorkFlow(string _inputFile, string _trackingId)
         {
             try
             {
-                // return FileReadingProcess();
-                return true;
+                return FileReadingProcess(_inputFile, _trackingId);
+
             }
             catch (Exception ex)
             {
@@ -70,12 +70,9 @@ namespace Carrington_Service.BusinessExpert
             Logger.Trace("STARTED: File Reading Process Started");
             try
             {
-                string pathFinal = _trackingId + "\\" + _inputifle;
-                string filelocation = @"C:\Mortgage\" + pathFinal;
-                if (filelocation.Contains("TESTDATA"))
-                {
-                    pmFilePath = filelocation;
-                }
+                string pathFinal = _inputifle;
+                string filelocation = pathFinal;
+                pmFilePath = _inputifle;
                 string[] allFiles = Directory.GetFiles(ConfigHelper.Model.InputFilePathLocation_Local);
                 foreach (string file in allFiles)
                 {
@@ -87,8 +84,8 @@ namespace Carrington_Service.BusinessExpert
                     {
                         EConsentFilePath = file;
                     }
-                } 
-                if (DateTime.Now.Hour > Convert.ToInt32(ConfigHelper.Model.WatcherStartTime) && DateTime.Now.Hour < Convert.ToInt32(ConfigHelper.Model.WatcherEndTime))
+                }
+                if (DateTime.Now.Hour >= Convert.ToInt32(ConfigHelper.Model.WatcherStartTime) && DateTime.Now.Hour < Convert.ToInt32(ConfigHelper.Model.WatcherEndTime))
                 {
                     bool isFileMissing = false;
                     if (pmFilePath == null)
@@ -113,23 +110,24 @@ namespace Carrington_Service.BusinessExpert
                 }
                 else
                 {
+                    Logger.Trace("SUCCESS: Outside Time Frame Window File Found :-");
                     if (pmFilePath != null)
                     {
-                        Logger.Trace("SUCCESS: PM File Found " + DateTime.Now.ToString());
+                        Logger.Trace("PM File Found at Time =  " + DateTime.Now.ToString());
                     }
                     if (supplimentFilePath != null)
                     {
-                        Logger.Trace("SUCCESS: Suppliment File Found " + DateTime.Now.ToString());
+                        Logger.Trace("SUCCESS: Suppliment File Found at Time =  " + DateTime.Now.ToString());
                     }
                     if (EConsentFilePath != null)
                     {
-                        Logger.Trace("SUCCESS: Econsent File Found " + DateTime.Now.ToString());
+                        Logger.Trace("SUCCESS: Econsent File Found at Time =  " + DateTime.Now.ToString());
                     }
                 }
 
                 //CRL30FileGeneration c = new CRL30FileGeneration(Logger, ConfigHelper);
                 //c.GenerateCRL30File(MortgageLoanBillingFile);
-                CRL30FileGeneration.GenerateCRL30File(MortgageLoanBillingFile);
+                // CRL30FileGeneration.GenerateCRL30File(MortgageLoanBillingFile);
                 TimeWatch();
                 Logger.Trace("ENDED: File Reading Process Completed");
                 return true;
@@ -199,33 +197,33 @@ namespace Carrington_Service.BusinessExpert
                                 else
                                 {
                                     Logger.Trace("Account Matching Process: Failed No Matched Account Found in PM, Econsent and Suppliment File !!.");
-                                    EmailService.SendNotification("Failed No Matched Account Found in PM, Econsent and Suppliment File");
+                                 //   EmailService.SendNotification("Failed No Matched Account Found in PM, Econsent and Suppliment File");
                                     Logger.Trace("Email Notification: Failed Account Matching Notification Send");
                                 }
                             }
                             else
                             {
                                 Logger.Trace("Account Matching Process: Failed No Account Exists in PM File !!.");
-                                EmailService.SendNotification("Failed No Account Exists in PM File");
+                             //   EmailService.SendNotification("Failed No Account Exists in PM File");
                             }
                         }
                         else
                         {
                             Logger.Trace("Account Matching Process: Failed No Data Exists in eConsent File !!.");
-                            EmailService.SendNotification("Failed No Account Exists in eConsent File");
+                         //   EmailService.SendNotification("Failed No Account Exists in eConsent File");
                         }
                     }
                     else
                     {
                         Logger.Trace("Account Matching Process: Failed No Data Found in Suppliment File !!.");
-                        EmailService.SendNotification("Failed No Data Found in Suppliment File");
+                      //  EmailService.SendNotification("Failed No Data Found in Suppliment File");
                     }
 
                 }
                 else
                 {
                     Logger.Trace("Account Matching Process: Failed No Data Found in PM File !!.");
-                    EmailService.SendNotification("Failed No Data Found in PM File");
+                   // EmailService.SendNotification("Failed No Data Found in PM File");
                 }
                 Logger.Trace("ENDED: Account Matching Complete");
                 return true;
@@ -444,6 +442,7 @@ namespace Carrington_Service.BusinessExpert
                     counter++;
                 }
                 MortgageLoanBillingFile.AccountModelList.Add(accountsModel);
+                Logger.Trace("ENDED: Reading PM File");
             }
             catch (Exception ex)
             {
@@ -547,7 +546,7 @@ namespace Carrington_Service.BusinessExpert
                     }
 
                 }
-                Logger.Trace("ENDNED: Reading Suppliment File");
+                Logger.Trace("ENDED: Reading Suppliment File");
                 return (detList, transList);
             }
             catch (Exception ex)

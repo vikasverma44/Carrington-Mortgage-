@@ -2,6 +2,6 @@
 {
     public interface IWorkFlowExpert
     {
-        bool StartWorkFlow();
+        bool StartWorkFlow(string _inputFile, string _trackingId);
     }
 }
