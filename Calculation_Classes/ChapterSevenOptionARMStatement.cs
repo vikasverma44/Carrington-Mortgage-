@@ -74,7 +74,7 @@ namespace Carrington_Service.Calculation_Classes
         public string RegularMonthlyPaymentOption4 { get; set; }
         public string Option4MinimumDescription { get; set; }
         public string POBoxAddress { get; set; }
-       
+
         public string Date { get; set; }
         public string Amount { get; set; }
         public string BuydownBalance { get; set; }
@@ -848,7 +848,7 @@ namespace Carrington_Service.Calculation_Classes
                     TotalAmountDueOption2 = Convert.ToString(Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData)
                                    + Convert.ToInt64(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Unpaid_PackedData)
                                    + Convert.ToInt64(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData));
-               
+
                 Logger.Trace("ENDED:  To Get Total Amount Due Option2");
             }
             catch (Exception ex)
@@ -1753,14 +1753,15 @@ namespace Carrington_Service.Calculation_Classes
         }
         public string GetSecondaryBorrower(AccountsModel accountsModel)
         {
-            try { 
-            Logger.Trace("STARTED:  Execute to Get Secondary Borrower");
-            if (accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
-                || accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B")
+            try
             {
-                SecondaryBorrower = accountsModel.MasterFileDataPart_1Model.Rssi_Secondary_Name;
-            }
-            Logger.Trace("ENDED:  To Get Secondary Borrower");
+                Logger.Trace("STARTED:  Execute to Get Secondary Borrower");
+                if (accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
+                    || accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B")
+                {
+                    SecondaryBorrower = accountsModel.MasterFileDataPart_1Model.Rssi_Secondary_Name;
+                }
+                Logger.Trace("ENDED:  To Get Secondary Borrower");
             }
             catch (Exception ex)
             {

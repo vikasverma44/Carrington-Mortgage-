@@ -12,7 +12,7 @@ using WMS.Framework.Data;
 
 namespace ODHS_EDelivery.BusinessExpert
 {
-    public class CRL30FileGeneration : ICRL30FileGeneration
+    public class CRL30FileGeneration :  ICRL30FileGeneration
     {
         public ILogger Logger;
         private readonly IConfigHelper ConfigHelper;
