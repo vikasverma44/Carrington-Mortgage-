@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using WMS.Framework.Data;
+using WMS.Framework.Data.Records.WorkflowRecords;
 
 namespace ODHS_EDelivery.BusinessExpert
 {
@@ -84,238 +85,257 @@ namespace ODHS_EDelivery.BusinessExpert
         /// <param name="mortgageLoanBillingFileModel"></param>
         public void GenerateCRL30File(MortgageLoanBillingFileModel mortgageLoanBillingFileModel, string inputFile)
         {
-            // Creating output file path
-            CreateOutputPath(inputFile);
-
-            using (var output = new StandardFile())
+            try
             {
-                Logger.Info("Creating NCP Header records...");
-                var lineCnt = 3;
-                output.CreateNew(_outputFile, "BHM");
-                var ncp05 = RecordManager.NewInputFileInfoRecord(Ncp05Version);
-                ncp05.Description = Ncp05Description;
-                ncp05.FileReceivedDate = DateTime.Now;
-                ncp05.InputFileName = mortgageLoanBillingFileModel.InputFileName; //TODO:Add properties in mortgage model
-                ncp05.InputFileSize = mortgageLoanBillingFileModel.InputFileSize;
-                ncp05.FileNumber = 1;
-                ncp05.TrackingId = 0;
-                output.AddInputFileInfoRecord(ncp05);
-                lineCnt++;
-
-                Logger.Info("Creating NCP07 records...");
-                //TODO: Revisit
-                output.AddLogRecord("CONV", "START", "Carrington_Mortgage + CONVERSION STARTED.");
-                output.AddLogRecord("CONV", "INFO", $"LoanBillExtractInfo - FileDate = {mortgageLoanBillingFileModel.InputFileDate}");
-                output.AddLogRecord("CONV", "INFO", $"LoanBillExtractInfo - Institution = {mortgageLoanBillingFileModel.InstitutionRecords.Rssi_Institution_Name}");
-                output.AddLogRecord("CONV", "INFO",
-                    mortgageLoanBillingFileModel.InstitutionRecords.Rssi_Inst_Phone != null
-                        ? $"LoanBillExtractInfo - Institution Phone = {mortgageLoanBillingFileModel.InstitutionRecords.Rssi_Inst_Phone}"
-                        : $"LoanBillExtractInfo - Institution Phone = {mortgageLoanBillingFileModel.InstitutionRecords.Rssi_Alt_Coup_Ph_No_1}");
-                lineCnt += 10;
-
-                Logger.Info("Creating NCP09 records...");
-                output.AddAttribute(Ncp09DataKeyCategory, Ncp09DataKeyAccountsTotalCount, Convert.ToString(mortgageLoanBillingFileModel.TotalNumberOfAccount));
-                lineCnt++;
-
-                Logger.Info("Starting Account records process...");
-                var primaryIndex = 1;
-                var line = new StringBuilder();
-
-
-                foreach (var extractAccount in mortgageLoanBillingFileModel.AccountModelList)
+                // Creating output file path
+                CreateOutputPath(inputFile);
+                using (var output = new StandardFile())
                 {
-                    _accountTypeHold = string.Empty;
-
-                    var account = new CustomerAccount(primaryIndex, 1)
-                    {
-                        Standard = RecordManager.NewStandardRecord(Ncp10Version)
-                    };
-
-                    account.Standard.AccountNumber = extractAccount.MasterFileDataPart_1Model.Rssi_Acct_No;
-                    account.Standard.AccountSequenceNumber = primaryIndex;
-
-                    //Mailing address
-                    account.Standard.OriginalAddressLine1 = extractAccount.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1;
-                    account.Standard.OriginalAddressLine2 = extractAccount.MasterFileDataPart_1Model.Rssi_Mail_Adrs_2;
-                    account.Standard.OriginalAddressLine3 = extractAccount.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
-
-                    //City,State and Zip
-                    account.Standard.OriginalCity = extractAccount.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
-                    account.Standard.OriginalState = extractAccount.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
-                    account.Standard.OriginalZip4 = extractAccount.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
-                    account.Standard.OriginalZip5 = extractAccount.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
-
-
-                    //Assigning Flex fields for Primary borrower
-                    var borrowerList = StatementType.GetPrimaryStandardStatement(extractAccount);
-
-                    account.Standard.FlexField1 = borrowerList.FirstOrDefault().FlexField1;
-                    account.Standard.FlexField2 = borrowerList.FirstOrDefault().FlexField2;
-                    account.Standard.FlexField3 = borrowerList.FirstOrDefault().FlexField3;
-                    account.Standard.FlexField4 = borrowerList.FirstOrDefault().FlexField4;
-                    account.Standard.FlexField5 = borrowerList.FirstOrDefault().FlexField5;
-                    account.Standard.FlexField6 = borrowerList.FirstOrDefault().FlexField6;
-
-                    //Removing the primary borrower from the list leaving co borrower details inside
-                    borrowerList.RemoveAt(0);
-
-                    account.Standard.SSN = extractAccount.MasterFileDataPart_1Model.Rssi_Primary_Social_Sec;
-                    account.Standard.StatementDate = Convert.ToDateTime(extractAccount.MasterFileDataPart_1Model.Rssi_Run_Date);
-
-                    account.Standard.PaymentDueDate = Convert.ToDateTime(extractAccount.MasterFileDataPart_1Model.Rssi_Due_Date) >
-                        Convert.ToDateTime(extractAccount.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte) ?
-                        Convert.ToDateTime(extractAccount.MasterFileDataPart_1Model.Rssi_Run_Date) :
-                        Convert.ToDateTime(extractAccount.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte);
-                    account.Standard.LatePaymentDueDate = Convert.ToDateTime(extractAccount.LateChargeDetailRecordModel.Rssi_Lcd_Pymt_Due_Dt_PackedData);
-
-                    account.Standard.LatePaymentAmount = Convert.ToDecimal(StandardBillingStatement.GetLatePaymentAmount(extractAccount));//TODO: Convert the calling method
-                    account.Standard.EmailAddress = extractAccount.MasterFileDataPart_1Model.Rssi_Primary_Email_Adr;
-                    account.Standard.FormattedAccount = extractAccount.MasterFileDataPart_1Model.Rssi_Acct_No;
-                    account.Standard.TwoDRecordCode = 3;
-
-
+                    Logger.Info("Creating NCP Header records...");
+                    var lineCnt = 3;
+                    output.CreateNew(_outputFile, "BHM");
+                    var ncp05 = RecordManager.NewInputFileInfoRecord(Ncp05Version);
+                    ncp05.Description = Ncp05Description;
+                    ncp05.FileReceivedDate = DateTime.Now;
+                    ncp05.InputFileName = mortgageLoanBillingFileModel.InputFileName; //TODO:Add properties in mortgage model
+                    ncp05.InputFileSize = mortgageLoanBillingFileModel.InputFileSize;
+                    ncp05.FileNumber = 1;
+                    ncp05.TrackingId = 0;
+                    output.AddInputFileInfoRecord(ncp05);
                     lineCnt++;
-                    line.Clear();
 
-                    //Get Statement based on the Flex fields for account
-                    switch (borrowerList.FirstOrDefault().FlexField2)
+                    Logger.Info("Creating NCP07 records...");
+                    //TODO: Revisit
+                    output.AddLogRecord("CONV", "START", "Carrington_Mortgage + CONVERSION STARTED.");
+                    output.AddLogRecord("CONV", "INFO", $"LoanBillExtractInfo - FileDate = {mortgageLoanBillingFileModel.InputFileDate}");
+                    output.AddLogRecord("CONV", "INFO", $"LoanBillExtractInfo - Institution = {mortgageLoanBillingFileModel.InstitutionRecords.Rssi_Institution_Name}");
+                    output.AddLogRecord("CONV", "INFO",
+                        mortgageLoanBillingFileModel.InstitutionRecords.Rssi_Inst_Phone != null
+                            ? $"LoanBillExtractInfo - Institution Phone = {mortgageLoanBillingFileModel.InstitutionRecords.Rssi_Inst_Phone}"
+                            : $"LoanBillExtractInfo - Institution Phone = {mortgageLoanBillingFileModel.InstitutionRecords.Rssi_Alt_Coup_Ph_No_1}");
+                    lineCnt += 10;
+
+                    Logger.Info("Creating NCP09 records...");
+                    output.AddAttribute(Ncp09DataKeyCategory, Ncp09DataKeyAccountsTotalCount, Convert.ToString(mortgageLoanBillingFileModel.TotalNumberOfAccount));
+                    lineCnt++;
+
+                    Logger.Info("Starting Account records process...");
+                    var primaryIndex = 1;
+                    var line = new StringBuilder();
+
+                    foreach (var extractAccount in mortgageLoanBillingFileModel.AccountModelList)
                     {
+                        _accountTypeHold = string.Empty;
 
-                        //For Chapter 7 Option ARM Statement
-                        case "A07":
-                            line = ChapterSevenOptionARMStatement.GetFinalChapterSevenOptionARMStatement(extractAccount);
-                            account.AddCustomerRecord(FormatCustomer.BuildRecord("A07", primaryIndex, line));
-                            break;
-
-                        //For Chapter 13 Option ARM Statement
-                        case "A13":
-                            line = ChapterThirteenOptionARMStatement.GetFinalChapterThirteenOptionARMStatement(extractAccount);
-                            account.AddCustomerRecord(FormatCustomer.BuildRecord("A13", primaryIndex, line));
-                            break;
-
-                        //For Option ARM Billing  Statement
-                        case "ARM":
-                            //line = OptionARMBillingStatement.(extractAccount);
-                            account.AddCustomerRecord(FormatCustomer.BuildRecord("ARM", primaryIndex, line));
-                            break;
-
-                        //For Chapter 7 Billing Statement
-                        case "S07":
-                            line = ChapterSevenBillingStatement.GetFinalChapterSevenBillingStatement(extractAccount);
-                            account.AddCustomerRecord(FormatCustomer.BuildRecord("S07", primaryIndex, line));
-                            break;
-
-                        //For Chapter 13 Billing Statement
-                        case "S13":
-                            //line = ChapterThirteenBillingStatement.(extractAccount);
-                            account.AddCustomerRecord(FormatCustomer.BuildRecord("S13", primaryIndex, line));
-                            break;
-
-                        //For Standard Billing Statement
-                        case "STD":
-                            line = StandardBillingStatement.GetFinalStringStandardBilling(extractAccount);
-                            account.AddCustomerRecord(FormatCustomer.BuildRecord("STD", primaryIndex, line));
-                            break;
-
-                        default:
-                            break;
-
-                    }
-
-                    //Check if primary account is rejected or not 
-                    var primaryAccountRejected = RejectStatement.IsRejectAccount(extractAccount);
-                    if (primaryAccountRejected)
-                        RejectAccount(account, "Invalid Account");
-
-
-                    account.SequenceTransactions();
-                    output.AddAccount(account);
-                    primaryIndex++;
-
-                    //Add records for Co-Borrower Section 
-                    foreach (var borrower in borrowerList)
-                    {
-
-                        if (borrower.DistinctAdditionalRecord)
+                        var account = new CustomerAccount(primaryIndex, 1)
                         {
-                            //Setting FlexFields according to co-borrower conditions
-                            account.Standard.FlexField1 = borrower.FlexField1;
-                            account.Standard.FlexField2 = borrower.FlexField2;
-                            account.Standard.FlexField3 = borrower.FlexField3;
-                            account.Standard.FlexField4 = borrower.FlexField4;
-                            account.Standard.FlexField5 = borrower.FlexField5;
-                            account.Standard.FlexField6 = borrower.FlexField6;
-
-                            switch (borrower.FlexField2)
+                            Standard = RecordManager.NewStandardRecord(Ncp10Version),
+                            Workflow = new WorkflowRecord_NCP11_2
                             {
-
-                                //For Chapter 7 Option ARM Statement
-                                case "A07":
-                                    //Set Mailing address according to the conditions
-                                    account.Standard.OriginalAddressLine1 = ChapterSevenOptionARMStatement.GetMailingBKAttorneyAddressLine1(extractAccount);
-                                    account.Standard.OriginalAddressLine2 = ChapterSevenOptionARMStatement.GetMailingBKAttorneyAddressLine2(extractAccount);
-                                    break;
-
-                                //For Chapter 13 Option ARM Statement
-                                case "A13":
-                                    //Set Mailing address according to the conditions
-                                    account.Standard.OriginalAddressLine1 = ChapterThirteenOptionARMStatement.GetMailingBKAttorneyAddressLine1(extractAccount);
-                                    account.Standard.OriginalAddressLine2 = ChapterThirteenOptionARMStatement.GetMailingBKAttorneyAddressLine2(extractAccount);
-                                    break;
-
-                                //For Option ARM Billing  Statement
-                                case "ARM":
-                                    //Set Mailing address according to the conditions
-                                    account.Standard.OriginalAddressLine1 = OptionARMBillingStatement.GetMailingAddressLine1(extractAccount);
-                                    account.Standard.OriginalAddressLine2 = OptionARMBillingStatement.GetMailingAddressLine2(extractAccount);
-                                    break;
-
-                                //For Chapter 7 Billing Statement
-                                case "S07":
-                                    //Set Mailing address according to the conditions
-                                    account.Standard.OriginalAddressLine1 = ChapterSevenBillingStatement.GetMailingBKAttorneyAddressLine1(extractAccount);
-                                    account.Standard.OriginalAddressLine2 = ChapterSevenBillingStatement.GetMailingBKAttorneyAddressLine2(extractAccount);
-                                    break;
-
-                                //For Chapter 13 Billing Statement
-                                case "S13":
-                                    //Set Mailing address according to the conditions
-                                    account.Standard.OriginalAddressLine1 = ChapterThirteenBillingStatement.GetMailingBKAttorneyAddressLine1(extractAccount);
-                                    account.Standard.OriginalAddressLine2 = ChapterThirteenBillingStatement.GetMailingBKAttorneyAddressLine2(extractAccount);
-                                    break;
-
-                                //For Standard Billing Statement
-                                case "STD":
-                                    //Set Mailing address according to the conditions
-                                    account.Standard.OriginalAddressLine1 = StandardBillingStatement.GetMailingAddressLine1(extractAccount);
-                                    account.Standard.OriginalAddressLine2 = StandardBillingStatement.GetMailingAddressLine2(extractAccount);
-                                    account.Standard.OriginalAddressLine3 = StandardBillingStatement.GetMailingCityStateZip(extractAccount);
-                                    break;
-
-                                default:
-                                    break;
-
+                                PrintDelivery = true,
+                                ElectronicDelivery = true,
+                                ElectronicDeliveryMethod = "A",
+                                IMBIndicator = "I",
+                                OptionNumber = null
                             }
+                        };
 
-                            //Reject co-borrower account if the primary account is rejected
-                            if (primaryAccountRejected)
-                                RejectAccount(account, "Invalid Account");
+                        account.Standard.AccountNumber = extractAccount.MasterFileDataPart_1Model.Rssi_Acct_No;
+                        account.Standard.AccountSequenceNumber = primaryIndex;
 
-                            account.SequenceTransactions();
-                            output.AddAccount(account);
-                            primaryIndex++;//TODO: Need to check this when this task is complete                          
+                        //Mailing address
+                        account.Standard.OriginalAddressLine1 = extractAccount.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1;
+                        account.Standard.OriginalAddressLine2 = extractAccount.MasterFileDataPart_1Model.Rssi_Mail_Adrs_2;
+                        account.Standard.OriginalAddressLine3 = extractAccount.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
+
+                        //City,State and Zip
+                        account.Standard.OriginalCity = extractAccount.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
+                        //account.Standard.OriginalState = extractAccount.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
+                        //account.Standard.OriginalZip4 = extractAccount.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
+                        //account.Standard.OriginalZip5 = extractAccount.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
+
+
+                        //Assigning Flex fields for Primary borrower
+                        var borrowerList = StatementType.GetPrimaryStandardStatement(extractAccount);
+
+                        account.Standard.FlexField1 = borrowerList.FirstOrDefault().FlexField1;
+                        account.Standard.FlexField2 = borrowerList.FirstOrDefault().FlexField2;
+                        account.Standard.FlexField3 = borrowerList.FirstOrDefault().FlexField3;
+                        account.Standard.FlexField4 = borrowerList.FirstOrDefault().FlexField4;
+                        account.Standard.FlexField5 = borrowerList.FirstOrDefault().FlexField5;
+                        account.Standard.FlexField6 = borrowerList.FirstOrDefault().FlexField6;
+
+                       
+
+                        account.Standard.SSN = extractAccount.MasterFileDataPart_1Model.Rssi_Primary_Social_Sec;
+                        account.Standard.StatementDate = GetFormatedDateTime(extractAccount.MasterFileDataPart_1Model.Rssi_Run_Date);
+
+                        account.Standard.PaymentDueDate = GetFormatedDateTime(extractAccount.MasterFileDataPart_1Model.Rssi_Due_Date) >
+                            GetFormatedDateTime(extractAccount.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte) ?
+                            GetFormatedDateTime(extractAccount.MasterFileDataPart_1Model.Rssi_Run_Date) :
+                            GetFormatedDateTime(extractAccount.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte);
+                        account.Standard.LatePaymentDueDate = GetFormatedDateTime(extractAccount.LateChargeDetailRecordModel.Rssi_Lcd_Pymt_Due_Dt_PackedData);
+
+                        //account.Standard.LatePaymentAmount = StandardBillingStatement.GetLatePaymentAmount(extractAccount) != null ? Convert.ToDecimal(StandardBillingStatement.GetLatePaymentAmount(extractAccount)): 0;//TODO: Convert the calling method
+                        account.Standard.EmailAddress = extractAccount.MasterFileDataPart_1Model.Rssi_Primary_Email_Adr;
+                        account.Standard.FormattedAccount = extractAccount.MasterFileDataPart_1Model.Rssi_Acct_No;
+                        account.Standard.TwoDRecordCode = 3;
+
+
+                        lineCnt++;
+                        line.Clear();
+
+                        //Get Statement based on the Flex fields for account
+                        switch (borrowerList.FirstOrDefault().FlexField2)
+                        {
+
+                            //For Chapter 7 Option ARM Statement
+                            case "A07":
+                                //line = ChapterSevenOptionARMStatement.GetFinalChapterSevenOptionARMStatement(extractAccount);
+                                line.Append("Test1");
+                                account.AddCustomerRecord(FormatCustomer.BuildRecord("A07", primaryIndex, line));
+                                break;
+
+                            //For Chapter 13 Option ARM Statement
+                            case "A13":
+                                //line = ChapterThirteenOptionARMStatement.GetFinalChapterThirteenOptionARMStatement(extractAccount);
+                                line.Append("Test2");
+                                account.AddCustomerRecord(FormatCustomer.BuildRecord("A13", primaryIndex, line));
+                                break;
+
+                            //For Option ARM Billing  Statement
+                            case "ARM":
+                                //line = OptionARMBillingStatement.(extractAccount);
+                                line.Append("Test3");
+                                account.AddCustomerRecord(FormatCustomer.BuildRecord("ARM", primaryIndex, line));
+                                break;
+
+                            //For Chapter 7 Billing Statement
+                            case "S07":
+                                // line = ChapterSevenBillingStatement.GetFinalChapterSevenBillingStatement(extractAccount);
+                                line.Append("Test4");
+                                account.AddCustomerRecord(FormatCustomer.BuildRecord("S07", primaryIndex, line));
+                                break;
+
+                            //For Chapter 13 Billing Statement
+                            case "S13":
+                                //line = ChapterThirteenBillingStatement.(extractAccount);
+                                line.Append("Test5");
+                                account.AddCustomerRecord(FormatCustomer.BuildRecord("S13", primaryIndex, line));
+                                break;
+
+                            //For Standard Billing Statement
+                            case "STD":
+                                //line = StandardBillingStatement.GetFinalStringStandardBilling(extractAccount);
+                                line.Append("Test6");
+                                account.AddCustomerRecord(FormatCustomer.BuildRecord("STD", primaryIndex, line));
+                                break;
+
+                            default:
+                                break;
+
                         }
+
+                        //Removing the primary borrower from the list leaving co borrower details inside
+                        borrowerList.RemoveAt(0);
+
+                        //Check if primary account is rejected or not 
+                        var primaryAccountRejected = RejectStatement.IsRejectAccount(extractAccount);
+                        if (primaryAccountRejected)
+                            RejectAccount(account, "Invalid Account");
+
+
+                        account.SequenceTransactions();
+                        output.AddAccount(account);
+                        primaryIndex++;
+
+                        //Add records for Co-Borrower Section 
+                        foreach (var borrower in borrowerList)
+                        {
+
+                            if (borrower.DistinctAdditionalRecord)
+                            {
+                                //Setting FlexFields according to co-borrower conditions
+                                account.Standard.FlexField1 = borrower.FlexField1;
+                                account.Standard.FlexField2 = borrower.FlexField2;
+                                account.Standard.FlexField3 = borrower.FlexField3;
+                                account.Standard.FlexField4 = borrower.FlexField4;
+                                account.Standard.FlexField5 = borrower.FlexField5;
+                                account.Standard.FlexField6 = borrower.FlexField6;
+
+                                switch (borrower.FlexField2)
+                                {
+
+                                    //For Chapter 7 Option ARM Statement
+                                    case "A07":
+                                        //Set Mailing address according to the conditions
+                                        account.Standard.OriginalAddressLine1 = ChapterSevenOptionARMStatement.GetMailingBKAttorneyAddressLine1(extractAccount);
+                                        account.Standard.OriginalAddressLine2 = ChapterSevenOptionARMStatement.GetMailingBKAttorneyAddressLine2(extractAccount);
+                                        break;
+
+                                    //For Chapter 13 Option ARM Statement
+                                    case "A13":
+                                        //Set Mailing address according to the conditions
+                                        account.Standard.OriginalAddressLine1 = ChapterThirteenOptionARMStatement.GetMailingBKAttorneyAddressLine1(extractAccount);
+                                        account.Standard.OriginalAddressLine2 = ChapterThirteenOptionARMStatement.GetMailingBKAttorneyAddressLine2(extractAccount);
+                                        break;
+
+                                    //For Option ARM Billing  Statement
+                                    case "ARM":
+                                        //Set Mailing address according to the conditions
+                                        account.Standard.OriginalAddressLine1 = OptionARMBillingStatement.GetMailingAddressLine1(extractAccount);
+                                        account.Standard.OriginalAddressLine2 = OptionARMBillingStatement.GetMailingAddressLine2(extractAccount);
+                                        break;
+
+                                    //For Chapter 7 Billing Statement
+                                    case "S07":
+                                        //Set Mailing address according to the conditions
+                                        account.Standard.OriginalAddressLine1 = ChapterSevenBillingStatement.GetMailingBKAttorneyAddressLine1(extractAccount);
+                                        account.Standard.OriginalAddressLine2 = ChapterSevenBillingStatement.GetMailingBKAttorneyAddressLine2(extractAccount);
+                                        break;
+
+                                    //For Chapter 13 Billing Statement
+                                    case "S13":
+                                        //Set Mailing address according to the conditions
+                                        account.Standard.OriginalAddressLine1 = ChapterThirteenBillingStatement.GetMailingBKAttorneyAddressLine1(extractAccount);
+                                        account.Standard.OriginalAddressLine2 = ChapterThirteenBillingStatement.GetMailingBKAttorneyAddressLine2(extractAccount);
+                                        break;
+
+                                    //For Standard Billing Statement
+                                    case "STD":
+                                        //Set Mailing address according to the conditions
+                                        account.Standard.OriginalAddressLine1 = StandardBillingStatement.GetMailingAddressLine1(extractAccount);
+                                        account.Standard.OriginalAddressLine2 = StandardBillingStatement.GetMailingAddressLine2(extractAccount);
+                                        account.Standard.OriginalAddressLine3 = StandardBillingStatement.GetMailingCityStateZip(extractAccount);
+                                        break;
+
+                                    default:
+                                        break;
+
+                                }
+
+                                //Reject co-borrower account if the primary account is rejected
+                                if (primaryAccountRejected)
+                                    RejectAccount(account, "Invalid Account");
+
+                                account.SequenceTransactions();
+                                output.AddAccount(account);
+                                primaryIndex++;//TODO: Need to check this when this task is complete                          
+                            }
+                        }
+
+                        //Setting to false for other primary accounts
+                        primaryAccountRejected = false;
                     }
 
-                    //Setting to false for other primary accounts
-                    primaryAccountRejected = false;
+                    output.CloseFile();
+                    Logger.Info($"Lines written: {lineCnt}");
                 }
-
-                output.CloseFile();
-                Logger.Info($"Lines written: {lineCnt}");
             }
-
-
+            catch(Exception ex)
+            {
+                Logger.Error(ex, "GenerateCRL30File Failed :");
+            }
 
         }
 
@@ -341,7 +361,19 @@ namespace ODHS_EDelivery.BusinessExpert
                 Logger.Info($"Output file name: {_outputFile}");
             }
         }
-
+        private DateTime GetFormatedDateTime(string dateTime)
+        {
+            try
+            {
+                var parsedDate = DateTime.ParseExact(dateTime, "yyMMdd", System.Globalization.CultureInfo.InvariantCulture);
+                var formattedDate = parsedDate.ToString("MM-dd-yy", System.Globalization.CultureInfo.InvariantCulture);
+                return Convert.ToDateTime(formattedDate);
+            }
+            catch (Exception ex)
+            {
+                return DateTime.MinValue;
+            }
+        }
 
 
 
