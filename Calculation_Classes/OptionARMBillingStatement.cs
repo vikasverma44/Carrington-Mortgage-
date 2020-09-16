@@ -12,6 +12,10 @@ namespace Carrington_Service.Calculation_Classes
 {
     public class OptionARMBillingStatement : IOptionARMBillingStatement
     {
+        public OptionARMBillingStatement(ILogger logger)
+        {
+            Logger = logger;
+        }
         #region Object Declaration  ==>
         public ILogger Logger;
         public string ExMessage { get; set; }
@@ -239,37 +243,37 @@ namespace Carrington_Service.Calculation_Classes
             try
             {
                 Logger.Trace("STARTED:  Execute to get Total Fees Charged Option1 operation.");
-                if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 {
                     TotalFeesChargedOption1 = "0";
                 }
-                else if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                else if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                 {
                     TotalFeesChargedOption1 = "0";
                 }
-                else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) == 0)
+                else if (Convert.ToDecimal(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) == 0)
                 {
                     TotalFeesChargedOption1 = "0";
                 }
-                else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
+                else if (Convert.ToDecimal(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) < Convert.ToDecimal(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
                 {
                     TotalFeesChargedOption1 = "null";
                 }
                 else
                 {
-                    var Total = Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData)
-                    + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData);
+                    var Total = Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData)
+                    + Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData);
 
-                    if (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5605
-                        && (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 67))
+                    if (Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5605
+                        && (Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 67))
                     {
-                        TotalFeesChargedOption1 = Convert.ToString(Total - Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
+                        TotalFeesChargedOption1 = Convert.ToString(Total - Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
                     }
-                    else if ((Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5605
-                         || Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5707)
-                         && (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 198))
+                    else if ((Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5605
+                         || Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5707)
+                         && (Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 198))
                     {
-                        TotalFeesChargedOption1 = Convert.ToString(Total - Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
+                        TotalFeesChargedOption1 = Convert.ToString(Total - Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
                     }
                     else
                     {
@@ -290,15 +294,15 @@ namespace Carrington_Service.Calculation_Classes
             try
             {
                 Logger.Trace("STARTED:  Execute to get Deferred Balance operation.");
-                if (Convert.ToInt64(model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal) -
-                Convert.ToInt64(model.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) == 0)
+                if (model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal !="\0\0\0\0\0.\0\f" && Convert.ToDecimal(model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal) -
+                Convert.ToDecimal(model.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) == 0)
                 {
                     DeferredBalance = "N/A";
                 }
                 else
                 {
-                    DeferredBalance = Convert.ToString(Convert.ToInt64(model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal) -
-                        Convert.ToInt64(model.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData));
+                    DeferredBalance = model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal == "\0\0\0\0\0.\0\f" ? "0": Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal) -
+                        Convert.ToDecimal(model.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData));
                 }
                 Logger.Trace("ENDED:    To Deferred Balance operation.");
                 return DeferredBalance;
@@ -314,29 +318,29 @@ namespace Carrington_Service.Calculation_Classes
             try
             {
                 Logger.Trace("STARTED:  Execute to get Total Fees Charged Option4 operation.");
-                if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 {
                     TotalFeesChargedOption4 = "0";
                 }
-                else if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                else if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                 {
                     TotalFeesChargedOption4 = "0";
                 }
                 else
                 {
-                    var Total = Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData)
-                    + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData);
+                    var Total = Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData)
+                    + Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData);
 
-                    if (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5605
-                        && (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 67))
+                    if (Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5605
+                        && (Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 67))
                     {
-                        TotalFeesChargedOption4 = Convert.ToString(Total - Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
+                        TotalFeesChargedOption4 = Convert.ToString(Total - Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
                     }
-                    else if ((Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5605
-                         || Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5707)
-                         && (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 198))
+                    else if ((Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5605
+                         || Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5707)
+                         && (Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 198))
                     {
-                        TotalFeesChargedOption4 = Convert.ToString(Total - Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
+                        TotalFeesChargedOption4 = Convert.ToString(Total - Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
                     }
                     else
                     {
@@ -357,26 +361,26 @@ namespace Carrington_Service.Calculation_Classes
             try
             {
                 Logger.Trace("STARTED:  Execute to Get Amount Due Option 1 operation.");
-                if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 {
                     AmountDueOption1 = "0.00";
                 }
-                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) == 0)
+                else if (Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) == 0)
                 {
                     AmountDueOption1 = "N/A";
                 }
-                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) < Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
+                else if (Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) < Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
                 {
                     AmountDueOption1 = "N/A";
                 }
-                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                 {
                     AmountDueOption1 = "N/A";
                 }
                 else
                 {
-                    AmountDueOption1 = Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) +
-                        Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData));
+                    AmountDueOption1 = Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) +
+                        Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData));
                 }
                 Logger.Trace("ENDED:   To Amount Due Option 1 operation.");
                 return AmountDueOption1;
@@ -393,26 +397,26 @@ namespace Carrington_Service.Calculation_Classes
             try
             {
                 Logger.Trace("STARTED:  Execute to Get Amount Due Option 2 operation.");
-                if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 {
                     AmountDueOption2 = "0.00";
                 }
-                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) == 0)
+                else if (Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) == 0)
                 {
                     AmountDueOption2 = "N/A";
                 }
-                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) < Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
+                else if (Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) < Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
                 {
                     AmountDueOption2 = "N/A";
                 }
-                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                 {
                     AmountDueOption2 = "N/A";
                 }
                 else
                 {
-                    AmountDueOption2 = Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) +
-                        Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData));
+                    AmountDueOption2 = Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) +
+                        Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData));
                 }
                 Logger.Trace("ENDED:   To Amount Due Option 2 operation.");
                 return AmountDueOption2;
@@ -430,26 +434,26 @@ namespace Carrington_Service.Calculation_Classes
             {
                 Logger.Trace("STARTED:  Execute to Get Amount Due Option 3 operation.");
 
-                if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 {
                     AmountDueOption3 = "0";
                 }
-                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) == 0)
+                else if (Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) == 0)
                 {
                     AmountDueOption3 = "N/A";
                 }
-                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) < Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
+                else if (Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) < Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
                 {
                     AmountDueOption3 = "N/A";
                 }
-                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                 {
                     AmountDueOption3 = "N/A";
                 }
                 else
                 {
-                    AmountDueOption3 = Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) +
-                        Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData));
+                    AmountDueOption3 = Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) +
+                        Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData));
                 }
                 Logger.Trace("ENDED:   To Amount Due Option 3 operation.");
                 return AmountDueOption3;
@@ -467,18 +471,18 @@ namespace Carrington_Service.Calculation_Classes
             {
                 Logger.Trace("STARTED:  Execute to Get Amount Due Option 4 operation.");
 
-                if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 {
                     AmountDueOption4 = "0";
                 }
-                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                 {
                     AmountDueOption4 = "N/A";
                 }
                 else
                 {
-                    AmountDueOption4 = Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) +
-                        Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData));
+                    AmountDueOption4 = Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) +
+                        Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData));
                 }
 
                 Logger.Trace("ENDED:   To Amount Due Option 4 operation.");
@@ -496,26 +500,26 @@ namespace Carrington_Service.Calculation_Classes
             {
                 Logger.Trace("STARTED:  Execute to Get Principal Option 1 operation.");
 
-                if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 {
                     PrincipalOption1 = "0.00";
                 }
-                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) == 0)
+                else if (Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) == 0)
                 {
                     PrincipalOption1 = null;
                 }
-                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) < Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
+                else if (Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) < Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
                 {
                     PrincipalOption1 = null;
                 }
-                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                 {
                     PrincipalOption1 = null;
                 }
                 else
                 {
-                    PrincipalOption1 = Convert.ToString(Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt4_PackedData) -
-                                            Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData));
+                    PrincipalOption1 = Convert.ToString(Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt4_PackedData) -
+                                            Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData));
                 }
 
                 Logger.Trace("ENDED:   To Principal Option 1 operation.");
@@ -533,23 +537,23 @@ namespace Carrington_Service.Calculation_Classes
             try
             {
                 Logger.Trace("STARTED:  Execute to Get Overdue Payments Option 1 operation.");
-                if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     OverduePaymentsOption1 = "0.00";
 
-                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) == 0)
+                else if (Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) == 0)
                     OverduePaymentsOption1 = "null";
 
-                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) < Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
+                else if (Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) < Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
                     OverduePaymentsOption1 = "null";
 
-                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     OverduePaymentsOption1 = "null";
 
                 else
                 {
                     //not found total fees paid
-                    OverduePaymentsOption1 = Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData)
-                                     - Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData) - Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData));
+                    OverduePaymentsOption1 = Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData)
+                                     - Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData) - Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData));
                 }
                 Logger.Trace("ENDED:   To Overdue Payments Option 1 operation.");
                 return OverduePaymentsOption1;
@@ -567,26 +571,26 @@ namespace Carrington_Service.Calculation_Classes
             {
                 Logger.Trace("STARTED:  Execute to Get Total Fees Paid Option 1 operation.");
                 // need to check
-                if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     TotalFeesPaidOption1 = "0.00";
 
-                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) == 0)
+                else if (Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) == 0)
                     TotalFeesPaidOption1 = "null";
 
-                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) < Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
+                else if (Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) < Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
                     TotalFeesPaidOption1 = "null";
 
-                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     TotalFeesPaidOption1 = "null";
 
 
-                else if ((Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
-                          + Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)) <
-                           Convert.ToInt64(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData))
+                else if ((Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
+                          + Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)) <
+                           Convert.ToDecimal(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData))
                 {
-                    TotalFeesPaidOption1 = Convert.ToString((Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
-                        + Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)
-                        - Convert.ToInt64(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData)));
+                    TotalFeesPaidOption1 = Convert.ToString((Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
+                        + Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)
+                        - Convert.ToDecimal(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData)));
                 }
                 else
                     TotalFeesPaidOption1 = "0.00";
@@ -605,21 +609,21 @@ namespace Carrington_Service.Calculation_Classes
             {
                 Logger.Trace("STARTED:  Execute to Get Total AmountDue Option 1 operation.");
 
-                if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     TotalFeesPaidOption1 = "0.00";
 
-                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) == 0)
+                else if (Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) == 0)
                     TotalFeesPaidOption1 = "N/A";
 
-                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) < Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
+                else if (Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) < Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
                     TotalFeesPaidOption1 = "N/A";
 
-                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     TotalFeesPaidOption1 = "N/A";
 
                 else
-                    TotalAmountDueOption1 = Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData)
-                                   + Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData));
+                    TotalAmountDueOption1 = Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData)
+                                   + Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData));
 
                 Logger.Trace("ENDED:   Get Total AmountDue Option 1 operation.");
                 return TotalAmountDueOption1;
@@ -636,21 +640,21 @@ namespace Carrington_Service.Calculation_Classes
             {
                 Logger.Trace("STARTED:  Execute to Get Principal Option2 operation.");
 
-                if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     PrincipalOption2 = "0.00";
 
-                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) == 0)
+                else if (Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) == 0)
                     PrincipalOption2 = "null";
 
-                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) < Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
+                else if (Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) < Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
                     PrincipalOption2 = "null";
 
-                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     PrincipalOption2 = "null";
                 else
                 {
-                    PrincipalOption2 = Convert.ToString(Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt3_PackedData)
-                                     - Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData));
+                    PrincipalOption2 = Convert.ToString(Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt3_PackedData)
+                                     - Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData));
                 }
                 Logger.Trace("ENDED:   Get Principal Option2 operation.");
                 return PrincipalOption2;
@@ -668,18 +672,18 @@ namespace Carrington_Service.Calculation_Classes
             {
                 Logger.Trace("STARTED:  Execute to Get Assistance Amount Option 2 operation.");
 
-                if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0)
+                if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0)
                     AssistanceAmountOption2 = "do not print the Assistance Amount line";
 
-                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     AssistanceAmountOption2 = "0.00";
 
-                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     AssistanceAmountOption2 = "null";
 
                 else
                 {
-                    AssistanceAmountOption2 = Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) * -1);
+                    AssistanceAmountOption2 = Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) * -1);
                 }
                 Logger.Trace("ENDED:   Get Assistance Amount Option 2 operation.");
                 return AssistanceAmountOption2;
@@ -697,24 +701,24 @@ namespace Carrington_Service.Calculation_Classes
             {
                 Logger.Trace("STARTED:  Execute to Get Replacement Reserve Option2 operation.");
 
-                if ((Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData)
-                   - Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt3_PackedData)
-                    - Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData)
-                   + Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0))
+                if ((Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData)
+                   - Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt3_PackedData)
+                    - Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData)
+                   + Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0))
                     ReplacementReserveOption2 = "do not print the Replacement Reserve line";
 
-                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     ReplacementReserveOption2 = "0.00";
 
-                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     ReplacementReserveOption2 = "0.00";
 
                 else
                 {
-                    ReplacementReserveOption2 = Convert.ToString(Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData)
-                                                - Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt3_PackedData)
-                                                - Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData)
-                                                + Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData));
+                    ReplacementReserveOption2 = Convert.ToString(Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData)
+                                                - Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt3_PackedData)
+                                                - Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData)
+                                                + Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData));
                 }
 
                 Logger.Trace("ENDED:   Get Replacement Reserve Option2 operation.");
@@ -733,23 +737,23 @@ namespace Carrington_Service.Calculation_Classes
             {
                 Logger.Trace("STARTED:  Execute to Get Overdue Payments Option 2 operation.");
 
-                if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     OverduePaymentsOption2 = "0.00";
 
-                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) == 0)
+                else if (Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) == 0)
                     OverduePaymentsOption2 = "null";
 
-                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) < Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
+                else if (Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) < Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
                     OverduePaymentsOption2 = "null";
 
-                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     OverduePaymentsOption2 = "null";
 
 
                 else
                 {
-                    OverduePaymentsOption2 = Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData)
-                                     - Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData) - Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData));
+                    OverduePaymentsOption2 = Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData)
+                                     - Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData) - Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData));
                 }
                 Logger.Trace("ENDED:   Get Overdue Payments Option 2 operation.");
                 return OverduePaymentsOption2;
@@ -768,25 +772,25 @@ namespace Carrington_Service.Calculation_Classes
                 Logger.Trace("STARTED:  Execute to Get Total Fees Paid Option 2 operation.");
 
                 // need to check
-                if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     TotalFeesPaidOption2 = "0.00";
 
-                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) == 0)
+                else if (Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) == 0)
                     TotalFeesPaidOption2 = "null";
 
-                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) < Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
+                else if (Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) < Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
                     TotalFeesPaidOption2 = "null";
 
-                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     TotalFeesPaidOption2 = "null";
 
-                else if ((Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
-                          + Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)) <
-                           Convert.ToInt64(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData))
+                else if ((Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
+                          + Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)) <
+                           Convert.ToDecimal(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData))
                 {
-                    TotalFeesPaidOption2 = Convert.ToString((Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
-                        + Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)
-                        - Convert.ToInt64(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData)));
+                    TotalFeesPaidOption2 = Convert.ToString((Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
+                        + Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)
+                        - Convert.ToDecimal(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData)));
                 }
                 else
                     TotalFeesPaidOption2 = "0.00";
@@ -805,21 +809,21 @@ namespace Carrington_Service.Calculation_Classes
             {
                 Logger.Trace("STARTED:  Execute to Get Total Amount Due Option 2 operation.");
 
-                if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     TotalAmountDueOption2 = "0.00";
 
-                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) == 0)
+                else if (Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) == 0)
                     TotalAmountDueOption2 = "N/A";
 
-                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) < Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
+                else if (Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) < Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
                     TotalAmountDueOption2 = "N/A";
 
-                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     TotalAmountDueOption2 = "N/A";
 
                 else
-                    TotalAmountDueOption2 = Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData)
-                                   + Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData));
+                    TotalAmountDueOption2 = Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData)
+                                   + Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData));
                 Logger.Trace("ENDED:   Get Total Amount Due Option 2 operation.");
                 return TotalAmountDueOption2;
             }
@@ -836,22 +840,22 @@ namespace Carrington_Service.Calculation_Classes
             {
                 Logger.Trace("STARTED:  Execute to Get Principal Option 3 operation.");
 
-                if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     PrincipalOption3 = "0.00";
 
-                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) == 0)
+                else if (Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) == 0)
                     PrincipalOption3 = "N/A";
 
-                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) < Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
+                else if (Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) < Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
                     PrincipalOption3 = "null";
 
-                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     PrincipalOption3 = "null";
 
                 else
                 {
-                    PrincipalOption3 = Convert.ToString(Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt2_PackedData)
-                                     - Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData));
+                    PrincipalOption3 = Convert.ToString(Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt2_PackedData)
+                                     - Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData));
                 }
                 Logger.Trace("ENDED:   Get Principal Option 3 operation.");
                 return PrincipalOption3;
@@ -867,21 +871,21 @@ namespace Carrington_Service.Calculation_Classes
             try
             {
                 Logger.Trace("STARTED:  Execute to Get Assistance Amount Option 3 operation.");
-                if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0)
+                if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0)
                 {
                     AssistanceAmountOption3 = "then do not print the Assistance Amount line.";
                 }
-                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 {
                     AssistanceAmountOption3 = "0.00";
                 }
-                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                 {
                     AssistanceAmountOption3 = "0.00";
                 }
                 else
                 {
-                    AssistanceAmountOption3 = Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData));
+                    AssistanceAmountOption3 = Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData));
                 }
                 Logger.Trace("ENDED:   Get Assistance Amount Option 3 operation.");
                 return AssistanceAmountOption3;
@@ -898,27 +902,27 @@ namespace Carrington_Service.Calculation_Classes
             {
                 Logger.Trace("STARTED:  Execute to Get Replacement Reserve Option 3 operation.");
 
-                if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) -
-                    Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt2_PackedData) -
-                    Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData) +
-                    Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0)
+                if (Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) -
+                    Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt2_PackedData) -
+                    Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData) +
+                    Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0)
                 {
                     ReplacementReserveOption3 = "then do not print the Replacement Reserve line.";
                 }
-                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 {
                     ReplacementReserveOption3 = "0.00";
                 }
-                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                 {
                     ReplacementReserveOption3 = "0.00";
                 }
                 else
                 {
-                    ReplacementReserveOption3 = Convert.ToString(Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) -
-                                             Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt2_PackedData) -
-                                              Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData) +
-                                             Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData));
+                    ReplacementReserveOption3 = Convert.ToString(Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) -
+                                             Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt2_PackedData) -
+                                              Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData) +
+                                             Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData));
                 }
                 Logger.Trace("ENDED:   Get Replacement Reserve Option 3 operation.");
                 return ReplacementReserveOption3;
@@ -935,21 +939,21 @@ namespace Carrington_Service.Calculation_Classes
             {
                 Logger.Trace("STARTED:  Execute to Get Overdue Payments Option 3 operation.");
 
-                if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     OverduePaymentsOption2 = "0.00";
 
-                else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) == 0)
+                else if (Convert.ToDecimal(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) == 0)
                     OverduePaymentsOption2 = "null";
 
-                else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
+                else if (Convert.ToDecimal(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) < Convert.ToDecimal(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
                     OverduePaymentsOption2 = "null";
 
-                else if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                else if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     OverduePaymentsOption2 = "null";
                 else
                 {
-                    OverduePaymentsOption2 = Convert.ToString(Convert.ToInt64(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Unpaid_PackedData)
-                                     - Convert.ToInt64(GetTotalFeesPaidOption3(accountsModel)));
+                    OverduePaymentsOption2 = Convert.ToString(Convert.ToDecimal(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Unpaid_PackedData)
+                                     - Convert.ToDecimal(GetTotalFeesPaidOption3(accountsModel)));
                 }
 
                 Logger.Trace("ENDED:   Get Replacement Overdue Payments Option 3 operation.");
@@ -967,25 +971,25 @@ namespace Carrington_Service.Calculation_Classes
             {
                 Logger.Trace("STARTED:  Execute to Get Total Fees Paid Option 3 operation.");
 
-                if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     TotalFeesPaidOption3 = "0.00";
 
-                else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) == 0)
+                else if (Convert.ToDecimal(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) == 0)
                     TotalFeesPaidOption3 = "null";
 
-                else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
+                else if (Convert.ToDecimal(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) < Convert.ToDecimal(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
                     TotalFeesPaidOption3 = "null";
 
-                else if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                else if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     TotalFeesPaidOption3 = "null";
 
-                else if ((Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
-                          + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)) <
-                           Convert.ToInt64(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData))
+                else if ((Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
+                          + Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)) <
+                           Convert.ToDecimal(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData))
                 {
-                    TotalFeesPaidOption3 = Convert.ToString((Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
-                        + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)
-                        - Convert.ToInt64(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData)));
+                    TotalFeesPaidOption3 = Convert.ToString((Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
+                        + Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)
+                        - Convert.ToDecimal(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData)));
                 }
                 else
                     TotalFeesPaidOption3 = "0.00";
@@ -1005,26 +1009,26 @@ namespace Carrington_Service.Calculation_Classes
             {
                 Logger.Trace("STARTED:  Execute to Get Total Amount Due Option 3 operation.");
 
-                if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 {
                     TotalAmountDueOption3 = "0.00";
                 }
-                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) == 0)
+                else if (Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) == 0)
                 {
                     TotalAmountDueOption3 = "Option Not Available";
                 }
-                else if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) < Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
+                else if (Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) < Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
                 {
                     TotalAmountDueOption3 = "Option Not Available";
                 }
-                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                 {
                     TotalAmountDueOption3 = "Option Not Available";
                 }
                 else
                 {
-                    TotalAmountDueOption3 = Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) -
-                        Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData));
+                    TotalAmountDueOption3 = Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) -
+                        Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData));
                 }
                 Logger.Trace("ENDED:   Get Total Amount Due Option 3 operation.");
                 return TotalAmountDueOption3;
@@ -1040,21 +1044,21 @@ namespace Carrington_Service.Calculation_Classes
             try
             {
                 Logger.Trace("STARTED:  Execute to Get Principal Option 4 operation.");
-                if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 {
                     PrincipalOption4 = "0.00";
                 }
-                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData) > Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt1_PackedData))
+                else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData) > Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt1_PackedData))
                 {
                     PrincipalOption4 = "0.00";
                 }
-                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                 {
                     PrincipalOption4 = "0.00";
                 }
                 else
                 {
-                    PrincipalOption4 = Convert.ToString(Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt1_PackedData) - Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData));
+                    PrincipalOption4 = Convert.ToString(Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt1_PackedData) - Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData));
                 }
                 Logger.Trace("ENDED:   Get Principal Option 4 operation.");
                 return PrincipalOption4;
@@ -1071,15 +1075,15 @@ namespace Carrington_Service.Calculation_Classes
             {
                 Logger.Trace("STARTED:  Execute to Get Assistance Amount Option 4 operation.");
 
-                if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0)
+                if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0)
                 {
                     AssistanceAmountOption4 = "then do not print the Assistance Amount line.";
                 }
-                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 {
                     AssistanceAmountOption4 = "0.00";
                 }
-                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                 {
                     AssistanceAmountOption4 = "0.00";
                 }
@@ -1102,18 +1106,19 @@ namespace Carrington_Service.Calculation_Classes
             {
                 Logger.Trace("STARTED:  Execute to Get Replacement ReserveOption 4 operation.");
 
-                if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData) -
-                    Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt1_PackedData) -
-                    Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData) +
-                    Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0)
+                if (model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData != null &&
+                    model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt1_PackedData != null && Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData) -
+                    Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt1_PackedData) -
+                    Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData) +
+                    Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0)
                 {
                     return "then do not print the Replacement Reserve line.";
                 }
-                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                else if (model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData!=null && Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 {
                     return "0.00";
                 }
-                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                else if (model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData!=null && Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                 {
                     return "0.00";
                 }
@@ -1132,21 +1137,25 @@ namespace Carrington_Service.Calculation_Classes
             {
                 Logger.Trace("STARTED:  Execute to Get Overdue Payments Option 4 operation.");
 
-                if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 {
                     OverduePaymentsOption4 = "0.00";
                 }
-                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                 {
                     OverduePaymentsOption4 = "0.00";
                 }
                 else
                 {
+                    string calvalue = (GetTotalFeesPaidOption3(model));// == null ? 0 : Convert.ToDecimal(GetTotalFeesPaidOption3(model))).ToString();
+                    string calvalue1 = calvalue == "null" ? "0" : calvalue;
+                   
                     OverduePaymentsOption4 =
-                    Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) -
-                        Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData) -
-                        Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData) -
-                     Convert.ToInt64(GetTotalFeesPaidOption3(model)));
+                    Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) -
+                        Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData) -
+                        Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData) - Convert.ToDecimal(calvalue1));
+
+                   //(GetTotalFeesPaidOption3(model)==null ? 0:  Convert.ToDecimal(GetTotalFeesPaidOption3(model))) );
                 }
                 Logger.Trace("ENDED:   Get Overdue Payments Option 4 operation.");
                 return OverduePaymentsOption4;
@@ -1164,24 +1173,24 @@ namespace Carrington_Service.Calculation_Classes
             {
                 Logger.Trace("STARTED:  Execute to Get Total Fees Paid Option 4 operation.");
 
-                var TotalFeeCharged = Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData)
-                    + Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData);
+                var TotalFeeCharged = Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData)
+                    + Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData);
 
-                if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 {
                     TotalFeesPaidOption4 = "0";
                 }
-                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                 {
                     TotalFeesPaidOption4 = "0";
                 }
-                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
-                    + Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)
-                    < Convert.ToInt64(TotalFeeCharged))
+                else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
+                    + Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)
+                    < Convert.ToDecimal(TotalFeeCharged))
                 {
-                    TotalFeesPaidOption4 = Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
-                   + Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)
-                   - Convert.ToInt64(GetTotalFeesChargedOption4(model)));
+                    TotalFeesPaidOption4 = Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
+                   + Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)
+                   - Convert.ToDecimal(GetTotalFeesChargedOption4(model)));
                 }
                 else
                 {
@@ -1202,18 +1211,18 @@ namespace Carrington_Service.Calculation_Classes
             {
                 Logger.Trace("STARTED:  Execute to Get Total AmountDue Option4 operation.");
 
-                if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 {
                     TotalAmountDueOption4 = "0.00";
                 }
-                else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                 {
                     TotalAmountDueOption4 = "0.00";
                 }
                 else
                 {
-                    TotalAmountDueOption4 = Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) +
-                        Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData));
+                    TotalAmountDueOption4 = model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData != null ? Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) +
+                        Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData)):"0";
                 }
                 Logger.Trace("ENDED:   Get  Total AmountDue Option4   operation.");
                 return TotalAmountDueOption4;
@@ -1235,8 +1244,8 @@ namespace Carrington_Service.Calculation_Classes
 
         public string GetFeesandChargesPaidYeartoDate(AccountsModel model)
         {
-            return Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_Paid_Ytd_PackedData) +
-                                    Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Paid_Ytd_PackedData));
+            return Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Fees_Paid_Ytd_PackedData) +
+                                    Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Paid_Ytd_PackedData));
         }
         public string GetUnappliedFundsPaidYearToDate(AccountsModel accountModel)
         {
@@ -1245,69 +1254,69 @@ namespace Carrington_Service.Calculation_Classes
         }
         public string GeSuspense(AccountsModel model)
         {
-            return Convert.ToString(Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData) +
-                  Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2) +
-                  Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3) +
-                  Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_04) +
-                  Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05));
+            return Convert.ToString(Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData) +
+                  Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2) +
+                  Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3) +
+                  Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_04) +
+                  Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05));
         }
 
         public string GetMiscellaneous(AccountsModel model)
         {
-            return Convert.ToString(Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_To_Lip_PackedData) +
-               Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_To_Cr_Ins_PackedData) +
-               Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_To_Pi_Shrtg) +
-               Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Prin_PackedData) +
-               Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Int_PackedData) +
-               Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Late_Chrg_PackedData) +
-               Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Esc_Adv_PackedData) +
-               Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Pd_Exp_Adv_PackedData) +
-               Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Unp_Exp_Adv_PackedData) +
-               Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Admin_Fees_PackedData) +
-               Convert.ToInt64(model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Optins_PackedData));
+            return Convert.ToString(Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Lip_PackedData) +
+               Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Cr_Ins_PackedData) +
+               Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Pi_Shrtg) +
+               Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Prin_PackedData) +
+               Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Int_PackedData) +
+               Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Late_Chrg_PackedData) +
+               Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Esc_Adv_PackedData) +
+               Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Pd_Exp_Adv_PackedData) +
+               Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Unp_Exp_Adv_PackedData) +
+               Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Admin_Fees_PackedData) +
+               Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Optins_PackedData));
         }
         public string GetTotalDue(AccountsModel model)
         {
-            if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+            if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 return "0.00";
 
-            return Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) + Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData));
+            return model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData != null? Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) + Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData)):"0";
         }
         public string GetFeesAndChargesPaidLastMonth(AccountsModel model)
         {
 
-            return Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_Pd_Since_Lst_Stmt_PackedData) +
-              Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Lc_Pd_Since_Lst_Stmt_PackedData));
+            return Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Fees_Pd_Since_Lst_Stmt_PackedData) +
+              Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Lc_Pd_Since_Lst_Stmt_PackedData));
         }
         public string GetUnappliedFunds(AccountsModel accountsModel)
         {
-            UnappliedFunds = Convert.ToString(accountsModel.MasterFileDataPart_1Model.Rssi_Unap_Fund_Cd != "L" ? Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Esc_Var_PackedData) : 0
-              + accountsModel.MasterFileDataPart2Model.Rssi_Unap_Cd_2 != "L" ? Convert.ToInt64(accountsModel.MasterFileDataPart2Model.Rssi_Unap_Bal_2_PackedData) : 0
-              + accountsModel.MasterFileDataPart2Model.Rssi_Unap_Cd_3 != "L" ? Convert.ToInt64(accountsModel.MasterFileDataPart2Model.Rssi_Unap_Bal_3_PackedData) : 0
-              + accountsModel.MasterFileDataPart2Model.Rssi_Unap_Cd_4 != "L" ? Convert.ToInt64(accountsModel.MasterFileDataPart2Model.Rssi_Unap_Bal_4_PackedData) : 0
-              + accountsModel.MasterFileDataPart2Model.Rssi_Unap_Cd_5 != "L" ? Convert.ToInt64(accountsModel.MasterFileDataPart2Model.Rssi_Unap_Bal_5_PackedData) : 0);
+            UnappliedFunds = Convert.ToString(accountsModel.MasterFileDataPart_1Model.Rssi_Unap_Fund_Cd != "L" ? Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Esc_Var_PackedData) : 0
+              + accountsModel.MasterFileDataPart2Model.Rssi_Unap_Cd_2 != "L" ? Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Unap_Bal_2_PackedData) : 0
+              + accountsModel.MasterFileDataPart2Model.Rssi_Unap_Cd_3 != "L" ? Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Unap_Bal_3_PackedData) : 0
+              + accountsModel.MasterFileDataPart2Model.Rssi_Unap_Cd_4 != "L" ? Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Unap_Bal_4_PackedData) : 0
+              + accountsModel.MasterFileDataPart2Model.Rssi_Unap_Cd_5 != "L" ? Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Unap_Bal_5_PackedData) : 0);
             return UnappliedFunds;
         }
         public string GetPastDueBalance(AccountsModel model)
         {
-            return Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) -
-              Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData) -
-              Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData));
+            return Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) -
+              Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData) -
+              Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData));
         }
         public string GetTotalPaidYearToDate(AccountsModel accountsModel)
         {
 
 
-            TotalPaidYearToDate = Convert.ToString((Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Paid_Ytd_PackedData)
-                                   + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Int_Pd_Ytd_PackedData)
-                                   + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Esc_Paid_Ytd_PackedData)
-                                   + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Paid_Ytd_PackedData)
-                                   + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Late_Chg_Paid_Ytd_PackedData)
-                                   + accountsModel.MasterFileDataPart_1Model.Rssi_Unap_Fund_Cd != "L" ? Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Esc_Var_PackedData) : 0
-                                   + accountsModel.MasterFileDataPart2Model.Rssi_Unap_Cd_2 != "L" ? Convert.ToInt64(accountsModel.MasterFileDataPart2Model.Rssi_Unap_Bal_2_PackedData) : 0
-                                   + accountsModel.MasterFileDataPart2Model.Rssi_Unap_Cd_3 != "L" ? Convert.ToInt64(accountsModel.MasterFileDataPart2Model.Rssi_Unap_Bal_3_PackedData) : 0
-                                   + accountsModel.MasterFileDataPart2Model.Rssi_Unap_Cd_4 != "L" ? Convert.ToInt64(accountsModel.MasterFileDataPart2Model.Rssi_Unap_Bal_4_PackedData) : 0
-                                   + accountsModel.MasterFileDataPart2Model.Rssi_Unap_Cd_5 != "L" ? Convert.ToInt64(accountsModel.MasterFileDataPart2Model.Rssi_Unap_Bal_5_PackedData) : 0));
+            TotalPaidYearToDate = Convert.ToString((Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Paid_Ytd_PackedData)
+                                   + Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Int_Pd_Ytd_PackedData)
+                                   + Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Esc_Paid_Ytd_PackedData)
+                                   + Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Paid_Ytd_PackedData)
+                                   + Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Late_Chg_Paid_Ytd_PackedData)
+                                   + accountsModel.MasterFileDataPart_1Model.Rssi_Unap_Fund_Cd != "L" ? Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Esc_Var_PackedData) : 0
+                                   + accountsModel.MasterFileDataPart2Model.Rssi_Unap_Cd_2 != "L" ? Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Unap_Bal_2_PackedData) : 0
+                                   + accountsModel.MasterFileDataPart2Model.Rssi_Unap_Cd_3 != "L" ? Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Unap_Bal_3_PackedData) : 0
+                                   + accountsModel.MasterFileDataPart2Model.Rssi_Unap_Cd_4 != "L" ? Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Unap_Bal_4_PackedData) : 0
+                                   + accountsModel.MasterFileDataPart2Model.Rssi_Unap_Cd_5 != "L" ? Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Unap_Bal_5_PackedData) : 0));
 
 
             return TotalPaidYearToDate;
@@ -1316,94 +1325,94 @@ namespace Carrington_Service.Calculation_Classes
         public string GetAssistanceAmountOption1(AccountsModel model)
         {
 
-            if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0)
+            if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0)
             {
                 return "then do not print the Assistance Amount line.";
             }
-            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+            else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
             {
                 return "0.00";
             }
-            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+            else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
             {
                 return "0.00";
             }
             else
             {
-                return Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData));
+                return Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData));
             }
         }
         public string GetReplacementReserveOption1(AccountsModel model)
         {
-            if (Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) -
-                Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt4_PackedData) -
-                 Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData) +
-                Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0)
+            if (Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) -
+                Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt4_PackedData) -
+                 Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData) +
+                Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0)
             {
                 return "then do not print the Replacement Reserve line.";
             }
-            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+            else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
             {
                 return "0.00";
             }
-            else if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+            else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
             {
                 return "0.00";
             }
             else
             {
-                return Convert.ToString(Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) -
-                                         Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt4_PackedData) -
-                                    Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData) +
-                Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0);
+                return Convert.ToString(Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) -
+                                         Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt4_PackedData) -
+                                    Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData) +
+                Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0);
             }
         }
         public string GetMinimumLatePaymentAmount(AccountsModel model)
         {
-            if (Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+            if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
             {
                 return "N/A";
             }
             else
             {
-                return Convert.ToString(Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) +
-                Convert.ToInt64(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData) +
-                Convert.ToInt64(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Amt_PackedData));
+                return model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData != null ? Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) +
+                Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData) +
+                Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Amt_PackedData)) : "0";
             }
         }
         public string GetTotalFeesChargedOption3(AccountsModel accountsModel)
         {
-            if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+            if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
             {
                 TotalFeesChargedOption3 = "0";
             }
-            else if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+            else if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
             {
                 TotalFeesChargedOption3 = "0";
             }
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) == 0)
+            else if (Convert.ToDecimal(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) == 0)
             {
                 TotalFeesChargedOption3 = "0";
             }
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
+            else if (accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData != null && Convert.ToDecimal(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) < Convert.ToDecimal(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
             {
                 TotalFeesChargedOption3 = "null";
             }
             else
             {
-                var Total = Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData)
-                + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData);
+                var Total = Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData)
+                + Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData);
 
-                if (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5605
-                    && (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 67))
+                if (Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5605
+                    && (Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 67))
                 {
-                    TotalFeesChargedOption3 = Convert.ToString(Total - Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
+                    TotalFeesChargedOption3 = Convert.ToString(Total - Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
                 }
-                else if ((Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5605
-                     || Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5707)
-                     && (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 198))
+                else if ((Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5605
+                     || Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5707)
+                     && (Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 198))
                 {
-                    TotalFeesChargedOption3 = Convert.ToString(Total - Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
+                    TotalFeesChargedOption3 = Convert.ToString(Total - Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
                 }
                 else
                 {
@@ -1414,37 +1423,37 @@ namespace Carrington_Service.Calculation_Classes
         }
         public string GetTotalFeesChargedOption2(AccountsModel accountsModel)
         {
-            if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+            if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
             {
                 TotalFeesChargedOption2 = "0";
             }
-            else if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+            else if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
             {
                 TotalFeesChargedOption2 = "0";
             }
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) == 0)
+            else if (Convert.ToDecimal(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) == 0)
             {
                 TotalFeesChargedOption2 = "0";
             }
-            else if (Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) < Convert.ToInt64(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
+            else if (accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData != null && Convert.ToDecimal(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) < Convert.ToDecimal(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
             {
                 TotalFeesChargedOption2 = "null";
             }
             else
             {
-                var Total = Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData)
-                + Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData);
+                var Total = Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData)
+                + Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData);
 
-                if (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5605
-                    && (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 67))
+                if (Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5605
+                    && (Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 67))
                 {
-                    TotalFeesChargedOption2 = Convert.ToString(Total - Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
+                    TotalFeesChargedOption2 = Convert.ToString(Total - Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
                 }
-                else if ((Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5605
-                     || Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5707)
-                     && (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 198))
+                else if ((Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5605
+                     || Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5707)
+                     && (Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 198))
                 {
-                    TotalFeesChargedOption2 = Convert.ToString(Total - Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
+                    TotalFeesChargedOption2 = Convert.ToString(Total - Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
                 }
                 else
                 {
@@ -1591,34 +1600,34 @@ namespace Carrington_Service.Calculation_Classes
         }
         public string GetPaymentIsReceivedAfter(AccountsModel accountModel)
         {
-            if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+            if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                 PaymentIsReceivedAfter = "suppress Late Charge message";
 
             return PaymentIsReceivedAfter;
         }
         public string GetLateFee(AccountsModel accountModel)
         {
-            if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+            if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                 LateFee = "suppress Late Charge message";
 
             return LateFee;
         }
         public string GetChargeOffNoticeNoticeMessage(AccountsModel accountModel)
         {
-            if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Chrg_Off_Dt_PackedData) > 0)
+            if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Chrg_Off_Dt_PackedData) > 0)
                 ChargeOffNoticeNoticeMessage = "Print he Charge Off Notice";
-            else if ((Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Num_Days_Delq) >= 30)
-                    && (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) > 0))
+            else if ((Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Num_Days_Delq) >= 30)
+                    && (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) > 0))
                 ChargeOffNoticeNoticeMessage = "print the Delinquency Notice";
-            else if ((Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Num_Days_Delq) < 30)
-                    && (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) > 0))
+            else if ((Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Num_Days_Delq) < 30)
+                    && (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) > 0))
                 ChargeOffNoticeNoticeMessage = "print the Re-Finance Notice";
             return ChargeOffNoticeNoticeMessage;
         }
 
         public string GetNegativeAmortization(AccountsModel accountModel)
         {
-            if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Neg_Amort_Taken_PackedData) == 0)
+            if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Neg_Amort_Taken_PackedData) == 0)
                 NegativeAmortization = "N/A";
             else
                 NegativeAmortization = accountModel.MasterFileDataPart_1Model.Rssi_Neg_Amort_Taken_PackedData;
@@ -1627,7 +1636,7 @@ namespace Carrington_Service.Calculation_Classes
 
         public string GetBuydownBalance(AccountsModel accountModel)
         {
-            if (Convert.ToInt64(accountModel.UserFieldRecordModel.Rssi_Usr_303_PackedData) <= 0)
+            if (Convert.ToDecimal(accountModel.UserFieldRecordModel.Rssi_Usr_303_PackedData) <= 0)
                 BuydownBalance = "N/A";
             else
                 BuydownBalance = accountModel.UserFieldRecordModel.Rssi_Usr_303_PackedData;
@@ -1636,7 +1645,7 @@ namespace Carrington_Service.Calculation_Classes
         }
         public string GetPartialClaim(AccountsModel accountModel)
         {
-            if (Convert.ToInt64(accountModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) == 0)
+            if (Convert.ToDecimal(accountModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) == 0)
                 PartialClaim = "N/A";
             else
                 PartialClaim = accountModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData;
@@ -1645,11 +1654,11 @@ namespace Carrington_Service.Calculation_Classes
         }
         public string GetInterestOption1(AccountsModel accountModel)
         {
-            if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+            if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 InterestOption1 = "0.00";
-            else if (Convert.ToInt64(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) == 0
-                || Convert.ToInt64(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) < Convert.ToInt64(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData)
-                || Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0
+            else if (Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) == 0
+                || Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) < Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData)
+                || Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0
                 )
             {
                 InterestOption1 = null;
@@ -1658,11 +1667,11 @@ namespace Carrington_Service.Calculation_Classes
         }
         public string GetEscrowOption1(AccountsModel accountModel)
         {
-            if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+            if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 EscrowOption1 = "0.00";
-            else if (Convert.ToInt64(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) == 0
-                || Convert.ToInt64(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) < Convert.ToInt64(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData)
-                || Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0
+            else if (Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) == 0
+                || Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) < Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData)
+                || Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0
                 )
             {
                 EscrowOption1 = null;
@@ -1671,11 +1680,11 @@ namespace Carrington_Service.Calculation_Classes
         }
         public string GetRegularMonthlyPaymentOption1(AccountsModel accountModel)
         {
-            if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+            if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 RegularMonthlyPaymentOption1 = "0.00";
-            else if (Convert.ToInt64(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) == 0
-                || Convert.ToInt64(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) < Convert.ToInt64(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData)
-                || Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0
+            else if (Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) == 0
+                || Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) < Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData)
+                || Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0
                 )
             {
                 RegularMonthlyPaymentOption1 = null;
@@ -1684,11 +1693,11 @@ namespace Carrington_Service.Calculation_Classes
         }
         public string GetInterestOption2(AccountsModel accountModel)
         {
-            if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+            if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 InterestOption2 = "0.00";
-            else if (Convert.ToInt64(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) == 0
-                || Convert.ToInt64(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) < Convert.ToInt64(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData)
-                || Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0
+            else if (Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) == 0
+                || Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) < Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData)
+                || Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0
                 )
             {
                 InterestOption2 = null;
@@ -1698,11 +1707,11 @@ namespace Carrington_Service.Calculation_Classes
 
         public string GetEscrowOption2(AccountsModel accountModel)
         {
-            if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+            if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 EscrowOption2 = "0.00";
-            else if (Convert.ToInt64(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) == 0
-                || Convert.ToInt64(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) < Convert.ToInt64(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData)
-                || Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0
+            else if (Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) == 0
+                || Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) < Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData)
+                || Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0
                 )
             {
                 EscrowOption2 = null;
@@ -1711,11 +1720,11 @@ namespace Carrington_Service.Calculation_Classes
         }
         public string GetRegularMonthlyPaymentOption2(AccountsModel accountModel)
         {
-            if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+            if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 RegularMonthlyPaymentOption2 = "0.00";
-            else if (Convert.ToInt64(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) == 0
-                || Convert.ToInt64(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) < Convert.ToInt64(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData)
-                || Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0
+            else if (Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) == 0
+                || Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) < Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData)
+                || Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0
                 )
             {
                 RegularMonthlyPaymentOption2 = null;
@@ -1724,11 +1733,11 @@ namespace Carrington_Service.Calculation_Classes
         }
         public string GetInterestOption3(AccountsModel accountModel)
         {
-            if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+            if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 InterestOption3 = "0.00";
-            else if (Convert.ToInt64(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) == 0
-                || Convert.ToInt64(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) < Convert.ToInt64(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData)
-                || Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0
+            else if (Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) == 0
+                || Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) < Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData)
+                || Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0
                 )
             {
                 InterestOption3 = null;
@@ -1738,11 +1747,11 @@ namespace Carrington_Service.Calculation_Classes
 
         public string GetEscrowOption3(AccountsModel accountModel)
         {
-            if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+            if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 EscrowOption3 = "0.00";
-            else if (Convert.ToInt64(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) == 0
-                || Convert.ToInt64(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) < Convert.ToInt64(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData)
-                || Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0
+            else if (Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) == 0
+                || Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) < Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData)
+                || Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0
                 )
             {
                 EscrowOption3 = null;
@@ -1752,11 +1761,11 @@ namespace Carrington_Service.Calculation_Classes
 
         public string GetRegularMonthlyPaymentOption3(AccountsModel accountModel)
         {
-            if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+            if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 RegularMonthlyPaymentOption3 = "0.00";
-            else if (Convert.ToInt64(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) == 0
-                || Convert.ToInt64(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) < Convert.ToInt64(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData)
-                || Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0
+            else if (Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) == 0
+                || Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) < Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData)
+                || Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0
                 )
             {
                 RegularMonthlyPaymentOption3 = null;
@@ -1766,11 +1775,11 @@ namespace Carrington_Service.Calculation_Classes
 
         public string GetInterestOption4(AccountsModel accountModel)
         {
-            if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+            if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 InterestOption4 = "0.00";
-            else if (Convert.ToInt64(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData) == 0)
+            else if (Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData) == 0)
                 InterestOption4 = "0.00";
-            else if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData) > Convert.ToInt64(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt1_PackedData))
+            else if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData) > Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt1_PackedData))
                 InterestOption4 = accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt1_PackedData;
             else
                 InterestOption4 = accountModel.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData;
@@ -1779,30 +1788,30 @@ namespace Carrington_Service.Calculation_Classes
         }
         public string GetEscrowOption4(AccountsModel accountModel)
         {
-            if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+            if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 EscrowOption4 = "0.00";
-            else if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+            else if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                 EscrowOption4 = "0.00";
             return EscrowOption4;
         }
         public string GetRegularMonthlyPaymentOption4(AccountsModel accountModel)
         {
-            if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+            if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 RegularMonthlyPaymentOption4 = "0.00";
-            else if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+            else if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                 RegularMonthlyPaymentOption4 = "0.00";
             return RegularMonthlyPaymentOption4;
         }
         public string GetOption4MinimumDescription(AccountsModel accountModel)
         {
-            if ((Convert.ToInt64(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt1_PackedData)
-                - Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData)) > 0)
+            if ((Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt1_PackedData)
+                - Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData)) > 0)
                 Option4MinimumDescription = "Your principal balance will decrease and you will be closer to paying off your loan.";
-            else if ((Convert.ToInt64(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt1_PackedData)
-                - Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData)) == 0)
+            else if ((Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt1_PackedData)
+                - Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData)) == 0)
                 Option4MinimumDescription = "Your principal balance will stay the same and you will not be closer to paying off your loan.";
-            else if ((Convert.ToInt64(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt1_PackedData)
-                - Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData)) < 0)
+            else if ((Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt1_PackedData)
+                - Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData)) < 0)
                 Option4MinimumDescription = "Your principal balance will increase.You will be borrowing more money and losing equity in your home.";
 
             return Option4MinimumDescription;
@@ -1819,14 +1828,14 @@ namespace Carrington_Service.Calculation_Classes
         }
         public string GetReceivedAfterDate(AccountsModel accountModel)
         {
-            if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+            if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                 IfReceivedAfterDate = "suppress Late Charge message";
 
             return IfReceivedAfterDate;
         }
         public string GetLateChargeAmount(AccountsModel accountModel)
         {
-            if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+            if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                 LateChargeAmount = "suppress Late Charge message";
 
             return LateChargeAmount;
@@ -1843,7 +1852,7 @@ namespace Carrington_Service.Calculation_Classes
         //}
         //public string GetAmount(AccountsModel accountModel)
         //{
-        //    if (Convert.ToInt64(accountModel.TransactionRecordModel.Rssi_Tr_Exp_Fee_Amt_PackedData) != 0)
+        //    if (Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Exp_Fee_Amt_PackedData) != 0)
         //        Amount = accountModel.TransactionRecordModel.Rssi_Tr_Exp_Fee_Amt_PackedData;
         //    else if (accountModel.TransactionRecordModel.RSSI_FT_TYPE_CODE == "000")
         //        Amount = accountModel.TransactionRecordModel.RSSI_FEE_AMT_ASSESSED;
@@ -1855,8 +1864,9 @@ namespace Carrington_Service.Calculation_Classes
 
         public string GetInterestRateUntil(AccountsModel accountModel)
         {
-            if (Convert.ToUInt64(Convert.ToDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Rate_Chg_Date).IncludeCenturyDate(true)) > 19000000)
-                InterestRateUntil = "Until RSSI-RATE-CHG-DATE";
+            //if (Convert.ToUInt64(Convert.ToDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Rate_Chg_Date).IncludeCenturyDate(true)) > 19000000)
+            if (Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Rate_Chg_Date).IncludeCenturyDate(true)) > 19000000)
+            InterestRateUntil = "Until RSSI-RATE-CHG-DATE";
             else
                 InterestRateUntil = null;
 
@@ -1865,7 +1875,7 @@ namespace Carrington_Service.Calculation_Classes
 
         public string GetPrepaymentPenalty(AccountsModel accountModel)
         {
-            if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Prepay_Pen_Amt_PackedData) > 0)
+            if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Prepay_Pen_Amt_PackedData) > 0)
                 PrepaymentPenalty = "Yes";
             else
                 PrepaymentPenalty = "No";
@@ -1874,7 +1884,7 @@ namespace Carrington_Service.Calculation_Classes
         }
         public string GetModificationDate(AccountsModel accountModel)
         {
-            if (Convert.ToUInt64(Convert.ToDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Modify_Date).IncludeCenturyDate(true)) > 19000000)
+            if (Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Modify_Date).IncludeCenturyDate(true)) > 19000000)
                 ModificationDate = accountModel.MasterFileDataPart_1Model.Rssi_Modify_Date;
             else
                 ModificationDate = "N/A";
@@ -1883,7 +1893,7 @@ namespace Carrington_Service.Calculation_Classes
         }
         public string GetMaturityDate(AccountsModel accountModel)
         {
-            if (Convert.ToUInt64(Convert.ToDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Balloon_Date).IncludeCenturyDate(true)) > 19000000)
+            if (Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Balloon_Date).IncludeCenturyDate(true)) > 19000000)
                 MaturityDate = accountModel.MasterFileDataPart_1Model.Rssi_Balloon_Date;
             else
                 MaturityDate = accountModel.MasterFileDataPart_1Model.Rssi_Mat_Date;
@@ -1892,7 +1902,7 @@ namespace Carrington_Service.Calculation_Classes
         }
         public string GetDelinquencyNoticebox(AccountsModel accountModel)
         {
-            if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Num_Days_Delq) > 30 && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) > 0)
+            if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Num_Days_Delq) > 30 && Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) > 0)
                 DelinquencyNoticebox = "include the Delinquency Notice section";
             else
                 DelinquencyNoticebox = "";
@@ -1904,8 +1914,8 @@ namespace Carrington_Service.Calculation_Classes
         {
 
             String lossMitigtationNotice = string.Empty;
-
-            if (int.Parse(accountsModel.MasterFileDataPart2Model.Rssi_Lmt_Program) == (2 - 10) || int.Parse(accountsModel.MasterFileDataPart2Model.Rssi_Lmt_Program) == (12 - 14))
+            if(accountsModel.MasterFileDataPart2Model.Rssi_Lmt_Program.Trim() != "" && accountsModel.MasterFileDataPart2Model.Rssi_Lmt_Program.Trim() != "")
+            if (decimal.Parse(accountsModel.MasterFileDataPart2Model.Rssi_Lmt_Program) == (2 - 10) || decimal.Parse(accountsModel.MasterFileDataPart2Model.Rssi_Lmt_Program) == (12 - 14))
             {
                 lossMitigtationNotice = "PLEASE TAKE NOTICE that You have agreed to the following loss mitigation program: [Program Name].";
             }
@@ -1915,9 +1925,9 @@ namespace Carrington_Service.Calculation_Classes
 
         public string GetForeclosureNotice(AccountsModel accountsModel)
         {
-            //if (int.Parse(accountsModel.MasterFileDataPart_1Model.RSSI_FBR_F_ACT_START_DT) > 0)  Did not found "RSSI-FBR-F-ACT-START-DT" in copy book
+            //if (decimal.Parse(accountsModel.MasterFileDataPart_1Model.RSSI_FBR_F_ACT_START_DT) > 0)  Did not found "RSSI-FBR-F-ACT-START-DT" in copy book
 
-            if (int.Parse(accountsModel.MasterFileDataPart2Model.Rssi_Fcl_Start_Date) > 0)
+            if (decimal.Parse(accountsModel.MasterFileDataPart2Model.Rssi_Fcl_Start_Date) > 0)
             {
                 ForeclosureNotice = "PLEASE TAKE NOTICE that Carrington Mortgage Services, LLC has made the first notice or filing required to start a foreclosure.";
             }
@@ -1927,8 +1937,8 @@ namespace Carrington_Service.Calculation_Classes
         public string GetACHMessage(AccountsModel accountsModel)
         {
 
-            if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Chrg_Off_Dt_PackedData) > 0 &&
-                Convert.ToInt64(accountsModel.MasterFileDataPart2Model.Rssi_Tot_Draft_Amt_PackedData) > 0)
+            if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Chrg_Off_Dt_PackedData) > 0 &&
+                Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Tot_Draft_Amt_PackedData) > 0)
             {
                 ACHMessage = "Autodraft message";
             }
@@ -1949,8 +1959,9 @@ namespace Carrington_Service.Calculation_Classes
         }
         public string GetBankruptcyMessage(AccountsModel accountsModel)
         {
-            if (Convert.ToDateTime(accountsModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Dschg_Dt_PackedData) > Convert.ToDateTime("00/00/00") &&
-                Convert.ToDateTime(accountsModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+            if (accountsModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Dschg_Dt_PackedData!=null && accountsModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData!=null &&
+                CommonHelper.GetFormatedDateTime(accountsModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Dschg_Dt_PackedData) > Convert.ToDateTime("00/00/00") &&
+                CommonHelper.GetFormatedDateTime(accountsModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
             {
                 BankruptcyMessage = "print Bankruptcy message.";
             }
@@ -1961,7 +1972,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             // If (RSSI-REPY-REMAIN-BAL not = 00000C)
             //DOUBT
-            //if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Repy_Remain_Bal_PackedData) !=00000C
+            //if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Repy_Remain_Bal_PackedData) !=00000C
             return RepaymentPlanMessage;
         }
 
@@ -1978,7 +1989,7 @@ namespace Carrington_Service.Calculation_Classes
 
             String chargeOffNotice = string.Empty;
 
-            if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Chrg_Off_Dt_PackedData) > 0)
+            if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Chrg_Off_Dt_PackedData) > 0)
             {
                 chargeOffNotice = "print Charge Off message";
             }
@@ -1989,7 +2000,7 @@ namespace Carrington_Service.Calculation_Classes
         public string GetCMSPartialClaim(AccountsModel accountsModel)
         {
             String chargeOffNotice = string.Empty;
-            if (int.Parse(accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) > 0 && accountsModel.UserFieldRecordModel.Rssi_Usr_88 == "C") { chargeOffNotice = "print CMS Partial Claim Message."; }
+            if (decimal.Parse(accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) > 0 && accountsModel.UserFieldRecordModel.Rssi_Usr_88 == "C") { chargeOffNotice = "print CMS Partial Claim Message."; }
 
             return chargeOffNotice;
         }
@@ -1997,7 +2008,7 @@ namespace Carrington_Service.Calculation_Classes
         public string GetHUDPartialClaim(AccountsModel accountsModel)
         {
             String hUDPartialClaim = string.Empty;
-            if (int.Parse(accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) > 0 && accountsModel.UserFieldRecordModel.Rssi_Usr_88 == "H") { hUDPartialClaim = "print HUD Partial Claim Message."; }
+            if (decimal.Parse(accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) > 0 && accountsModel.UserFieldRecordModel.Rssi_Usr_88 == "H") { hUDPartialClaim = "print HUD Partial Claim Message."; }
             return hUDPartialClaim;
         }
 
@@ -2034,17 +2045,17 @@ namespace Carrington_Service.Calculation_Classes
 
             String recentPayment6 = String.Empty;
 
-            if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 1)
+            if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 1)
             { recentPayment6 = "RSSI-PMT-DUE-5-DATE: Fully paid on RSSI-PMT-PAID-5-DATE"; }
-            else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 2)
+            else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 2)
             { recentPayment6 = "RSSI - PMT - DUE - 4 - DATE: Fully paid on RSSI-PMT - PAID - 4 - DATE"; }
-            else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 3)
+            else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 3)
             { recentPayment6 = "RSSI - PMT - DUE - 3 - DATE: Fully paid on RSSI-PMT - PAID - 3 - DATE"; }
-            else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 4)
+            else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 4)
             { recentPayment6 = "RSSI - PMT - DUE - 2 - DATE: Fully paid on RSSI-PMT - PAID - 2 - DATE"; }
-            else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 5)
+            else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 5)
             { recentPayment6 = "RSSI - PMT - DUE - 1 - DATE: Fully paid on RSSI-PMT - PAID - 1 - DATE"; }
-            else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
+            else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0 && decimal .Parse(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
             { recentPayment6 = "RSSI - PAST - DATE(1): Unpaid balance of $RSSI - REG - AMT(1)"; }
 
 
@@ -2057,17 +2068,17 @@ namespace Carrington_Service.Calculation_Classes
 
             String recentPayment5 = String.Empty;
 
-            if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 1)
+            if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 1)
             { recentPayment5 = "RSSI-PMT-DUE-4-DATE: Fully paid on RSSI-PMT-PAID-4-DATE"; }
-            else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 2)
+            else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 2)
             { recentPayment5 = "RSSI - PMT - DUE - 3 - DATE: Fully paid on RSSI-PMT - PAID - 3 - DATE"; }
-            else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 3)
+            else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 3)
             { recentPayment5 = "RSSI - PMT - DUE - 2 - DATE: Fully paid on RSSI-PMT - PAID - 2 - DATE"; }
-            else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 4)
+            else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 4)
             { recentPayment5 = "RSSI - PMT - DUE - 1 - DATE: Fully paid on RSSI-PMT - PAID - 1 - DATE"; }
-            else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 5 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
+            else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 5 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
             { recentPayment5 = "RSSI - PAST - DATE(1): Unpaid balance of $RSSI - REG - AMT(1)"; }
-            else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
+            else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
             { recentPayment5 = "RSSI - PAST - DATE(2): Unpaid balance of $RSSI - REG - AMT(2)"; }
 
 
@@ -2079,17 +2090,17 @@ namespace Carrington_Service.Calculation_Classes
 
             String recentPayment4 = String.Empty;
 
-            if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 1)
+            if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 1)
             { recentPayment4 = "RSSI-PMT-DUE-3-DATE: Fully paid on RSSI-PMT-PAID-3-DATE"; }
-            else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 2)
+            else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 2)
             { recentPayment4 = "RSSI - PMT - DUE - 2 - DATE: Fully paid on RSSI-PMT - PAID - 2 - DATE"; }
-            else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 3)
+            else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 3)
             { recentPayment4 = "RSSI - PMT - DUE - 1 - DATE: Fully paid on RSSI-PMT - PAID - 1 - DATE"; }
-            else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 4 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
+            else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 4 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
             { recentPayment4 = "RSSI - PAST - DATE(1): Unpaid balance of $RSSI - REG - AMT(1)"; }
-            else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 5 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
+            else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 5 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
             { recentPayment4 = "RSSI - PAST - DATE(2): Unpaid balance of $RSSI - REG - AMT(2)"; }
-            else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
+            else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
             { recentPayment4 = "RSSI - PAST - DATE(3): Unpaid balance of $RSSI - REG - AMT(3)"; }
 
 
@@ -2101,17 +2112,17 @@ namespace Carrington_Service.Calculation_Classes
 
             String recentPayment3 = String.Empty;
 
-            if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 1)
+            if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 1)
             { recentPayment3 = "RSSI-PMT-DUE-2-DATE: Fully paid on RSSI-PMT-PAID-2-DATE"; }
-            else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 2)
+            else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 2)
             { recentPayment3 = "RSSI - PMT - DUE - 1 - DATE: Fully paid on RSSI-PMT - PAID - 1 - DATE"; }
-            else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 3 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
+            else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 3 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
             { recentPayment3 = "RSSI - PAST - DATE(1): Unpaid balance of $RSSI - REG - AMT(1)"; }
-            else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 4 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
+            else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 4 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
             { recentPayment3 = "RSSI - PAST - DATE(2): Unpaid balance of $RSSI - REG - AMT(2)"; }
-            else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 5 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
+            else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 5 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
             { recentPayment3 = "RSSI - PAST - DATE(3): Unpaid balance of $RSSI - REG - AMT(3)"; }
-            else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
+            else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
             { recentPayment3 = "RSSI - PAST - DATE(4): Unpaid balance of $RSSI - REG - AMT(4)"; }
 
 
@@ -2123,17 +2134,17 @@ namespace Carrington_Service.Calculation_Classes
 
             String recentPayment2 = String.Empty;
 
-            if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 1)
+            if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 1)
             { recentPayment2 = "RSSI-PMT-DUE-1-DATE: Fully paid on RSSI-PMT-PAID-1-DATE"; }
-            else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 2 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
+            else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 2 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
             { recentPayment2 = "RSSI - PAST - DATE(1): Unpaid balance of $RSSI - REG - AMT(1)"; }
-            else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 3 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
+            else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 3 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
             { recentPayment2 = "RSSI - PAST - DATE(2): Unpaid balance of $RSSI - REG - AMT(2)"; }
-            else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 4 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
+            else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 4 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
             { recentPayment2 = "RSSI - PAST - DATE(3): Unpaid balance of $RSSI - REG - AMT(3)"; }
-            else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 5 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
+            else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 5 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
             { recentPayment2 = "RSSI - PAST - DATE(4): Unpaid balance of $RSSI - REG - AMT(4)"; }
-            else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
+            else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
             { recentPayment2 = "RSSI - PAST - DATE(5): Unpaid balance of $RSSI - REG - AMT(5)"; }
 
 
@@ -2145,17 +2156,17 @@ namespace Carrington_Service.Calculation_Classes
 
             String recentPayment1 = String.Empty;
 
-            if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 1 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
+            if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 1 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
             { recentPayment1 = "RSSI-PAST-DATE (1): Unpaid balance of $RSSI-REG-AMT (1)"; }
-            else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 2 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
+            else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 2 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
             { recentPayment1 = "RSSI - PAST - DATE(2): Unpaid balance of $RSSI - REG - AMT(2)"; }
-            else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 3 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
+            else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 3 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
             { recentPayment1 = "RSSI - PAST - DATE(3): Unpaid balance of $RSSI - REG - AMT(3)"; }
-            else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 4 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
+            else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 4 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
             { recentPayment1 = "RSSI - PAST - DATE(4): Unpaid balance of $RSSI - REG - AMT(4)"; }
-            else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 5 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
+            else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 5 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
             { recentPayment1 = "RSSI - PAST - DATE(5): Unpaid balance of $RSSI - REG - AMT(5)"; }
-            else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
+            else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
             { recentPayment1 = "RSSI - PAST - DATE(5): Unpaid balance of $RSSI - REG - AMT(5)"; }
 
 
