@@ -1520,7 +1520,7 @@ namespace Carrington_Service.Calculation_Classes
             return secondaryBorrower;
         }
 
-        private string GetMailingAddressLine1(AccountsModel accountsModel)
+        public string GetMailingAddressLine1(AccountsModel accountsModel)
         {
 
             String mailingAddressLine1 = string.Empty;
@@ -1537,7 +1537,7 @@ namespace Carrington_Service.Calculation_Classes
             return mailingAddressLine1;
         }
 
-        private string GetMailingAddressLine2(AccountsModel accountsModel)
+        public string GetMailingAddressLine2(AccountsModel accountsModel)
         {
 
             String mailingAddressLine2 = string.Empty;

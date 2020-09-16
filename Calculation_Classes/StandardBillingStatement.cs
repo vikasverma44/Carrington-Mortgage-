@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 
 namespace Carrington_Service.Calculation_Classes
 {
+  
+
     public class StandardBillingStatement : IStandardBillingStatement
     {
         private string AmountDue { get; set; }
@@ -36,7 +38,7 @@ namespace Carrington_Service.Calculation_Classes
         private string ExMessage { get; set; }
         private ILogger Logger;
         private StringBuilder finalLine;
-        public string GetFinalStringStandardBilling(AccountsModel accountModel)
+        public StringBuilder GetFinalStringStandardBilling(AccountsModel accountModel)
         {
             ExMessage = "Error Message";
             finalLine = new StringBuilder();
@@ -121,7 +123,7 @@ namespace Carrington_Service.Calculation_Classes
 
 
 
-            return Convert.ToString(finalLine);
+            return finalLine;
         }
         /* While Calculating Conditions must be applied*/
         private string GetAmountDue(AccountsModel accountsModel)
@@ -499,7 +501,7 @@ namespace Carrington_Service.Calculation_Classes
             }
             return TotalPaidYearToDate;
         }
-        private string GetLatePaymentAmount(AccountsModel accountsModel)
+        public string GetLatePaymentAmount(AccountsModel accountsModel)
         {
             try
             {
@@ -683,7 +685,7 @@ namespace Carrington_Service.Calculation_Classes
             return secondaryBorrower;
         }
 
-        private string GetMailingAddressLine1(AccountsModel accountsModel)
+        public string GetMailingAddressLine1(AccountsModel accountsModel)
         {
 
             String mailingAddressLine1 = string.Empty;
@@ -708,7 +710,7 @@ namespace Carrington_Service.Calculation_Classes
             return mailingAddressLine1;
         }
 
-        private string GetMailingAddressLine2(AccountsModel accountsModel)
+        public string GetMailingAddressLine2(AccountsModel accountsModel)
         {
 
             String mailingAddressLine2 = string.Empty;
@@ -735,7 +737,7 @@ namespace Carrington_Service.Calculation_Classes
 
         }
 
-        private string GetMailingCityStateZip(AccountsModel accountsModel)
+        public string GetMailingCityStateZip(AccountsModel accountsModel)
         {
 
             String mailingCityStateZip = string.Empty;

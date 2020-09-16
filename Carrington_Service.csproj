@@ -125,6 +125,7 @@
   <ItemGroup>
     <Compile Include="Agents\AgentApi.cs" />
     <Compile Include="BusinessExpert\CRL30FileGeneration.cs" />
+    <Compile Include="BusinessExpert\ICRL30FileGeneration.cs" />
     <Compile Include="BusinessExpert\WorkFlowExpert.cs" />
     <Compile Include="Calculation_Classes\IChapterSevenBillingStatement.cs" />
     <Compile Include="Calculation_Classes\IChapterSevenOptionARMStatement.cs" />
@@ -154,7 +155,6 @@
     <Compile Include="CRLClasses\NCPPipeCreatedByComposerModel.cs" />
     <Compile Include="CRLClasses\NCPPipeCreatedByRubikaModel.cs" />
     <Compile Include="DIContainer.cs" />
-    <Compile Include="FlexFields_Calculation\StatementType _Copy.cs" />
     <Compile Include="Helpers\CommonHelper.cs" />
     <Compile Include="FlexFields_Calculation\Borrower.cs" />
     <Compile Include="FlexFields_Calculation\StatementType.cs" />
