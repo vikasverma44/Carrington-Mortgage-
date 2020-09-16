@@ -50,7 +50,6 @@ namespace Carrington_Service.BusinessExpert
             ApiAgent = apiAgent;
             EmailService = emailService;
             CRL30FileGeneration = cRL30FileGeneration;
-            //configHelper.Model.DatabaseSetting = DbService.GetDataBaseSettings();
         }
 
         #endregion
@@ -60,6 +59,7 @@ namespace Carrington_Service.BusinessExpert
             try
             {
                 return FileReadingProcess(_inputFile, _trackingId);
+                
 
             }
             catch (Exception ex)
@@ -70,14 +70,14 @@ namespace Carrington_Service.BusinessExpert
             }
 
         }
-        public bool FileReadingProcess(string _inputifle, string _trackingId)
+        public bool FileReadingProcess(string _inputFile, string _trackingId)
         {
             Logger.Trace("STARTED: File Reading Process Started");
             try
             {
-                string pathFinal = _inputifle;
+                string pathFinal = _inputFile;
                 string filelocation = pathFinal;
-                pmFilePath = _inputifle;
+                pmFilePath = _inputFile;
                 bool fileReadingProcess = false;
                 string[] allFiles = Directory.GetFiles(ConfigHelper.Model.InputFilePathLocation_Local);
                 foreach (string file in allFiles)
@@ -117,6 +117,11 @@ namespace Carrington_Service.BusinessExpert
                     if (!isFileMissing)
                     {
                         fileReadingProcess = AccountMatchingProcess(pmFilePath, supplimentFilePath, EConsentFilePath);
+                        if(fileReadingProcess && MortgageLoanBillingFile.AccountModelList.Count > 0)
+                        {
+                            CRL30FileGeneration.GenerateCRL30File(MortgageLoanBillingFile, _inputFile);
+
+                        }
                     }
                 }
                 else
@@ -136,9 +141,6 @@ namespace Carrington_Service.BusinessExpert
                     }
                 }
 
-                //CRL30FileGeneration c = new CRL30FileGeneration(Logger, ConfigHelper);
-                //c.GenerateCRL30File(MortgageLoanBillingFile);
-                 CRL30FileGeneration.GenerateCRL30File(MortgageLoanBillingFile, _inputifle);
                 TimeWatch();
                 if (fileReadingProcess)
                 {
