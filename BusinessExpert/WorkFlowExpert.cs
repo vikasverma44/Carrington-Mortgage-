@@ -23,8 +23,7 @@ namespace Carrington_Service.BusinessExpert
 {
     public class WorkFlowExpert : IWorkFlowExpert
     {
-        #region Class Members Definitions & Constructor
-
+        #region Class Members Definitions & Constructor 
         public ILogger Logger;
         private readonly IFileIOService FileIOService;
         private readonly IConfigHelper ConfigHelper;
@@ -74,15 +73,16 @@ namespace Carrington_Service.BusinessExpert
             Logger.Trace("STARTED: File Reading Process Started");
             try
             {
-
+                string pathFinal = _trackingId + "\\" + _inputifle;
+                string filelocation = @"C:\Mortgage\" + pathFinal;
+                if (filelocation.Contains("TESTDATA"))
+                {
+                    pmFilePath = filelocation;
+                }
                 string[] allFiles = Directory.GetFiles(ConfigHelper.Model.InputFilePathLocation_Local);
                 foreach (string file in allFiles)
                 {
-                    if (file.Contains("TESTDATA"))
-                    {
-                        pmFilePath = file;
-                    }
-                    else if (file.Contains("CMS_BILLINPUT"))
+                    if (file.Contains("CMS_BILLINPUT"))
                     {
                         supplimentFilePath = file;
                     }
@@ -90,8 +90,7 @@ namespace Carrington_Service.BusinessExpert
                     {
                         EConsentFilePath = file;
                     }
-                }
-
+                } 
                 if (DateTime.Now.Hour > Convert.ToInt32(ConfigHelper.Model.WatcherStartTime) && DateTime.Now.Hour < Convert.ToInt32(ConfigHelper.Model.WatcherEndTime))
                 {
                     bool isFileMissing = false;
@@ -807,10 +806,10 @@ namespace Carrington_Service.BusinessExpert
             }
             else if (variableName == "Rssi_Inv_Block_PackedData")
             {
-                firstPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Block_PackedData", currentByte, 88, 5);
-                secondPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Block_PackedData", currentByte, 158, 5);
-                thirdPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Block_PackedData", currentByte, 228, 5);
-                fourthPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Block_PackedData", currentByte, 298, 5);
+                firstPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Block_PackedData", currentByte, 88, 3);
+                secondPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Block_PackedData", currentByte, 158, 3);
+                thirdPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Block_PackedData", currentByte, 228, 3);
+                fourthPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Block_PackedData", currentByte, 298, 3);
                 fifthPostion = "";
                 sixPostion = "";
                 Postion07 = "";
@@ -1213,9 +1212,10 @@ namespace Carrington_Service.BusinessExpert
                 return "";
         }
         // A Master File Data Part 1 Record.One record per loan.
+
+
         public void GetMasterFileDataPart_1(byte[] currentByte, ref AccountsModel acc)
         {
-
             string Rssi_Inv_Code_PackedData = GetValueFromMultiLocation("Rssi_Inv_Code_PackedData", currentByte);
             string Rssi_Inv_Name = GetValueFromMultiLocation("Rssi_Inv_Name", currentByte);
             string Rssi_Inv_Block_PackedData = GetValueFromMultiLocation("Rssi_Inv_Block_PackedData", currentByte);
@@ -3454,18 +3454,17 @@ namespace Carrington_Service.BusinessExpert
                 }
                 else
                 {
-                    return GetPositionData(data, start, length, decimalPlaces);
+                    return GetPositionData(data, start, length, decimalPlaces, propertyName);
                 }
 
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Error :" + propertyName);
                 return "";
             }
         }
 
-        public string GetPositionData(byte[] currentByte, int startPos, int fieldLength, int decimalPlaces)
+        public string GetPositionData(byte[] currentByte, int startPos, int fieldLength, int decimalPlaces, string propertyName)
         {
             try
             {
@@ -3480,7 +3479,6 @@ namespace Carrington_Service.BusinessExpert
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Error at Start Pos" + startPos + "And Field Lenght " + fieldLength);
                 return "";
             }
         }
