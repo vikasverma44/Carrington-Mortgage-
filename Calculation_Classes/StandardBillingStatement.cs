@@ -133,6 +133,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
+                Logger.Trace("STARTED:  Execute to Get amount due.");
                 if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 {
                     AmountDue = "0";
@@ -142,6 +143,7 @@ namespace Carrington_Service.Calculation_Classes
                     AmountDue = Convert.ToString(Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData)
                         + Convert.ToDecimal(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData));
                 }
+                Logger.Trace("ENDED: Get  amount due.");
             }
             catch (Exception ex)
             {
@@ -154,6 +156,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
+                Logger.Trace("STARTED:  Execute to Get principal.");
                 if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 {
                     Principal = "0.00";
@@ -168,6 +171,7 @@ namespace Carrington_Service.Calculation_Classes
                     Principal = Convert.ToString(Convert.ToDecimal(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt4_PackedData)
                                      - Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData));
                 }
+                Logger.Trace("ENDED: Get  principal.");
             }
             catch (Exception ex)
             {
@@ -180,6 +184,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
+                Logger.Trace("STARTED:  Execute to Get assistance amount.");
                 if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0)
                     AssistanceAmount = "do not print the Assistance Amount line";
 
@@ -192,6 +197,7 @@ namespace Carrington_Service.Calculation_Classes
                 {
                     AssistanceAmount = accountsModel.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData;
                 }
+                Logger.Trace("ENDED: Get  assistance amount.");
             }
             catch (Exception ex)
             {
@@ -204,6 +210,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
+                Logger.Trace("STARTED:  Execute to replacement reserve amount.");
                 if ((Convert.ToDecimal(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData)
                        - Convert.ToDecimal(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt4_PackedData)
                         - Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData)
@@ -224,6 +231,7 @@ namespace Carrington_Service.Calculation_Classes
 
 
                 }
+                Logger.Trace("ENDED: Get  replacement reserve amount.");
             }
             catch (Exception ex)
             {
@@ -236,10 +244,12 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
+                Logger.Trace("STARTED:  Execute to overdue payment.");
                 OverduePayment = Convert.ToString(Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData)
                                       - Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData)
                                       - Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Pd_Since_Lst_Stmt_PackedData)
                                       - Convert.ToDecimal(GetTotalFeesAndCharges(accountsModel)));
+                Logger.Trace("ENDED: Get  overdue payment.");
             }
             catch (Exception ex)
             {
