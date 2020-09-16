@@ -78,6 +78,7 @@ namespace Carrington_Service.BusinessExpert
                 string pathFinal = _inputifle;
                 string filelocation = pathFinal;
                 pmFilePath = _inputifle;
+                bool fileReadingProcess = false;
                 string[] allFiles = Directory.GetFiles(ConfigHelper.Model.InputFilePathLocation_Local);
                 foreach (string file in allFiles)
                 {
@@ -102,15 +103,20 @@ namespace Carrington_Service.BusinessExpert
                     {
                         Logger.Trace("ERROR: Suppliment  File Not Found");
                         isFileMissing = true;
+
+                        throw new FileNotFoundException($"Suppliment  File Not Found");
                     }
                     if (EConsentFilePath == null)
                     {
                         Logger.Trace("ERROR: Econsent  File Not Found");
                         isFileMissing = true;
+
+                        throw new FileNotFoundException($"Econsent  File Not Found");
+                         
                     }
                     if (!isFileMissing)
                     {
-                        AccountMatchingProcess(pmFilePath, supplimentFilePath, EConsentFilePath);
+                        fileReadingProcess = AccountMatchingProcess(pmFilePath, supplimentFilePath, EConsentFilePath);
                     }
                 }
                 else
@@ -134,13 +140,21 @@ namespace Carrington_Service.BusinessExpert
                 //c.GenerateCRL30File(MortgageLoanBillingFile);
                  CRL30FileGeneration.GenerateCRL30File(MortgageLoanBillingFile, _inputifle);
                 TimeWatch();
-                Logger.Trace("ENDED: File Reading Process Completed");
+                if (fileReadingProcess)
+                {
+
+                    Logger.Trace("ENDED: File Reading Process Completed");
+                }
+                else
+                {
+                    Logger.Trace("ENDED: File Reading Process is In-Complete");
+                }
                 return true;
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "File Reading Process Failed :");
-                return false;
+                Logger.Error(ex, "File Reading Process Failed :"); 
+                throw new FileNotFoundException($"File Reading Process Failed :");
             }
         }
         public bool AccountMatchingProcess(string pmFilePath, string supplimentFilePath, string EConsentFilePath)
@@ -202,33 +216,33 @@ namespace Carrington_Service.BusinessExpert
                                 else
                                 {
                                     Logger.Trace("Account Matching Process: Failed No Matched Account Found in PM, Econsent and Suppliment File !!.");
-                                 //   EmailService.SendNotification("Failed No Matched Account Found in PM, Econsent and Suppliment File");
+                                    //   EmailService.SendNotification("Failed No Matched Account Found in PM, Econsent and Suppliment File");
                                     Logger.Trace("Email Notification: Failed Account Matching Notification Send");
                                 }
                             }
                             else
                             {
                                 Logger.Trace("Account Matching Process: Failed No Account Exists in PM File !!.");
-                             //   EmailService.SendNotification("Failed No Account Exists in PM File");
+                                //   EmailService.SendNotification("Failed No Account Exists in PM File");
                             }
                         }
                         else
                         {
                             Logger.Trace("Account Matching Process: Failed No Data Exists in eConsent File !!.");
-                         //   EmailService.SendNotification("Failed No Account Exists in eConsent File");
+                            //   EmailService.SendNotification("Failed No Account Exists in eConsent File");
                         }
                     }
                     else
                     {
                         Logger.Trace("Account Matching Process: Failed No Data Found in Suppliment File !!.");
-                      //  EmailService.SendNotification("Failed No Data Found in Suppliment File");
+                        //  EmailService.SendNotification("Failed No Data Found in Suppliment File");
                     }
 
                 }
                 else
                 {
                     Logger.Trace("Account Matching Process: Failed No Data Found in PM File !!.");
-                   // EmailService.SendNotification("Failed No Data Found in PM File");
+                    // EmailService.SendNotification("Failed No Data Found in PM File");
                 }
                 Logger.Trace("ENDED: Account Matching Complete");
                 return true;
@@ -236,7 +250,9 @@ namespace Carrington_Service.BusinessExpert
             catch (Exception ex)
             {
                 Logger.Error(ex, "Error : Account Matching Process Error :");
-                return true;
+                return false;
+                throw new FileNotFoundException($"Account Matching Process Error :");
+
             }
         }
 
