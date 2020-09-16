@@ -208,7 +208,7 @@ namespace Carrington_Service.Calculation_Classes
             finalLine.Append(GetHUDPartialClaim(accountModel) + "|");
             finalLine.Append(GetStateDisclosures(accountModel) + "|");
             finalLine.Append(GetPaymentInformationMessage(accountModel) + "|");
-            Console.WriteLine(finalLine);
+            //Console.WriteLine(finalLine);
             return finalLine;
         }
 
@@ -1392,10 +1392,8 @@ namespace Carrington_Service.Calculation_Classes
             try
             {
                 Logger.Trace("STARTED:  Execute to Get Unapplied Funds Paid Last Month");
-
-                //Console.WriteLine(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData);
-
-                UnappliedFundsPaidLastMonth = Convert.ToString(
+               //corrupted data
+               UnappliedFundsPaidLastMonth = Convert.ToString(
                accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData == null ? 0 : Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData)
                + accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2 == null ? 0 : Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2.Replace("}", "").Replace("{", ""))
                + accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2 == null ? 0 : Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2.Replace("}", "").Replace("{", ""))
@@ -1617,7 +1615,7 @@ namespace Carrington_Service.Calculation_Classes
             try
             {
                 Logger.Trace("STARTED:  Execute to Get Suspense");
-
+                //corrupted data
                 Suspense = Convert.ToString(
                   (accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData == null ? 0 : Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData))
                 + (accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2 == null ? 0 : Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2.Replace("}","").Replace("{","")))
@@ -1639,7 +1637,7 @@ namespace Carrington_Service.Calculation_Classes
             try
             {
                 Logger.Trace("STARTED:  Execute to Get Miscellaneous");
-
+                //corrupted data
                 Miscellaneous = Convert.ToString(
                  (accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Lip_PackedData  == null ? 0 : Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Lip_PackedData))
                + (accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Cr_Ins_PackedData  == null ? 0 : Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Cr_Ins_PackedData))
@@ -1665,31 +1663,30 @@ namespace Carrington_Service.Calculation_Classes
         }
         public string GetDeferredBalance(AccountsModel accountsModel)
         {
-
-            try
-            {
-                Logger.Trace("STARTED:  Execute to Get Deferred Balance");
-
-                if ((accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal == null ? 0 : Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal)
-                    - (accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData == null ? 0 : Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData))) == 0)
-                {
-                    DeferredBalance = "N/A";
-                }
-                else
-                {
-                    DeferredBalance = Convert.ToString(
-                        (accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal == null ? 0 : Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal))
-                    - (accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData == null ? 0 : Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData)));
-                }
-                Logger.Trace("ENDED:  To Get Deferred Balance");
-            }
-            catch (Exception ex)
-            {
-                return DeferredBalance = "0";
-                Logger.Error(ex, ex.TargetSite.Name);
-                throw;
-            }
-            return DeferredBalance;
+            return DeferredBalance = "0"; // corrupted data
+            //try
+            //{
+            //    Logger.Trace("STARTED:  Execute to Get Deferred Balance");
+                
+            //    if ((accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal == null ? 0 : Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal)
+            //        - (accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData == null ? 0 : Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData))) == 0)
+            //    {
+            //        DeferredBalance = "N/A";
+            //    }
+            //    else
+            //    {
+            //        DeferredBalance = Convert.ToString(
+            //            (accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal == null ? 0 : Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal))
+            //        - (accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData == null ? 0 : Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData)));
+            //    }
+            //    Logger.Trace("ENDED:  To Get Deferred Balance");
+            //}
+            //catch (Exception ex)
+            //{
+            //    Logger.Error(ex, ex.TargetSite.Name);
+            //    throw;
+            //}
+            //return DeferredBalance;
         }
         public string GetTotalDue(AccountsModel accountsModel)
         {
