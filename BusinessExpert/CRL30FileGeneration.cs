@@ -32,7 +32,7 @@ namespace ODHS_EDelivery.BusinessExpert
         /// <summary>The output file path and name.</summary>
         private static string _outputFile;
 
-        private const string Ncp05Description = "Carriton Mortgage File";
+        private const string Ncp05Description = "CARRINGTON MORTGAGE FILE";
 
         /// <summary>The NCP05 version.</summary>
         private const string Ncp05Version = "01";

@@ -70,14 +70,14 @@ namespace Carrington_Service.BusinessExpert
             }
 
         }
-        public bool FileReadingProcess(string _inputifle, string _trackingId)
+        public bool FileReadingProcess(string inputFile, string trackingId)
         {
             Logger.Trace("STARTED: File Reading Process Started");
             try
             {
-                string pathFinal = _inputifle;
+                string pathFinal = inputFile;
                 string filelocation = pathFinal;
-                pmFilePath = _inputifle;
+                pmFilePath = inputFile;
                 bool fileReadingProcess = false;
                 string[] allFiles = Directory.GetFiles(ConfigHelper.Model.InputFilePathLocation_Local);
                 foreach (string file in allFiles)
@@ -116,9 +116,18 @@ namespace Carrington_Service.BusinessExpert
                             throw new FileNotFoundException($"Econsent  File Not Found");
 
                         }
+
                         if (!isFileMissing)
                         {
                             fileReadingProcess = AccountMatchingProcess(pmFilePath, supplimentFilePath, EConsentFilePath);
+                            if (fileReadingProcess && MortgageLoanBillingFile.AccountModelList.Count > 0)
+                            {
+                                CRL30FileGeneration.GenerateCRL30File(MortgageLoanBillingFile, inputFile);
+                            }
+                            else
+                            {
+                                Logger.Trace("Trace: Can not Generate CRL30 File. FileReadingProcess: " + fileReadingProcess + "Total Accounts: " + MortgageLoanBillingFile.AccountModelList.Count);
+                            }
                         }
                     }
                     else
@@ -154,10 +163,6 @@ namespace Carrington_Service.BusinessExpert
                         Logger.Trace("SUCCESS: Econsent File Found at Time =  " + DateTime.Now.ToString());
                     }
                 }
-
-                //CRL30FileGeneration c = new CRL30FileGeneration(Logger, ConfigHelper);
-                //c.GenerateCRL30File(MortgageLoanBillingFile);
-                CRL30FileGeneration.GenerateCRL30File(MortgageLoanBillingFile, _inputifle);
                 TimeWatch();
                 if (fileReadingProcess)
                 {
@@ -1111,7 +1116,7 @@ namespace Carrington_Service.BusinessExpert
                 Postion19 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 2115, 6);
                 Postion20 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 2133, 6);
                 Postion21 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 2151, 6);
-                Postion22 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 2169, 6); 
+                Postion22 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 2169, 6);
             }
             else if (variableName == "Rssi_Reg_Amt_R_PackedData")
             {
@@ -1209,7 +1214,7 @@ namespace Carrington_Service.BusinessExpert
             else if (Postion21 != "")
             { return Postion21; }
             else if (Postion22 != "")
-            { return Postion22; }           
+            { return Postion22; }
             else
                 return "";
         }
@@ -1341,10 +1346,10 @@ namespace Carrington_Service.BusinessExpert
                 Rssi_Bill_Number_PackedData = PackedTypeCheckAndUnPackData("Rssi_Bill_Number_PackedData", currentByte, 771, 9),
                 Rssi_Bank_Trans_PackedData = PackedTypeCheckAndUnPackData("Rssi_Bank_Trans_PackedData", currentByte, 780, 5),
 
-                Rssi_Withhold_Ytd_PackedData = PackedTypeCheckAndUnPackData("Rssi_Withhold_Ytd_PackedData", currentByte, 785, 4,2),
+                Rssi_Withhold_Ytd_PackedData = PackedTypeCheckAndUnPackData("Rssi_Withhold_Ytd_PackedData", currentByte, 785, 4, 2),
                 Rssi_Neg_Amort_Flag_PackedData = PackedTypeCheckAndUnPackData("Rssi_Neg_Amort_Flag_PackedData", currentByte, 789, 1),
 
-                Rssi_Int_Due_PackedData = PackedTypeCheckAndUnPackData("Rssi_Int_Due_PackedData", currentByte, 790, 6,2),
+                Rssi_Int_Due_PackedData = PackedTypeCheckAndUnPackData("Rssi_Int_Due_PackedData", currentByte, 790, 6, 2),
                 Rssi_Sec_Mort_Cd_PackedData = PackedTypeCheckAndUnPackData("Rssi_Sec_Mort_Cd_PackedData", currentByte, 796, 1),
 
                 Rssi_2Nd_Acct_No_PackedData = PackedTypeCheckAndUnPackData("Rssi_2Nd_Acct_No_PackedData", currentByte, 797, 6),
