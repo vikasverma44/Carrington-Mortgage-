@@ -1,18 +1,23 @@
-﻿using Carrington_Service.Infrastructure;
+﻿using Carrington_Service.Helpers;
+using Carrington_Service.Infrastructure;
 using Carrington_Service.Interfaces;
+using Carrington_Service.Services;
+using Microsoft.VisualBasic.Logging;
 using CarringtonMortgage.Infrastructure;
 using CarringtonMortgage.Models;
 using CarringtonMortgage.Models.InputCopyBookModels;
 using CarringtonMortgage.Models.InputCopyBookModels.MortgageLoanBillingModels;
-using ODHS_EDelivery.BusinessExpert;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ODHS_EDelivery.BusinessExpert;
 
 namespace Carrington_Service.BusinessExpert
 {
@@ -22,7 +27,6 @@ namespace Carrington_Service.BusinessExpert
         public ILogger Logger;
         private readonly IFileIOService FileIOService;
         private readonly IConfigHelper ConfigHelper;
-        private readonly ICRL30FileGeneration CRL30FileGeneration;
         private readonly IAgentApi ApiAgent;
         private string pmFilePath;
         private string supplimentFilePath;
@@ -38,13 +42,12 @@ namespace Carrington_Service.BusinessExpert
 
         /// <summary>The delimiter.</summary>
         private const string Delimiter = "|";
-        public WorkFlowExpert(IConfigHelper configHelper, ILogger logger, IAgentApi apiAgent, IEmailService emailService, ICRL30FileGeneration cRL30FileGeneration)
+        public WorkFlowExpert(IConfigHelper configHelper, ILogger logger, IAgentApi apiAgent, IEmailService emailService)
         {
             ConfigHelper = configHelper;
             Logger = logger;
             ApiAgent = apiAgent;
             EmailService = emailService;
-            CRL30FileGeneration = cRL30FileGeneration;
             //configHelper.Model.DatabaseSetting = DbService.GetDataBaseSettings();
         }
 

@@ -338,3 +338,8 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/BusinessExpert/ICRL30FileGeneration.cs
+/Calculation_Classes/IStandardBillingStatement.cs
+/Calculation_Classes/IOptionARMBillingStatement.cs
+/Calculation_Classes/IChapterThirteenBillingStatement.cs
+/Calculation_Classes/IChapterSevenBillingStatement.cs

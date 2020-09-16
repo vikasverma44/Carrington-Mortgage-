@@ -1,34 +1,37 @@
-﻿using Carrington_Service.Infrastructure;
-using CarringtonMortgage.Models.InputCopyBookModels;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
+using Carrington_Service.Infrastructure;
+using CarringtonMortgage.Models.InputCopyBookModels;
+using SCT.Common;
 /// <summary>
 /// Summary description for Class1
 /// </summary>
 namespace Carrington_Service.Calculation_Classes
 {
-       public class ChapterSevenBillingStatement : IChapterSevenBillingStatement
+    public class ChapterSevenBillingStatement
     {
-        private string PaymentAmount { get; set; }
-        private string DeferredBalance { get; set; }
-        private string Principal { get; set; }
-        private string PastUnpaidAmount { get; set; }
-        private string TotalFeesandCharges { get; set; }
-        private Decimal TotalFeesPaid { get; set; }
-        private string TotalPaymentAmount { get; set; }
-        private string FeesAndChargesPaidLastMonth { get; set; }
-        private string UnappliedFundsPaidLastMonth { get; set; }
-        private string TotalPaidLastMonth { get; set; }
-        private string FeesAndChargesPaidYeartoDate { get; set; }
-        private string UnappliedFundsPaidYearToDate { get; set; }
-        private string TotalPaidYearToDate { get; set; }
-        private string TotalDue { get; set; }
-        private string Suspense { get; set; }
-        private string Miscellaneous { get; set; }
-        private string ExMessage { get; set; }
-        private StringBuilder finalLine;
-        private ILogger Logger;
-        public StringBuilder GetFinalChapterSevenBillingStatement(AccountsModel accountModel)
+        public string PaymentAmount { get; set; }
+        public string DeferredBalance { get; set; }
+        public string Principal { get; set; }
+        public string PastUnpaidAmount { get; set; }
+        public string TotalFeesandCharges { get; set; }
+        public Decimal TotalFeesPaid { get; set; }
+        public string TotalPaymentAmount { get; set; }
+        public string FeesAndChargesPaidLastMonth { get; set; }
+        public string UnappliedFundsPaidLastMonth { get; set; }
+        public string TotalPaidLastMonth { get; set; }
+        public string FeesAndChargesPaidYeartoDate { get; set; }
+        public string UnappliedFundsPaidYearToDate { get; set; }
+        public string TotalPaidYearToDate { get; set; }
+        public string TotalDue { get; set; }
+        public string Suspense { get; set; }
+        public string Miscellaneous { get; set; }
+        public string ExMessage { get; set; }
+        public StringBuilder finalLine;
+        public ILogger Logger;
+        public string GetFinalChapterSevenBillingStatement(AccountsModel accountModel)
         {
             ExMessage = "Error Message";
             finalLine = new StringBuilder();
@@ -88,11 +91,11 @@ namespace Carrington_Service.Calculation_Classes
             finalLine.Append(GetCarringtonCharitableFoundation(accountModel) + "|");
             finalLine.Append(GetPaymentInformationMessage(accountModel) + "|");
 
-            return finalLine;
+            return Convert.ToString(finalLine);
         }
 
         /* While Calculating Conditions must be applied*/
-        private string GetPaymentAmount(AccountsModel accountModel)
+        public string GetPaymentAmount(AccountsModel accountModel)
         {
 
             try
@@ -113,7 +116,7 @@ namespace Carrington_Service.Calculation_Classes
             }
             return PaymentAmount;
         }
-        private string GetDeferredBalance(AccountsModel accountModel)
+        public string GetDeferredBalance(AccountsModel accountModel)
         {
             try
             {
@@ -132,7 +135,7 @@ namespace Carrington_Service.Calculation_Classes
             }
             return DeferredBalance;
         }
-        private string GetPrincipal(AccountsModel accountModel)
+        public string GetPrincipal(AccountsModel accountModel)
         {
             try
             {
@@ -153,7 +156,7 @@ namespace Carrington_Service.Calculation_Classes
             return Principal;
         }
 
-        private string GetPastUnpaidAmount(AccountsModel accountModel)
+        public string GetPastUnpaidAmount(AccountsModel accountModel)
         {
             //Total Fees Paid was not there so used total fees due
             try
@@ -168,7 +171,7 @@ namespace Carrington_Service.Calculation_Classes
             }
             return PastUnpaidAmount;
         }
-        private string GetTotalFeesandCharges(AccountsModel accountModel)
+        public string GetTotalFeesandCharges(AccountsModel accountModel)
         {
             //conditional statement is ther but not applying
             try
@@ -182,7 +185,7 @@ namespace Carrington_Service.Calculation_Classes
             }
             return TotalFeesandCharges;
         }
-        private decimal GetTotalFeesPaid(AccountsModel accountModel)
+        public decimal GetTotalFeesPaid(AccountsModel accountModel)
         {
             try
             {
@@ -208,7 +211,7 @@ namespace Carrington_Service.Calculation_Classes
 
             return TotalFeesPaid;
         }
-        private string GetTotalPaymentAmount(AccountsModel accountModel)
+        public string GetTotalPaymentAmount(AccountsModel accountModel)
         {
             try
             {
@@ -229,7 +232,7 @@ namespace Carrington_Service.Calculation_Classes
             return TotalPaymentAmount;
 
         }
-        private string GetFeesAndChargesPaidLastMonth(AccountsModel accountsModel)
+        public string GetFeesAndChargesPaidLastMonth(AccountsModel accountsModel)
         {
 
             try
@@ -251,7 +254,7 @@ namespace Carrington_Service.Calculation_Classes
 
             return FeesAndChargesPaidLastMonth;
         }
-        private string GetUnappliedFundsPaidLastMonth(AccountsModel accountModel)
+        public string GetUnappliedFundsPaidLastMonth(AccountsModel accountModel)
         {
             try
             {
@@ -264,7 +267,7 @@ namespace Carrington_Service.Calculation_Classes
             }
             return UnappliedFundsPaidLastMonth;
         }
-        private string GetTotalPaidLastMonth(AccountsModel accountsModel)
+        public string GetTotalPaidLastMonth(AccountsModel accountsModel)
         {
             try
             {
@@ -288,7 +291,7 @@ namespace Carrington_Service.Calculation_Classes
 
             return TotalPaidLastMonth;
         }
-        private string GetFeesAndChargesPaidYeartoDate(AccountsModel accountModel)
+        public string GetFeesAndChargesPaidYeartoDate(AccountsModel accountModel)
         {
             try
             {
@@ -309,7 +312,7 @@ namespace Carrington_Service.Calculation_Classes
             }
             return FeesAndChargesPaidYeartoDate;
         }
-        private string GetUnappliedFundsPaidYearToDate(AccountsModel accountModel)
+        public string GetUnappliedFundsPaidYearToDate(AccountsModel accountModel)
         {
             try
             {
@@ -322,7 +325,7 @@ namespace Carrington_Service.Calculation_Classes
             }
             return UnappliedFundsPaidYearToDate;
         }
-        private string GetTotalPaidYearToDate(AccountsModel accountModel)
+        public string GetTotalPaidYearToDate(AccountsModel accountModel)
         {
             try
             {
@@ -335,7 +338,7 @@ namespace Carrington_Service.Calculation_Classes
             }
             return TotalPaidYearToDate;
         }
-        private string GetTotalDue(AccountsModel accountModel)
+        public string GetTotalDue(AccountsModel accountModel)
         {
             try
             {
@@ -356,7 +359,7 @@ namespace Carrington_Service.Calculation_Classes
             return TotalDue;
 
         }
-        private string GetSuspense(AccountsModel accountModel)
+        public string GetSuspense(AccountsModel accountModel)
         {
             try
             {
@@ -369,7 +372,7 @@ namespace Carrington_Service.Calculation_Classes
             }
             return Suspense;
         }
-        private string GetMiscellaneous(AccountsModel accountModel)
+        public string GetMiscellaneous(AccountsModel accountModel)
         {
             try
             {
@@ -384,7 +387,7 @@ namespace Carrington_Service.Calculation_Classes
         }
 
         #region MyRegion Ambrish
-        private string GetPrintStatement(AccountsModel accountModel)
+        public string GetPrintStatement(AccountsModel accountModel)
         {
 
             String printStatement = String.Empty;
@@ -402,7 +405,7 @@ namespace Carrington_Service.Calculation_Classes
             return printStatement;
         }
 
-        private string GetPrimaryBorrowerBKAttorney(AccountsModel accountModel)
+        public string GetPrimaryBorrowerBKAttorney(AccountsModel accountModel)
         {
 
             String primaryBorrowerBKAttorney = String.Empty;
@@ -425,7 +428,7 @@ namespace Carrington_Service.Calculation_Classes
             return primaryBorrowerBKAttorney;
         }
 
-        private string GetSecondaryBorrower(AccountsModel accountModel)
+        public string GetSecondaryBorrower(AccountsModel accountModel)
         {
 
             String secondaryBorrower = String.Empty;
@@ -489,7 +492,7 @@ namespace Carrington_Service.Calculation_Classes
             return mailingBKAttorneyAddressLine2;
         }
 
-        private string GetBorrowerAttorneyMailingCityStateZip(AccountsModel accountModel)
+        public string GetBorrowerAttorneyMailingCityStateZip(AccountsModel accountModel)
         {
 
             String borrowerAttorneyMailingCityStateZip = String.Empty;
@@ -512,7 +515,7 @@ namespace Carrington_Service.Calculation_Classes
             return borrowerAttorneyMailingCityStateZip;
         }
 
-        private string GetMailingCountry(AccountsModel accountModel)
+        public string GetMailingCountry(AccountsModel accountModel)
         {
 
             String mailingCountry = String.Empty;
@@ -536,7 +539,7 @@ namespace Carrington_Service.Calculation_Classes
             return mailingCountry;
         }
 
-        private string GetBuydownBalance(AccountsModel accountModel)
+        public string GetBuydownBalance(AccountsModel accountModel)
         {
 
             String buydownBalance = String.Empty;
@@ -556,7 +559,7 @@ namespace Carrington_Service.Calculation_Classes
             return buydownBalance;
         }
 
-        private string GetPartialClaim(AccountsModel accountModel)
+        public string GetPartialClaim(AccountsModel accountModel)
         {
 
             String partialClaim = String.Empty;
@@ -576,7 +579,7 @@ namespace Carrington_Service.Calculation_Classes
             return partialClaim;
         }
 
-        private string GetInterestRateUntil(AccountsModel accountModel)
+        public string GetInterestRateUntil(AccountsModel accountModel)
         {
 
             String interestRateUntil = String.Empty;
@@ -596,7 +599,7 @@ namespace Carrington_Service.Calculation_Classes
             return interestRateUntil;
         }
 
-        private string GetPrepaymentPenalty(AccountsModel accountModel)
+        public string GetPrepaymentPenalty(AccountsModel accountModel)
         {
 
             String prepaymentPenalty = String.Empty;
@@ -615,7 +618,7 @@ namespace Carrington_Service.Calculation_Classes
 
             return prepaymentPenalty;
         }
-        private string GetInterest(AccountsModel accountModel)
+        public string GetInterest(AccountsModel accountModel)
         {
 
             String interest = String.Empty;
@@ -635,7 +638,7 @@ namespace Carrington_Service.Calculation_Classes
             return interest;
         }
 
-        private string GetEscrowTaxesandInsurance(AccountsModel accountModel)
+        public string GetEscrowTaxesandInsurance(AccountsModel accountModel)
         {
 
             String escrowTaxesandInsurance = String.Empty;
@@ -655,7 +658,7 @@ namespace Carrington_Service.Calculation_Classes
             return escrowTaxesandInsurance;
         }
 
-        private string GetRegularMonthlyPayment(AccountsModel accountModel)
+        public string GetRegularMonthlyPayment(AccountsModel accountModel)
         {
 
             String regularMonthlyPayment = String.Empty;
@@ -675,7 +678,7 @@ namespace Carrington_Service.Calculation_Classes
             return regularMonthlyPayment;
         }
 
-        private string GetCarringtonPaidLastMonh(AccountsModel accountModel)
+        public string GetCarringtonPaidLastMonh(AccountsModel accountModel)
         {
 
             String carringtonPaidLastMonh = String.Empty;
@@ -695,7 +698,7 @@ namespace Carrington_Service.Calculation_Classes
             return carringtonPaidLastMonh;
         }
 
-        private string GetCarringtonCharitablePaidYeartoDate(AccountsModel accountModel)
+        public string GetCarringtonCharitablePaidYeartoDate(AccountsModel accountModel)
         {
 
             String carringtonCharitablePaidYeartoDate = String.Empty;
@@ -715,7 +718,7 @@ namespace Carrington_Service.Calculation_Classes
             return carringtonCharitablePaidYeartoDate;
         }
 
-        private string GetPOBoxAddress(AccountsModel accountModel)
+        public string GetPOBoxAddress(AccountsModel accountModel)
         {
 
             String pOBoxAddress = String.Empty;
@@ -735,7 +738,7 @@ namespace Carrington_Service.Calculation_Classes
             return pOBoxAddress;
         }
 
-        private string GetAccountHistoryInformationbox(AccountsModel accountModel)
+        public string GetAccountHistoryInformationbox(AccountsModel accountModel)
         {
 
             String accountHistoryInformationbox = String.Empty;
@@ -756,7 +759,7 @@ namespace Carrington_Service.Calculation_Classes
             return accountHistoryInformationbox;
         }
 
-        private string GetRecentPayment6(AccountsModel accountModel)
+        public string GetRecentPayment6(AccountsModel accountModel)
         {
 
             String recentPayment6 = String.Empty;
@@ -786,7 +789,7 @@ namespace Carrington_Service.Calculation_Classes
             return recentPayment6;
         }
 
-        private string GetRecentPayment5(AccountsModel accountModel)
+        public string GetRecentPayment5(AccountsModel accountModel)
         {
 
             String recentPayment5 = String.Empty;
@@ -816,7 +819,7 @@ namespace Carrington_Service.Calculation_Classes
             return recentPayment5;
         }
 
-        private string GetRecentPayment4(AccountsModel accountModel)
+        public string GetRecentPayment4(AccountsModel accountModel)
         {
 
             String recentPayment4 = String.Empty;
@@ -846,7 +849,7 @@ namespace Carrington_Service.Calculation_Classes
             return recentPayment4;
         }
 
-        private string GetRecentPayment3(AccountsModel accountModel)
+        public string GetRecentPayment3(AccountsModel accountModel)
         {
 
             String recentPayment3 = String.Empty;
@@ -876,7 +879,7 @@ namespace Carrington_Service.Calculation_Classes
             return recentPayment3;
         }
 
-        private string GetRecentPayment2(AccountsModel accountModel)
+        public string GetRecentPayment2(AccountsModel accountModel)
         {
 
             String recentPayment2 = String.Empty;
@@ -905,7 +908,7 @@ namespace Carrington_Service.Calculation_Classes
             return recentPayment2;
         }
 
-        private string GetRecentPayment1(AccountsModel accountModel)
+        public string GetRecentPayment1(AccountsModel accountModel)
         {
 
             String recentPayment1 = String.Empty;
@@ -935,7 +938,7 @@ namespace Carrington_Service.Calculation_Classes
             return recentPayment1;
         }
 
-        private string GetLenderPlacedInsuranceMessage(AccountsModel accountModel)
+        public string GetLenderPlacedInsuranceMessage(AccountsModel accountModel)
         {
 
             String lenderPlacedInsuranceMessage = String.Empty;
@@ -954,7 +957,7 @@ namespace Carrington_Service.Calculation_Classes
             return lenderPlacedInsuranceMessage;
         }
 
-        private string GetStateNSF(AccountsModel accountModel)
+        public string GetStateNSF(AccountsModel accountModel)
         {
 
             String stateNSF = String.Empty;
@@ -974,7 +977,7 @@ namespace Carrington_Service.Calculation_Classes
             return stateNSF;
         }
 
-        private string GetAutodraftMessage(AccountsModel accountModel)
+        public string GetAutodraftMessage(AccountsModel accountModel)
         {
 
 
@@ -994,7 +997,7 @@ namespace Carrington_Service.Calculation_Classes
             return autodraftMessage;
         }
 
-        private string GetCMSPartialClaim(AccountsModel accountModel)
+        public string GetCMSPartialClaim(AccountsModel accountModel)
         {
 
 
@@ -1013,7 +1016,7 @@ namespace Carrington_Service.Calculation_Classes
             return cMSPartialClaim;
         }
 
-        private string GetHUDPartialClaim(AccountsModel accountModel)
+        public string GetHUDPartialClaim(AccountsModel accountModel)
         {
 
 
@@ -1032,7 +1035,7 @@ namespace Carrington_Service.Calculation_Classes
             return HUDPartialClaim;
         }
 
-        private string Geteffectivedate(AccountsModel accountModel)
+        public string Geteffectivedate(AccountsModel accountModel)
         {
 
             string effectivedate = string.Empty;
@@ -1052,7 +1055,7 @@ namespace Carrington_Service.Calculation_Classes
             return effectivedate;
         }
 
-        private string GetAmount(AccountsModel accountModel)
+        public string GetAmount(AccountsModel accountModel)
         {
 
             string amount = string.Empty;
@@ -1074,7 +1077,7 @@ namespace Carrington_Service.Calculation_Classes
             return amount;
         }
 
-        private string GetStateDisclosures(AccountsModel accountModel)
+        public string GetStateDisclosures(AccountsModel accountModel)
         {
 
             string stateDisclosures = string.Empty;
@@ -1096,7 +1099,7 @@ namespace Carrington_Service.Calculation_Classes
             return stateDisclosures;
         }
 
-        private string GetCarringtonCharitableFoundation(AccountsModel accountModel)
+        public string GetCarringtonCharitableFoundation(AccountsModel accountModel)
         {
 
             string carringtonCharitableFoundation = string.Empty;
@@ -1115,7 +1118,7 @@ namespace Carrington_Service.Calculation_Classes
             return carringtonCharitableFoundation;
         }
 
-        private string GetPaymentInformationMessage(AccountsModel accountModel)
+        public string GetPaymentInformationMessage(AccountsModel accountModel)
         {
 
             string carringtonCharitableFoundation = string.Empty;
