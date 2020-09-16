@@ -1,9 +1,10 @@
 ﻿using CarringtonMortgage.Models.InputCopyBookModels;
+using System.Text;
 
 namespace Carrington_Service.Calculation_Classes
 {
     public interface IChapterSevenOptionARMStatement
     {
-        string GetFinalChapterSevenOptionARMStatement(AccountsModel accountModel);
+        StringBuilder GetFinalChapterSevenOptionARMStatement(AccountsModel accountModel);
     }
 }

@@ -97,7 +97,7 @@ namespace Carrington_Service.Calculation_Classes
 
         private ILogger Logger;
 
-        public string GetFinalChapterThirteenOptionARMStatement(AccountsModel accountModel)
+        public StringBuilder  GetFinalChapterThirteenOptionARMStatement(AccountsModel accountModel)
         {
             ExMessage = "Error Message";
             finalLine = new StringBuilder();
@@ -181,7 +181,7 @@ namespace Carrington_Service.Calculation_Classes
             finalLine.Append(GetHUDPartialClaim(accountModel) + "|");
             finalLine.Append(GetStateDisclosures(accountModel) + "|");
             finalLine.Append(GetPaymentInformationMessage(accountModel) + "|");
-            return Convert.ToString(finalLine);
+            return finalLine;
         }
 
         /* While Calculating Conditions must be applied*/
@@ -1594,7 +1594,7 @@ namespace Carrington_Service.Calculation_Classes
             }
             return SecondaryBorrower;
         }
-        private string GetMailingBKAttorneyAddressLine1(AccountsModel accountsModel)
+        public string GetMailingBKAttorneyAddressLine1(AccountsModel accountsModel)
         {
 
             try
