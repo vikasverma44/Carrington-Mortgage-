@@ -784,7 +784,7 @@ namespace Carrington_Service.BusinessExpert
         {
             string firstPostion, secondPostion, thirdPostion, fourthPostion, fifthPostion, sixPostion,
             Postion07, Postion08, Postion09, Postion10, Postion11, Postion12,
-            Postion13, Postion14, Postion15, Postion16, Postion17, Postion18, Postion19, Postion20, Postion21, Postion22, Postion23, Postion24 = "";
+            Postion13, Postion14, Postion15, Postion16, Postion17, Postion18, Postion19, Postion20, Postion21, Postion22 = "";
             if (variableName == "Rssi_Inv_Code_PackedData")
             {
                 firstPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Code_PackedData", currentByte, 50, 3);
@@ -809,8 +809,6 @@ namespace Carrington_Service.BusinessExpert
                 Postion20 = "";
                 Postion21 = "";
                 Postion22 = "";
-                Postion23 = "";
-                Postion24 = "";
 
             }
             else if (variableName == "Rssi_Inv_Name")
@@ -837,8 +835,6 @@ namespace Carrington_Service.BusinessExpert
                 Postion20 = "";
                 Postion21 = "";
                 Postion22 = "";
-                Postion23 = "";
-                Postion24 = "";
             }
             else if (variableName == "Rssi_Inv_Block_PackedData")
             {
@@ -864,8 +860,6 @@ namespace Carrington_Service.BusinessExpert
                 Postion20 = "";
                 Postion21 = "";
                 Postion22 = "";
-                Postion23 = "";
-                Postion24 = "";
             }
             else if (variableName == "Rssi_Inv_Pc_Owned_PackedData")
             {
@@ -891,8 +885,6 @@ namespace Carrington_Service.BusinessExpert
                 Postion20 = "";
                 Postion21 = "";
                 Postion22 = "";
-                Postion23 = "";
-                Postion24 = "";
 
             }
             else if (variableName == "Rssi_Inv_Rate_PackedData")
@@ -919,16 +911,14 @@ namespace Carrington_Service.BusinessExpert
                 Postion20 = "";
                 Postion21 = "";
                 Postion22 = "";
-                Postion23 = "";
-                Postion24 = "";
 
             }
             else if (variableName == "Rssi_Inv_Sv_Code_PackedData")
             {
-                firstPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Code_PackedData", currentByte, 99, 4, 5);
-                secondPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Code_PackedData", currentByte, 169, 4, 5);
-                thirdPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Code_PackedData", currentByte, 239, 4, 5);
-                fourthPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Code_PackedData", currentByte, 309, 4, 5);
+                firstPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Code_PackedData", currentByte, 99, 1);
+                secondPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Code_PackedData", currentByte, 169, 1);
+                thirdPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Code_PackedData", currentByte, 239, 1);
+                fourthPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Code_PackedData", currentByte, 309, 1);
                 fifthPostion = "";
                 sixPostion = "";
                 Postion07 = "";
@@ -947,8 +937,6 @@ namespace Carrington_Service.BusinessExpert
                 Postion20 = "";
                 Postion21 = "";
                 Postion22 = "";
-                Postion23 = "";
-                Postion24 = "";
             }
             else if (variableName == "Rssi_Inv_Sv_Fee_PackedData")
             {
@@ -974,14 +962,12 @@ namespace Carrington_Service.BusinessExpert
                 Postion20 = "";
                 Postion21 = "";
                 Postion22 = "";
-                Postion23 = "";
-                Postion24 = "";
             }
             else if (variableName == "Rssi_Inv_Sv_Acct")
             {
                 firstPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Acct", currentByte, 104, 15);
                 secondPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Acct", currentByte, 174, 15);
-                thirdPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Acct", currentByte, 240, 15);
+                thirdPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Acct", currentByte, 244, 15);
                 fourthPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Acct", currentByte, 314, 15);
                 fifthPostion = "";
                 sixPostion = "";
@@ -1001,8 +987,6 @@ namespace Carrington_Service.BusinessExpert
                 Postion20 = "";
                 Postion21 = "";
                 Postion22 = "";
-                Postion23 = "";
-                Postion24 = "";
             }
             else if (variableName == "Rssi_Inv_Fill")
             {
@@ -1028,8 +1012,6 @@ namespace Carrington_Service.BusinessExpert
                 Postion20 = "";
                 Postion21 = "";
                 Postion22 = "";
-                Postion23 = "";
-                Postion24 = "";
             }
             else if (variableName == "Rssi_Past_Date")
             {
@@ -1055,8 +1037,6 @@ namespace Carrington_Service.BusinessExpert
                 Postion20 = "";
                 Postion21 = "";
                 Postion22 = "";
-                Postion23 = "";
-                Postion24 = "";
             }
             else if (variableName == "Rssi_Reg_Amt_PackedData")
             {
@@ -1082,8 +1062,6 @@ namespace Carrington_Service.BusinessExpert
                 Postion20 = "";
                 Postion21 = "";
                 Postion22 = "";
-                Postion23 = "";
-                Postion24 = "";
             }
             else if (variableName == "Rssi_Late_Amt_PackedData")
             {
@@ -1109,8 +1087,6 @@ namespace Carrington_Service.BusinessExpert
                 Postion20 = "";
                 Postion21 = "";
                 Postion22 = "";
-                Postion23 = "";
-                Postion24 = "";
             }
             else if (variableName == "Rssi_Past_Date_R")
             {
@@ -1135,9 +1111,7 @@ namespace Carrington_Service.BusinessExpert
                 Postion19 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 2115, 6);
                 Postion20 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 2133, 6);
                 Postion21 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 2151, 6);
-                Postion22 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 2169, 6);
-                Postion23 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 2133, 6);
-                Postion24 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 2133, 6);
+                Postion22 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 2169, 6); 
             }
             else if (variableName == "Rssi_Reg_Amt_R_PackedData")
             {
@@ -1156,15 +1130,13 @@ namespace Carrington_Service.BusinessExpert
                 Postion13 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 2013, 6, 2);
                 Postion14 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 2031, 6, 2);
                 Postion15 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 2049, 6, 2);
-                Postion16 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 2097, 6, 2);
+                Postion16 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 2067, 6, 2);
                 Postion17 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 2085, 6, 2);
                 Postion18 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 2103, 6, 2);
                 Postion19 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 2021, 6, 2);
                 Postion20 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 2139, 6, 2);
                 Postion21 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 2157, 6, 2);
                 Postion22 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 2175, 6, 2);
-                Postion23 = "";
-                Postion24 = "";
             }
             else if (variableName == "Rssi_Late_Amt_R_PackedData")
             {
@@ -1190,8 +1162,6 @@ namespace Carrington_Service.BusinessExpert
                 Postion20 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 2145, 6, 2);
                 Postion21 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 2163, 6, 2);
                 Postion22 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 2181, 6, 2);
-                Postion23 = "";
-                Postion24 = "";
             }
             else
                 return "";
@@ -1239,11 +1209,7 @@ namespace Carrington_Service.BusinessExpert
             else if (Postion21 != "")
             { return Postion21; }
             else if (Postion22 != "")
-            { return Postion22; }
-            else if (Postion23 != "")
-            { return Postion23; }
-            else if (Postion24 != "")
-            { return Postion24; }
+            { return Postion22; }           
             else
                 return "";
         }
@@ -1375,10 +1341,10 @@ namespace Carrington_Service.BusinessExpert
                 Rssi_Bill_Number_PackedData = PackedTypeCheckAndUnPackData("Rssi_Bill_Number_PackedData", currentByte, 771, 9),
                 Rssi_Bank_Trans_PackedData = PackedTypeCheckAndUnPackData("Rssi_Bank_Trans_PackedData", currentByte, 780, 5),
 
-                Rssi_Withhold_Ytd_PackedData = PackedTypeCheckAndUnPackData("Rssi_Withhold_Ytd_PackedData", currentByte, 785, 4),
+                Rssi_Withhold_Ytd_PackedData = PackedTypeCheckAndUnPackData("Rssi_Withhold_Ytd_PackedData", currentByte, 785, 4,2),
                 Rssi_Neg_Amort_Flag_PackedData = PackedTypeCheckAndUnPackData("Rssi_Neg_Amort_Flag_PackedData", currentByte, 789, 1),
 
-                Rssi_Int_Due_PackedData = PackedTypeCheckAndUnPackData("Rssi_Int_Due_PackedData", currentByte, 790, 6),
+                Rssi_Int_Due_PackedData = PackedTypeCheckAndUnPackData("Rssi_Int_Due_PackedData", currentByte, 790, 6,2),
                 Rssi_Sec_Mort_Cd_PackedData = PackedTypeCheckAndUnPackData("Rssi_Sec_Mort_Cd_PackedData", currentByte, 796, 1),
 
                 Rssi_2Nd_Acct_No_PackedData = PackedTypeCheckAndUnPackData("Rssi_2Nd_Acct_No_PackedData", currentByte, 797, 6),
@@ -1713,7 +1679,7 @@ namespace Carrington_Service.BusinessExpert
                 Rssi_Cbwr5_Opt_Out_Date_PackedData = PackedTypeCheckAndUnPackData("Rssi_Cbwr5_Opt_Out_Date_PackedData", currentByte, 2506, 4),
 
                 Rssi_Cbwr6_Opt_Out_Type = PackedTypeCheckAndUnPackData("Rssi_Cbwr6_Opt_Out_Type", currentByte, 2510, 1),
-                Rssi_Cbwr6_Opt_Out_Date_PackedData = PackedTypeCheckAndUnPackData("", currentByte, 2511, 4),
+                Rssi_Cbwr6_Opt_Out_Date_PackedData = PackedTypeCheckAndUnPackData("Rssi_Cbwr6_Opt_Out_Date_PackedData", currentByte, 2511, 4),
 
                 Rssi_Cbwr7_Opt_Out_Type = PackedTypeCheckAndUnPackData("Rssi_Cbwr7_Opt_Out_Type", currentByte, 2515, 1),
                 Rssi_Cbwr7_Opt_Out_Date_PackedData = PackedTypeCheckAndUnPackData("Rssi_Cbwr7_Opt_Out_Date_PackedData", currentByte, 2516, 4),
@@ -1770,7 +1736,7 @@ namespace Carrington_Service.BusinessExpert
                 Rssi_Inst = PackedTypeCheckAndUnPackData("Rssi_Inst", currentByte, 2, 3),
 
                 Rssi_Acct_No = PackedTypeCheckAndUnPackData("Rssi_Acct_No", currentByte, 5, 10),
-                Rssi_Seq_No = PackedTypeCheckAndUnPackData("Rssi_Seq_No", currentByte, 15, 5, 2),
+                Rssi_Seq_No = PackedTypeCheckAndUnPackData("Rssi_Seq_No", currentByte, 15, 5),
 
                 Rssi_Unap_Bal_2_PackedData = PackedTypeCheckAndUnPackData("Rssi_Unap_Bal_2_PackedData", currentByte, 20, 5, 2),
                 Rssi_Unap_Cd_2 = PackedTypeCheckAndUnPackData("Rssi_Unap_Cd_2", currentByte, 25, 1),
@@ -1827,7 +1793,7 @@ namespace Carrington_Service.BusinessExpert
                 Rssi_Prim_Forgn_Flag = PackedTypeCheckAndUnPackData("Rssi_Prim_Forgn_Flag", currentByte, 222, 1),
                 Rssi_Altr_Forgn_Flag = PackedTypeCheckAndUnPackData("Rssi_Altr_Forgn_Flag", currentByte, 223, 1),
 
-                Rssi_Appl_Foreign_Flag = PackedTypeCheckAndUnPackData("Rssi_Appl_Foreign_Flag", currentByte, 224, 1, 2),
+                Rssi_Appl_Foreign_Flag = PackedTypeCheckAndUnPackData("Rssi_Appl_Foreign_Flag", currentByte, 224, 1),
                 Rssi_Def_Tot_Bal = PackedTypeCheckAndUnPackData("Rssi_Def_Tot_Bal", currentByte, 225, 7, 2),
 
                 Rssi_Def_Int_Bal_PackedData = PackedTypeCheckAndUnPackData("Rssi_Def_Int_Bal_PackedData", currentByte, 232, 6, 2),
@@ -2391,7 +2357,7 @@ namespace Carrington_Service.BusinessExpert
                 Rssi_Usr_343_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_343_PackedData", currentByte, 3710, 7, 2),
 
                 Rssi_Usr_344_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_344_PackedData", currentByte, 3717, 7, 2),
-                Rssi_Usr_345_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_345_PackedData", currentByte, 2724, 7, 2),
+                Rssi_Usr_345_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_345_PackedData", currentByte, 3724, 7, 2),
 
                 Rssi_Usr_346_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_346_PackedData", currentByte, 3731, 7, 2),
                 Rssi_Usr_347_PackedData = PackedTypeCheckAndUnPackData("Rssi_Usr_347_PackedData", currentByte, 3738, 7, 2),
@@ -2823,12 +2789,12 @@ namespace Carrington_Service.BusinessExpert
                 Rssi_Alt_B_F_Rate_PackedData = PackedTypeCheckAndUnPackData("Rssi_Alt_B_F_Rate_PackedData", currentByte, 74, 4, 5),
 
                 Rssi_Alt_Ar_Rate_PackedData = PackedTypeCheckAndUnPackData("Rssi_Alt_Ar_Rate_PackedData", currentByte, 78, 4, 5),
-                Rssi_Alt_Fr_Rate = PackedTypeCheckAndUnPackData("Rssi_Alt_Fr_Rate", currentByte, 82, 4, 5),
+                Rssi_Alt_Fr_Rate = PackedTypeCheckAndUnPackData("Rssi_Alt_Fr_Rate_PackedData", currentByte, 82, 4, 5),
 
                 Rssi_Alt_B_Rate_Flag = PackedTypeCheckAndUnPackData("Rssi_Alt_B_Rate_Flag", currentByte, 86, 1),
                 Rssi_Alt_B_Rt_Mgn_PackedData = PackedTypeCheckAndUnPackData("Rssi_Alt_B_Rt_Mgn_PackedData", currentByte, 87, 4, 5),
 
-                Rssi_Alt_B_Rt_Term_PackedData = PackedTypeCheckAndUnPackData("Rssi_Alt_B_Rt_Term", currentByte, 91, 2),
+                Rssi_Alt_B_Rt_Term_PackedData = PackedTypeCheckAndUnPackData("Rssi_Alt_B_Rt_Term_PackedData", currentByte, 91, 2),
                 Rssi_Alt_Adj_Pct_PackedData = PackedTypeCheckAndUnPackData("Rssi_Alt_Adj_Pct_PackedData", currentByte, 93, 4, 5),
 
                 Rssi_Alt_Fix_Pct_PackedData = PackedTypeCheckAndUnPackData("Rssi_Alt_Fix_Pct_PackedData", currentByte, 97, 4, 5),
@@ -3341,7 +3307,7 @@ namespace Carrington_Service.BusinessExpert
                 Rssi_Dstr_Attempt_Contact_Dt_PackedData = PackedTypeCheckAndUnPackData("Rssi_Dstr_Attempt_Contact_Dt_PackedData", currentByte, 114, 4),
                 Rssi_Dstr_Contact_Made = PackedTypeCheckAndUnPackData("Rssi_Dstr_Contact_Made", currentByte, 118, 1),
 
-                Rssi_Dstr_Contact_Made_Dt_PackedData = PackedTypeCheckAndUnPackData("Rssi_Dstr_Contact_Made_Dt", currentByte, 119, 4),
+                Rssi_Dstr_Contact_Made_Dt_PackedData = PackedTypeCheckAndUnPackData("Rssi_Dstr_Contact_Made_Dt_PackedData", currentByte, 119, 4),
                 Filler = PackedTypeCheckAndUnPackData("Filler", currentByte, 123, 78),
             };
         }
