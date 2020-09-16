@@ -263,6 +263,7 @@ namespace Carrington_Service.Calculation_Classes
 
             try
             {
+                Logger.Trace("STARTED:  Execute get total fees and charges.");
                 var Total = Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData)
                    + Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData);
 
@@ -281,6 +282,7 @@ namespace Carrington_Service.Calculation_Classes
                 {
                     TotalFeesAndCharges = Convert.ToString(Total);
                 }
+                Logger.Trace("ENDED: Get  total fees and charges.");
             }
             catch (Exception ex)
             {
@@ -294,6 +296,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
+                Logger.Trace("STARTED:  Execute get total fees paid.");
                 if ((Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
                              + Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)) <
                               Convert.ToDecimal(GetTotalFeesAndCharges(accountsModel)))
@@ -304,6 +307,8 @@ namespace Carrington_Service.Calculation_Classes
                 }
                 else
                     TotalFeesPaid = "0.00";
+
+                Logger.Trace("ENDED: Get  total fees paid.");
             }
             catch (Exception ex)
             {
@@ -317,11 +322,14 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
+                Logger.Trace("STARTED:  Execute get total amount due.");
                 if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     TotalAmountDue = "0.00";
                 else
                     TotalAmountDue = Convert.ToString(Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData)
                                    + Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData));
+                Logger.Trace("ENDED: Get  total amount due.");
+
 
             }
             catch (Exception ex)
@@ -336,9 +344,11 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
+                Logger.Trace("STARTED:  Execute get past due balance.");
                 DueBalance = Convert.ToString(Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) -
                   Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData) -
                   Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData));
+                Logger.Trace("ENDED: Get get past due balance.");
             }
             catch (Exception ex)
             {
@@ -352,6 +362,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
+                Logger.Trace("STARTED:  Execute get deferred balance.");
                 if ((Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal)
                        - Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData)) == 0)
                 {
@@ -362,6 +373,7 @@ namespace Carrington_Service.Calculation_Classes
                     DeferredBalance = Convert.ToString(Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal)
                         - Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData));
                 }
+                Logger.Trace("ENDED: Get get deferred balance.");
             }
             catch (Exception ex)
             {
@@ -373,11 +385,13 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
+                Logger.Trace("STARTED:  Execute get unapplied funds.");
                 UnappliedFunds = Convert.ToString(accountsModel.MasterFileDataPart_1Model.Rssi_Unap_Fund_Cd != "L" ? Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Esc_Var_PackedData) : 0
                     + accountsModel.MasterFileDataPart2Model.Rssi_Unap_Cd_2 != "L" ? Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Unap_Bal_2_PackedData) : 0
                     + accountsModel.MasterFileDataPart2Model.Rssi_Unap_Cd_3 != "L" ? Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Unap_Bal_3_PackedData) : 0
                     + accountsModel.MasterFileDataPart2Model.Rssi_Unap_Cd_4 != "L" ? Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Unap_Bal_4_PackedData) : 0
                     + accountsModel.MasterFileDataPart2Model.Rssi_Unap_Cd_5 != "L" ? Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Unap_Bal_5_PackedData) : 0);
+                Logger.Trace("ENDED: Get get unapplied funds.");
             }
             catch (Exception ex)
             {
