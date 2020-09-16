@@ -82,10 +82,10 @@ namespace ODHS_EDelivery.BusinessExpert
         /// This method is used for generating CRL30 File. 
         /// </summary>
         /// <param name="mortgageLoanBillingFileModel"></param>
-        public void GenerateCRL30File(MortgageLoanBillingFileModel mortgageLoanBillingFileModel)
+        public void GenerateCRL30File(MortgageLoanBillingFileModel mortgageLoanBillingFileModel, string inputFile)
         {
             // Creating output file path
-            CreateOutputPath();
+            CreateOutputPath(inputFile);
 
             using (var output = new StandardFile())
             {
@@ -332,11 +332,11 @@ namespace ODHS_EDelivery.BusinessExpert
         /// <summary>
         /// This method is used for creating output file path
         /// </summary>
-        private void CreateOutputPath()
+        private void CreateOutputPath(string inputFile)
         {
             if (string.IsNullOrWhiteSpace(_outputFile))
             {
-                var outPath = ConfigHelper.Model.OutputFilePathLocation_Local;
+                var outPath = inputFile.Substring(0, inputFile.LastIndexOf('\\'));
                 _outputFile = Path.Combine(outPath, OutputFile);
                 Logger.Info($"Output file name: {_outputFile}");
             }

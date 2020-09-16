@@ -13,5 +13,24 @@ namespace CarringtonMortgage.Helpers
             else
                 return source;
         }
+
+        /// <summary>
+        /// This method is used to convert string date time to formated date time.
+        /// </summary>
+        /// <param name="dateTime"></param>
+        /// <returns></returns>
+        public static  DateTime GetFormatedDateTime(string dateTime)
+        {
+            try
+            {
+                var parsedDate = DateTime.ParseExact(dateTime, "yyMMdd", System.Globalization.CultureInfo.InvariantCulture);
+                var formattedDate = parsedDate.ToString("MM-dd-yy", System.Globalization.CultureInfo.InvariantCulture);
+                return Convert.ToDateTime(formattedDate);
+            }
+            catch (Exception ex)
+            {
+                return DateTime.MinValue;
+            }
+        }
     }
 }
