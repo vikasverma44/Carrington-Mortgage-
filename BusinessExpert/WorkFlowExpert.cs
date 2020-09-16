@@ -93,30 +93,49 @@ namespace Carrington_Service.BusinessExpert
                 }
                 if (DateTime.Now.Hour >= Convert.ToInt32(ConfigHelper.Model.WatcherStartTime) && DateTime.Now.Hour < Convert.ToInt32(ConfigHelper.Model.WatcherEndTime))
                 {
-                    bool isFileMissing = false;
-                    if (pmFilePath == null)
+                    if (Convert.ToString(DateTime.Now.DayOfWeek) != "Monday")
                     {
-                        Logger.Trace("ERROR: PM File Not Found");
-                        isFileMissing = true;
-                    }
-                    if (supplimentFilePath == null)
-                    {
-                        Logger.Trace("ERROR: Suppliment  File Not Found");
-                        isFileMissing = true;
+                        bool isFileMissing = false;
+                        if (pmFilePath == null)
+                        {
+                            Logger.Trace("ERROR: PM File Not Found");
+                            isFileMissing = true;
+                        }
+                        if (supplimentFilePath == null)
+                        {
+                            Logger.Trace("ERROR: Suppliment  File Not Found");
+                            isFileMissing = true;
 
-                        throw new FileNotFoundException($"Suppliment  File Not Found");
-                    }
-                    if (EConsentFilePath == null)
-                    {
-                        Logger.Trace("ERROR: Econsent  File Not Found");
-                        isFileMissing = true;
+                            throw new FileNotFoundException($"Suppliment  File Not Found");
+                        }
+                        if (EConsentFilePath == null)
+                        {
+                            Logger.Trace("ERROR: Econsent  File Not Found");
+                            isFileMissing = true;
 
-                        throw new FileNotFoundException($"Econsent  File Not Found");
-                         
+                            throw new FileNotFoundException($"Econsent  File Not Found");
+
+                        }
+                        if (!isFileMissing)
+                        {
+                            fileReadingProcess = AccountMatchingProcess(pmFilePath, supplimentFilePath, EConsentFilePath);
+                        }
                     }
-                    if (!isFileMissing)
+                    else
                     {
-                        fileReadingProcess = AccountMatchingProcess(pmFilePath, supplimentFilePath, EConsentFilePath);
+                        Logger.Trace("SUCCESS: Outside Time Frame Window File Found :-");
+                        if (pmFilePath != null)
+                        {
+                            Logger.Trace("PM File Found at Time =  " + DateTime.Now.ToString());
+                        }
+                        if (supplimentFilePath != null)
+                        {
+                            Logger.Trace("SUCCESS: Suppliment File Found at Time =  " + DateTime.Now.ToString());
+                        }
+                        if (EConsentFilePath != null)
+                        {
+                            Logger.Trace("SUCCESS: Econsent File Found at Time =  " + DateTime.Now.ToString());
+                        }
                     }
                 }
                 else
@@ -138,7 +157,7 @@ namespace Carrington_Service.BusinessExpert
 
                 //CRL30FileGeneration c = new CRL30FileGeneration(Logger, ConfigHelper);
                 //c.GenerateCRL30File(MortgageLoanBillingFile);
-                 CRL30FileGeneration.GenerateCRL30File(MortgageLoanBillingFile, _inputifle);
+                CRL30FileGeneration.GenerateCRL30File(MortgageLoanBillingFile, _inputifle);
                 TimeWatch();
                 if (fileReadingProcess)
                 {
@@ -153,7 +172,7 @@ namespace Carrington_Service.BusinessExpert
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "File Reading Process Failed :"); 
+                Logger.Error(ex, "File Reading Process Failed :");
                 throw new FileNotFoundException($"File Reading Process Failed :");
             }
         }
