@@ -1,4 +1,5 @@
 ﻿using Carrington_Service.Infrastructure;
+using CarringtonMortgage.Helpers;
 using CarringtonMortgage.Models.InputCopyBookModels;
 using System;
 using System.Text;
@@ -201,7 +202,6 @@ namespace Carrington_Service.Calculation_Classes
             finalLine.Append(GetHUDPartialClaim(accountModel) + "|");
             finalLine.Append(GetStateDisclosures(accountModel) + "|");
             finalLine.Append(GetPaymentInformationMessage(accountModel) + "|");
-
             return finalLine;
         }
 
@@ -1438,12 +1438,17 @@ namespace Carrington_Service.Calculation_Classes
                 Logger.Trace("STARTED:  Execute to Get Unapplied Funds Paid Year To Date");
 
                 UnappliedFundsPaidYearToDate = Convert.ToString(
-                    accountsModel.MasterFileDataPart_1Model.Rssi_Unap_Fund_Cd != "L" 
-                    ? Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Unap_Fund_Cd) : 0
-          + accountsModel.MasterFileDataPart2Model.Rssi_Unap_Cd_2 != "L" ? Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Unap_Bal_2_PackedData) : 0
-          + accountsModel.MasterFileDataPart2Model.Rssi_Unap_Cd_3 != "L" ? Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Unap_Bal_3_PackedData) : 0
-          + accountsModel.MasterFileDataPart2Model.Rssi_Unap_Cd_4 != "L" ? Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Unap_Bal_4_PackedData) : 0
-          + accountsModel.MasterFileDataPart2Model.Rssi_Unap_Cd_5 != "L" ? Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Unap_Bal_5_PackedData) : 0);
+                    accountsModel.MasterFileDataPart_1Model.Rssi_Unap_Fund_Cd != "L"
+                    ? (accountsModel.MasterFileDataPart_1Model.Rssi_Unap_Fund_Cd.Trim() == "" ? 0 : Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Unap_Fund_Cd)) : 0
+                    + accountsModel.MasterFileDataPart2Model.Rssi_Unap_Cd_2 != "L"
+                    ? Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Unap_Bal_2_PackedData) : 0
+                    + accountsModel.MasterFileDataPart2Model.Rssi_Unap_Cd_3 != "L"
+                    ? Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Unap_Bal_3_PackedData) : 0
+                    + accountsModel.MasterFileDataPart2Model.Rssi_Unap_Cd_4 != "L"
+                    ? Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Unap_Bal_4_PackedData) : 0
+                    + accountsModel.MasterFileDataPart2Model.Rssi_Unap_Cd_5 != "L"
+                    ? Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Unap_Bal_5_PackedData) : 0);
+
                 Logger.Trace("ENDED:  To Get Unapplied Funds Paid Year To Date");
             }
             catch (Exception ex)
@@ -1651,9 +1656,8 @@ namespace Carrington_Service.Calculation_Classes
             try
             {
                 Logger.Trace("STARTED:  Execute to Get Deferred Balance");
-
-                if (Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal)
-                - Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) == 0)
+                if ((accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal == "\0\0\0\0\0.\0\f" ? 0 : Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal)
+                    - Convert.ToInt32(accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData)) == 0)
                 {
                     DeferredBalance = "N/A";
                 }
@@ -2606,7 +2610,9 @@ namespace Carrington_Service.Calculation_Classes
                 {
                     RecentPayment6 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_1 + ": Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_1;
                 }
-                else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
+                else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6 
+                    && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date).IncludeCenturyDate(true)) > 0
+                    && Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
                 {
                     RecentPayment6 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(1): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(1)"; ;
                 }
@@ -2647,8 +2653,10 @@ namespace Carrington_Service.Calculation_Classes
                 {
                     RecentPayment5 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(1): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(1)";
                 }
-                else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
-                {
+                else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date).IncludeCenturyDate(true)) > 0
+                   && Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
+               {
                     RecentPayment5 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(2): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(2)";
                 }
                 Logger.Trace("ENDED:  To Get Recent Payment5");
@@ -2688,7 +2696,10 @@ namespace Carrington_Service.Calculation_Classes
                 {
                     RecentPayment4 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(2): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(2)";
                 }
-                else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
+                else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6
+                  && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date).IncludeCenturyDate(true)) > 0
+                  && Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
+
                 {
                     RecentPayment4 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(3): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(3)";
                 }
@@ -2730,7 +2741,10 @@ namespace Carrington_Service.Calculation_Classes
                 {
                     RecentPayment3 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(3): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(3)";
                 }
-                else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
+                else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6
+                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date).IncludeCenturyDate(true)) > 0
+                 && Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
+
                 {
                     RecentPayment3 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(4): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(4)";
                 }
@@ -2769,7 +2783,10 @@ namespace Carrington_Service.Calculation_Classes
                 {
                     RecentPayment2 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(4): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(4)";
                 }
-                else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
+                else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date).IncludeCenturyDate(true)) > 0
+                && Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
+
                 {
                     RecentPayment2 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(5): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(5)";
                 }
@@ -2810,7 +2827,10 @@ namespace Carrington_Service.Calculation_Classes
                 {
                     RecentPayment1 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(5): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(5)";
                 }
-                else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
+                else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date).IncludeCenturyDate(true)) > 0
+                && Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
+                //else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
                 {
                     RecentPayment1 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(5): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(5)";
                 }
@@ -2941,16 +2961,16 @@ namespace Carrington_Service.Calculation_Classes
             {
                 Logger.Trace("STARTED:  Execute to Get State Disclosures");
 
-                if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3) == 4
-               || Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3) == 6
-               || Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3) == 12
-               || Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3) == 22
-               || Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3) == 24
-               || Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3) == 33
-               || Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3) == 34
-               || Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3) == 38
-               || Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3) == 43
-               || Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3) == 44
+                if (accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "4"
+               || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "6"
+               || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "12"
+               || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "22"
+               || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "24"
+               || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "33"
+               || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "34"
+               || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "38"
+               || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "43"
+               || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "44"
                || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "AR"
                || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "CO"
                || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "HI"
