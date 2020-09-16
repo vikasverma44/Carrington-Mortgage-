@@ -30,7 +30,7 @@ namespace Carrington_Service.Calculation_Classes
         string GetBuydownBalance(AccountsModel accountModel);
         string GetCarringtonCharitableFoundation(AccountsModel accountModel);
         string GetCarringtonCharitablePaidYeartoDate(AccountsModel accountModel);
-        string GetCarringtonPaidLastMonh(AccountsModel accountModel);
+        string GetCarringtonPaidLastMonth(AccountsModel accountModel);
         string GetCMSPartialClaim(AccountsModel accountModel);
         string GetDeferredBalance(AccountsModel accountModel);
         string Geteffectivedate(AccountsModel accountModel);

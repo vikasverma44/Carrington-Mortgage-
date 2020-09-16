@@ -37,17 +37,19 @@ namespace Carrington_Service.BusinessExpert
         CmsBillInput CmsBillInput = new CmsBillInput();
         EConsentInput EConsentInput = new EConsentInput();
         AccountsModel accountsModel;
+        private readonly ICRL30FileGeneration CRL30FileGeneration;
         /// <summary>The NCP10 version.</summary>
         private const string Ncp10Version = "03";
 
         /// <summary>The delimiter.</summary>
         private const string Delimiter = "|";
-        public WorkFlowExpert(IConfigHelper configHelper, ILogger logger, IAgentApi apiAgent, IEmailService emailService)
+        public WorkFlowExpert(IConfigHelper configHelper, ILogger logger, IAgentApi apiAgent, IEmailService emailService, ICRL30FileGeneration cRL30FileGeneration)
         {
             ConfigHelper = configHelper;
             Logger = logger;
             ApiAgent = apiAgent;
             EmailService = emailService;
+            CRL30FileGeneration = cRL30FileGeneration;
             //configHelper.Model.DatabaseSetting = DbService.GetDataBaseSettings();
         }
 
@@ -136,7 +138,7 @@ namespace Carrington_Service.BusinessExpert
 
                 //CRL30FileGeneration c = new CRL30FileGeneration(Logger, ConfigHelper);
                 //c.GenerateCRL30File(MortgageLoanBillingFile);
-                // CRL30FileGeneration.GenerateCRL30File(MortgageLoanBillingFile);
+                 CRL30FileGeneration.GenerateCRL30File(MortgageLoanBillingFile, _inputifle);
                 TimeWatch();
                 if (fileReadingProcess)
                 {
