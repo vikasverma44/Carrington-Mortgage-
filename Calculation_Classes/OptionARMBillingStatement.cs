@@ -125,7 +125,7 @@ namespace Carrington_Service.Calculation_Classes
         public string RecentPayment1 { get; set; }
 
         #endregion
-
+        int co = 0;
         public StringBuilder GetFinalOptionARMBillingStatement(AccountsModel accountsModel)
         {
             ExMessage = "Error Message";
@@ -135,7 +135,6 @@ namespace Carrington_Service.Calculation_Classes
             finalLine.Append(" " + "|");
             finalLine.Append("01" + "|");
             finalLine.Append(GetTotalFeesChargedOption1(accountsModel) + "|");
-            finalLine.Append(GetDeferredBalance(accountsModel) + "|");
             finalLine.Append(GetTotalFeesChargedOption4(accountsModel) + "|");
             finalLine.Append(GetAmountDueOption1(accountsModel) + "|");
             finalLine.Append(GetAmountDueOption2(accountsModel) + "|");
@@ -284,8 +283,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                Logger.Error(ex, "GetTotalFeesChargedOption1"+ ex.TargetSite.Name);
+                 return "";
             }
             return TotalFeesChargedOption1;
         }
@@ -309,8 +308,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                Logger.Error(ex, "GetDeferredBalance"+ ex.TargetSite.Name);
+                 return "";
             }
         }
         public string GetTotalFeesChargedOption4(AccountsModel accountsModel)
@@ -318,11 +317,11 @@ namespace Carrington_Service.Calculation_Classes
             try
             {
                 Logger.Trace("STARTED:  Execute to get Total Fees Charged Option4 operation.");
-                if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
+                if (accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData!=null && Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 {
                     TotalFeesChargedOption4 = "0";
                 }
-                else if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                else if (accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData != null &&  Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                 {
                     TotalFeesChargedOption4 = "0";
                 }
@@ -331,12 +330,14 @@ namespace Carrington_Service.Calculation_Classes
                     var Total = Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData)
                     + Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData);
 
-                    if (Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5605
+                    if (accountsModel.TransactionRecordModel.Rssi_Log_Tran != null && accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc!=null &&
+                        Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5605
                         && (Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 67))
                     {
                         TotalFeesChargedOption4 = Convert.ToString(Total - Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
                     }
-                    else if ((Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5605
+                    else if (accountsModel.TransactionRecordModel.Rssi_Log_Tran != null && accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc != null && 
+                        (Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5605
                          || Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5707)
                          && (Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 198))
                     {
@@ -351,8 +352,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                Logger.Error(ex, "GetTotalFeesChargedOption4 " + ex.TargetSite.Name);
+                 return "";
             }
             return TotalFeesChargedOption4;
         }
@@ -387,8 +388,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                Logger.Error(ex, "GetAmountDueOption1"+ ex.TargetSite.Name);
+                 return "";
             }
 
         }
@@ -423,8 +424,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                Logger.Error(ex, "GetAmountDueOption2"+ ex.TargetSite.Name);
+                 return "";
             }
 
         }
@@ -460,8 +461,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                Logger.Error(ex, "GetAmountDueOption3"+ ex.TargetSite.Name);
+                 return "";
             }
         }
 
@@ -490,8 +491,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                Logger.Error(ex, "GetAmountDueOption4"+ex.TargetSite.Name);
+                 return "";
             }
         }
         public string GetPrincipalOption1(AccountsModel model)
@@ -527,8 +528,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                Logger.Error(ex, "GetPrincipalOption1" +ex.TargetSite.Name);
+                 return "";
             }
         }
 
@@ -560,8 +561,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                Logger.Error(ex, "GetOverduePaymentsOption1"+ ex.TargetSite.Name);
+                 return "";
             }
         }
 
@@ -599,8 +600,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                Logger.Error(ex, "GetTotalFeesPaidOption1"+ ex.TargetSite.Name);
+                 return "";
             }
         }
         public string GetTotalAmountDueOption1(AccountsModel model)
@@ -630,8 +631,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                Logger.Error(ex, "GetTotalAmountDueOption1"+ ex.TargetSite.Name);
+                 return "";
             }
         }
         public string GetPrincipalOption2(AccountsModel model)
@@ -662,8 +663,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                Logger.Error(ex, "GetPrincipalOption2"+ ex.TargetSite.Name);
+                 return "";
             }
         }
         public string GetAssistanceAmountOption2(AccountsModel model)
@@ -691,8 +692,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                Logger.Error(ex, "GetAssistanceAmountOption2"+ ex.TargetSite.Name);
+                 return "";
             }
         }
         public string GetReplacementReserveOption2(AccountsModel model)
@@ -726,8 +727,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                Logger.Error(ex, "GetReplacementReserveOption2"+ ex.TargetSite.Name);
+                 return "";
             }
         }
         public string GetOverduePaymentsOption2(AccountsModel model)
@@ -760,8 +761,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                Logger.Error(ex, "GetOverduePaymentsOption2"+ ex.TargetSite.Name);
+                 return "";
             }
         }
 
@@ -799,8 +800,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                Logger.Error(ex, "GetTotalFeesPaidOption2"+ ex.TargetSite.Name);
+                 return "";
             }
         }
         public string GetTotalAmountDueOption2(AccountsModel model)
@@ -829,8 +830,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                Logger.Error(ex, "GetTotalAmountDueOption2"+ ex.TargetSite.Name);
+                 return "";
             }
         }
 
@@ -862,8 +863,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                Logger.Error(ex, "GetPrincipalOption3"+ ex.TargetSite.Name);
+                 return "";
             }
         }
         public string GetAssistanceAmountOption3(AccountsModel model)
@@ -892,8 +893,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                Logger.Error(ex, "GetAssistanceAmountOption3" +ex.TargetSite.Name);
+                 return "";
             }
         }
         public string GetReplacementReserveOption3(AccountsModel model)
@@ -929,8 +930,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                Logger.Error(ex, "GetReplacementReserveOption3"+ ex.TargetSite.Name);
+                 return "";
             }
         }
         public string GetOverduePaymentsOption3(AccountsModel accountsModel)
@@ -961,8 +962,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                Logger.Error(ex, "GetOverduePaymentsOption3"+ ex.TargetSite.Name);
+                 return "";
             }
         }
         public string GetTotalFeesPaidOption3(AccountsModel accountsModel)
@@ -999,8 +1000,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                Logger.Error(ex, "GetTotalFeesPaidOption3"+ ex.TargetSite.Name);
+                 return "";
             }
         }
         public string GetTotalAmountDueOption3(AccountsModel model)
@@ -1035,8 +1036,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                Logger.Error(ex, "GetTotalAmountDueOption3"+ ex.TargetSite.Name);
+                 return "";
             }
         }
         public string GetPrincipalOption4(AccountsModel model)
@@ -1065,8 +1066,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                Logger.Error(ex, "GetPrincipalOption4"+ ex.TargetSite.Name);
+                 return "";
             }
         }
         public string GetAssistanceAmountOption4(AccountsModel model)
@@ -1096,8 +1097,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                Logger.Error(ex, "GetAssistanceAmountOption4"+ex.TargetSite.Name);
+                 return "";
             }
         }
         public string GetReplacementReserveOption4(AccountsModel model)
@@ -1127,8 +1128,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                Logger.Error(ex, "GetReplacementReserveOption4"+ ex.TargetSite.Name);
+                 return "";
             }
         }
         public string GetOverduePaymentsOption4(AccountsModel model)
@@ -1162,8 +1163,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                Logger.Error(ex, "GetOverduePaymentsOption4"+ ex.TargetSite.Name);
+                 return "";
             }
         }
 
@@ -1201,8 +1202,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                Logger.Error(ex, "GetTotalFeesPaidOption4"+ex.TargetSite.Name);
+                return "";
             }
         }
         public string GetTotalAmountDueOption4(AccountsModel model)
@@ -1230,8 +1231,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                Logger.Error(ex, "GetTotalAmountDueOption4"+ ex.TargetSite.Name);
+                 return "";
             }
         }
 
@@ -1246,7 +1247,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GeUnappliedFundsPaidLastMonth" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
 
         }
@@ -1261,7 +1262,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetFeesandChargesPaidYeartoDate" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         public string GetUnappliedFundsPaidYearToDate(AccountsModel accountModel)
@@ -1274,7 +1275,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetUnappliedFundsPaidYearToDate" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         public string GeSuspense(AccountsModel model)
@@ -1290,7 +1291,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GeSuspense" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
 
@@ -1313,7 +1314,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetMiscellaneous" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         public string GetTotalDue(AccountsModel model)
@@ -1328,7 +1329,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetTotalDue" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         public string GetFeesAndChargesPaidLastMonth(AccountsModel model)
@@ -1342,7 +1343,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetTotalDue" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         public string GetUnappliedFunds(AccountsModel accountsModel)
@@ -1359,7 +1360,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetTotalDue" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         public string GetPastDueBalance(AccountsModel model)
@@ -1373,7 +1374,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetPastDueBalance" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         public string GetTotalPaidYearToDate(AccountsModel accountsModel)
@@ -1399,7 +1400,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetTotalPaidYearToDate" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
 
         }
@@ -1428,7 +1429,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetAssistanceAmountOption1" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         public string GetReplacementReserveOption1(AccountsModel model)
@@ -1462,7 +1463,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetReplacementReserveOption1" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         public string GetMinimumLatePaymentAmount(AccountsModel model)
@@ -1483,7 +1484,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetMinimumLatePaymentAmount" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         public string GetTotalFeesChargedOption3(AccountsModel accountsModel)
@@ -1532,7 +1533,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetTotalFeesChargedOption3" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         public string GetTotalFeesChargedOption2(AccountsModel accountsModel)
@@ -1581,7 +1582,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetTotalFeesChargedOption2" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
 
@@ -1600,7 +1601,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetHold" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
 
@@ -1625,7 +1626,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetAttention" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
 
@@ -1652,7 +1653,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetPrimaryBorrower" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
 
@@ -1679,7 +1680,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetPrimaryBorrower" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
 
@@ -1704,7 +1705,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetMailingAddressLine1" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
 
@@ -1729,7 +1730,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetMailingAddressLine2" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
 
 
@@ -1758,7 +1759,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetMailingCityStateZip" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
 
 
@@ -1781,7 +1782,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetMailingCountry" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         public string GetPaymentIsReceivedAfter(AccountsModel accountModel)
@@ -1796,7 +1797,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetPaymentIsReceivedAfter" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         public string GetLateFee(AccountsModel accountModel)
@@ -1811,7 +1812,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetLateFee" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         public string GetChargeOffNoticeNoticeMessage(AccountsModel accountModel)
@@ -1831,7 +1832,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetChargeOffNoticeNoticeMessage" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
 
@@ -1848,7 +1849,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetNegativeAmortization" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
 
@@ -1866,7 +1867,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetBuydownBalance" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         public string GetPartialClaim(AccountsModel accountModel)
@@ -1883,7 +1884,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetPartialClaim" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         public string GetInterestOption1(AccountsModel accountModel)
@@ -1904,7 +1905,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetInterestOption1" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         public string GetEscrowOption1(AccountsModel accountModel)
@@ -1925,7 +1926,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetEscrowOption1" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         public string GetRegularMonthlyPaymentOption1(AccountsModel accountModel)
@@ -1946,7 +1947,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetRegularMonthlyPaymentOption1" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         public string GetInterestOption2(AccountsModel accountModel)
@@ -1967,7 +1968,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetInterestOption2" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
 
@@ -1989,7 +1990,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetEscrowOption2" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         public string GetRegularMonthlyPaymentOption2(AccountsModel accountModel)
@@ -2010,7 +2011,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetRegularMonthlyPaymentOption2" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         public string GetInterestOption3(AccountsModel accountModel)
@@ -2031,7 +2032,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetInterestOption3" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
 
@@ -2053,7 +2054,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetEscrowOption3" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
 
@@ -2075,7 +2076,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetRegularMonthlyPaymentOption3" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
 
@@ -2097,7 +2098,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetInterestOption4" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         public string GetEscrowOption4(AccountsModel accountModel)
@@ -2113,7 +2114,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetEscrowOption4" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         public string GetRegularMonthlyPaymentOption4(AccountsModel accountModel)
@@ -2129,7 +2130,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetRegularMonthlyPaymentOption4" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         public string GetOption4MinimumDescription(AccountsModel accountModel)
@@ -2151,7 +2152,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetOption4MinimumDescription" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         public string GetPOBoxAddress(AccountsModel accountModel)
@@ -2168,7 +2169,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetPOBoxAddress" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
 
         }
@@ -2184,7 +2185,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetReceivedAfterDate" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         public string GetLateChargeAmount(AccountsModel accountModel)
@@ -2199,7 +2200,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetLateChargeAmount" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
 
@@ -2239,7 +2240,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetInterestRateUntil" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
 
@@ -2257,7 +2258,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetPrepaymentPenalty" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         public string GetModificationDate(AccountsModel accountModel)
@@ -2274,7 +2275,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetModificationDate" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         public string GetMaturityDate(AccountsModel accountModel)
@@ -2292,7 +2293,7 @@ namespace Carrington_Service.Calculation_Classes
             {
                 Logger.Error(ex, "GetMaturityDate" + ex.TargetSite.Name);
 
-                throw;
+                 return "";
             }
         }
         public string GetDelinquencyNoticebox(AccountsModel accountModel)
@@ -2310,7 +2311,7 @@ namespace Carrington_Service.Calculation_Classes
             {
                 Logger.Error(ex, "GetDelinquencyNoticebox" + ex.TargetSite.Name);
 
-                throw;
+                 return "";
             }
         }
 
@@ -2332,7 +2333,7 @@ namespace Carrington_Service.Calculation_Classes
             {
                 Logger.Error(ex, "GetLossMitigtationNotice" + ex.TargetSite.Name);
 
-                throw;
+                 return "";
             }
         }
 
@@ -2352,7 +2353,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetForeclosureNotice" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         public string GetACHMessage(AccountsModel accountsModel)
@@ -2373,7 +2374,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetACHMessage" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         public string GetLenderPlacedInsuranceMessage(AccountsModel accountsModel)
@@ -2391,7 +2392,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetLenderPlacedInsuranceMessage" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         public string GetBankruptcyMessage(AccountsModel accountsModel)
@@ -2410,7 +2411,7 @@ namespace Carrington_Service.Calculation_Classes
             {
                 Logger.Error(ex, "GetBankruptcyMessage" + ex.TargetSite.Name);
 
-                throw;
+                 return "";
             }
         }
 
@@ -2427,7 +2428,7 @@ namespace Carrington_Service.Calculation_Classes
             {
                 Logger.Error(ex, "GetRepaymentPlanMessage" + ex.TargetSite.Name);
 
-                throw;
+                 return "";
             }
         }
 
@@ -2444,7 +2445,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetStateNSFMessage" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         public string GetChargeOffNotice(AccountsModel accountsModel)
@@ -2464,7 +2465,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetChargeOffNotice" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
 
@@ -2480,7 +2481,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetCMSPartialClaim" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
 
@@ -2494,7 +2495,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetHUDPartialClaim" + ex.TargetSite.Name);
-                throw;
+                 return "";
             }
             return hUDPartialClaim;
         }
@@ -2517,7 +2518,7 @@ namespace Carrington_Service.Calculation_Classes
             {
                 Logger.Error(ex, "GetStateDisclosures" + ex.TargetSite.Name);
 
-                throw;
+                 return "";
             }
             return stateDisclosures;
         }
@@ -2537,7 +2538,7 @@ namespace Carrington_Service.Calculation_Classes
             {
                 Logger.Error(ex, "GetPaymentInformationMessage" + ex.TargetSite.Name);
 
-                throw;
+                 return "";
             }
             return paymentInformationMessage;
         }
@@ -2570,7 +2571,7 @@ namespace Carrington_Service.Calculation_Classes
             {
                 Logger.Error(ex, "GetRecentPayment6" + ex.TargetSite.Name);
 
-                throw;
+                 return "";
             }
 
             return recentPayment6;
@@ -2602,7 +2603,7 @@ namespace Carrington_Service.Calculation_Classes
             {
                 Logger.Error(ex, "GetRecentPayment5" + ex.TargetSite.Name);
 
-                throw;
+                 return "";
             }
 
             return recentPayment5;
@@ -2634,7 +2635,7 @@ namespace Carrington_Service.Calculation_Classes
             {
                 Logger.Error(ex, "GetRecentPayment4" + ex.TargetSite.Name);
 
-                throw;
+                 return "";
             }
             return recentPayment4;
         }
@@ -2664,7 +2665,7 @@ namespace Carrington_Service.Calculation_Classes
             {
                 Logger.Error(ex, "GetRecentPayment3" + ex.TargetSite.Name);
 
-                throw;
+                 return "";
             }
 
             return recentPayment3;
@@ -2695,7 +2696,7 @@ namespace Carrington_Service.Calculation_Classes
             {
                 Logger.Error(ex, "GetRecentPayment2" + ex.TargetSite.Name);
 
-                throw;
+                 return "";
             }
 
             return recentPayment2;
@@ -2725,8 +2726,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetRecentPayment1" + ex.TargetSite.Name);
-
-                throw;
+                 return "";
             }
 
             return recentPayment1;
