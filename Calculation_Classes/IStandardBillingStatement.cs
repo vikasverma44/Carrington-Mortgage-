@@ -5,7 +5,7 @@ namespace Carrington_Service.Calculation_Classes
 {
     public interface IStandardBillingStatement
     {
-        string AmountDue { get; set; }
+        string  AmountDue { get; set; }
         string AssistanceAmount { get; set; }
         string DeferredBalance { get; set; }
         string DueBalance { get; set; }
