@@ -3,6 +3,7 @@ using CarringtonMortgage.Helpers;
 using CarringtonMortgage.Models.InputCopyBookModels;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
@@ -331,15 +332,15 @@ namespace Carrington_Service.Calculation_Classes
                     + Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData);
 
                     if (accountsModel.TransactionRecordModel.Rssi_Log_Tran != null && accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc!=null &&
-                        Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5605
-                        && (Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 67))
+                        accountsModel.TransactionRecordModel.Rssi_Log_Tran == "5605"
+                        && (accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc == "67"))
                     {
                         TotalFeesChargedOption4 = Convert.ToString(Total - Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
                     }
                     else if (accountsModel.TransactionRecordModel.Rssi_Log_Tran != null && accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc != null && 
                         (Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5605
-                         || Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5707)
-                         && (Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 198))
+                         || accountsModel.TransactionRecordModel.Rssi_Log_Tran == "5707")
+                         && (accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc == "198"))
                     {
                         TotalFeesChargedOption4 = Convert.ToString(Total - Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
                     }
@@ -1282,26 +1283,36 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                return Convert.ToString(Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData) +
-                         Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2) +
-                         Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3) +
-                         Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_04) +
-                         Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05));
+                if (model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2!=null && model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3!=null
+                    && model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_04!=null &&  model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05!=null)
+                    {                 return Convert.ToString(Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData) +
+                         Convert.ToDecimal((model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2.Replace("{","")).Replace("}","").Replace("P", "")) +
+                         Convert.ToDecimal((model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3.Replace("{", "")).Replace("}", "").Replace("P", "")) +
+                         Convert.ToDecimal((model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_04.Replace("{", "")).Replace("}", "").Replace("P", "")) +
+                         Convert.ToDecimal((model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05.Replace("{", "")).Replace("}", "").Replace("P", "")));
+                    }
             }
             catch (Exception ex)
             {
                 Logger.Error(ex, "GeSuspense" + ex.TargetSite.Name);
                  return "";
             }
+            return "";
         }
 
         public string GetMiscellaneous(AccountsModel model)
         {
             try
             {
+                if(model.TransactionRecordModel.Rssi_Tr_Amt_To_Lip_PackedData!=null && model.TransactionRecordModel.Rssi_Tr_Amt_To_Cr_Ins_PackedData != null &&
+                    model.TransactionRecordModel.Rssi_Tr_Amt_To_Pi_Shrtg != null && model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Prin_PackedData != null &&
+                    model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Int_PackedData != null && model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Late_Chrg_PackedData != null &&
+                    model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Esc_Adv_PackedData != null && model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Pd_Exp_Adv_PackedData != null &&
+                    model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Unp_Exp_Adv_PackedData != null && model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Admin_Fees_PackedData != null && 
+                    model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Optins_PackedData != null)
                 return Convert.ToString(Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Lip_PackedData) +
                       Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Cr_Ins_PackedData) +
-                      Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Pi_Shrtg) +
+                      Convert.ToDecimal((model.TransactionRecordModel.Rssi_Tr_Amt_To_Pi_Shrtg.Replace("{", "")).Replace("}", "")) +
                       Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Prin_PackedData) +
                       Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Int_PackedData) +
                       Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Late_Chrg_PackedData) +
@@ -1316,6 +1327,7 @@ namespace Carrington_Service.Calculation_Classes
                 Logger.Error(ex, "GetMiscellaneous" + ex.TargetSite.Name);
                  return "";
             }
+            return "";
         }
         public string GetTotalDue(AccountsModel model)
         {
@@ -2399,10 +2411,12 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                if (accountsModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Dschg_Dt_PackedData != null && accountsModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != null &&
-                        CommonHelper.GetFormatedDateTime(accountsModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Dschg_Dt_PackedData) > Convert.ToDateTime("00/00/00") &&
-                        CommonHelper.GetFormatedDateTime(accountsModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                //CultureInfo culture = new CultureInfo("en-US");
+                //DateTime tempDate = Convert.ToDateTime("00/00/00");
+                if (accountsModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Dschg_Dt_PackedData != null && accountsModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != null )
                 {
+                    if (CommonHelper.GetFormatedDateTime(accountsModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Dschg_Dt_PackedData) > Convert.ToDateTime("01/01/01") &&
+                    CommonHelper.GetFormatedDateTime(accountsModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                     BankruptcyMessage = "print Bankruptcy message.";
                 }
                 return BankruptcyMessage;
