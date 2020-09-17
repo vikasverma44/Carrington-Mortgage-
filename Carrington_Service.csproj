@@ -132,6 +132,7 @@
     <Compile Include="Calculation_Classes\IChapterThirteenBillingStatement.cs" />
     <Compile Include="Calculation_Classes\IChapterThirteenOptionARMStatement.cs" />
     <Compile Include="Calculation_Classes\IOptionARMBillingStatement.cs" />
+    <Compile Include="Calculation_Classes\IRejectStatement.cs" />
     <Compile Include="Calculation_Classes\IStandardBillingStatement.cs" />
     <Compile Include="Calculation_Classes\RejectStatement.cs" />
     <Compile Include="Calculation_Classes\StandardBillingStatement.cs" />
