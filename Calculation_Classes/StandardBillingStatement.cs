@@ -264,23 +264,21 @@ namespace Carrington_Service.Calculation_Classes
             try
             {
                 Logger.Trace("STARTED:  Execute get total fees and charges.");
-                var Total = Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData)
-                   + Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData);
+                var Total =(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData!=null? Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData):0)
+                   + accountsModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData!=null ? Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData):0;
 
-                if (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5605
-                    && (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 67))
+                if (accountsModel.TransactionRecordModel.Rssi_Log_Tran != null && accountsModel.TransactionRecordModel.Rssi_Log_Tran != null && accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc != null)
                 {
-                    TotalFeesAndCharges = Convert.ToString(Total - Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
-                }
-                else if ((Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5605
-                        || Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5707)
-                        && (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Desc) == 198))
-                {
-                    TotalFeesAndCharges = Convert.ToString(Total - Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
-                }
-                else
-                {
-                    TotalFeesAndCharges = Convert.ToString(Total);
+                    if ((Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5605
+                           || Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5707)
+                           &&((Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Code) == 67)||(Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Code) == 198)))
+                    {
+                        TotalFeesAndCharges = Convert.ToString(Total - Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
+                    }
+                    else
+                    {
+                        TotalFeesAndCharges = Convert.ToString(Total);
+                    }
                 }
                 Logger.Trace("ENDED: Get  total fees and charges.");
             }
@@ -1647,7 +1645,7 @@ namespace Carrington_Service.Calculation_Classes
             try
             {
                 Logger.Trace("STARTED:  Execute get foreclosure notice.");
-                if (accountsModel.MasterFileDataPart2Model.Rssi_Fcl_Start_Date != null || accountsModel.MasterFileDataPart2Model.Rssi_Fcl_Start_Date != "")
+                if (accountsModel.MasterFileDataPart2Model.Rssi_Fcl_Start_Date != null && accountsModel.MasterFileDataPart2Model.Rssi_Fcl_Start_Date != "")
                 {
                     if (decimal.Parse(accountsModel.MasterFileDataPart2Model.Rssi_Fcl_Start_Date) > 0)
                     {
