@@ -3467,6 +3467,7 @@ namespace Carrington_Service.BusinessExpert
             }
             catch (Exception ex)
             {
+                Logger.Error(ex, "Data not at Position = " + start);
                 return "";
             }
         }
@@ -3486,6 +3487,7 @@ namespace Carrington_Service.BusinessExpert
             }
             catch (Exception ex)
             {
+                Logger.Error(ex, "Data not at Position " + startPos);
                 return "";
             }
         }
