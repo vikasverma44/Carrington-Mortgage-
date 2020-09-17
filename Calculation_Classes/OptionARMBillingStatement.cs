@@ -131,10 +131,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             ExMessage = "Error Message";
             finalLine = new StringBuilder();
-            finalLine.Append("01" + "|");
-            finalLine.Append("Option ARM Stmt" + "|");
-            finalLine.Append(" " + "|");
-            finalLine.Append("01" + "|");
+  
             finalLine.Append(GetTotalFeesChargedOption1(accountsModel) + "|");
             finalLine.Append(GetDeferredBalance(accountsModel) + "|");
             finalLine.Append(GetTotalFeesChargedOption4(accountsModel) + "|");

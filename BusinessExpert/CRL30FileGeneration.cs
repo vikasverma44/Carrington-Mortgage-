@@ -179,7 +179,9 @@ namespace ODHS_EDelivery.BusinessExpert
                             CommonHelper.GetFormatedDateTime(extractAccount.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte);
                         account.Standard.LatePaymentDueDate = CommonHelper.GetFormatedDateTime(extractAccount.LateChargeDetailRecordModel.Rssi_Lcd_Pymt_Due_Dt_PackedData);
 
-                        //account.Standard.LatePaymentAmount = StandardBillingStatement.GetLatePaymentAmount(extractAccount) != null ? Convert.ToDecimal(StandardBillingStatement.GetLatePaymentAmount(extractAccount)): 0;//TODO: Convert the calling method
+                        account.Standard.LatePaymentAmount = (StandardBillingStatement.GetLatePaymentAmount(extractAccount) != null 
+                            &&  StandardBillingStatement.GetLatePaymentAmount(extractAccount) != "N/A") ?
+                            Convert.ToDecimal(StandardBillingStatement.GetLatePaymentAmount(extractAccount)): 0;//TODO: Convert the calling method
                         account.Standard.EmailAddress = extractAccount.MasterFileDataPart_1Model.Rssi_Primary_Email_Adr;
                         account.Standard.FormattedAccount = extractAccount.MasterFileDataPart_1Model.Rssi_Acct_No;
                         account.Standard.TwoDRecordCode = 3;
@@ -195,42 +197,36 @@ namespace ODHS_EDelivery.BusinessExpert
                             //For Chapter 7 Option ARM Statement
                             case "A07":
                                 line = ChapterSevenOptionARMStatement.GetFinalChapterSevenOptionARMStatement(extractAccount);
-                                //line.Append("Test1");
                                 account.AddCustomerRecord(FormatCustomer.BuildRecord("A07", primaryIndex, line));
                                 break;
 
                             //For Chapter 13 Option ARM Statement
                             case "A13":
                                 line = ChapterThirteenOptionARMStatement.GetFinalChapterThirteenOptionARMStatement(extractAccount);
-                                //line.Append("Test2");
                                 account.AddCustomerRecord(FormatCustomer.BuildRecord("A13", primaryIndex, line));
                                 break;
 
                             //For Option ARM Billing  Statement
                             case "ARM":
                                 line = OptionARMBillingStatement.GetFinalOptionARMBillingStatement(extractAccount);
-                                //line.Append("Test3");
                                 account.AddCustomerRecord(FormatCustomer.BuildRecord("ARM", primaryIndex, line));
                                 break;
 
                             //For Chapter 7 Billing Statement
                             case "S07":
                                 line = ChapterSevenBillingStatement.GetFinalChapterSevenBillingStatement(extractAccount);
-                               // line.Append("Test4");
                                 account.AddCustomerRecord(FormatCustomer.BuildRecord("S07", primaryIndex, line));
                                 break;
 
                             //For Chapter 13 Billing Statement
                             case "S13":
                                 line = ChapterThirteenBillingStatement.GetFinalChapterThirteenBillingStatement(extractAccount);
-                                //line.Append("Test5");
                                 account.AddCustomerRecord(FormatCustomer.BuildRecord("S13", primaryIndex, line));
                                 break;
 
                             //For Standard Billing Statement
                             case "STD":
                                 line = StandardBillingStatement.GetFinalStringStandardBilling(extractAccount);
-                                //line.Append("Test6");
                                 account.AddCustomerRecord(FormatCustomer.BuildRecord("STD", primaryIndex, line));
                                 break;
 

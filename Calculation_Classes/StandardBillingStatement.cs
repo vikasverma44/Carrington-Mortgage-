@@ -46,11 +46,6 @@ namespace Carrington_Service.Calculation_Classes
             ExMessage = "Error Message";
             finalLine = new StringBuilder();
 
-            finalLine.Append("01" + "|");
-            finalLine.Append("STD BK CHPT 7 STMT" + "|");
-            finalLine.Append(" " + "|");
-            finalLine.Append("01" + "|");
-
             finalLine.Append(GetAmountDue(accountModel) + "|");
             finalLine.Append(GetPrincipal(accountModel) + "|");
             finalLine.Append(GetAssistanceAmount(accountModel) + "|");

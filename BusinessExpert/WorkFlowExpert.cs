@@ -361,7 +361,7 @@ namespace Carrington_Service.BusinessExpert
             {
                 int numOfBytes = 4010;
                 InputFileStream = new System.IO.FileStream(fileNameWithPath, System.IO.FileMode.Open, System.IO.FileAccess.Read, FileShare.ReadWrite);
-
+                
                 byte[] currentByteLine = new byte[numOfBytes];
 
 
@@ -488,6 +488,12 @@ namespace Carrington_Service.BusinessExpert
                 }
                 MortgageLoanBillingFile.AccountModelList.Add(accountsModel);
                 Logger.Trace("ENDED: Reading PM File");
+
+                //Adding File info
+                MortgageLoanBillingFile.InputFileSize = InputFileStream.Length;
+                MortgageLoanBillingFile.InputFileName = Path.GetFileName(fileNameWithPath);
+                MortgageLoanBillingFile.InputFileDate = File.GetCreationTime(fileNameWithPath);
+                MortgageLoanBillingFile.TotalNumberOfAccount = MortgageLoanBillingFile.AccountModelList.Count;
             }
             catch (Exception ex)
             {
@@ -3467,6 +3473,7 @@ namespace Carrington_Service.BusinessExpert
             }
             catch (Exception ex)
             {
+                Logger.Error(ex, "Data not at Position = " + start);
                 return "";
             }
         }
@@ -3486,6 +3493,7 @@ namespace Carrington_Service.BusinessExpert
             }
             catch (Exception ex)
             {
+                Logger.Error(ex, "Data not at Position " + startPos);
                 return "";
             }
         }

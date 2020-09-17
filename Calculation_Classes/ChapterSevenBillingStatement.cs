@@ -39,11 +39,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             ExMessage = "Error Message";
             finalLine = new StringBuilder();
-            finalLine.Append("01" + "|");
-            finalLine.Append("STD stmp" + "|");
-            finalLine.Append(" " + "|");
-            finalLine.Append("01" + "|");
-
+      
             finalLine.Append(GetPaymentAmount(accountModel) + "|");
             finalLine.Append(GetDeferredBalance(accountModel) + "|");
             finalLine.Append(GetPrincipal(accountModel) + "|");
