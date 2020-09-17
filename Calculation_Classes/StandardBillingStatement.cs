@@ -1648,7 +1648,7 @@ namespace Carrington_Service.Calculation_Classes
                     }
                 }
                 Logger.Trace("ENDED: Get get foreclosure notice.");
-            }
+             }
             catch (Exception ex)
             {
                 Logger.Error(ex, "Mathod name : GetForeclosureNotice" + ExMessage);
