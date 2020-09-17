@@ -361,7 +361,10 @@ namespace Carrington_Service.BusinessExpert
             {
                 int numOfBytes = 4010;
                 InputFileStream = new System.IO.FileStream(fileNameWithPath, System.IO.FileMode.Open, System.IO.FileAccess.Read, FileShare.ReadWrite);
-
+                MortgageLoanBillingFile.InputFileSize = InputFileStream.Length;
+                MortgageLoanBillingFile.InputFileName = Path.GetFileName(fileNameWithPath);
+                MortgageLoanBillingFile.InputFileDate = File.GetCreationTime(fileNameWithPath);
+                MortgageLoanBillingFile.TotalNumberOfAccount = MortgageLoanBillingFile.AccountModelList.Count;
                 byte[] currentByteLine = new byte[numOfBytes];
 
 
