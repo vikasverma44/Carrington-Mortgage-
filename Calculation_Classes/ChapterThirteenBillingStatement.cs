@@ -151,7 +151,7 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                return "";
+                return DateTime.MinValue.ToString(); 
             }
         }
 
@@ -190,7 +190,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
 
@@ -222,7 +222,7 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                return "";
+                return DateTime.MinValue.ToString();
             }
         }
 
@@ -244,7 +244,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
 
@@ -277,7 +277,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                 return Convert.ToDecimal(0.00);
             }
         }
 
@@ -309,7 +309,7 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                return "";
+                return DateTime.MinValue.ToString();
             }
         }
 
@@ -337,7 +337,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
 
@@ -377,7 +377,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         public string GetTotalPaidLastMonth(AccountsModel accountsModel)
@@ -401,7 +401,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                 return "";
             }
             return TotalPaidLastMonth;
         }
@@ -425,7 +425,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         public string GetUnappliedFundsPaidYearToDate(AccountsModel accountModel)
@@ -440,7 +440,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         public string GetTotalPaidYearToDate(AccountsModel accountModel)
@@ -455,7 +455,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
 
@@ -487,7 +487,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         public string GetMiscellaneous(AccountsModel accountModel)
@@ -530,7 +530,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
 
@@ -551,7 +551,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         public string GetPrimaryBorrowerBKAttorney(AccountsModel accountModel)
@@ -571,7 +571,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
 
@@ -590,7 +590,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
 
@@ -611,7 +611,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
 
@@ -632,7 +632,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         public string GetBorrowerAttorneyMailingCityStateZip(AccountsModel accountModel)
@@ -654,7 +654,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
 
@@ -677,7 +677,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
 
@@ -697,7 +697,7 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                return "";
+                return DateTime.MinValue.ToString();
             }
         }
         public string GetEscrowTaxesandInsurance(AccountsModel accountModel)
@@ -717,7 +717,7 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                return "";
+                return DateTime.MinValue.ToString();
             }
         }
         public string GetRegularMonthlyPayment(AccountsModel accountModel)
@@ -735,7 +735,7 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                return "";
+                return DateTime.MinValue.ToString();
             }
         }
         public string GetBuydownBalance(AccountsModel accountModel)
@@ -754,7 +754,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         public string GetPartialClaim(AccountsModel accountModel)
@@ -772,7 +772,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         public string GetInterestRateUntil(AccountsModel accountModel)
@@ -790,7 +790,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
 
@@ -809,7 +809,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         public string GetCarringtonFoundationDonationPaidLastMonth(AccountsModel accountModel)
@@ -826,7 +826,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         public string GetCarringtonFoundationDonationPaidYearToDate(AccountsModel accountModel)
@@ -843,7 +843,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
 
@@ -854,8 +854,8 @@ namespace Carrington_Service.Calculation_Classes
                 Logger.Trace("STARTED:  Execute to Post Petiton Past Due Message operation.");
                 if (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date != null && accountModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte != null)
                 {
-                    TimeSpan timeSpan = Convert.ToDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Run_Date) -
-                                    Convert.ToDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date);
+                    TimeSpan timeSpan = CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Run_Date) -
+                                    CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date);
                     if (timeSpan.Days >= 45)
                         PostPetitonPastDueMessage = "We have not received all of your mortgage payments due since you filed for bankruptcy.";
                 }
@@ -864,7 +864,7 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                return "";
+                return DateTime.MinValue.ToString();
             }
         }
 
@@ -880,8 +880,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                Logger.Error(ex, "GetCMSPartialClaim"+ ex.TargetSite.Name);
+                return "";
             }
         }
         public string GetHUDPartialClaim(AccountsModel accountModel)
@@ -897,7 +897,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         // This condition statement is not cleared ===>  If Mailing State = KS, LA, NM, OK, or TX then Dallas P.O.Box Address else Pasadena P.O.Box  Address
@@ -918,7 +918,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         //public string GetDate(AccountsModel accountModel)
@@ -959,7 +959,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
         public string GetStateNSF(AccountsModel accountModel)
@@ -978,7 +978,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
 
@@ -997,7 +997,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
 
@@ -1017,7 +1017,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
 
@@ -1035,7 +1035,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
 
@@ -1055,7 +1055,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.TargetSite.Name);
-                throw;
+                 return "";
             }
         }
 
