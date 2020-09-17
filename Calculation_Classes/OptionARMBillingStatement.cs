@@ -136,6 +136,7 @@ namespace Carrington_Service.Calculation_Classes
             finalLine.Append(" " + "|");
             finalLine.Append("01" + "|");
             finalLine.Append(GetTotalFeesChargedOption1(accountsModel) + "|");
+            finalLine.Append(GetDeferredBalance(accountsModel) + "|");
             finalLine.Append(GetTotalFeesChargedOption4(accountsModel) + "|");
             finalLine.Append(GetAmountDueOption1(accountsModel) + "|");
             finalLine.Append(GetAmountDueOption2(accountsModel) + "|");
@@ -294,15 +295,22 @@ namespace Carrington_Service.Calculation_Classes
             try
             {
                 Logger.Trace("STARTED:  Execute to get Deferred Balance operation.");
-                if (model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal != "\0\0\0\0\0.\0\f" && Convert.ToDecimal(model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal) -
+                if (model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal != "\0\0\0\0\0.\0\f" && model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal != "\0\0\0\u0090¶.\u009d\f" 
+                    && model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal=="\0\0\0¿o.Ê\f" && model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal.Trim() == ""
+                    && Convert.ToDecimal(model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal) -
                 Convert.ToDecimal(model.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) == 0)
                 {
                     DeferredBalance = "N/A";
                 }
                 else
                 {
-                    DeferredBalance = model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal == "\0\0\0\0\0.\0\f" ? "0" : Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal) -
-                        Convert.ToDecimal(model.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData));
+                    if (model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal != "\0\0\0\0\0.\0\f" && model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal != "\0\0\0\u0090¶.\u009d\f"
+                        && model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal == "\0\0\0¿o.Ê\f" &&  model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal.Trim()=="")
+                    {
+                        DeferredBalance = model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal == "\0\0\0\0\0.\0\f" ? "0" : Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal) -
+                            Convert.ToDecimal(model.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData));
+                    }
+                    else { DeferredBalance = "0"; }
                 }
                 Logger.Trace("ENDED:    To Deferred Balance operation.");
                 return DeferredBalance;
