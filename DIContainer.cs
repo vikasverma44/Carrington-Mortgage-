@@ -6,6 +6,7 @@ using Carrington_Service.Infrastructure;
 using Carrington_Service.Interfaces;
 using Carrington_Service.Services;
 using CarringtonMortgage.FlexFields_Calculation;
+using CarritonMortgage.Calculation_Classes;
 using ODHS_EDelivery.BusinessExpert;
 using SimpleInjector;
 
@@ -34,7 +35,8 @@ namespace Carrington_Service
             container.Register<ICRL30FileGeneration, CRL30FileGeneration>(lifestyle);
             container.Register<IStatementType, StatementType>(lifestyle);
             container.Register<IChapterSevenOptionARMStatement, ChapterSevenOptionARMStatement>(lifestyle);
-
+            container.Register<IRejectStatement, RejectStatement>(lifestyle);
+            
         }
 
         public static WorkFlowService GetWorkFlowServiceInstance()
