@@ -166,12 +166,24 @@ namespace Carrington_Service.Calculation_Classes
             {
                 Logger.Trace("STARTED:  Execute to Deferred Balance operation.");
 
-                if (accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal != "\0\0\0\0\0.\0\f" && accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal != "\0\0\u0001\u008dÂ.¿*" && (Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal) -
+                if (accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal != "\0\0\0\0\0.\0\f" && accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal != "\0\0\u0001\u008dÂ.¿*" &&
+                    accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal != "\0\0\0\u0090¶.\u009d\f"
+                    && accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal == "\0\0\0¿o.Ê\f" && accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal.Trim() == "" &&
+                    (Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal) -
                Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData)) == 0)
                     DeferredBalance = "N/A";
                 else
+                    if (accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal != "\0\0\0\0\0.\0\f" && accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal != "\0\0\0\u0090¶.\u009d\f"
+                    && accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal == "\0\0\0¿o.Ê\f" && accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal.Trim() == "")
+                {
                     DeferredBalance = accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal == "\0\0\0\0\0.\0\f" ? "0" : Convert.ToString(Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal) -
-                    Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData));
+                                       Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData));
+                }
+                else
+                {
+                    DeferredBalance = "0.00";
+                }
+                   
                 Logger.Trace("ENDED:    Get to Deferred Balance operation.");
                 return DeferredBalance;
             }
