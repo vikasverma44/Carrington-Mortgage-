@@ -360,26 +360,35 @@ namespace Carrington_Service.Calculation_Classes
         }
         public string GetDeferredBalance(AccountsModel accountsModel)
         {
+           
             try
             {
-                Logger.Trace("STARTED:  Execute get deferred balance.");
-                if ((Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal)
-                       - Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData)) == 0)
+                Logger.Trace("STARTED:  Execute to get Deferred Balance operation.");
+                if (accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal != "\0\0\0\0\0.\0\f" && accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal != "\0\0\0\u0090¶.\u009d\f"
+                    && accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal == "\0\0\0¿o.Ê\f" && accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal.Trim() == ""
+                    && Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal) -
+                Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) == 0)
                 {
                     DeferredBalance = "N/A";
                 }
                 else
                 {
-                    DeferredBalance = Convert.ToString(Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal)
-                        - Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData));
+                    if (accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal != "\0\0\0\0\0.\0\f" && accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal != "\0\0\0\u0090¶.\u009d\f"
+                        && accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal == "\0\0\0¿o.Ê\f" && accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal.Trim() == "")
+                    {
+                        DeferredBalance = accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal == "\0\0\0\0\0.\0\f" ? "0" : Convert.ToString(Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal) -
+                            Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData));
+                    }
+                    else { DeferredBalance = "0"; }
                 }
-                Logger.Trace("ENDED: Get get deferred balance.");
+                Logger.Trace("ENDED:    To Deferred Balance operation.");
+                return DeferredBalance;
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Mathod name : GetDeferredBalance" + ExMessage);
+                Logger.Error(ex, "GetDeferredBalance" + ex.TargetSite.Name);
+                return "";
             }
-            return DeferredBalance;
         }
         public string GetUnappliedFunds(AccountsModel accountsModel)
         {
@@ -426,11 +435,10 @@ namespace Carrington_Service.Calculation_Classes
             try
             {
                 Logger.Trace("STARTED:  Execute get unapplied funds paid last month.");
-                UnappliedFundsPaidLastMonth = Convert.ToString(Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData)
-                 + Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2)
-                 + Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3)
-                 + Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_04)
-                 + Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05));
+                if (accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2 != "0000000.0{" && accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3 != "0000000.0{" && accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_04 != "0000000.0{" && accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05 != "0000000.0{")
+                {
+                    UnappliedFundsPaidLastMonth = Convert.ToString((accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData != null ? Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData) : 0) + (accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2 != null ? Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2) : 0) + (accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3 != null ? Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3) : 0) + (accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_04 != null ? Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_04) : 0) + (accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05 != null ? Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05) : 0));
+                }
                 Logger.Trace("ENDED: Get get unapplied funds paid last month.");
             }
             catch (Exception ex)
@@ -568,11 +576,11 @@ namespace Carrington_Service.Calculation_Classes
             try
             {
                 Logger.Trace("STARTED:  Execute get suspense.");
-                Suspense = Convert.ToString(Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData)
-                       + Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2)
-                       + Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2)
-                       + Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2)
-                       + Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2));
+                if (accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2 != "0000000.0{" && accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3 != "0000000.0{" && accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_04 != "0000000.0{" && accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05 != "0000000.0{")
+                {
+                    Suspense = Convert.ToString((accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData != null ? Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData) : 0) + (accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2 != null ? Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2) : 0) + (accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3 != null ? Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3) : 0) + (accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_04 != null ? Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_04) : 0) + (accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05 != null ? Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05) : 0));
+                }
+                //Suspense = Convert.ToString(Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData) + Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2) + Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3) + Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_04) + Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05));
                 Logger.Trace("ENDED: Get get suspense.");
             }
             catch (Exception ex)
@@ -588,18 +596,26 @@ namespace Carrington_Service.Calculation_Classes
             try
             {
                 Logger.Trace("STARTED:  Execute get miscellaneous.");
-                Miscellaneous = Convert.ToString(Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Lip_PackedData)
-                       + Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Cr_Ins_PackedData)
-                       + Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Pi_Shrtg)
-                       + Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Prin_PackedData)
-                       + Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Int_PackedData)
-                       + Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Lc_PackedData)
-                       + Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Esc_PackedData)
-                       + Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Pd_Exp_Adv_PackedData)
-                       + Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Unp_Exp_Adv_PackedData)
-                       + Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Admin_Fees_PackedData)
-                       + Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Optins_PackedData)
-                       );
+
+              
+
+                if (accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Lip_PackedData != null && accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Cr_Ins_PackedData != null &&
+                  accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Pi_Shrtg != null && accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Prin_PackedData != null &&
+                  accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Int_PackedData != null && accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Late_Chrg_PackedData != null &&
+                  accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Esc_Adv_PackedData != null && accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Pd_Exp_Adv_PackedData != null &&
+                  accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Unp_Exp_Adv_PackedData != null && accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Admin_Fees_PackedData != null &&
+                  accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Optins_PackedData != null)
+                    Miscellaneous= Convert.ToString(Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Lip_PackedData) +
+                          Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Cr_Ins_PackedData) +
+                          Convert.ToDecimal((accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Pi_Shrtg.Replace("{", "")).Replace("}", "")) +
+                          Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Prin_PackedData) +
+                          Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Int_PackedData) +
+                          Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Late_Chrg_PackedData) +
+                          Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Esc_Adv_PackedData) +
+                          Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Pd_Exp_Adv_PackedData) +
+                          Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Unp_Exp_Adv_PackedData) +
+                          Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Admin_Fees_PackedData) +
+                          Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Optins_PackedData));
                 Logger.Trace("ENDED: Get get miscellaneous.");
             }
             catch (Exception ex)
@@ -1631,9 +1647,12 @@ namespace Carrington_Service.Calculation_Classes
             try
             {
                 Logger.Trace("STARTED:  Execute get foreclosure notice.");
-                if (int.Parse(accountsModel.MasterFileDataPart2Model.Rssi_Fcl_Start_Date) > 0)
+                if (accountsModel.MasterFileDataPart2Model.Rssi_Fcl_Start_Date != null || accountsModel.MasterFileDataPart2Model.Rssi_Fcl_Start_Date != "")
                 {
-                    foreclosureNotice = "PLEASE TAKE NOTICE that Carrington Mortgage Services, LLC has made the first notice or filing required to start a foreclosure.";
+                    if (decimal.Parse(accountsModel.MasterFileDataPart2Model.Rssi_Fcl_Start_Date) > 0)
+                    {
+                        foreclosureNotice = "PLEASE TAKE NOTICE that Carrington Mortgage Services, LLC has made the first notice or filing required to start a foreclosure.";
+                    }
                 }
                 Logger.Trace("ENDED: Get get foreclosure notice.");
             }
@@ -1697,18 +1716,15 @@ namespace Carrington_Service.Calculation_Classes
 
         public string GetBankruptcyMessage(AccountsModel accountsModel)
         {
-
             String bankruptcyMessage = string.Empty;
-
-
             try
             {
                 Logger.Trace("STARTED:  Execute get bankruptcy message.");
-                DateTime dt = CommonHelper.GetFormatedDateTime(Convert.ToString(accountsModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Dschg_Dt_PackedData));
-                if (dt > Convert.ToDateTime("00/00/00") &&
-                      dt == Convert.ToDateTime("00/00/00"))
+                if (accountsModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Dschg_Dt_PackedData != null && accountsModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != null)
                 {
-                    bankruptcyMessage = "print Bankruptcy message.";
+                    if (CommonHelper.GetFormatedDateTime(accountsModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Dschg_Dt_PackedData) > Convert.ToDateTime("01/01/01") &&
+                    CommonHelper.GetFormatedDateTime(accountsModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
+                        bankruptcyMessage = "print Bankruptcy message.";
                 }
                 Logger.Trace("ENDED: Get get bankruptcy message.");
             }
