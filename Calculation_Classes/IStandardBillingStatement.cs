@@ -5,7 +5,7 @@ namespace Carrington_Service.Calculation_Classes
 {
     public interface IStandardBillingStatement
     {
-        string AmountDue { get; set; }
+        string  AmountDue { get; set; }
         string AssistanceAmount { get; set; }
         string DeferredBalance { get; set; }
         string DueBalance { get; set; }
@@ -53,13 +53,13 @@ namespace Carrington_Service.Calculation_Classes
         string GetForeclosureNotice(AccountsModel accountsModel);
         string GetHUDPartialClaim(AccountsModel accountsModel);
         string GetInterest(AccountsModel accountsModel);
-        string GetInterestRateUnti(AccountsModel accountsModel);
+        string GetInterestRateUnit(AccountsModel accountsModel);
         string GetLateCharge(AccountsModel accountsModel);
         string GetLateFee(AccountsModel accountsModel);
         string GetLatePaymentAmount(AccountsModel accountsModel);
         string GetLenderPlacedInsuranceMessage(AccountsModel accountsModel);
         string GetLockboxAddress(AccountsModel accountsModel);
-        string GetLossMitigtationNotice(AccountsModel accountsModel);
+        string GetLossMitigatationNotice(AccountsModel accountsModel);
         string GetMailingAddressLine1(AccountsModel accountsModel);
         string GetMailingAddressLine2(AccountsModel accountsModel);
         string GetMailingCityStateZip(AccountsModel accountsModel);
