@@ -112,10 +112,6 @@ namespace Carrington_Service.Calculation_Classes
         {
             ExMessage = "Error Message";
             finalLine = new StringBuilder();
-            finalLine.Append("01" + "|");
-            finalLine.Append("Option ARM BK CHPT 7 STMT" + "|");
-            finalLine.Append(" " + "|");
-            finalLine.Append("01" + "|");
             finalLine.Append(GetAmountDueOption1(accountModel) + "|");
             finalLine.Append(GetAmountDueOption2(accountModel) + "|");
             finalLine.Append(GetAmountDueOption3(accountModel) + "|");
@@ -141,18 +137,12 @@ namespace Carrington_Service.Calculation_Classes
             finalLine.Append(GetTotalFeesChargedOption3(accountModel) + "|");
             finalLine.Append(GetTotalFeesPaidOption3(accountModel) + "|");
             finalLine.Append(GetTotalAmountDueOption3(accountModel) + "|");
-
-
             finalLine.Append(GetPrincipalOption4(accountModel) + "|");
             finalLine.Append(GetAssistanceAmountOption4(accountModel) + "|");
             finalLine.Append(GetReplacementReserveOption4(accountModel) + "|");
             finalLine.Append(GetOverduePaymentsOption4(accountModel) + "|");
             finalLine.Append(GetTotalFeesChargedOption4(accountModel) + "|");
             finalLine.Append(GetTotalFeesPaidOption4(accountModel) + "|");
-
-
-
-
             finalLine.Append(GetTotalAmountDueOption4(accountModel) + "|");
             finalLine.Append(GetFeesandChargesPaidLastMonth(accountModel) + "|");
             finalLine.Append(GeUnappliedFundsPaidLastMonth(accountModel) + "|");
@@ -208,7 +198,6 @@ namespace Carrington_Service.Calculation_Classes
             finalLine.Append(GetHUDPartialClaim(accountModel) + "|");
             finalLine.Append(GetStateDisclosures(accountModel) + "|");
             finalLine.Append(GetPaymentInformationMessage(accountModel) + "|");
-            //Console.WriteLine(finalLine);
             return finalLine;
         }
 
@@ -1395,10 +1384,10 @@ namespace Carrington_Service.Calculation_Classes
                //corrupted data
                UnappliedFundsPaidLastMonth = Convert.ToString(
                accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData == null ? 0 : Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData)
-               + accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2 == null ? 0 : Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2.Replace("}", "").Replace("{", ""))
-               + accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2 == null ? 0 : Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2.Replace("}", "").Replace("{", ""))
-               + accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2 == null ? 0 : Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2.Replace("}", "").Replace("{", ""))
-               + accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2 == null ? 0 : Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2.Replace("}", "").Replace("{", "")));
+               + accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2 == null ? 0 : Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2.Replace("}", "").Replace("{", "").Replace("P",""))
+               + accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3 == null ? 0 : Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3.Replace("}", "").Replace("{", "").Replace("P", ""))
+               + accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_04 == null ? 0 : Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_04.Replace("}", "").Replace("{", "").Replace("P", ""))
+               + accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05 == null ? 0 : Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05.Replace("}", "").Replace("{", "").Replace("P", "")));
 
                 Logger.Trace("ENDED:  To Get Unapplied Funds Paid Last Month");
             }
@@ -1618,10 +1607,10 @@ namespace Carrington_Service.Calculation_Classes
                 //corrupted data
                 Suspense = Convert.ToString(
                   (accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData == null ? 0 : Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData))
-                + (accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2 == null ? 0 : Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2.Replace("}","").Replace("{","")))
-                + (accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2 == null ? 0 : Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2.Replace("}", "").Replace("{", "")))
-                + (accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2 == null ? 0 : Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2.Replace("}", "").Replace("{", "")))
-                + (accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2 == null ? 0 : Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2.Replace("}", "").Replace("{", ""))));
+                + (accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2 == null ? 0 : Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2.Replace("}","").Replace("{","").Replace("P","")))
+                + (accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3 == null ? 0 : Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3.Replace("}", "").Replace("{", "").Replace("P", "")))
+                + (accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_04 == null ? 0 : Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_04.Replace("}", "").Replace("{", "").Replace("P", "")))
+                + (accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05 == null ? 0 : Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05.Replace("}", "").Replace("{", "").Replace("P", ""))));
 
                 Logger.Trace("ENDED:  To Get Suspense");
             }
