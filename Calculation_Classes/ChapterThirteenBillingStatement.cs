@@ -134,8 +134,8 @@ namespace Carrington_Service.Calculation_Classes
                 if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 { PaymentAmount = "0.00"; }
                 else if (accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date != null && accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte != null &&
-                    Convert.ToDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) >
-                     Convert.ToDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                    CommonHelper.GetFormatedDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) >
+                     CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                 {
                     PaymentAmount = Convert.ToString(Convert.ToDecimal(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Unpaid_PackedData) +
                         Convert.ToDecimal(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData));
@@ -151,6 +151,7 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
+                Logger.Error(ex, "GetPaymentAmount "+ ex.TargetSite.Name);
                 return DateTime.MinValue.ToString(); 
             }
         }
@@ -189,8 +190,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                 return "";
+                Logger.Error(ex, "GetDeferredBalance " + ex.TargetSite.Name);
+                return "";
             }
         }
 
@@ -208,8 +209,8 @@ namespace Carrington_Service.Calculation_Classes
                Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     Principal = "0.00";
 
-                else if (accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date != null && Convert.ToDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) >
-                        Convert.ToDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                else if (accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date != null && CommonHelper.GetFormatedDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) >
+                        CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                     Principal = "0.00";
 
                 else
@@ -222,6 +223,7 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
+                Logger.Error(ex, "GetPrincipal " + ex.TargetSite.Name);
                 return DateTime.MinValue.ToString();
             }
         }
@@ -243,8 +245,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                 return "";
+                Logger.Error(ex, "GetPastUnpaidAmount " + ex.TargetSite.Name);
+                return "";
             }
         }
 
@@ -276,8 +278,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                 return Convert.ToDecimal(0.00);
+                Logger.Error(ex, "GetTotalFeesPaid " + ex.TargetSite.Name);
+                return Convert.ToDecimal(0.00);
             }
         }
 
@@ -295,8 +297,8 @@ namespace Carrington_Service.Calculation_Classes
                     TotalPaymentAmount = "0.00";
 
 
-                else if (accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date != null && Convert.ToDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) >
-                     Convert.ToDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                else if (accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date != null && CommonHelper.GetFormatedDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) >
+                     CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
 
                     TotalPaymentAmount = Convert.ToString(Convert.ToDecimal(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Unpaid_PackedData) +
                         Convert.ToDecimal(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData));
@@ -309,6 +311,7 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
+                Logger.Error(ex, "GetTotalPaymentAmount " + ex.TargetSite.Name);
                 return DateTime.MinValue.ToString();
             }
         }
@@ -336,8 +339,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                 return "";
+                Logger.Error(ex, "GetFeesAndChargesPaidLastMonth " + ex.TargetSite.Name);
+                return "";
             }
         }
 
@@ -376,8 +379,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                 return "";
+                Logger.Error(ex, "GetUnappliedFundsPaidLastMonth " + ex.TargetSite.Name);
+                return "";
             }
         }
         public string GetTotalPaidLastMonth(AccountsModel accountsModel)
@@ -400,8 +403,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                 return "";
+                Logger.Error(ex, "GetTotalPaidLastMonth " + ex.TargetSite.Name);
+                return "";
             }
             return TotalPaidLastMonth;
         }
@@ -424,8 +427,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                 return "";
+                Logger.Error(ex, "GetFeesAndChargesPaidYeartoDate " + ex.TargetSite.Name);
+                return "";
             }
         }
         public string GetUnappliedFundsPaidYearToDate(AccountsModel accountModel)
@@ -439,8 +442,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                 return "";
+                Logger.Error(ex, "GetUnappliedFundsPaidYearToDate " + ex.TargetSite.Name);
+                return "";
             }
         }
         public string GetTotalPaidYearToDate(AccountsModel accountModel)
@@ -454,8 +457,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                 return "";
+                Logger.Error(ex, "GetTotalPaidYearToDate " + ex.TargetSite.Name);
+                return "";
             }
         }
 
@@ -486,8 +489,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                 return "";
+                Logger.Error(ex, "GetSuspense " + ex.TargetSite.Name);
+                return "";
             }
         }
         public string GetMiscellaneous(AccountsModel accountModel)
@@ -529,8 +532,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                 return "";
+                Logger.Error(ex, "GetMiscellaneous " + ex.TargetSite.Name);
+                return "";
             }
         }
 
@@ -550,8 +553,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                 return "";
+                Logger.Error(ex, "GetPrintStatement " + ex.TargetSite.Name);
+                return "";
             }
         }
         public string GetPrimaryBorrowerBKAttorney(AccountsModel accountModel)
@@ -570,8 +573,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                 return "";
+                Logger.Error(ex, "GetPrimaryBorrowerBKAttorney " + ex.TargetSite.Name);
+                return "";
             }
         }
 
@@ -589,8 +592,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                 return "";
+                Logger.Error(ex, "GetSecondaryBorrower " + ex.TargetSite.Name);
+                return "";
             }
         }
 
@@ -610,8 +613,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                 return "";
+                Logger.Error(ex, "GetMailingBKAttorneyAddressLine1 " + ex.TargetSite.Name);
+                return "";
             }
         }
 
@@ -631,8 +634,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                 return "";
+                Logger.Error(ex, "GetMailingBKAttorneyAddressLine2 " + ex.TargetSite.Name);
+                return "";
             }
         }
         public string GetBorrowerAttorneyMailingCityStateZip(AccountsModel accountModel)
@@ -653,8 +656,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                 return "";
+                Logger.Error(ex, "GetBorrowerAttorneyMailingCityStateZip " + ex.TargetSite.Name);
+                return "";
             }
         }
 
@@ -676,8 +679,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                 return "";
+                Logger.Error(ex, "GetMailingCountry " + ex.TargetSite.Name);
+                return "";
             }
         }
 
@@ -690,13 +693,15 @@ namespace Carrington_Service.Calculation_Classes
                     Interest = "0.00";
                 else if (accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData != null && Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     Interest = "0.00";
-                else if (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date != null && accountModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte != null && Convert.ToDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > Convert.ToDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                else if (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date != null && accountModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte != null && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                     Interest = "0.00";
                 Logger.Trace("ENDED:    To Interest operation.");
                 return Interest;
+                
             }
             catch (Exception ex)
             {
+                Logger.Error(ex, "GetInterest " + ex.TargetSite.Name);
                 return DateTime.MinValue.ToString();
             }
         }
@@ -710,13 +715,14 @@ namespace Carrington_Service.Calculation_Classes
                 else if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     EscrowTaxesandInsurance = "0.00";
                 else if (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date != null && accountModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte != null &&
-                    Convert.ToDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > Convert.ToDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                    CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                     EscrowTaxesandInsurance = "0.00";
                 Logger.Trace("ENDED:    To Escrow Taxes and Insurance operation.");
                 return EscrowTaxesandInsurance;
             }
             catch (Exception ex)
             {
+                Logger.Error(ex, "GetEscrowTaxesandInsurance" + ex.TargetSite.Name);
                 return DateTime.MinValue.ToString();
             }
         }
@@ -728,13 +734,14 @@ namespace Carrington_Service.Calculation_Classes
                 if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     RegularMonthlyPayment = "0.00";
                 else if (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date != null && accountModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte != null &&
-                    Convert.ToDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > Convert.ToDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                    CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                     RegularMonthlyPayment = "0.00";
                 Logger.Trace("ENDED:    To Regular Monthly Payment operation.");
                 return RegularMonthlyPayment;
             }
             catch (Exception ex)
             {
+                Logger.Error(ex, "GetRegularMonthlyPayment" + ex.TargetSite.Name);
                 return DateTime.MinValue.ToString();
             }
         }
@@ -753,8 +760,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                 return "";
+                Logger.Error(ex, "GetBuydownBalance " + ex.TargetSite.Name);
+                return "";
             }
         }
         public string GetPartialClaim(AccountsModel accountModel)
@@ -771,8 +778,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                 return "";
+                Logger.Error(ex, "GetPartialClaim " + ex.TargetSite.Name);
+                return "";
             }
         }
         public string GetInterestRateUntil(AccountsModel accountModel)
@@ -789,8 +796,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                 return "";
+                Logger.Error(ex, "GetInterestRateUntil " + ex.TargetSite.Name);
+                return "";
             }
         }
 
@@ -808,8 +815,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                 return "";
+                Logger.Error(ex, "GetPrepaymentPenalty " + ex.TargetSite.Name);
+                return "";
             }
         }
         public string GetCarringtonFoundationDonationPaidLastMonth(AccountsModel accountModel)
@@ -825,8 +832,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                 return "";
+                Logger.Error(ex, "GetCarringtonFoundationDonationPaidLastMonth " + ex.TargetSite.Name);
+                return "";
             }
         }
         public string GetCarringtonFoundationDonationPaidYearToDate(AccountsModel accountModel)
@@ -842,8 +849,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                 return "";
+                Logger.Error(ex, "GetCarringtonFoundationDonationPaidYearToDate " + ex.TargetSite.Name);
+                return "";
             }
         }
 
@@ -864,6 +871,7 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
+                Logger.Error(ex, "GetPostPetitonPastDueMessage " + ex.TargetSite.Name);
                 return DateTime.MinValue.ToString();
             }
         }
@@ -880,7 +888,7 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "GetCMSPartialClaim"+ ex.TargetSite.Name);
+                Logger.Error(ex, "GetCMSPartialClaim " + ex.TargetSite.Name);
                 return "";
             }
         }
@@ -896,8 +904,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                 return "";
+                Logger.Error(ex, "GetHUDPartialClaim " + ex.TargetSite.Name);
+                return "";
             }
         }
         // This condition statement is not cleared ===>  If Mailing State = KS, LA, NM, OK, or TX then Dallas P.O.Box Address else Pasadena P.O.Box  Address
@@ -917,8 +925,8 @@ namespace Carrington_Service.Calculation_Classes
 
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                 return "";
+                Logger.Error(ex, "GetPOBoxAddress " + ex.TargetSite.Name);
+                return "";
             }
         }
         //public string GetDate(AccountsModel accountModel)
@@ -958,8 +966,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                 return "";
+                Logger.Error(ex, "GetLenderPlacedInsuranceMessage " + ex.TargetSite.Name);
+                return "";
             }
         }
         public string GetStateNSF(AccountsModel accountModel)
@@ -977,8 +985,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                 return "";
+                Logger.Error(ex, "GetStateNSF " + ex.TargetSite.Name);
+                return "";
             }
         }
 
@@ -996,8 +1004,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                 return "";
+                Logger.Error(ex, "GetAutodraftMessage " + ex.TargetSite.Name);
+                return "";
             }
         }
 
@@ -1016,8 +1024,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                 return "";
+                Logger.Error(ex, "GetStateDisclosures " + ex.TargetSite.Name);
+                return "";
             }
         }
 
@@ -1034,8 +1042,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                 return "";
+                Logger.Error(ex, "GetCarringtonCharitableFoundation " + ex.TargetSite.Name);
+                return "";
             }
         }
 
@@ -1054,8 +1062,8 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
-                 return "";
+                Logger.Error(ex, "GetPaymentInformationMessage " + ex.TargetSite.Name);
+                return "";
             }
         }
 
