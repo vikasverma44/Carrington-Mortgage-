@@ -6,7 +6,7 @@ using Carrington_Service.Infrastructure;
 using Carrington_Service.Interfaces;
 using Carrington_Service.Services;
 using CarringtonMortgage.FlexFields_Calculation;
-using CarritonMortgage.Calculation_Classes;
+using CarringtonMortgage.Calculation_Classes;
 using ODHS_EDelivery.BusinessExpert;
 using SimpleInjector;
 

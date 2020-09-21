@@ -9,6 +9,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
         List<Borrower> GetArchiveOnlyNyHelloDvlStandardStatement(AccountsModel accountModel);
         List<Borrower> GetArchiveOnlyNyHelloStandardStatement(AccountsModel accountModel);
         List<Borrower> GetArchiveOnlyStandardStatement(AccountsModel accountModel);
+        List<Borrower> GetArchiveOnlyNyStandardStatement(AccountsModel accountModel);
         List<Borrower> GetBkChpt13ArchiveOnlyNyDvlPrimaryStandardStatement(AccountsModel accountModel);
         List<Borrower> GetBkChpt13EDeliveryArchiveCopy1StandardStatement(AccountsModel accountModel);
         List<Borrower> GetBkChpt13EDeliveryArchivePrimaryStandardStatement(AccountsModel accountModel);
@@ -30,6 +31,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
         List<Borrower> GetBkChpt7EDeliveryArchivePrimaryStandardStatement(AccountsModel accountModel);
         List<Borrower> GetBkChpt7PrimaryForeignStandardStatement(AccountsModel accountModel);
         List<Borrower> GetBkChpt7PrimaryStandardStatement(AccountsModel accountModel);
+             
         List<Borrower> GetEDeliveryArchiveStandardStatement(AccountsModel accountModel);
         List<Borrower> GetNyAndDvlLetterStandardStatement(AccountsModel accountModel);
         List<Borrower> GetNyAndHelloDvlLetterStandardStatement(AccountsModel accountModel);
