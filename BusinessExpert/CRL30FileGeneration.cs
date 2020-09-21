@@ -99,7 +99,7 @@ namespace ODHS_EDelivery.BusinessExpert
                     output.CreateNew(_outputFile, "BHM");
                     var ncp05 = RecordManager.NewInputFileInfoRecord(Ncp05Version);
                     ncp05.Description = Ncp05Description;
-                    ncp05.FileReceivedDate =Convert.ToDateTime(CommonHelper.GetFormatedDateTimeWithAmPm(DateTime.Now));
+                    ncp05.FileReceivedDate =Convert.ToDateTime(CommonHelper.GetFormatedDateTimeWithAmPm(mortgageLoanBillingFileModel.InputFileDate));
                     ncp05.InputFileName = mortgageLoanBillingFileModel.InputFileName; //TODO:Add properties in mortgage model
                     ncp05.InputFileSize = mortgageLoanBillingFileModel.InputFileSize;
                     ncp05.FileNumber = 1;
