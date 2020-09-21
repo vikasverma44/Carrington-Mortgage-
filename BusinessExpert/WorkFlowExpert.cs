@@ -77,7 +77,7 @@ namespace Carrington_Service.BusinessExpert
                 pmFilePath = inputFile;
                 bool fileReadingProcess = false;
                 
-                if (DateTime.Now.Hour >= Convert.ToInt32(ConfigHelper.Model.WatcherStartTime) && DateTime.Now.Hour < Convert.ToInt32(ConfigHelper.Model.WatcherEndTime))
+                //if (DateTime.Now.Hour >= Convert.ToInt32(ConfigHelper.Model.WatcherStartTime) && DateTime.Now.Hour < Convert.ToInt32(ConfigHelper.Model.WatcherEndTime))
                 {
                     //if (Convert.ToString(DateTime.Now.DayOfWeek) != "Monday")
                     {
@@ -134,23 +134,23 @@ namespace Carrington_Service.BusinessExpert
                     //    }
                     //}
                 }
-                else
-                {
-                    Logger.Trace("SUCCESS: Outside Time Frame Window File Found :-");
-                    if (pmFilePath != null)
-                    {
-                        Logger.Trace("PM File Found at Time =  " + DateTime.Now.ToString());
-                    }
-                    if (supplimentFilePath != null)
-                    {
-                        Logger.Trace("SUCCESS: Suppliment File Found at Time =  " + DateTime.Now.ToString());
-                    }
-                    if (EConsentFilePath != null)
-                    {
-                        Logger.Trace("SUCCESS: Econsent File Found at Time =  " + DateTime.Now.ToString());
-                    }
-                }
-                TimeWatch();
+                //else
+                //{
+                //    Logger.Trace("SUCCESS: Outside Time Frame Window File Found :-");
+                //    if (pmFilePath != null)
+                //    {
+                //        Logger.Trace("PM File Found at Time =  " + DateTime.Now.ToString());
+                //    }
+                //    if (supplimentFilePath != null)
+                //    {
+                //        Logger.Trace("SUCCESS: Suppliment File Found at Time =  " + DateTime.Now.ToString());
+                //    }
+                //    if (EConsentFilePath != null)
+                //    {
+                //        Logger.Trace("SUCCESS: Econsent File Found at Time =  " + DateTime.Now.ToString());
+                //    }
+               // }
+               // TimeWatch();
                 if (fileReadingProcess)
                 {
 
