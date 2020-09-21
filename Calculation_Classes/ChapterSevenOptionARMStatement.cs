@@ -1156,7 +1156,7 @@ namespace Carrington_Service.Calculation_Classes
                 Logger.Trace("STARTED:  Execute to Get Assistance Amount Option4");
 
                 if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0)
-                    AssistanceAmountOption4 = "do not print the Assistance Amount line";
+                    AssistanceAmountOption4 = string.Empty;
 
                 else if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     AssistanceAmountOption4 = "0.00";
@@ -1166,7 +1166,7 @@ namespace Carrington_Service.Calculation_Classes
 
                 else
                 {
-                    AssistanceAmountOption4 = accountsModel.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData;
+                    AssistanceAmountOption4 = (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData)*(-1)).ToString();
                 }
 
                 Logger.Trace("ENDED:  To Get Assistance Amount Option4");
@@ -1187,7 +1187,7 @@ namespace Carrington_Service.Calculation_Classes
             - Convert.ToDecimal(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt1_PackedData)
             - Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData)
             + Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0))
-                    ReplacementReserveOption4 = "do not print the Replacement Reserve line";
+                    ReplacementReserveOption4 = string.Empty;
 
                 else if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     ReplacementReserveOption4 = "0.00";
