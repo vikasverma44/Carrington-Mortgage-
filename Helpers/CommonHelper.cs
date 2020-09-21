@@ -32,5 +32,17 @@ namespace CarringtonMortgage.Helpers
                 return DateTime.MinValue;
             }
         }
+        public static string GetFormatedDateTimeWithAmPm(DateTime dateTime)
+        {
+            try
+            {
+                string dateTimeAmPm = dateTime.ToString("MM-dd-yy HH:mm:ss").Replace("PM", "").Replace("AM", "");
+                return dateTimeAmPm;
+            }
+            catch (Exception ex)
+            {
+                return Convert.ToString(DateTime.MinValue);
+            }
+        }
     }
 }
