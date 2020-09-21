@@ -346,7 +346,7 @@ namespace ODHS_EDelivery.BusinessExpert
             account.Workflow.IsReject = true;
             account.Workflow.ProductNumber = RejectProductNumber;
             account.Workflow.OptionNumber = RejectOptionNumber;
-            account.MarkAsReject("Carriton_Mort", "8888", message);
+            account.MarkAsReject("Carrington_Mortgage", "8888", message);
         }
         /// <summary>
         /// This method is used for creating output file path
