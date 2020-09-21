@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{C5451BFE-1D32-42DD-BAC1-A8FABBEC2CF3}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>CarritonMortgage</RootNamespace>
-    <AssemblyName>CarritonMortgage</AssemblyName>
+    <RootNamespace>CarringtonMortgage</RootNamespace>
+    <AssemblyName>CarringtonMortgage</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
