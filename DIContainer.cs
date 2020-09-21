@@ -3,7 +3,6 @@ using Carrington_Service.BusinessExpert;
 using Carrington_Service.Calculation_Classes;
 using Carrington_Service.Helpers;
 using Carrington_Service.Infrastructure;
-using Carrington_Service.Interfaces;
 using Carrington_Service.Services;
 using CarringtonMortgage.FlexFields_Calculation;
 using CarritonMortgage.Calculation_Classes;
@@ -26,7 +25,6 @@ namespace Carrington_Service
             container.Register<IAgentApi, AgentApi>(lifestyle);
             container.Register<ILogger, Logger>(lifestyle);
             container.Register<IWorkFlowService, WorkFlowService>(lifestyle);
-            container.Register<IEmailService, EmailService>(lifestyle);
             container.Register<IChapterThirteenOptionARMStatement, ChapterThirteenOptionARMStatement>(lifestyle);
             container.Register<IChapterSevenBillingStatement, ChapterSevenBillingStatement>(lifestyle);
             container.Register<IChapterThirteenBillingStatement, ChapterThirteenBillingStatement>(lifestyle);

@@ -10,15 +10,6 @@ namespace Carrington_Service.Models
         public int LoggingFileMaxSizeInMB { get; set; }
         public string LoggingPath { get; set; }
         public bool IsReleaseMode { get; set; }
-
-        //SMTP Details
-        public bool IsEmailEnabled { get; set; }
-        public string SMTP_Host { get; set; }
-        public int SMTP_Port { get; set; }
-        public string SMTP_Usr { get; set; }
-        public string SMTP_Pwd { get; set; }
-        public string SMTP_From { get; set; }
-        public string SMTP_To { get; set; }
         public string InputFilePathLocation_Local { get; set; }
         public string OutputFilePathLocation_Local { get; set; }
         public string WatcherStartTime { get; set; }

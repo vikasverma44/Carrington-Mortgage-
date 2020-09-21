@@ -1,23 +1,17 @@
-﻿using Carrington_Service.Helpers;
-using Carrington_Service.Infrastructure;
-using Carrington_Service.Interfaces;
-using Carrington_Service.Services;
-using Microsoft.VisualBasic.Logging;
+﻿using Carrington_Service.Infrastructure;
 using CarringtonMortgage.Infrastructure;
 using CarringtonMortgage.Models;
 using CarringtonMortgage.Models.InputCopyBookModels;
 using CarringtonMortgage.Models.InputCopyBookModels.MortgageLoanBillingModels;
+using ODHS_EDelivery.BusinessExpert;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ODHS_EDelivery.BusinessExpert;
 
 namespace Carrington_Service.BusinessExpert
 {
@@ -32,7 +26,6 @@ namespace Carrington_Service.BusinessExpert
         private string supplimentFilePath;
         private string EConsentFilePath;
         public FileStream InputFileStream;
-        public IEmailService EmailService;
         MortgageLoanBillingFileModel MortgageLoanBillingFile = new MortgageLoanBillingFileModel();
         CmsBillInput CmsBillInput = new CmsBillInput();
         EConsentInput EConsentInput = new EConsentInput();
@@ -43,12 +36,11 @@ namespace Carrington_Service.BusinessExpert
 
         /// <summary>The delimiter.</summary>
         private const string Delimiter = "|";
-        public WorkFlowExpert(IConfigHelper configHelper, ILogger logger, IAgentApi apiAgent, IEmailService emailService, ICRL30FileGeneration cRL30FileGeneration)
+        public WorkFlowExpert(IConfigHelper configHelper, ILogger logger, IAgentApi apiAgent, ICRL30FileGeneration cRL30FileGeneration)
         {
             ConfigHelper = configHelper;
             Logger = logger;
             ApiAgent = apiAgent;
-            EmailService = emailService;
             CRL30FileGeneration = cRL30FileGeneration;
             //configHelper.Model.DatabaseSetting = DbService.GetDataBaseSettings();
         }
@@ -106,14 +98,14 @@ namespace Carrington_Service.BusinessExpert
                             Logger.Trace("ERROR: Suppliment  File Not Found");
                             isFileMissing = true;
 
-                            throw new FileNotFoundException($"Suppliment  File Not Found");
+                            //throw new FileNotFoundException($"Suppliment  File Not Found");
                         }
                         if (EConsentFilePath == null)
                         {
                             Logger.Trace("ERROR: Econsent  File Not Found");
                             isFileMissing = true;
 
-                            throw new FileNotFoundException($"Econsent  File Not Found");
+                            //throw new FileNotFoundException($"Econsent  File Not Found");
 
                         }
 
@@ -129,24 +121,24 @@ namespace Carrington_Service.BusinessExpert
                                 Logger.Trace("Trace: Can not Generate CRL30 File. FileReadingProcess: " + fileReadingProcess + "Total Accounts: " + MortgageLoanBillingFile.AccountModelList.Count);
                             }
                         }
-                    }
-                    else
+                }
+                else
+                {
+                    Logger.Trace("SUCCESS: Outside Time Frame Window File Found :-");
+                    if (pmFilePath != null)
                     {
-                        Logger.Trace("SUCCESS: Outside Time Frame Window File Found :-");
-                        if (pmFilePath != null)
-                        {
-                            Logger.Trace("PM File Found at Time =  " + DateTime.Now.ToString());
-                        }
-                        if (supplimentFilePath != null)
-                        {
-                            Logger.Trace("SUCCESS: Suppliment File Found at Time =  " + DateTime.Now.ToString());
-                        }
-                        if (EConsentFilePath != null)
-                        {
-                            Logger.Trace("SUCCESS: Econsent File Found at Time =  " + DateTime.Now.ToString());
-                        }
+                        Logger.Trace("PM File Found at Time =  " + DateTime.Now.ToString());
+                    }
+                    if (supplimentFilePath != null)
+                    {
+                        Logger.Trace("SUCCESS: Suppliment File Found at Time =  " + DateTime.Now.ToString());
+                    }
+                    if (EConsentFilePath != null)
+                    {
+                        Logger.Trace("SUCCESS: Econsent File Found at Time =  " + DateTime.Now.ToString());
                     }
                 }
+            }
                 else
                 {
                     Logger.Trace("SUCCESS: Outside Time Frame Window File Found :-");
@@ -241,7 +233,6 @@ namespace Carrington_Service.BusinessExpert
                                 {
                                     Logger.Trace("Account Matching Process: Failed No Matched Account Found in PM, Econsent and Suppliment File !!.");
                                     //   EmailService.SendNotification("Failed No Matched Account Found in PM, Econsent and Suppliment File");
-                                    Logger.Trace("Email Notification: Failed Account Matching Notification Send");
                                 }
                             }
                             else
@@ -346,10 +337,6 @@ namespace Carrington_Service.BusinessExpert
         {
             string fileName = e.Name;
             Logger.Trace("File created: " + fileName + "");
-            if (File.Exists(@"C:\NCP-Carrington\Input\" + fileName))
-            {
-                EmailService.SendNotification("");
-            }
         }
         #endregion       
 
@@ -597,7 +584,7 @@ namespace Carrington_Service.BusinessExpert
                     }
 
                 }
-                Logger.Trace("ENDED: Reading Suppliment File");
+                Logger.Trace("ENDED: Reading Suppliment File Complete");
                 return (detList, transList);
             }
             catch (Exception ex)

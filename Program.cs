@@ -1,8 +1,4 @@
-﻿using Carrington_Service;
-using Carrington_Service.BusinessExpert;
-using Carrington_Service.Helpers;
-using Carrington_Service.Infrastructure;
-using Carrington_Service.Interfaces;
+﻿using Carrington_Service.Infrastructure;
 using Carrington_Service.Services;
 using System;
 using System.IO;
@@ -18,7 +14,6 @@ namespace Carrington_Service
         public ILogger Logger;
         public IConfigHelper ConfigHelper;
         public IAgentApi ApiAgent;
-        public IEmailService EmailService; 
 
         private static void Main(string[] args)
         {
@@ -27,13 +22,30 @@ namespace Carrington_Service
 
             try
             {
+                //objWFservice.logger.Trace("STARTED: Main");
+                //if (args.Length >= 4)
+                //{
+                //    _inputFile = args[0];
+                //    _inputRecordLength = args[1];
+                //    _dataCenter = args[2];
+                //    _trackingId = args[3];
+
+                //    objWFservice.logger.Trace("Input file name: " + _inputFile + "");
+                //    objWFservice.logger.Trace("Input record length: " + _inputRecordLength);
+                //    objWFservice.logger.Trace("Data Center:  " + _dataCenter);
+                //    objWFservice.logger.Trace("Tracking Id:  " + _trackingId);
+
                 objWFservice.logger.Trace("STARTED: Main");
-                if (args.Length >= 4)
+                if (args.Length >= 0)
                 {
-                    _inputFile = args[0];
-                    _inputRecordLength = args[1];
-                    _dataCenter = args[2];
-                    _trackingId = args[3];
+                    //_inputFile = args[0];
+                    //_inputRecordLength = args[1];
+                    //_dataCenter = args[2];
+                    //_trackingId = args[3];
+                    _inputFile = @"C:\Mortgage\WIP\467004\TESTDATA.ETOA";
+
+
+
 
                     objWFservice.logger.Trace("Input file name: " + _inputFile + "");
                     objWFservice.logger.Trace("Input record length: " + _inputRecordLength);
