@@ -3,7 +3,7 @@ using Carrington_Service.Infrastructure;
 using CarringtonMortgage.FlexFields_Calculation;
 using CarringtonMortgage.Helpers;
 using CarringtonMortgage.Models.InputCopyBookModels.MortgageLoanBillingModels;
-using CarritonMortgage.Calculation_Classes;
+using CarringtonMortgage.Calculation_Classes;
 using Common;
 using System;
 using System.IO;
@@ -99,7 +99,7 @@ namespace ODHS_EDelivery.BusinessExpert
                     output.CreateNew(_outputFile, "BHM");
                     var ncp05 = RecordManager.NewInputFileInfoRecord(Ncp05Version);
                     ncp05.Description = Ncp05Description;
-                    ncp05.FileReceivedDate = DateTime.Now;
+                    ncp05.FileReceivedDate =Convert.ToDateTime(CommonHelper.GetFormatedDateTimeWithAmPm(mortgageLoanBillingFileModel.InputFileDate));
                     ncp05.InputFileName = mortgageLoanBillingFileModel.InputFileName; //TODO:Add properties in mortgage model
                     ncp05.InputFileSize = mortgageLoanBillingFileModel.InputFileSize;
                     ncp05.FileNumber = 1;
@@ -109,8 +109,9 @@ namespace ODHS_EDelivery.BusinessExpert
 
                     Logger.Info("Creating NCP07 records...");
                     //TODO: Revisit
-                    output.AddLogRecord("CONV", "START", "Carrington_Mortgage + CONVERSION STARTED.");
-                    output.AddLogRecord("CONV", "INFO", $"LoanBillExtractInfo - FileDate = {mortgageLoanBillingFileModel.InputFileDate}");
+                    output.AddLogRecord("CONV", "START", "Carrington_Mortgage + CONVERSION STARTED");
+                    string InputFiledate = CommonHelper.GetFormatedDateTimeWithAmPm(mortgageLoanBillingFileModel.InputFileDate);
+                    output.AddLogRecord("CONV", "INFO", $"LoanBillExtractInfo - FileDate = {InputFiledate}");
                     output.AddLogRecord("CONV", "INFO", $"LoanBillExtractInfo - Institution = {mortgageLoanBillingFileModel.InstitutionRecords.Rssi_Institution_Name}");
                     output.AddLogRecord("CONV", "INFO",
                         mortgageLoanBillingFileModel.InstitutionRecords.Rssi_Inst_Phone != null
@@ -346,7 +347,7 @@ namespace ODHS_EDelivery.BusinessExpert
             account.Workflow.IsReject = true;
             account.Workflow.ProductNumber = RejectProductNumber;
             account.Workflow.OptionNumber = RejectOptionNumber;
-            account.MarkAsReject("Carriton_Mort", "8888", message);
+            account.MarkAsReject("Carrington_Mortgage", "8888", message);
         }
         /// <summary>
         /// This method is used for creating output file path

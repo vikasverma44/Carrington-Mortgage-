@@ -1,4 +1,5 @@
 ﻿using Carrington_Service.Infrastructure;
+using CarringtonMortgage.Helpers;
 using CarringtonMortgage.Models.InputCopyBookModels;
 using System;
 using System.Collections.Generic;
@@ -37,8 +38,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 Logger.Trace("STARTED:  Execute to get primary standard statement.");
-                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0")))
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
@@ -49,8 +50,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     lstBrw = GetPrimaryForeignStandardStatement(accountModel);
                     return lstBrw;
                 }
-                if (ClearedPrivousPrimaryStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A")))
+                if (ClearedPrivousPrimaryStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A")))
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
@@ -61,8 +62,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     return lstBrw;
                 }
 
-                if (ClearedPrivousPrimaryStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A")))
+                if (ClearedPrivousPrimaryStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A")))
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
@@ -73,8 +74,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     return lstBrw;
                 }
 
-                if (ClearedPrivousPrimaryStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-              || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A")))
+                if (ClearedPrivousPrimaryStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+              || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A")))
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
@@ -85,8 +86,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     return lstBrw;
                 }
 
-                if (ClearedPrivousPrimaryStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-             || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A")))
+                if (ClearedPrivousPrimaryStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+             || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A")))
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
@@ -97,8 +98,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     return lstBrw;
                 }
 
-                if (ClearedPrivousPrimaryStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A")))
+                if (ClearedPrivousPrimaryStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A")))
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
@@ -108,8 +109,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousPrimaryStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousPrimaryStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-    || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A")))
+                if (ClearedPrivousPrimaryStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+    || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A")))
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
@@ -120,8 +121,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     return lstBrw;
                 }
 
-                if (ClearedPrivousPrimaryStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A")))
+                if (ClearedPrivousPrimaryStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A")))
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
@@ -131,8 +132,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousPrimaryStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousPrimaryStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A")))
+                if (ClearedPrivousPrimaryStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A")))
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
@@ -143,8 +144,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     return lstBrw;
                 }
 
-                if (ClearedPrivousPrimaryStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A")))
+                if (ClearedPrivousPrimaryStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A")))
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
@@ -154,8 +155,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousPrimaryStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousPrimaryStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-    || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A")))
+                if (ClearedPrivousPrimaryStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+    || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A")))
                 {
                     ClearedPrivousPrimaryStandardStatementCondition = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
@@ -181,8 +182,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 Logger.Trace("STARTED:  Execute to get primary foreign standard statement.");
-                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")))
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")))
                 {
                     ClearedPrivousPrimaryForeignStandardStatementCondition = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
@@ -193,8 +194,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     lstBrw = GetEDeliveryArchiveStandardStatement(accountModel);
                     return lstBrw;
                 }
-                if (ClearedPrivousPrimaryForeignStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-              || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")))
+                if (ClearedPrivousPrimaryForeignStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+              || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")))
                 {
                     ClearedPrivousPrimaryForeignStandardStatementCondition = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
@@ -204,8 +205,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousPrimaryForeignStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousPrimaryForeignStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-             || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")))
+                if (ClearedPrivousPrimaryForeignStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+             || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")))
                 {
                     ClearedPrivousPrimaryForeignStandardStatementCondition = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
@@ -216,8 +217,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     return lstBrw;
                 }
 
-                if (ClearedPrivousPrimaryForeignStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-             || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")))
+                if (ClearedPrivousPrimaryForeignStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+             || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")))
                 {
                     ClearedPrivousPrimaryForeignStandardStatementCondition = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
@@ -227,8 +228,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousPrimaryForeignStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousPrimaryForeignStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-             || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")))
+                if (ClearedPrivousPrimaryForeignStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+             || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")))
                 {
                     ClearedPrivousPrimaryForeignStandardStatementCondition = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
@@ -238,8 +239,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousPrimaryForeignStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousPrimaryForeignStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-           || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")))
+                if (ClearedPrivousPrimaryForeignStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+           || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")))
                 {
                     ClearedPrivousPrimaryForeignStandardStatementCondition = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
@@ -249,8 +250,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousPrimaryForeignStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousPrimaryForeignStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")))
+                if (ClearedPrivousPrimaryForeignStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")))
                 {
                     ClearedPrivousPrimaryForeignStandardStatementCondition = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
@@ -260,8 +261,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousPrimaryForeignStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousPrimaryForeignStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")))
+                if (ClearedPrivousPrimaryForeignStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")))
                 {
                     ClearedPrivousPrimaryForeignStandardStatementCondition = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
@@ -271,8 +272,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousPrimaryForeignStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousPrimaryForeignStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")))
+                if (ClearedPrivousPrimaryForeignStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")))
                 {
                     ClearedPrivousPrimaryForeignStandardStatementCondition = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
@@ -282,8 +283,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousPrimaryForeignStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousPrimaryForeignStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")))
+                if (ClearedPrivousPrimaryForeignStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")))
                 {
                     ClearedPrivousPrimaryForeignStandardStatementCondition = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
@@ -293,8 +294,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousPrimaryForeignStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousPrimaryForeignStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")))
+                if (ClearedPrivousPrimaryForeignStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")))
                 {
                     ClearedPrivousPrimaryForeignStandardStatementCondition = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
@@ -320,7 +321,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 Logger.Trace("STARTED:  Execute to get edelivery archive standard statement.");
-                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")) && ((accountModel.EConsentModel.DocumentType == "Bill") && (accountModel.EConsentModel.EConsentFlag == "Y")))
                 {
                     ClearedPrivousEDeliveryArchiveStandardStatementCondition = true;
@@ -332,8 +333,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     lstBrw = GetArchiveOnlyStandardStatement(accountModel);
                     return lstBrw;
                 }
-                if (ClearedPrivousEDeliveryArchiveStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-             || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A")) && ((accountModel.EConsentModel.DocumentType == "Bill") && (accountModel.EConsentModel.EConsentFlag == "Y")))
+                if (ClearedPrivousEDeliveryArchiveStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+             || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A")) && ((accountModel.EConsentModel.DocumentType == "Bill") && (accountModel.EConsentModel.EConsentFlag == "Y")))
                 {
                     ClearedPrivousEDeliveryArchiveStandardStatementCondition = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
@@ -343,8 +344,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousEDeliveryArchiveStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousEDeliveryArchiveStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-             || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A")) && ((accountModel.EConsentModel.DocumentType == "Bill") && (accountModel.EConsentModel.EConsentFlag == "Y")))
+                if (ClearedPrivousEDeliveryArchiveStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+             || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A")) && ((accountModel.EConsentModel.DocumentType == "Bill") && (accountModel.EConsentModel.EConsentFlag == "Y")))
                 {
                     ClearedPrivousEDeliveryArchiveStandardStatementCondition = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
@@ -355,8 +356,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     return lstBrw;
                 }
 
-                if (ClearedPrivousEDeliveryArchiveStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-             || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A")) && ((accountModel.EConsentModel.DocumentType == "Bill") && (accountModel.EConsentModel.EConsentFlag == "Y")))
+                if (ClearedPrivousEDeliveryArchiveStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+             || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A")) && ((accountModel.EConsentModel.DocumentType == "Bill") && (accountModel.EConsentModel.EConsentFlag == "Y")))
                 {
                     ClearedPrivousEDeliveryArchiveStandardStatementCondition = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
@@ -366,8 +367,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousEDeliveryArchiveStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousEDeliveryArchiveStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-             || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A")) && ((accountModel.EConsentModel.DocumentType == "Bill") && (accountModel.EConsentModel.EConsentFlag == "Y")))
+                if (ClearedPrivousEDeliveryArchiveStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+             || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A")) && ((accountModel.EConsentModel.DocumentType == "Bill") && (accountModel.EConsentModel.EConsentFlag == "Y")))
                 {
                     ClearedPrivousEDeliveryArchiveStandardStatementCondition = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
@@ -377,8 +378,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousEDeliveryArchiveStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousEDeliveryArchiveStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-           || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A")) && ((accountModel.EConsentModel.DocumentType == "Bill") && (accountModel.EConsentModel.EConsentFlag == "Y")))
+                if (ClearedPrivousEDeliveryArchiveStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+           || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A")) && ((accountModel.EConsentModel.DocumentType == "Bill") && (accountModel.EConsentModel.EConsentFlag == "Y")))
                 {
                     ClearedPrivousEDeliveryArchiveStandardStatementCondition = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
@@ -388,8 +389,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousEDeliveryArchiveStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousEDeliveryArchiveStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A")) && ((accountModel.EConsentModel.DocumentType == "Bill") && (accountModel.EConsentModel.EConsentFlag == "Y")))
+                if (ClearedPrivousEDeliveryArchiveStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A")) && ((accountModel.EConsentModel.DocumentType == "Bill") && (accountModel.EConsentModel.EConsentFlag == "Y")))
                 {
                     ClearedPrivousEDeliveryArchiveStandardStatementCondition = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
@@ -399,8 +400,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousEDeliveryArchiveStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousEDeliveryArchiveStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A")) && ((accountModel.EConsentModel.DocumentType == "Bill") && (accountModel.EConsentModel.EConsentFlag == "Y")))
+                if (ClearedPrivousEDeliveryArchiveStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A")) && ((accountModel.EConsentModel.DocumentType == "Bill") && (accountModel.EConsentModel.EConsentFlag == "Y")))
                 {
                     ClearedPrivousEDeliveryArchiveStandardStatementCondition = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
@@ -410,8 +411,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousEDeliveryArchiveStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousEDeliveryArchiveStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A")) && ((accountModel.EConsentModel.DocumentType == "Bill") && (accountModel.EConsentModel.EConsentFlag == "Y")))
+                if (ClearedPrivousEDeliveryArchiveStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A")) && ((accountModel.EConsentModel.DocumentType == "Bill") && (accountModel.EConsentModel.EConsentFlag == "Y")))
                 {
                     ClearedPrivousEDeliveryArchiveStandardStatementCondition = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
@@ -421,8 +422,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousEDeliveryArchiveStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousEDeliveryArchiveStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A")) && ((accountModel.EConsentModel.DocumentType == "Bill") && (accountModel.EConsentModel.EConsentFlag == "Y")))
+                if (ClearedPrivousEDeliveryArchiveStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A")) && ((accountModel.EConsentModel.DocumentType == "Bill") && (accountModel.EConsentModel.EConsentFlag == "Y")))
                 {
                     ClearedPrivousEDeliveryArchiveStandardStatementCondition = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
@@ -432,8 +433,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousEDeliveryArchiveStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousEDeliveryArchiveStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A")) && ((accountModel.EConsentModel.DocumentType == "Bill") && (accountModel.EConsentModel.EConsentFlag == "Y")))
+                if (ClearedPrivousEDeliveryArchiveStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A")) && ((accountModel.EConsentModel.DocumentType == "Bill") && (accountModel.EConsentModel.EConsentFlag == "Y")))
                 {
                     ClearedPrivousEDeliveryArchiveStandardStatementCondition = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
@@ -459,122 +460,122 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 Logger.Trace("STARTED:  Execute to get archive Only standard statement.");
-                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H")))
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H")))
                 {
                     ClearedPrivousArchiveOnlyStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
                     ClearedPrivousArchiveOnlyStandardStatementCondition = false;
-                    lstBrw = GetArchiveOnlyNyHelloStandardStatement(accountModel);
+                    lstBrw = GetStdStmtArchiveOnlyNy(accountModel);
                     return lstBrw;
                 }
-                if (ClearedPrivousArchiveOnlyStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A")))
+                if (ClearedPrivousArchiveOnlyStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A")))
                 {
                     ClearedPrivousArchiveOnlyStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
-                }
-                else
-                {
-                    ClearedPrivousArchiveOnlyStandardStatementCondition = false;
-                    return lstBrw;
-                }
-                if (ClearedPrivousArchiveOnlyStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A")))
-                {
-                    ClearedPrivousArchiveOnlyStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
                     ClearedPrivousArchiveOnlyStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousArchiveOnlyStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-              || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A")))
+                if (ClearedPrivousArchiveOnlyStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A")))
                 {
                     ClearedPrivousArchiveOnlyStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
                     ClearedPrivousArchiveOnlyStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousArchiveOnlyStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-             || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A")))
+                if (ClearedPrivousArchiveOnlyStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+              || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A")))
                 {
                     ClearedPrivousArchiveOnlyStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
                     ClearedPrivousArchiveOnlyStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousArchiveOnlyStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A")))
+                if (ClearedPrivousArchiveOnlyStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+             || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A")))
                 {
                     ClearedPrivousArchiveOnlyStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
                     ClearedPrivousArchiveOnlyStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousArchiveOnlyStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-    || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A")))
+                if (ClearedPrivousArchiveOnlyStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A")))
                 {
                     ClearedPrivousArchiveOnlyStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
                     ClearedPrivousArchiveOnlyStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousArchiveOnlyStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A")))
+                if (ClearedPrivousArchiveOnlyStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+    || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A")))
                 {
                     ClearedPrivousArchiveOnlyStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
                     ClearedPrivousArchiveOnlyStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousPrimaryStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A")))
+                if (ClearedPrivousArchiveOnlyStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A")))
                 {
                     ClearedPrivousArchiveOnlyStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
                     ClearedPrivousArchiveOnlyStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousArchiveOnlyStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A")))
+                if (ClearedPrivousPrimaryStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A")))
                 {
                     ClearedPrivousArchiveOnlyStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
                     ClearedPrivousArchiveOnlyStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousArchiveOnlyStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-|| ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A")))
+                if (ClearedPrivousArchiveOnlyStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A")))
                 {
                     ClearedPrivousArchiveOnlyStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousArchiveOnlyStandardStatementCondition = false;
+                    return lstBrw;
+                }
+                if (ClearedPrivousArchiveOnlyStandardStatementCondition && ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+|| ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A")))
+                {
+                    ClearedPrivousArchiveOnlyStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -590,6 +591,464 @@ namespace CarringtonMortgage.FlexFields_Calculation
             }
             return lstBrw;
         }
+
+        public List<Borrower> GetStdStmtArchiveOnlyNy(AccountsModel accountModel) 
+        {
+            bool StdStmtArchiveOnlyNy = false;
+            List<Borrower> lstBrw = new List<Borrower>();
+            try
+            {
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" 
+                    || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") 
+                    && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") 
+                    && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" 
+                   || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" 
+                   || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" 
+                   || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") 
+                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                   && (accountModel.MasterFileDataPart_1Model.Rssi_Acct_No == accountModel.SupplementalCCFModel.LoanNumber
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                   && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")
+                   )
+                {
+                    StdStmtArchiveOnlyNy = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+
+                }
+                else
+                {
+                    StdStmtArchiveOnlyNy = false;
+                    lstBrw = GetArchiveOnlyNyStandardStatement(accountModel);
+                    return lstBrw;
+                }
+
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7"
+                    || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                    && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00")
+                    && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
+                   || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                   || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                   || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                   && (accountModel.MasterFileDataPart_1Model.Rssi_Acct_No == accountModel.SupplementalCCFModel.LoanNumber
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                   && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A" )
+                   )
+                {
+                    StdStmtArchiveOnlyNy = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+
+                }
+                else
+                {
+                    StdStmtArchiveOnlyNy = false;
+                    return lstBrw;
+                }
+
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7"
+                   || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                   && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00")
+                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
+                  || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                  || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                  || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  && (accountModel.MasterFileDataPart_1Model.Rssi_Acct_No == accountModel.SupplementalCCFModel.LoanNumber
+                  && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                  && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                  && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                  && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A")
+                  )
+                {
+                    StdStmtArchiveOnlyNy = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+
+                }
+                else
+                {
+                    StdStmtArchiveOnlyNy = false;
+                    return lstBrw;
+                }
+
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7"
+                   || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                   && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00")
+                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
+                  || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                  || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                  || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  && (accountModel.MasterFileDataPart_1Model.Rssi_Acct_No == accountModel.SupplementalCCFModel.LoanNumber
+                  && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                  && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                  && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                  && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A")
+                  )
+                {
+                    StdStmtArchiveOnlyNy = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+
+                }
+                else
+                {
+                    StdStmtArchiveOnlyNy = false;
+                    return lstBrw;
+                }
+
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7"
+                   || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                   && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00")
+                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
+                  || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                  || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                  || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  && (accountModel.MasterFileDataPart_1Model.Rssi_Acct_No == accountModel.SupplementalCCFModel.LoanNumber
+                  && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                  && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                  && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                  && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A")
+                  )
+                {
+                    StdStmtArchiveOnlyNy = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+
+                }
+                else
+                {
+                    StdStmtArchiveOnlyNy = false;
+
+                    return lstBrw;
+                }
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7"
+                   || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                   && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00")
+                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
+                  || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                  || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                  || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  && (accountModel.MasterFileDataPart_1Model.Rssi_Acct_No == accountModel.SupplementalCCFModel.LoanNumber
+                  && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                  && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                  && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                  && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A")
+                  )
+                {
+                    StdStmtArchiveOnlyNy = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+
+                }
+                else
+                {
+                    StdStmtArchiveOnlyNy = false;
+                    return lstBrw;
+                }
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7"
+                   || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                   && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00")
+                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
+                  || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                  || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                  || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  && (accountModel.MasterFileDataPart_1Model.Rssi_Acct_No == accountModel.SupplementalCCFModel.LoanNumber
+                  && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                  && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                  && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                  && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A")
+                  )
+                {
+                    StdStmtArchiveOnlyNy = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+
+                }
+                else
+                {
+                    StdStmtArchiveOnlyNy = false;
+                    return lstBrw;
+                }
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7"
+                   || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                   && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00")
+                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
+                  || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                  || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                  || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  && (accountModel.MasterFileDataPart_1Model.Rssi_Acct_No == accountModel.SupplementalCCFModel.LoanNumber
+                  && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                  && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                  && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                  && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A")
+                  )
+                {
+                    StdStmtArchiveOnlyNy = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+
+                }
+                else
+                {
+                    StdStmtArchiveOnlyNy = false;
+                    return lstBrw;
+                }
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7"
+                   || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                   && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00")
+                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
+                  || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                  || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                  || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  && (accountModel.MasterFileDataPart_1Model.Rssi_Acct_No == accountModel.SupplementalCCFModel.LoanNumber
+                  && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                  && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                  && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                  && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A")
+                  )
+                {
+                    StdStmtArchiveOnlyNy = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+
+                }
+                else
+                {
+                    StdStmtArchiveOnlyNy = false;
+                    return lstBrw;
+                }
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7"
+                   || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                   && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00")
+                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
+                  || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                  || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                  || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  && (accountModel.MasterFileDataPart_1Model.Rssi_Acct_No == accountModel.SupplementalCCFModel.LoanNumber
+                  && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                  && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                  && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                  && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A")
+                  )
+                {
+                    StdStmtArchiveOnlyNy = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+
+                }
+                else
+                {
+                    StdStmtArchiveOnlyNy = false;
+                    return lstBrw;
+                }
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7"
+                   || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                   && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00")
+                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
+                  || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                  || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                  || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  && (accountModel.MasterFileDataPart_1Model.Rssi_Acct_No == accountModel.SupplementalCCFModel.LoanNumber
+                  && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                  && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                  && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                  && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A")
+                  )
+                {
+                    StdStmtArchiveOnlyNy = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+
+                }
+                else
+                {
+                    StdStmtArchiveOnlyNy = false;
+                    return lstBrw;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+        }
+        public List<Borrower> GetArchiveOnlyNyStandardStatement(AccountsModel accountModel)
+        {
+            bool ClearedPrivousArchiveOnlyNyStandardStatementCondition = false;
+            List<Borrower> lstBrw = new List<Borrower>();
+            try
+            {
+                Logger.Trace("STARTED:  Execute to get archive Only ny Hello standard statement.");
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")) && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No))
+                   && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
+                {
+                    ClearedPrivousArchiveOnlyNyStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousArchiveOnlyNyStandardStatementCondition = false;
+                    lstBrw = GetArchiveOnlyNyHelloStandardStatement(accountModel);
+                    return lstBrw;
+                }
+                if (ClearedPrivousArchiveOnlyNyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")) && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No))
+                   && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A")))
+                {
+                    ClearedPrivousArchiveOnlyNyStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousArchiveOnlyNyStandardStatementCondition = false;
+                    return lstBrw;
+                }
+                if (ClearedPrivousArchiveOnlyNyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")) && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No))
+                   && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A")))
+                {
+                    ClearedPrivousArchiveOnlyNyStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousArchiveOnlyNyStandardStatementCondition = false;
+                    return lstBrw;
+                }
+                if (ClearedPrivousArchiveOnlyNyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")) && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No))
+                  && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A")))
+                {
+                    ClearedPrivousArchiveOnlyNyStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousArchiveOnlyNyStandardStatementCondition = false;
+                    return lstBrw;
+                }
+                if (ClearedPrivousArchiveOnlyNyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")) && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No))
+                   && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A")))
+                {
+                    ClearedPrivousArchiveOnlyNyStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousArchiveOnlyNyStandardStatementCondition = false;
+                    return lstBrw;
+                }
+                if (ClearedPrivousArchiveOnlyNyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")) && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No))
+                                  && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A")))
+                {
+                    ClearedPrivousArchiveOnlyNyStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousArchiveOnlyNyStandardStatementCondition = false;
+                    return lstBrw;
+                }
+                if (ClearedPrivousArchiveOnlyNyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")) && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No))
+                  && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A")))
+                {
+                    ClearedPrivousArchiveOnlyNyStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousArchiveOnlyNyStandardStatementCondition = false;
+                    return lstBrw;
+                }
+                if (ClearedPrivousArchiveOnlyNyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")) && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No))
+                                  && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A")))
+                {
+                    ClearedPrivousArchiveOnlyNyStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousArchiveOnlyNyStandardStatementCondition = false;
+                    return lstBrw;
+                }
+                if (ClearedPrivousArchiveOnlyNyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")) && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No))
+                                  && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A")))
+                {
+                    ClearedPrivousArchiveOnlyNyStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousArchiveOnlyNyStandardStatementCondition = false;
+                    return lstBrw;
+                }
+                if (ClearedPrivousArchiveOnlyNyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")) && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No))
+                                  && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A")))
+                {
+                    ClearedPrivousArchiveOnlyNyStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousArchiveOnlyNyStandardStatementCondition = false;
+                    return lstBrw;
+                }
+                if (ClearedPrivousArchiveOnlyNyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")) && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No))
+                                  && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A")))
+                {
+                    ClearedPrivousArchiveOnlyNyStandardStatementCondition = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPrivousArchiveOnlyNyStandardStatementCondition = false;
+                    return lstBrw;
+                }
+                Logger.Trace("ENDED:get archive Only ny Hello standard statement.");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+        }
+
+        
+
         public List<Borrower> GetArchiveOnlyNyHelloStandardStatement(AccountsModel accountModel)
         {
             bool ClearedPrivousArchiveOnlyNyHelloStandardStatementCondition = false;
@@ -597,12 +1056,12 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 Logger.Trace("STARTED:  Execute to get archive Only ny Hello standard statement.");
-                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
                    && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                 {
                     ClearedPrivousArchiveOnlyNyHelloStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -610,120 +1069,120 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     lstBrw = GetArchiveOnlyNyHelloDvlStandardStatement(accountModel);
                     return lstBrw;
                 }
-                if (ClearedPrivousArchiveOnlyNyHelloStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (ClearedPrivousArchiveOnlyNyHelloStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
                                && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO") && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                 {
                     ClearedPrivousArchiveOnlyNyHelloStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
                     ClearedPrivousArchiveOnlyNyHelloStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousArchiveOnlyNyHelloStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                          || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (ClearedPrivousArchiveOnlyNyHelloStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                          || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
                                 && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                 {
                     ClearedPrivousArchiveOnlyNyHelloStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
                     ClearedPrivousArchiveOnlyNyHelloStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousArchiveOnlyNyHelloStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (ClearedPrivousArchiveOnlyNyHelloStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
                               && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                 {
                     ClearedPrivousArchiveOnlyNyHelloStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
                     ClearedPrivousArchiveOnlyNyHelloStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousArchiveOnlyNyHelloStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (ClearedPrivousArchiveOnlyNyHelloStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
                               && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                 {
                     ClearedPrivousArchiveOnlyNyHelloStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
                     ClearedPrivousArchiveOnlyNyHelloStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousArchiveOnlyNyHelloStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (ClearedPrivousArchiveOnlyNyHelloStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
                               && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                 {
                     ClearedPrivousArchiveOnlyNyHelloStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
                     ClearedPrivousArchiveOnlyNyHelloStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousArchiveOnlyNyHelloStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (ClearedPrivousArchiveOnlyNyHelloStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
                               && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                 {
                     ClearedPrivousArchiveOnlyNyHelloStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
                     ClearedPrivousArchiveOnlyNyHelloStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousArchiveOnlyNyHelloStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (ClearedPrivousArchiveOnlyNyHelloStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
                               && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                 {
                     ClearedPrivousArchiveOnlyNyHelloStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
                     ClearedPrivousArchiveOnlyNyHelloStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousArchiveOnlyNyHelloStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (ClearedPrivousArchiveOnlyNyHelloStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
                               && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                 {
                     ClearedPrivousArchiveOnlyNyHelloStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
                     ClearedPrivousArchiveOnlyNyHelloStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousArchiveOnlyNyHelloStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (ClearedPrivousArchiveOnlyNyHelloStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
                               && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                 {
                     ClearedPrivousArchiveOnlyNyHelloStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
                     ClearedPrivousArchiveOnlyNyHelloStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousArchiveOnlyNyHelloStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (ClearedPrivousArchiveOnlyNyHelloStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
                               && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                 {
                     ClearedPrivousArchiveOnlyNyHelloStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -746,12 +1205,12 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 Logger.Trace("STARTED:  Execute to get archive Only ny Hello Dvl standard statement.");
-                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
                   && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                 {
                     ClearedPrivousArchiveOnlyNyHelloDvlStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -759,120 +1218,120 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     lstBrw = GetArchiveOnlyNyDvlStandardStatement(accountModel);
                     return lstBrw;
                 }
-                if (ClearedPrivousArchiveOnlyNyHelloDvlStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                          || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (ClearedPrivousArchiveOnlyNyHelloDvlStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                          || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
                                 && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                 {
                     ClearedPrivousArchiveOnlyNyHelloDvlStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
                     ClearedPrivousArchiveOnlyNyHelloDvlStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousArchiveOnlyNyHelloDvlStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                          || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (ClearedPrivousArchiveOnlyNyHelloDvlStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                          || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
                                 && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                 {
                     ClearedPrivousArchiveOnlyNyHelloDvlStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
                     ClearedPrivousArchiveOnlyNyHelloDvlStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousArchiveOnlyNyHelloDvlStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (ClearedPrivousArchiveOnlyNyHelloDvlStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
                               && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                 {
                     ClearedPrivousArchiveOnlyNyHelloDvlStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
                     ClearedPrivousArchiveOnlyNyHelloDvlStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousArchiveOnlyNyHelloDvlStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (ClearedPrivousArchiveOnlyNyHelloDvlStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
                               && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                 {
                     ClearedPrivousArchiveOnlyNyHelloDvlStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
                     ClearedPrivousArchiveOnlyNyHelloDvlStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousArchiveOnlyNyHelloDvlStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (ClearedPrivousArchiveOnlyNyHelloDvlStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
                               && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                 {
                     ClearedPrivousArchiveOnlyNyHelloDvlStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
                     ClearedPrivousArchiveOnlyNyHelloDvlStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousArchiveOnlyNyHelloDvlStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (ClearedPrivousArchiveOnlyNyHelloDvlStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
                               && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                 {
                     ClearedPrivousArchiveOnlyNyHelloDvlStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
                     ClearedPrivousArchiveOnlyNyHelloDvlStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousArchiveOnlyNyHelloDvlStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (ClearedPrivousArchiveOnlyNyHelloDvlStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
                               && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                 {
                     ClearedPrivousArchiveOnlyNyHelloDvlStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
                     ClearedPrivousArchiveOnlyNyHelloDvlStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousArchiveOnlyNyHelloDvlStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (ClearedPrivousArchiveOnlyNyHelloDvlStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
                               && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                 {
                     ClearedPrivousArchiveOnlyNyHelloDvlStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
                     ClearedPrivousArchiveOnlyNyHelloDvlStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousArchiveOnlyNyHelloDvlStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (ClearedPrivousArchiveOnlyNyHelloDvlStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
                               && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                 {
                     ClearedPrivousArchiveOnlyNyHelloDvlStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
                     ClearedPrivousArchiveOnlyNyHelloDvlStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousArchiveOnlyNyHelloDvlStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (ClearedPrivousArchiveOnlyNyHelloDvlStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
                               && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                 {
                     ClearedPrivousArchiveOnlyNyHelloDvlStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -895,12 +1354,12 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 Logger.Trace("STARTED:  Execute to get archive Only ny Dvl standard statement.");
-                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
                  && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                 {
                     ClearedPrivousArchiveOnlyNyDvlStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -908,120 +1367,120 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     lstBrw = GetNyAndHelloLetterStandardStatement(accountModel);
                     return lstBrw;
                 }
-                if (ClearedPrivousArchiveOnlyNyDvlStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                          || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (ClearedPrivousArchiveOnlyNyDvlStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                          || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
                                 && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                 {
                     ClearedPrivousArchiveOnlyNyDvlStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
                     ClearedPrivousArchiveOnlyNyDvlStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousArchiveOnlyNyDvlStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                          || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (ClearedPrivousArchiveOnlyNyDvlStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                          || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
                                 && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                 {
                     ClearedPrivousArchiveOnlyNyDvlStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
                     ClearedPrivousArchiveOnlyNyDvlStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousArchiveOnlyNyDvlStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (ClearedPrivousArchiveOnlyNyDvlStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
                               && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                 {
                     ClearedPrivousArchiveOnlyNyDvlStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
                     ClearedPrivousArchiveOnlyNyDvlStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousArchiveOnlyNyDvlStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (ClearedPrivousArchiveOnlyNyDvlStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
                               && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                 {
                     ClearedPrivousArchiveOnlyNyDvlStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
                     ClearedPrivousArchiveOnlyNyDvlStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousArchiveOnlyNyDvlStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (ClearedPrivousArchiveOnlyNyDvlStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
                               && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                 {
                     ClearedPrivousArchiveOnlyNyDvlStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
                     ClearedPrivousArchiveOnlyNyDvlStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousArchiveOnlyNyDvlStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (ClearedPrivousArchiveOnlyNyDvlStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
                               && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                 {
                     ClearedPrivousArchiveOnlyNyDvlStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
                     ClearedPrivousArchiveOnlyNyDvlStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousArchiveOnlyNyDvlStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (ClearedPrivousArchiveOnlyNyDvlStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
                               && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                 {
                     ClearedPrivousArchiveOnlyNyDvlStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
                     ClearedPrivousArchiveOnlyNyDvlStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousArchiveOnlyNyDvlStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (ClearedPrivousArchiveOnlyNyDvlStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
                               && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                 {
                     ClearedPrivousArchiveOnlyNyDvlStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
                     ClearedPrivousArchiveOnlyNyDvlStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousArchiveOnlyNyDvlStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (ClearedPrivousArchiveOnlyNyDvlStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
                               && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                 {
                     ClearedPrivousArchiveOnlyNyDvlStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
                     ClearedPrivousArchiveOnlyNyDvlStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousArchiveOnlyNyDvlStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (ClearedPrivousArchiveOnlyNyDvlStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
                               && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                 {
                     ClearedPrivousArchiveOnlyNyDvlStandardStatementCondition = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -1044,8 +1503,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 Logger.Trace("STARTED:  Execute to get ny and hello letter standard statement.");
-                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                    || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                    || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
                     && ((accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                 {
                     ClearedPrivousNyAndHelloLetterStandardStatementCondition = true;
@@ -1057,8 +1516,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     lstBrw = GetNyAndHelloDvlLetterStandardStatement(accountModel);
                     return lstBrw;
                 }
-                if (ClearedPrivousNyAndHelloLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                       || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousNyAndHelloLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                       || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                              && ((accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                 {
                     ClearedPrivousNyAndHelloLetterStandardStatementCondition = true;
@@ -1069,8 +1528,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousNyAndHelloLetterStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousNyAndHelloLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                           || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousNyAndHelloLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                           || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                                  && ((accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                 {
                     ClearedPrivousNyAndHelloLetterStandardStatementCondition = true;
@@ -1081,8 +1540,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousNyAndHelloLetterStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousNyAndHelloLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousNyAndHelloLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                                && ((accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                 {
                     ClearedPrivousNyAndHelloLetterStandardStatementCondition = true;
@@ -1093,8 +1552,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousNyAndHelloLetterStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousNyAndHelloLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousNyAndHelloLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                                && ((accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                 {
                     ClearedPrivousNyAndHelloLetterStandardStatementCondition = true;
@@ -1105,8 +1564,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousNyAndHelloLetterStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousNyAndHelloLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousNyAndHelloLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                                && ((accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                 {
                     ClearedPrivousNyAndHelloLetterStandardStatementCondition = true;
@@ -1117,8 +1576,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousNyAndHelloLetterStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousNyAndHelloLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousNyAndHelloLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                                && ((accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                 {
                     ClearedPrivousNyAndHelloLetterStandardStatementCondition = true;
@@ -1129,8 +1588,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousNyAndHelloLetterStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousNyAndHelloLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousNyAndHelloLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                                && ((accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                 {
                     ClearedPrivousNyAndHelloLetterStandardStatementCondition = true;
@@ -1141,8 +1600,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousNyAndHelloLetterStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousNyAndHelloLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousNyAndHelloLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                                && ((accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                 {
                     ClearedPrivousNyAndHelloLetterStandardStatementCondition = true;
@@ -1153,8 +1612,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousNyAndHelloLetterStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousNyAndHelloLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousNyAndHelloLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                                && ((accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                 {
                     ClearedPrivousNyAndHelloLetterStandardStatementCondition = true;
@@ -1165,8 +1624,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousNyAndHelloLetterStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousNyAndHelloLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousNyAndHelloLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                                && ((accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                 {
                     ClearedPrivousNyAndHelloLetterStandardStatementCondition = true;
@@ -1193,8 +1652,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 Logger.Trace("STARTED:  Execute to get ny and hello dvl letter standard statement.");
-                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
                    && ((accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                 {
                     ClearedPrivousNyAndHelloDvlLetterStandardStatementCondition = true;
@@ -1206,8 +1665,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     lstBrw = GetNyAndDvlLetterStandardStatement(accountModel);
                     return lstBrw;
                 }
-                if (ClearedPrivousNyAndHelloDvlLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousNyAndHelloDvlLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                               && ((accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                 {
                     ClearedPrivousNyAndHelloDvlLetterStandardStatementCondition = true;
@@ -1218,8 +1677,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousNyAndHelloDvlLetterStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousNyAndHelloDvlLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                           || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousNyAndHelloDvlLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                           || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                                  && ((accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                 {
                     ClearedPrivousNyAndHelloDvlLetterStandardStatementCondition = true;
@@ -1230,8 +1689,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousNyAndHelloDvlLetterStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousNyAndHelloDvlLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousNyAndHelloDvlLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                                && ((accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                 {
                     ClearedPrivousNyAndHelloDvlLetterStandardStatementCondition = true;
@@ -1242,8 +1701,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousNyAndHelloDvlLetterStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousNyAndHelloDvlLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousNyAndHelloDvlLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                                && ((accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                 {
                     ClearedPrivousNyAndHelloDvlLetterStandardStatementCondition = true;
@@ -1254,8 +1713,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousNyAndHelloDvlLetterStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousNyAndHelloDvlLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousNyAndHelloDvlLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                                && ((accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                 {
                     ClearedPrivousNyAndHelloDvlLetterStandardStatementCondition = true;
@@ -1266,8 +1725,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousNyAndHelloDvlLetterStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousNyAndHelloDvlLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousNyAndHelloDvlLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                                && ((accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                 {
                     ClearedPrivousNyAndHelloDvlLetterStandardStatementCondition = true;
@@ -1278,8 +1737,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousNyAndHelloDvlLetterStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousNyAndHelloDvlLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousNyAndHelloDvlLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                                && ((accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                 {
                     ClearedPrivousNyAndHelloDvlLetterStandardStatementCondition = true;
@@ -1290,8 +1749,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousNyAndHelloDvlLetterStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousNyAndHelloDvlLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousNyAndHelloDvlLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                                && ((accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                 {
                     ClearedPrivousNyAndHelloDvlLetterStandardStatementCondition = true;
@@ -1302,8 +1761,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousNyAndHelloDvlLetterStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousNyAndHelloDvlLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousNyAndHelloDvlLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                                && ((accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                 {
                     ClearedPrivousNyAndHelloDvlLetterStandardStatementCondition = true;
@@ -1314,8 +1773,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousNyAndHelloDvlLetterStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousNyAndHelloDvlLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousNyAndHelloDvlLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                                && ((accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                 {
                     ClearedPrivousNyAndHelloDvlLetterStandardStatementCondition = true;
@@ -1342,8 +1801,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 Logger.Trace("STARTED:  Execute to get ny and dvl letter standard statement.");
-                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
                  && ((accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                 {
                     ClearedPrivousNyAndDvlLetterStandardStatementCondition = true;
@@ -1355,8 +1814,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     lstBrw = GetBkChpt7PrimaryStandardStatement(accountModel);
                     return lstBrw;
                 }
-                if (ClearedPrivousNyAndDvlLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousNyAndDvlLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                                && ((accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                 {
                     ClearedPrivousNyAndDvlLetterStandardStatementCondition = true;
@@ -1367,8 +1826,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousNyAndDvlLetterStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousNyAndDvlLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                           || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousNyAndDvlLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                           || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                                  && ((accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                 {
                     ClearedPrivousNyAndDvlLetterStandardStatementCondition = true;
@@ -1379,8 +1838,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousNyAndDvlLetterStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousNyAndDvlLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousNyAndDvlLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                                && ((accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                 {
                     ClearedPrivousNyAndDvlLetterStandardStatementCondition = true;
@@ -1391,8 +1850,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousNyAndDvlLetterStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousNyAndDvlLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousNyAndDvlLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                                && ((accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                 {
                     ClearedPrivousNyAndDvlLetterStandardStatementCondition = true;
@@ -1403,8 +1862,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousNyAndDvlLetterStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousNyAndDvlLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousNyAndDvlLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                                && ((accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                 {
                     ClearedPrivousNyAndDvlLetterStandardStatementCondition = true;
@@ -1415,8 +1874,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousNyAndDvlLetterStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousNyAndDvlLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousNyAndDvlLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                                && ((accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                 {
                     ClearedPrivousNyAndDvlLetterStandardStatementCondition = true;
@@ -1427,8 +1886,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousNyAndDvlLetterStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousNyAndDvlLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousNyAndDvlLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                                && ((accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                 {
                     ClearedPrivousNyAndDvlLetterStandardStatementCondition = true;
@@ -1439,8 +1898,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousNyAndDvlLetterStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousNyAndDvlLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousNyAndDvlLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                                && ((accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                 {
                     ClearedPrivousNyAndDvlLetterStandardStatementCondition = true;
@@ -1451,8 +1910,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousNyAndDvlLetterStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousNyAndDvlLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousNyAndDvlLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                                && ((accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                 {
                     ClearedPrivousNyAndDvlLetterStandardStatementCondition = true;
@@ -1463,8 +1922,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousNyAndDvlLetterStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousNyAndDvlLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousNyAndDvlLetterStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                                && ((accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                 {
                     ClearedPrivousNyAndDvlLetterStandardStatementCondition = true;
@@ -1494,8 +1953,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 Logger.Trace("STARTED:  Execute to get bk chpt 7 primary standard statement.");
-                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"))
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt7PrimaryStandard = true;
@@ -1506,8 +1965,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     return lstBrw;
                 }
 
-                if (isBkChpt7PrimaryStandard && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
- || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"))
+                if (isBkChpt7PrimaryStandard && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+ || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt7PrimaryStandard = true;
@@ -1517,8 +1976,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     isBkChpt7PrimaryStandard = false;
                     return lstBrw;
                 }
-                if (isBkChpt7PrimaryStandard && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"))
+                if (isBkChpt7PrimaryStandard && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Copy1primary", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt7PrimaryStandard = true;
@@ -1529,8 +1988,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     return lstBrw;
                 }
 
-                if (isBkChpt7PrimaryStandard && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"))
+                if (isBkChpt7PrimaryStandard && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt7PrimaryStandard = true;
@@ -1556,8 +2015,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 Logger.Trace("STARTED:  Execute to get bk chpt 7 primary foreign standard statement.");
-                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B") && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")))
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B") && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt7Primary = true;
@@ -1571,8 +2030,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
 
-                if (isBkChpt7Primary && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L") && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")))
+                if (isBkChpt7Primary && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L") && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt7Primary = true;
@@ -1583,8 +2042,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     return lstBrw;
                 }
 
-                if (isBkChpt7Primary && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L") && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")))
+                if (isBkChpt7Primary && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L") && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt7Primary = true;
@@ -1595,8 +2054,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     return lstBrw;
                 }
 
-                if (isBkChpt7Primary && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")))
+                if (isBkChpt7Primary && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Copy1primary", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt7Primary = true;
@@ -1608,8 +2067,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     return lstBrw;
                 }
 
-                if (isBkChpt7Primary && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")))
+                if (isBkChpt7Primary && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt7Primary = true;
@@ -1636,8 +2095,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 Logger.Trace("STARTED:  Execute to get bk chpt 7 archive only primary standard statement.");
-                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B")))
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isChpt7ArchiveOnlyPrimary = true;
@@ -1649,8 +2108,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     return lstBrw;
                 }
 
-                if (isChpt7ArchiveOnlyPrimary && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L")))
+                if (isChpt7ArchiveOnlyPrimary && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isChpt7ArchiveOnlyPrimary = true;
@@ -1662,8 +2121,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     return lstBrw;
                 }
 
-                if (isChpt7ArchiveOnlyPrimary && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y")))
+                if (isChpt7ArchiveOnlyPrimary && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Copy1primary", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isChpt7ArchiveOnlyPrimary = true;
@@ -1674,8 +2133,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     return lstBrw;
                 }
 
-                if (isChpt7ArchiveOnlyPrimary && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y")))
+                if (isChpt7ArchiveOnlyPrimary && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isChpt7ArchiveOnlyPrimary = true;
@@ -1701,8 +2160,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 Logger.Trace("STARTED:  Execute to get bk chpt 7 archive only ny primary standard statement.");
-                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt7ArchiveOnlyNyPrimary = true;
@@ -1714,8 +2173,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     return lstBrw;
                 }
 
-                if (isBkChpt7ArchiveOnlyNyPrimary && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
+                if (isBkChpt7ArchiveOnlyNyPrimary && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt7ArchiveOnlyNyPrimary = true;
@@ -1726,8 +2185,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     return lstBrw;
                 }
 
-                if (isBkChpt7ArchiveOnlyNyPrimary && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
+                if (isBkChpt7ArchiveOnlyNyPrimary && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Copy1primary", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt7ArchiveOnlyNyPrimary = true;
@@ -1738,8 +2197,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     return lstBrw;
                 }
 
-                if (isBkChpt7ArchiveOnlyNyPrimary && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
+                if (isBkChpt7ArchiveOnlyNyPrimary && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt7ArchiveOnlyNyPrimary = true;
@@ -1765,8 +2224,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 Logger.Trace("STARTED:  Execute to get bk chpt 7 archive only ny hello primary standard statement.");
-                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt7ArchiveOnlyNyHelloPrimary = true;
@@ -1778,8 +2237,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     return lstBrw;
                 }
 
-                if (isBkChpt7ArchiveOnlyNyHelloPrimary && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
+                if (isBkChpt7ArchiveOnlyNyHelloPrimary && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt7ArchiveOnlyNyHelloPrimary = true;
@@ -1789,8 +2248,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     isBkChpt7ArchiveOnlyNyHelloPrimary = false;
                     return lstBrw;
                 }
-                if (isBkChpt7ArchiveOnlyNyHelloPrimary && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
+                if (isBkChpt7ArchiveOnlyNyHelloPrimary && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Copy2Vend", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt7ArchiveOnlyNyHelloPrimary = true;
@@ -1801,8 +2260,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     return lstBrw;
                 }
 
-                if (isBkChpt7ArchiveOnlyNyHelloPrimary && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
+                if (isBkChpt7ArchiveOnlyNyHelloPrimary && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt7ArchiveOnlyNyHelloPrimary = true;
@@ -1829,8 +2288,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 Logger.Trace("STARTED:  Execute to get bk chpt 7 archive only ny hello Vends standard statement.");
-                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     BkChpt7ArchiveOnlyNyHelloDVL = true;
@@ -1842,8 +2301,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     return lstBrw;
                 }
 
-                if (BkChpt7ArchiveOnlyNyHelloDVL && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
+                if (BkChpt7ArchiveOnlyNyHelloDVL && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     BkChpt7ArchiveOnlyNyHelloDVL = true;
@@ -1854,8 +2313,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     return lstBrw;
                 }
 
-                if (BkChpt7ArchiveOnlyNyHelloDVL && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
+                if (BkChpt7ArchiveOnlyNyHelloDVL && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Copy1primary", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     BkChpt7ArchiveOnlyNyHelloDVL = true;
@@ -1866,8 +2325,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     return lstBrw;
                 }
 
-                if (BkChpt7ArchiveOnlyNyHelloDVL && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
+                if (BkChpt7ArchiveOnlyNyHelloDVL && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     BkChpt7ArchiveOnlyNyHelloDVL = true;
@@ -1895,8 +2354,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 Logger.Trace("STARTED:  Execute to get bk chpt 7 archive only ny hello Vends standard statement.");
-                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt7ArchiveOnlyNyDVL = true;
@@ -1908,8 +2367,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     return lstBrw;
                 }
 
-                if (isBkChpt7ArchiveOnlyNyDVL && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
+                if (isBkChpt7ArchiveOnlyNyDVL && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt7ArchiveOnlyNyDVL = true;
@@ -1919,8 +2378,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     isBkChpt7ArchiveOnlyNyDVL = false;
                     return lstBrw;
                 }
-                if (isBkChpt7ArchiveOnlyNyDVL && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
+                if (isBkChpt7ArchiveOnlyNyDVL && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Copy1primary", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt7ArchiveOnlyNyDVL = true;
@@ -1930,8 +2389,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     isBkChpt7ArchiveOnlyNyDVL = false;
                     return lstBrw;
                 }
-                if (isBkChpt7ArchiveOnlyNyDVL && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
+                if (isBkChpt7ArchiveOnlyNyDVL && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt7ArchiveOnlyNyDVL = true;
@@ -1959,8 +2418,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 Logger.Trace("STARTED:  Execute to get bk chpt 7 archive only ny hello Vends standard statement.");
-                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt7ArchiveOnlyNyandHello = true;
@@ -1971,8 +2430,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     isBkChpt7ArchiveOnlyNyandHello = false;
                     return lstBrw;
                 }
-                if (isBkChpt7ArchiveOnlyNyandHello && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
+                if (isBkChpt7ArchiveOnlyNyandHello && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt7ArchiveOnlyNyandHello = true;
@@ -1982,8 +2441,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     isBkChpt7ArchiveOnlyNyandHello = false;
                     return lstBrw;
                 }
-                if (isBkChpt7ArchiveOnlyNyandHello && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
+                if (isBkChpt7ArchiveOnlyNyandHello && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Copy1primary", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt7ArchiveOnlyNyandHello = true;
@@ -1993,8 +2452,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     isBkChpt7ArchiveOnlyNyandHello = false;
                     return lstBrw;
                 }
-                if (isBkChpt7ArchiveOnlyNyandHello && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
+                if (isBkChpt7ArchiveOnlyNyandHello && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt7ArchiveOnlyNyandHello = true;
@@ -2023,8 +2482,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 Logger.Trace("STARTED:  Execute to get bk chpt 7 archive only ny and hello dvl letter primary standard statement.");
-                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt7ArchiveOnlyNyandHello = true;
@@ -2035,8 +2494,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     isBkChpt7ArchiveOnlyNyandHello = false;
                     return lstBrw;
                 }
-                if (isBkChpt7ArchiveOnlyNyandHello && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
+                if (isBkChpt7ArchiveOnlyNyandHello && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt7ArchiveOnlyNyandHello = true;
@@ -2046,8 +2505,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     isBkChpt7ArchiveOnlyNyandHello = false;
                     return lstBrw;
                 }
-                if (isBkChpt7ArchiveOnlyNyandHello && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
+                if (isBkChpt7ArchiveOnlyNyandHello && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Copy1primary", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt7ArchiveOnlyNyandHello = true;
@@ -2057,8 +2516,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     isBkChpt7ArchiveOnlyNyandHello = false;
                     return lstBrw;
                 }
-                if (isBkChpt7ArchiveOnlyNyandHello && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
+                if (isBkChpt7ArchiveOnlyNyandHello && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt7ArchiveOnlyNyandHello = true;
@@ -2087,8 +2546,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 Logger.Trace("STARTED:  Execute to get bk chpt 7 archive only ny and dvl letter primary standard statement.");
-                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt7ArchiveOnlyNyandDvlLetter = true;
@@ -2099,8 +2558,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     isBkChpt7ArchiveOnlyNyandDvlLetter = false;
                     return lstBrw;
                 }
-                if (isBkChpt7ArchiveOnlyNyandDvlLetter && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
+                if (isBkChpt7ArchiveOnlyNyandDvlLetter && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt7ArchiveOnlyNyandDvlLetter = true;
@@ -2110,8 +2569,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     isBkChpt7ArchiveOnlyNyandDvlLetter = false;
                     return lstBrw;
                 }
-                if (isBkChpt7ArchiveOnlyNyandDvlLetter && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
+                if (isBkChpt7ArchiveOnlyNyandDvlLetter && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Copy1primary", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt7ArchiveOnlyNyandDvlLetter = true;
@@ -2121,8 +2580,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     isBkChpt7ArchiveOnlyNyandDvlLetter = false;
                     return lstBrw;
                 }
-                if (isBkChpt7ArchiveOnlyNyandDvlLetter && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
+                if (isBkChpt7ArchiveOnlyNyandDvlLetter && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt7ArchiveOnlyNyandDvlLetter = true;
@@ -2151,8 +2610,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 Logger.Trace("STARTED:  Execute to get bk chpt 7 eDelivery archive primary standard statement.");
-                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B") && (accountModel.EConsentModel.DocumentType == "Bill" && accountModel.EConsentModel.EConsentFlag == "Y")))
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B") && (accountModel.EConsentModel.DocumentType == "Bill" && accountModel.EConsentModel.EConsentFlag == "Y")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S07", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt7EDeliveryArchive = true;
@@ -2163,8 +2622,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     isBkChpt7EDeliveryArchive = false;
                     return lstBrw;
                 }
-                if (isBkChpt7EDeliveryArchive && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L") && (accountModel.EConsentModel.DocumentType == "Bill" && accountModel.EConsentModel.EConsentFlag == "Y")))
+                if (isBkChpt7EDeliveryArchive && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L") && (accountModel.EConsentModel.DocumentType == "Bill" && accountModel.EConsentModel.EConsentFlag == "Y")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S07", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt7EDeliveryArchive = true;
@@ -2174,8 +2633,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     isBkChpt7EDeliveryArchive = false;
                     return lstBrw;
                 }
-                if (isBkChpt7EDeliveryArchive && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.EConsentModel.DocumentType == "Bill" && accountModel.EConsentModel.EConsentFlag == "Y")))
+                if (isBkChpt7EDeliveryArchive && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.EConsentModel.DocumentType == "Bill" && accountModel.EConsentModel.EConsentFlag == "Y")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Copy1primary", FlexField2 = "S07", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt7EDeliveryArchive = true;
@@ -2185,8 +2644,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     isBkChpt7EDeliveryArchive = false;
                     return lstBrw;
                 }
-                if (isBkChpt7EDeliveryArchive && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.EConsentModel.DocumentType == "Bill" && accountModel.EConsentModel.EConsentFlag == "Y")))
+                if (isBkChpt7EDeliveryArchive && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.EConsentModel.DocumentType == "Bill" && accountModel.EConsentModel.EConsentFlag == "Y")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S07", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt7EDeliveryArchive = true;
@@ -2213,7 +2672,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 Logger.Trace("STARTED:  Execute to get bk chpt 13 Primary standard statement.");
-                if ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13" && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"))
+                if ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13" && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt13Primary = true;
@@ -2362,7 +2821,6 @@ namespace CarringtonMortgage.FlexFields_Calculation
             }
             return lstBrw;
         }
- 
         public List<Borrower> GetStdBkChpt13StmtArchiveOnlyPrimary(AccountsModel accountModel)
         {
             bool isStdBkChpt13Stmt = false;
@@ -2375,6 +2833,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Acct_No == accountModel.SupplementalCCFModel.LoanNumber
                     )
                 {
                     //ClearedPrivousPrimaryStandardStatementCondition = true;
@@ -2393,6 +2852,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                       && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
                       && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
                       && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                      && accountModel.MasterFileDataPart_1Model.Rssi_Acct_No == accountModel.SupplementalCCFModel.LoanNumber
                      )
                 {
                     //ClearedPrivousPrimaryStandardStatementCondition = true;
@@ -2409,6 +2869,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Acct_No == accountModel.SupplementalCCFModel.LoanNumber
                    )
                 {
                     //ClearedPrivousPrimaryStandardStatementCondition = true;
@@ -2425,6 +2886,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                    && accountModel.MasterFileDataPart_1Model.Rssi_Acct_No == accountModel.SupplementalCCFModel.LoanNumber
                     )
                 {
                     //ClearedPrivousPrimaryStandardStatementCondition = true;
@@ -2548,7 +3010,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 Logger.Trace("STARTED:  Execute to get bk chpt 7 archive only ny hello Vends standard statement.");
-                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")))
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isStdBkChpt13Stmt = true;
@@ -2559,7 +3021,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     isStdBkChpt13Stmt = false;
                     return lstBrw;
                 }
-                if (isStdBkChpt13Stmt && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")))
+                if (isStdBkChpt13Stmt && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isStdBkChpt13Stmt = true;
@@ -2569,7 +3031,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     isStdBkChpt13Stmt = false;
                     return lstBrw;
                 }
-                if (isStdBkChpt13Stmt && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")))
+                if (isStdBkChpt13Stmt && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isStdBkChpt13Stmt = true;
@@ -2579,7 +3041,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     isStdBkChpt13Stmt = false;
                     return lstBrw;
                 }
-                if (isStdBkChpt13Stmt && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")))
+                if (isStdBkChpt13Stmt && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isStdBkChpt13Stmt = true;
@@ -2611,7 +3073,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 Logger.Trace("STARTED:  Execute to get bk chpt 7 archive only ny hello Vends standard statement.");
-                if (isStdBkChpt13Stmt && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")))
+                if (isStdBkChpt13Stmt && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isStdBkChpt13Stmt = true;
@@ -2622,7 +3084,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     isStdBkChpt13Stmt = false;
                     return lstBrw;
                 }
-                if (isStdBkChpt13Stmt && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")))
+                if (isStdBkChpt13Stmt && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isStdBkChpt13Stmt = true;
@@ -2632,7 +3094,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     isStdBkChpt13Stmt = false;
                     return lstBrw;
                 }
-                if (isStdBkChpt13Stmt && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")))
+                if (isStdBkChpt13Stmt && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isStdBkChpt13Stmt = true;
@@ -2642,7 +3104,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     isStdBkChpt13Stmt = false;
                     return lstBrw;
                 }
-                if (isStdBkChpt13Stmt && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")))
+                if (isStdBkChpt13Stmt && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "Copy1Vend", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isStdBkChpt13Stmt = true;
@@ -2676,7 +3138,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 Logger.Trace("STARTED:  Execute to get bk chpt 7 archive only ny hello Vends standard statement.");
-                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")))
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt13ArchiveOnlyNyDvl = true;
@@ -2687,7 +3149,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     isBkChpt13ArchiveOnlyNyDvl = false;
                     return lstBrw;
                 }
-                if (isBkChpt13ArchiveOnlyNyDvl && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")))
+                if (isBkChpt13ArchiveOnlyNyDvl && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt13ArchiveOnlyNyDvl = true;
@@ -2697,7 +3159,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     isBkChpt13ArchiveOnlyNyDvl = false;
                     return lstBrw;
                 }
-                if (isBkChpt13ArchiveOnlyNyDvl && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")))
+                if (isBkChpt13ArchiveOnlyNyDvl && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Copy1primary", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt13ArchiveOnlyNyDvl = true;
@@ -2707,7 +3169,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     isBkChpt13ArchiveOnlyNyDvl = false;
                     return lstBrw;
                 }
-                if (isBkChpt13ArchiveOnlyNyDvl && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")))
+                if (isBkChpt13ArchiveOnlyNyDvl && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt13ArchiveOnlyNyDvl = true;
@@ -2736,7 +3198,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 Logger.Trace("STARTED:  Execute to get bk chpt 7 archive only ny hello Vends standard statement.");
-                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")))
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt13NyAndHelloLetter = true;
@@ -2747,7 +3209,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     isBkChpt13NyAndHelloLetter = false;
                     return lstBrw;
                 }
-                if (isBkChpt13NyAndHelloLetter && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")))
+                if (isBkChpt13NyAndHelloLetter && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt13NyAndHelloLetter = true;
@@ -2757,7 +3219,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     isBkChpt13NyAndHelloLetter = false;
                     return lstBrw;
                 }
-                if (isBkChpt13NyAndHelloLetter && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")))
+                if (isBkChpt13NyAndHelloLetter && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Copy1primary", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt13NyAndHelloLetter = true;
@@ -2767,7 +3229,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     isBkChpt13NyAndHelloLetter = false;
                     return lstBrw;
                 }
-                if (isBkChpt13NyAndHelloLetter && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")))
+                if (isBkChpt13NyAndHelloLetter && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt13NyAndHelloLetter = true;
@@ -2795,7 +3257,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 Logger.Trace("STARTED:  Execute to get bk chpt 7 archive only ny hello Vends standard statement.");
-                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")))
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt13NyAndHello = true;
@@ -2806,7 +3268,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     isBkChpt13NyAndHello = false;
                     return lstBrw;
                 }
-                if (isBkChpt13NyAndHello && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")))
+                if (isBkChpt13NyAndHello && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt13NyAndHello = true;
@@ -2816,7 +3278,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     isBkChpt13NyAndHello = false;
                     return lstBrw;
                 }
-                if (isBkChpt13NyAndHello && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")))
+                if (isBkChpt13NyAndHello && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Copy1primary", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt13NyAndHello = true;
@@ -2826,7 +3288,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     isBkChpt13NyAndHello = false;
                     return lstBrw;
                 }
-                if (isBkChpt13NyAndHello && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")))
+                if (isBkChpt13NyAndHello && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt13NyAndHello = true;
@@ -2854,7 +3316,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 Logger.Trace("STARTED:  Execute to get bk chpt 7 archive only ny hello Vends standard statement.");
-                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")))
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt13NyAndDvlLetter = true;
@@ -2865,7 +3327,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     isBkChpt13NyAndDvlLetter = false;
                     return lstBrw;
                 }
-                if (isBkChpt13NyAndDvlLetter && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")))
+                if (isBkChpt13NyAndDvlLetter && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt13NyAndDvlLetter = true;
@@ -2875,7 +3337,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     isBkChpt13NyAndDvlLetter = false;
                     return lstBrw;
                 }
-                if (isBkChpt13NyAndDvlLetter && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")))
+                if (isBkChpt13NyAndDvlLetter && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Copy1primary", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt13NyAndDvlLetter = true;
@@ -2885,7 +3347,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     isBkChpt13NyAndDvlLetter = false;
                     return lstBrw;
                 }
-                if (isBkChpt13NyAndDvlLetter && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")))
+                if (isBkChpt13NyAndDvlLetter && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")) && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     isBkChpt13NyAndDvlLetter = true;
@@ -2916,7 +3378,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 Logger.Trace("STARTED:  Execute to get bk chpt 7 archive only ny hello Vends standard statement.");
-                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B") && (accountModel.EConsentModel.DocumentType == "Bill" && accountModel.EConsentModel.EConsentFlag == "Y")))
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B") && (accountModel.EConsentModel.DocumentType == "Bill" && accountModel.EConsentModel.EConsentFlag == "Y")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "Primary", FlexField2 = "S13", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
@@ -2941,7 +3403,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 Logger.Trace("STARTED:  Execute to get bk chpt 7 archive only ny hello Vends standard statement.");
-                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L") && (accountModel.EConsentModel.DocumentType == "Bill" && accountModel.EConsentModel.EConsentFlag == "Y")))
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L") && (accountModel.EConsentModel.DocumentType == "Bill" && accountModel.EConsentModel.EConsentFlag == "Y")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "VEND", FlexField2 = "S13", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
@@ -2967,7 +3429,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 Logger.Trace("STARTED:  Execute to get bk chpt 7 archive only ny hello Vends standard statement.");
-                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.EConsentModel.DocumentType == "Bill" && accountModel.EConsentModel.EConsentFlag == "Y")))
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.EConsentModel.DocumentType == "Bill" && accountModel.EConsentModel.EConsentFlag == "Y")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "Copy1primary", FlexField2 = "S13", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
@@ -2994,7 +3456,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 Logger.Trace("STARTED:  Execute to get bk chpt 7 archive only ny hello Vends standard statement.");
-                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.EConsentModel.DocumentType == "Bill" && accountModel.EConsentModel.EConsentFlag == "Y")))
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.EConsentModel.DocumentType == "Bill" && accountModel.EConsentModel.EConsentFlag == "Y")))
                 {
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
@@ -3020,8 +3482,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 Logger.Trace("STARTED:  Execute to get Option Arm Primary standard statement.");
-                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
               || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))))
                 {
                     ClearedPrivousOptionArmPrimaryStandardStatementCondition = true;
@@ -3033,8 +3495,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     lstBrw = GetOptionArmPrimaryForeignStandardStatement(accountModel);
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmPrimaryStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmPrimaryStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
               || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A"))
 
                 {
@@ -3046,8 +3508,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmPrimaryStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmPrimaryStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmPrimaryStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A"))
 
                 {
@@ -3059,8 +3521,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmPrimaryStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmPrimaryStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmPrimaryStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
               || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A"))
 
                 {
@@ -3072,8 +3534,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmPrimaryStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmPrimaryStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmPrimaryStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
              || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A"))
 
                 {
@@ -3085,8 +3547,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmPrimaryStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmPrimaryStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmPrimaryStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
              || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A"))
 
                 {
@@ -3098,8 +3560,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmPrimaryStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmPrimaryStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmPrimaryStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
              || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A"))
 
                 {
@@ -3111,8 +3573,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmPrimaryStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmPrimaryStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmPrimaryStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
              || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A"))
 
                 {
@@ -3124,8 +3586,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmPrimaryStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmPrimaryStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmPrimaryStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
              || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A"))
 
                 {
@@ -3137,8 +3599,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmPrimaryStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmPrimaryStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmPrimaryStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
              || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A"))
 
                 {
@@ -3150,8 +3612,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmPrimaryStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmPrimaryStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmPrimaryStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
              || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A"))
 
                 {
@@ -3182,8 +3644,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 Logger.Trace("STARTED:  Execute to get Option Arm Primary standard statement.");
-                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"))
                 {
                     ClearedPrivousOptionArmPrimaryForeignStandardStatementCondition = true;
@@ -3195,8 +3657,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     lstBrw = GetOptionArmPEDeliveryArchiveCopy1StandardStatement(accountModel);
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmPrimaryForeignStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmPrimaryForeignStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
               || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"))
 
                 {
@@ -3208,8 +3670,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmPrimaryForeignStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmPrimaryForeignStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmPrimaryForeignStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"))
 
                 {
@@ -3221,8 +3683,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmPrimaryForeignStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmPrimaryForeignStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmPrimaryForeignStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
               || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"))
 
                 {
@@ -3234,8 +3696,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmPrimaryForeignStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmPrimaryForeignStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmPrimaryForeignStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
              || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"))
 
                 {
@@ -3247,8 +3709,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmPrimaryForeignStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmPrimaryForeignStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmPrimaryForeignStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
              || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"))
 
                 {
@@ -3260,8 +3722,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmPrimaryForeignStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmPrimaryForeignStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmPrimaryForeignStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
              || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"))
 
                 {
@@ -3273,8 +3735,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmPrimaryForeignStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmPrimaryForeignStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmPrimaryForeignStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
              || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"))
 
                 {
@@ -3286,8 +3748,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmPrimaryForeignStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmPrimaryForeignStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmPrimaryForeignStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
              || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"))
 
                 {
@@ -3299,8 +3761,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmPrimaryForeignStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmPrimaryForeignStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmPrimaryForeignStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
              || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"))
 
                 {
@@ -3312,8 +3774,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmPrimaryForeignStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmPrimaryForeignStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmPrimaryForeignStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
              || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"))
 
                 {
@@ -3344,8 +3806,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 Logger.Trace("STARTED:  Execute to get Option Arm Primary standard statement.");
-                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.EConsentModel.DocumentType == "Bill" && accountModel.EConsentModel.EConsentFlag == "Y"))
                 {
                     ClearedPrivousOptionArmPEDeliveryArchiveCopy1StandardStatementCondition = true;
@@ -3357,8 +3819,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     lstBrw = GetOptionArmArchiveOnlyStandardStatement(accountModel);
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmPEDeliveryArchiveCopy1StandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmPEDeliveryArchiveCopy1StandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
               || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A") && (accountModel.EConsentModel.DocumentType == "Bill" && accountModel.EConsentModel.EConsentFlag == "Y"))
 
                 {
@@ -3370,8 +3832,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmPEDeliveryArchiveCopy1StandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmPEDeliveryArchiveCopy1StandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmPEDeliveryArchiveCopy1StandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A") && (accountModel.EConsentModel.DocumentType == "Bill" && accountModel.EConsentModel.EConsentFlag == "Y"))
 
                 {
@@ -3383,8 +3845,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmPEDeliveryArchiveCopy1StandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmPEDeliveryArchiveCopy1StandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmPEDeliveryArchiveCopy1StandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
               || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A") && (accountModel.EConsentModel.DocumentType == "Bill" && accountModel.EConsentModel.EConsentFlag == "Y"))
 
                 {
@@ -3396,8 +3858,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmPEDeliveryArchiveCopy1StandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmPEDeliveryArchiveCopy1StandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmPEDeliveryArchiveCopy1StandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
              || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A") && (accountModel.EConsentModel.DocumentType == "Bill" && accountModel.EConsentModel.EConsentFlag == "Y"))
 
                 {
@@ -3409,8 +3871,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmPEDeliveryArchiveCopy1StandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmPEDeliveryArchiveCopy1StandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmPEDeliveryArchiveCopy1StandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
              || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A") && (accountModel.EConsentModel.DocumentType == "Bill" && accountModel.EConsentModel.EConsentFlag == "Y"))
 
                 {
@@ -3422,8 +3884,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmPEDeliveryArchiveCopy1StandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmPEDeliveryArchiveCopy1StandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmPEDeliveryArchiveCopy1StandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
              || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A") && (accountModel.EConsentModel.DocumentType == "Bill" && accountModel.EConsentModel.EConsentFlag == "Y"))
 
                 {
@@ -3435,8 +3897,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmPEDeliveryArchiveCopy1StandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmPEDeliveryArchiveCopy1StandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmPEDeliveryArchiveCopy1StandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
              || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A") && (accountModel.EConsentModel.DocumentType == "Bill" && accountModel.EConsentModel.EConsentFlag == "Y"))
 
                 {
@@ -3448,8 +3910,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmPEDeliveryArchiveCopy1StandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmPEDeliveryArchiveCopy1StandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmPEDeliveryArchiveCopy1StandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
              || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A") && (accountModel.EConsentModel.DocumentType == "Bill" && accountModel.EConsentModel.EConsentFlag == "Y"))
 
                 {
@@ -3461,8 +3923,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmPEDeliveryArchiveCopy1StandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmPEDeliveryArchiveCopy1StandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmPEDeliveryArchiveCopy1StandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
              || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A") && (accountModel.EConsentModel.DocumentType == "Bill" && accountModel.EConsentModel.EConsentFlag == "Y"))
 
                 {
@@ -3474,8 +3936,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmPEDeliveryArchiveCopy1StandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmPEDeliveryArchiveCopy1StandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmPEDeliveryArchiveCopy1StandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
              || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A") && (accountModel.EConsentModel.DocumentType == "Bill" && accountModel.EConsentModel.EConsentFlag == "Y"))
 
                 {
@@ -3509,8 +3971,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 Logger.Trace("STARTED:  Execute to get Option Arm Primary standard statement.");
                 //  { If RSSI-B - CHAP = 7,11 and(FBR - B - REAFFIRM - DT <> 00 / 00 / 00) and RSSI-ML - ALT - TYP - ID = ‘O’ or RSSI-B - CHAP <> 7, 11, 12 or 13 and RSSI-ML - ALT - TYPE - ID = 'O' or RSSI-USR - 93 <> 7 or 11 and RSSI-ML - ALT - TYP - ID = ‘O’}
                 // and RSSI-PRINT - STMT = H
-                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
                 {
                     ClearedPrivousOptionArmArchiveOnlyStandardStatementCondition = true;
@@ -3522,8 +3984,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     lstBrw = GetOptionArmArchiveOnlyNyStandardStatement(accountModel);
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmArchiveOnlyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmArchiveOnlyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
               || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
 
                 {
@@ -3535,8 +3997,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmArchiveOnlyStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmArchiveOnlyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmArchiveOnlyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
 
                 {
@@ -3548,8 +4010,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmArchiveOnlyStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmArchiveOnlyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmArchiveOnlyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
               || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
 
                 {
@@ -3561,8 +4023,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmArchiveOnlyStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmArchiveOnlyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmArchiveOnlyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
              || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
 
                 {
@@ -3574,8 +4036,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmArchiveOnlyStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmArchiveOnlyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmArchiveOnlyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
              || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
 
                 {
@@ -3587,8 +4049,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmArchiveOnlyStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmArchiveOnlyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmArchiveOnlyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
              || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
 
                 {
@@ -3600,8 +4062,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmArchiveOnlyStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmArchiveOnlyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmArchiveOnlyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
              || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
 
                 {
@@ -3613,8 +4075,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmArchiveOnlyStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmArchiveOnlyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmArchiveOnlyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
              || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
 
                 {
@@ -3626,8 +4088,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmArchiveOnlyStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmArchiveOnlyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmArchiveOnlyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
              || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
 
                 {
@@ -3639,8 +4101,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmArchiveOnlyStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmArchiveOnlyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmArchiveOnlyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
              || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
 
                 {
@@ -3672,9 +4134,9 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 Logger.Trace("STARTED:  Execute to get Option Arm Primary standard statement.");
-                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-             || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+             || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.MasterFileDataPart_1Model.Rssi_Acct_No == accountModel.SupplementalCCFModel.LoanNumber &&  accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
                 {
                     ClearedPrivousOptionArmArchiveOnlyNyStandardStatementCondition = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
@@ -3685,9 +4147,9 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     lstBrw = GetOptionArmArchiveOnlyNyHelloStandardStatement(accountModel);
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmArchiveOnlyNyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-              || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (ClearedPrivousOptionArmArchiveOnlyNyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+              || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_Acct_No == accountModel.SupplementalCCFModel.LoanNumber && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
 
                 {
                     ClearedPrivousOptionArmArchiveOnlyNyStandardStatementCondition = true;
@@ -3698,9 +4160,9 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmArchiveOnlyNyStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmArchiveOnlyNyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (ClearedPrivousOptionArmArchiveOnlyNyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_Acct_No == accountModel.SupplementalCCFModel.LoanNumber && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
 
                 {
                     ClearedPrivousOptionArmArchiveOnlyNyStandardStatementCondition = true;
@@ -3711,9 +4173,9 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmArchiveOnlyNyStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmArchiveOnlyNyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-              || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (ClearedPrivousOptionArmArchiveOnlyNyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+              || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_Acct_No == accountModel.SupplementalCCFModel.LoanNumber && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
 
                 {
                     ClearedPrivousOptionArmArchiveOnlyNyStandardStatementCondition = true;
@@ -3724,9 +4186,9 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmArchiveOnlyNyStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmArchiveOnlyNyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-             || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (ClearedPrivousOptionArmArchiveOnlyNyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+             || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_Acct_No == accountModel.SupplementalCCFModel.LoanNumber && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
 
                 {
                     ClearedPrivousOptionArmArchiveOnlyNyStandardStatementCondition = true;
@@ -3737,9 +4199,9 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmArchiveOnlyNyStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmArchiveOnlyNyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-             || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (ClearedPrivousOptionArmArchiveOnlyNyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+             || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_Acct_No == accountModel.SupplementalCCFModel.LoanNumber && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
 
                 {
                     ClearedPrivousOptionArmArchiveOnlyNyStandardStatementCondition = true;
@@ -3750,9 +4212,9 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmArchiveOnlyNyStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmArchiveOnlyNyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-             || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (ClearedPrivousOptionArmArchiveOnlyNyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+             || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_Acct_No == accountModel.SupplementalCCFModel.LoanNumber && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
 
                 {
                     ClearedPrivousOptionArmArchiveOnlyNyStandardStatementCondition = true;
@@ -3763,9 +4225,9 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmArchiveOnlyNyStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmArchiveOnlyNyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-             || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (ClearedPrivousOptionArmArchiveOnlyNyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+             || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_Acct_No == accountModel.SupplementalCCFModel.LoanNumber && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
 
                 {
                     ClearedPrivousOptionArmArchiveOnlyNyStandardStatementCondition = true;
@@ -3776,9 +4238,9 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmArchiveOnlyNyStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmArchiveOnlyNyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-             || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (ClearedPrivousOptionArmArchiveOnlyNyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+             || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_Acct_No == accountModel.SupplementalCCFModel.LoanNumber && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
 
                 {
                     ClearedPrivousOptionArmArchiveOnlyNyStandardStatementCondition = true;
@@ -3789,9 +4251,9 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmArchiveOnlyNyStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmArchiveOnlyNyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-             || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (ClearedPrivousOptionArmArchiveOnlyNyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+             || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_Acct_No == accountModel.SupplementalCCFModel.LoanNumber && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
 
                 {
                     ClearedPrivousOptionArmArchiveOnlyNyStandardStatementCondition = true;
@@ -3802,9 +4264,9 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmArchiveOnlyNyStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmArchiveOnlyNyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-             || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
+                if (ClearedPrivousOptionArmArchiveOnlyNyStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+             || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A") && (accountModel.MasterFileDataPart_1Model.Rssi_Acct_No == accountModel.SupplementalCCFModel.LoanNumber && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
 
                 {
                     ClearedPrivousOptionArmArchiveOnlyNyStandardStatementCondition = true;
@@ -3837,8 +4299,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 Logger.Trace("STARTED:  Execute to get Option Arm Primary standard statement.");
                 // { If RSSI-B - CHAP = 7,11 and(FBR - B - REAFFIRM - DT <> 00 / 00 / 00) and RSSI-ML - ALT - TYP - ID = ‘O’ or RSSI-B - CHAP <> 7, 11, 12 or 13 and RSSI-ML - ALT - TYPE - ID = 'O' or RSSI-USR - 93 <> 7 or 11 and RSSI-ML - ALT - TYP - ID = ‘O’}
                 // and If RSSI - PRINT - STMT = H and RSSI-STATE = 33 and RSSI-LIP - LA - DATE = 0 and RSSI-FIRST - STMT - IND = Y and when field 8 on the “Proposed Supplemental CCF Layout_050820” = HELLO.
-                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")))
                 {
                     ClearedPrivousOptionArmArchiveOnlyNyHelloStandardStatementCondition = true;
@@ -3850,8 +4312,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     lstBrw = GetBkChpt7ArchiveOnlyNyCopy1HelloPrimaryStandardStatement(accountModel);
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmArchiveOnlyNyHelloStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmArchiveOnlyNyHelloStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
               || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")))
 
                 {
@@ -3863,8 +4325,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmArchiveOnlyNyHelloStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmArchiveOnlyNyHelloStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmArchiveOnlyNyHelloStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")))
 
                 {
@@ -3876,8 +4338,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmArchiveOnlyNyHelloStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmArchiveOnlyNyHelloStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmArchiveOnlyNyHelloStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
               || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")))
 
                 {
@@ -3889,8 +4351,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmArchiveOnlyNyHelloStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmArchiveOnlyNyHelloStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmArchiveOnlyNyHelloStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
              || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")))
 
                 {
@@ -3902,8 +4364,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmArchiveOnlyNyHelloStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmArchiveOnlyNyHelloStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmArchiveOnlyNyHelloStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
              || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")))
 
                 {
@@ -3915,8 +4377,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmArchiveOnlyNyHelloStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmArchiveOnlyNyHelloStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmArchiveOnlyNyHelloStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
              || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")))
 
                 {
@@ -3928,8 +4390,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmArchiveOnlyNyHelloStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmArchiveOnlyNyHelloStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmArchiveOnlyNyHelloStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
              || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")))
 
                 {
@@ -3941,8 +4403,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmArchiveOnlyNyHelloStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmArchiveOnlyNyHelloStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmArchiveOnlyNyHelloStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
              || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")))
 
                 {
@@ -3954,8 +4416,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmArchiveOnlyNyHelloStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmArchiveOnlyNyHelloStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmArchiveOnlyNyHelloStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
              || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")))
 
                 {
@@ -3967,8 +4429,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     ClearedPrivousOptionArmArchiveOnlyNyHelloStandardStatementCondition = false;
                     return lstBrw;
                 }
-                if (ClearedPrivousOptionArmArchiveOnlyNyHelloStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
-               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))
+                if (ClearedPrivousOptionArmArchiveOnlyNyHelloStandardStatementCondition && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
              || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 != "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 != "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "0"))) && ((accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")))
 
                 {
@@ -4001,8 +4463,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 Logger.Trace("STARTED:  Execute to get bk chpt 7 archive only ny copy 1 hello primary standard statement.");
-                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
-|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "0"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O") && (accountModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != "00/00/00"))
+|| ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7" || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11" && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))) && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y") && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H") && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33") && (accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0") && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     // ClearedPrivousBkChpt7PrimaryStandardStatementCondition = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "Copy1primary", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
@@ -6052,8 +6514,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
                      && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
-                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")
-                //&& "The Loannumber Is Not On PM-400 - 661 File Or The Proposed Supplemental CCF Layout_050820" == "")
+                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y" 
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Acct_No == accountModel.SupplementalCCFModel.LoanNumber)
                 {
                     ClearedPreviousStatement = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
@@ -6076,8 +6538,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
                      && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
-                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")
-                //&& "The Loannumber Is Not On PM-400 - 661 File Or The Proposed Supplemental CCF Layout_050820" == "")
+                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y" && accountModel.MasterFileDataPart_1Model.Rssi_Acct_No == accountModel.SupplementalCCFModel.LoanNumber)
                 {
                     ClearedPreviousStatement = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
@@ -6101,8 +6562,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
              && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
              && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
              && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
-             && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")
-                //&& "The Loannumber Is Not On PM-400 - 661 File Or The Proposed Supplemental CCF Layout_050820" == "")
+             && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y" && accountModel.MasterFileDataPart_1Model.Rssi_Acct_No == accountModel.SupplementalCCFModel.LoanNumber)
                 {
                     ClearedPreviousStatement = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
@@ -6126,8 +6586,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
              && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
              && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
              && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
-             && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")
-                //&& "The Loannumber Is Not On PM-400 - 661 File Or The Proposed Supplemental CCF Layout_050820" == "")
+             && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y" && accountModel.MasterFileDataPart_1Model.Rssi_Acct_No == accountModel.SupplementalCCFModel.LoanNumber)
                 {
                     ClearedPreviousStatement = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
@@ -7190,8 +7649,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
                      && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
-                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")
-                //&& '"LoanNumber" is not on PM-400-661 file or the “Proposed Supplemental CCF Layout_050820”')
+                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y" && accountModel.MasterFileDataPart_1Model.Rssi_Acct_No == accountModel.SupplementalCCFModel.LoanNumber)
                 {
                     ClearedPreviousStatement = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
@@ -7211,8 +7669,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
                      && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
-                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")
-                //&& '"LoanNumber" is not on PM-400-661 file or the “Proposed Supplemental CCF Layout_050820”')
+                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y" && accountModel.MasterFileDataPart_1Model.Rssi_Acct_No == accountModel.SupplementalCCFModel.LoanNumber)
                 {
                     ClearedPreviousStatement = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
@@ -7232,8 +7689,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
                      && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
-                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")
-                //&& '"LoanNumber" is not on PM-400-661 file or the “Proposed Supplemental CCF Layout_050820”')
+                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y" && accountModel.MasterFileDataPart_1Model.Rssi_Acct_No == accountModel.SupplementalCCFModel.LoanNumber)
                 {
                     ClearedPreviousStatement = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
@@ -7253,8 +7709,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
                      && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
-                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")
-                //&& '"LoanNumber" is not on PM-400-661 file or the “Proposed Supplemental CCF Layout_050820”')
+                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y" && accountModel.MasterFileDataPart_1Model.Rssi_Acct_No == accountModel.SupplementalCCFModel.LoanNumber)
                 {
                     ClearedPreviousStatement = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });

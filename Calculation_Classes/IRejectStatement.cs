@@ -1,6 +1,6 @@
 ﻿using CarringtonMortgage.Models.InputCopyBookModels;
 
-namespace CarritonMortgage.Calculation_Classes
+namespace CarringtonMortgage.Calculation_Classes
 {
     public interface IRejectStatement
     {

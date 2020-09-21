@@ -2,7 +2,7 @@
 using CarringtonMortgage.Models.InputCopyBookModels;
 using System;
 
-namespace CarritonMortgage.Calculation_Classes
+namespace CarringtonMortgage.Calculation_Classes
 {
     public class RejectStatement : IRejectStatement
     {
