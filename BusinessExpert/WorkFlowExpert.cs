@@ -1,17 +1,11 @@
-﻿using Carrington_Service.Helpers;
-using Carrington_Service.Infrastructure;
+﻿using Carrington_Service.Infrastructure;
 using Carrington_Service.Interfaces;
-using Carrington_Service.Services;
-using Microsoft.VisualBasic.Logging;
-using CarringtonMortgage.Infrastructure;
 using CarringtonMortgage.Models;
 using CarringtonMortgage.Models.InputCopyBookModels;
 using CarringtonMortgage.Models.InputCopyBookModels.MortgageLoanBillingModels;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -25,12 +19,11 @@ namespace Carrington_Service.BusinessExpert
     {
         #region Class Members Definitions & Constructor 
         public ILogger Logger;
-        private readonly IFileIOService FileIOService;
         private readonly IConfigHelper ConfigHelper;
         private readonly IAgentApi ApiAgent;
         private string pmFilePath;
-        private string supplimentFilePath;
-        private string EConsentFilePath;
+        private static string supplimentFilePath;
+        private static string EConsentFilePath;
         public FileStream InputFileStream;
         public IEmailService EmailService;
         MortgageLoanBillingFileModel MortgageLoanBillingFile = new MortgageLoanBillingFileModel();
@@ -40,6 +33,9 @@ namespace Carrington_Service.BusinessExpert
         private readonly ICRL30FileGeneration CRL30FileGeneration;
         /// <summary>The NCP10 version.</summary>
         private const string Ncp10Version = "03";
+        public static List<DetModel> detModels = new List<DetModel>();
+        public static List<TransModel> transModels = new List<TransModel>();
+        public static List<EConsentModel> eConsentModels = new List<EConsentModel>();
 
         /// <summary>The delimiter.</summary>
         private const string Delimiter = "|";
@@ -50,6 +46,9 @@ namespace Carrington_Service.BusinessExpert
             ApiAgent = apiAgent;
             EmailService = emailService;
             CRL30FileGeneration = cRL30FileGeneration;
+            SetFilePath();
+            ReadCMSBillInputFileDetRecord(supplimentFilePath);
+            ReadEConsentRecord(EConsentFilePath);
             //configHelper.Model.DatabaseSetting = DbService.GetDataBaseSettings();
         }
 
@@ -79,21 +78,10 @@ namespace Carrington_Service.BusinessExpert
                 string filelocation = pathFinal;
                 pmFilePath = inputFile;
                 bool fileReadingProcess = false;
-                string[] allFiles = Directory.GetFiles(ConfigHelper.Model.InputFilePathLocation_Local);
-                foreach (string file in allFiles)
-                {
-                    if (file.Contains("CMS_BILLINPUT"))
-                    {
-                        supplimentFilePath = file;
-                    }
-                    else if (file.Contains("Carrington_Econsent"))
-                    {
-                        EConsentFilePath = file;
-                    }
-                }
+                
                 if (DateTime.Now.Hour >= Convert.ToInt32(ConfigHelper.Model.WatcherStartTime) && DateTime.Now.Hour < Convert.ToInt32(ConfigHelper.Model.WatcherEndTime))
                 {
-                    if (Convert.ToString(DateTime.Now.DayOfWeek) != "Monday")
+                    //if (Convert.ToString(DateTime.Now.DayOfWeek) != "Monday")
                     {
                         bool isFileMissing = false;
                         if (pmFilePath == null)
@@ -119,8 +107,9 @@ namespace Carrington_Service.BusinessExpert
 
                         if (!isFileMissing)
                         {
-                            fileReadingProcess = AccountMatchingProcess(pmFilePath, supplimentFilePath, EConsentFilePath);
-                            if (fileReadingProcess && MortgageLoanBillingFile.AccountModelList.Count > 0)
+
+                            ReadPMFile(pmFilePath);
+                            if (MortgageLoanBillingFile.AccountModelList.Count > 0)
                             {
                                 CRL30FileGeneration.GenerateCRL30File(MortgageLoanBillingFile, inputFile);
                             }
@@ -130,22 +119,22 @@ namespace Carrington_Service.BusinessExpert
                             }
                         }
                     }
-                    else
-                    {
-                        Logger.Trace("SUCCESS: Outside Time Frame Window File Found :-");
-                        if (pmFilePath != null)
-                        {
-                            Logger.Trace("PM File Found at Time =  " + DateTime.Now.ToString());
-                        }
-                        if (supplimentFilePath != null)
-                        {
-                            Logger.Trace("SUCCESS: Suppliment File Found at Time =  " + DateTime.Now.ToString());
-                        }
-                        if (EConsentFilePath != null)
-                        {
-                            Logger.Trace("SUCCESS: Econsent File Found at Time =  " + DateTime.Now.ToString());
-                        }
-                    }
+                    //else
+                    //{
+                    //    Logger.Trace("SUCCESS: Outside Time Frame Window File Found :-");
+                    //    if (pmFilePath != null)
+                    //    {
+                    //        Logger.Trace("PM File Found at Time =  " + DateTime.Now.ToString());
+                    //    }
+                    //    if (supplimentFilePath != null)
+                    //    {
+                    //        Logger.Trace("SUCCESS: Suppliment File Found at Time =  " + DateTime.Now.ToString());
+                    //    }
+                    //    if (EConsentFilePath != null)
+                    //    {
+                    //        Logger.Trace("SUCCESS: Econsent File Found at Time =  " + DateTime.Now.ToString());
+                    //    }
+                    //}
                 }
                 else
                 {
@@ -179,104 +168,6 @@ namespace Carrington_Service.BusinessExpert
             {
                 Logger.Error(ex, "File Reading Process Failed :");
                 throw new FileNotFoundException($"File Reading Process Failed :");
-            }
-        }
-        public bool AccountMatchingProcess(string pmFilePath, string supplimentFilePath, string EConsentFilePath)
-        {
-            Logger.Trace("STARTED: Account Matching Process Started");
-            try
-            {
-                ReadPMFile(pmFilePath);
-                (List<DetModel> detData, List<TransModel> transData) = ReadCMSBillInputFileDetRecord(supplimentFilePath);
-                List<EConsentModel> EconsentData = ReadEConsentRecord(EConsentFilePath);
-
-                if (MortgageLoanBillingFile != null)
-                {
-                    if (transData.Count != 0 || detData.Count != 0)
-                    {
-                        if (EconsentData.Count != 0)
-                        {
-                            if (MortgageLoanBillingFile.AccountModelList != null)
-                            {
-                                bool anyAccountFound = false;
-                                int countAccount = 0;
-                                foreach (AccountsModel accountDetails in MortgageLoanBillingFile.AccountModelList)
-                                {
-                                    string accountToMatch = accountDetails.MasterFileDataPart_1Model.Rssi_Acct_No;
-                                    bool isAccountMatched = false;
-                                    if (detData.Any(df => df.LoanNumber == accountToMatch))
-                                    {
-                                        if (EconsentData.Any(df => df.LoanNumber == accountToMatch))
-                                        {
-                                            isAccountMatched = true;
-                                            countAccount++;
-                                            if (!anyAccountFound)
-                                            {
-                                                anyAccountFound = true;
-                                            }
-                                        }
-                                    }
-                                    else if (transData.Any(df => df.LoanNumber == accountToMatch))
-                                    {
-                                        if (EconsentData.Any(df => df.LoanNumber == accountToMatch))
-                                        {
-                                            isAccountMatched = true;
-                                            countAccount++;
-                                            if (!anyAccountFound)
-                                            {
-                                                anyAccountFound = true;
-                                            }
-                                        }
-                                    }
-                                    if (isAccountMatched)
-                                    {
-                                        accountDetails.IsMatched = true;
-                                    }
-                                }
-                                if (anyAccountFound)
-                                {
-                                    Logger.Trace("Account Matching Process: Successfull Total Account Found = " + countAccount + ".");
-                                }
-                                else
-                                {
-                                    Logger.Trace("Account Matching Process: Failed No Matched Account Found in PM, Econsent and Suppliment File !!.");
-                                    //   EmailService.SendNotification("Failed No Matched Account Found in PM, Econsent and Suppliment File");
-                                    Logger.Trace("Email Notification: Failed Account Matching Notification Send");
-                                }
-                            }
-                            else
-                            {
-                                Logger.Trace("Account Matching Process: Failed No Account Exists in PM File !!.");
-                                //   EmailService.SendNotification("Failed No Account Exists in PM File");
-                            }
-                        }
-                        else
-                        {
-                            Logger.Trace("Account Matching Process: Failed No Data Exists in eConsent File !!.");
-                            //   EmailService.SendNotification("Failed No Account Exists in eConsent File");
-                        }
-                    }
-                    else
-                    {
-                        Logger.Trace("Account Matching Process: Failed No Data Found in Suppliment File !!.");
-                        //  EmailService.SendNotification("Failed No Data Found in Suppliment File");
-                    }
-
-                }
-                else
-                {
-                    Logger.Trace("Account Matching Process: Failed No Data Found in PM File !!.");
-                    // EmailService.SendNotification("Failed No Data Found in PM File");
-                }
-                Logger.Trace("ENDED: Account Matching Complete");
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, "Error : Account Matching Process Error :");
-                return false;
-                throw new FileNotFoundException($"Account Matching Process Error :");
-
             }
         }
 
@@ -361,7 +252,7 @@ namespace Carrington_Service.BusinessExpert
             {
                 int numOfBytes = 4010;
                 InputFileStream = new System.IO.FileStream(fileNameWithPath, System.IO.FileMode.Open, System.IO.FileAccess.Read, FileShare.ReadWrite);
-                
+
                 byte[] currentByteLine = new byte[numOfBytes];
 
 
@@ -502,15 +393,14 @@ namespace Carrington_Service.BusinessExpert
 
         }
 
-        private (List<DetModel>, List<TransModel>) ReadCMSBillInputFileDetRecord(string path)
+        private void ReadCMSBillInputFileDetRecord(string path)
         {
             Logger.Trace("STARTED: Reading Suppliment File");
             try
             {
                 var fileContents = File.ReadAllLines(path);
                 var splitFileContents = (from f in fileContents select f.Split(',')).ToArray();
-                List<DetModel> detList = new List<DetModel>();
-                List<TransModel> transList = new List<TransModel>();
+
 
                 foreach (var line in splitFileContents)
                 {
@@ -577,7 +467,7 @@ namespace Carrington_Service.BusinessExpert
                             TotalDue = line[56].ToString(),
                             LockBoxAddress = line[57].ToString()
                         };
-                        detList.Add(CmsBillInput.DetRecord);
+                        detModels.Add(CmsBillInput.DetRecord);
                     }
                     if (line[1].ToString() == "TRN")
                     {
@@ -593,28 +483,29 @@ namespace Carrington_Service.BusinessExpert
                             EscrowAmount = line[7].ToString(),
                             LateChargeAmount = line[8].ToString()
                         };
-                        transList.Add(CmsBillInput.TransRecord);
+                        transModels.Add(CmsBillInput.TransRecord);
                     }
 
                 }
                 Logger.Trace("ENDED: Reading Suppliment File");
-                return (detList, transList);
+                //return (detList, transList);
             }
             catch (Exception ex)
             {
                 Logger.Error(ex, "Suppliment File Error");
-                return (null, null);
+                //return (null, null);
             }
         }
 
-        private List<EConsentModel> ReadEConsentRecord(string path)
+        private void ReadEConsentRecord(string path)
         {
+           
             Logger.Trace("STARTED: Reading EConsent File");
             try
             {
                 var fileContents = File.ReadAllLines(path);
                 var splitFileContents = (from f in fileContents select f.Split(',')).ToArray();
-                List<EConsentModel> eConsentList = new List<EConsentModel>();
+
 
                 foreach (var line in splitFileContents)
                 {
@@ -629,15 +520,15 @@ namespace Carrington_Service.BusinessExpert
                         EMailAddress = line[5].ToString(),
                         Filler = line[6].ToString()
                     };
-                    eConsentList.Add(EConsentInput.EConsentRecord);
+                    eConsentModels.Add(EConsentInput.EConsentRecord);
                 }
                 Logger.Trace("ENDED: Reading Econsent File Complete");
-                return eConsentList;
+                // return eConsentList;
             }
             catch (Exception ex)
             {
                 Logger.Error(ex, "Econsent File Reading Error :");
-                return null;
+                //return null;
             }
 
         }
@@ -3496,6 +3387,26 @@ namespace Carrington_Service.BusinessExpert
                 Logger.Error(ex, "Data not at Position " + startPos);
                 return "";
             }
+        }
+
+        /// <summary>
+        /// This will set the path values of Econcent and Suppliment file
+        /// </summary>
+        private void SetFilePath()
+        {
+            string[] allFiles = Directory.GetFiles(ConfigHelper.Model.InputFilePathLocation_Local);
+            foreach (string file in allFiles)
+            {
+                if (file.Contains("CMS_BILLINPUT"))
+                {
+                    supplimentFilePath = file;
+                }
+                else if (file.Contains("Carrington_Econsent"))
+                {
+                    EConsentFilePath = file;
+                }
+            }
+
         }
         #endregion
 
