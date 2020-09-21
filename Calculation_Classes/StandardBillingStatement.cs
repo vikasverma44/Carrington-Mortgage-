@@ -853,9 +853,9 @@ namespace Carrington_Service.Calculation_Classes
             try
             {
                 Logger.Trace("STARTED:  Execute get mailing country.");
-                if (accountsModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y") { mailingCountry = "then RSSI-ALTR-CNTRY"; }
-                else if (accountsModel.MasterFileDataPart2Model.Rssi_Prim_Forgn_Flag == "Y") { mailingCountry = "then RSSI-PRIM-MAIL-COUNTRY"; }
-                else if (accountsModel.MasterFileDataPart2Model.Rssi_Appl_Foreign_Flag == "Y") { mailingCountry = "hen RSSI-APPL-COUNTRY"; }
+                if (accountsModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y") { mailingCountry = accountsModel.ForeignInformationRecordModel.Rssi_Altr_Cntry; }
+                else if (accountsModel.MasterFileDataPart2Model.Rssi_Prim_Forgn_Flag == "Y") { mailingCountry = accountsModel.ForeignInformationRecordModel.Rssi_Prim_Mail_Country; }
+                else if (accountsModel.MasterFileDataPart2Model.Rssi_Appl_Foreign_Flag == "Y") { mailingCountry = accountsModel.ForeignInformationRecordModel.Rssi_Appl_Country; }
                 else { mailingCountry = null; }
                 Logger.Trace("ENDED: Get get mailing mailing country.");
             }
@@ -916,7 +916,7 @@ namespace Carrington_Service.Calculation_Classes
                 if (Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Tot_Draft_Amt_PackedData) > 0 &&
                      Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) > 0)
                 {
-                    autodraftMessage = "then print Autodraft message.";
+                    autodraftMessage = "Autodraft message.";
                 }
                 Logger.Trace("ENDED: Get get auto draft message.");
             }
@@ -936,7 +936,7 @@ namespace Carrington_Service.Calculation_Classes
             try
             {
                 Logger.Trace("STARTED:  Execute get interest rate unit.");
-                if (long.Parse(accountsModel.MasterFileDataPart_1Model.Rssi_Rate_Chg_Date) > 19000000) { interestRateUnit = "(Until RSSI-RATE-CHG-DATE)"; } else { interestRateUnit = null; }
+                if (long.Parse(accountsModel.MasterFileDataPart_1Model.Rssi_Rate_Chg_Date) > 19000000) { interestRateUnit = accountsModel.MasterFileDataPart_1Model.Rssi_Rate_Chg_Date; } else { interestRateUnit = null; }
                 Logger.Trace("ENDED: Get get interest rate unit.");
             }
             catch (Exception ex)
@@ -1000,7 +1000,7 @@ namespace Carrington_Service.Calculation_Classes
             try
             {
                 Logger.Trace("STARTED:  Execute get modification date.");
-                if (long.Parse(accountsModel.MasterFileDataPart_1Model.Rssi_Balloon_Date) > 19000000) { modificationDate = "RSSI-MODIFY-DATE"; }
+                if (long.Parse(accountsModel.MasterFileDataPart_1Model.Rssi_Balloon_Date) > 19000000) { modificationDate = accountsModel.MasterFileDataPart_1Model.Rssi_Modify_Date; }
                 else { modificationDate = "N/A"; }
                 Logger.Trace("Get get modification date.");
             }
