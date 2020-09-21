@@ -3,7 +3,7 @@ using Carrington_Service.Infrastructure;
 using CarringtonMortgage.FlexFields_Calculation;
 using CarringtonMortgage.Helpers;
 using CarringtonMortgage.Models.InputCopyBookModels.MortgageLoanBillingModels;
-using CarritonMortgage.Calculation_Classes;
+using CarringtonMortgage.Calculation_Classes;
 using Common;
 using System;
 using System.IO;
@@ -109,7 +109,7 @@ namespace ODHS_EDelivery.BusinessExpert
 
                     Logger.Info("Creating NCP07 records...");
                     //TODO: Revisit
-                    output.AddLogRecord("CONV", "START", "Carrington_Mortgage + CONVERSION STARTED.");
+                    output.AddLogRecord("CONV", "START", "Carrington_Mortgage + CONVERSION STARTED");
                     output.AddLogRecord("CONV", "INFO", $"LoanBillExtractInfo - FileDate = {mortgageLoanBillingFileModel.InputFileDate}");
                     output.AddLogRecord("CONV", "INFO", $"LoanBillExtractInfo - Institution = {mortgageLoanBillingFileModel.InstitutionRecords.Rssi_Institution_Name}");
                     output.AddLogRecord("CONV", "INFO",
