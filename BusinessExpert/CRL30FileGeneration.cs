@@ -162,13 +162,15 @@ namespace ODHS_EDelivery.BusinessExpert
                         //Assigning Flex fields for Primary borrower
                         var borrowerList = StatementType.GetPrimaryStandardStatement(extractAccount);
 
-                        account.Standard.FlexField1 = borrowerList.FirstOrDefault().FlexField1;
-                        account.Standard.FlexField2 = borrowerList.FirstOrDefault().FlexField2;
-                        account.Standard.FlexField3 = borrowerList.FirstOrDefault().FlexField3;
-                        account.Standard.FlexField4 = borrowerList.FirstOrDefault().FlexField4;
-                        account.Standard.FlexField5 = borrowerList.FirstOrDefault().FlexField5;
-                        account.Standard.FlexField6 = borrowerList.FirstOrDefault().FlexField6;
-
+                        if (borrowerList.Count > 0)
+                        {
+                            account.Standard.FlexField1 = borrowerList.FirstOrDefault().FlexField1;
+                            account.Standard.FlexField2 = borrowerList.FirstOrDefault().FlexField2;
+                            account.Standard.FlexField3 = borrowerList.FirstOrDefault().FlexField3;
+                            account.Standard.FlexField4 = borrowerList.FirstOrDefault().FlexField4;
+                            account.Standard.FlexField5 = borrowerList.FirstOrDefault().FlexField5;
+                            account.Standard.FlexField6 = borrowerList.FirstOrDefault().FlexField6;
+                        }
                        
 
                         account.Standard.SSN = extractAccount.MasterFileDataPart_1Model.Rssi_Primary_Social_Sec;
@@ -194,55 +196,56 @@ namespace ODHS_EDelivery.BusinessExpert
 
                         lineCnt++;
                         line.Clear();
-
-                        //Get Statement based on the Flex fields for account
-                        switch (borrowerList.FirstOrDefault().FlexField2)
+                        if (borrowerList.Count > 0)
                         {
+                            //Get Statement based on the Flex fields for account
+                            switch (borrowerList.FirstOrDefault().FlexField2)
+                            {
 
-                            //For Chapter 7 Option ARM Statement
-                            case "A07":
-                                line = ChapterSevenOptionARMStatement.GetFinalChapterSevenOptionARMStatement(extractAccount);
-                                account.AddCustomerRecord(FormatCustomer.BuildRecord("A07", primaryIndex, line));
-                                break;
+                                //For Chapter 7 Option ARM Statement
+                                case "A07":
+                                    line = ChapterSevenOptionARMStatement.GetFinalChapterSevenOptionARMStatement(extractAccount);
+                                    account.AddCustomerRecord(FormatCustomer.BuildRecord("A07", primaryIndex, line));
+                                    break;
 
-                            //For Chapter 13 Option ARM Statement
-                            case "A13":
-                                line = ChapterThirteenOptionARMStatement.GetFinalChapterThirteenOptionARMStatement(extractAccount);
-                                account.AddCustomerRecord(FormatCustomer.BuildRecord("A13", primaryIndex, line));
-                                break;
+                                //For Chapter 13 Option ARM Statement
+                                case "A13":
+                                    line = ChapterThirteenOptionARMStatement.GetFinalChapterThirteenOptionARMStatement(extractAccount);
+                                    account.AddCustomerRecord(FormatCustomer.BuildRecord("A13", primaryIndex, line));
+                                    break;
 
-                            //For Option ARM Billing  Statement
-                            case "ARM":
-                                line = OptionARMBillingStatement.GetFinalOptionARMBillingStatement(extractAccount);
-                                account.AddCustomerRecord(FormatCustomer.BuildRecord("ARM", primaryIndex, line));
-                                break;
+                                //For Option ARM Billing  Statement
+                                case "ARM":
+                                    line = OptionARMBillingStatement.GetFinalOptionARMBillingStatement(extractAccount);
+                                    account.AddCustomerRecord(FormatCustomer.BuildRecord("ARM", primaryIndex, line));
+                                    break;
 
-                            //For Chapter 7 Billing Statement
-                            case "S07":
-                                line = ChapterSevenBillingStatement.GetFinalChapterSevenBillingStatement(extractAccount);
-                                account.AddCustomerRecord(FormatCustomer.BuildRecord("S07", primaryIndex, line));
-                                break;
+                                //For Chapter 7 Billing Statement
+                                case "S07":
+                                    line = ChapterSevenBillingStatement.GetFinalChapterSevenBillingStatement(extractAccount);
+                                    account.AddCustomerRecord(FormatCustomer.BuildRecord("S07", primaryIndex, line));
+                                    break;
 
-                            //For Chapter 13 Billing Statement
-                            case "S13":
-                                line = ChapterThirteenBillingStatement.GetFinalChapterThirteenBillingStatement(extractAccount);
-                                account.AddCustomerRecord(FormatCustomer.BuildRecord("S13", primaryIndex, line));
-                                break;
+                                //For Chapter 13 Billing Statement
+                                case "S13":
+                                    line = ChapterThirteenBillingStatement.GetFinalChapterThirteenBillingStatement(extractAccount);
+                                    account.AddCustomerRecord(FormatCustomer.BuildRecord("S13", primaryIndex, line));
+                                    break;
 
-                            //For Standard Billing Statement
-                            case "STD":
-                                line = StandardBillingStatement.GetFinalStringStandardBilling(extractAccount);
-                                account.AddCustomerRecord(FormatCustomer.BuildRecord("STD", primaryIndex, line));
-                                break;
+                                //For Standard Billing Statement
+                                case "STD":
+                                    line = StandardBillingStatement.GetFinalStringStandardBilling(extractAccount);
+                                    account.AddCustomerRecord(FormatCustomer.BuildRecord("STD", primaryIndex, line));
+                                    break;
 
-                            default:
-                                break;
+                                default:
+                                    break;
 
+                            }
+
+                            //Removing the primary borrower from the list leaving co borrower details inside
+                            borrowerList.RemoveAt(0);
                         }
-
-                        //Removing the primary borrower from the list leaving co borrower details inside
-                        borrowerList.RemoveAt(0);
-
                         //Check if primary account is rejected or not 
                         var primaryAccountRejected = RejectStatement.IsRejectAccount(extractAccount);
                         if (primaryAccountRejected)
@@ -252,82 +255,83 @@ namespace ODHS_EDelivery.BusinessExpert
                         account.SequenceTransactions();
                         output.AddAccount(account);
                         primaryIndex++;
-
-                        //Add records for Co-Borrower Section 
-                        foreach (var borrower in borrowerList)
+                        if (borrowerList.Count > 0)
                         {
-
-                            if (borrower.DistinctAdditionalRecord)
+                            //Add records for Co-Borrower Section 
+                            foreach (var borrower in borrowerList)
                             {
-                                //Setting FlexFields according to co-borrower conditions
-                                account.Standard.FlexField1 = borrower.FlexField1;
-                                account.Standard.FlexField2 = borrower.FlexField2;
-                                account.Standard.FlexField3 = borrower.FlexField3;
-                                account.Standard.FlexField4 = borrower.FlexField4;
-                                account.Standard.FlexField5 = borrower.FlexField5;
-                                account.Standard.FlexField6 = borrower.FlexField6;
 
-                                switch (borrower.FlexField2)
+                                if (borrower.DistinctAdditionalRecord)
                                 {
+                                    //Setting FlexFields according to co-borrower conditions
+                                    account.Standard.FlexField1 = borrower.FlexField1;
+                                    account.Standard.FlexField2 = borrower.FlexField2;
+                                    account.Standard.FlexField3 = borrower.FlexField3;
+                                    account.Standard.FlexField4 = borrower.FlexField4;
+                                    account.Standard.FlexField5 = borrower.FlexField5;
+                                    account.Standard.FlexField6 = borrower.FlexField6;
 
-                                    //For Chapter 7 Option ARM Statement
-                                    case "A07":
-                                        //Set Mailing address according to the conditions
-                                        account.Standard.OriginalAddressLine1 = ChapterSevenOptionARMStatement.GetMailingBKAttorneyAddressLine1(extractAccount);
-                                        account.Standard.OriginalAddressLine2 = ChapterSevenOptionARMStatement.GetMailingBKAttorneyAddressLine2(extractAccount);
-                                        break;
+                                    switch (borrower.FlexField2)
+                                    {
 
-                                    //For Chapter 13 Option ARM Statement
-                                    case "A13":
-                                        //Set Mailing address according to the conditions
-                                        account.Standard.OriginalAddressLine1 = ChapterThirteenOptionARMStatement.GetMailingBKAttorneyAddressLine1(extractAccount);
-                                        account.Standard.OriginalAddressLine2 = ChapterThirteenOptionARMStatement.GetMailingBKAttorneyAddressLine2(extractAccount);
-                                        break;
+                                        //For Chapter 7 Option ARM Statement
+                                        case "A07":
+                                            //Set Mailing address according to the conditions
+                                            account.Standard.OriginalAddressLine1 = ChapterSevenOptionARMStatement.GetMailingBKAttorneyAddressLine1(extractAccount);
+                                            account.Standard.OriginalAddressLine2 = ChapterSevenOptionARMStatement.GetMailingBKAttorneyAddressLine2(extractAccount);
+                                            break;
 
-                                    //For Option ARM Billing  Statement
-                                    case "ARM":
-                                        //Set Mailing address according to the conditions
-                                        account.Standard.OriginalAddressLine1 = OptionARMBillingStatement.GetMailingAddressLine1(extractAccount);
-                                        account.Standard.OriginalAddressLine2 = OptionARMBillingStatement.GetMailingAddressLine2(extractAccount);
-                                        break;
+                                        //For Chapter 13 Option ARM Statement
+                                        case "A13":
+                                            //Set Mailing address according to the conditions
+                                            account.Standard.OriginalAddressLine1 = ChapterThirteenOptionARMStatement.GetMailingBKAttorneyAddressLine1(extractAccount);
+                                            account.Standard.OriginalAddressLine2 = ChapterThirteenOptionARMStatement.GetMailingBKAttorneyAddressLine2(extractAccount);
+                                            break;
 
-                                    //For Chapter 7 Billing Statement
-                                    case "S07":
-                                        //Set Mailing address according to the conditions
-                                        account.Standard.OriginalAddressLine1 = ChapterSevenBillingStatement.GetMailingBKAttorneyAddressLine1(extractAccount);
-                                        account.Standard.OriginalAddressLine2 = ChapterSevenBillingStatement.GetMailingBKAttorneyAddressLine2(extractAccount);
-                                        break;
+                                        //For Option ARM Billing  Statement
+                                        case "ARM":
+                                            //Set Mailing address according to the conditions
+                                            account.Standard.OriginalAddressLine1 = OptionARMBillingStatement.GetMailingAddressLine1(extractAccount);
+                                            account.Standard.OriginalAddressLine2 = OptionARMBillingStatement.GetMailingAddressLine2(extractAccount);
+                                            break;
 
-                                    //For Chapter 13 Billing Statement
-                                    case "S13":
-                                        //Set Mailing address according to the conditions
-                                        account.Standard.OriginalAddressLine1 = ChapterThirteenBillingStatement.GetMailingBKAttorneyAddressLine1(extractAccount);
-                                        account.Standard.OriginalAddressLine2 = ChapterThirteenBillingStatement.GetMailingBKAttorneyAddressLine2(extractAccount);
-                                        break;
+                                        //For Chapter 7 Billing Statement
+                                        case "S07":
+                                            //Set Mailing address according to the conditions
+                                            account.Standard.OriginalAddressLine1 = ChapterSevenBillingStatement.GetMailingBKAttorneyAddressLine1(extractAccount);
+                                            account.Standard.OriginalAddressLine2 = ChapterSevenBillingStatement.GetMailingBKAttorneyAddressLine2(extractAccount);
+                                            break;
 
-                                    //For Standard Billing Statement
-                                    case "STD":
-                                        //Set Mailing address according to the conditions
-                                        account.Standard.OriginalAddressLine1 = StandardBillingStatement.GetMailingAddressLine1(extractAccount);
-                                        account.Standard.OriginalAddressLine2 = StandardBillingStatement.GetMailingAddressLine2(extractAccount);
-                                        account.Standard.OriginalAddressLine3 = StandardBillingStatement.GetMailingCityStateZip(extractAccount);
-                                        break;
+                                        //For Chapter 13 Billing Statement
+                                        case "S13":
+                                            //Set Mailing address according to the conditions
+                                            account.Standard.OriginalAddressLine1 = ChapterThirteenBillingStatement.GetMailingBKAttorneyAddressLine1(extractAccount);
+                                            account.Standard.OriginalAddressLine2 = ChapterThirteenBillingStatement.GetMailingBKAttorneyAddressLine2(extractAccount);
+                                            break;
 
-                                    default:
-                                        break;
+                                        //For Standard Billing Statement
+                                        case "STD":
+                                            //Set Mailing address according to the conditions
+                                            account.Standard.OriginalAddressLine1 = StandardBillingStatement.GetMailingAddressLine1(extractAccount);
+                                            account.Standard.OriginalAddressLine2 = StandardBillingStatement.GetMailingAddressLine2(extractAccount);
+                                            account.Standard.OriginalAddressLine3 = StandardBillingStatement.GetMailingCityStateZip(extractAccount);
+                                            break;
 
+                                        default:
+                                            break;
+
+                                    }
+
+                                    //Reject co-borrower account if the primary account is rejected
+                                    if (primaryAccountRejected)
+                                        RejectAccount(account, "Invalid Account");
+
+                                    account.SequenceTransactions();
+                                    output.AddAccount(account);
+                                    primaryIndex++;//TODO: Need to check this when this task is complete                          
                                 }
-
-                                //Reject co-borrower account if the primary account is rejected
-                                if (primaryAccountRejected)
-                                    RejectAccount(account, "Invalid Account");
-
-                                account.SequenceTransactions();
-                                output.AddAccount(account);
-                                primaryIndex++;//TODO: Need to check this when this task is complete                          
                             }
                         }
-
                         //Setting to false for other primary accounts
                         primaryAccountRejected = false;
                     }
