@@ -150,17 +150,18 @@ namespace Carrington_Service.BusinessExpert
                 //    {
                 //        Logger.Trace("SUCCESS: Econsent File Found at Time =  " + DateTime.Now.ToString());
                 //    }
-               // }
-               // TimeWatch();
-                if (fileReadingProcess)
-                {
+                // }
+                // TimeWatch();
+                //if (fileReadingProcess)
+                //{
 
-                    Logger.Trace("ENDED: File Reading Process Completed");
-                }
-                else
-                {
-                    Logger.Trace("ENDED: File Reading Process is In-Complete");
-                }
+                //    Logger.Trace("ENDED: File Reading Process Completed");
+                //}
+                //else
+                //{
+                //    Logger.Trace("ENDED: File Reading Process is In-Complete");
+                //}
+                Logger.Trace("ENDED: File Reading Process Completed");
                 return true;
             }
             catch (Exception ex)
