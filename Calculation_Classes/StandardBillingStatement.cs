@@ -557,9 +557,9 @@ namespace Carrington_Service.Calculation_Classes
                 }
                 else
                 {
-                    LatePaymentAmount = Convert.ToString(Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData)
-                        + Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData)
-                        + Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Late_Chg_Amt_PackedData));
+                    LatePaymentAmount =( Convert.ToString(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData!=null?Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData):0
+                        + accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData!=null? Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData):0
+                        + accountsModel.MasterFileDataPart_1Model.Rssi_Late_Chg_Amt_PackedData!=null?Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Late_Chg_Amt_PackedData):0));
                 }
                 Logger.Trace("ENDED: Get get late payment amount.");
             }

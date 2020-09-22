@@ -103,7 +103,7 @@ namespace ODHS_EDelivery.BusinessExpert
                     ncp05.InputFileName = mortgageLoanBillingFileModel.InputFileName; //TODO:Add properties in mortgage model
                     ncp05.InputFileSize = mortgageLoanBillingFileModel.InputFileSize;
                     ncp05.FileNumber = 1;
-                    ncp05.TrackingId = 0;
+                    ncp05.TrackingId =Convert.ToInt32(mortgageLoanBillingFileModel.TrackingId);
                     output.AddInputFileInfoRecord(ncp05);
                     lineCnt++;
 
