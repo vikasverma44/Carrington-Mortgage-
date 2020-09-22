@@ -186,7 +186,22 @@ namespace Carrington_Service.Helpers
             }
             WriteLine(pretext + text);
         }
+
         public void CreateNewLogFile()
+        {
+            LogFilename = ConfigHelper.Model.LoggingPath + Path.DirectorySeparatorChar +
+                 //System.Reflection.Assembly.GetExecutingAssembly().GetName().Name +
+                 "Conversion_" +
+                "_" + fileDate.ToString("ddMMMyyyy") + "_" + fileCounter + FileEXT;
+
+            // Log file header line
+            if (!System.IO.File.Exists(LogFilename))
+            {
+                string logHeader = LogFilename + " is created.";
+                WriteLine(System.DateTime.Now.ToString(DatetimeFormat) + " " + logHeader, false);
+            }
+        }
+        public void CreateNewLogFile1()
         {
             string logPath;
             //DbService dbService = new DbService();
