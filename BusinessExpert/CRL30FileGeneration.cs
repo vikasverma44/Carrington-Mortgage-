@@ -176,10 +176,13 @@ namespace ODHS_EDelivery.BusinessExpert
 
                         account.Standard.PaymentDueDate = CommonHelper.GetFormatedDateTime(extractAccount.MasterFileDataPart_1Model.Rssi_Due_Date) >
                             CommonHelper.GetFormatedDateTime(extractAccount.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte) ?
-                            CommonHelper.GetFormatedDateTime(extractAccount.MasterFileDataPart_1Model.Rssi_Run_Date) :
+                            CommonHelper.GetFormatedDateTime(extractAccount.MasterFileDataPart_1Model.Rssi_Due_Date) :
                             CommonHelper.GetFormatedDateTime(extractAccount.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte);
-                        account.Standard.LatePaymentDueDate = CommonHelper.GetFormatedDateTime(extractAccount.LateChargeDetailRecordModel.Rssi_Lcd_Pymt_Due_Dt_PackedData);
-
+                        if (extractAccount.LateChargeDetailRecordModel.Rssi_Lcd_Pymt_Due_Dt_PackedData != null)
+                        {
+                            account.Standard.LatePaymentDueDate = CommonHelper.GetFormatedDateTime(extractAccount.LateChargeDetailRecordModel.Rssi_Lcd_Pymt_Due_Dt_PackedData);
+                        }
+                        else {account.Standard.LatePaymentDueDate = null; }
                         account.Standard.LatePaymentAmount = (StandardBillingStatement.GetLatePaymentAmount(extractAccount) != null 
                             &&  StandardBillingStatement.GetLatePaymentAmount(extractAccount) != "N/A") ?
                             Convert.ToDecimal(StandardBillingStatement.GetLatePaymentAmount(extractAccount)): 0;//TODO: Convert the calling method
