@@ -198,7 +198,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Amount Due Option1");
+                //Logger.Trace("STARTED:  Execute to Get Amount Due Option1");
 
                 if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     AmountDueOption1 = "0.00";
@@ -220,7 +220,7 @@ namespace Carrington_Service.Calculation_Classes
                                      + Convert.ToDecimal(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Unpaid_PackedData)
                                      + Convert.ToDecimal(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData));
                 }
-                Logger.Trace("ENDED:  To Get Amount Due Option1");
+                //Logger.Trace("ENDED:  To Get Amount Due Option1");
             }
             catch (Exception ex)
             {
@@ -238,7 +238,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Amount Due Option2");
+                //Logger.Trace("STARTED:  Execute to Get Amount Due Option2");
 
                 if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     AmountDueOption2 = "0.00";
@@ -261,7 +261,7 @@ namespace Carrington_Service.Calculation_Classes
                                + Convert.ToDecimal(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Unpaid_PackedData)
                                + Convert.ToDecimal(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData));
                 }
-                Logger.Trace("ENDED:  To Get Amount Due Option2");
+                //Logger.Trace("ENDED:  To Get Amount Due Option2");
             }
             catch (Exception ex)
             {
@@ -279,7 +279,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Amount Due Option3");
+                //Logger.Trace("STARTED:  Execute to Get Amount Due Option3");
 
                 if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     AmountDueOption3 = "0.00";
@@ -302,7 +302,7 @@ namespace Carrington_Service.Calculation_Classes
                                + Convert.ToDecimal(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Unpaid_PackedData)
                                + Convert.ToDecimal(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData));
                 }
-                Logger.Trace("ENDED:  To Get Amount Due Option3");
+                //Logger.Trace("ENDED:  To Get Amount Due Option3");
             }
             catch (Exception ex)
             {
@@ -320,7 +320,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Amount Due Option4");
+                //Logger.Trace("STARTED:  Execute to Get Amount Due Option4");
                 if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     AmountDueOption3 = "0.00";
 
@@ -338,7 +338,7 @@ namespace Carrington_Service.Calculation_Classes
                               + Convert.ToDecimal(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Unpaid_PackedData)
                               + Convert.ToDecimal(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData));
                 }
-                Logger.Trace("ENDED:  To Get Amount Due Option4");
+                //Logger.Trace("ENDED:  To Get Amount Due Option4");
             }
             catch (Exception ex)
             {
@@ -357,7 +357,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Fees and Charges Paid Last Month");
+                //Logger.Trace("STARTED:  Execute to Get Fees and Charges Paid Last Month");
 
                 if ((Convert.ToDecimal(model.TransactionRecordModel.Rssi_Log_Tran) == 5705 || Convert.ToDecimal(model.TransactionRecordModel.Rssi_Log_Tran) == 5707)
                     && (Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Fee_Code) == 67 || Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Fee_Code) == 198))
@@ -366,7 +366,7 @@ namespace Carrington_Service.Calculation_Classes
                     + Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Lc_Pd_Since_Lst_Stmt_PackedData))
                     - Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
                 }
-                Logger.Trace("ENDED:  To Get Fees and Charges Paid Last Month");
+                //Logger.Trace("ENDED:  To Get Fees and Charges Paid Last Month");
             }
             catch (Exception ex)
             {
@@ -384,7 +384,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Unapplied Funds Paid Last Month");
+                //Logger.Trace("STARTED:  Execute to Get Unapplied Funds Paid Last Month");
 
         
                 //corrupted data
@@ -396,7 +396,7 @@ namespace Carrington_Service.Calculation_Classes
                 + model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05 == null ? 0 : Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05.Replace("}", "").Replace("{", "").Replace("P", "")));
 
 
-                Logger.Trace("ENDED:  To Get Unapplied Funds Paid Last Month");
+                //Logger.Trace("ENDED:  To Get Unapplied Funds Paid Last Month");
             }
             catch (Exception ex)
             {
@@ -414,7 +414,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Fees and Charges Paid Year To Date");
+                //Logger.Trace("STARTED:  Execute to Get Fees and Charges Paid Year To Date");
 
                 if ((Convert.ToDecimal(model.TransactionRecordModel.Rssi_Log_Tran) == 5705 || Convert.ToDecimal(model.TransactionRecordModel.Rssi_Log_Tran) == 5707)
                   &&
@@ -424,7 +424,7 @@ namespace Carrington_Service.Calculation_Classes
                     + Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Paid_Ytd_PackedData))
                     - Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
                 }
-                Logger.Trace("STARTED:  To Get Fees and Charges Paid Year To Date");
+                //Logger.Trace("STARTED:  To Get Fees and Charges Paid Year To Date");
             }
             catch (Exception ex)
             {
@@ -442,7 +442,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Unapplied Funds Paid Year To Date");
+                //Logger.Trace("STARTED:  Execute to Get Unapplied Funds Paid Year To Date");
 
                 UnappliedFundsPaidYearToDate = Convert.ToString(model.MasterFileDataPart_1Model.Rssi_Unap_Fund_Cd != "L" ? Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Esc_Var_PackedData) : 0
                + model.MasterFileDataPart2Model.Rssi_Unap_Cd_2 != "L" ? Convert.ToDecimal(model.MasterFileDataPart2Model.Rssi_Unap_Bal_2_PackedData) : 0
@@ -450,7 +450,7 @@ namespace Carrington_Service.Calculation_Classes
                + model.MasterFileDataPart2Model.Rssi_Unap_Cd_4 != "L" ? Convert.ToDecimal(model.MasterFileDataPart2Model.Rssi_Unap_Bal_4_PackedData) : 0
                + model.MasterFileDataPart2Model.Rssi_Unap_Cd_5 != "L" ? Convert.ToDecimal(model.MasterFileDataPart2Model.Rssi_Unap_Bal_5_PackedData) : 0);
 
-                Logger.Trace("ENDED:  To Get Unapplied Funds Paid Year To Date");
+                //Logger.Trace("ENDED:  To Get Unapplied Funds Paid Year To Date");
             }
             catch (Exception ex)
             {
@@ -468,7 +468,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Total Paid Year To Date");
+                //Logger.Trace("STARTED:  Execute to Get Total Paid Year To Date");
 
                 if ((Convert.ToDecimal(model.TransactionRecordModel.Rssi_Log_Tran) == 5705 || Convert.ToDecimal(model.TransactionRecordModel.Rssi_Log_Tran) == 5707)
                    && (Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Fee_Code) == 67 || Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Fee_Code) == 198))
@@ -486,7 +486,7 @@ namespace Carrington_Service.Calculation_Classes
                     - Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
                 }
 
-                Logger.Trace("ENDED:  To Get Total Paid Year To Date");
+                //Logger.Trace("ENDED:  To Get Total Paid Year To Date");
             }
             catch (Exception ex)
             {
@@ -504,7 +504,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Principal Option1");
+                //Logger.Trace("STARTED:  Execute to Get Principal Option1");
 
                 if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     PrincipalOption1 = "0.00";
@@ -525,7 +525,7 @@ namespace Carrington_Service.Calculation_Classes
                     AmountDueOption1 = Convert.ToString(Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt4_PackedData)
                                      - Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData));
                 }
-                Logger.Trace("ENDED:  To Get Principal Option1");
+                //Logger.Trace("ENDED:  To Get Principal Option1");
             }
             catch (Exception ex)
             {
@@ -543,7 +543,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Assistance Amount Option1");
+                //Logger.Trace("STARTED:  Execute to Get Assistance Amount Option1");
 
                 if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0)
                     AssistanceAmountOption1 = "do not print the Assistance Amount line";
@@ -560,7 +560,7 @@ namespace Carrington_Service.Calculation_Classes
                 {
                     AssistanceAmountOption1 = model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData;
                 }
-                Logger.Trace("ENDED:  To Get Assistance Amount Option1");
+                //Logger.Trace("ENDED:  To Get Assistance Amount Option1");
             }
             catch (Exception ex)
             {
@@ -579,7 +579,7 @@ namespace Carrington_Service.Calculation_Classes
 
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Replacement Reserve Option1");
+                //Logger.Trace("STARTED:  Execute to Get Replacement Reserve Option1");
 
                 if ((Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData)
                - Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt4_PackedData)
@@ -603,7 +603,7 @@ namespace Carrington_Service.Calculation_Classes
                                                 + Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData));
 
                 }
-                Logger.Trace("ENDED:  To Get Replacement Reserve Option1");
+                //Logger.Trace("ENDED:  To Get Replacement Reserve Option1");
             }
             catch (Exception ex)
             {
@@ -622,7 +622,7 @@ namespace Carrington_Service.Calculation_Classes
 
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Overdue Payments Option1");
+                //Logger.Trace("STARTED:  Execute to Get Overdue Payments Option1");
 
                 if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     AmountDueOption1 = "0.00";
@@ -644,7 +644,7 @@ namespace Carrington_Service.Calculation_Classes
                                      - Convert.ToDecimal(GetTotalFeesPaidOption1(model)));
                 }
 
-                Logger.Trace("ENDED:  To Get Overdue Payments Option1");
+                //Logger.Trace("ENDED:  To Get Overdue Payments Option1");
             }
             catch (Exception ex)
             {
@@ -662,7 +662,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Total Fees Paid Option1");
+                //Logger.Trace("STARTED:  Execute to Get Total Fees Paid Option1");
 
                 if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     TotalFeesPaidOption1 = "0.00";
@@ -690,7 +690,7 @@ namespace Carrington_Service.Calculation_Classes
                 else
                     TotalFeesPaidOption1 = "0.00";
 
-                Logger.Trace("ENDED:  To Get Total Fees Paid Option1");
+                //Logger.Trace("ENDED:  To Get Total Fees Paid Option1");
             }
             catch (Exception ex)
             {
@@ -707,7 +707,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Total Amount Due Option1");
+                //Logger.Trace("STARTED:  Execute to Get Total Amount Due Option1");
 
                 if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     TotalFeesPaidOption1 = "0.00";
@@ -728,7 +728,7 @@ namespace Carrington_Service.Calculation_Classes
                     TotalAmountDueOption1 = Convert.ToString(Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData)
                                    + Convert.ToDecimal(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Unpaid_PackedData)
                                    + Convert.ToDecimal(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData));
-                Logger.Trace("ENDED:  To Get Total Amount Due Option1");
+                //Logger.Trace("ENDED:  To Get Total Amount Due Option1");
             }
             catch (Exception ex)
             {
@@ -746,7 +746,7 @@ namespace Carrington_Service.Calculation_Classes
 
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Principal Option2");
+                //Logger.Trace("STARTED:  Execute to Get Principal Option2");
 
                 if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     PrincipalOption2 = "0.00";
@@ -767,7 +767,7 @@ namespace Carrington_Service.Calculation_Classes
                     PrincipalOption2 = Convert.ToString(Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt3_PackedData)
                                      - Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData));
                 }
-                Logger.Trace("ENDED:  To Get Principal Option2");
+                //Logger.Trace("ENDED:  To Get Principal Option2");
             }
             catch (Exception ex)
             {
@@ -785,7 +785,7 @@ namespace Carrington_Service.Calculation_Classes
 
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Assistance Amount Option2");
+                //Logger.Trace("STARTED:  Execute to Get Assistance Amount Option2");
 
                 if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0)
                     AssistanceAmountOption2 = "do not print the Assistance Amount line";
@@ -802,7 +802,7 @@ namespace Carrington_Service.Calculation_Classes
                 {
                     AssistanceAmountOption2 = model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData;
                 }
-                Logger.Trace("ENDED:  To Get Assistance Amount Option2");
+                //Logger.Trace("ENDED:  To Get Assistance Amount Option2");
             }
             catch (Exception ex)
             {
@@ -820,7 +820,7 @@ namespace Carrington_Service.Calculation_Classes
 
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Replacement Reserve Option2");
+                //Logger.Trace("STARTED:  Execute to Get Replacement Reserve Option2");
 
                 if ((Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData)
              - Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt3_PackedData)
@@ -844,7 +844,7 @@ namespace Carrington_Service.Calculation_Classes
                                                 + Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData));
 
                 }
-                Logger.Trace("ENDED:  To Get Replacement Reserve Option2");
+                //Logger.Trace("ENDED:  To Get Replacement Reserve Option2");
             }
             catch (Exception ex)
             {
@@ -862,7 +862,7 @@ namespace Carrington_Service.Calculation_Classes
 
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Overdue Payments Option2");
+                //Logger.Trace("STARTED:  Execute to Get Overdue Payments Option2");
 
                 if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     OverduePaymentsOption2 = "0.00";
@@ -883,7 +883,7 @@ namespace Carrington_Service.Calculation_Classes
                     OverduePaymentsOption2 = Convert.ToString(Convert.ToDecimal(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Unpaid_PackedData)
                                      - Convert.ToDecimal(GetTotalFeesPaidOption2(model)));
                 }
-                Logger.Trace("ENDED:  To Get Overdue Payments Option2");
+                //Logger.Trace("ENDED:  To Get Overdue Payments Option2");
             }
             catch (Exception ex)
             {
@@ -901,7 +901,7 @@ namespace Carrington_Service.Calculation_Classes
 
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Total Fees Paid Option2");
+                //Logger.Trace("STARTED:  Execute to Get Total Fees Paid Option2");
 
                 // need to check
                 if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
@@ -929,7 +929,7 @@ namespace Carrington_Service.Calculation_Classes
                 }
                 else
                     TotalFeesPaidOption2 = "0.00";
-                Logger.Trace("ENDED:  To Get Total Fees Paid Option2");
+                //Logger.Trace("ENDED:  To Get Total Fees Paid Option2");
             }
             catch (Exception ex)
             {
@@ -946,7 +946,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Total Amount Due Option2");
+                //Logger.Trace("STARTED:  Execute to Get Total Amount Due Option2");
 
                 if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     TotalAmountDueOption2 = "0.00";
@@ -967,7 +967,7 @@ namespace Carrington_Service.Calculation_Classes
                     TotalAmountDueOption2 = Convert.ToString(Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData)
                                    + Convert.ToDecimal(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Unpaid_PackedData)
                                    + Convert.ToDecimal(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData));
-                Logger.Trace("ENDED:  To Get Total Amount Due Option2");
+                //Logger.Trace("ENDED:  To Get Total Amount Due Option2");
             }
             catch (Exception ex)
             {
@@ -985,7 +985,7 @@ namespace Carrington_Service.Calculation_Classes
 
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Principal Option3");
+                //Logger.Trace("STARTED:  Execute to Get Principal Option3");
                 if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     PrincipalOption3 = "0.00";
 
@@ -1005,7 +1005,7 @@ namespace Carrington_Service.Calculation_Classes
                     PrincipalOption3 = Convert.ToString(Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt2_PackedData)
                                      - Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData));
                 }
-                Logger.Trace("ENDED:  To Get Principal Option3");
+                //Logger.Trace("ENDED:  To Get Principal Option3");
             }
             catch (Exception ex)
             {
@@ -1024,7 +1024,7 @@ namespace Carrington_Service.Calculation_Classes
 
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Assistance Amount Option3");
+                //Logger.Trace("STARTED:  Execute to Get Assistance Amount Option3");
 
                 if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0)
                     AssistanceAmountOption3 = "do not print the Assistance Amount line";
@@ -1041,7 +1041,7 @@ namespace Carrington_Service.Calculation_Classes
                 {
                     AssistanceAmountOption3 = model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData;
                 }
-                Logger.Trace("ENDED:  To Get Assistance Amount Option3");
+                //Logger.Trace("ENDED:  To Get Assistance Amount Option3");
             }
             catch (Exception ex)
             {
@@ -1059,7 +1059,7 @@ namespace Carrington_Service.Calculation_Classes
 
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Replacement Reserve Option3");
+                //Logger.Trace("STARTED:  Execute to Get Replacement Reserve Option3");
 
                 if ((Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData)
              - Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt2_PackedData)
@@ -1083,7 +1083,7 @@ namespace Carrington_Service.Calculation_Classes
                                                 + Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData));
 
                 }
-                Logger.Trace("ENDED:  To Get Replacement Reserve Option3");
+                //Logger.Trace("ENDED:  To Get Replacement Reserve Option3");
             }
             catch (Exception ex)
             {
@@ -1101,7 +1101,7 @@ namespace Carrington_Service.Calculation_Classes
 
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Overdue Payments Option3");
+                //Logger.Trace("STARTED:  Execute to Get Overdue Payments Option3");
 
                 if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     OverduePaymentsOption2 = "0.00";
@@ -1122,7 +1122,7 @@ namespace Carrington_Service.Calculation_Classes
                     OverduePaymentsOption2 = Convert.ToString(Convert.ToDecimal(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Unpaid_PackedData)
                                      - Convert.ToDecimal(GetTotalFeesPaidOption3(model)));
                 }
-                Logger.Trace("ENDED:  To Get Overdue Payments Option3");
+                //Logger.Trace("ENDED:  To Get Overdue Payments Option3");
             }
             catch (Exception ex)
             {
@@ -1141,7 +1141,7 @@ namespace Carrington_Service.Calculation_Classes
             try
             {
                 // need to check
-                Logger.Trace("STARTED:  Execute to Get Total Fees Paid Option3");
+                //Logger.Trace("STARTED:  Execute to Get Total Fees Paid Option3");
 
                 if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     TotalFeesPaidOption3 = "0.00";
@@ -1168,7 +1168,7 @@ namespace Carrington_Service.Calculation_Classes
                 }
                 else
                     TotalFeesPaidOption3 = "0.00";
-                Logger.Trace("ENDED:  To Get Total Fees Paid Option3");
+                //Logger.Trace("ENDED:  To Get Total Fees Paid Option3");
             }
             catch (Exception ex)
             {
@@ -1185,7 +1185,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Total Amount Due Option3");
+                //Logger.Trace("STARTED:  Execute to Get Total Amount Due Option3");
 
                 if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     TotalAmountDueOption3 = "0.00";
@@ -1207,7 +1207,7 @@ namespace Carrington_Service.Calculation_Classes
                                    + Convert.ToDecimal(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Unpaid_PackedData)
                                    + Convert.ToDecimal(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData));
 
-                Logger.Trace("ENDED:  To Get Total Amount Due Option3");
+                //Logger.Trace("ENDED:  To Get Total Amount Due Option3");
             }
             catch (Exception ex)
             {
@@ -1227,7 +1227,7 @@ namespace Carrington_Service.Calculation_Classes
 
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Principal Option4");
+                //Logger.Trace("STARTED:  Execute to Get Principal Option4");
 
                 if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     PrincipalOption4 = "0.00";
@@ -1245,7 +1245,7 @@ namespace Carrington_Service.Calculation_Classes
                     PrincipalOption4 = Convert.ToString(Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt1_PackedData)
                                      - Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData));
                 }
-                Logger.Trace("ENDED:  To Get Principal Option4");
+                //Logger.Trace("ENDED:  To Get Principal Option4");
             }
             catch (Exception ex)
             {
@@ -1263,7 +1263,7 @@ namespace Carrington_Service.Calculation_Classes
 
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Assistance Amount Option4");
+                //Logger.Trace("STARTED:  Execute to Get Assistance Amount Option4");
 
                 if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0)
                     AssistanceAmountOption4 = "do not print the Assistance Amount line";
@@ -1280,7 +1280,7 @@ namespace Carrington_Service.Calculation_Classes
                 {
                     AssistanceAmountOption4 = model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData;
                 }
-                Logger.Trace("ENDED:  To Get Assistance Amount Option4");
+                //Logger.Trace("ENDED:  To Get Assistance Amount Option4");
             }
             catch (Exception ex)
             {
@@ -1298,7 +1298,7 @@ namespace Carrington_Service.Calculation_Classes
 
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Replacement Reserve Option4");
+                //Logger.Trace("STARTED:  Execute to Get Replacement Reserve Option4");
 
                 if ((Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData)
            - Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt1_PackedData)
@@ -1322,7 +1322,7 @@ namespace Carrington_Service.Calculation_Classes
                                                 + Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData));
 
                 }
-                Logger.Trace("ENDED:  To Get Replacement Reserve Option4");
+                //Logger.Trace("ENDED:  To Get Replacement Reserve Option4");
             }
             catch (Exception ex)
             {
@@ -1340,7 +1340,7 @@ namespace Carrington_Service.Calculation_Classes
 
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Overdue Payments Option4");
+                //Logger.Trace("STARTED:  Execute to Get Overdue Payments Option4");
 
                 if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     OverduePaymentsOption4 = "0.00";
@@ -1352,7 +1352,7 @@ namespace Carrington_Service.Calculation_Classes
                     OverduePaymentsOption4 = Convert.ToString(Convert.ToDecimal(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Unpaid_PackedData)
                                      - Convert.ToDecimal(GetTotalFeesPaidOption4(model)));
                 }
-                Logger.Trace("ENDED:  To Get Overdue Payments Option4");
+                //Logger.Trace("ENDED:  To Get Overdue Payments Option4");
             }
             catch (Exception ex)
             {
@@ -1371,7 +1371,7 @@ namespace Carrington_Service.Calculation_Classes
 
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Total Fees Paid Option4");
+                //Logger.Trace("STARTED:  Execute to Get Total Fees Paid Option4");
 
                 if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     TotalFeesPaidOption4 = "0.00";
@@ -1389,7 +1389,7 @@ namespace Carrington_Service.Calculation_Classes
                 }
                 else
                     TotalFeesPaidOption4 = "0.00";
-                Logger.Trace("ENDED:  To Get Total Fees Paid Option4");
+                //Logger.Trace("ENDED:  To Get Total Fees Paid Option4");
             }
             catch (Exception ex)
             {
@@ -1407,7 +1407,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Total Amount Due Option4");
+                //Logger.Trace("STARTED:  Execute to Get Total Amount Due Option4");
 
                 if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     TotalAmountDueOption4 = "0.00";
@@ -1425,7 +1425,7 @@ namespace Carrington_Service.Calculation_Classes
                                    + Convert.ToDecimal(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Unpaid_PackedData)
                                    + Convert.ToDecimal(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData));
 
-                Logger.Trace("ENDED:  To Get Total Amount Due Option4");
+                //Logger.Trace("ENDED:  To Get Total Amount Due Option4");
             }
             catch (Exception ex)
             {
@@ -1443,7 +1443,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execuate To Get Suspense");
+                //Logger.Trace("STARTED:  Execuate To Get Suspense");
 
                 Suspense = Convert.ToString(
                  (model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData == null ? 0 : Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData))
@@ -1453,7 +1453,7 @@ namespace Carrington_Service.Calculation_Classes
                + (model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05 == null ? 0 : Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05.Replace("}", "").Replace("{", "").Replace("P", ""))));
 
 
-                Logger.Trace("ENDED:  To Get Suspense");
+                //Logger.Trace("ENDED:  To Get Suspense");
 
             }
             catch (Exception ex)
@@ -1473,7 +1473,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Miscellaneous");
+                //Logger.Trace("STARTED:  Execute to Get Miscellaneous");
 
                 Miscellaneous = Convert.ToString(
                 (model.TransactionRecordModel.Rssi_Tr_Amt_To_Lip_PackedData == null ? 0 : Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Lip_PackedData))
@@ -1489,7 +1489,7 @@ namespace Carrington_Service.Calculation_Classes
               + (model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Optins_PackedData == null ? 0 : Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Optins_PackedData))
               );
 
-               Logger.Trace("ENDED:  To Get Miscellaneous");
+               //Logger.Trace("ENDED:  To Get Miscellaneous");
             }
             catch (Exception ex)
             {
@@ -1508,7 +1508,7 @@ namespace Carrington_Service.Calculation_Classes
             return DeferredBalance = "0"; // corrupted data
             //try
             //{
-            //    Logger.Trace("STARTED:  Execute to Get Deferred Balance");
+            //    //Logger.Trace("STARTED:  Execute to Get Deferred Balance");
 
             //        if ((model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal == "\0\0\0\0\0.\0\f" ? 0 : Convert.ToDecimal(model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal)
             //        - Convert.ToInt32(model.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData)) == 0)
@@ -1521,7 +1521,7 @@ namespace Carrington_Service.Calculation_Classes
             //        DeferredBalance = Convert.ToString(Convert.ToInt32(model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal)
             //            - Convert.ToInt32(model.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData));
             //    }
-            //    Logger.Trace("ENDED:  To Get Deferred Balance");
+            //    //Logger.Trace("ENDED:  To Get Deferred Balance");
             //}
             //catch (Exception ex)
             //{
@@ -1535,7 +1535,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Hold");
+                //Logger.Trace("STARTED:  Execute to Get Hold");
 
                 if (accountsModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H")
                 {
@@ -1545,7 +1545,7 @@ namespace Carrington_Service.Calculation_Classes
                 {
                     Hold = accountsModel.MasterFileDataPart_1Model.Rssi_Print_Stmt;
                 }
-                Logger.Trace("ENDED:  To Get Hold");
+                //Logger.Trace("ENDED:  To Get Hold");
             }
             catch (Exception ex)
             {
@@ -1558,7 +1558,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Primary Borrower BK Attorney");
+                //Logger.Trace("STARTED:  Execute to Get Primary Borrower BK Attorney");
                 if (accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "N"
                     || accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Null")
                 {
@@ -1577,7 +1577,7 @@ namespace Carrington_Service.Calculation_Classes
                     PrimaryBorrowerBKAttorney = accountsModel.MasterFileDataPart_1Model.Rssi_Primary_Name
                         + accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_Name1;
                 }
-                Logger.Trace("ENDED:  To Get Primary Borrower BK Attorney");
+                //Logger.Trace("ENDED:  To Get Primary Borrower BK Attorney");
             }
             catch (Exception ex)
             {
@@ -1591,14 +1591,14 @@ namespace Carrington_Service.Calculation_Classes
 
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Secondary Borrower");
+                //Logger.Trace("STARTED:  Execute to Get Secondary Borrower");
 
                 if (accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                 || accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B")
                 {
                     SecondaryBorrower = accountsModel.MasterFileDataPart_1Model.Rssi_Secondary_Name;
                 }
-                Logger.Trace("ENDED:  To Get Secondary Borrower");
+                //Logger.Trace("ENDED:  To Get Secondary Borrower");
             }
             catch (Exception ex)
             {
@@ -1612,7 +1612,7 @@ namespace Carrington_Service.Calculation_Classes
 
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Mailing BK Attorney Address Line1");
+                //Logger.Trace("STARTED:  Execute to Get Mailing BK Attorney Address Line1");
 
                 if (accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B")
                 {
@@ -1627,7 +1627,7 @@ namespace Carrington_Service.Calculation_Classes
                     MailingBKAttorneyAddressLine1 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1
                         + accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_Adrs1;
                 }
-                Logger.Trace("ENDED:  To Get Mailing BK Attorney Address Line1");
+                //Logger.Trace("ENDED:  To Get Mailing BK Attorney Address Line1");
             }
             catch (Exception ex)
             {
@@ -1640,7 +1640,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Mailing BK Attorney Address Line2");
+                //Logger.Trace("STARTED:  Execute to Get Mailing BK Attorney Address Line2");
 
                 if (accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B")
                 {
@@ -1655,7 +1655,7 @@ namespace Carrington_Service.Calculation_Classes
                     MailingBKAttorneyAddressLine2 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_2
                         + accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_Adrs2;
                 }
-                Logger.Trace("ENDED:  To Get Mailing BK Attorney Address Line2");
+                //Logger.Trace("ENDED:  To Get Mailing BK Attorney Address Line2");
             }
             catch (Exception ex)
             {
@@ -1668,7 +1668,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Borrower Attorney Mailing City State Zip");
+                //Logger.Trace("STARTED:  Execute to Get Borrower Attorney Mailing City State Zip");
 
                 if (accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B")
                 {
@@ -1687,7 +1687,7 @@ namespace Carrington_Service.Calculation_Classes
                         + accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_State
                         + accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_Zip;
                 }
-                Logger.Trace("ENDED:  To Get Borrower Attorney Mailing City State Zip");
+                //Logger.Trace("ENDED:  To Get Borrower Attorney Mailing City State Zip");
             }
             catch (Exception ex)
             {
@@ -1700,7 +1700,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Mailing Country");
+                //Logger.Trace("STARTED:  Execute to Get Mailing Country");
 
                 if (accountsModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")
                 {
@@ -1718,7 +1718,7 @@ namespace Carrington_Service.Calculation_Classes
                 {
                     MailingCountry = "null";
                 }
-                Logger.Trace("ENDED:  To Get Mailing Country");
+                //Logger.Trace("ENDED:  To Get Mailing Country");
             }
             catch (Exception ex)
             {
@@ -1731,11 +1731,11 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Mailing Country");
+                //Logger.Trace("STARTED:  Execute to Get Mailing Country");
 
                 PaymentDate = accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte;
 
-                Logger.Trace("ENDED:  To Get Mailing Country");
+                //Logger.Trace("ENDED:  To Get Mailing Country");
             }
             catch (Exception ex)
             {
@@ -1750,7 +1750,7 @@ namespace Carrington_Service.Calculation_Classes
 
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Interest Option1");
+                //Logger.Trace("STARTED:  Execute to Get Interest Option1");
 
                 if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 {
@@ -1778,7 +1778,7 @@ namespace Carrington_Service.Calculation_Classes
                 {
                     InterestOption1 = accountsModel.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData;
                 }
-                Logger.Trace("ENDED:  To Get Interest Option1");
+                //Logger.Trace("ENDED:  To Get Interest Option1");
             }
             catch (Exception ex)
             {
@@ -1791,7 +1791,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Escrow Option1");
+                //Logger.Trace("STARTED:  Execute to Get Escrow Option1");
 
                 if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 {
@@ -1820,7 +1820,7 @@ namespace Carrington_Service.Calculation_Classes
                     EscrowOption1 = accountsModel.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData;
 
                 }
-                Logger.Trace("ENDED:  To Get Escrow Option1");
+                //Logger.Trace("ENDED:  To Get Escrow Option1");
             }
             catch (Exception ex)
             {
@@ -1833,7 +1833,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Regular Monthly Payment Option1");
+                //Logger.Trace("STARTED:  Execute to Get Regular Monthly Payment Option1");
 
                 if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 {
@@ -1861,7 +1861,7 @@ namespace Carrington_Service.Calculation_Classes
                 {
                     RegularMonthlyPaymentOption1 = accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData;
                 }
-                Logger.Trace("ENDED:  Execute to Get Regular Monthly Payment Option1");
+                //Logger.Trace("ENDED:  Execute to Get Regular Monthly Payment Option1");
             }
             catch (Exception ex)
             {
@@ -1874,7 +1874,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Total Fees Charged Option1");
+                //Logger.Trace("STARTED:  Execute to Get Total Fees Charged Option1");
 
                 if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 {
@@ -1902,7 +1902,7 @@ namespace Carrington_Service.Calculation_Classes
                 {
                     TotalFeesChargedOption1 = accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData;
                 }
-                Logger.Trace("ENDED:  To Get Total Fees Charged Option1");
+                //Logger.Trace("ENDED:  To Get Total Fees Charged Option1");
             }
             catch (Exception ex)
             {
@@ -1918,7 +1918,7 @@ namespace Carrington_Service.Calculation_Classes
 
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Interest Option2");
+                //Logger.Trace("STARTED:  Execute to Get Interest Option2");
 
                 if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 {
@@ -1947,7 +1947,7 @@ namespace Carrington_Service.Calculation_Classes
                     InterestOption2 = accountsModel.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData;
 
                 }
-                Logger.Trace("ENDED:  To Get Interest Option2");
+                //Logger.Trace("ENDED:  To Get Interest Option2");
             }
             catch (Exception ex)
             {
@@ -1960,7 +1960,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Escrow Option2");
+                //Logger.Trace("STARTED:  Execute to Get Escrow Option2");
 
                 if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 {
@@ -1989,7 +1989,7 @@ namespace Carrington_Service.Calculation_Classes
                     EscrowOption2 = accountsModel.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData;
 
                 }
-                Logger.Trace("ENDED:  To Get Escrow Option2");
+                //Logger.Trace("ENDED:  To Get Escrow Option2");
             }
             catch (Exception ex)
             {
@@ -2002,7 +2002,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Regular Monthly Payment Option2");
+                //Logger.Trace("STARTED:  Execute to Get Regular Monthly Payment Option2");
 
                 if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 {
@@ -2031,7 +2031,7 @@ namespace Carrington_Service.Calculation_Classes
                     RegularMonthlyPaymentOption2 = accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData;
 
                 }
-                Logger.Trace("ENDED:  To Get Regular Monthly Payment Option2");
+                //Logger.Trace("ENDED:  To Get Regular Monthly Payment Option2");
             }
             catch (Exception ex)
             {
@@ -2044,7 +2044,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Total Fees Charged Option2");
+                //Logger.Trace("STARTED:  Execute to Get Total Fees Charged Option2");
 
                 if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 {
@@ -2073,7 +2073,7 @@ namespace Carrington_Service.Calculation_Classes
                     TotalFeesChargedOption2 = accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData;
 
                 }
-                Logger.Trace("ENDED:  To Get Total Fees Charged Option2");
+                //Logger.Trace("ENDED:  To Get Total Fees Charged Option2");
             }
             catch (Exception ex)
             {
@@ -2087,7 +2087,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Interest Option3");
+                //Logger.Trace("STARTED:  Execute to Get Interest Option3");
 
                 if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 {
@@ -2116,7 +2116,7 @@ namespace Carrington_Service.Calculation_Classes
                     InterestOption3 = accountsModel.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData;
 
                 }
-                Logger.Trace("ENDED:  To Get Interest Option3");
+                //Logger.Trace("ENDED:  To Get Interest Option3");
             }
             catch (Exception ex)
             {
@@ -2130,7 +2130,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Escrow Option3");
+                //Logger.Trace("STARTED:  Execute to Get Escrow Option3");
 
                 if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 {
@@ -2159,7 +2159,7 @@ namespace Carrington_Service.Calculation_Classes
                     EscrowOption3 = accountsModel.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData;
 
                 }
-                Logger.Trace("ENDED:  To Get Escrow Option3");
+                //Logger.Trace("ENDED:  To Get Escrow Option3");
             }
             catch (Exception ex)
             {
@@ -2172,7 +2172,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Regular Monthly Payment Option3");
+                //Logger.Trace("STARTED:  Execute to Get Regular Monthly Payment Option3");
 
                 if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 {
@@ -2201,7 +2201,7 @@ namespace Carrington_Service.Calculation_Classes
                     RegularMonthlyPaymentOption3 = accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData;
 
                 }
-                Logger.Trace("ENDED:  To Get Regular Monthly Payment Option3");
+                //Logger.Trace("ENDED:  To Get Regular Monthly Payment Option3");
             }
             catch (Exception ex)
             {
@@ -2215,7 +2215,7 @@ namespace Carrington_Service.Calculation_Classes
             try
             {
 
-                Logger.Trace("STARTED:  Execute to Get Total Fees Charged Option3");
+                //Logger.Trace("STARTED:  Execute to Get Total Fees Charged Option3");
                 if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 {
                     TotalFeesChargedOption3 = "0.00";
@@ -2243,7 +2243,7 @@ namespace Carrington_Service.Calculation_Classes
                     TotalFeesChargedOption3 = accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData;
 
                 }
-                Logger.Trace("ENDED:  To Get Total Fees Charged Option3");
+                //Logger.Trace("ENDED:  To Get Total Fees Charged Option3");
             }
             catch (Exception ex)
             {
@@ -2257,7 +2257,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Interest Option4");
+                //Logger.Trace("STARTED:  Execute to Get Interest Option4");
 
                 if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 {
@@ -2277,7 +2277,7 @@ namespace Carrington_Service.Calculation_Classes
                     InterestOption4 = accountsModel.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData;
 
                 }
-                Logger.Trace("ENDED:  To Get Interest Option4");
+                //Logger.Trace("ENDED:  To Get Interest Option4");
             }
             catch (Exception ex)
             {
@@ -2290,7 +2290,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Escrow Option4");
+                //Logger.Trace("STARTED:  Execute to Get Escrow Option4");
 
                 if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 {
@@ -2310,7 +2310,7 @@ namespace Carrington_Service.Calculation_Classes
                     EscrowOption4 = accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData;
 
                 }
-                Logger.Trace("ENDED:  To Get Escrow Option4");
+                //Logger.Trace("ENDED:  To Get Escrow Option4");
             }
             catch (Exception ex)
             {
@@ -2325,7 +2325,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Regular Monthly Payment Option4");
+                //Logger.Trace("STARTED:  Execute to Get Regular Monthly Payment Option4");
 
                 if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 {
@@ -2339,7 +2339,7 @@ namespace Carrington_Service.Calculation_Classes
                 {
                     RegularMonthlyPaymentOption4 = accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData;
                 }
-                Logger.Trace("ENDED:  To Get Regular Monthly Payment Option4");
+                //Logger.Trace("ENDED:  To Get Regular Monthly Payment Option4");
             }
             catch (Exception ex)
             {
@@ -2352,7 +2352,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Total Fees Charged Option4");
+                //Logger.Trace("STARTED:  Execute to Get Total Fees Charged Option4");
 
                 if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 {
@@ -2366,7 +2366,7 @@ namespace Carrington_Service.Calculation_Classes
                 {
                     TotalFeesChargedOption4 = accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData;
                 }
-                Logger.Trace("ENDED:  To Get Total Fees Charged Option4");
+                //Logger.Trace("ENDED:  To Get Total Fees Charged Option4");
             }
             catch (Exception ex)
             {
@@ -2379,7 +2379,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Option4 Minimum Description");
+                //Logger.Trace("STARTED:  Execute to Get Option4 Minimum Description");
 
                 if (Convert.ToDecimal(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt1_PackedData)
                     - Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData) > 0)
@@ -2401,7 +2401,7 @@ namespace Carrington_Service.Calculation_Classes
                     Option4MinimumDescription = Convert.ToString(Convert.ToDecimal(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt1_PackedData)
                       - Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData));
                 }
-                Logger.Trace("ENDED:  To Get Option4 Minimum Description");
+                //Logger.Trace("ENDED:  To Get Option4 Minimum Description");
             }
             catch (Exception ex)
             {
@@ -2414,13 +2414,13 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Post Petiton past due message");
+                //Logger.Trace("STARTED:  Execute to Get Post Petiton past due message");
 
                 if (CommonHelper.GetFormatedDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                 {
                     PostPetitonpastduemessage = "We have not received all of your mortgage payments due since you filed for bankruptcy.";
                 }
-                Logger.Trace("ENDED:  To Get Post Petiton past due message");
+                //Logger.Trace("ENDED:  To Get Post Petiton past due message");
             }
             catch (Exception ex)
             {
@@ -2433,7 +2433,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get PO Box Address");
+                //Logger.Trace("STARTED:  Execute to Get PO Box Address");
 
                 if (accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "KS"
                       || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "LA"
@@ -2447,7 +2447,7 @@ namespace Carrington_Service.Calculation_Classes
                 {
                     POBoxAddress = "Pasadena P.O.Box Address";
                 }
-                Logger.Trace("ENDED:  To Get PO Box Address");
+                //Logger.Trace("ENDED:  To Get PO Box Address");
             }
             catch (Exception ex)
             {
@@ -2460,7 +2460,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Date");
+                //Logger.Trace("STARTED:  Execute to Get Date");
 
                 if (accountsModel.FeeRecordModel.Rssi_Fd_Fee_Type == "000")
                 {
@@ -2470,7 +2470,7 @@ namespace Carrington_Service.Calculation_Classes
                 {
                     Date = accountsModel.TransactionRecordModel.Rssi_Tr_Date_PackedData;
                 }
-                Logger.Trace("ENDED:  To Get Date");
+                //Logger.Trace("ENDED:  To Get Date");
             }
             catch (Exception ex)
             {
@@ -2483,7 +2483,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Amount");
+                //Logger.Trace("STARTED:  Execute to Get Amount");
 
                 if (Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Exp_Fee_Amt_PackedData) != 0)
                 {
@@ -2497,7 +2497,7 @@ namespace Carrington_Service.Calculation_Classes
                 {
                     Amount = accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData;
                 }
-                Logger.Trace("ENDED:  To Get Amount");
+                //Logger.Trace("ENDED:  To Get Amount");
             }
             catch (Exception ex)
             {
@@ -2510,7 +2510,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Buy down Balance");
+                //Logger.Trace("STARTED:  Execute to Get Buy down Balance");
 
                 if (Convert.ToDecimal(accountsModel.UserFieldRecordModel.Rssi_Usr_303_PackedData) <= 0)
                 {
@@ -2520,7 +2520,7 @@ namespace Carrington_Service.Calculation_Classes
                 {
                     BuydownBalance = accountsModel.UserFieldRecordModel.Rssi_Usr_303_PackedData;
                 }
-                Logger.Trace("ENDED:  Execute to Get Buy down Balance");
+                //Logger.Trace("ENDED:  Execute to Get Buy down Balance");
             }
             catch (Exception ex)
             {
@@ -2533,7 +2533,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Partial Claim");
+                //Logger.Trace("STARTED:  Execute to Get Partial Claim");
 
                 if (Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) == 0)
                 {
@@ -2543,7 +2543,7 @@ namespace Carrington_Service.Calculation_Classes
                 {
                     PartialClaim = accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData;
                 }
-                Logger.Trace("ENDED:  To Get Partial Claim");
+                //Logger.Trace("ENDED:  To Get Partial Claim");
             }
             catch (Exception ex)
             {
@@ -2557,7 +2557,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Interest Rate Until");
+                //Logger.Trace("STARTED:  Execute to Get Interest Rate Until");
 
                 if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Rate_Chg_Date) > 19000000)
                 {
@@ -2567,7 +2567,7 @@ namespace Carrington_Service.Calculation_Classes
                 {
                     InterestRateUntil = "null";
                 }
-                Logger.Trace("ENDED:  To Get Interest Rate Until");
+                //Logger.Trace("ENDED:  To Get Interest Rate Until");
             }
             catch (Exception ex)
             {
@@ -2580,7 +2580,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Pre payment Penalty");
+                //Logger.Trace("STARTED:  Execute to Get Pre payment Penalty");
 
                 if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prepay_Pen_Amt_PackedData) > 0)
                 {
@@ -2590,7 +2590,7 @@ namespace Carrington_Service.Calculation_Classes
                 {
                     PrepaymentPenalty = "No";
                 }
-                Logger.Trace("ENDED:  To Get Pre payment Penalty");
+                //Logger.Trace("ENDED:  To Get Pre payment Penalty");
             }
             catch (Exception ex)
             {
@@ -2603,7 +2603,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Lender Placed Insurance Message");
+                //Logger.Trace("STARTED:  Execute to Get Lender Placed Insurance Message");
 
                 if ((Convert.ToDecimal(accountsModel.EscrowRecordModel.Rssi_Esc_Type) == 20
                 || Convert.ToDecimal(accountsModel.EscrowRecordModel.Rssi_Esc_Type) == 21)
@@ -2616,7 +2616,7 @@ namespace Carrington_Service.Calculation_Classes
                     LenderPlacedInsuranceMessage = "Lender Placed Insurance message";
                 }
 
-                Logger.Trace("ENDED:  To Get Lender Placed Insurance Message");
+                //Logger.Trace("ENDED:  To Get Lender Placed Insurance Message");
             }
             catch (Exception ex)
             {
@@ -2629,7 +2629,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get State NSF");
+                //Logger.Trace("STARTED:  Execute to Get State NSF");
 
                 if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 6
                 || Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 16
@@ -2638,7 +2638,7 @@ namespace Carrington_Service.Calculation_Classes
                 {
                     StateNSF = "State NSF message";
                 }
-                Logger.Trace("ENDED:  To Get State NSF");
+                //Logger.Trace("ENDED:  To Get State NSF");
             }
             catch (Exception ex)
             {
@@ -2651,7 +2651,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Auto draft Message");
+                //Logger.Trace("STARTED:  Execute to Get Auto draft Message");
 
                 if (Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Tot_Draft_Amt_PackedData) > 0
                 && Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) > 0)
@@ -2659,7 +2659,7 @@ namespace Carrington_Service.Calculation_Classes
                     AutodraftMessage = "Autodraft message";
                 }
 
-                Logger.Trace("ENDED:  To Get Auto draft Message");
+                //Logger.Trace("ENDED:  To Get Auto draft Message");
             }
             catch (Exception ex)
             {
@@ -2672,13 +2672,13 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get CMS Partial Claim");
+                //Logger.Trace("STARTED:  Execute to Get CMS Partial Claim");
                 if (Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) > 0
                 && accountsModel.UserFieldRecordModel.Rssi_Usr_88 == "C")
                 {
                     CMSPartialClaim = "CMS Partial Claim Message.";
                 }
-                Logger.Trace("ENDED:   To Get CMS Partial Claim");
+                //Logger.Trace("ENDED:   To Get CMS Partial Claim");
             }
             catch (Exception ex)
             {
@@ -2691,13 +2691,13 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get HUD Partial Claim");
+                //Logger.Trace("STARTED:  Execute to Get HUD Partial Claim");
                 if (Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) > 0
                 && accountsModel.UserFieldRecordModel.Rssi_Usr_88 == "H")
                 {
                     HUDPartialClaim = "HUD Partial Claim Message.";
                 }
-                Logger.Trace("ENDED:  To Get HUD Partial Claim");
+                //Logger.Trace("ENDED:  To Get HUD Partial Claim");
             }
             catch (Exception ex)
             {
@@ -2710,7 +2710,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get State Disclosures");
+                //Logger.Trace("STARTED:  Execute to Get State Disclosures");
 
                 if (accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "4"
                     || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "6"
@@ -2735,7 +2735,7 @@ namespace Carrington_Service.Calculation_Classes
                 {
                     StateDisclosures = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
                 }
-                Logger.Trace("ENDED:  To Get State Disclosures");
+                //Logger.Trace("ENDED:  To Get State Disclosures");
             }
             catch (Exception ex)
             {
@@ -2748,7 +2748,7 @@ namespace Carrington_Service.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Execute to Get Payment Information Message");
+                //Logger.Trace("STARTED:  Execute to Get Payment Information Message");
 
                 if (accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "KS"
                     || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "LA"
@@ -2762,7 +2762,7 @@ namespace Carrington_Service.Calculation_Classes
                 {
                     PaymentInformationMessage = "Pasadena P.O.Box Address";
                 }
-                Logger.Trace("ENDED:  To Get Payment Information Message");
+                //Logger.Trace("ENDED:  To Get Payment Information Message");
             }
             catch (Exception ex)
             {
