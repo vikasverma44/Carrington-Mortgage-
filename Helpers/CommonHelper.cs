@@ -47,12 +47,9 @@ namespace CarringtonMortgage.Helpers
             try
             {
 
-                if (WorkFlowExpert.detModels.Any(df => df.LoanNumber == accountToMatch))
+                if (WorkFlowExpert.detModels.Any(df => df.LoanNumber == accountToMatch) || WorkFlowExpert.transModels.Any(df => df.LoanNumber == accountToMatch))
                 {
-                    if (WorkFlowExpert.eConsentModels.Any(df => df.LoanNumber == accountToMatch))
-                    {
-                        recordFound = true;
-                    }
+                    recordFound = true;
                 }
             }
             catch (Exception)

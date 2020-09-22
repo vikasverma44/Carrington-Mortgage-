@@ -2,7 +2,6 @@
 using Carrington_Service.BusinessExpert;
 using Carrington_Service.Helpers;
 using Carrington_Service.Infrastructure;
-using Carrington_Service.Interfaces;
 using Carrington_Service.Services;
 using System;
 using System.IO;
@@ -18,7 +17,6 @@ namespace Carrington_Service
         public ILogger Logger;
         public IConfigHelper ConfigHelper;
         public IAgentApi ApiAgent;
-        public IEmailService EmailService; 
 
         private static void Main(string[] args)
         {
@@ -47,7 +45,7 @@ namespace Carrington_Service
                     }
                     if (objWFservice.StartWorkFlowService(_inputFile, _trackingId))
                     {
-                      //  objWFservice.logger.Trace("SUCCESS: Application succcesfully executed with 0 error.");
+                        //  objWFservice.logger.Trace("SUCCESS: Application succcesfully executed with 0 error.");
                         objWFservice.logger.Trace("ENDED:   Main");
                     }
                     else
@@ -56,7 +54,7 @@ namespace Carrington_Service
                     }
                 }
                 else
-                { 
+                {
                     objWFservice.logger.Trace("Invalid number of parameters supplied.");
                 }
                 Console.ReadKey();

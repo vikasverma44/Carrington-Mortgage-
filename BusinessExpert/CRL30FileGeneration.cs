@@ -176,7 +176,7 @@ namespace ODHS_EDelivery.BusinessExpert
 
                         account.Standard.PaymentDueDate = CommonHelper.GetFormatedDateTime(extractAccount.MasterFileDataPart_1Model.Rssi_Due_Date) >
                             CommonHelper.GetFormatedDateTime(extractAccount.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte) ?
-                            CommonHelper.GetFormatedDateTime(extractAccount.MasterFileDataPart_1Model.Rssi_Run_Date) :
+                            CommonHelper.GetFormatedDateTime(extractAccount.MasterFileDataPart_1Model.Rssi_Due_Date) :
                             CommonHelper.GetFormatedDateTime(extractAccount.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte);
                         account.Standard.LatePaymentDueDate = CommonHelper.GetFormatedDateTime(extractAccount.LateChargeDetailRecordModel.Rssi_Lcd_Pymt_Due_Dt_PackedData);
 

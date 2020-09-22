@@ -2573,17 +2573,21 @@ namespace Carrington_Service.Calculation_Classes
             try
             {
                 if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 1)
-                { recentPayment6 = "RSSI-PMT-DUE-5-DATE: Fully paid on RSSI-PMT-PAID-5-DATE"; }
+                {
+                    recentPayment6 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_5+" Fully paid on "+ accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_5; }
                 else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 2)
-                { recentPayment6 = "RSSI - PMT - DUE - 4 - DATE: Fully paid on RSSI-PMT - PAID - 4 - DATE"; }
+                { recentPayment6 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_4 + " Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_4; }
+           
                 else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 3)
-                { recentPayment6 = "RSSI - PMT - DUE - 3 - DATE: Fully paid on RSSI-PMT - PAID - 3 - DATE"; }
+                { recentPayment6 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_3 + " Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_3; }
                 else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 4)
-                { recentPayment6 = "RSSI - PMT - DUE - 2 - DATE: Fully paid on RSSI-PMT - PAID - 2 - DATE"; }
+                { recentPayment6 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_2 + " Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_2; }
                 else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 5)
-                { recentPayment6 = "RSSI - PMT - DUE - 1 - DATE: Fully paid on RSSI-PMT - PAID - 1 - DATE"; }
+                { recentPayment6 = recentPayment6 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_1 + " Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_1; ; }
                 else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
-                { recentPayment6 = "RSSI - PAST - DATE(1): Unpaid balance of $RSSI - REG - AMT(1)"; }
+                {
+                    recentPayment6 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date+"(1): Unpaid balance of $" + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData +"(1)";
+                 }
 
             }
             catch (Exception ex)
@@ -2605,17 +2609,21 @@ namespace Carrington_Service.Calculation_Classes
             try
             {
                 if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 1)
-                { recentPayment5 = "RSSI-PMT-DUE-4-DATE: Fully paid on RSSI-PMT-PAID-4-DATE"; }
+                { recentPayment5 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_4 + " Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_4; }
                 else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 2)
-                { recentPayment5 = "RSSI - PMT - DUE - 3 - DATE: Fully paid on RSSI-PMT - PAID - 3 - DATE"; }
+                {
+                    recentPayment5 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_3 + " Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_3;
+                }
                 else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 3)
-                { recentPayment5 = "RSSI - PMT - DUE - 2 - DATE: Fully paid on RSSI-PMT - PAID - 2 - DATE"; }
+                { recentPayment5 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_2 + " Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_2; }
                 else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 4)
-                { recentPayment5 = "RSSI - PMT - DUE - 1 - DATE: Fully paid on RSSI-PMT - PAID - 1 - DATE"; }
+                { recentPayment5 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_1 + " Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_1; }
                 else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 5 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
-                { recentPayment5 = "RSSI - PAST - DATE(1): Unpaid balance of $RSSI - REG - AMT(1)"; }
+                {
+                    recentPayment5 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(1): Unpaid balance of $" + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(1)";
+                     }
                 else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
-                { recentPayment5 = "RSSI - PAST - DATE(2): Unpaid balance of $RSSI - REG - AMT(2)"; }
+                { recentPayment5 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(2): Unpaid balance of $" + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(2)"; }
 
             }
             catch (Exception ex)
@@ -2636,17 +2644,17 @@ namespace Carrington_Service.Calculation_Classes
             try
             {
                 if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 1)
-                { recentPayment4 = "RSSI-PMT-DUE-3-DATE: Fully paid on RSSI-PMT-PAID-3-DATE"; }
+                { recentPayment4 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_3 + " Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_3; }
                 else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 2)
-                { recentPayment4 = "RSSI - PMT - DUE - 2 - DATE: Fully paid on RSSI-PMT - PAID - 2 - DATE"; }
+                { recentPayment4 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_2 + " Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_2; }
                 else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 3)
-                { recentPayment4 = "RSSI - PMT - DUE - 1 - DATE: Fully paid on RSSI-PMT - PAID - 1 - DATE"; }
+                { recentPayment4 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_1 + " Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_1; }
                 else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 4 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
-                { recentPayment4 = "RSSI - PAST - DATE(1): Unpaid balance of $RSSI - REG - AMT(1)"; }
+                { recentPayment4 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(1): Unpaid balance of $" + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(1)"; }
                 else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 5 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
-                { recentPayment4 = "RSSI - PAST - DATE(2): Unpaid balance of $RSSI - REG - AMT(2)"; }
+                { recentPayment4 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(2): Unpaid balance of $" + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(2)"; }
                 else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
-                { recentPayment4 = "RSSI - PAST - DATE(3): Unpaid balance of $RSSI - REG - AMT(3)"; }
+                { recentPayment4 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(3): Unpaid balance of $" + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(3)"; }
 
 
             }
@@ -2667,17 +2675,17 @@ namespace Carrington_Service.Calculation_Classes
             try
             {
                 if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 1)
-                { recentPayment3 = "RSSI-PMT-DUE-2-DATE: Fully paid on RSSI-PMT-PAID-2-DATE"; }
+                { recentPayment3 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_2 + " Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_2; }
                 else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 2)
-                { recentPayment3 = "RSSI - PMT - DUE - 1 - DATE: Fully paid on RSSI-PMT - PAID - 1 - DATE"; }
+                { recentPayment3 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_1 + " Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_1; }
                 else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 3 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
-                { recentPayment3 = "RSSI - PAST - DATE(1): Unpaid balance of $RSSI - REG - AMT(1)"; }
+                { recentPayment3 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(1): Unpaid balance of $" + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(1)"; }
                 else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 4 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
-                { recentPayment3 = "RSSI - PAST - DATE(2): Unpaid balance of $RSSI - REG - AMT(2)"; }
+                { recentPayment3 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(2): Unpaid balance of $" + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(2)"; }
                 else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 5 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
-                { recentPayment3 = "RSSI - PAST - DATE(3): Unpaid balance of $RSSI - REG - AMT(3)"; }
+                { recentPayment3 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(3): Unpaid balance of $" + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(3)"; }
                 else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
-                { recentPayment3 = "RSSI - PAST - DATE(4): Unpaid balance of $RSSI - REG - AMT(4)"; }
+                { recentPayment3 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(4): Unpaid balance of $" + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(4)"; }
 
             }
             catch (Exception ex)
@@ -2698,17 +2706,17 @@ namespace Carrington_Service.Calculation_Classes
             try
             {
                 if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 1)
-                { recentPayment2 = "RSSI-PMT-DUE-1-DATE: Fully paid on RSSI-PMT-PAID-1-DATE"; }
+                { recentPayment2 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_1 + " Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_1; }
                 else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 2 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
-                { recentPayment2 = "RSSI - PAST - DATE(1): Unpaid balance of $RSSI - REG - AMT(1)"; }
+                { recentPayment2 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(1): Unpaid balance of $" + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(1)"; }
                 else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 3 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
-                { recentPayment2 = "RSSI - PAST - DATE(2): Unpaid balance of $RSSI - REG - AMT(2)"; }
+                { recentPayment2 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(2): Unpaid balance of $" + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(2)"; }
                 else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 4 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
-                { recentPayment2 = "RSSI - PAST - DATE(3): Unpaid balance of $RSSI - REG - AMT(3)"; }
+                { recentPayment2 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(3): Unpaid balance of $" + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(3)"; }
                 else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 5 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
-                { recentPayment2 = "RSSI - PAST - DATE(4): Unpaid balance of $RSSI - REG - AMT(4)"; }
+                { recentPayment2 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(4): Unpaid balance of $" + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(4)"; }
                 else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
-                { recentPayment2 = "RSSI - PAST - DATE(5): Unpaid balance of $RSSI - REG - AMT(5)"; }
+                { recentPayment2 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(5): Unpaid balance of $" + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(5)"; }
 
             }
             catch (Exception ex)
@@ -2729,17 +2737,17 @@ namespace Carrington_Service.Calculation_Classes
             try
             {
                 if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 1 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
-                { recentPayment1 = "RSSI-PAST-DATE (1): Unpaid balance of $RSSI-REG-AMT (1)"; }
+                { recentPayment1 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(1): Unpaid balance of $" + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(1)"; }
                 else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 2 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
-                { recentPayment1 = "RSSI - PAST - DATE(2): Unpaid balance of $RSSI - REG - AMT(2)"; }
+                { recentPayment1 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(2): Unpaid balance of $" + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(2)"; }
                 else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 3 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
-                { recentPayment1 = "RSSI - PAST - DATE(3): Unpaid balance of $RSSI - REG - AMT(3)"; }
+                { recentPayment1 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(3): Unpaid balance of $" + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(3)"; }
                 else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 4 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
-                { recentPayment1 = "RSSI - PAST - DATE(4): Unpaid balance of $RSSI - REG - AMT(4)"; }
+                { recentPayment1 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(4): Unpaid balance of $" + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(4)"; }
                 else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 5 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
-                { recentPayment1 = "RSSI - PAST - DATE(5): Unpaid balance of $RSSI - REG - AMT(5)"; }
+                { recentPayment1 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(5): Unpaid balance of $" + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(5)"; }
                 else if (decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0 && decimal.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
-                { recentPayment1 = "RSSI - PAST - DATE(5): Unpaid balance of $RSSI - REG - AMT(5)"; }
+                { recentPayment1 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(6): Unpaid balance of $" + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(6)"; }
 
             }
             catch (Exception ex)
