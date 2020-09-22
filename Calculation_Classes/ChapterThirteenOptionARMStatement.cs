@@ -361,14 +361,18 @@ namespace Carrington_Service.Calculation_Classes
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get Fees and Charges Paid Last Month");
+                var value = (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Fees_Pd_Since_Lst_Stmt_PackedData)
+                    + Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Lc_Pd_Since_Lst_Stmt_PackedData));
 
                 if ((Convert.ToDecimal(model.TransactionRecordModel.Rssi_Log_Tran) == 5705 || Convert.ToDecimal(model.TransactionRecordModel.Rssi_Log_Tran) == 5707)
                     && (Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Fee_Code) == 67 || Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Fee_Code) == 198))
                 {
-                    FeesandChargesPaidLastMonth = Convert.ToString((Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Fees_Pd_Since_Lst_Stmt_PackedData)
-                    + Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Lc_Pd_Since_Lst_Stmt_PackedData))
+                    FeesandChargesPaidLastMonth = Convert.ToString(value
                     - Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
                 }
+                else
+                    FeesandChargesPaidLastMonth = Convert.ToString(value);
+
                 //Logger.Trace("ENDED:  To Get Fees and Charges Paid Last Month");
             }
             catch (Exception ex)
@@ -419,15 +423,17 @@ namespace Carrington_Service.Calculation_Classes
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get Fees and Charges Paid Year To Date");
-
+                var value = (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Fees_Paid_Ytd_PackedData)
+                    + Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Paid_Ytd_PackedData));
                 if ((Convert.ToDecimal(model.TransactionRecordModel.Rssi_Log_Tran) == 5705 || Convert.ToDecimal(model.TransactionRecordModel.Rssi_Log_Tran) == 5707)
                   &&
                   (Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Fee_Code) == 67 || Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Fee_Code) == 198))
                 {
-                    FeesandChargesPaidLastMonth = Convert.ToString((Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Fees_Paid_Ytd_PackedData)
-                    + Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Paid_Ytd_PackedData))
+                    FeesandChargesPaidLastMonth = Convert.ToString(value
                     - Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
                 }
+                else
+                    FeesandChargesPaidLastMonth = Convert.ToString(value);
                 //Logger.Trace("STARTED:  To Get Fees and Charges Paid Year To Date");
             }
             catch (Exception ex)
@@ -473,11 +479,7 @@ namespace Carrington_Service.Calculation_Classes
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get Total Paid Year To Date");
-
-                if ((Convert.ToDecimal(model.TransactionRecordModel.Rssi_Log_Tran) == 5705 || Convert.ToDecimal(model.TransactionRecordModel.Rssi_Log_Tran) == 5707)
-                   && (Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Fee_Code) == 67 || Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Fee_Code) == 198))
-                {
-                    TotalPaidYearToDate = Convert.ToString((Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Paid_Ytd_PackedData)
+                var value = (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Paid_Ytd_PackedData)
                     + Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Int_Pd_Ytd_PackedData)
                     + Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Esc_Paid_Ytd_PackedData)
                     + Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Fees_Paid_Ytd_PackedData)
@@ -486,10 +488,16 @@ namespace Carrington_Service.Calculation_Classes
                     + model.MasterFileDataPart2Model.Rssi_Unap_Cd_2 != "L" ? Convert.ToDecimal(model.MasterFileDataPart2Model.Rssi_Unap_Bal_2_PackedData) : 0
                     + model.MasterFileDataPart2Model.Rssi_Unap_Cd_3 != "L" ? Convert.ToDecimal(model.MasterFileDataPart2Model.Rssi_Unap_Bal_3_PackedData) : 0
                     + model.MasterFileDataPart2Model.Rssi_Unap_Cd_4 != "L" ? Convert.ToDecimal(model.MasterFileDataPart2Model.Rssi_Unap_Bal_4_PackedData) : 0
-                    + model.MasterFileDataPart2Model.Rssi_Unap_Cd_5 != "L" ? Convert.ToDecimal(model.MasterFileDataPart2Model.Rssi_Unap_Bal_5_PackedData) : 0)
+                    + model.MasterFileDataPart2Model.Rssi_Unap_Cd_5 != "L" ? Convert.ToDecimal(model.MasterFileDataPart2Model.Rssi_Unap_Bal_5_PackedData) : 0);
+
+                if ((Convert.ToDecimal(model.TransactionRecordModel.Rssi_Log_Tran) == 5705 || Convert.ToDecimal(model.TransactionRecordModel.Rssi_Log_Tran) == 5707)
+                   && (Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Fee_Code) == 67 || Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Fee_Code) == 198))
+                {
+                    TotalPaidYearToDate = Convert.ToString(value
                     - Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_PackedData));
                 }
-
+                else
+                    TotalPaidYearToDate = Convert.ToString(value);
                 //Logger.Trace("ENDED:  To Get Total Paid Year To Date");
             }
             catch (Exception ex)
