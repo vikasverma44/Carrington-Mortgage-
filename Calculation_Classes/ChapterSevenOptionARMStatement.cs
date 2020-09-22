@@ -1907,8 +1907,8 @@ namespace Carrington_Service.Calculation_Classes
             try
             {
                 Logger.Trace("STARTED:  Execute to Get Payment Date");
-
-                PaymentDate = accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte;
+                
+                PaymentDate = CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte).ToString();
 
                 Logger.Trace("ENDED:  To Get Payment Date");
             }
