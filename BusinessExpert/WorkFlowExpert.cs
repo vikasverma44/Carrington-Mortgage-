@@ -376,7 +376,7 @@ namespace Carrington_Service.BusinessExpert
                 Logger.Trace("ENDED: Reading PM File");
 
                 //Adding File info
-                MortgageLoanBillingFile.InputFileSize = InputFileStream.Length;
+                MortgageLoanBillingFile.InputFileSize = InputFileStream.Length/1024;
                 MortgageLoanBillingFile.InputFileName = Path.GetFileName(fileNameWithPath);
                 MortgageLoanBillingFile.InputFileDate = File.GetCreationTime(fileNameWithPath);
                 MortgageLoanBillingFile.TotalNumberOfAccount = MortgageLoanBillingFile.AccountModelList.Count;
