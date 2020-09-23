@@ -14,7 +14,7 @@ using WMS.Framework.Data.Records.WorkflowRecords;
 
 namespace ODHS_EDelivery.BusinessExpert
 {
-    public class CRL30FileGeneration :  ICRL30FileGeneration
+    public class CRL30FileGeneration : ICRL30FileGeneration
     {
         public ILogger Logger;
         private readonly IConfigHelper ConfigHelper;
@@ -99,11 +99,11 @@ namespace ODHS_EDelivery.BusinessExpert
                     output.CreateNew(_outputFile, "BHM");
                     var ncp05 = RecordManager.NewInputFileInfoRecord(Ncp05Version);
                     ncp05.Description = Ncp05Description;
-                    ncp05.FileReceivedDate =Convert.ToDateTime(CommonHelper.GetFormatedDateTimeWithAmPm(mortgageLoanBillingFileModel.InputFileDate));
+                    ncp05.FileReceivedDate = Convert.ToDateTime(CommonHelper.GetFormatedDateTimeWithAmPm(mortgageLoanBillingFileModel.InputFileDate));
                     ncp05.InputFileName = mortgageLoanBillingFileModel.InputFileName; //TODO:Add properties in mortgage model
                     ncp05.InputFileSize = mortgageLoanBillingFileModel.InputFileSize;
                     ncp05.FileNumber = 1;
-                    ncp05.TrackingId =Convert.ToInt32(mortgageLoanBillingFileModel.TrackingId);
+                    ncp05.TrackingId = Convert.ToInt32(mortgageLoanBillingFileModel.TrackingId);
                     output.AddInputFileInfoRecord(ncp05);
                     lineCnt++;
 
@@ -171,11 +171,10 @@ namespace ODHS_EDelivery.BusinessExpert
                             account.Standard.FlexField5 = borrowerList.FirstOrDefault().FlexField5;
                             account.Standard.FlexField6 = borrowerList.FirstOrDefault().FlexField6;
                         }
-                       
+
 
                         account.Standard.SSN = extractAccount.MasterFileDataPart_1Model.Rssi_Primary_Social_Sec;
                         account.Standard.StatementDate = CommonHelper.GetFormatedDateTime(extractAccount.MasterFileDataPart_1Model.Rssi_Run_Date);
-
                         account.Standard.PaymentDueDate = CommonHelper.GetFormatedDateTime(extractAccount.MasterFileDataPart_1Model.Rssi_Due_Date) >
                            CommonHelper.GetFormatedDateTime(extractAccount.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte) ?
                            CommonHelper.GetFormatedDateTime(extractAccount.MasterFileDataPart_1Model.Rssi_Due_Date) :
@@ -186,9 +185,9 @@ namespace ODHS_EDelivery.BusinessExpert
                         }
                         else { account.Standard.LatePaymentDueDate = null; }
 
-                        account.Standard.LatePaymentAmount = (StandardBillingStatement.GetLatePaymentAmount(extractAccount) != null 
-                            &&  StandardBillingStatement.GetLatePaymentAmount(extractAccount) != "N/A") ?
-                            Convert.ToDecimal(StandardBillingStatement.GetLatePaymentAmount(extractAccount)): 0;//TODO: Convert the calling method
+                        account.Standard.LatePaymentAmount = (StandardBillingStatement.GetLatePaymentAmount(extractAccount) != null
+                            && StandardBillingStatement.GetLatePaymentAmount(extractAccount) != "N/A") ?
+                            Convert.ToDecimal(StandardBillingStatement.GetLatePaymentAmount(extractAccount)) : 0;//TODO: Convert the calling method
                         account.Standard.EmailAddress = extractAccount.MasterFileDataPart_1Model.Rssi_Primary_Email_Adr;
                         account.Standard.FormattedAccount = extractAccount.MasterFileDataPart_1Model.Rssi_Acct_No;
                         account.Standard.TwoDRecordCode = 3;
@@ -340,7 +339,7 @@ namespace ODHS_EDelivery.BusinessExpert
                     Logger.Info($"Lines written: {lineCnt}");
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Logger.Error(ex, "GenerateCRL30File Failed :");
             }
@@ -355,7 +354,7 @@ namespace ODHS_EDelivery.BusinessExpert
             account.Workflow.IsReject = true;
             account.Workflow.ProductNumber = RejectProductNumber;
             account.Workflow.OptionNumber = RejectOptionNumber;
-            account.MarkAsReject("Carrington_Mortgage", "8888", message);
+            account.MarkAsReject(" Carrington_Mortgage", "8888", message);
         }
         /// <summary>
         /// This method is used for creating output file path
