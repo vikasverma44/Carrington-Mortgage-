@@ -6,6 +6,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
     public interface IStatementType
     {
         List<Borrower> GetOptionArmBkChpt13EDeliveryArchivePrimary(AccountsModel accountModel);
+        List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyNy(AccountsModel accountModel);
         List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyNyDvlPrimary(AccountsModel accountModel);
         List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyNyHelloDvlPrimary(AccountsModel accountModel);
         List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyNyHelloPrimary(AccountsModel accountModel);
@@ -17,6 +18,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
         List<Borrower> GetOptionArmBkChpt13StmtPrimary(AccountsModel accountModel);
         List<Borrower> GetOptionArmBkChpt13StmtPrimaryForeign(AccountsModel accountModel);
         List<Borrower> GetOptionArmBkChpt7EDeliveryArchivePrimary(AccountsModel accountModel);
+        List<Borrower> GetOptionArmBkChpt7StmtArchiveOnlyNy(AccountsModel accountsModel);
         List<Borrower> GetOptionArmBkChpt7StmtArchiveOnlyNyDvlPrimary(AccountsModel accountModel);
         List<Borrower> GetOptionArmBkChpt7StmtArchiveOnlyNyHelloDvlPrimary(AccountsModel accountModel);
         List<Borrower> GetOptionArmBkChpt7StmtArchiveOnlyNyHelloPrimary(AccountsModel accountModel);
@@ -38,6 +40,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
         List<Borrower> GetOptionArmStmtNyandHelloLetter(AccountsModel accountModel);
         List<Borrower> GetOptionArmStmtPrimary(AccountsModel accountModel);
         List<Borrower> GetOptionArmStmtPrimaryForeign(AccountsModel accountModel);
+        List<Borrower> GetPrimaryStandardStatement(AccountsModel accountModel);
         List<Borrower> GetStdBkChpt13EDeliveryArchivePrimary(AccountsModel accountModel);
         List<Borrower> GetStdBkChpt13StmtArchiveOnlyNy(AccountsModel accountModel);
         List<Borrower> GetStdBkChpt13StmtArchiveOnlyNyDvlPrimary(AccountsModel accountModel);
@@ -52,7 +55,6 @@ namespace CarringtonMortgage.FlexFields_Calculation
         List<Borrower> GetStdBkChpt13StmtPrimaryForeign(AccountsModel accountModel);
         List<Borrower> GetStdBkChpt7EDeliveryArchivePrimary(AccountsModel accountModel);
         List<Borrower> GetStdBkChpt7StmtArchiveOnlyNy(AccountsModel accountModel);
-        List<Borrower> GetStdBkChpt7StmtArchiveOnlyNY(AccountsModel accountsModel);
         List<Borrower> GetStdBkChpt7StmtArchiveOnlyNyDvlPrimary(AccountsModel accountModel);
         List<Borrower> GetStdBkChpt7StmtArchiveOnlyNyHelloDvlPrimary(AccountsModel accountModel);
         List<Borrower> GetStdBkChpt7StmtArchiveOnlyNyHelloPrimary(AccountsModel accountModel);
@@ -72,7 +74,6 @@ namespace CarringtonMortgage.FlexFields_Calculation
         List<Borrower> GetStdStmtNyAndDvlLetter(AccountsModel accountModel);
         List<Borrower> GetStdStmtNyAndHelloDvlLetter(AccountsModel accountModel);
         List<Borrower> GetStdStmtNyAndHelloLetter(AccountsModel accountModel);
-        List<Borrower> GetPrimaryStandardStatement(AccountsModel accountModel);
         List<Borrower> GetStdStmtPrimaryForeign(AccountsModel accountModel);
     }
 }

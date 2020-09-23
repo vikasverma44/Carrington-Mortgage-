@@ -24,7 +24,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -43,7 +43,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -62,7 +62,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -81,7 +81,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -100,7 +100,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -119,7 +119,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -138,7 +138,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -157,7 +157,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -176,7 +176,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -195,7 +195,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -214,7 +214,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -247,7 +247,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -267,7 +267,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -287,7 +287,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -307,7 +307,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -327,7 +327,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -347,7 +347,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -367,7 +367,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -387,7 +387,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -407,7 +407,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -427,7 +427,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -447,7 +447,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -481,7 +481,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -501,7 +501,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -521,7 +521,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -541,7 +541,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -561,7 +561,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -581,7 +581,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -601,7 +601,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -621,7 +621,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -641,7 +641,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -661,7 +661,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -681,7 +681,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -715,7 +715,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -735,7 +735,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -755,7 +755,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -775,7 +775,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -795,7 +795,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -815,7 +815,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -835,7 +835,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -855,7 +855,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -875,7 +875,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -895,7 +895,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -915,7 +915,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -949,7 +949,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -959,7 +959,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No))
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -973,7 +973,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -984,7 +984,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No))
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -997,7 +997,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -1008,7 +1008,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No))
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -1021,7 +1021,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -1032,7 +1032,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No))
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -1045,7 +1045,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -1056,7 +1056,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No))
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -1069,7 +1069,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -1080,7 +1080,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No))
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -1093,7 +1093,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -1104,7 +1104,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No))
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -1117,7 +1117,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -1128,7 +1128,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No))
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -1141,7 +1141,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -1152,7 +1152,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No))
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -1165,7 +1165,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -1176,7 +1176,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No))
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -1189,7 +1189,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -1200,7 +1200,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No))
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -1227,7 +1227,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -1237,7 +1237,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -1251,7 +1251,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -1262,7 +1262,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -1275,7 +1275,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -1286,7 +1286,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -1299,7 +1299,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -1310,7 +1310,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -1323,7 +1323,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -1334,7 +1334,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -1347,7 +1347,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -1358,7 +1358,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -1371,7 +1371,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -1382,7 +1382,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -1395,7 +1395,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -1406,7 +1406,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -1419,7 +1419,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -1430,7 +1430,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -1443,7 +1443,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -1454,7 +1454,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -1467,7 +1467,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -1478,7 +1478,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -1505,7 +1505,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -1515,7 +1515,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -1529,7 +1529,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -1540,7 +1540,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -1553,7 +1553,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -1564,7 +1564,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -1577,7 +1577,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -1588,7 +1588,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -1601,7 +1601,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -1612,7 +1612,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -1625,7 +1625,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -1636,7 +1636,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -1649,7 +1649,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -1660,7 +1660,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -1673,7 +1673,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -1684,7 +1684,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -1697,7 +1697,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -1708,7 +1708,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -1721,7 +1721,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -1732,7 +1732,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -1745,7 +1745,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -1756,7 +1756,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -1783,7 +1783,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -1793,7 +1793,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -1807,7 +1807,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -1818,7 +1818,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -1831,7 +1831,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -1842,7 +1842,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -1855,7 +1855,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -1866,7 +1866,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -1879,7 +1879,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -1890,7 +1890,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -1903,7 +1903,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -1914,7 +1914,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -1927,7 +1927,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -1938,7 +1938,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -1951,7 +1951,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -1962,7 +1962,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -1975,7 +1975,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -1986,7 +1986,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -1999,7 +1999,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -2010,7 +2010,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -2023,7 +2023,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -2034,7 +2034,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -2061,7 +2061,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -2070,7 +2070,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -2084,7 +2084,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -2094,7 +2094,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A")
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -2107,7 +2107,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -2117,7 +2117,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A")
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -2130,7 +2130,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -2140,7 +2140,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A")
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -2153,7 +2153,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -2163,7 +2163,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A")
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -2176,7 +2176,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -2186,7 +2186,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A")
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -2199,7 +2199,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -2209,7 +2209,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A")
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -2222,7 +2222,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -2232,7 +2232,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A")
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -2245,7 +2245,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -2255,7 +2255,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A")
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -2268,7 +2268,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -2278,7 +2278,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A")
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -2291,7 +2291,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -2301,7 +2301,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A")
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -2328,7 +2328,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -2337,7 +2337,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -2351,7 +2351,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -2361,7 +2361,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A")
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -2374,7 +2374,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -2384,7 +2384,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A")
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -2397,7 +2397,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -2407,7 +2407,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A")
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -2420,7 +2420,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -2430,7 +2430,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A")
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -2443,7 +2443,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -2453,7 +2453,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A")
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -2466,7 +2466,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -2476,7 +2476,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A")
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -2489,7 +2489,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -2499,7 +2499,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A")
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -2512,7 +2512,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -2522,7 +2522,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A")
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -2535,7 +2535,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -2545,7 +2545,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A")
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -2558,7 +2558,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -2568,7 +2568,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A")
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -2595,7 +2595,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
             try
             {
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -2604,7 +2604,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -2618,7 +2618,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -2628,7 +2628,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A")
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -2641,7 +2641,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -2651,7 +2651,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A")
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -2664,7 +2664,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -2674,7 +2674,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A")
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -2687,7 +2687,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -2697,7 +2697,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A")
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -2710,7 +2710,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -2720,7 +2720,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A")
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -2733,7 +2733,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -2743,7 +2743,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A")
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -2756,7 +2756,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -2766,7 +2766,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A")
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -2779,7 +2779,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -2789,7 +2789,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A")
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -2802,7 +2802,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -2812,7 +2812,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A")
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -2825,7 +2825,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
 
                 if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01"))
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "7"
                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
@@ -2835,7 +2835,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A")
                 && ((accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -2864,7 +2864,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                  || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                  && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                 && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                 && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                  || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                  || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                  && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
@@ -2882,7 +2882,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                  && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                  && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                   || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                   || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
@@ -2899,7 +2899,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                  && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                  && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                   || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                   || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
@@ -2917,7 +2917,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                   && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                   && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                    || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                    || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
@@ -2948,7 +2948,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                  || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                  && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                 && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                 && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                  || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                  || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                  && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
@@ -2967,7 +2967,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                  && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                  && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                   || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                   || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
@@ -2985,7 +2985,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                  && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                  && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                   || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                   || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
@@ -3004,7 +3004,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                   && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                   && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                    || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                    || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
@@ -3036,7 +3036,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                  || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                  && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                 && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                 && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                  || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                  || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                  && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
@@ -3055,7 +3055,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                  && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                  && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                   || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                   || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
@@ -3073,7 +3073,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                  && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                  && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                   || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                   || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
@@ -3092,7 +3092,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                   && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                   && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                    || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                    || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
@@ -3124,13 +3124,13 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                  || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                  && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                 && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                 && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                  || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                  || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                  && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                  && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                  && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                 && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                  && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No))))
                 {
@@ -3160,14 +3160,14 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                  || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                  && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                 && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                 && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                  || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                  || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                  && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"
                  && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                  && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                 && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"))
 
                 {
@@ -3183,14 +3183,14 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                  && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                  && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                   || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                   || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                   && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
                  && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                  && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                 && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -3204,14 +3204,14 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                  && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                  && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                   || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                   || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                   && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                  && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                  && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                 && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
 
                 {
@@ -3226,14 +3226,14 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                 || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                 && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                 || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                 || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                 && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
                 && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                 && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                 && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")))
                 {
                     ClearedPreviousStatement = true;
@@ -3261,14 +3261,14 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                  || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                  && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                 && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                 && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                  || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                  || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                  && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"
                  && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                  && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                 && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
 
@@ -3285,14 +3285,14 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                 || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                 && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                 || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                 || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                 && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
                 && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                 && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                 && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")))
                 {
@@ -3307,14 +3307,14 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                  && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                  && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                   || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                   || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                   && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                  && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                  && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                 && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")))
 
@@ -3330,14 +3330,14 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                 || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                 && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                 || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                 || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                 && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
                 && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                 && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                 && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")))
                 {
@@ -3366,14 +3366,14 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                  || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                  && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                 && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                 && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                  || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                  || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                  && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"
                  && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                  && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                 && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
 
@@ -3390,14 +3390,14 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                 || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                 && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                 || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                 || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                 && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
                 && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                 && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                 && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")))
                 {
@@ -3412,14 +3412,14 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                  && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                  && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                   || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                   || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                   && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                  && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                  && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                 && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")))
 
@@ -3435,14 +3435,14 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                 || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                 && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                 || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                 || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                 && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
                 && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                 && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                 && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")))
                 {
@@ -3471,14 +3471,14 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                  || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                  && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                 && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                 && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                  || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                  || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                  && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"
                  && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                  && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                 && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
 
@@ -3495,14 +3495,14 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                 || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                 && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                 || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                 || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                 && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
                 && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                 && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                 && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")))
                 {
@@ -3517,14 +3517,14 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                  && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                  && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                   || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                   || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                   && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                  && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                  && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                 && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")))
 
@@ -3540,14 +3540,14 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                 || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                 && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                 || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                 || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                 && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
                 && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                 && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                 && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")))
                 {
@@ -3576,13 +3576,13 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                  || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                  && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                 && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                 && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                  || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                  || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                  && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"
                  && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                 && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
 
@@ -3599,13 +3599,13 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                 || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                 && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                 || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                 || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                 && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
                 && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                 && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")))
                 {
@@ -3620,13 +3620,13 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                  && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                  && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                   || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                   || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                   && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                  && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                 && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")))
 
@@ -3642,13 +3642,13 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                 || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                 && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                 || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                 || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                 && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
                 && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                 && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")))
                 {
@@ -3677,13 +3677,13 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                  || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                  && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                 && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                 && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                  || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                  || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                  && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"
                  && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                 && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
 
@@ -3700,13 +3700,13 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                 || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                 && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                 || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                 || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                 && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
                 && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                 && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")))
                 {
@@ -3721,13 +3721,13 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                  && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                  && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                   || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                   || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                   && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                  && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                 && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")))
 
@@ -3743,13 +3743,13 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                 || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                 && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                 || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                 || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                 && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
                 && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                 && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")))
                 {
@@ -3778,13 +3778,13 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                  || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                  && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                 && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                 && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                  || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                  || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                  && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"
                  && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                 && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
 
@@ -3801,13 +3801,13 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                 || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                 && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                 || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                 || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                 && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
                 && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                 && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")))
                 {
@@ -3822,13 +3822,13 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                  && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                  && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                   || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                   || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                   && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                  && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                 && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")))
 
@@ -3844,13 +3844,13 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                 || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                 && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                 || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                 || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                 && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
                 && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                 && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")))
                 {
@@ -3879,7 +3879,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                  || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                  && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                 && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                 && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                  || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                  || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                  && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
@@ -3900,7 +3900,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                 || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                 && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                 || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                 || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                 && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
@@ -3919,7 +3919,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                  && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                  && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                   || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                   || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
@@ -3939,7 +3939,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                 || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                 && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("00/00/00"))
+                && (CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
                 || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
                 || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11"
                 && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
@@ -4184,12 +4184,12 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                  && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                  && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                 && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                  && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No))))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -4205,7 +4205,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
             }
             return lstBrw;
         }
-        public List<Borrower> GetStdBkChpt13StmtArchiveOnlyNyPrimary(AccountsModel accountModel) {
+        public List<Borrower> GetStdBkChpt13StmtArchiveOnlyNyPrimary(AccountsModel accountModel)
+        {
             bool ClearedPreviousStatement = false;
             List<Borrower> lstBrw = new List<Borrower>();
             try
@@ -4216,7 +4217,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"
                  && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                  && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                 && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "B"
                  && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No))))
                 {
@@ -4235,7 +4236,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
                  && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                  && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                 && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "L"
                  && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)))))
                 {
@@ -4253,7 +4254,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                 && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                 && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                 && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                 && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)))))
                 {
@@ -4271,7 +4272,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                 && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                 && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                 && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                 && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)))))
                 {
@@ -4291,7 +4292,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
             }
             return lstBrw;
         }
-        public List<Borrower> GetStdBkChpt13StmtArchiveOnlyNyHelloPrimary(AccountsModel accountModel) 
+        public List<Borrower> GetStdBkChpt13StmtArchiveOnlyNyHelloPrimary(AccountsModel accountModel)
         {
             bool ClearedPreviousStatement = false;
             List<Borrower> lstBrw = new List<Borrower>();
@@ -4303,7 +4304,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"
                  && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                  && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                 && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "B"
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                 {
@@ -4322,7 +4323,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
                  && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                  && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                 && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "L"
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")))
                 {
@@ -4340,7 +4341,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                 && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                 && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                 && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")))
                 {
@@ -4358,7 +4359,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                 && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                 && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                 && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")))
                 {
@@ -4378,7 +4379,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
             }
             return lstBrw;
         }
-        public List<Borrower> GetStdBkChpt13StmtArchiveOnlyNyHelloDvlPrimary(AccountsModel accountModel) 
+        public List<Borrower> GetStdBkChpt13StmtArchiveOnlyNyHelloDvlPrimary(AccountsModel accountModel)
         {
             bool ClearedPreviousStatement = false;
             List<Borrower> lstBrw = new List<Borrower>();
@@ -4390,7 +4391,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"
                  && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                  && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                 && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "B"
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                 {
@@ -4409,7 +4410,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
                  && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                  && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                 && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "L"
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")))
                 {
@@ -4427,7 +4428,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                 && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                 && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                 && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")))
                 {
@@ -4445,7 +4446,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                 && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                 && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                 && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")))
                 {
@@ -4465,7 +4466,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
             }
             return lstBrw;
         }
-        public List<Borrower> GetStdBkChpt13StmtArchiveOnlyNyDvlPrimary(AccountsModel accountModel) {
+        public List<Borrower> GetStdBkChpt13StmtArchiveOnlyNyDvlPrimary(AccountsModel accountModel)
+        {
             bool ClearedPreviousStatement = false;
             List<Borrower> lstBrw = new List<Borrower>();
             try
@@ -4476,7 +4478,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"
                  && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                  && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                 && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "B"
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                 {
@@ -4495,7 +4497,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
                  && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                  && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                 && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "L"
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")))
                 {
@@ -4513,7 +4515,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                 && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                 && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                 && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")))
                 {
@@ -4531,7 +4533,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                 && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                 && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                 && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")))
                 {
@@ -4562,7 +4564,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                  && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"
                  && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                 && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "B"
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                 {
@@ -4580,7 +4582,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                  && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
                  && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                 && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "L"
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")))
                 {
@@ -4597,7 +4599,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                 && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                 && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")))
                 {
@@ -4614,7 +4616,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                 && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                 && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")))
                 {
@@ -4645,7 +4647,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                  && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"
                  && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                 && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "B"
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                 {
@@ -4663,7 +4665,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                  && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
                  && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                 && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "L"
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")))
                 {
@@ -4680,7 +4682,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                 && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                 && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")))
                 {
@@ -4697,7 +4699,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                 && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                 && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")))
                 {
@@ -4728,7 +4730,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                  && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"
                  && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                 && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "B"
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                 {
@@ -4746,7 +4748,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                  && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
                  && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                 && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "L"
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")))
                 {
@@ -4763,7 +4765,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                 && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                 && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")))
                 {
@@ -4780,7 +4782,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                 && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                 && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")))
                 {
@@ -4800,7 +4802,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
             }
             return lstBrw;
         }
-        public List<Borrower> GetStdBkChpt13EDeliveryArchivePrimary(AccountsModel accountModel) {
+        public List<Borrower> GetStdBkChpt13EDeliveryArchivePrimary(AccountsModel accountModel)
+        {
             bool ClearedPreviousStatement = false;
             List<Borrower> lstBrw = new List<Borrower>();
             try
@@ -4855,7 +4858,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 13)
                 && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
-                && (accountModel.EConsentModel.DocumentType == "Bill") 
+                && (accountModel.EConsentModel.DocumentType == "Bill")
                 && (accountModel.EConsentModel.EConsentFlag == "Y"))))
                 {
                     ClearedPreviousStatement = true;
@@ -4884,7 +4887,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -4910,7 +4913,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -4936,7 +4939,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -4961,7 +4964,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -4986,7 +4989,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -5011,7 +5014,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -5036,7 +5039,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -5061,7 +5064,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -5086,7 +5089,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -5110,7 +5113,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -5134,7 +5137,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -5175,7 +5178,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -5201,7 +5204,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -5227,7 +5230,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -5252,7 +5255,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -5277,7 +5280,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -5302,7 +5305,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -5327,7 +5330,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -5352,7 +5355,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -5377,7 +5380,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -5401,7 +5404,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -5425,7 +5428,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -5466,7 +5469,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -5492,7 +5495,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -5518,7 +5521,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -5543,7 +5546,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -5568,7 +5571,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -5593,7 +5596,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -5618,7 +5621,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -5643,7 +5646,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -5668,7 +5671,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -5692,7 +5695,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -5716,7 +5719,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -5757,7 +5760,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -5783,7 +5786,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -5809,7 +5812,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -5834,7 +5837,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -5859,7 +5862,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -5884,7 +5887,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -5894,7 +5897,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                   || Convert.ToInt64(accountModel.UserFieldRecordModel.Rssi_Usr_93) != 7
                   || Convert.ToInt64(accountModel.UserFieldRecordModel.Rssi_Usr_93) != 11
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
-                  && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"                  
+                  && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "Y"
                   )
                 {
@@ -5909,7 +5912,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -5934,7 +5937,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -5944,7 +5947,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                   || Convert.ToInt64(accountModel.UserFieldRecordModel.Rssi_Usr_93) != 7
                   || Convert.ToInt64(accountModel.UserFieldRecordModel.Rssi_Usr_93) != 11
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
-                  && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"                  
+                  && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "Y"
                   )
                 {
@@ -5959,7 +5962,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -5983,7 +5986,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -6007,7 +6010,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -6038,7 +6041,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
             }
             return lstBrw;
         }
-        public List<Borrower> GetOptionArmStmtArchiveOnlyNy(AccountsModel accountModel) {
+        public List<Borrower> GetOptionArmStmtArchiveOnlyNy(AccountsModel accountModel)
+        {
             bool ClearedPreviousStatement = false;
             List<Borrower> lstBrw = new List<Borrower>();
             try
@@ -6047,7 +6051,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -6059,7 +6063,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                    && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                    && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                     && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No))
                     )
@@ -6077,7 +6081,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -6089,7 +6093,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No))
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "Y"
@@ -6107,7 +6111,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -6119,7 +6123,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No))
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "Y"
@@ -6136,7 +6140,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -6148,7 +6152,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                   && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                  && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                  && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                   && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                   && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "Y")
@@ -6165,7 +6169,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -6177,7 +6181,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                   && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                  && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                  && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                   && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                   && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "Y")
@@ -6194,7 +6198,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -6206,7 +6210,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                   && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                  && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                  && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                   && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                   && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "Y")
@@ -6223,7 +6227,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -6235,7 +6239,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                   && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                  && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                  && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                   && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                   && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "Y")
@@ -6252,7 +6256,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -6264,7 +6268,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                   && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                  && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                  && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                   && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                   && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "Y")
@@ -6281,7 +6285,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -6293,7 +6297,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                   && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                  && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                  && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                   && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                   && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "Y")
@@ -6309,7 +6313,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -6321,7 +6325,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                   && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                  && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                  && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                   && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                   && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "Y")
@@ -6337,7 +6341,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -6349,7 +6353,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                   && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                  && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                  && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                   && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                   && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "Y")
@@ -6371,8 +6375,8 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 throw;
             }
             return lstBrw;
-        }       
-        public List<Borrower> GetOptionArmStmtArchiveOnlyNyHello(AccountsModel accountModel) 
+        }
+        public List<Borrower> GetOptionArmStmtArchiveOnlyNyHello(AccountsModel accountModel)
         {
             bool ClearedPreviousStatement = false;
             List<Borrower> lstBrw = new List<Borrower>();
@@ -6382,7 +6386,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -6394,7 +6398,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                    && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                    && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                     && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                     )
@@ -6412,7 +6416,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -6424,7 +6428,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "Y"
@@ -6442,7 +6446,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -6454,7 +6458,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "Y"
@@ -6471,7 +6475,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -6483,7 +6487,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                   && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                  && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                  && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                   && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                   && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "Y")
@@ -6500,7 +6504,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -6512,7 +6516,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                   && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                  && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                  && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                   && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                   && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "Y")
@@ -6529,7 +6533,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -6541,7 +6545,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                   && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                  && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                  && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                   && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                   && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "Y")
@@ -6558,7 +6562,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -6570,7 +6574,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                   && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                  && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                  && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                   && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                   && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "Y")
@@ -6587,7 +6591,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -6599,7 +6603,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                   && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                  && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                  && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                   && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                   && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "Y")
@@ -6616,7 +6620,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -6628,7 +6632,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                   && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                  && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                  && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                   && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                   && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "Y")
@@ -6644,7 +6648,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -6656,7 +6660,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                   && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                  && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                  && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                   && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                   && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "Y")
@@ -6672,7 +6676,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -6684,7 +6688,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                   && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                  && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                  && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                   && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                   && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "Y")
@@ -6707,7 +6711,6 @@ namespace CarringtonMortgage.FlexFields_Calculation
             }
             return lstBrw;
         }
-        //
         public List<Borrower> GetOptionArmStmtArchiveOnlyNyHelloDvl(AccountsModel accountModel)
         {
             bool ClearedPreviousStatement = false;
@@ -6718,7 +6721,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -6730,7 +6733,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                    && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                    && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                     && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                     )
@@ -6748,7 +6751,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -6760,7 +6763,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "Y"
@@ -6778,7 +6781,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -6790,7 +6793,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "Y"
@@ -6807,7 +6810,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -6819,7 +6822,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                   && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                  && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                  && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                   && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                   && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "Y")
@@ -6836,7 +6839,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -6848,7 +6851,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                   && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                  && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                  && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                   && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                   && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "Y")
@@ -6865,7 +6868,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -6877,7 +6880,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                   && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                  && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                  && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                   && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                   && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "Y")
@@ -6894,7 +6897,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -6906,7 +6909,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                   && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                  && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                  && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                   && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                   && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "Y")
@@ -6923,7 +6926,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -6935,7 +6938,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                   && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                  && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                  && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                   && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                   && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "Y")
@@ -6952,7 +6955,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -6964,7 +6967,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                   && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                  && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                  && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                   && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                   && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "Y")
@@ -6980,7 +6983,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -6992,7 +6995,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                   && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                  && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                  && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                   && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                   && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "Y")
@@ -7008,7 +7011,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                  && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                   || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -7020,7 +7023,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                   && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                  && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                  && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                   && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                   && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "Y")
@@ -7054,7 +7057,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -7066,7 +7069,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                    && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                    && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                     && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"// need to check
                     )
@@ -7083,7 +7086,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -7095,7 +7098,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                    && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                    && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                     && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "Y")
@@ -7113,7 +7116,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -7125,7 +7128,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                    && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                    && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                     && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"// need to check
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "Y")
@@ -7143,7 +7146,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -7155,7 +7158,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                    && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                    && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                     && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"// need to check
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "Y")
@@ -7172,7 +7175,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -7184,7 +7187,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                    && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                    && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                     && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"// need to check
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "Y")
@@ -7201,7 +7204,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -7213,7 +7216,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                    && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                    && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                     && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"// need to check
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "Y")
@@ -7230,7 +7233,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -7242,7 +7245,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                    && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                    && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                     && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "Y")
@@ -7259,7 +7262,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -7271,7 +7274,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                    && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                    && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                     && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "Y")
@@ -7288,7 +7291,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -7300,7 +7303,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                    && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                    && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                     && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"// need to check
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "Y")
@@ -7317,7 +7320,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -7329,7 +7332,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                    && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                    && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                     && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"// need to check
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "Y")
@@ -7346,7 +7349,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -7358,7 +7361,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                    && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                    && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                     && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"// need to check
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "Y")
@@ -7391,7 +7394,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 //Logger.Trace("STARTED:  Execute to get Option ARM STMT NY and Hello Letter");
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -7402,7 +7405,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    || Convert.ToInt64(accountModel.UserFieldRecordModel.Rssi_Usr_93) != 11
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"// need to check
                    )
@@ -7420,7 +7423,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -7432,7 +7435,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"// need to check
                    )
@@ -7449,7 +7452,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -7461,7 +7464,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"// need to check
                    )
@@ -7477,7 +7480,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -7489,7 +7492,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"// need to check
                    )
@@ -7505,7 +7508,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -7517,7 +7520,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"// need to check
                    )
@@ -7533,7 +7536,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -7545,7 +7548,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"// need to check
                    )
@@ -7561,7 +7564,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -7573,7 +7576,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"// need to check
                    )
@@ -7589,7 +7592,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -7601,7 +7604,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"// need to check
                    )
@@ -7617,7 +7620,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -7629,7 +7632,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"// need to check
                    )
@@ -7645,7 +7648,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -7657,7 +7660,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"// need to check
                    )
@@ -7673,7 +7676,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -7685,7 +7688,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"// need to check
                    )
@@ -7717,7 +7720,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 //Logger.Trace("STARTED:  Execute to Get Option ARM STMT NY and Hello DVL Letter");
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -7728,7 +7731,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    || Convert.ToInt64(accountModel.UserFieldRecordModel.Rssi_Usr_93) != 11
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"// need to check
                    )
@@ -7746,7 +7749,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -7758,7 +7761,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"// need to check
                    )
@@ -7775,7 +7778,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -7787,7 +7790,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"// need to check
                    )
@@ -7803,7 +7806,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -7815,7 +7818,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"// need to check
                    )
@@ -7831,7 +7834,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -7843,7 +7846,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"// need to check
                    )
@@ -7859,7 +7862,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -7871,7 +7874,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"// need to check
                    )
@@ -7887,7 +7890,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -7899,7 +7902,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"// need to check
                    )
@@ -7915,7 +7918,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -7927,7 +7930,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"// need to check
                    )
@@ -7943,7 +7946,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -7955,7 +7958,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"// need to check
                    )
@@ -7971,7 +7974,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -7983,7 +7986,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"// need to check
                    )
@@ -7999,7 +8002,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -8011,7 +8014,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"// need to check
                    )
@@ -8043,7 +8046,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 //Logger.Trace("STARTED:  Execute to Get Option ARM STMT NY and DVL Letter");
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -8054,7 +8057,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    || Convert.ToInt64(accountModel.UserFieldRecordModel.Rssi_Usr_93) != 11
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"// need to check
                    )
@@ -8072,7 +8075,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -8084,7 +8087,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                   && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"// need to check
                    )
@@ -8101,7 +8104,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -8113,7 +8116,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                   && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"// need to check
                    )
@@ -8129,7 +8132,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -8141,7 +8144,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"// need to check
                    )
@@ -8157,7 +8160,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -8169,7 +8172,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"// need to check
                    )
@@ -8185,7 +8188,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -8197,7 +8200,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"// need to check
                    )
@@ -8213,7 +8216,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -8225,7 +8228,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"// need to check
                    )
@@ -8241,7 +8244,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -8253,7 +8256,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"// need to check
                    )
@@ -8269,7 +8272,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -8281,7 +8284,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"// need to check
                    )
@@ -8297,7 +8300,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -8309,7 +8312,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"// need to check
                    )
@@ -8325,7 +8328,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 }
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                   && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 7
                    || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) != 11
@@ -8337,7 +8340,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "Y"
                    && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"// need to check
                    )
@@ -8371,7 +8374,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-                     && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                     && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
@@ -8390,7 +8393,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
 
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
@@ -8408,7 +8411,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
 
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
@@ -8427,7 +8430,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-                     && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                     && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
 
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
@@ -8464,7 +8467,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-                     && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                     && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
 
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
@@ -8478,14 +8481,14 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPreviousStatement = false;
-                    lstBrw = GetStdBkChpt7StmtArchiveOnlyNY(accountModel);
+                    lstBrw = GetOptionArmBkChpt7StmtArchiveOnlyPrimary(accountModel);
                     return lstBrw;
                 }
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
 
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
@@ -8505,7 +8508,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
 
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
@@ -8525,7 +8528,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                       || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                       && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-                      && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                      && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
 
                       || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                       || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
@@ -8551,46 +8554,6 @@ namespace CarringtonMortgage.FlexFields_Calculation
             }
             return lstBrw;
         }
-        public List<Borrower> GetStdBkChpt7StmtArchiveOnlyNY(AccountsModel accountsModel)
-        {
-            bool ClearedPreviousStatement = false;
-            List<Borrower> lstBrw = new List<Borrower>();
-            try
-            {
-                //and RSSI-STATE = 33 and RSSI-LIP-LA-DATE = 0 and RSSI-FIRST-STMT-IND=Y and the "LoanNumber" is not on PM-400-661 file or the “Proposed Supplemental CCF Layout_050820” 
-                if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
-                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
-                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-                      && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
-
-                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
-                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
-                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
-                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
-                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
-                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
-                     && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)))
-
-                {
-                    ClearedPreviousStatement = true;
-                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "", FlexField2 = "S04", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
-                }
-                else
-                {
-                    ClearedPreviousStatement = false;
-                    lstBrw = GetOptionArmBkChpt7StmtArchiveOnlyPrimary(accountModel);
-                    return lstBrw;
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, ex.TargetSite.Name);
-                throw;
-            }
-            return lstBrw;
-
-        }
         public List<Borrower> GetOptionArmBkChpt7StmtArchiveOnlyPrimary(AccountsModel accountModel)
         {
             bool ClearedPreviousStatement = false;
@@ -8603,7 +8566,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-                     && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                     && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
 
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
@@ -8617,14 +8580,14 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPreviousStatement = false;
-                    lstBrw = GetOptionArmBkChpt7StmtArchiveOnlyNyPrimary(accountModel);
+                    lstBrw = GetOptionArmBkChpt7StmtArchiveOnlyNy(accountModel);
                     return lstBrw;
                 }
 
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-               && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+               && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
 
                || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
@@ -8644,7 +8607,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                  || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                  && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-                 && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                 && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
 
                  || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                  || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
@@ -8664,7 +8627,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
              || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
              && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-             && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+             && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
 
              || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
              || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
@@ -8690,6 +8653,46 @@ namespace CarringtonMortgage.FlexFields_Calculation
             }
             return lstBrw;
         }
+        public List<Borrower> GetOptionArmBkChpt7StmtArchiveOnlyNy(AccountsModel accountsModel)
+        {
+            bool ClearedPreviousStatement = false;
+            List<Borrower> lstBrw = new List<Borrower>();
+            try
+            {
+                if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
+                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
+                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
+                      && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
+
+                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
+                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
+                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
+                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
+                     && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                     && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)))
+
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPreviousStatement = false;
+                    lstBrw = GetOptionArmBkChpt7StmtArchiveOnlyNyPrimary(accountModel);
+                    return lstBrw;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+
+        }
+
         public List<Borrower> GetOptionArmBkChpt7StmtArchiveOnlyNyPrimary(AccountsModel accountModel)
         {
             bool ClearedPreviousStatement = false;
@@ -8702,7 +8705,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-                     && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                     && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
 
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
@@ -8710,7 +8713,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                      && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)))
                 {
@@ -8726,7 +8729,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-                     && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                     && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
 
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
@@ -8734,7 +8737,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y" && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)))
                 {
                     ClearedPreviousStatement = true;
@@ -8749,7 +8752,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
              || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
              && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-             && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+             && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
 
              || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
              || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
@@ -8757,7 +8760,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
              && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
              && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
              && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-             && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+             && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
              && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y" && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)))
                 {
                     ClearedPreviousStatement = true;
@@ -8772,7 +8775,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
              || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
              && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-             && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+             && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
 
              || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
              || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
@@ -8780,7 +8783,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
              && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
              && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
              && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-             && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+             && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
              && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y" && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)))
                 {
                     ClearedPreviousStatement = true;
@@ -8813,7 +8816,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-                     && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                     && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
 
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
@@ -8821,7 +8824,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                      && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                 {
@@ -8838,7 +8841,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                         || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                         && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-                        && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                        && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
 
                         || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                         || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
@@ -8846,7 +8849,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                         && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
                         && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                         && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                        && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                        && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                         && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                         && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                 {
@@ -8862,7 +8865,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
             || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
             && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-            && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+            && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
 
             || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
             || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
@@ -8870,7 +8873,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
             && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
             && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
             && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-            && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+            && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
             && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
             && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                 {
@@ -8886,7 +8889,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
               || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
               && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-              && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+              && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
 
               || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
               || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
@@ -8894,7 +8897,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
               && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
               && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
               && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-              && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+              && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
               && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
               && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
 
@@ -8931,7 +8934,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-                     && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                     && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
 
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
@@ -8939,7 +8942,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                      && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
@@ -8956,7 +8959,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
              || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
              && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-             && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+             && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
 
              || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
              || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
@@ -8964,7 +8967,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
              && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
              && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
              && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-             && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+             && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
              && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
              && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
@@ -8980,7 +8983,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-               && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+               && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
 
                || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
@@ -8988,7 +8991,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-               && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+               && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
@@ -9004,7 +9007,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
               || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
               && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-              && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+              && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
 
               || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
               || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
@@ -9012,7 +9015,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
               && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
               && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
               && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-              && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+              && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
               && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
               && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
@@ -9044,7 +9047,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-                     && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                     && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
 
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
@@ -9052,7 +9055,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                      && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                 {
@@ -9069,7 +9072,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
              || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
              && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-             && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+             && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
 
              || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
              || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
@@ -9077,7 +9080,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
              && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
              && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
              && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-             && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+             && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
              && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
              && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                 {
@@ -9093,7 +9096,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
               || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
               && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-              && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+              && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
 
               || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
               || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
@@ -9101,7 +9104,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
               && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
               && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
               && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-              && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+              && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
               && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
               && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                 {
@@ -9117,7 +9120,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
               || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
               && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-              && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+              && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
 
               || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
               || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
@@ -9125,7 +9128,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
               && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
               && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
               && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-              && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+              && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
               && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
               && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                 {
@@ -9161,14 +9164,14 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-                     && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                     && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
 
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
-                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                      && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                 {
@@ -9185,14 +9188,14 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
 
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
-                    && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                    && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                     && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                 {
@@ -9208,14 +9211,14 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
 
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
-                    && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                    && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                     && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                 {
@@ -9231,14 +9234,14 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                    && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
 
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                     || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
-                    && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                    && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                     && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                 {
@@ -9271,14 +9274,14 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-                     && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                     && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
 
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
-                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                      && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
@@ -9295,14 +9298,14 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
              || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
              && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-             && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+             && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
 
              || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
              || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
              && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
              && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
              && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
-             && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+             && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
              && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
              && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
@@ -9318,14 +9321,14 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
             || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
             && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-            && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+            && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
 
             || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
             || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
             && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
             && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
             && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
-            && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+            && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
             && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
             && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
@@ -9340,14 +9343,14 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
              || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
              && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-             && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+             && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
 
              || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
              || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
              && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
              && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
              && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
-             && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+             && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
              && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
              && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
@@ -9381,14 +9384,14 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-                     && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                     && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
 
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
-                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                      && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                 {
@@ -9405,14 +9408,14 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-                     && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                     && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
 
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
-                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                      && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                 {
@@ -9428,14 +9431,14 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                 || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                 && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-                && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
 
                 || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                 || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
                 && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                 && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
-                && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                 && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                 {
@@ -9451,14 +9454,14 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-                     && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                     && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
 
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
-                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                      && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                 {
@@ -9490,7 +9493,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-                     && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                     && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
 
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
@@ -9511,7 +9514,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-                     && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                     && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
 
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
@@ -9531,7 +9534,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-                     && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                     && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
 
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
@@ -9551,7 +9554,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 if (ClearedPreviousStatement && ((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11)
                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-                     && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("00/00/00")
+                     && CommonHelper.GetFormatedDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData) != Convert.ToDateTime("01/01/01")
 
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 7
                      || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 11
@@ -9738,7 +9741,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                 else
                 {
                     ClearedPreviousStatement = false;
-                    lstBrw = GetOptionArmBkChpt13StmtArchiveOnlyNyPrimary(accountModel);
+                    lstBrw = GetOptionArmBkChpt13StmtArchiveOnlyNy(accountModel);
                     return lstBrw;
                 }
                 if (ClearedPreviousStatement && (Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 12
@@ -9798,6 +9801,40 @@ namespace CarringtonMortgage.FlexFields_Calculation
             }
             return lstBrw;
         }
+
+        public List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyNy(AccountsModel accountModel)
+        {
+            bool ClearedPreviousStatement = false;
+            List<Borrower> lstBrw = new List<Borrower>();
+            try
+            {
+                if (((Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 12
+                 || Convert.ToInt64(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) == 13)
+                 && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
+                 && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                 && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                 && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                 && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No))))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPreviousStatement = false;
+                    lstBrw = GetOptionArmBkChpt13StmtArchiveOnlyNyPrimary(accountModel);
+                    return lstBrw;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+        }
+
         public List<Borrower> GetOptionArmBkChpt13StmtArchiveOnlyNyPrimary(AccountsModel accountModel)
         {
             bool ClearedPreviousStatement = false;
@@ -9812,7 +9849,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y" && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)))
                 {
                     ClearedPreviousStatement = true;
@@ -9832,7 +9869,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y" && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)))
                 {
                     ClearedPreviousStatement = true;
@@ -9851,7 +9888,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y" && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)))
                 {
                     ClearedPreviousStatement = true;
@@ -9870,7 +9907,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y" && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)))
                 {
                     ClearedPreviousStatement = true;
@@ -9905,7 +9942,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y" && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                 {
                     ClearedPreviousStatement = true;
@@ -9925,7 +9962,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y" && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                 {
                     ClearedPreviousStatement = true;
@@ -9943,7 +9980,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y" && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                 {
                     ClearedPreviousStatement = true;
@@ -9961,7 +9998,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y" && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                 {
                     ClearedPreviousStatement = true;
@@ -9996,7 +10033,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                      && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
@@ -10015,7 +10052,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                      && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
@@ -10035,7 +10072,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                      && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
@@ -10054,7 +10091,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                      && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
@@ -10089,7 +10126,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                     && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
@@ -10109,7 +10146,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                     && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
@@ -10128,7 +10165,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                     && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
@@ -10147,7 +10184,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                     && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
@@ -10182,7 +10219,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"
                      && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y" && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
                     ClearedPreviousStatement = true;
@@ -10200,7 +10237,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
                      && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y" && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
                     ClearedPreviousStatement = true;
@@ -10217,7 +10254,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                      && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y" && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
                     ClearedPreviousStatement = true;
@@ -10234,7 +10271,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                      && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y" && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
                     ClearedPreviousStatement = true;
@@ -10267,7 +10304,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"
                      && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y" && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
                     ClearedPreviousStatement = true;
@@ -10285,7 +10322,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
                      && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y" && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
                     ClearedPreviousStatement = true;
@@ -10302,7 +10339,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                      && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y" && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
                     ClearedPreviousStatement = true;
@@ -10319,7 +10356,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                      && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y" && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
                     ClearedPreviousStatement = true;
@@ -10352,7 +10389,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"
                      && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y" && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                 {
                     ClearedPreviousStatement = true;
@@ -10371,7 +10408,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
                      && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y" && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                 {
                     ClearedPreviousStatement = true;
@@ -10389,7 +10426,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                      && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y" && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                 {
                     ClearedPreviousStatement = true;
@@ -10407,7 +10444,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                      && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
                      && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                     && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
                      && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y" && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                 {
                     ClearedPreviousStatement = true;
