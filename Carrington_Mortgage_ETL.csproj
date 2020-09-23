@@ -217,9 +217,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Input\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Library\NCP.WMS.Core.dll" />
     <Content Include="Library\NCP.WMS.Framework.Data.dll" />
