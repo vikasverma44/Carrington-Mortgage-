@@ -363,7 +363,7 @@ namespace Carrington_Service.Calculation_Classes
             return DueBalance;
         }
         public string GetDeferredBalance(AccountsModel accountsModel)
-        {
+        { //TOD0:Revisit Again exception
             try
             {
                 //Logger.Trace("STARTED:  Execute to get Deferred Balance operation.");
@@ -400,7 +400,7 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
+                //Logger.Error(ex, ex.TargetSite.Name);
                 return "";
             }
         }
@@ -445,7 +445,7 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
+                //Logger.Error(ex, ex.TargetSite.Name);
                  return "";
             }
             return FeesAndChargesPaidLastMonth;
@@ -476,7 +476,7 @@ namespace Carrington_Service.Calculation_Classes
             }
         }
         public string GetTotalPaidLastMonth(AccountsModel accountsModel)
-        {
+        { //TOD0:Revisit Again exception
             try
             {
                 //Logger.Trace("STARTED:  Execute get total paid last month.");
@@ -497,7 +497,7 @@ namespace Carrington_Service.Calculation_Classes
             catch (Exception ex)
             {
 
-                Logger.Error(ex, ex.TargetSite.Name);
+               // Logger.Error(ex, ex.TargetSite.Name);
                  return "";
 
             }
@@ -602,7 +602,7 @@ namespace Carrington_Service.Calculation_Classes
             return LatePaymentAmount;
         }
         public string GetSuspense(AccountsModel accountsModel)
-        {//TOD0:Revisit Again
+        {//TOD0:Revisit Again exception
             try
             {
                 //Logger.Trace("STARTED:  Execute get suspense.");
@@ -616,7 +616,7 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, ex.TargetSite.Name);
+                //Logger.Error(ex, ex.TargetSite.Name);
                 return "";
 
             }

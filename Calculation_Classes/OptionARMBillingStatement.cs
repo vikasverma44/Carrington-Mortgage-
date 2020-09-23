@@ -463,7 +463,7 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "GetDeferredBalance" + ex.TargetSite.Name);
+                //Logger.Error(ex, "GetDeferredBalance" + ex.TargetSite.Name);
                 return "";
             }
         }
@@ -529,7 +529,7 @@ namespace Carrington_Service.Calculation_Classes
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "GeUnappliedFundsPaidLastMonth" + ex.TargetSite.Name);
+                //Logger.Error(ex, "GeUnappliedFundsPaidLastMonth" + ex.TargetSite.Name);
                 return "";
             }
 
