@@ -1,4 +1,4 @@
-﻿namespace Carrington_Service.Infrastructure
+﻿namespace CarringtonService.BusinessExpert
 {
     public interface IWorkFlowExpert
     {

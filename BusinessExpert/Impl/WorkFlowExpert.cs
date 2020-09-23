@@ -1,9 +1,7 @@
-﻿using Carrington_Service.Infrastructure;
-//using Carrington_Service.Interfaces;
-using CarringtonMortgage.Models;
+﻿using CarringtonMortgage.Models;
 using CarringtonMortgage.Models.InputCopyBookModels;
 using CarringtonMortgage.Models.InputCopyBookModels.MortgageLoanBillingModels;
-using ODHS_EDelivery.BusinessExpert;
+using CarringtonService.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,14 +11,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Carrington_Service.BusinessExpert
+
+namespace CarringtonService.BusinessExpert
 {
     public class WorkFlowExpert : IWorkFlowExpert
     {
         #region Class Members Definitions & Constructor 
         public ILogger Logger;
         private readonly IConfigHelper ConfigHelper;
-        private readonly IAgentApi ApiAgent;
         private string pmFilePath;
         private static string supplimentFilePath;
         private static string EConsentFilePath;
@@ -38,16 +36,14 @@ namespace Carrington_Service.BusinessExpert
 
         /// <summary>The delimiter.</summary>
         private const string Delimiter = "|";
-        public WorkFlowExpert(IConfigHelper configHelper, ILogger logger, IAgentApi apiAgent, ICRL30FileGeneration cRL30FileGeneration)
+        public WorkFlowExpert(IConfigHelper configHelper, ILogger logger, ICRL30FileGeneration cRL30FileGeneration)
         {
             ConfigHelper = configHelper;
             Logger = logger;
-            ApiAgent = apiAgent;
             CRL30FileGeneration = cRL30FileGeneration;
             SetFilePath();
             ReadCMSBillInputFileDetRecord(supplimentFilePath);
             ReadEConsentRecord(EConsentFilePath);
-            //configHelper.Model.DatabaseSetting = DbService.GetDataBaseSettings();
         }
 
         #endregion

@@ -1,9 +1,10 @@
-﻿using CarringtonMortgage.Models.InputCopyBookModels;
+﻿using CarringtonMortgage.Models;
+using CarringtonMortgage.Models.InputCopyBookModels;
 using System.Collections.Generic;
 
-namespace CarringtonMortgage.FlexFields_Calculation
+namespace CarringtonMortgage.OptionAssignment
 {
-    public interface IStatementType
+    public interface IOptionAssignmentLogic
     {
         List<BorrowerModel> GetOptionArmBkChpt13EDeliveryArchivePrimary(AccountsModel accountModel);
         List<BorrowerModel> GetOptionArmBkChpt13StmtArchiveOnlyNy(AccountsModel accountModel);

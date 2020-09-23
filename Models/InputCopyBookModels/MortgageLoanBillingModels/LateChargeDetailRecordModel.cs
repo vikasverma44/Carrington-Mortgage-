@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CarringtonMortgage.Models.InputCopyBookModels.MortgageLoanBillingModels
+﻿namespace CarringtonMortgage.Models.InputCopyBookModels.MortgageLoanBillingModels
 {
-   public class LateChargeDetailRecordModel
+    public class LateChargeDetailRecordModel
     {
         public string Rssi_Rcd_Id { get; set; }
         public string Rssi_Inst { get; set; }

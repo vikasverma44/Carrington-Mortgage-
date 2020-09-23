@@ -1,7 +1,7 @@
 ﻿
 using System.Collections.Generic;
 
-namespace Carrington_Service.Models
+namespace CarringtonService.Models
 {
     public class ConfigModel
     {

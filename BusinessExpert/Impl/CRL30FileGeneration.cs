@@ -1,6 +1,4 @@
-﻿using Carrington_Service.Calculation_Classes;
-using Carrington_Service.Infrastructure;
-using CarringtonMortgage.FlexFields_Calculation;
+﻿using CarringtonService.BillingStatements;
 using CarringtonMortgage.Helpers;
 using CarringtonMortgage.Models.InputCopyBookModels.MortgageLoanBillingModels;
 using CarringtonMortgage.Calculation_Classes;
@@ -11,14 +9,15 @@ using System.Linq;
 using System.Text;
 using WMS.Framework.Data;
 using WMS.Framework.Data.Records.WorkflowRecords;
+using CarringtonMortgage.OptionAssignment;
+using CarringtonService.Helpers;
 
-namespace ODHS_EDelivery.BusinessExpert
+namespace CarringtonService.BusinessExpert
 {
     public class CRL30FileGeneration : ICRL30FileGeneration
     {
         public ILogger Logger;
-        private readonly IConfigHelper ConfigHelper;
-        private readonly IStatementType StatementType;
+        private readonly IOptionAssignmentLogic StatementType;
         private readonly IChapterSevenBillingStatement ChapterSevenBillingStatement;
         private readonly IChapterSevenOptionARMStatement ChapterSevenOptionARMStatement;
         private readonly IChapterThirteenBillingStatement ChapterThirteenBillingStatement;
@@ -65,13 +64,12 @@ namespace ODHS_EDelivery.BusinessExpert
         /// </summary>
         /// <param name="logger"></param>
         /// <param name="configHelper"></param>
-        public CRL30FileGeneration(ILogger logger, IConfigHelper configHelper, IStandardBillingStatement standardBillingStatement, IStatementType statementType,
+        public CRL30FileGeneration(ILogger logger, IStandardBillingStatement standardBillingStatement, IOptionAssignmentLogic statementType,
             IChapterSevenBillingStatement chapterSevenBillingStatement, IChapterSevenOptionARMStatement chapterSevenOptionARMStatement,
             IChapterThirteenBillingStatement chapterThirteenBillingStatement, IChapterThirteenOptionARMStatement
             chapterThirteenOptionARMStatement, IOptionARMBillingStatement optionARMBillingStatement, IRejectStatement rejectStatement)
         {
             Logger = logger;
-            ConfigHelper = configHelper;
             StandardBillingStatement = standardBillingStatement;
             StatementType = statementType;
             ChapterSevenBillingStatement = chapterSevenBillingStatement;

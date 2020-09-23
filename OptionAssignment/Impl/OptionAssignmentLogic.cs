@@ -1,19 +1,18 @@
-﻿using Carrington_Service.Infrastructure;
+﻿
 using CarringtonMortgage.Helpers;
 using CarringtonMortgage.Models.InputCopyBookModels;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CarringtonMortgage.Models;
+using CarringtonService.Helpers;
 
-namespace CarringtonMortgage.FlexFields_Calculation
+namespace CarringtonMortgage.OptionAssignment
 {
-    public class StatementType : IStatementType
+    public class OptionAssignmentLogic : IOptionAssignmentLogic
     {
         public ILogger Logger;
         public AccountsModel accountModel;
-        public StatementType(ILogger logger)
+        public OptionAssignmentLogic(ILogger logger)
         {
             Logger = logger;
         }

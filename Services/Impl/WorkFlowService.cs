@@ -1,8 +1,11 @@
-﻿using Carrington_Service.Infrastructure;
+﻿
 using System;
 using System.Timers;
 using System.Diagnostics;
-namespace Carrington_Service.Services
+using CarringtonService.Helpers;
+using CarringtonService.BusinessExpert;
+
+namespace CarringtonService.Services
 {
     public class WorkFlowService : IWorkFlowService
     {

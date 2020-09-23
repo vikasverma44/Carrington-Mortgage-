@@ -1,6 +1,5 @@
-﻿using System.ComponentModel;
-
-namespace Carrington_Service.Helpers
+﻿
+namespace CarringtonService.Helpers
 {
     public static class Enums
     {

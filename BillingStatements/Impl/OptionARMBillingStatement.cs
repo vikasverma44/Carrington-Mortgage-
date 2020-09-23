@@ -1,15 +1,10 @@
-﻿using Carrington_Service.Infrastructure;
-using CarringtonMortgage.Helpers;
+﻿using CarringtonMortgage.Helpers;
 using CarringtonMortgage.Models.InputCopyBookModels;
+using CarringtonService.Helpers;
 using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace Carrington_Service.Calculation_Classes
+namespace CarringtonService.BillingStatements
 {
     public class OptionARMBillingStatement : IOptionARMBillingStatement
     {

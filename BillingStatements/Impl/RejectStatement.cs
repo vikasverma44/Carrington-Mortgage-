@@ -1,5 +1,5 @@
-﻿using Carrington_Service.Infrastructure;
-using CarringtonMortgage.Models.InputCopyBookModels;
+﻿using CarringtonMortgage.Models.InputCopyBookModels;
+using CarringtonService.Helpers;
 using System;
 
 namespace CarringtonMortgage.Calculation_Classes

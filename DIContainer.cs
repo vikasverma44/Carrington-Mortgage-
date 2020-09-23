@@ -1,14 +1,14 @@
-﻿using Carrington_Service.BusinessExpert;
-using Carrington_Service.Calculation_Classes;
-using Carrington_Service.Helpers;
-using Carrington_Service.Infrastructure;
-using Carrington_Service.Services;
-using CarringtonMortgage.FlexFields_Calculation;
-using CarringtonMortgage.Calculation_Classes;
-using ODHS_EDelivery.BusinessExpert;
-using SimpleInjector;
+﻿using CarringtonService.BusinessExpert;
+using CarringtonService.BillingStatements;
+using CarringtonService.Helpers;
 
-namespace Carrington_Service
+using CarringtonService.Services;
+using CarringtonMortgage.Calculation_Classes;
+using SimpleInjector;
+using CarringtonMortgage.OptionAssignment;
+using CarringtonService.BusinessExpert;
+
+namespace CarringtonService
 {
     public static class DIContainer
     {
@@ -29,7 +29,7 @@ namespace Carrington_Service
             container.Register<IStandardBillingStatement, StandardBillingStatement>(lifestyle);
             container.Register<IOptionARMBillingStatement, OptionARMBillingStatement>(lifestyle);
             container.Register<ICRL30FileGeneration, CRL30FileGeneration>(lifestyle);
-            container.Register<IStatementType, StatementType>(lifestyle);
+            container.Register<IOptionAssignmentLogic, OptionAssignmentLogic>(lifestyle);
             container.Register<IChapterSevenOptionARMStatement, ChapterSevenOptionARMStatement>(lifestyle);
             container.Register<IRejectStatement, RejectStatement>(lifestyle);
             

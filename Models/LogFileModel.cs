@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace Carrington_Service.Models
+namespace CarringtonService.Models
 {
     public class LogFileModel
     {

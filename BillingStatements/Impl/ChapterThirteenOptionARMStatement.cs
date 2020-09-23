@@ -1,10 +1,10 @@
-﻿using Carrington_Service.Infrastructure;
-using CarringtonMortgage.Models.InputCopyBookModels;
+﻿using CarringtonMortgage.Models.InputCopyBookModels;
 using System;
 using System.Text;
 using CarringtonMortgage.Helpers;
+using CarringtonService.Helpers;
 
-namespace Carrington_Service.Calculation_Classes
+namespace CarringtonService.BillingStatements
 {
     public class ChapterThirteenOptionARMStatement : IChapterThirteenOptionARMStatement
     {

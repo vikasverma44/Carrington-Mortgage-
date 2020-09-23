@@ -1,9 +1,8 @@
-﻿using Carrington_Service.Infrastructure;
-using Carrington_Service.Models;
+﻿using CarringtonService.Models;
 using System;
 using System.Configuration;
 
-namespace Carrington_Service.Helpers
+namespace CarringtonService.Helpers
 {
     public class ConfigHelper : IConfigHelper
     {

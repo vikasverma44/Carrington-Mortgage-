@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarringtonMortgage.FlexFields_Calculation
+namespace CarringtonMortgage.Models
 {
    public class BorrowerModel
     {

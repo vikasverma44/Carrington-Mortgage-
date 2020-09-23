@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CarringtonMortgage.Models.InputCopyBookModels.MortgageLoanBillingModels
+﻿namespace CarringtonMortgage.Models.InputCopyBookModels.MortgageLoanBillingModels
 {
-   public class UserFieldRecordModel
+    public class UserFieldRecordModel
     {
         public string Rssi_Rcd_Id { get; set; }
         public string Rssi_Inst { get; set; }

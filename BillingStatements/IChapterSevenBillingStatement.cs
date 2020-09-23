@@ -1,7 +1,7 @@
 ﻿using CarringtonMortgage.Models.InputCopyBookModels;
 using System.Text;
 
-namespace Carrington_Service.BillingStatements
+namespace CarringtonService.BillingStatements
 {
     public interface IChapterSevenBillingStatement
     {

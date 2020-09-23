@@ -1,7 +1,6 @@
-﻿using Carrington_Service.Helpers;
-using System;
+﻿using System;
 
-namespace Carrington_Service.Infrastructure
+namespace CarringtonService.Helpers
 {
     public interface ILogger
     {

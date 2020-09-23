@@ -1,4 +1,4 @@
-﻿namespace Carrington_Service.Infrastructure
+﻿namespace CarringtonService.Services
 {
     public interface IWorkFlowService
     {

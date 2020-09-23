@@ -1,12 +1,12 @@
-﻿using Carrington_Service;
-using Carrington_Service.BusinessExpert;
-using Carrington_Service.Helpers;
-using Carrington_Service.Infrastructure;
-using Carrington_Service.Services;
+﻿using CarringtonService;
+using CarringtonService.BusinessExpert;
+using CarringtonService.Helpers;
+
+using CarringtonService.Services;
 using System;
 using System.IO;
 
-namespace Carrington_Service
+namespace CarringtonService
 {
     public class Program
     {
@@ -15,8 +15,7 @@ namespace Carrington_Service
         private static string _dataCenter;
         private static string _trackingId;
         public ILogger Logger;
-        public IConfigHelper ConfigHelper;
-        public IAgentApi ApiAgent;
+
 
         private static void Main(string[] args)
         {

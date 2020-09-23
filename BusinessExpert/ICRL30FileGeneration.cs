@@ -1,6 +1,6 @@
 ﻿using CarringtonMortgage.Models.InputCopyBookModels.MortgageLoanBillingModels;
 
-namespace ODHS_EDelivery.BusinessExpert
+namespace CarringtonService.BusinessExpert
 {
     public interface ICRL30FileGeneration
     {

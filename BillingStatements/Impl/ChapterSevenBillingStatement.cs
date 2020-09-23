@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Runtime.Remoting.Messaging;
 using System.Text;
-using Carrington_Service.Infrastructure;
 using CarringtonMortgage.Helpers;
 using CarringtonMortgage.Models.InputCopyBookModels;
-using SCT.Common;
+using CarringtonService.Helpers;
 /// <summary>
 /// Summary description for Class1
 /// </summary>
-namespace Carrington_Service.Calculation_Classes
+namespace CarringtonService.BillingStatements
 {
     public class ChapterSevenBillingStatement : IChapterSevenBillingStatement
     {
