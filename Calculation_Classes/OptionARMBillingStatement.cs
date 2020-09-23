@@ -422,7 +422,7 @@ namespace Carrington_Service.Calculation_Classes
         /// <returns></returns>
         public string GetDeferredBalance(AccountsModel model)
         {
-            //TOD0:Revisit Again
+            //TOD0:Revisit Again exception
             try
             {
                 ////Logger.Trace("STARTED:  Execute to get Deferred Balance operation.");
@@ -514,7 +514,7 @@ namespace Carrington_Service.Calculation_Classes
         /// <param name="model"></param>
         /// <returns></returns>
         public string GeUnappliedFundsPaidLastMonth(AccountsModel model)
-        {
+        {  //TOD0:Revisit Again exception
             try
             {
                 UnappliedFundsPaidLastMonth = Convert.ToString(
