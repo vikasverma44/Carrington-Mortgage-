@@ -3132,7 +3132,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                  && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
                  && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
-                 && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)))
+                 && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No))))
                 {
                     ClearedPreviousStatement = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
@@ -4186,7 +4186,7 @@ namespace CarringtonMortgage.FlexFields_Calculation
                  && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
                  && accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date == "0"
                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
-                 && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)))
+                 && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No))))
                 {
                     ClearedPreviousStatement = true;
                     lstBrw.Add(new Borrower { DistinctAdditionalRecord = false, FlexField1 = "", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
