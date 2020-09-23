@@ -148,7 +148,7 @@ namespace Carrington_Service.Calculation_Classes
 
             //// Condition Statement Method 
             //finalLine.Append(GetHold(accountModel) + "|");
-            //finalLine.Append(GetPrimaryBorrowerBKAttorney(accountModel) + "|");
+            //finalLine.Append(GetPrimaryBorrowerBKAttorney(accountModel, isCoBorrower) + "|");
             //finalLine.Append(GetSecondaryBorrower(accountModel) + "|");
             //finalLine.Append(GetMailingBKAttorneyAddressLine1(accountModel) + "|");
             //finalLine.Append(GetMailingBKAttorneyAddressLine2(accountModel) + "|");
@@ -189,7 +189,7 @@ namespace Carrington_Service.Calculation_Classes
             //finalLine.Append(GetPaymentInformationMessage(accountModel) + "|");
             return finalLine;
         }
-
+        #region Calculation ==>>
         /* While Calculating Conditions must be applied*/
         /// <summary>
         /// 11
@@ -570,7 +570,7 @@ namespace Carrington_Service.Calculation_Classes
                     AssistanceAmountOption1 = "null";
                 else
                 {
-                    AssistanceAmountOption1 = model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData;
+                    AssistanceAmountOption1 = Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) * -1);
                 }
                 //Logger.Trace("ENDED:  To Get Assistance Amount Option1");
             }
@@ -812,7 +812,7 @@ namespace Carrington_Service.Calculation_Classes
                     AssistanceAmountOption2 = "null";
                 else
                 {
-                    AssistanceAmountOption2 = model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData;
+                    AssistanceAmountOption2 = Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) *-1 );
                 }
                 //Logger.Trace("ENDED:  To Get Assistance Amount Option2");
             }
@@ -1051,7 +1051,7 @@ namespace Carrington_Service.Calculation_Classes
                     AssistanceAmountOption3 = "null";
                 else
                 {
-                    AssistanceAmountOption3 = model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData;
+                    AssistanceAmountOption3 =Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) * -1);
                 }
                 //Logger.Trace("ENDED:  To Get Assistance Amount Option3");
             }
@@ -1547,7 +1547,9 @@ namespace Carrington_Service.Calculation_Classes
             //}
             //return DeferredBalance;
         }
+        #endregion
 
+        #region Condition Statement ==>
         public string GetHold(AccountsModel accountsModel)
         {
             //TOD0:Revisit Again
@@ -1573,7 +1575,7 @@ namespace Carrington_Service.Calculation_Classes
             }
             return Hold;
         }
-        public string GetPrimaryBorrowerBKAttorney(AccountsModel accountsModel)
+        public string GetPrimaryBorrowerBKAttorney(AccountsModel accountsModel, bool isCoBorrower  = false)
         {
             try
             {
@@ -2792,5 +2794,6 @@ namespace Carrington_Service.Calculation_Classes
             }
             return PaymentInformationMessage;
         }
+        #endregion
     }
 }

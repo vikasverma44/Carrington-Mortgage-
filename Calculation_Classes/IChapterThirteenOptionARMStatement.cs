@@ -129,7 +129,7 @@ namespace Carrington_Service.Calculation_Classes
         string GetPOBoxAddress(AccountsModel accountsModel);
         string GetPostPetitonpastduemessage(AccountsModel accountsModel);
         string GetPrepaymentPenalty(AccountsModel accountsModel);
-        string GetPrimaryBorrowerBKAttorney(AccountsModel accountsModel);
+        string GetPrimaryBorrowerBKAttorney(AccountsModel accountsModel , bool isCoBorrower = false);
         string GetPrincipalOption1(AccountsModel model);
         string GetPrincipalOption2(AccountsModel model);
         string GetPrincipalOption3(AccountsModel model);
