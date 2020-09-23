@@ -1595,10 +1595,10 @@ namespace Carrington_Service.Calculation_Classes
                 }
                 else if (accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y")// issue 
                 {
-                    if (!isCoBorrower)
-                        PrimaryBorrowerBKAttorney = accountsModel.MasterFileDataPart_1Model.Rssi_Primary_Name;
-                    else
-                        PrimaryBorrowerBKAttorney = accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_Name1;
+                    //if (!isCoBorrower)
+                    //    PrimaryBorrowerBKAttorney = accountsModel.MasterFileDataPart_1Model.Rssi_Primary_Name;
+                    //else
+                    //    PrimaryBorrowerBKAttorney = accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_Name1;
                 }
                 //Logger.Trace("ENDED:  To Get Primary Borrower BK Attorney");
             }
