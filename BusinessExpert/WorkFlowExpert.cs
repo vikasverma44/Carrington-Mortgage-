@@ -109,6 +109,7 @@ namespace Carrington_Service.BusinessExpert
                             ReadPMFile(pmFilePath);
                             if (MortgageLoanBillingFile.AccountModelList.Count > 0)
                             {
+                                MortgageLoanBillingFile.TrackingId= trackingId;
                                 CRL30FileGeneration.GenerateCRL30File(MortgageLoanBillingFile, inputFile);
                             }
                             else
@@ -149,17 +150,18 @@ namespace Carrington_Service.BusinessExpert
                 //    {
                 //        Logger.Trace("SUCCESS: Econsent File Found at Time =  " + DateTime.Now.ToString());
                 //    }
-               // }
-               // TimeWatch();
-                if (fileReadingProcess)
-                {
+                // }
+                // TimeWatch();
+                //if (fileReadingProcess)
+                //{
 
-                    Logger.Trace("ENDED: File Reading Process Completed");
-                }
-                else
-                {
-                    Logger.Trace("ENDED: File Reading Process is In-Complete");
-                }
+                //    Logger.Trace("ENDED: File Reading Process Completed");
+                //}
+                //else
+                //{
+                //    Logger.Trace("ENDED: File Reading Process is In-Complete");
+                //}
+                Logger.Trace("ENDED: File Reading Process Completed");
                 return true;
             }
             catch (Exception ex)
@@ -375,7 +377,7 @@ namespace Carrington_Service.BusinessExpert
                 Logger.Trace("ENDED: Reading PM File");
 
                 //Adding File info
-                MortgageLoanBillingFile.InputFileSize = InputFileStream.Length;
+                MortgageLoanBillingFile.InputFileSize = InputFileStream.Length/1024;
                 MortgageLoanBillingFile.InputFileName = Path.GetFileName(fileNameWithPath);
                 MortgageLoanBillingFile.InputFileDate = File.GetCreationTime(fileNameWithPath);
                 MortgageLoanBillingFile.TotalNumberOfAccount = MortgageLoanBillingFile.AccountModelList.Count;

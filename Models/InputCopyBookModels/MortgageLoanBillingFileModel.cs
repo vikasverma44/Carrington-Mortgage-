@@ -23,6 +23,7 @@ namespace CarringtonMortgage.Models.InputCopyBookModels.MortgageLoanBillingModel
         public DateTime InputFileDate { get; set; }
 
         public int TotalNumberOfAccount { get; set; }
+        public string TrackingId { get; set; }
 
     }
 }
