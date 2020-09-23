@@ -1,5 +1,4 @@
-﻿using Carrington_Service.Agents;
-using Carrington_Service.BusinessExpert;
+﻿using Carrington_Service.BusinessExpert;
 using Carrington_Service.Calculation_Classes;
 using Carrington_Service.Helpers;
 using Carrington_Service.Infrastructure;
@@ -22,7 +21,6 @@ namespace Carrington_Service
 
             container.Register<IWorkFlowExpert, WorkFlowExpert>(lifestyle);
             container.Register<IConfigHelper, ConfigHelper>(lifestyle);
-            container.Register<IAgentApi, AgentApi>(lifestyle);
             container.Register<ILogger, Logger>(lifestyle);
             container.Register<IWorkFlowService, WorkFlowService>(lifestyle);
             container.Register<IChapterThirteenOptionARMStatement, ChapterThirteenOptionARMStatement>(lifestyle);

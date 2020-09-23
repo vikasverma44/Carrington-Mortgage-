@@ -34,7 +34,7 @@ namespace CarringtonMortgage.Models.InputCopyBookModels
             UserFieldRecordModel = new UserFieldRecordModel();
             detModel = new DetModel();
             EConsentModel = new EConsentModel();
-            CmsBillInput = new CmsBillInput();
+            CmsBillInput = new CmsBillingInputModel();
         }
         public ActiveBankruptcyInformationRecordModel ActiveBankruptcyInformationRecordModel { get; set; }
         public ArchivedBankruptcyDetailRecordModel ArchivedBankruptcyDetailRecordModel { get; set; }
@@ -64,6 +64,6 @@ namespace CarringtonMortgage.Models.InputCopyBookModels
         public SupplementalCCFModel SupplementalCCFModel { get; internal set; }
 
         public EConsentModel EConsentModel { get; set; }
-        public CmsBillInput CmsBillInput { get; set; }
+        public CmsBillingInputModel CmsBillInput { get; set; }
     }
 }

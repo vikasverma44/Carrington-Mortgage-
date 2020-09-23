@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace CarringtonMortgage.Models.InputCopyBookModels
 {
-    public class CmsBillInput
+    public class CmsBillingInputModel
     {
-        public CmsBillInput()
+        public CmsBillingInputModel()
         {
             DetRecord = new DetModel();
             TransRecord = new TransModel();

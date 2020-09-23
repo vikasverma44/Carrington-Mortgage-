@@ -26,7 +26,7 @@ namespace Carrington_Service.BusinessExpert
         private static string EConsentFilePath;
         public FileStream InputFileStream;
         MortgageLoanBillingFileModel MortgageLoanBillingFile = new MortgageLoanBillingFileModel();
-        CmsBillInput CmsBillInput = new CmsBillInput();
+        CmsBillingInputModel CmsBillInput = new CmsBillingInputModel();
         EConsentInput EConsentInput = new EConsentInput();
         AccountsModel accountsModel;
         private readonly ICRL30FileGeneration CRL30FileGeneration;

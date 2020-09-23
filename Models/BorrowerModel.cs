@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CarringtonMortgage.FlexFields_Calculation
 {
-   public class Borrower
+   public class BorrowerModel
     {
         public bool DistinctAdditionalRecord { get; set; }
         public string FlexField1 { get; set; }
