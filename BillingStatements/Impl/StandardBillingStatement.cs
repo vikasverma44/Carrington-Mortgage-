@@ -382,14 +382,14 @@ namespace CarringtonService.BillingStatements
                 //    else { DeferredBalance = "0"; }
                 //}
                 //TOD0:Revisit Again
-                if (Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal) -
+                if (Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal_PackedData) -
                 Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) == 0)
                 {
                     DeferredBalance = "N/A";
                 }
                 else
                 {
-                    DeferredBalance = Convert.ToString(Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal) -
+                    DeferredBalance = Convert.ToString(Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal_PackedData) -
                    Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData));
                 }
                 //Logger.Trace("ENDED:    To Deferred Balance operation.");
@@ -397,7 +397,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                //Logger.Error(ex, ex.TargetSite.Name);
+                Logger.Error(ex, ex.TargetSite.Name);
                 return "";
             }
         }
@@ -422,7 +422,7 @@ namespace CarringtonService.BillingStatements
             return UnappliedFunds;
         }
         public string GetFeesAndChargesPaidLastMonth(AccountsModel accountsModel)
-        {
+        {//TOD0:Revisit Again exception
             try
             {
                 //Logger.Trace("STARTED:  Execute get fees and charges paid last month.");
@@ -442,7 +442,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                //Logger.Error(ex, ex.TargetSite.Name);
+                 Logger.Error(ex, ex.TargetSite.Name);
                  return "";
             }
             return FeesAndChargesPaidLastMonth;
@@ -452,14 +452,14 @@ namespace CarringtonService.BillingStatements
             try
             {
                 //Logger.Trace("STARTED:  Execute get unapplied funds paid last month.");
-                if (accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2 != null && accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3 != null
-                    && accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_04 != null && accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05 != null)
+                if (accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2_PackedData != null && accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3_PackedData != null
+                    && accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_4_PackedData != null && accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_5_PackedData != null)
                 {
                     UnappliedFundsPaidLastMonth = Convert.ToString(Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData) +
-                   Convert.ToDecimal((accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2.Replace("{", "")).Replace("}", "").Replace("P", "")) +
-                   Convert.ToDecimal((accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3.Replace("{", "")).Replace("}", "").Replace("P", "")) +
-                   Convert.ToDecimal((accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_04.Replace("{", "")).Replace("}", "").Replace("P", "")) +
-                   Convert.ToDecimal((accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05.Replace("{", "")).Replace("}", "").Replace("P", "")));
+                   Convert.ToDecimal((accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2_PackedData.Replace("{", "")).Replace("}", "").Replace("P", "")) +
+                   Convert.ToDecimal((accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3_PackedData.Replace("{", "")).Replace("}", "").Replace("P", "")) +
+                   Convert.ToDecimal((accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_4_PackedData.Replace("{", "")).Replace("}", "").Replace("P", "")) +
+                   Convert.ToDecimal((accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_5_PackedData.Replace("{", "")).Replace("}", "").Replace("P", "")));
                 }
                 return UnappliedFundsPaidLastMonth;
                 //Logger.Trace("ENDED: Get get unapplied funds paid last month.");
@@ -494,7 +494,7 @@ namespace CarringtonService.BillingStatements
             catch (Exception ex)
             {
 
-               // Logger.Error(ex, ex.TargetSite.Name);
+                Logger.Error(ex, ex.TargetSite.Name);
                  return "";
 
             }
@@ -604,16 +604,16 @@ namespace CarringtonService.BillingStatements
             {
                 //Logger.Trace("STARTED:  Execute get suspense.");
                 Suspense = Convert.ToString(Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData) +
-                Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2) +
-                Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3) +
-                Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_04) +
-                Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05));
+                Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2_PackedData) +
+                Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3_PackedData) +
+                Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_4_PackedData) +
+                Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_5_PackedData));
                 return Suspense;
                 //Logger.Trace("ENDED: Get get suspense.");
             }
             catch (Exception ex)
             {
-                //Logger.Error(ex, ex.TargetSite.Name);
+                Logger.Error(ex, ex.TargetSite.Name);
                 return "";
 
             }

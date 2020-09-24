@@ -1688,7 +1688,7 @@ namespace CarringtonService.BusinessExpert
                 Rssi_Altr_Forgn_Flag = PackedTypeCheckAndUnPackData("Rssi_Altr_Forgn_Flag", currentByte, 223, 1),
 
                 Rssi_Appl_Foreign_Flag = PackedTypeCheckAndUnPackData("Rssi_Appl_Foreign_Flag", currentByte, 224, 1),
-                Rssi_Def_Tot_Bal = PackedTypeCheckAndUnPackData("Rssi_Def_Tot_Bal", currentByte, 225, 7, 2),
+                Rssi_Def_Tot_Bal_PackedData = PackedTypeCheckAndUnPackData("Rssi_Def_Tot_Ball_PackedData", currentByte, 225, 7, 2),
 
                 Rssi_Def_Int_Bal_PackedData = PackedTypeCheckAndUnPackData("Rssi_Def_Int_Bal_PackedData", currentByte, 232, 6, 2),
                 Rssi_Def_Late_Chrg_Bal_PackedData = PackedTypeCheckAndUnPackData("Rssi_Def_Late_Chrg_Bal_PackedData", currentByte, 238, 4, 2),
@@ -2564,12 +2564,12 @@ namespace CarringtonService.BusinessExpert
                 Rssi_Tr_Esc_Pay_Id = PackedTypeCheckAndUnPackData("Rssi_Tr_Esc_Pay_Id", currentByte, 240, 2),
 
                 Rssi_Tr_Amort_Fee_Pymt = PackedTypeCheckAndUnPackData("Rssi_Tr_Amort_Fee_Pymt", currentByte, 242, 7, 2),
-                Rssi_Tr_Amt_To_Evar_2 = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_2", currentByte, 249, 9, 2),
+                Rssi_Tr_Amt_To_Evar_2_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_2_PackedData", currentByte, 249, 9, 2),
 
-                Rssi_Tr_Amt_To_Evar_3 = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_3", currentByte, 258, 9, 2),
-                Rssi_Tr_Amt_To_Evar_04 = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_04", currentByte, 267, 9, 2),
+                Rssi_Tr_Amt_To_Evar_3_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_3_PackedData", currentByte, 258, 9, 2),
+                Rssi_Tr_Amt_To_Evar_4_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_4_PackedData", currentByte, 267, 9, 2),
 
-                Rssi_Tr_Amt_To_Evar_05 = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_05", currentByte, 276, 9, 2),
+                Rssi_Tr_Amt_To_Evar_5_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_5_PackedData", currentByte, 276, 9, 2),
                 Rssi_Tr_Exp_Fee_Code = PackedTypeCheckAndUnPackData("Rssi_Tr_Exp_Fee_Code", currentByte, 285, 3),
 
                 Rssi_Tr_Exp_Fee_Desc = PackedTypeCheckAndUnPackData("Rssi_Tr_Exp_Fee_Desc", currentByte, 288, 30),
