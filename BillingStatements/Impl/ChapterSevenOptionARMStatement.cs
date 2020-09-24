@@ -1402,10 +1402,10 @@ namespace CarringtonService.BillingStatements
                 //corrupted data
                 UnappliedFundsPaidLastMonth = Convert.ToString(
                 accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData == null ? 0 : Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData)
-                + accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2 == null ? 0 : Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2.Replace("}", "").Replace("{", "").Replace("P", ""))
-                + accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3 == null ? 0 : Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3.Replace("}", "").Replace("{", "").Replace("P", ""))
-                + accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_04 == null ? 0 : Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_04.Replace("}", "").Replace("{", "").Replace("P", ""))
-                + accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05 == null ? 0 : Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05.Replace("}", "").Replace("{", "").Replace("P", "")));
+                + accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2_PackedData == null ? 0 : Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2_PackedData.Replace("}", "").Replace("{", "").Replace("P", ""))
+                + accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3_PackedData == null ? 0 : Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3_PackedData.Replace("}", "").Replace("{", "").Replace("P", ""))
+                + accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_4_PackedData == null ? 0 : Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_4_PackedData.Replace("}", "").Replace("{", "").Replace("P", ""))
+                + accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_5_PackedData == null ? 0 : Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_5_PackedData.Replace("}", "").Replace("{", "").Replace("P", "")));
 
                 //Logger.Trace("ENDED:  To Get Unapplied Funds Paid Last Month");
             }
@@ -1673,10 +1673,10 @@ namespace CarringtonService.BillingStatements
                 //corrupted data
                 Suspense = Convert.ToString(
                   (accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData == null ? 0 : Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData))
-                + (accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2 == null ? 0 : Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2.Replace("}", "").Replace("{", "").Replace("P", "")))
-                + (accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3 == null ? 0 : Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3.Replace("}", "").Replace("{", "").Replace("P", "")))
-                + (accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_04 == null ? 0 : Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_04.Replace("}", "").Replace("{", "").Replace("P", "")))
-                + (accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05 == null ? 0 : Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05.Replace("}", "").Replace("{", "").Replace("P", ""))));
+                + (accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2_PackedData == null ? 0 : Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2_PackedData.Replace("}", "").Replace("{", "").Replace("P", "")))
+                + (accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3_PackedData == null ? 0 : Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3_PackedData.Replace("}", "").Replace("{", "").Replace("P", "")))
+                + (accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_4_PackedData == null ? 0 : Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_4_PackedData.Replace("}", "").Replace("{", "").Replace("P", "")))
+                + (accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_5_PackedData == null ? 0 : Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_5_PackedData.Replace("}", "").Replace("{", "").Replace("P", ""))));
 
                 //Logger.Trace("ENDED:  To Get Suspense");
             }
@@ -1726,7 +1726,7 @@ namespace CarringtonService.BillingStatements
             {
                 //Logger.Trace("STARTED:  Execute to Get Deferred Balance");
 
-                if ((accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal == null ? 0 : Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal)
+                if ((accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal_PackedData == null ? 0 : Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal_PackedData)
                     - (accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData == null ? 0 : Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData))) == 0)
                 {
                     DeferredBalance = "N/A";
@@ -1734,7 +1734,7 @@ namespace CarringtonService.BillingStatements
                 else
                 {
                     DeferredBalance = Convert.ToString(
-                        (accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal == null ? 0 : Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal))
+                        (accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal_PackedData == null ? 0 : Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal_PackedData))
                     - (accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData == null ? 0 : Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData)));
                 }
                 //Logger.Trace("ENDED:  To Get Deferred Balance");

@@ -443,14 +443,14 @@ namespace CarringtonService.BillingStatements
 
                 //Logger.Trace("STARTED:  Execute to get Deferred Balance operation.");
 
-                if (Convert.ToDecimal(model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal) -
+                if (Convert.ToDecimal(model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal_PackedData) -
                 Convert.ToDecimal(model.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) == 0)
                 {
                     DeferredBalance = "N/A";
                 }
                 else
                 {
-                    DeferredBalance = Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal) -
+                    DeferredBalance = Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal_PackedData) -
                    Convert.ToDecimal(model.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData));
                 }
                 //Logger.Trace("ENDED:    To Deferred Balance operation.");
@@ -458,7 +458,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                //Logger.Error(ex, "GetDeferredBalance" + ex.TargetSite.Name);
+                Logger.Error(ex, "GetDeferredBalance" + ex.TargetSite.Name);
                 return "";
             }
         }
@@ -514,17 +514,17 @@ namespace CarringtonService.BillingStatements
             {
                 UnappliedFundsPaidLastMonth = Convert.ToString(
                     Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData)
-                     + Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2)
-                      + Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3)
-                       + Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_04)
-                        + Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05));
+                     + Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2_PackedData)
+                      + Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3_PackedData)
+                       + Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_4_PackedData)
+                        + Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_5_PackedData));
 
                 return UnappliedFundsPaidLastMonth;
 
             }
             catch (Exception ex)
             {
-                //Logger.Error(ex, "GeUnappliedFundsPaidLastMonth" + ex.TargetSite.Name);
+                Logger.Error(ex, "GeUnappliedFundsPaidLastMonth" + ex.TargetSite.Name);
                 return "";
             }
 
@@ -1787,14 +1787,14 @@ namespace CarringtonService.BillingStatements
         { //TOD0:Revisit Again
             try
             {
-                if (model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2 != null && model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3 != null
-                    && model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_04 != null && model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05 != null)
+                if (model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2_PackedData != null && model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3_PackedData != null
+                    && model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_4_PackedData != null && model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_5_PackedData != null)
                 {
                     Suspense = Convert.ToString(Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData) +
-       Convert.ToDecimal((model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2.Replace("{", "")).Replace("}", "").Replace("P", "")) +
-       Convert.ToDecimal((model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3.Replace("{", "")).Replace("}", "").Replace("P", "")) +
-       Convert.ToDecimal((model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_04.Replace("{", "")).Replace("}", "").Replace("P", "")) +
-       Convert.ToDecimal((model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05.Replace("{", "")).Replace("}", "").Replace("P", "")));
+       Convert.ToDecimal((model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2_PackedData.Replace("{", "")).Replace("}", "").Replace("P", "")) +
+       Convert.ToDecimal((model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3_PackedData.Replace("{", "")).Replace("}", "").Replace("P", "")) +
+       Convert.ToDecimal((model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_4_PackedData.Replace("{", "")).Replace("}", "").Replace("P", "")) +
+       Convert.ToDecimal((model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_5_PackedData.Replace("{", "")).Replace("}", "").Replace("P", "")));
                 }
                 return Suspense;
             }

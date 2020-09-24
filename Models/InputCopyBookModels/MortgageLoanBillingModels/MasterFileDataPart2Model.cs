@@ -50,7 +50,7 @@
         public string AddressFlag { get; set; }//DOUBT INCLIED TO UPPER PROPERTY
         public string Rssi_Altr_Forgn_Flag { get; set; }
         public string Rssi_Appl_Foreign_Flag { get; set; }
-        public string Rssi_Def_Tot_Bal { get; set; }
+        public string Rssi_Def_Tot_Bal_PackedData { get; set; }
         public string Rssi_Def_Int_Bal_PackedData { get; set; }
         public string Rssi_Def_Late_Chrg_Bal_PackedData { get; set; }
         public string Rssi_Def_Escrow_Adv_Bal_PackedData { get; set; }

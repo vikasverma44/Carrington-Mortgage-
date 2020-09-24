@@ -291,7 +291,7 @@ namespace CarringtonService.BillingStatements
                 //Logger.Trace("STARTED:  Execute to Deferred Balance operation.");
 
 
-                if ((accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal == null ? 0 : Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal)
+                if ((accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal_PackedData == null ? 0 : Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal_PackedData)
                     - (accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData == null ? 0 : Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData))) == 0)
                 {
                     DeferredBalance = "N/A";
@@ -299,7 +299,7 @@ namespace CarringtonService.BillingStatements
                 else
                 {
                     DeferredBalance = Convert.ToString(
-                        (accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal == null ? 0 : Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal))
+                        (accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal_PackedData == null ? 0 : Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal_PackedData))
                     - (accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData == null ? 0 : Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData)));
                 }
 
@@ -358,10 +358,10 @@ namespace CarringtonService.BillingStatements
                 //Logger.Trace("STARTED:  Execute to Get Unapplied Funds Paid Last Month operation.");
 
                     UnappliedFundsPaidLastMonth = Convert.ToString(Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData) +
-                               Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2.Replace("{", "").Replace("}", "")) +
-                               Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3.Replace("{", "").Replace("}", "")) +
-                               Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_04.Replace("{", "").Replace("}", "")) +
-                               Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05.Replace("{", "").Replace("}", "")));
+                               Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2_PackedData.Replace("{", "").Replace("}", "")) +
+                               Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3_PackedData.Replace("{", "").Replace("}", "")) +
+                               Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_4_PackedData.Replace("{", "").Replace("}", "")) +
+                               Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_5_PackedData.Replace("{", "").Replace("}", "")));
 
                 //Logger.Trace("ENDED:    Get to Unapplied Funds Paid Last Month operation.");
                 return UnappliedFundsPaidLastMonth;
@@ -491,10 +491,10 @@ namespace CarringtonService.BillingStatements
             {
                 //Logger.Trace("STARTED:  Execute to Get Get Suspense operation.");
                     Suspense = Convert.ToString(Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData) +
-                    Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2.Replace("{", "").Replace("}", "")) +
-                    Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3.Replace("{", "").Replace("}", "")) +
-                    Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_04.Replace("{", "").Replace("}", "")) +
-                    Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05.Replace("{", "").Replace("}", "")));
+                    Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2_PackedData.Replace("{", "").Replace("}", "")) +
+                    Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3_PackedData.Replace("{", "").Replace("}", "")) +
+                    Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_4_PackedData.Replace("{", "").Replace("}", "")) +
+                    Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_5_PackedData.Replace("{", "").Replace("}", "")));
                 //Logger.Trace("ENDED:    Get to Get Total Paid Year To Date operation.");
                 return Suspense;
             }

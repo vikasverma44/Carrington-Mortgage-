@@ -398,10 +398,10 @@ namespace CarringtonService.BillingStatements
                 //corrupted data
                 FeesandChargesPaidLastMonth = Convert.ToString(
                 model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData == null ? 0 : Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData)
-                + model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2 == null ? 0 : Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2.Replace("}", "").Replace("{", "").Replace("P", ""))
-                + model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3 == null ? 0 : Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3.Replace("}", "").Replace("{", "").Replace("P", ""))
-                + model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_04 == null ? 0 : Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_04.Replace("}", "").Replace("{", "").Replace("P", ""))
-                + model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05 == null ? 0 : Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05.Replace("}", "").Replace("{", "").Replace("P", "")));
+                + model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2_PackedData == null ? 0 : Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2_PackedData.Replace("}", "").Replace("{", "").Replace("P", ""))
+                + model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3_PackedData == null ? 0 : Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3_PackedData.Replace("}", "").Replace("{", "").Replace("P", ""))
+                + model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_4_PackedData == null ? 0 : Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_4_PackedData.Replace("}", "").Replace("{", "").Replace("P", ""))
+                + model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_5_PackedData == null ? 0 : Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_5_PackedData.Replace("}", "").Replace("{", "").Replace("P", "")));
 
 
                 //Logger.Trace("ENDED:  To Get Unapplied Funds Paid Last Month");
@@ -1460,10 +1460,10 @@ namespace CarringtonService.BillingStatements
 
                 Suspense = Convert.ToString(
                  (model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData == null ? 0 : Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData))
-               + (model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2 == null ? 0 : Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2.Replace("}", "").Replace("{", "").Replace("P", "")))
-               + (model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3 == null ? 0 : Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3.Replace("}", "").Replace("{", "").Replace("P", "")))
-               + (model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_04 == null ? 0 : Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_04.Replace("}", "").Replace("{", "").Replace("P", "")))
-               + (model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05 == null ? 0 : Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_05.Replace("}", "").Replace("{", "").Replace("P", ""))));
+               + (model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2_PackedData == null ? 0 : Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2_PackedData.Replace("}", "").Replace("{", "").Replace("P", "")))
+               + (model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3_PackedData == null ? 0 : Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3_PackedData.Replace("}", "").Replace("{", "").Replace("P", "")))
+               + (model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_4_PackedData == null ? 0 : Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_4_PackedData.Replace("}", "").Replace("{", "").Replace("P", "")))
+               + (model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_5_PackedData == null ? 0 : Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_5_PackedData.Replace("}", "").Replace("{", "").Replace("P", ""))));
 
 
                 //Logger.Trace("ENDED:  To Get Suspense");
