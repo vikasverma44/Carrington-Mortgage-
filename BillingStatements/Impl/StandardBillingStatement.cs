@@ -473,7 +473,8 @@ namespace CarringtonService.BillingStatements
             }
         }
         public string GetTotalPaidLastMonth(AccountsModel accountsModel)
-        { //TOD0:Revisit Again exception
+        { 
+            //TOD0:Revisit Again exception
             try
             {
                 //Logger.Trace("STARTED:  Execute get total paid last month.");

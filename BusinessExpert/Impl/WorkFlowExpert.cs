@@ -278,6 +278,7 @@ namespace CarringtonService.BusinessExpert
                             if (firstRecord)
                             {
                                 MortgageLoanBillingFile.AccountModelList.Add(accountsModel);
+                                SetSupplimentalAndEConsentModel(accountsModel);
                                 accountsModel = null;
                             }
                             accountsModel = new AccountsModel();
@@ -365,28 +366,7 @@ namespace CarringtonService.BusinessExpert
                             GetTrailerRecords(currentByteLine, ref accountsModel);
                         }
 
-                        //Adding values from Supplimental file
-                        accountsModel.SupplementalCCFModel = new SupplementalCCFModel
-                        {
-                            YTDAmnt = detModels.Where(df =>
-                             df.LoanNumber == accountsModel.MasterFileDataPart_1Model.Rssi_Acct_No).FirstOrDefault()?.YTDAmnt,
-
-                            PriorMoAmnt = detModels.Where(df =>
-                             df.LoanNumber == accountsModel.MasterFileDataPart_1Model.Rssi_Acct_No).FirstOrDefault()?.PriorMoAmnt,
-
-                            FlagRecordIndicator = detModels.Where(df =>
-                             df.LoanNumber == accountsModel.MasterFileDataPart_1Model.Rssi_Acct_No).FirstOrDefault()?.FlagRecordIndicator
-                        };
-
-                        //Adding values  from eConsent file
-                        accountsModel.EConsentModel = new EConsentModel
-                        {
-                            DocumentType = eConsentModels.Where(df =>
-                                   df.LoanNumber == accountsModel.MasterFileDataPart_1Model.Rssi_Acct_No).FirstOrDefault()?.DocumentType,
-                            EConsentFlag = eConsentModels.Where(df =>
-                               df.LoanNumber == accountsModel.MasterFileDataPart_1Model.Rssi_Acct_No).FirstOrDefault()?.EConsentFlag
-
-                        };
+                      
 
                     }
                     iBytesRead = InputFileStream.Read(currentByteLine, 0, numOfBytes);
@@ -406,6 +386,34 @@ namespace CarringtonService.BusinessExpert
                 Logger.Error(ex, "PM File Error :");
             }
 
+        }
+        /// <summary>
+        /// Set Supplimental And EConsent Model Values
+        /// </summary>
+        private void SetSupplimentalAndEConsentModel(AccountsModel model)
+        {
+            //Adding values from Supplimental file
+            model.SupplementalCCFModel = new SupplementalCCFModel
+            {
+                YTDAmnt = detModels.Where(df =>
+                 df.LoanNumber == accountsModel.MasterFileDataPart_1Model.Rssi_Acct_No).FirstOrDefault()?.YTDAmnt,
+
+                PriorMoAmnt = detModels.Where(df =>
+                 df.LoanNumber == accountsModel.MasterFileDataPart_1Model.Rssi_Acct_No).FirstOrDefault()?.PriorMoAmnt,
+
+                FlagRecordIndicator = detModels.Where(df =>
+                 df.LoanNumber == accountsModel.MasterFileDataPart_1Model.Rssi_Acct_No).FirstOrDefault()?.FlagRecordIndicator
+            };
+
+            //Adding values  from eConsent file
+            model.EConsentModel = new EConsentModel
+            {
+                DocumentType = eConsentModels.Where(df =>
+                       df.LoanNumber == accountsModel.MasterFileDataPart_1Model.Rssi_Acct_No).FirstOrDefault()?.DocumentType,
+                EConsentFlag = eConsentModels.Where(df =>
+                   df.LoanNumber == accountsModel.MasterFileDataPart_1Model.Rssi_Acct_No).FirstOrDefault()?.EConsentFlag
+
+            };
         }
 
         private void ReadCMSBillInputFileDetRecord(string path)

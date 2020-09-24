@@ -105,7 +105,7 @@ namespace CarringtonService.BillingStatements
             Logger = logger;
         }
 
-        public StringBuilder GetFinalChapterThirteenOptionARMStatement(AccountsModel accountModel)
+        public StringBuilder GetFinalChapterThirteenOptionARMStatement(AccountsModel accountModel, bool isCoBorrower = false)
         {
             ExMessage = "Error Message";
             finalLine = new StringBuilder();
@@ -147,46 +147,46 @@ namespace CarringtonService.BillingStatements
             finalLine.Append(GetDeferredBalance(accountModel) + "|");
 
             //// Condition Statement Method 
-            //finalLine.Append(GetHold(accountModel) + "|");
-            //finalLine.Append(GetPrimaryBorrowerBKAttorney(accountModel, isCoBorrower) + "|");
-            //finalLine.Append(GetSecondaryBorrower(accountModel) + "|");
-            //finalLine.Append(GetMailingBKAttorneyAddressLine1(accountModel) + "|");
-            //finalLine.Append(GetMailingBKAttorneyAddressLine2(accountModel) + "|");
-            //finalLine.Append(GetBorrowerAttorneyMailingCityStateZip(accountModel) + "|");
-            //finalLine.Append(GetMailingCountry(accountModel) + "|");
-            //finalLine.Append(GetPaymentDate(accountModel) + "|");
-            //finalLine.Append(GetInterestOption1(accountModel) + "|");
-            //finalLine.Append(GetEscrowOption1(accountModel) + "|");
-            //finalLine.Append(GetRegularMonthlyPaymentOption1(accountModel) + "|");
-            //finalLine.Append(GetTotalFeesChargedOption1(accountModel) + "|");
-            //finalLine.Append(GetInterestOption2(accountModel) + "|");
-            //finalLine.Append(GetEscrowOption2(accountModel) + "|");
-            //finalLine.Append(GetRegularMonthlyPaymentOption2(accountModel) + "|");
-            //finalLine.Append(GetTotalFeesChargedOption2(accountModel) + "|");
-            //finalLine.Append(GetInterestOption3(accountModel) + "|");
-            //finalLine.Append(GetEscrowOption3(accountModel) + "|");
-            //finalLine.Append(GetRegularMonthlyPaymentOption3(accountModel) + "|");
-            //finalLine.Append(GetTotalFeesChargedOption3(accountModel) + "|");
-            //finalLine.Append(GetInterestOption4(accountModel) + "|");
-            //finalLine.Append(GetEscrowOption4(accountModel) + "|");
-            //finalLine.Append(GetRegularMonthlyPaymentOption4(accountModel) + "|");
-            //finalLine.Append(GetTotalFeesChargedOption4(accountModel) + "|");
-            //finalLine.Append(GetOption4MinimumDescription(accountModel) + "|");
-            //finalLine.Append(GetPostPetitonpastduemessage(accountModel) + "|");
-            //finalLine.Append(GetPOBoxAddress(accountModel) + "|");
-            //finalLine.Append(GetDate(accountModel) + "|");
-            //finalLine.Append(GetAmount(accountModel) + "|");
-            //finalLine.Append(GetBuydownBalance(accountModel) + "|");
-            //finalLine.Append(GetPartialClaim(accountModel) + "|");
-            //finalLine.Append(GetInterestRateUntil(accountModel) + "|");
-            //finalLine.Append(GetPrepaymentPenalty(accountModel) + "|");
-            //finalLine.Append(GetLenderPlacedInsuranceMessage(accountModel) + "|");
-            //finalLine.Append(GetStateNSF(accountModel) + "|");
-            //finalLine.Append(GetAutodraftMessage(accountModel) + "|");
-            //finalLine.Append(GetCMSPartialClaim(accountModel) + "|");
-            //finalLine.Append(GetHUDPartialClaim(accountModel) + "|");
-            //finalLine.Append(GetStateDisclosures(accountModel) + "|");
-            //finalLine.Append(GetPaymentInformationMessage(accountModel) + "|");
+            finalLine.Append(GetHold(accountModel) + "|");
+            finalLine.Append(GetPrimaryBorrowerBKAttorney(accountModel, isCoBorrower) + "|");
+            finalLine.Append(GetSecondaryBorrower(accountModel) + "|");
+            finalLine.Append(GetMailingBKAttorneyAddressLine1(accountModel, isCoBorrower) + "|");
+            finalLine.Append(GetMailingBKAttorneyAddressLine2(accountModel, isCoBorrower) + "|");
+            finalLine.Append(GetBorrowerAttorneyMailingCityStateZip(accountModel, isCoBorrower) + "|");
+            finalLine.Append(GetMailingCountry(accountModel, isCoBorrower) + "|");
+            finalLine.Append(GetPaymentDate(accountModel) + "|");
+            finalLine.Append(GetInterestOption1(accountModel) + "|");
+            finalLine.Append(GetEscrowOption1(accountModel) + "|");
+            finalLine.Append(GetRegularMonthlyPaymentOption1(accountModel) + "|");
+            finalLine.Append(GetTotalFeesChargedOption1(accountModel) + "|");
+            finalLine.Append(GetInterestOption2(accountModel) + "|");
+            finalLine.Append(GetEscrowOption2(accountModel) + "|");
+            finalLine.Append(GetRegularMonthlyPaymentOption2(accountModel) + "|");
+            finalLine.Append(GetTotalFeesChargedOption2(accountModel) + "|");
+            finalLine.Append(GetInterestOption3(accountModel) + "|");
+            finalLine.Append(GetEscrowOption3(accountModel) + "|");
+            finalLine.Append(GetRegularMonthlyPaymentOption3(accountModel) + "|");
+            finalLine.Append(GetTotalFeesChargedOption3(accountModel) + "|");
+            finalLine.Append(GetInterestOption4(accountModel) + "|");
+            finalLine.Append(GetEscrowOption4(accountModel) + "|");
+            finalLine.Append(GetRegularMonthlyPaymentOption4(accountModel) + "|");
+            finalLine.Append(GetTotalFeesChargedOption4(accountModel) + "|");
+            finalLine.Append(GetOption4MinimumDescription(accountModel) + "|");
+            finalLine.Append(GetPostPetitonpastduemessage(accountModel) + "|");
+            finalLine.Append(GetPOBoxAddress(accountModel) + "|");
+            finalLine.Append(GetDate(accountModel) + "|");
+            finalLine.Append(GetAmount(accountModel) + "|");
+            finalLine.Append(GetBuydownBalance(accountModel) + "|");
+            finalLine.Append(GetPartialClaim(accountModel) + "|");
+            finalLine.Append(GetInterestRateUntil(accountModel) + "|");
+            finalLine.Append(GetPrepaymentPenalty(accountModel) + "|");
+            finalLine.Append(GetLenderPlacedInsuranceMessage(accountModel) + "|");
+            finalLine.Append(GetStateNSF(accountModel) + "|");
+            finalLine.Append(GetAutodraftMessage(accountModel) + "|");
+            finalLine.Append(GetCMSPartialClaim(accountModel) + "|");
+            finalLine.Append(GetHUDPartialClaim(accountModel) + "|");
+            finalLine.Append(GetStateDisclosures(accountModel) + "|");
+            finalLine.Append(GetPaymentInformationMessage(accountModel) + "|");
             return finalLine;
         }
         #region Calculation ==>>
@@ -394,7 +394,7 @@ namespace CarringtonService.BillingStatements
             {
                 //Logger.Trace("STARTED:  Execute to Get Unapplied Funds Paid Last Month");
 
-        
+
                 //corrupted data
                 FeesandChargesPaidLastMonth = Convert.ToString(
                 model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData == null ? 0 : Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData)
@@ -653,7 +653,7 @@ namespace CarringtonService.BillingStatements
                 else
                 {
                     OverduePaymentsOption1 = Convert.ToString(Convert.ToDecimal(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Unpaid_PackedData)
-                                     - Convert.ToDecimal(GetTotalFeesPaidOption1(model) != "null" ? GetTotalFeesPaidOption1(model) : "0.00" ));
+                                     - Convert.ToDecimal(GetTotalFeesPaidOption1(model) != "null" ? GetTotalFeesPaidOption1(model) : "0.00"));
                 }
 
                 //Logger.Trace("ENDED:  To Get Overdue Payments Option1");
@@ -812,7 +812,7 @@ namespace CarringtonService.BillingStatements
                     AssistanceAmountOption2 = "null";
                 else
                 {
-                    AssistanceAmountOption2 = Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) *-1 );
+                    AssistanceAmountOption2 = Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) * -1);
                 }
                 //Logger.Trace("ENDED:  To Get Assistance Amount Option2");
             }
@@ -1051,7 +1051,7 @@ namespace CarringtonService.BillingStatements
                     AssistanceAmountOption3 = "null";
                 else
                 {
-                    AssistanceAmountOption3 =Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) * -1);
+                    AssistanceAmountOption3 = Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) * -1);
                 }
                 //Logger.Trace("ENDED:  To Get Assistance Amount Option3");
             }
@@ -1362,7 +1362,7 @@ namespace CarringtonService.BillingStatements
                 else
                 {
                     OverduePaymentsOption4 = Convert.ToString(Convert.ToDecimal(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Unpaid_PackedData)
-                                     - Convert.ToDecimal(GetTotalFeesPaidOption4(model) != "null" ? GetTotalFeesPaidOption4(model) : "0.00" ));
+                                     - Convert.ToDecimal(GetTotalFeesPaidOption4(model) != "null" ? GetTotalFeesPaidOption4(model) : "0.00"));
                 }
                 //Logger.Trace("ENDED:  To Get Overdue Payments Option4");
             }
@@ -1504,7 +1504,7 @@ namespace CarringtonService.BillingStatements
               + (model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Optins_PackedData == null ? 0 : Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Optins_PackedData))
               );
 
-               //Logger.Trace("ENDED:  To Get Miscellaneous");
+                //Logger.Trace("ENDED:  To Get Miscellaneous");
             }
             catch (Exception ex)
             {
@@ -1575,7 +1575,13 @@ namespace CarringtonService.BillingStatements
             }
             return Hold;
         }
-        public string GetPrimaryBorrowerBKAttorney(AccountsModel accountsModel, bool isCoBorrower  = false)
+        /// <summary>
+        /// 3
+        /// </summary>
+        /// <param name="accountsModel"></param>
+        /// <param name="isCoBorrower"></param>
+        /// <returns></returns>
+        public string GetPrimaryBorrowerBKAttorney(AccountsModel accountsModel, bool isCoBorrower = false)
         {
             try
             {
@@ -1595,10 +1601,10 @@ namespace CarringtonService.BillingStatements
                 }
                 else if (accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y")// issue 
                 {
-                    //if (!isCoBorrower)
-                    //    PrimaryBorrowerBKAttorney = accountsModel.MasterFileDataPart_1Model.Rssi_Primary_Name;
-                    //else
-                    //    PrimaryBorrowerBKAttorney = accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_Name1;
+                    if (!isCoBorrower)
+                        PrimaryBorrowerBKAttorney = accountsModel.MasterFileDataPart_1Model.Rssi_Primary_Name;
+                    else
+                        PrimaryBorrowerBKAttorney = accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_Name1;
                 }
                 //Logger.Trace("ENDED:  To Get Primary Borrower BK Attorney");
             }
@@ -1609,6 +1615,11 @@ namespace CarringtonService.BillingStatements
             }
             return PrimaryBorrowerBKAttorney;
         }
+        /// <summary>
+        /// 4
+        /// </summary>
+        /// <param name="accountsModel"></param>
+        /// <returns></returns>
         public string GetSecondaryBorrower(AccountsModel accountsModel)
         {
 
@@ -1630,7 +1641,13 @@ namespace CarringtonService.BillingStatements
             }
             return SecondaryBorrower;
         }
-        public string GetMailingBKAttorneyAddressLine1(AccountsModel accountsModel)
+        /// <summary>
+        /// 5
+        /// </summary>
+        /// <param name="accountsModel"></param>
+        /// <param name="isCoBorrower"></param>
+        /// <returns></returns>
+        public string GetMailingBKAttorneyAddressLine1(AccountsModel accountsModel, bool isCoBorrower = false)
         {
 
             try
@@ -1647,8 +1664,10 @@ namespace CarringtonService.BillingStatements
                 }
                 else if (accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y")
                 {
-                    MailingBKAttorneyAddressLine1 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1
-                        + accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_Adrs1;
+                    if (!isCoBorrower)
+                        MailingBKAttorneyAddressLine1 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1;
+                    else
+                        PrimaryBorrowerBKAttorney = accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_Adrs1;
                 }
                 //Logger.Trace("ENDED:  To Get Mailing BK Attorney Address Line1");
             }
@@ -1659,7 +1678,12 @@ namespace CarringtonService.BillingStatements
             }
             return MailingBKAttorneyAddressLine1;
         }
-        public string GetMailingBKAttorneyAddressLine2(AccountsModel accountsModel)
+        /// <summary>
+        /// 6
+        /// </summary>
+        /// <param name="accountsModel"></param>
+        /// <returns></returns>
+        public string GetMailingBKAttorneyAddressLine2(AccountsModel accountsModel, bool isCoBorrower)
         {
             try
             {
@@ -1675,8 +1699,10 @@ namespace CarringtonService.BillingStatements
                 }
                 else if (accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y")
                 {
-                    MailingBKAttorneyAddressLine2 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_2
-                        + accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_Adrs2;
+                    if (!isCoBorrower)
+                        MailingBKAttorneyAddressLine2 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_2;
+                    else
+                        MailingBKAttorneyAddressLine2 = accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_Adrs2;
                 }
                 //Logger.Trace("ENDED:  To Get Mailing BK Attorney Address Line2");
             }
@@ -1687,7 +1713,12 @@ namespace CarringtonService.BillingStatements
             }
             return MailingBKAttorneyAddressLine2;
         }
-        public string GetBorrowerAttorneyMailingCityStateZip(AccountsModel accountsModel)
+        /// <summary>
+        /// 7
+        /// </summary>
+        /// <param name="accountsModel"></param>
+        /// <returns></returns>
+        public string GetBorrowerAttorneyMailingCityStateZip(AccountsModel accountsModel, bool isCoBorrower)
         {
             try
             {
@@ -1699,17 +1730,21 @@ namespace CarringtonService.BillingStatements
                 }
                 else if (accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L")
                 {
-                    BorrowerAttorneyMailingCityStateZip = accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_City
-                        + accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_State
-                        + accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_Zip;
+                    BorrowerAttorneyMailingCityStateZip = accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_City + "," +
+                         accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_State + "," +
+                         accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_Zip;
                 }
                 if (accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y")
                 {
-                    BorrowerAttorneyMailingCityStateZip = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3
-                        + accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_City
-                        + accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_State
-                        + accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_Zip;
-                }
+                    if (!isCoBorrower)
+                        BorrowerAttorneyMailingCityStateZip = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
+                    else
+                    {
+
+                        BorrowerAttorneyMailingCityStateZip = accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_City + "," +
+                                     accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_State + "," +
+                                     accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_Zip;
+                    } }
                 //Logger.Trace("ENDED:  To Get Borrower Attorney Mailing City State Zip");
             }
             catch (Exception ex)
@@ -1719,7 +1754,12 @@ namespace CarringtonService.BillingStatements
             }
             return BorrowerAttorneyMailingCityStateZip;
         }
-        public string GetMailingCountry(AccountsModel accountsModel)
+        /// <summary>
+        /// 8
+        /// </summary>
+        /// <param name="accountsModel"></param>
+        /// <returns></returns>
+        public string GetMailingCountry(AccountsModel accountsModel, bool isCoBorrower)
         {
             try
             {
@@ -1735,7 +1775,10 @@ namespace CarringtonService.BillingStatements
                 }
                 else if (accountsModel.MasterFileDataPart2Model.Rssi_Appl_Foreign_Flag == "Y")
                 {
-                    MailingCountry = accountsModel.ForeignInformationRecordModel.Rssi_Appl_Country;
+                    if(isCoBorrower)
+                         MailingCountry = accountsModel.ForeignInformationRecordModel.Rssi_Appl_Country;
+                    else
+                        MailingCountry = "null";
                 }
                 else
                 {
@@ -1750,6 +1793,11 @@ namespace CarringtonService.BillingStatements
             }
             return MailingCountry;
         }
+        /// <summary>
+        /// 15
+        /// </summary>
+        /// <param name="accountsModel"></param>
+        /// <returns></returns>
         public string GetPaymentDate(AccountsModel accountsModel)
         {
             try
@@ -1767,7 +1815,11 @@ namespace CarringtonService.BillingStatements
             }
             return PaymentDate;
         }
-
+        /// <summary>
+        /// 29
+        /// </summary>
+        /// <param name="accountsModel"></param>
+        /// <returns></returns>
         public string GetInterestOption1(AccountsModel accountsModel)
         {
 
@@ -1810,6 +1862,11 @@ namespace CarringtonService.BillingStatements
             }
             return InterestOption1;
         }
+        /// <summary>
+        /// 30
+        /// </summary>
+        /// <param name="accountsModel"></param>
+        /// <returns></returns>
         public string GetEscrowOption1(AccountsModel accountsModel)
         {
             try
@@ -1852,6 +1909,11 @@ namespace CarringtonService.BillingStatements
             }
             return EscrowOption1;
         }
+        /// <summary>
+        /// 33
+        /// </summary>
+        /// <param name="accountsModel"></param>
+        /// <returns></returns>
         public string GetRegularMonthlyPaymentOption1(AccountsModel accountsModel)
         {
             try
@@ -1893,6 +1955,11 @@ namespace CarringtonService.BillingStatements
             }
             return RegularMonthlyPaymentOption1;
         }
+        /// <summary>
+        /// 35
+        /// </summary>
+        /// <param name="accountsModel"></param>
+        /// <returns></returns>
         public string GetTotalFeesChargedOption1(AccountsModel accountsModel)
         {
             try
@@ -1935,7 +2002,11 @@ namespace CarringtonService.BillingStatements
             return TotalFeesChargedOption1;
         }
 
-
+        /// <summary>
+        /// 39
+        /// </summary>
+        /// <param name="accountsModel"></param>
+        /// <returns></returns>
         public string GetInterestOption2(AccountsModel accountsModel)
         {
 
@@ -1979,6 +2050,11 @@ namespace CarringtonService.BillingStatements
             }
             return InterestOption2;
         }
+        /// <summary>
+        /// 40
+        /// </summary>
+        /// <param name="accountsModel"></param>
+        /// <returns></returns>
         public string GetEscrowOption2(AccountsModel accountsModel)
         {
             try
@@ -2021,6 +2097,11 @@ namespace CarringtonService.BillingStatements
             }
             return EscrowOption2;
         }
+        /// <summary>
+        /// 43
+        /// </summary>
+        /// <param name="accountsModel"></param>
+        /// <returns></returns>
         public string GetRegularMonthlyPaymentOption2(AccountsModel accountsModel)
         {
             try
@@ -2063,6 +2144,11 @@ namespace CarringtonService.BillingStatements
             }
             return RegularMonthlyPaymentOption2;
         }
+        /// <summary>
+        /// 45
+        /// </summary>
+        /// <param name="accountsModel"></param>
+        /// <returns></returns>
         public string GetTotalFeesChargedOption2(AccountsModel accountsModel)
         {
             try
@@ -2105,7 +2191,11 @@ namespace CarringtonService.BillingStatements
             }
             return TotalFeesChargedOption2;
         }
-
+        /// <summary>
+        /// 49
+        /// </summary>
+        /// <param name="accountsModel"></param>
+        /// <returns></returns>
         public string GetInterestOption3(AccountsModel accountsModel)
         {
             try
@@ -2148,7 +2238,11 @@ namespace CarringtonService.BillingStatements
             }
             return InterestOption3;
 
-        }
+        }/// <summary>
+        /// 50
+        /// </summary>
+        /// <param name="accountsModel"></param>
+        /// <returns></returns>
         public string GetEscrowOption3(AccountsModel accountsModel)
         {
             try
@@ -2191,6 +2285,11 @@ namespace CarringtonService.BillingStatements
             }
             return EscrowOption3;
         }
+        /// <summary>
+        /// 53
+        /// </summary>
+        /// <param name="accountsModel"></param>
+        /// <returns></returns>
         public string GetRegularMonthlyPaymentOption3(AccountsModel accountsModel)
         {
             try

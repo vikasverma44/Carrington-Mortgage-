@@ -94,7 +94,7 @@ namespace CarringtonService.BillingStatements
         string GetAssistanceAmountOption3(AccountsModel model);
         string GetAssistanceAmountOption4(AccountsModel model);
         string GetAutodraftMessage(AccountsModel accountsModel);
-        string GetBorrowerAttorneyMailingCityStateZip(AccountsModel accountsModel);
+        string GetBorrowerAttorneyMailingCityStateZip(AccountsModel accountsModel, bool isCoBorrower = false);
         string GetBuydownBalance(AccountsModel accountsModel);
         string GetCMSPartialClaim(AccountsModel accountsModel);
         string GetDate(AccountsModel accountsModel);
@@ -105,7 +105,7 @@ namespace CarringtonService.BillingStatements
         string GetEscrowOption4(AccountsModel accountsModel);
         string GetFeesandChargesPaidLastMonth(AccountsModel model);
         string GetFeesandChargesPaidYearToDate(AccountsModel model);
-        StringBuilder GetFinalChapterThirteenOptionARMStatement(AccountsModel accountModel);
+        StringBuilder GetFinalChapterThirteenOptionARMStatement(AccountsModel accountModel, bool isCoBorrower = false);
         string GetHold(AccountsModel accountsModel);
         string GetHUDPartialClaim(AccountsModel accountsModel);
         string GetInterestOption1(AccountsModel accountsModel);
@@ -114,9 +114,9 @@ namespace CarringtonService.BillingStatements
         string GetInterestOption4(AccountsModel accountsModel);
         string GetInterestRateUntil(AccountsModel accountsModel);
         string GetLenderPlacedInsuranceMessage(AccountsModel accountsModel);
-        string GetMailingBKAttorneyAddressLine1(AccountsModel accountsModel);
-        string GetMailingBKAttorneyAddressLine2(AccountsModel accountsModel);
-        string GetMailingCountry(AccountsModel accountsModel);
+        string GetMailingBKAttorneyAddressLine1(AccountsModel accountsModel, bool isCoBorrower = false);
+        string GetMailingBKAttorneyAddressLine2(AccountsModel accountsModel, bool isCoBorrower = false);
+        string GetMailingCountry(AccountsModel accountsModel, bool isCoBorrower = false);
         string GetMiscellaneous(AccountsModel model);
         string GetOption4MinimumDescription(AccountsModel accountsModel);
         string GetOverduePaymentsOption1(AccountsModel model);
