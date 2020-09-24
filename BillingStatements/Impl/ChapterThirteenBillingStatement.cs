@@ -385,12 +385,12 @@ namespace CarringtonService.BillingStatements
                     //Need to know and Add PriorMoAmnt in this section
                     TotalPaidLastMonth = Convert.ToString(Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Tot_Pd_Since_Lst_Stmt_PackedData) 
                         - Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData)
-                        + Convert.ToDecimal(accountsModel.SupplementalCCFModel.PriorMoAmnt));
+                        + Convert.ToDecimal(accountsModel.detModel.PriorMoAmnt));
                 }
                 else
                 {
                     TotalPaidLastMonth = Convert.ToString(Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Tot_Pd_Since_Lst_Stmt_PackedData) 
-                        + Convert.ToDecimal(accountsModel.SupplementalCCFModel.PriorMoAmnt));
+                        + Convert.ToDecimal(accountsModel.detModel.PriorMoAmnt));
                 }
                 //Logger.Trace("ENDED:    Get to Total Paid Last Month operation.");
             }

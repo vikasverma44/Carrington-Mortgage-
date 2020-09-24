@@ -309,9 +309,9 @@ namespace CarringtonService.BusinessExpert
                                         //For Standard Billing Statement
                                         case "STD":
                                             //Set Mailing address according to the conditions
-                                            account.Standard.OriginalAddressLine1 = StandardBillingStatement.GetMailingAddressLine1(extractAccount);
-                                            account.Standard.OriginalAddressLine2 = StandardBillingStatement.GetMailingAddressLine2(extractAccount);
-                                            account.Standard.OriginalAddressLine3 = StandardBillingStatement.GetMailingCityStateZip(extractAccount);
+                                            account.Standard.OriginalAddressLine1 = StandardBillingStatement.GetMailingAddressLine1(extractAccount, false);//TEMP FIX NEED TO CHANGE
+                                            account.Standard.OriginalAddressLine2 = StandardBillingStatement.GetMailingAddressLine2(extractAccount, false);//TEMP FIX NEED TO CHANGE
+                                            account.Standard.OriginalAddressLine3 = StandardBillingStatement.GetMailingCityStateZip(extractAccount, false);//TEMP FIX NEED TO CHANGE
                                             break;
 
                                         default:
