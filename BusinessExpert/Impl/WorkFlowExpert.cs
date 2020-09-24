@@ -72,7 +72,7 @@ namespace CarringtonService.BusinessExpert
                 string filelocation = pathFinal;
                 pmFilePath = inputFile;
                 bool fileReadingProcess = false;
-                
+
                 //if (DateTime.Now.Hour >= Convert.ToInt32(ConfigHelper.Model.WatcherStartTime) && DateTime.Now.Hour < Convert.ToInt32(ConfigHelper.Model.WatcherEndTime))
                 {
                     //if (Convert.ToString(DateTime.Now.DayOfWeek) != "Monday")
@@ -105,7 +105,7 @@ namespace CarringtonService.BusinessExpert
                             ReadPMFile(pmFilePath);
                             if (MortgageLoanBillingFile.AccountModelList.Count > 0)
                             {
-                                MortgageLoanBillingFile.TrackingId= trackingId;
+                                MortgageLoanBillingFile.TrackingId = trackingId;
                                 CRL30FileGeneration.GenerateCRL30File(MortgageLoanBillingFile, inputFile);
                             }
                             else
@@ -278,6 +278,7 @@ namespace CarringtonService.BusinessExpert
                             if (firstRecord)
                             {
                                 MortgageLoanBillingFile.AccountModelList.Add(accountsModel);
+                                SetSupplimentalAndEConsentModel(accountsModel);
                                 accountsModel = null;
                             }
                             accountsModel = new AccountsModel();
@@ -365,6 +366,8 @@ namespace CarringtonService.BusinessExpert
                             GetTrailerRecords(currentByteLine, ref accountsModel);
                         }
 
+                      
+
                     }
                     iBytesRead = InputFileStream.Read(currentByteLine, 0, numOfBytes);
                     counter++;
@@ -373,7 +376,7 @@ namespace CarringtonService.BusinessExpert
                 Logger.Trace("ENDED: Reading PM File");
 
                 //Adding File info
-                MortgageLoanBillingFile.InputFileSize = InputFileStream.Length/1024;
+                MortgageLoanBillingFile.InputFileSize = InputFileStream.Length / 1024;
                 MortgageLoanBillingFile.InputFileName = Path.GetFileName(fileNameWithPath);
                 MortgageLoanBillingFile.InputFileDate = File.GetCreationTime(fileNameWithPath);
                 MortgageLoanBillingFile.TotalNumberOfAccount = MortgageLoanBillingFile.AccountModelList.Count;
@@ -383,6 +386,34 @@ namespace CarringtonService.BusinessExpert
                 Logger.Error(ex, "PM File Error :");
             }
 
+        }
+        /// <summary>
+        /// Set Supplimental And EConsent Model Values
+        /// </summary>
+        private void SetSupplimentalAndEConsentModel(AccountsModel model)
+        {
+            //Adding values from Supplimental file
+            model.SupplementalCCFModel = new SupplementalCCFModel
+            {
+                YTDAmnt = detModels.Where(df =>
+                 df.LoanNumber == accountsModel.MasterFileDataPart_1Model.Rssi_Acct_No).FirstOrDefault()?.YTDAmnt,
+
+                PriorMoAmnt = detModels.Where(df =>
+                 df.LoanNumber == accountsModel.MasterFileDataPart_1Model.Rssi_Acct_No).FirstOrDefault()?.PriorMoAmnt,
+
+                FlagRecordIndicator = detModels.Where(df =>
+                 df.LoanNumber == accountsModel.MasterFileDataPart_1Model.Rssi_Acct_No).FirstOrDefault()?.FlagRecordIndicator
+            };
+
+            //Adding values  from eConsent file
+            model.EConsentModel = new EConsentModel
+            {
+                DocumentType = eConsentModels.Where(df =>
+                       df.LoanNumber == accountsModel.MasterFileDataPart_1Model.Rssi_Acct_No).FirstOrDefault()?.DocumentType,
+                EConsentFlag = eConsentModels.Where(df =>
+                   df.LoanNumber == accountsModel.MasterFileDataPart_1Model.Rssi_Acct_No).FirstOrDefault()?.EConsentFlag
+
+            };
         }
 
         private void ReadCMSBillInputFileDetRecord(string path)
@@ -491,7 +522,7 @@ namespace CarringtonService.BusinessExpert
 
         private void ReadEConsentRecord(string path)
         {
-           
+
             Logger.Trace("STARTED: Reading EConsent File");
             try
             {

@@ -525,7 +525,8 @@ namespace CarringtonService.BillingStatements
             }
         }
         public string GetTotalPaidLastMonth(AccountsModel accountsModel)
-        { //TOD0:Revisit Again exception
+        { 
+            //TOD0:Revisit Again exception
             try
             {
                 //Logger.Trace("STARTED:  Execute get total paid last month.");
@@ -740,8 +741,7 @@ namespace CarringtonService.BillingStatements
             catch (Exception ex)
             {
 
-                Logger.Error(ex, ex.TargetSite.Name);
-                return "";
+                Logger.Error(ex, "Method name : GetTotalDue" + ExMessage);
             }
 
             return Hold;
@@ -774,7 +774,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Mathod name : GetAttention" + ExMessage);
+                Logger.Error(ex, "Method name : GetAttention" + ExMessage);
 
             }
             return Attention;
@@ -865,7 +865,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Mathod name : GetPrimaryBorrower" + ExMessage);
+                Logger.Error(ex, "Method name : GetPrimaryBorrower" + ExMessage);
 
             }
 
@@ -903,7 +903,7 @@ namespace CarringtonService.BillingStatements
             catch (Exception ex)
             {
 
-                Logger.Error(ex, "Mathod name : GetSecondaryBorrower" + ExMessage);
+                Logger.Error(ex, "Method name : GetSecondaryBorrower" + ExMessage);
 
             }
             return SecondaryBorrower;
@@ -990,7 +990,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Mathod name : GetMailingAddressLine1" + ExMessage);
+                Logger.Error(ex, "Method name : GetMailingAddressLine1" + ExMessage);
 
             }
             return MailingAddressLine1;
@@ -1076,7 +1076,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Mathod name : GetMailingAddressLine2" + ExMessage);
+                Logger.Error(ex, "Method name : GetMailingAddressLine2" + ExMessage);
 
             }
             return MailingAddressLine2;
@@ -1182,7 +1182,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Mathod name : GetMailingCityStateZip" + ExMessage);
+                Logger.Error(ex, "Method name : GetMailingCityStateZip" + ExMessage);
 
             }
             return MailingCityStateZip;
@@ -1216,7 +1216,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Mathod name : GetMailingCountry" + ExMessage);
+                Logger.Error(ex, "Method name : GetMailingCountry" + ExMessage);
 
             }
 
@@ -1241,7 +1241,7 @@ namespace CarringtonService.BillingStatements
             catch (Exception ex)
             {
 
-                Logger.Error(ex, "Mathod name : GetPaymentReceivedAfter" + ExMessage);
+                Logger.Error(ex, "Method name : GetPaymentReceivedAfter" + ExMessage);
 
             }
             return IfPaymentisReceivedAfter;
@@ -1265,7 +1265,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Mathod name : GetLateFee" + ExMessage);
+                Logger.Error(ex, "Method name : GetLateFee" + ExMessage);
             }
             return LateFee;
         }
@@ -1289,7 +1289,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Mathod name : GetAutodraftMessage" + ExMessage);
+                Logger.Error(ex, "Method name : GetAutodraftMessage" + ExMessage);
             }
 
             return AutodraftMessage;
@@ -1312,7 +1312,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Mathod name : GetInterestRateUnit" + ExMessage);
+                Logger.Error(ex, "Method name : GetInterestRateUnit" + ExMessage);
 
             }
 
@@ -1336,7 +1336,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Mathod name : GetPrepaymentPenalty" + ExMessage);
+                Logger.Error(ex, "Method name : GetPrepaymentPenalty" + ExMessage);
             }
             return PrepaymentPenalty;
         }
@@ -1358,7 +1358,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Mathod name : GetMaturityDate" + ExMessage);
+                Logger.Error(ex, "Method name : GetMaturityDate" + ExMessage);
 
             }
             return MaturityDate;
@@ -1381,7 +1381,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Mathod name : GetmodificationDate" + ExMessage);
+                Logger.Error(ex, "Method name : GetmodificationDate" + ExMessage);
 
             }
             return ModificationDate;
@@ -1411,7 +1411,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Mathod name : GetChargeOffNoticeDelinquencyNoticeRefinanceMessage" + ExMessage);
+                Logger.Error(ex, "Method name : GetChargeOffNoticeDelinquencyNoticeRefinanceMessage" + ExMessage);
 
             }
 
@@ -1439,7 +1439,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Mathod name : GetInterest" + ExMessage);
+                Logger.Error(ex, "Method name : GetInterest" + ExMessage);
 
             }
 
@@ -1466,7 +1466,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Mathod name : GetEscrowTaxesInsurance" + ExMessage);
+                Logger.Error(ex, "Method name : GetEscrowTaxesInsurance" + ExMessage);
 
             }
 
@@ -1493,7 +1493,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Mathod name : GetRegularMonthlyPayment" + ExMessage);
+                Logger.Error(ex, "Method name : GetRegularMonthlyPayment" + ExMessage);
 
             }
             return regularMonthlyPayment;
@@ -1518,7 +1518,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Mathod name : GetBuydownBalance" + ExMessage);
+                Logger.Error(ex, "Method name : GetBuydownBalance" + ExMessage);
 
             }
             return buydownBalance;
@@ -1543,7 +1543,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Mathod name : GetPartialClaim" + ExMessage);
+                Logger.Error(ex, "Method name : GetPartialClaim" + ExMessage);
             }
             //Logger.Trace("ENDED: Get get partial claim.");
             return partialClaim;
@@ -1568,7 +1568,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Mathod name : GetNegativeAmortization" + ExMessage);
+                Logger.Error(ex, "Method name : GetNegativeAmortization" + ExMessage);
 
             }
             return negativeAmortization;
@@ -1595,7 +1595,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Mathod name : GetCarringtonCharitableFoundationMonth" + ExMessage);
+                Logger.Error(ex, "Method name : GetCarringtonCharitableFoundationMonth" + ExMessage);
 
             }
 
@@ -1623,7 +1623,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Mathod name : GetCarringtonCharitablePaidYeartoDate" + ExMessage);
+                Logger.Error(ex, "Method name : GetCarringtonCharitablePaidYeartoDate" + ExMessage);
 
             }
 
@@ -1656,7 +1656,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Mathod name : GetLockboxAddress" + ExMessage);
+                Logger.Error(ex, "Method name : GetLockboxAddress" + ExMessage);
             }
             return lockboxAddress;
         }
@@ -1680,7 +1680,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Mathod name : GetReceivedAfter" + ExMessage);
+                Logger.Error(ex, "Method name : GetReceivedAfter" + ExMessage);
             }
             return receivedAfter;
         }
@@ -1701,7 +1701,7 @@ namespace CarringtonService.BillingStatements
             catch (Exception ex)
             {
 
-                Logger.Error(ex, "Mathod name : GetLateCharge" + ExMessage);
+                Logger.Error(ex, "Method name : GetLateCharge" + ExMessage);
 
             }
 
@@ -1722,7 +1722,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Mathod name : GetCarringtonCharitableDonationbox" + ExMessage);
+                Logger.Error(ex, "Method name : GetCarringtonCharitableDonationbox" + ExMessage);
 
             }
 
@@ -1743,7 +1743,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Mathod name : GetEffectiveDate" + ExMessage);
+                Logger.Error(ex, "Method name : GetEffectiveDate" + ExMessage);
             }
 
             return effectiveDate;
@@ -1764,7 +1764,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Mathod name : GetTotalAmount" + ExMessage);
+                Logger.Error(ex, "Method name : GetTotalAmount" + ExMessage);
             }
 
             return totalAmount;
@@ -1788,7 +1788,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Mathod name : GetDelinquencyInformationbox" + ExMessage);
+                Logger.Error(ex, "Method name : GetDelinquencyInformationbox" + ExMessage);
 
             }
 
@@ -1826,7 +1826,7 @@ namespace CarringtonService.BillingStatements
             catch (Exception ex)
             {
 
-                Logger.Error(ex, "Mathod name : GetRecentPayment6" + ExMessage);
+                Logger.Error(ex, "Method name : GetRecentPayment6" + ExMessage);
             }
 
             return recentPayment6;
@@ -2072,7 +2072,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Mathod name : GetLossMitigtationNotice" + ExMessage);
+                Logger.Error(ex, "Method name : GetLossMitigtationNotice" + ExMessage);
 
             }
 
@@ -2098,7 +2098,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Mathod name : GetForeclosureNotice" + ExMessage);
+                Logger.Error(ex, "Method name : GetForeclosureNotice" + ExMessage);
 
             }
 
@@ -2125,7 +2125,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Mathod name : GetPreForeclosureNotice" + ExMessage);
+                Logger.Error(ex, "Method name : GetPreForeclosureNotice" + ExMessage);
 
             }
             return preForeclosureNotice;
@@ -2148,7 +2148,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Mathod name : GetLenderPlacedInsuranceMessage" + ExMessage);
+                Logger.Error(ex, "Method name : GetLenderPlacedInsuranceMessage" + ExMessage);
             }
 
             return lenderPlacedInsuranceMessage;
@@ -2170,7 +2170,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Mathod name : GetBankruptcyMessage" + ExMessage);
+                Logger.Error(ex, "Method name : GetBankruptcyMessage" + ExMessage);
             }
             return bankruptcyMessage;
         }
@@ -2190,7 +2190,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Mathod name : GetRepaymentPlanMessage" + ExMessage);
+                Logger.Error(ex, "Method name : GetRepaymentPlanMessage" + ExMessage);
 
             }
             return repaymentPlanMessage;
@@ -2210,7 +2210,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Mathod name : GetStateNSF" + ExMessage);
+                Logger.Error(ex, "Method name : GetStateNSF" + ExMessage);
 
             }
 
@@ -2233,7 +2233,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Mathod name : GetACHMessage" + ExMessage);
+                Logger.Error(ex, "Method name : GetACHMessage" + ExMessage);
 
             }
 
@@ -2256,7 +2256,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Mathod name : GetChargeOffNotice" + ExMessage);
+                Logger.Error(ex, "Method name : GetChargeOffNotice" + ExMessage);
 
             }
             return chargeOffNotice;
@@ -2274,7 +2274,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Mathod name : GetCMSPartialClaim" + ExMessage);
+                Logger.Error(ex, "Method name : GetCMSPartialClaim" + ExMessage);
             }
 
             return chargeOffNotice;
@@ -2292,7 +2292,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Mathod name : GetHUDPartialClaim" + ExMessage);
+                Logger.Error(ex, "Method name : GetHUDPartialClaim" + ExMessage);
             }
 
 
@@ -2316,7 +2316,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Mathod name : GetStateDisclosures" + ExMessage);
+                Logger.Error(ex, "Method name : GetStateDisclosures" + ExMessage);
             }
 
             return stateDisclosures;
@@ -2339,7 +2339,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Mathod name : GetCarringtonCharitableFoundation" + ExMessage);
+                Logger.Error(ex, "Method name : GetCarringtonCharitableFoundation" + ExMessage);
             }
 
 
@@ -2360,7 +2360,7 @@ namespace CarringtonService.BillingStatements
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Mathod name : GetPaymentInformationMessage" + ExMessage);
+                Logger.Error(ex, "Method name : GetPaymentInformationMessage" + ExMessage);
             }
             return paymentInformationMessage;
         }
