@@ -366,7 +366,7 @@ namespace CarringtonService.BusinessExpert
                             GetTrailerRecords(currentByteLine, ref accountsModel);
                         }
 
-                      
+
 
                     }
                     iBytesRead = InputFileStream.Read(currentByteLine, 0, numOfBytes);
@@ -392,17 +392,21 @@ namespace CarringtonService.BusinessExpert
         /// </summary>
         private void SetSupplimentalAndEConsentModel(AccountsModel model)
         {
+            var ytdAmount = detModels.Where(df =>
+                   df.LoanNumber == accountsModel.MasterFileDataPart_1Model.Rssi_Acct_No).FirstOrDefault()?.YTDAmnt;
+            var priorMoAmnt = detModels.Where(df =>
+                  df.LoanNumber == accountsModel.MasterFileDataPart_1Model.Rssi_Acct_No).FirstOrDefault()?.PriorMoAmnt;
+            var flagRecordIndicator = detModels.Where(df =>
+                  df.LoanNumber == accountsModel.MasterFileDataPart_1Model.Rssi_Acct_No).FirstOrDefault()?.FlagRecordIndicator;
+
+
             //Adding values from Supplimental file
             model.SupplementalCCFModel = new SupplementalCCFModel
             {
-                YTDAmnt = detModels.Where(df =>
-                 df.LoanNumber == accountsModel.MasterFileDataPart_1Model.Rssi_Acct_No).FirstOrDefault()?.YTDAmnt,
+                YTDAmnt = ytdAmount == "" ? "0" : ytdAmount,
+                PriorMoAmnt = priorMoAmnt == "" ? "0" : priorMoAmnt,
+                FlagRecordIndicator = flagRecordIndicator == "" ? "0" : flagRecordIndicator,
 
-                PriorMoAmnt = detModels.Where(df =>
-                 df.LoanNumber == accountsModel.MasterFileDataPart_1Model.Rssi_Acct_No).FirstOrDefault()?.PriorMoAmnt,
-
-                FlagRecordIndicator = detModels.Where(df =>
-                 df.LoanNumber == accountsModel.MasterFileDataPart_1Model.Rssi_Acct_No).FirstOrDefault()?.FlagRecordIndicator
             };
 
             //Adding values  from eConsent file
