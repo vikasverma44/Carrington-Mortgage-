@@ -909,6 +909,8 @@ namespace CarringtonService.BillingStatements
             return PaymentDate;
         }
 
+
+
         public string GetBuydownBalance(AccountsModel accountModel)
         {
 
