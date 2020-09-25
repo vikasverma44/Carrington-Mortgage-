@@ -2332,6 +2332,11 @@ namespace CarringtonService.BillingStatements
             }
             return RegularMonthlyPaymentOption3;
         }
+        /// <summary>
+        /// 55
+        /// </summary>
+        /// <param name="accountsModel"></param>
+        /// <returns></returns>
         public string GetTotalFeesChargedOption3(AccountsModel accountsModel)
         {
             try
@@ -2374,9 +2379,14 @@ namespace CarringtonService.BillingStatements
             }
             return TotalFeesChargedOption3;
         }
-
+        /// <summary>
+        /// 59
+        /// </summary>
+        /// <param name="accountsModel"></param>
+        /// <returns></returns>
         public string GetInterestOption4(AccountsModel accountsModel)
         {
+            //ToD0
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get Interest Option4");
@@ -2385,7 +2395,8 @@ namespace CarringtonService.BillingStatements
                 {
                     InterestOption4 = "0.00";
                 }
-                else if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                else if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData) >
+                    Convert.ToDecimal(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt1_PackedData))
                 {
                     InterestOption4 = "null";
                 }
@@ -2408,6 +2419,11 @@ namespace CarringtonService.BillingStatements
             }
             return InterestOption4;
         }
+        /// <summary>
+        /// 60
+        /// </summary>
+        /// <param name="accountsModel"></param>
+        /// <returns></returns>
         public string GetEscrowOption4(AccountsModel accountsModel)
         {
             try
@@ -2420,16 +2436,16 @@ namespace CarringtonService.BillingStatements
                 }
                 else if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                 {
-                    EscrowOption4 = "null";
+                    EscrowOption4 = "0.00";
                 }
                 else if (CommonHelper.GetFormatedDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date)
                     > CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                 {
-                    EscrowOption4 = "null";
+                    EscrowOption4 = "0.00";
                 }
                 else
                 {
-                    EscrowOption4 = accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData;
+                    EscrowOption4 = accountsModel.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData;
 
                 }
                 //Logger.Trace("ENDED:  To Get Escrow Option4");
@@ -2442,7 +2458,11 @@ namespace CarringtonService.BillingStatements
             return EscrowOption4;
         }
 
-
+        /// <summary>
+        /// 63
+        /// </summary>
+        /// <param name="accountsModel"></param>
+        /// <returns></returns>
         public string GetRegularMonthlyPaymentOption4(AccountsModel accountsModel)
         {
             try
@@ -2455,11 +2475,16 @@ namespace CarringtonService.BillingStatements
                 }
                 else if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                 {
-                    RegularMonthlyPaymentOption4 = "null";
+                    RegularMonthlyPaymentOption4 = "0.00";
+                }
+                else if (CommonHelper.GetFormatedDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date)
+                   > CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                {
+                    RegularMonthlyPaymentOption4 = "0.00";
                 }
                 else
                 {
-                    RegularMonthlyPaymentOption4 = accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData;
+                    RegularMonthlyPaymentOption4 = accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData;
                 }
                 //Logger.Trace("ENDED:  To Get Regular Monthly Payment Option4");
             }
@@ -2470,6 +2495,11 @@ namespace CarringtonService.BillingStatements
             }
             return RegularMonthlyPaymentOption4;
         }
+        /// <summary>
+        /// 65
+        /// </summary>
+        /// <param name="accountsModel"></param>
+        /// <returns></returns>
         public string GetTotalFeesChargedOption4(AccountsModel accountsModel)
         {
             try
@@ -2482,7 +2512,7 @@ namespace CarringtonService.BillingStatements
                 }
                 else if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                 {
-                    TotalFeesChargedOption4 = "null";
+                    TotalFeesChargedOption4 = "0.00";
                 }
                 else
                 {
@@ -2497,6 +2527,11 @@ namespace CarringtonService.BillingStatements
             }
             return TotalFeesChargedOption4;
         }
+        /// <summary>
+        /// 68
+        /// </summary>
+        /// <param name="accountsModel"></param>
+        /// <returns></returns>
         public string GetOption4MinimumDescription(AccountsModel accountsModel)
         {
             try
@@ -2532,13 +2567,19 @@ namespace CarringtonService.BillingStatements
             }
             return Option4MinimumDescription;
         }
+        /// <summary>
+        /// 69
+        /// </summary>
+        /// <param name="accountsModel"></param>
+        /// <returns></returns>
         public string GetPostPetitonpastduemessage(AccountsModel accountsModel)
         {
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get Post Petiton past due message");
 
-                if (CommonHelper.GetFormatedDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                if (CommonHelper.GetFormatedDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) <=
+                    CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Run_Date))
                 {
                     PostPetitonpastduemessage = "We have not received all of your mortgage payments due since you filed for bankruptcy.";
                 }
@@ -2551,6 +2592,11 @@ namespace CarringtonService.BillingStatements
             }
             return PostPetitonpastduemessage;
         }
+        /// <summary>
+        /// 76
+        /// </summary>
+        /// <param name="accountsModel"></param>
+        /// <returns></returns>
         public string GetPOBoxAddress(AccountsModel accountsModel)
         {
             try
@@ -2563,11 +2609,11 @@ namespace CarringtonService.BillingStatements
                       || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "OK"
                       || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "TX")
                 {
-                    POBoxAddress = "Dallas P.O.Box Address";
+                    POBoxAddress = "PO Box 660586 Dallas, TX 75266-0586";
                 }
                 else
                 {
-                    POBoxAddress = "Pasadena P.O.Box Address";
+                    POBoxAddress = "PO Box 7006 Pasadena, CA 91109-9998";
                 }
                 //Logger.Trace("ENDED:  To Get PO Box Address");
             }
@@ -2578,8 +2624,14 @@ namespace CarringtonService.BillingStatements
             }
             return POBoxAddress;
         }
+        /// <summary>
+        /// 81 or 82
+        /// </summary>
+        /// <param name="accountsModel"></param>
+        /// <returns></returns>
         public string GetDate(AccountsModel accountsModel)
         {
+            //Tod0
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get Date");
@@ -2601,8 +2653,14 @@ namespace CarringtonService.BillingStatements
             }
             return Date;
         }
+        /// <summary>
+        /// 84
+        /// </summary>
+        /// <param name="accountsModel"></param>
+        /// <returns></returns>
         public string GetAmount(AccountsModel accountsModel)
         {
+            //Tod0
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get Amount");
@@ -2628,6 +2686,11 @@ namespace CarringtonService.BillingStatements
             }
             return Amount;
         }
+        /// <summary>
+        /// 96
+        /// </summary>
+        /// <param name="accountsModel"></param>
+        /// <returns></returns>
         public string GetBuydownBalance(AccountsModel accountsModel)
         {
             try
@@ -2651,6 +2714,11 @@ namespace CarringtonService.BillingStatements
             }
             return BuydownBalance;
         }
+        /// <summary>
+        /// 97
+        /// </summary>
+        /// <param name="accountsModel"></param>
+        /// <returns></returns>
         public string GetPartialClaim(AccountsModel accountsModel)
         {
             try
@@ -2675,21 +2743,24 @@ namespace CarringtonService.BillingStatements
 
             return PartialClaim;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="accountsModel"></param>
+        /// <returns></returns>
         public string GetInterestRateUntil(AccountsModel accountsModel)
         {
+            //ToD0
             try
             {
-                //Logger.Trace("STARTED:  Execute to Get Interest Rate Until");
-
-                if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Rate_Chg_Date) > 19000000)
+                if (Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Rate_Chg_Date).IncludeCenturyDate(true)) > 19000000)
                 {
-                    InterestRateUntil = "(Until RSSI-RATE-CHG-DATE)";
+                   // InterestRateUntil = CommonHelper.GetDateInDDMMYYFormat(accountsModel.MasterFileDataPart_1Model.Rssi_Rate_Chg_Date);
                 }
                 else
                 {
-                    InterestRateUntil = "null";
+                    InterestRateUntil = null;
                 }
-                //Logger.Trace("ENDED:  To Get Interest Rate Until");
             }
             catch (Exception ex)
             {
@@ -2698,6 +2769,11 @@ namespace CarringtonService.BillingStatements
             }
             return InterestRateUntil;
         }
+        /// <summary>
+        /// 100
+        /// </summary>
+        /// <param name="accountsModel"></param>
+        /// <returns></returns>
         public string GetPrepaymentPenalty(AccountsModel accountsModel)
         {
             try
