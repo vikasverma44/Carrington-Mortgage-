@@ -262,8 +262,8 @@ namespace CarringtonService.BillingStatements
                 }
                 else
                 {
-                    AmountDueOption1 = Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) +
-                        Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData));
+                    AmountDueOption1 = Convert.ToString((model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData!=null?Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData):0) +
+                       (model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData!=null? Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData):0));
                 }
                 //Logger.Trace("ENDED:   To Amount Due Option 1 operation.");
                 return AmountDueOption1;
@@ -303,8 +303,8 @@ namespace CarringtonService.BillingStatements
                 }
                 else
                 {
-                    AmountDueOption2 = Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) +
-                        Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData));
+                    AmountDueOption2 = Convert.ToString((model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData!=null?Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData):0) +
+                       (model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData!=null? Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData):0));
                 }
                 //Logger.Trace("ENDED:   To Amount Due Option 2 operation.");
                 return AmountDueOption2;
@@ -345,8 +345,8 @@ namespace CarringtonService.BillingStatements
                 }
                 else
                 {
-                    AmountDueOption3 = Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) +
-                        Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData));
+                    AmountDueOption3 = Convert.ToString((model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData!=null?Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData):0) +
+                       (model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData!=null? Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData):0));
                 }
                 //Logger.Trace("ENDED:   To Amount Due Option 3 operation.");
                 return AmountDueOption3;
@@ -443,15 +443,15 @@ namespace CarringtonService.BillingStatements
 
                 //Logger.Trace("STARTED:  Execute to get Deferred Balance operation.");
 
-                if (Convert.ToDecimal(model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal_PackedData) -
-                Convert.ToDecimal(model.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) == 0)
+                if ((model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal_PackedData!=null? Convert.ToDecimal(model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal_PackedData):0) -
+               (model.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData!=null? Convert.ToDecimal(model.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData):0) == 0)
                 {
                     DeferredBalance = "N/A";
                 }
                 else
                 {
-                    DeferredBalance = Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal_PackedData) -
-                   Convert.ToDecimal(model.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData));
+                    DeferredBalance = Convert.ToString((model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal_PackedData!=null?Convert.ToDecimal(model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal_PackedData):0) -
+                  (model.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData!=null? Convert.ToDecimal(model.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData):0));
                 }
                 //Logger.Trace("ENDED:    To Deferred Balance operation.");
                 return DeferredBalance;
@@ -1787,15 +1787,15 @@ namespace CarringtonService.BillingStatements
         { //TOD0:Revisit Again
             try
             {
-                if (model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2_PackedData != null && model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3_PackedData != null
-                    && model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_4_PackedData != null && model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_5_PackedData != null)
-                {
-                    Suspense = Convert.ToString(Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData) +
-       Convert.ToDecimal((model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2_PackedData.Replace("{", "")).Replace("}", "").Replace("P", "")) +
-       Convert.ToDecimal((model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3_PackedData.Replace("{", "")).Replace("}", "").Replace("P", "")) +
-       Convert.ToDecimal((model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_4_PackedData.Replace("{", "")).Replace("}", "").Replace("P", "")) +
-       Convert.ToDecimal((model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_5_PackedData.Replace("{", "")).Replace("}", "").Replace("P", "")));
-                }
+                //if (model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2_PackedData != null && model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3_PackedData != null
+                //    && model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_4_PackedData != null && model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_5_PackedData != null)
+                //{
+                    Suspense = Convert.ToString((model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData!=null?Convert.ToDecimal(model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData) :0) +
+      (model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2_PackedData!=null?Convert.ToDecimal((model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2_PackedData.Replace("{", "")).Replace("}", "").Replace("P", "")):0)+
+      (model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3_PackedData!=null? Convert.ToDecimal((model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3_PackedData.Replace("{", "")).Replace("}", "").Replace("P", "")):0) +
+      (model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_4_PackedData!=null? Convert.ToDecimal((model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_4_PackedData.Replace("{", "")).Replace("}", "").Replace("P", "")):0) +
+      (model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_5_PackedData!=null? Convert.ToDecimal((model.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_5_PackedData.Replace("{", "")).Replace("}", "").Replace("P", "")) : 0));
+              //  }
                 return Suspense;
             }
             catch (Exception ex)
