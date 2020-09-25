@@ -64,7 +64,7 @@ namespace CarringtonService.BillingStatements
         public string StateDisclosures { get; set; }
         public string CarringtonCharitableFoundation { get; set; }
         public string PaymentInformationMessage { get; set; }
-
+        public string HUDPartialClaim { get; private set; }
 
         public StringBuilder finalLine;
         public ILogger Logger;
@@ -72,6 +72,7 @@ namespace CarringtonService.BillingStatements
         {
             Logger = logger;
         }
+
         public StringBuilder GetFinalChapterSevenBillingStatement(AccountsModel accountModel, bool isCoborrower = false)
         {
             ExMessage = "Error Message";
@@ -97,13 +98,13 @@ namespace CarringtonService.BillingStatements
             //TOD0:Revisit Again
             //Conditional Statement Methods
             finalLine.Append(GetPrintStatement(accountModel) + "|");
-            finalLine.Append(GetPrimaryBorrowerBKAttorney(accountModel) + "|");
+            finalLine.Append(GetPrimaryBorrowerBKAttorney(accountModel, isCoborrower) + "|");
             finalLine.Append(GetSecondaryBorrower(accountModel) + "|");
-            finalLine.Append(GetMailingBKAttorneyAddressLine1(accountModel) + "|");
-            finalLine.Append(GetMailingBKAttorneyAddressLine2(accountModel) + "|");
+            finalLine.Append(GetMailingBKAttorneyAddressLine1(accountModel, isCoborrower) + "|");
+            finalLine.Append(GetMailingBKAttorneyAddressLine2(accountModel, isCoborrower) + "|");
 
-            finalLine.Append(GetBorrowerAttorneyMailingCityStateZip(accountModel) + "|");
-            finalLine.Append(GetMailingCountry(accountModel) + "|");
+            finalLine.Append(GetBorrowerAttorneyMailingCityStateZip(accountModel, isCoborrower) + "|");
+            finalLine.Append(GetMailingCountry(accountModel, isCoborrower) + "|");
             finalLine.Append(GetPaymentDate(accountModel) + "|");
 
 
@@ -514,7 +515,6 @@ namespace CarringtonService.BillingStatements
             return Miscellaneous;
         }
 
-        #region MyRegion Ambrish
         public string GetPrintStatement(AccountsModel accountModel)
         {
 
@@ -577,35 +577,6 @@ namespace CarringtonService.BillingStatements
             return PrimaryBorrowerBkAttorney;
         }
 
-        //public string GetPrimaryBorrowerBKAttorneycopy2(AccountsModel accountModel)
-        //{
-
-        //    String primaryBorrowerBKAttorney = String.Empty;
-
-        //    try
-        //    {
-        //        //Logger.Trace("STARTED:  Execute to Get primary borrower bKAttorney");
-        //        if (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "N" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == null)
-        //        { primaryBorrowerBKAttorney = ""; }
-        //        if (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B") { primaryBorrowerBKAttorney = accountModel.MasterFileDataPart_1Model.Rssi_Primary_Name; }
-        //        if (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L") { primaryBorrowerBKAttorney = accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_Name1; }
-        //        if (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y")
-        //        {
-        //            primaryBorrowerBKAttorney = accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_Name1;
-        //        }
-        //        //Logger.Trace("ENDED: Get primary borrower bKAttorney");
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //        Logger.Error(ex, "Method name : GetPrimaryBorrowerBKAttorney" + ExMessage);
-        //    }
-
-        //    return primaryBorrowerBKAttorney;
-        //}
-
-
-
         public string GetSecondaryBorrower(AccountsModel accountModel)
         {
             try
@@ -659,29 +630,7 @@ namespace CarringtonService.BillingStatements
             return MailingBkAttorneyAddressLine1;
         }
 
-        //public string GetMailingBKAttorneyAddressLine1Copy2(AccountsModel accountModel)
-        //{
 
-        //    String mailingBKAttorneyAddressLine1 = String.Empty;
-        //    try
-        //    {
-        //        //Logger.Trace("STARTED:  Execute to Get mailing bKAttorney addressLine1.");
-        //        if (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B")
-        //        { mailingBKAttorneyAddressLine1 = accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1; }
-        //        else if (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L")
-        //        { mailingBKAttorneyAddressLine1 = accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_Adrs1; }
-        //        else if (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y")
-        //        { mailingBKAttorneyAddressLine1 = accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_Adrs1; }
-        //        //Logger.Trace("ENDED: Get mailing bKAttorney addressLine1.");
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //        Logger.Error(ex, "Method name : GetMailingBKAttorneyAddressLine1" + ExMessage);
-        //    }
-        //    return mailingBKAttorneyAddressLine1;
-        //}
 
         public string GetMailingBKAttorneyAddressLine2(AccountsModel accountModel, bool isCoborrower = false)
         {
@@ -714,101 +663,6 @@ namespace CarringtonService.BillingStatements
             return MailingBkAttorneyAddressLine2;
         }
 
-        //public string GetMailingBKAttorneyAddressLine2Copy2(AccountsModel accountModel)
-        //{
-
-        //    String mailingBKAttorneyAddressLine2 = String.Empty;
-
-        //    try
-        //    {
-        //        //Logger.Trace("STARTED:  Execute to Get mailing bKAttorney addressLine2.");
-        //        if (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B")
-        //        { mailingBKAttorneyAddressLine2 = accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_2; }
-        //        else if (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L")
-        //        { mailingBKAttorneyAddressLine2 = accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_Adrs2; }
-        //        else if (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y")
-        //        { mailingBKAttorneyAddressLine2 = accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_Adrs2; }
-        //        //Logger.Trace("ENDED: Get mailing bKAttorney addressLine2.");
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //        Logger.Error(ex, "Method name : GetMailingBKAttorneyAddressLine2" + ExMessage);
-        //    }
-        //    return mailingBKAttorneyAddressLine2;
-        //}
-
-        //public string GetBorrowerAttorneyMailingCityStateZip(AccountsModel accountModel)
-        //{
-
-
-        //    try
-        //    {
-        //        //Logger.Trace("STARTED:  Execute to Get borrower attorney mailing city state zip.");
-        //        if (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B")
-        //        { BorrowerAttorneyMailingCityStateZip = accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3; }
-        //        else if (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L")
-        //        { BorrowerAttorneyMailingCityStateZip = accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_City + "," + accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_State + "," + accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_Zip; }
-        //        else if (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y")
-        //        { BorrowerAttorneyMailingCityStateZip = accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3; }
-        //        //Logger.Trace("ENDED: Get borrower attorney mailing city state zip.");
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //        Logger.Error(ex, "Method name : GetBorrowerAttorneyMailingCityStateZip" + ExMessage);
-        //    }
-        //    return BorrowerAttorneyMailingCityStateZip;
-        //}
-
-        //public string GetBorrowerAttorneyMailingCityStateZipCopy2(AccountsModel accountModel)
-        //{
-
-        //    String borrowerAttorneyMailingCityStateZip = String.Empty;
-
-        //    try
-        //    {
-        //        //Logger.Trace("STARTED:  Execute to Get borrower attorney mailing city state zip.");
-        //        if (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B")
-        //        { borrowerAttorneyMailingCityStateZip = accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3; }
-        //        else if (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L")
-        //        { borrowerAttorneyMailingCityStateZip = accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_City + "," + accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_State + "," + accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_Zip; }
-        //        else if (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y")
-        //        { borrowerAttorneyMailingCityStateZip = accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_City + "," + accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_State + "," + accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Vend_Zip; }
-        //        //Logger.Trace("ENDED: Get borrower attorney mailing city state zip.");
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //        Logger.Error(ex, "Method name : GetBorrowerAttorneyMailingCityStateZip" + ExMessage);
-        //    }
-        //    return borrowerAttorneyMailingCityStateZip;
-        //}
-        //public string GetMailingCountry(AccountsModel accountModel)
-        //{
-
-        //    String mailingCountry = String.Empty;
-
-        //    try
-        //    {
-        //        //Logger.Trace("STARTED:  Execute to Get mailing country.");
-        //        if (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")
-        //        { mailingCountry = accountModel.ForeignInformationRecordModel.Rssi_Altr_Cntry; }
-        //        else if (accountModel.MasterFileDataPart2Model.Rssi_Prim_Forgn_Flag == "Y")
-        //        { mailingCountry = accountModel.ForeignInformationRecordModel.Rssi_Prim_Mail_Country; }
-        //        else if (accountModel.MasterFileDataPart2Model.Rssi_Appl_Foreign_Flag == "Y")
-        //        { mailingCountry = accountModel.ForeignInformationRecordModel.Rssi_Prim_Mail_Country; }
-        //        else { mailingCountry = null; }
-        //        //Logger.Trace("ENDED: Get mailing country.");
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //        Logger.Error(ex, "Method name : GetMailingCountry" + ExMessage);
-        //    }
-
-        //    return mailingCountry;
-        //}
 
         public string GetBorrowerAttorneyMailingCityStateZip(AccountsModel accountsModel, bool isCoBorrower = false)
         {
@@ -1151,7 +1005,7 @@ namespace CarringtonService.BillingStatements
                 { RecentPayment6 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_2 + ": Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_2; }
                 else if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 5)
                 { RecentPayment6 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_1 + ": Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_1; }
-                else if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0 
+                else if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0
                     && Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
                 {
                     RecentPayment6 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(1): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(1)"; ;
@@ -1387,16 +1241,16 @@ namespace CarringtonService.BillingStatements
 
         //TOD0:Revisit Again
         public string GetLenderPlacedInsuranceMessage(AccountsModel accountModel)
-        {          
+        {
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get lender placed insurance message.");
-                if (accountModel.EscrowRecordModel.rssi_esc_type == "20" || 
+                if (accountModel.EscrowRecordModel.rssi_esc_type == "20" ||
                     accountModel.EscrowRecordModel.rssi_esc_type == "21" &&
-                    accountModel.EscrowRecordModel.Rssi_Ins_Co == "2450" && 
-                    accountModel.EscrowRecordModel.Rssi_Ins_Ag == "29000" || 
-                    accountModel.EscrowRecordModel.Rssi_Ins_Ag == "29005" || 
-                    accountModel.EscrowRecordModel.Rssi_Ins_Ag == "43000" || 
+                    accountModel.EscrowRecordModel.Rssi_Ins_Co == "2450" &&
+                    accountModel.EscrowRecordModel.Rssi_Ins_Ag == "29000" ||
+                    accountModel.EscrowRecordModel.Rssi_Ins_Ag == "29005" ||
+                    accountModel.EscrowRecordModel.Rssi_Ins_Ag == "43000" ||
                     accountModel.EscrowRecordModel.Rssi_Ins_Ag == "43001")
                 { LenderPlacedInsuranceMessage = "LenderPlacedInsurance_MessageFlag"; }
                 //Logger.Trace("ENDED: Get  lender placed insurance message.");
@@ -1408,206 +1262,270 @@ namespace CarringtonService.BillingStatements
             }
             return LenderPlacedInsuranceMessage;
         }
-        
+
+
         public string GetStateNSF(AccountsModel accountModel)
         {
 
-
             try
             {
-                //Logger.Trace("STARTED:  Execute to Get StateNSF.");
-                if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 6 || Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 16 ||
-                      Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 18 || Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 42)
-                { StateNsf = "State NSF message"; }
-                //Logger.Trace("ENDED: Get  StateNSF.");
+                if (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "6")
+                {
+                    StateNsf = "StateNSF6_MessageFlag"; //TOD0:Revisit Again 
+                }
+                if (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "16")
+                {
+                    StateNsf = "StateNSF16_MessageFlag";
+                }
+                if (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "18")
+                {
+                    StateNsf = "StateNSF18_MessageFlag";
+                }
+                if (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "42")
+                {
+                    StateNsf = "StateNSF42_MessageFlag";
+                }
 
+                return StateNsf;
             }
             catch (Exception ex)
             {
-
-                Logger.Error(ex, "Method name : GetStateNSF" + ExMessage);
+                Logger.Error(ex, "GetStateNSFMessage" + ex.TargetSite.Name);
+                return "";
             }
-            return StateNsf;
         }
 
         public string GetAutodraftMessage(AccountsModel accountModel)
         {
-
-
-            String autodraftMessage = String.Empty;
-
             try
             {
-                //Logger.Trace("STARTED:  Execute to Get auto draft message.");
-                if (Convert.ToDecimal(accountModel.MasterFileDataPart2Model.Rssi_Tot_Draft_Amt_PackedData) > 0 && Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) > 0)
-                { autodraftMessage = "Autodraft message."; }
-                //Logger.Trace("ENDED: Get  auto draft message.");
+                //Logger.Trace("STARTED:  Execute to Get Auto draft Message operation.");
+                if (Convert.ToDecimal(accountModel.MasterFileDataPart2Model.Rssi_Tot_Draft_Amt_PackedData) > 0 &&
+                       Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) > 0)
+                {
+                    AutodraftMessage = "Autodraft_MessageFlag";
+                }
+                //Logger.Trace("ENDED:    To Auto draft Message operation.");
+                return AutodraftMessage;
             }
             catch (Exception ex)
             {
-
-                Logger.Error(ex, "Method name : GetAutodraftMessage" + ExMessage);
+                Logger.Error(ex, "GetAutodraftMessage " + ex.TargetSite.Name);
+                return "";
             }
-
-            return autodraftMessage;
         }
 
         public string GetCMSPartialClaim(AccountsModel accountModel)
         {
 
-
-            string cMSPartialClaim = string.Empty;
             try
             {
-                //Logger.Trace("STARTED:  Execute to Get CMS partial claim.");
-                if (Convert.ToDecimal(accountModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) > 0 && accountModel.UserFieldRecordModel.Rssi_Usr_88 == "C")
-                { cMSPartialClaim = "Autodraft message."; }
-                //Logger.Trace("ENDED: Get  CMS partial claim.");
+                //Logger.Trace("STARTED:  Execute get CMS partial claim.");
+                if (Convert.ToDecimal(accountModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) > 0
+                    && accountModel.UserFieldRecordModel.Rssi_Usr_88 == "C")
+                {
+                    CmsPartialClaim = "CMSPartialClaim_MessageFlag"; //TOD0:Revisit Again 
+                }
+                //Logger.Trace("ENDED: Get CMS partial claim.");
+                return CmsPartialClaim;
             }
             catch (Exception ex)
             {
-
-                Logger.Error(ex, "Method name : GetCMSPartialClaim" + ExMessage);
+                Logger.Error(ex, "GetCMSPartialClaim" + ex.TargetSite.Name);
+                return "";
             }
-            return cMSPartialClaim;
         }
 
         public string GetHUDPartialClaim(AccountsModel accountModel)
         {
-
-
-            string HUDPartialClaim = string.Empty;
-
             try
             {
-                //Logger.Trace("STARTED:  Execute to Get HUD partial claim.");
-                if (Convert.ToDecimal(accountModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) > 0 && accountModel.UserFieldRecordModel.Rssi_Usr_88 == "H")
-                { HUDPartialClaim = "HUD Partial Claim Message."; }
-                //Logger.Trace("ENDED: Get  HUD partial claim.");
+                //Logger.Trace("STARTED:  Execute get hud partial claim.");
+                if (Convert.ToDecimal(accountModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) > 0
+                    && accountModel.UserFieldRecordModel.Rssi_Usr_88 == "H")
+                {
+                    HUDPartialClaim = "HUDPartialClaim_MessageFlag"; //TOD0:Revisit Again 
+                }
+                //Logger.Trace("ENDED: Get hud partial claim.");
             }
+            //Logger.Trace("ENDED: Get hud partial claim.");
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetHUDPartialClaim" + ExMessage);
+                Logger.Error(ex, "GetHUDPartialClaim" + ex.TargetSite.Name);
+                return "";
             }
-
             return HUDPartialClaim;
         }
 
         public string Geteffectivedate(AccountsModel accountModel)
         {
 
-            string effectivedate = string.Empty;
-
             try
             {
-                //Logger.Trace("STARTED:  Execute to Get effective date.");
-                //if (RSSI_FT_TYPE_CODE == "000")
-                //{ effectivedate = "RSSI-FEE-DATE-ASSESSED"; }
-                //else { effectivedate = "RSSI-TR-DATE"; }
-                //Logger.Trace("ENDED: Get  effective date.");
+                //Logger.Trace("STARTED:  Execute to Get Date");
+
+                if (accountModel.FeeRecordModel.Rssi_Fd_Fee_Type == "000")
+                {
+                    Date = accountModel.FeeRecordModel.Rssi_Fd_Assess_Date;
+                }
+                else
+                {
+                    Date = accountModel.TransactionRecordModel.Rssi_Tr_Date_PackedData;
+                }
+                //Logger.Trace("ENDED:  To Get Date");
             }
             catch (Exception ex)
             {
-
-                Logger.Error(ex, "Method name : Geteffectivedate" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
-
-            return effectivedate;
+            return Date;
         }
 
         public string GetAmount(AccountsModel accountModel)
         {
-
-            string amount = string.Empty;
-
+            //Tod0
             try
             {
-                //Logger.Trace("STARTED:  Execute to Get amount.");
+                //Logger.Trace("STARTED:  Execute to Get Amount");
+
                 if (Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Exp_Fee_Amt_PackedData) != 0)
-                { amount = "RSSI-TR-EXP-FEE-AMT"; }
-                //else if (RSSI_FT_TYPE_CODE == 000)
-                //{ amount = "RSSI-FEE-AMT-ASSESSED"; }
-                else { amount = "RSSI-TR-AMT"; }
-                //Logger.Trace("ENDED: Get amount.");
+                {
+                    Amount = accountModel.TransactionRecordModel.Rssi_Tr_Exp_Fee_Amt_PackedData;
+                }
+                else if (accountModel.FeeRecordModel.Rssi_Fd_Fee_Type == "000")
+                {
+                    Amount = accountModel.FeeRecordModel.Rssi_Fd_Assess_Amt;
+                }
+                else
+                {
+                    Amount = accountModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData;
+                }
+                //Logger.Trace("ENDED:  To Get Amount");
             }
             catch (Exception ex)
             {
-
-                Logger.Error(ex, "Method name : GetAmount" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
-
-            return amount;
+            return Amount;
         }
 
+        //TOD0:Revisit Again
         public string GetStateDisclosures(AccountsModel accountModel)
         {
 
-            string stateDisclosures = string.Empty;
+
             try
             {
-                //Logger.Trace("STARTED:  Execute to Get state disclosures.");
-                var RSSISTATE = "4, 6, 12, 22, 24, 33, 34, 43, 44 ";
-                var MailingState = "AR, CO, HI, MA, MN, NC, NY, TN, TX ";
-                if (RSSISTATE.Contains(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData))
-                { stateDisclosures = ""; }
-                else if (MailingState.Contains(accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3))
-                { stateDisclosures = ""; }
-                //Logger.Trace("ENDED: Get state disclosures.");
+                //Logger.Trace("STARTED:  Execute to Get State Disclosures operation.");
+                if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 4
+                      && accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "AR")
+                {
+                    StateDisclosures = "StateDisclosures4AR_MessageFlag";//TOD0:Revisit Again 
+                }
+                if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 6
+                    && accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "CO")
+                {
+                    StateDisclosures = "StateDisclosures6CO_MessageFlag";
+                }
+                if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 12
+                    && accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "HI")
+                {
+                    StateDisclosures = "StateDisclosures12HI_MessageFlag";
+                }
+                if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 22
+                    && accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "MA")
+                {
+                    StateDisclosures = "StateDisclosures4AR_MessageFlag";
+                }
+                if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 24
+                    && accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "MN")
+                {
+                    StateDisclosures = "StateDisclosures24MN_MessageFlag";
+                }
+                if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
+                    && accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "NC")
+                {
+                    StateDisclosures = "StateDisclosures33NC_MessageFlag";
+                }
+                if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 34
+                    && accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "NY")
+                {
+                    StateDisclosures = "StateDisclosures34NY_MessageFlag";
+                }
+                if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 43
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "TN")
+                {
+                    StateDisclosures = "StateDisclosures43TN_MessageFlag";
+                }
+                if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 44
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "TX")
+                {
+                    StateDisclosures = "StateDisclosures44TX_MessageFlag";
+                }
+                //Logger.Trace("ENDED:    To State Disclosures operation.");
+                return StateDisclosures;
             }
             catch (Exception ex)
             {
+                Logger.Error(ex, "GetStateDisclosures" + ex.TargetSite.Name);
 
-                Logger.Error(ex, "Method name : GetStateDisclosures" + ExMessage);
+                return "";
             }
-
-            return stateDisclosures;
         }
 
         public string GetCarringtonCharitableFoundation(AccountsModel accountModel)
         {
 
-            string carringtonCharitableFoundation = string.Empty;
             try
             {
-                //Logger.Trace("STARTED:  Execute to Get carrington charitable foundation.");
-                if (accountModel.detModel.PriorMoAmnt != null && accountModel.detModel.YTDAmnt != null)
+                //Logger.Trace("STARTED:  Execute to Get Carrington Charitable Foundation operation.");
+                if (Convert.ToDecimal(accountModel.detModel.PriorMoAmnt) > 0
+                   || Convert.ToDecimal(accountModel.detModel.YTDAmnt) > 0)
                 {
-                    if (int.Parse(accountModel.detModel.PriorMoAmnt) > 0 || int.Parse(accountModel.detModel.YTDAmnt) > 0)
-                    { carringtonCharitableFoundation = "Carrington Charitable Foundation verbiage."; }
+
+                    CarringtonCharitableFoundation = "CharitableFoundation_MessageFlag"; //TOD0:Revisit Again 
+
                 }
-                //Logger.Trace("ENDED: Get carrington charitable foundation.");
+                //Logger.Trace("ENDED:    To Carrington Charitable Foundation operation.");
+                return CarringtonCharitableFoundation;
             }
             catch (Exception ex)
             {
-
-                Logger.Error(ex, "Method name : GetCarringtonCharitableFoundation" + ExMessage);
+                Logger.Error(ex, "GetCarringtonCharitableFoundation " + ex.TargetSite.Name);
+                return "";
             }
-            return carringtonCharitableFoundation;
         }
-
+        //TOD0:Revisit Again
         public string GetPaymentInformationMessage(AccountsModel accountModel)
         {
 
-            string carringtonCharitableFoundation = string.Empty;
-
             try
             {
-                //Logger.Trace("STARTED:  Execute to Get payment information message.");
-                if (accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "LA" || accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "KS"
-                       || accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "NM" || accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "OK"
-                       || accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "TX")
-                { carringtonCharitableFoundation = "Dallas P.O.Box Address else Pasadena P.O.Box Address"; }
-
+                //Logger.Trace("STARTED:  Execute get payment information message.");
+                if (accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "KS"
+                    || accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "LA"
+                    || accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "NM"
+                    || accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "OK"
+                    || accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "TX")
+                {
+                    PaymentInformationMessage = "PO Box 660586 " + accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + ", TX 75266-0586";
+                }
+                else
+                {
+                    PaymentInformationMessage = "PO Box 7006 " + accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + ", CA 91109-9998";
+                }
                 //Logger.Trace("ENDED: Get payment information message.");
-
             }
             catch (Exception ex)
             {
+                Logger.Error(ex, "GetPaymentInformationMessage" + ex.TargetSite.Name);
 
-                Logger.Error(ex, "Method name : GetPaymentInformationMessage" + ExMessage);
+                return "";
             }
-            return carringtonCharitableFoundation;
+            return PaymentInformationMessage;
         }
-        #endregion Ambrish
+
     }
 }

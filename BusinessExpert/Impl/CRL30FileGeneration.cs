@@ -402,6 +402,11 @@ namespace CarringtonService.BusinessExpert
             finalLine.Append(accountsModel.MasterFileDataPart_1Model.Rssi_Late_Chg_Amt_PackedData + "|");
             finalLine.Append(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Dte + "|");
             finalLine.Append(accountsModel.MasterFileDataPart2Model.Rssi_Tot_Draft_Amt_PackedData + "|");
+            finalLine.Append(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData + "|");
+            finalLine.Append(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData + "|");
+            finalLine.Append(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData + "|");
+            finalLine.Append(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData + "|");
+
 
             return finalLine;
 
