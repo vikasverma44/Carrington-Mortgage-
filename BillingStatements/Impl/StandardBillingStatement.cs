@@ -1421,19 +1421,17 @@ namespace CarringtonService.BillingStatements
         public string GetInterest(AccountsModel accountsModel)
         {
 
-            String interest = string.Empty;
-
             try
             {
                 //Logger.Trace("STARTED:  Execute get interest.");
                 if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0 ||
                      Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                 {
-                    interest = "0.00";
+                    Interest = "0.00";
                 }
                 else
                 {
-                    interest = accountsModel.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData;
+                    Interest = accountsModel.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData;
                 }
                 //Logger.Trace("ENDED: Get get interest.");
             }
@@ -1443,24 +1441,22 @@ namespace CarringtonService.BillingStatements
 
             }
 
-            return interest;
+            return Interest;
         }
 
         public string GetEscrowTaxesInsurance(AccountsModel accountsModel)
         {
-
-            String escrowTaxesInsurance = string.Empty;
             try
             {
                 //Logger.Trace("STARTED:  Execute get escrow taxes insurance.");
                 if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0 ||
                    Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                 {
-                    escrowTaxesInsurance = "0.00";
+                    EscrowTaxesandorInsurance = "0.00";
                 }
                 else
                 {
-                    escrowTaxesInsurance = accountsModel.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData;
+                    EscrowTaxesandorInsurance = accountsModel.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData;
                 }
                 //Logger.Trace("ENDED: Get get escrow taxes insurance.");
             }
@@ -1470,23 +1466,21 @@ namespace CarringtonService.BillingStatements
 
             }
 
-            return escrowTaxesInsurance;
+            return EscrowTaxesandorInsurance;
         }
 
         public string GetRegularMonthlyPayment(AccountsModel accountsModel)
         {
-
-            String regularMonthlyPayment = string.Empty;
             try
             {
                 //Logger.Trace("STARTED:  Execute get regular monthly payment.");
                 if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                 {
-                    regularMonthlyPayment = "0.00";
+                    RegularMonthlyPayment = "0.00";
                 }
                 else
                 {
-                    regularMonthlyPayment = accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData;
+                    RegularMonthlyPayment = accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData;
                 }
                 //Logger.Trace("ENDED: Get get regular monthly payment.");
 
@@ -1496,23 +1490,21 @@ namespace CarringtonService.BillingStatements
                 Logger.Error(ex, "Method name : GetRegularMonthlyPayment" + ExMessage);
 
             }
-            return regularMonthlyPayment;
+            return RegularMonthlyPayment;
         }
 
         public string GetBuydownBalance(AccountsModel accountsModel)
         {
-
-            String buydownBalance = string.Empty;
             try
             {
                 //Logger.Trace("STARTED:  Execute get buy down balance.");
                 if (Convert.ToDecimal(accountsModel.UserFieldRecordModel.Rssi_Usr_303_PackedData) < 0)
                 {
-                    buydownBalance = "N/A";
+                    BuydownBalance = "N/A";
                 }
                 else
                 {
-                    buydownBalance = accountsModel.UserFieldRecordModel.Rssi_Usr_303_PackedData;
+                    BuydownBalance = accountsModel.UserFieldRecordModel.Rssi_Usr_303_PackedData;
                 }
                 //Logger.Trace("ENDED: Get get buy down balance.");
             }
@@ -1521,24 +1513,21 @@ namespace CarringtonService.BillingStatements
                 Logger.Error(ex, "Method name : GetBuydownBalance" + ExMessage);
 
             }
-            return buydownBalance;
+            return BuydownBalance;
         }
 
         public string GetPartialClaim(AccountsModel accountsModel)
         {
-
-            String partialClaim = string.Empty;
-
             try
             {
                 //Logger.Trace("STARTED:  Execute get partial claim.");
                 if (Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) == 0)
                 {
-                    partialClaim = "N/A";
+                    PartialClaim = "N/A";
                 }
                 else
                 {
-                    partialClaim = accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData;
+                    PartialClaim = accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData;
                 }
             }
             catch (Exception ex)
@@ -1546,23 +1535,21 @@ namespace CarringtonService.BillingStatements
                 Logger.Error(ex, "Method name : GetPartialClaim" + ExMessage);
             }
             //Logger.Trace("ENDED: Get get partial claim.");
-            return partialClaim;
+            return PartialClaim;
         }
 
         public string GetNegativeAmortization(AccountsModel accountsModel)
         {
-
-            String negativeAmortization = string.Empty;
             try
             {
                 //Logger.Trace("STARTED:  Execute get negative amortization.");
                 if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Neg_Amort_Taken_PackedData) == 0)
                 {
-                    negativeAmortization = "N/A";
+                    NegativeAmortization = "N/A";
                 }
                 else
                 {
-                    negativeAmortization = accountsModel.MasterFileDataPart_1Model.Rssi_Neg_Amort_Taken_PackedData;
+                    NegativeAmortization = accountsModel.MasterFileDataPart_1Model.Rssi_Neg_Amort_Taken_PackedData;
                 }
                 //Logger.Trace("ENDED: Get get negative amortization.");
             }
@@ -1571,25 +1558,22 @@ namespace CarringtonService.BillingStatements
                 Logger.Error(ex, "Method name : GetNegativeAmortization" + ExMessage);
 
             }
-            return negativeAmortization;
+            return NegativeAmortization;
         }
 
         public string GetCarringtonCharitableFoundationMonth(AccountsModel accountsModel)
         {
-
-            String carringtonCharitableFoundation = string.Empty;
-
             try
             {
                 //Logger.Trace("STARTED:  Execute get carrington charitable foundation.");
                 if (Convert.ToDecimal(accountsModel.detModel.PriorMoAmnt) > 0
                     || Convert.ToDecimal(accountsModel.detModel.YTDAmnt) > 0)
                 {
-                    carringtonCharitableFoundation = string.Empty;
+                    CarringtonCharitableFoundation = string.Empty;
                 }
                 else
                 {
-                    carringtonCharitableFoundation = accountsModel.detModel.PriorMoAmnt;
+                    CarringtonCharitableFoundation = accountsModel.detModel.PriorMoAmnt;
                 }
                 //Logger.Trace("ENDED: Get get carrington charitable foundation.");
             }
@@ -1599,13 +1583,11 @@ namespace CarringtonService.BillingStatements
 
             }
 
-            return carringtonCharitableFoundation;
+            return CarringtonCharitableFoundation;
         }
 
         public string GetCarringtonCharitablePaidYeartoDate(AccountsModel accountsModel)
         {
-
-            String carringtonCharitablePaidYeartoDate = string.Empty;
 
             try
             {
@@ -1613,11 +1595,11 @@ namespace CarringtonService.BillingStatements
                 if (Convert.ToDecimal(accountsModel.detModel.PriorMoAmnt) > 0
                     || Convert.ToDecimal(accountsModel.detModel.YTDAmnt) > 0)
                 {
-                    carringtonCharitablePaidYeartoDate = string.Empty;
+                    CarringtonCharitableFoundationDonationPaidYeartoDate = string.Empty;
                 }
                 else
                 {
-                    carringtonCharitablePaidYeartoDate = accountsModel.detModel.YTDAmnt;
+                    CarringtonCharitableFoundationDonationPaidYeartoDate = accountsModel.detModel.YTDAmnt;
                 }
                 //Logger.Trace("ENDED: Get get carrington charitable paid yeartodate.");
             }
@@ -1627,13 +1609,13 @@ namespace CarringtonService.BillingStatements
 
             }
 
-            return carringtonCharitablePaidYeartoDate;
+            return CarringtonCharitableFoundationDonationPaidYeartoDate;
         }
 
         public string GetLockboxAddress(AccountsModel accountsModel)
-        {
+        {//TOD0:Revisit Again
 
-            String lockboxAddress = string.Empty;
+   
 
             try
             {
@@ -1644,11 +1626,12 @@ namespace CarringtonService.BillingStatements
                     || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "OK"
                     || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "TX")
                 {
-                    lockboxAddress = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + "P.O.Box Address"; //RSSI-MAIL-ADRS-3
+
+                    LockboxAddress = "PO Box 660586 "+ accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + ", TX 75266-0586";
                 }
                 else
                 {
-                    lockboxAddress = "Pasadena P.O.Box Address";
+                    LockboxAddress = "PO Box 7006 " + accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + ", CA 91109-9998";
                 }
 
                 //Logger.Trace("ENDED: Get get lockbox address.");
@@ -1658,23 +1641,21 @@ namespace CarringtonService.BillingStatements
             {
                 Logger.Error(ex, "Method name : GetLockboxAddress" + ExMessage);
             }
-            return lockboxAddress;
+            return LockboxAddress;
         }
 
         public string GetReceivedAfter(AccountsModel accountsModel)
         {
-
-            String receivedAfter = string.Empty;
             try
             {
                 //Logger.Trace("STARTED:  Execute get received after.");
                 if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                 {
-                    receivedAfter = "suppress Late Charge message.";
+                    IfPaymentisReceivedAfter = "LateCharge_MessageFlag";//TOD0:Revisit Again
                 }
                 else
                 {
-                    receivedAfter = "";
+                    IfPaymentisReceivedAfter = accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Dte;
                 }
                 //Logger.Trace("ENDED: Get get received after.");
             }
@@ -1682,19 +1663,21 @@ namespace CarringtonService.BillingStatements
             {
                 Logger.Error(ex, "Method name : GetReceivedAfter" + ExMessage);
             }
-            return receivedAfter;
+            return IfPaymentisReceivedAfter;
         }
 
         public string GetLateCharge(AccountsModel accountsModel)
         {
-
-            String lateCharge = string.Empty;
             try
             {
                 //Logger.Trace("STARTED:  Execute get late charge.");
                 if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                 {
-                    lateCharge = "suppress Late Charge message.";
+                    LateCharge = "LateCharge_MessageFlag";//TOD0:Revisit Again
+                }
+                else
+                {
+                    LateCharge = accountsModel.MasterFileDataPart_1Model.Rssi_Late_Chg_Amt_PackedData;
                 }
                 //Logger.Trace("ENDED: Get get late charge.");
             }
@@ -1706,18 +1689,22 @@ namespace CarringtonService.BillingStatements
             }
 
 
-            return lateCharge;
+            return LateCharge;
         }
 
         public string GetCarringtonCharitableDonationbox(AccountsModel accountsModel)
         {
-
-            String carringtonCharitableDonationbox = string.Empty;
-
             try
             {
                 //Logger.Trace("STARTED:  Execute get carrington charitable donationbox.");
-                if (accountsModel.detModel.Eligible == "Yes") { carringtonCharitableDonationbox = "Carrington Charitable Foundation Donation box."; }
+                if (accountsModel.detModel.Eligible == "Yes") 
+                { 
+                    CarringtonCharitableFoundationDonationbox = "CharitableFoundation_MessageFlag";//TOD0:Revisit Again
+                }
+                else
+                {
+                    CarringtonCharitableFoundationDonationbox = string.Empty;
+                }
                 //Logger.Trace("ENDED: Get get carrington charitable donationbox.");
             }
             catch (Exception ex)
@@ -1726,19 +1713,22 @@ namespace CarringtonService.BillingStatements
 
             }
 
-            return carringtonCharitableDonationbox;
+            return CarringtonCharitableFoundationDonationbox;
         }
 
         public string GetEffectiveDate(AccountsModel accountsModel)
         {
-
-            String effectiveDate = string.Empty;
-
             try
             {
-                //Logger.Trace("STARTED:  Execute get effective date.");
-                // if (RSSI_FT_TYPE_CODE == 000) { effectiveDate = "RSSI-FEE-DATE-ASSESSED"; } else { effectiveDate= "RSSI-TR-DATE" }
-
+                //Logger.Trace("STARTED:  Execute get effective date."); 
+                if (Convert.ToInt64(accountsModel.FeeRecordModel.Rssi_Fd_Fee_Type) == 000)//TOD0:Revisit Again
+                {
+                    Date = accountsModel.FeeRecordModel.Rssi_Fd_Assess_Date;
+                }
+                else
+                {
+                    Date = accountsModel.TransactionRecordModel.Rssi_Tr_Date_PackedData;
+                }
                 //Logger.Trace("ENDED: Get get effective date.");
             }
             catch (Exception ex)
@@ -1746,20 +1736,27 @@ namespace CarringtonService.BillingStatements
                 Logger.Error(ex, "Method name : GetEffectiveDate" + ExMessage);
             }
 
-            return effectiveDate;
+            return Date;
         }
 
         public string GetTotalAmount(AccountsModel accountsModel)
         {
-
-            String totalAmount = string.Empty;
-
             try
             {
                 //Logger.Trace("STARTED:  Execute get total amount.");
-                decimal val = Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Exp_Fee_Amt_PackedData);
-                if (val != 0) { totalAmount = accountsModel.TransactionRecordModel.Rssi_Tr_Exp_Fee_Amt_PackedData; }
-                //else if (RSSI_FT_TYPE_CODE == 000) { totalAmount="RSSI-FEE-AMT-ASSESSED"; } else { totalAmount= "RSSI-TR-AMT";}
+
+                if (Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Exp_Fee_Amt_PackedData) != 0) 
+                {
+                    Date = accountsModel.TransactionRecordModel.Rssi_Tr_Exp_Fee_Amt_PackedData;
+                }
+                else if (Convert.ToInt64(accountsModel.FeeRecordModel.Rssi_Fd_Fee_Type) == 000)//TOD0:Revisit Again
+                {
+                    Date = accountsModel.FeeRecordModel.Rssi_Fd_Assess_Amt;
+                }
+                else
+                {
+                    Date = accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData;
+                }
                 //Logger.Trace("ENDED: Get get total amount.");
             }
             catch (Exception ex)
@@ -1767,23 +1764,23 @@ namespace CarringtonService.BillingStatements
                 Logger.Error(ex, "Method name : GetTotalAmount" + ExMessage);
             }
 
-            return totalAmount;
+            return Amount;
         }
 
         public string GetDelinquencyInformationbox(AccountsModel accountsModel)
         {
-
-            String delinquencyInformationbox = string.Empty;
-
             try
             {
                 //Logger.Trace("STARTED:  Execute get delinquency informationbox.");
                 decimal val = Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Num_Days_Delq);
                 if (val >= 30 && Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) > 0)
                 {
-                    delinquencyInformationbox = "include the Delinquency Notice section";
+                    DelinquencyInformationbox = "DelinquencyNotice_MessageFlag";//TOD0:Revisit Again
                 }
-                else { delinquencyInformationbox = ""; }
+                else 
+                {
+                    DelinquencyInformationbox = ""; 
+                }
                 //Logger.Trace("ENDED: Get get delinquency informationbox.");
             }
             catch (Exception ex)
@@ -1792,7 +1789,7 @@ namespace CarringtonService.BillingStatements
 
             }
 
-            return delinquencyInformationbox;
+            return DelinquencyInformationbox;
         }
 
         public string GetRecentPayment6(AccountsModel accountModel)
