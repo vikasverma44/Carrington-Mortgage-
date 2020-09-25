@@ -67,6 +67,8 @@ namespace CarringtonService.BillingStatements
         public string TotalDue { get; set; }
 
         public string Hold { get; set; }
+        public string Attention { get; set; }
+        public string PrimaryBorrower { get; set; }
         public string MailingCountry { get; set; }
         public string PaymentIsReceivedAfter { get; set; }
         public string LateFee { get; set; }
@@ -119,6 +121,11 @@ namespace CarringtonService.BillingStatements
         public string RecentPayment3 { get; set; }
         public string RecentPayment2 { get; set; }
         public string RecentPayment1 { get; set; }
+        public string SecondaryBorrower { get; set; }
+        public string MailingAddressLine1 { get; set; }
+        public string MailingAddressLine2 { get; private set; }
+        public string MailingCityStateZip { get; private set; }
+        public string IfPaymentisReceivedAfter { get; private set; }
 
         #endregion
         public StringBuilder GetFinalOptionARMBillingStatement(AccountsModel accountsModel)
@@ -1259,9 +1266,9 @@ namespace CarringtonService.BillingStatements
             {
                 //Logger.Trace("STARTED:  Execute to Get Replacement Reserve Option 3 operation.");
 
-                if (Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) 
-                    -Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt2_PackedData) 
-                    -Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData) 
+                if (Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData)
+                    - Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt2_PackedData)
+                    - Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData)
                     + Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0)
                 {
                     ReplacementReserveOption3 = string.Empty; // "then do not print the Replacement Reserve line.";
@@ -1455,7 +1462,7 @@ namespace CarringtonService.BillingStatements
                 }
                 else
                 {
-                    TotalAmountDueOption3 = Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) 
+                    TotalAmountDueOption3 = Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData)
                         + Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData));
                 }
                 //Logger.Trace("ENDED:   Get Total Amount Due Option 3 operation.");
@@ -1550,9 +1557,9 @@ namespace CarringtonService.BillingStatements
             {
                 //Logger.Trace("STARTED:  Execute to Get Replacement ReserveOption 4 operation.");
 
-                if (Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData) 
-                   - Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt1_PackedData) 
-                    - Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData) 
+                if (Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData)
+                   - Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt1_PackedData)
+                    - Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData)
                     - Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Pre_Int_Amt_PackedData) == 0)
                 {
                     ReplacementReserveOption4 = string.Empty; // "then do not print the Replacement Reserve line.";
@@ -1608,9 +1615,9 @@ namespace CarringtonService.BillingStatements
 
                     OverduePaymentsOption4 =
                     Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData)
-                        -Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData)
-                        -Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData)
-                        -Convert.ToDecimal(GetTotalFeesPaidOption4(model) != "null" ? GetTotalFeesPaidOption4(model) : "0.00"));
+                        - Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData)
+                        - Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData)
+                        - Convert.ToDecimal(GetTotalFeesPaidOption4(model) != "null" ? GetTotalFeesPaidOption4(model) : "0.00"));
 
                     //(GetTotalFeesPaidOption3(model)==null ? 0:  Convert.ToDecimal(GetTotalFeesPaidOption3(model))) );
                 }
@@ -1737,7 +1744,7 @@ namespace CarringtonService.BillingStatements
                 }
                 else
                 {
-                    TotalAmountDueOption4 = Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) 
+                    TotalAmountDueOption4 = Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData)
                         + Convert.ToDecimal(model.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData));
                 }
                 //Logger.Trace("ENDED:   Get  Total AmountDue Option4   operation.");
@@ -1863,244 +1870,603 @@ namespace CarringtonService.BillingStatements
         #endregion
 
         #region Condition Statement ==>
-
-        public string GetHold(AccountsModel accountModel)
+        /// <summary>
+        /// 1
+        /// </summary>
+        /// <param name="accountModel"></param>
+        /// <returns></returns>
+        public string GetHold(AccountsModel accountsModel)
         {
+            //TOD0:Revisit Again
             try
             {
-                if (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H")
-                    Hold = "Create image but do not mail.";
-                return Hold;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, "GetHold" + ex.TargetSite.Name);
-                return "";
-            }
-        }
+                //Logger.Trace("STARTED:  Execute to Get Hold");
 
-        public string GetAttention(AccountsModel accountsModel)
-        {
-
-            String attention = string.Empty;
-            try
-            {
-                if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A") { attention = "then attention name null for copy 2"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A") { attention = "then attention name null for copy 2"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A") { attention = "then attention name null for copy 2"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A") { attention = "then attention name null for copy 2"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A") { attention = "then attention name null for copy 2"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A") { attention = "then attention name null for copy 2"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A") { attention = "then attention name null for copy 2"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A") { attention = "then attention name null for copy 2"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A") { attention = "then attention name null for copy 2"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A") { attention = "then attention name null for copy 2"; }
-                return attention;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, "GetAttention" + ex.TargetSite.Name);
-                return "";
-            }
-        }
-
-        public string GetPrimaryBorrower(AccountsModel accountsModel)
-        {
-
-            String primaryBorrower = string.Empty;
-
-            try
-            {
-                if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A") { primaryBorrower = "copy 2 to RSSI-CB-CBWR1-F"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A") { primaryBorrower = "copy 2 to RSSI-CB-CBWR2-F"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A") { primaryBorrower = "copy 2 to RSSI-CB-CBWR3-F"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A") { primaryBorrower = "copy 2 to RSSI-CB-CBWR4-F"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A") { primaryBorrower = "copy 2 to RSSI-CB-CBWR5-F"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A") { primaryBorrower = "copy 2 to RSSI-CB-CBWR6-F"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A") { primaryBorrower = "copy 2 to RSSI-CB-CBWR1-F"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A") { primaryBorrower = "copy 2 to RSSI-CB-CBWR8-F"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A") { primaryBorrower = "copy 2 to RSSI-CB-CBWR9-F"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A") { primaryBorrower = "copy 2 to RSSI-CB-CBWR10-F"; }
-
-                return primaryBorrower;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, "GetPrimaryBorrower" + ex.TargetSite.Name);
-                return "";
-            }
-        }
-
-
-        public string GetSecondaryBorrower(AccountsModel accountsModel)
-        {
-
-            String secondaryBorrower = string.Empty;
-
-            try
-            {
-                if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A") { secondaryBorrower = "then secondary name null for copy 2"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A") { secondaryBorrower = "then secondary name null for copy 2"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A") { secondaryBorrower = "then secondary name null for copy 2"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A") { secondaryBorrower = "then secondary name null for copy 2"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A") { secondaryBorrower = "then secondary name null for copy 2"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A") { secondaryBorrower = "then secondary name null for copy 2"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A") { secondaryBorrower = "then secondary name null for copy 2"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A") { secondaryBorrower = "then secondary name null for copy 2"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A") { secondaryBorrower = "then secondary name null for copy 2"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A") { secondaryBorrower = "then secondary name null for copy 2"; }
-                return secondaryBorrower;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, "GetPrimaryBorrower" + ex.TargetSite.Name);
-                return "";
-            }
-        }
-
-        public string GetMailingAddressLine1(AccountsModel accountsModel)
-        {
-
-            String mailingAddressLine1 = string.Empty;
-            try
-            {
-                if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A") { mailingAddressLine1 = "then copy 2 to CB-CBWR01-ADRS1"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A") { mailingAddressLine1 = "then copy 2 to CB-CBWR02-ADRS1"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A") { mailingAddressLine1 = "then copy 2 to CB-CBWR03-ADRS1"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A") { mailingAddressLine1 = "then copy 2 to CB-CBWR04-ADRS1"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A") { mailingAddressLine1 = "then copy 2 to CB-CBWR05-ADRS1"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A") { mailingAddressLine1 = "then copy 2 to CB-CBWR06-ADRS1"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A") { mailingAddressLine1 = "then copy 2 to CB-CBWR07-ADRS1"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A") { mailingAddressLine1 = "then copy 2 to CB-CBWR08-ADRS1"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A") { mailingAddressLine1 = "then copy 2 to CB-CBWR09-ADRS1"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A") { mailingAddressLine1 = "then copy 2 to CB-CBWR10-ADRS1"; }
-                return mailingAddressLine1;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, "GetMailingAddressLine1" + ex.TargetSite.Name);
-                return "";
-            }
-        }
-
-        public string GetMailingAddressLine2(AccountsModel accountsModel)
-        {
-
-            String mailingAddressLine2 = string.Empty;
-            try
-            {
-                if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A") { mailingAddressLine2 = "then copy 2 to CB-CBWR01 - ADRS2"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A") { mailingAddressLine2 = "then copy 2 to CB-CBWR02-ADRS2"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A") { mailingAddressLine2 = "then copy 2 to CB-CBWR03-ADRS2"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A") { mailingAddressLine2 = "then copy 2 to CB-CBWR04-ADRS2"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A") { mailingAddressLine2 = "then copy 2 to CB-CBWR05-ADRS2"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A") { mailingAddressLine2 = "then copy 2 to CB-CBWR06-ADRS2"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A") { mailingAddressLine2 = "then copy 2 to CB-CBWR07-ADRS2"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A") { mailingAddressLine2 = "then copy 2 to CB-CBWR08-ADRS2"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A") { mailingAddressLine2 = "then copy 2 to CB-CBWR09-ADRS2"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A") { mailingAddressLine2 = "then copy 2 to CB-CBWR10-ADRS2"; }
-                return mailingAddressLine2;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, "GetMailingAddressLine2" + ex.TargetSite.Name);
-                return "";
-            }
-
-
-        }
-
-        public string GetMailingCityStateZip(AccountsModel accountsModel)
-        {
-
-            String mailingCityStateZip = string.Empty;
-
-            try
-            {
-                if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A") { mailingCityStateZip = " RSSI-CB_CBWR1_CITY, RSSI-CB-CBWR1-STATE RSSI-CB-CBWR1-ZIP"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A") { mailingCityStateZip = "copy 2 to RSSI-CB-CBWR2_CITY, RSSI-CB-CBWR2-STATE RSSI-CB-CBWR2-ZIP"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A") { mailingCityStateZip = "copy 2 to RSSI-CB-CBWR3_CITY, RSSI-CB-CBWR3-STATE RSSI-CB-CBWR3-ZIP"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A") { mailingCityStateZip = "copy 2 to RSSI-CB-CBWR4_CITY, RSSI-CB-CBWR4-STATE RSSI-CB-CBWR4-ZIP"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A") { mailingCityStateZip = "copy 2 to RSSI-CB-CBWR5_CITY, RSSI-CB-CBWR5-STATE RSSI-CB-CBWR5-ZIP"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A") { mailingCityStateZip = "copy 2 to RSSI-CB-CBWR6_CITY, RSSI-CB-CBWR6-STATE RSSI-CB-CBWR6-ZIP"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A") { mailingCityStateZip = "copy 2 to RSSI-CB-CBWR7_CITY, RSSI-CB-CBWR7-STATE RSSI-CB-CBWR7-ZIP"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A") { mailingCityStateZip = "copy 2 to RSSI-CB-CBWR8_CITY, RSSI-CB-CBWR8-STATE RSSI-CB-CBWR8-ZIP"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A") { mailingCityStateZip = "copy 2 to RSSI-CB-CBWR9_CITY, RSSI-CB-CBWR9-STATE RSSI-CB-CBWR9-ZIP"; }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A") { mailingCityStateZip = "copy 2 to RSSI-CB-CBWR10-ITY, RSSI-CB-CBWR10-STATE RSSI-CB-CBWR10-ZIP"; }
-
-                return mailingCityStateZip;
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, "GetMailingCityStateZip" + ex.TargetSite.Name);
-                return "";
-            }
-
-
-        }
-
-        public string GetMailingCountry(AccountsModel accountModel)
-        {
-            try
-            {
-                if (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")
-                    MailingCountry = accountModel.ForeignInformationRecordModel.Rssi_Altr_Cntry;
-                else if (accountModel.MasterFileDataPart2Model.Rssi_Prim_Forgn_Flag == "Y")
-                    MailingCountry = accountModel.ForeignInformationRecordModel.Rssi_Prim_Mail_Country;
-                else if (accountModel.MasterFileDataPart2Model.Rssi_Appl_Foreign_Flag == "Y")
-                    MailingCountry = accountModel.ForeignInformationRecordModel.Rssi_Appl_Country;
+                if (accountsModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H")
+                {
+                    Hold = "create image but do not mail";
+                }
                 else
+                {
+                    Hold = accountsModel.MasterFileDataPart_1Model.Rssi_Print_Stmt;
+                }
+                //Logger.Trace("ENDED:  To Get Hold");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return Hold;
+        }
+        /// <summary>
+        /// 2
+        /// </summary>
+        /// <param name="accountsModel"></param>
+        /// <param name="isCoBorrower"></param>
+        /// <returns></returns>
+        public string GetAttention(AccountsModel accountsModel, bool isCoBorrower)
+        {
+            //Tod0
+            try
+            {
+                //Logger.Trace("STARTED:  Execute get attention.");
+                if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A"
+                || accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A"
+                || accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A"
+                || accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A"
+                || accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A"
+                || accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A"
+                || accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A"
+                || accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A"
+                || accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A"
+                || accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A")
+                {
+                    if (!isCoBorrower)
+                        Attention = accountsModel.MasterFileDataPart_1Model.Rssi_Prim_Attention;
+                    else
+                        Attention = null;
+                }
+                //Logger.Trace("ENDED: Get get attention.");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "Method name : GetAttention" + ExMessage);
+
+            }
+            return Attention;
+        }
+        /// <summary>
+        /// 3
+        /// </summary>
+        /// <param name="accountsModel"></param>
+        /// <param name="isCoBorrower"></param>
+        /// <returns></returns>
+        public string GetPrimaryBorrower(AccountsModel accountsModel, bool isCoBorrower)
+        {
+
+            try
+            {
+                //Logger.Trace("STARTED:  Execute get primary borrower.");
+
+                if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A")
+                {
+                    if (!isCoBorrower)
+                        PrimaryBorrower = accountsModel.MasterFileDataPart_1Model.Rssi_Primary_Name;
+                    else
+                        PrimaryBorrower = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_F;
+
+                }
+                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A")
+                {
+                    if (!isCoBorrower)
+                        PrimaryBorrower = accountsModel.MasterFileDataPart_1Model.Rssi_Primary_Name;
+                    else
+                        PrimaryBorrower = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_F;
+                }
+                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A")
+                {
+                    if (!isCoBorrower)
+                        PrimaryBorrower = accountsModel.MasterFileDataPart_1Model.Rssi_Primary_Name;
+                    else
+                        PrimaryBorrower = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_F;
+                }
+                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A")
+                {
+                    if (!isCoBorrower)
+                        PrimaryBorrower = accountsModel.MasterFileDataPart_1Model.Rssi_Primary_Name;
+                    else
+                        PrimaryBorrower = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_F;
+                }
+                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A")
+                {
+                    if (!isCoBorrower)
+                        PrimaryBorrower = accountsModel.MasterFileDataPart_1Model.Rssi_Primary_Name;
+                    else
+                        PrimaryBorrower = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_F;
+                }
+                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A")
+                {
+                    if (!isCoBorrower)
+                        PrimaryBorrower = accountsModel.MasterFileDataPart_1Model.Rssi_Primary_Name;
+                    else
+                        PrimaryBorrower = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_F;
+                }
+                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A")
+                {
+                    if (!isCoBorrower)
+                        PrimaryBorrower = accountsModel.MasterFileDataPart_1Model.Rssi_Primary_Name;
+                    else
+                        PrimaryBorrower = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_F;
+                }
+                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A")
+                {
+                    if (!isCoBorrower)
+                        PrimaryBorrower = accountsModel.MasterFileDataPart_1Model.Rssi_Primary_Name;
+                    else
+                        PrimaryBorrower = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_F;
+                }
+                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A")
+                {
+                    if (!isCoBorrower)
+                        PrimaryBorrower = accountsModel.MasterFileDataPart_1Model.Rssi_Primary_Name;
+                    else
+                        PrimaryBorrower = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_F;
+                }
+                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A")
+                {
+                    if (!isCoBorrower)
+                        PrimaryBorrower = accountsModel.MasterFileDataPart_1Model.Rssi_Primary_Name;
+                    else
+                        PrimaryBorrower = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_F;
+                }
+                //Logger.Trace("ENDED: Get get primary borrower.");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "Method name : GetPrimaryBorrower" + ExMessage);
+
+            }
+
+            return PrimaryBorrower;
+        }
+
+        /// <summary>
+        /// 4
+        /// </summary>
+        /// <param name="accountsModel"></param>
+        /// <param name="isCoBorrower"></param>
+        /// <returns></returns>
+        public string GetSecondaryBorrower(AccountsModel accountsModel, bool isCoBorrower)
+        {
+
+            try
+            {
+                //Logger.Trace("STARTED:  Execute get secondary borrower.");
+                if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A"
+                || accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A"
+                || accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A"
+                || accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A"
+                || accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A"
+                || accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A"
+                || accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A"
+                || accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A"
+                || accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A"
+                || accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A")
+                {
+                    if (!isCoBorrower)
+                        SecondaryBorrower = accountsModel.MasterFileDataPart_1Model.Rssi_Secondary_Name;
+                    else
+                        SecondaryBorrower = null;
+                }
+                return SecondaryBorrower;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "GetPrimaryBorrower" + ex.TargetSite.Name);
+                return "";
+            }
+        }
+        /// <summary>
+        /// 5
+        /// </summary>
+        /// <param name="accountsModel"></param>
+        /// <returns></returns>
+        public string GetMailingAddressLine1(AccountsModel accountsModel, bool isCoBorrower)
+        {
+
+            try
+            {
+                //Logger.Trace("STARTED:  Execute get mailing address line1.");
+                if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A")
+                {
+                    if (!isCoBorrower)
+                        MailingAddressLine1 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1;
+                    else
+                        MailingAddressLine1 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Adrs1;
+
+                }
+                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A")
+                {
+                    if (!isCoBorrower)
+                        MailingAddressLine1 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1;
+                    else
+                        MailingAddressLine1 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Adrs1;
+                }
+                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A")
+                {
+                    if (!isCoBorrower)
+                        MailingAddressLine1 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1;
+                    else
+                        MailingAddressLine1 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Adrs1;
+                }
+                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A")
+                {
+                    if (!isCoBorrower)
+                        MailingAddressLine1 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1;
+                    else
+                        MailingAddressLine1 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Adrs1;
+                }
+                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A")
+                {
+                    if (!isCoBorrower)
+                        MailingAddressLine1 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1;
+                    else
+                        MailingAddressLine1 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Adrs1;
+                }
+                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A")
+                {
+                    if (!isCoBorrower)
+                        MailingAddressLine1 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1;
+                    else
+                        MailingAddressLine1 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Adrs1;
+                }
+                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A")
+                {
+                    if (!isCoBorrower)
+                        MailingAddressLine1 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1;
+                    else
+                        MailingAddressLine1 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Adrs1;
+                }
+                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A")
+                {
+                    if (!isCoBorrower)
+                        MailingAddressLine1 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1;
+                    else
+                        MailingAddressLine1 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Adrs1;
+                }
+                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A")
+                {
+                    if (!isCoBorrower)
+                        MailingAddressLine1 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1;
+                    else
+                        MailingAddressLine1 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Adrs1;
+                }
+                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A")
+                {
+                    if (!isCoBorrower)
+                        MailingAddressLine1 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1;
+                    else
+                        MailingAddressLine1 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_F;
+                }
+
+                //Logger.Trace("ENDED: Get get mailing address line1.");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "Method name : GetMailingAddressLine1" + ExMessage);
+
+            }
+            return MailingAddressLine1;
+        }
+        /// <summary>
+        /// 6
+        /// </summary>
+        /// <param name="accountsModel"></param>
+        /// <returns></returns>
+        public string GetMailingAddressLine2(AccountsModel accountsModel, bool isCoBorrower)
+        {
+
+            try
+            {
+                //Logger.Trace("STARTED:  Execute get mailing address line2.");
+                if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A")
+                {
+                    if (!isCoBorrower)
+                        MailingAddressLine2 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_2;
+                    else
+                        MailingAddressLine2 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Adrs2;
+
+                }
+                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A")
+                {
+                    if (!isCoBorrower)
+                        MailingAddressLine2 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_2;
+                    else
+                        MailingAddressLine2 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Adrs2;
+                }
+                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A")
+                {
+                    if (!isCoBorrower)
+                        MailingAddressLine2 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_2;
+                    else
+                        MailingAddressLine2 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Adrs2;
+                }
+                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A")
+                {
+                    if (!isCoBorrower)
+                        MailingAddressLine2 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_2;
+                    else
+                        MailingAddressLine2 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Adrs2;
+                }
+                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A")
+                {
+                    if (!isCoBorrower)
+                        MailingAddressLine2 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_2;
+                    else
+                        MailingAddressLine2 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Adrs2;
+                }
+                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A")
+                {
+                    if (!isCoBorrower)
+                        MailingAddressLine2 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_2;
+                    else
+                        MailingAddressLine2 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Adrs2;
+                }
+                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A")
+                {
+                    if (!isCoBorrower)
+                        MailingAddressLine2 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_2;
+                    else
+                        MailingAddressLine2 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Adrs2;
+                }
+                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A")
+                {
+                    if (!isCoBorrower)
+                        MailingAddressLine2 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_2;
+                    else
+                        MailingAddressLine2 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Adrs2;
+                }
+                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A")
+                {
+                    if (!isCoBorrower)
+                        MailingAddressLine2 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_2;
+                    else
+                        MailingAddressLine2 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Adrs2;
+                }
+                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A")
+                {
+                    if (!isCoBorrower)
+                        MailingAddressLine2 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_2;
+                    else
+                        MailingAddressLine2 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Adrs2;
+                }
+                //Logger.Trace("ENDED: Get get mailing address line2.");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "Method name : GetMailingAddressLine2" + ExMessage);
+
+            }
+            return MailingAddressLine2;
+        }/// <summary>
+         /// 7
+         /// </summary>
+         /// <param name="accountsModel"></param>
+         /// <returns></returns>
+        public string GetMailingCityStateZip(AccountsModel accountsModel, bool isCoBorrower)
+        {
+
+            try
+            {
+                //Logger.Trace("STARTED:  Execute get mailing city state zip.");
+                if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A")
+                {
+                    if (!isCoBorrower)
+                        MailingCityStateZip = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
+                    else
+                        MailingCityStateZip = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_City
+                            + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_State
+                            + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Zip;
+
+                }
+                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A")
+                {
+                    if (!isCoBorrower)
+                        MailingCityStateZip = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
+                    else
+                        MailingCityStateZip = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_City
+                            + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_State
+                            + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Zip;
+                }
+                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A")
+                {
+                    if (!isCoBorrower)
+                        MailingCityStateZip = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
+                    else
+                        MailingCityStateZip = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_City
+                            + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_State
+                            + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Zip;
+                }
+                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A")
+                {
+                    if (!isCoBorrower)
+                        MailingCityStateZip = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
+                    else
+                        MailingCityStateZip = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_City
+                            + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_State
+                            + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Zip;
+                }
+                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A")
+                {
+                    if (!isCoBorrower)
+                        MailingCityStateZip = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
+                    else
+                        MailingCityStateZip = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_City
+                            + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_State
+                            + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Zip;
+                }
+                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A")
+                {
+                    if (!isCoBorrower)
+                        MailingCityStateZip = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
+                    else
+                        MailingCityStateZip = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_City
+                            + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_State
+                            + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Zip;
+                }
+                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A")
+                {
+                    if (!isCoBorrower)
+                        MailingCityStateZip = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
+                    else
+                        MailingCityStateZip = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_City
+                            + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_State
+                            + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Zip;
+                }
+                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A")
+                {
+                    if (!isCoBorrower)
+                        MailingCityStateZip = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
+                    else
+                        MailingCityStateZip = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_City
+                            + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_State
+                            + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Zip;
+                }
+                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A")
+                {
+                    if (!isCoBorrower)
+                        MailingCityStateZip = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
+                    else
+                        MailingCityStateZip = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_City
+                            + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_State
+                            + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Zip;
+                }
+                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A")
+                {
+                    if (!isCoBorrower)
+                        MailingCityStateZip = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1;
+                    else
+                        MailingCityStateZip = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_City
+                            + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_State
+                            + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Zip;
+                }
+                //Logger.Trace("ENDED: Get get mailing city state zip.");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "Method name : GetMailingCityStateZip" + ExMessage);
+
+            }
+            return MailingCityStateZip;
+        }
+        /// <summary>
+        /// 8
+        /// </summary>
+        /// <param name="accountModel"></param>
+        /// <returns></returns>
+        public string GetMailingCountry(AccountsModel accountsModel)
+        {
+            try
+            {
+                //Logger.Trace("STARTED:  Execute get mailing country.");
+                if (accountsModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")
+                {
+                    MailingCountry = accountsModel.ForeignInformationRecordModel.Rssi_Altr_Cntry;
+                }
+                else if (accountsModel.MasterFileDataPart2Model.Rssi_Prim_Forgn_Flag == "Y")
+                {
+                    MailingCountry = accountsModel.ForeignInformationRecordModel.Rssi_Prim_Mail_Country;
+                }
+                else if (accountsModel.MasterFileDataPart2Model.Rssi_Appl_Foreign_Flag == "Y")
+                {
+                    MailingCountry = accountsModel.ForeignInformationRecordModel.Rssi_Appl_Country;
+                }
+                else
+                {
                     MailingCountry = null;
+                }
                 return MailingCountry;
+                //Logger.Trace("ENDED: Get get mailing mailing country.");
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "GetMailingCountry" + ex.TargetSite.Name);
+                Logger.Error(ex, "Method name : GetMailingCountry" + ExMessage);
                 return "";
             }
+
         }
-        public string GetPaymentIsReceivedAfter(AccountsModel accountModel)
+        /// <summary>
+        /// 16
+        /// </summary>
+        /// <param name="accountModel"></param>
+        /// <returns></returns>
+        public string GetPaymentIsReceivedAfter(AccountsModel accountsModel)
         {
             try
             {
-                if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
-                    PaymentIsReceivedAfter = "suppress Late Charge message";
-
-                return PaymentIsReceivedAfter;
+                //Logger.Trace("STARTED:  Execute get payment received after.");
+                if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                {
+                    IfPaymentisReceivedAfter = "suppress Late Charge message_ Flag";
+                }
+                else
+                {
+                    IfPaymentisReceivedAfter = accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Dte;
+                }
+                //Logger.Trace("ENDED: Get get payment received after.");
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "GetPaymentIsReceivedAfter" + ex.TargetSite.Name);
-                return "";
+
+                Logger.Error(ex, "Method name : GetPaymentReceivedAfter" + ExMessage);
+
             }
+            return IfPaymentisReceivedAfter;
         }
-        public string GetLateFee(AccountsModel accountModel)
+        /// <summary>
+        /// 17
+        /// </summary>
+        /// <param name="accountModel"></param>
+        /// <returns></returns>
+        public string GetLateFee(AccountsModel accountsModel)
         {
             try
             {
-                if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
-                    LateFee = "suppress Late Charge message";
-
-                return LateFee;
+                //Logger.Trace("STARTED:  Execute get late fee.");
+                if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                {
+                    LateFee = "suppress Late Charge message_ Flag";
+                }
+                else
+                {
+                    LateFee = accountsModel.MasterFileDataPart_1Model.Rssi_Late_Chg_Amt_PackedData;
+                }
+                //Logger.Trace("ENDED: Get get late fee.");
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "GetLateFee" + ex.TargetSite.Name);
-                return "";
+                Logger.Error(ex, "Method name : GetLateFee" + ExMessage);
             }
+            return LateFee;
         }
+        /// <summary>
+        /// 18
+        /// </summary>
+        /// <param name="accountModel"></param>
+        /// <returns></returns>
         public string GetChargeOffNoticeNoticeMessage(AccountsModel accountModel)
         {
             try
             {
                 if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Chrg_Off_Dt_PackedData) > 0)
-                    ChargeOffNoticeNoticeMessage = "Print he Charge Off Notice";
+                    ChargeOffNoticeNoticeMessage = "ChargeOff_MessageFlag";
                 else if ((Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Num_Days_Delq) >= 30)
                         && (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) > 0))
-                    ChargeOffNoticeNoticeMessage = "print the Delinquency Notice";
+                    ChargeOffNoticeNoticeMessage = "Delinquency_MessageFlag";
                 else if ((Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Num_Days_Delq) < 30)
                         && (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) > 0))
-                    ChargeOffNoticeNoticeMessage = "print the Re-Finance Notice";
+                    ChargeOffNoticeNoticeMessage = "Re-Finance_ChargeOff_MessageFlag";
                 return ChargeOffNoticeNoticeMessage;
             }
             catch (Exception ex)
@@ -2109,7 +2475,11 @@ namespace CarringtonService.BillingStatements
                 return "";
             }
         }
-
+        /// <summary>
+        /// 23
+        /// </summary>
+        /// <param name="accountModel"></param>
+        /// <returns></returns>
         public string GetNegativeAmortization(AccountsModel accountModel)
         {
             try
@@ -2126,7 +2496,11 @@ namespace CarringtonService.BillingStatements
                 return "";
             }
         }
-
+        /// <summary>
+        /// 24
+        /// </summary>
+        /// <param name="accountModel"></param>
+        /// <returns></returns>
         public string GetBuydownBalance(AccountsModel accountModel)
         {
             try
@@ -2144,6 +2518,11 @@ namespace CarringtonService.BillingStatements
                 return "";
             }
         }
+        /// <summary>
+        /// 25
+        /// </summary>
+        /// <param name="accountModel"></param>
+        /// <returns></returns>
         public string GetPartialClaim(AccountsModel accountModel)
         {
             try
@@ -2161,18 +2540,32 @@ namespace CarringtonService.BillingStatements
                 return "";
             }
         }
+        /// <summary>
+        /// 42
+        /// </summary>
+        /// <param name="accountModel"></param>
+        /// <returns></returns>
         public string GetInterestOption1(AccountsModel accountModel)
         {
             try
             {
                 if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     InterestOption1 = "0.00";
-                else if (Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) == 0
-                    || Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) < Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData)
-                    || Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0
-                    )
+                else if (Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) == 0)
                 {
                     InterestOption1 = null;
+                }
+                else if (
+                     Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) <
+                     Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
+                {
+                    InterestOption1 = null;
+                }
+                else if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                { InterestOption1 = null; }
+                else
+                {
+                    InterestOption1 = accountModel.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData;
                 }
                 return InterestOption1;
             }
@@ -2182,18 +2575,32 @@ namespace CarringtonService.BillingStatements
                 return "";
             }
         }
+        /// <summary>
+        /// 43
+        /// </summary>
+        /// <param name="accountModel"></param>
+        /// <returns></returns>
         public string GetEscrowOption1(AccountsModel accountModel)
         {
             try
             {
                 if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     EscrowOption1 = "0.00";
-                else if (Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) == 0
-                    || Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) < Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData)
-                    || Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0
-                    )
+                else if (Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) == 0)
                 {
                     EscrowOption1 = null;
+                }
+                else if (
+                     Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) <
+                     Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
+                {
+                    EscrowOption1 = null;
+                }
+                else if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                { EscrowOption1 = null; }
+                else
+                {
+                    EscrowOption1 = accountModel.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData;
                 }
                 return EscrowOption1;
             }
@@ -2203,18 +2610,32 @@ namespace CarringtonService.BillingStatements
                 return "";
             }
         }
+        /// <summary>
+        /// 46
+        /// </summary>
+        /// <param name="accountModel"></param>
+        /// <returns></returns>
         public string GetRegularMonthlyPaymentOption1(AccountsModel accountModel)
         {
             try
             {
                 if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     RegularMonthlyPaymentOption1 = "0.00";
-                else if (Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) == 0
-                    || Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) < Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData)
-                    || Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0
-                    )
+                else if (Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) == 0)
                 {
                     RegularMonthlyPaymentOption1 = null;
+                }
+                else if (
+                     Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData) <
+                     Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
+                {
+                    RegularMonthlyPaymentOption1 = null;
+                }
+                else if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                { RegularMonthlyPaymentOption1 = null; }
+                else
+                {
+                    RegularMonthlyPaymentOption1 = accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData;
                 }
                 return RegularMonthlyPaymentOption1;
             }
@@ -2224,18 +2645,34 @@ namespace CarringtonService.BillingStatements
                 return "";
             }
         }
+        /// <summary>
+        /// 52
+        /// </summary>
+        /// <param name="accountModel"></param>
+        /// <returns></returns>
         public string GetInterestOption2(AccountsModel accountModel)
         {
             try
             {
                 if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     InterestOption2 = "0.00";
-                else if (Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) == 0
-                    || Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) < Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData)
-                    || Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0
-                    )
+                else if (Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) == 0)
                 {
                     InterestOption2 = null;
+                }
+                else if (
+                     Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) <
+                     Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
+                {
+                    InterestOption2 = null;
+                }
+                else if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                { 
+                    InterestOption2 = null; 
+                }
+                else
+                {
+                    InterestOption2 = accountModel.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData;
                 }
                 return InterestOption2;
             }
@@ -2245,19 +2682,32 @@ namespace CarringtonService.BillingStatements
                 return "";
             }
         }
-
+        /// <summary>
+        /// 53
+        /// </summary>
+        /// <param name="accountModel"></param>
+        /// <returns></returns>
         public string GetEscrowOption2(AccountsModel accountModel)
         {
             try
             {
                 if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     EscrowOption2 = "0.00";
-                else if (Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) == 0
-                    || Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) < Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData)
-                    || Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0
-                    )
+                else if (Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) == 0)
                 {
                     EscrowOption2 = null;
+                }
+                else if (
+                     Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) <
+                     Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
+                {
+                    EscrowOption2 = null;
+                }
+                else if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                { EscrowOption2 = null; }
+                else
+                {
+                    EscrowOption2 = accountModel.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData;
                 }
                 return EscrowOption2;
             }
@@ -2267,18 +2717,32 @@ namespace CarringtonService.BillingStatements
                 return "";
             }
         }
+        /// <summary>
+        /// 56
+        /// </summary>
+        /// <param name="accountModel"></param>
+        /// <returns></returns>
         public string GetRegularMonthlyPaymentOption2(AccountsModel accountModel)
         {
             try
             {
                 if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     RegularMonthlyPaymentOption2 = "0.00";
-                else if (Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) == 0
-                    || Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) < Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData)
-                    || Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0
-                    )
+                else if (Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) == 0)
                 {
                     RegularMonthlyPaymentOption2 = null;
+                }
+                else if (
+                     Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData) <
+                     Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
+                {
+                    RegularMonthlyPaymentOption2 = null;
+                }
+                else if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                { RegularMonthlyPaymentOption2 = null; }
+                else
+                {
+                    RegularMonthlyPaymentOption2 = accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData;
                 }
                 return RegularMonthlyPaymentOption2;
             }
@@ -2288,18 +2752,34 @@ namespace CarringtonService.BillingStatements
                 return "";
             }
         }
+        /// <summary>
+        /// 62
+        /// </summary>
+        /// <param name="accountModel"></param>
+        /// <returns></returns>
         public string GetInterestOption3(AccountsModel accountModel)
         {
             try
             {
                 if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     InterestOption3 = "0.00";
-                else if (Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) == 0
-                    || Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) < Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData)
-                    || Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0
-                    )
+                else if (Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) == 0)
                 {
                     InterestOption3 = null;
+                }
+                else if (
+                     Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) <
+                     Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
+                {
+                    InterestOption3 = null;
+                }
+                else if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                {
+                    InterestOption3 = null;
+                }
+                else
+                {
+                    InterestOption3 = accountModel.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData;
                 }
                 return InterestOption3;
             }
@@ -2309,19 +2789,32 @@ namespace CarringtonService.BillingStatements
                 return "";
             }
         }
-
+        /// <summary>
+        /// 63
+        /// </summary>
+        /// <param name="accountModel"></param>
+        /// <returns></returns>
         public string GetEscrowOption3(AccountsModel accountModel)
         {
             try
             {
                 if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     EscrowOption3 = "0.00";
-                else if (Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) == 0
-                    || Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) < Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData)
-                    || Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0
-                    )
+                else if (Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) == 0)
                 {
                     EscrowOption3 = null;
+                }
+                else if (
+                     Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) <
+                     Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
+                {
+                    EscrowOption3 = null;
+                }
+                else if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                { EscrowOption3 = null; }
+                else
+                {
+                    EscrowOption3 = accountModel.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData;
                 }
                 return EscrowOption3;
             }
@@ -2331,19 +2824,32 @@ namespace CarringtonService.BillingStatements
                 return "";
             }
         }
-
+        /// <summary>
+        /// 66
+        /// </summary>
+        /// <param name="accountModel"></param>
+        /// <returns></returns>
         public string GetRegularMonthlyPaymentOption3(AccountsModel accountModel)
         {
             try
             {
                 if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     RegularMonthlyPaymentOption3 = "0.00";
-                else if (Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) == 0
-                    || Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) < Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData)
-                    || Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0
-                    )
+                else if (Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) == 0)
                 {
                     RegularMonthlyPaymentOption3 = null;
+                }
+                else if (
+                     Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData) <
+                     Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData))
+                {
+                    RegularMonthlyPaymentOption3 = null;
+                }
+                else if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                { RegularMonthlyPaymentOption3 = null; }
+                else
+                {
+                    RegularMonthlyPaymentOption3 = accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData;
                 }
                 return RegularMonthlyPaymentOption3;
             }
@@ -2353,17 +2859,27 @@ namespace CarringtonService.BillingStatements
                 return "";
             }
         }
-
+        /// <summary>
+        /// 72
+        /// </summary>
+        /// <param name="accountModel"></param>
+        /// <returns></returns>
         public string GetInterestOption4(AccountsModel accountModel)
         {
             try
             {
                 if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     InterestOption4 = "0.00";
-                else if (Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData) == 0)
-                    InterestOption4 = "0.00";
-                else if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData) > Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt1_PackedData))
+
+                else if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData) >
+                     Convert.ToDecimal(accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt1_PackedData))
+                {
                     InterestOption4 = accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Chg_Amt1_PackedData;
+                }
+                else if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                {
+                    InterestOption4 = "0.00";
+                }
                 else
                     InterestOption4 = accountModel.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData;
 
@@ -2375,6 +2891,11 @@ namespace CarringtonService.BillingStatements
                 return "";
             }
         }
+        /// <summary>
+        /// 73
+        /// </summary>
+        /// <param name="accountModel"></param>
+        /// <returns></returns>
         public string GetEscrowOption4(AccountsModel accountModel)
         {
             try
@@ -2382,7 +2903,13 @@ namespace CarringtonService.BillingStatements
                 if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     EscrowOption4 = "0.00";
                 else if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                { 
                     EscrowOption4 = "0.00";
+                }
+                else
+                {
+                    EscrowOption4 = accountModel.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData;
+                }
                 return EscrowOption4;
             }
             catch (Exception ex)
@@ -2391,6 +2918,11 @@ namespace CarringtonService.BillingStatements
                 return "";
             }
         }
+        /// <summary>
+        /// 76
+        /// </summary>
+        /// <param name="accountModel"></param>
+        /// <returns></returns>
         public string GetRegularMonthlyPaymentOption4(AccountsModel accountModel)
         {
             try
@@ -2398,7 +2930,13 @@ namespace CarringtonService.BillingStatements
                 if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     RegularMonthlyPaymentOption4 = "0.00";
                 else if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
-                    RegularMonthlyPaymentOption4 = "0.00";
+                {
+                    RegularMonthlyPaymentOption4 = "0.00"; ; 
+                }
+                else
+                {
+                    RegularMonthlyPaymentOption4 = accountModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData;
+                }
                 return RegularMonthlyPaymentOption4;
             }
             catch (Exception ex)
@@ -2407,6 +2945,11 @@ namespace CarringtonService.BillingStatements
                 return "";
             }
         }
+        /// <summary>
+        /// 81
+        /// </summary>
+        /// <param name="accountModel"></param>
+        /// <returns></returns>
         public string GetOption4MinimumDescription(AccountsModel accountModel)
         {
             try

@@ -2744,18 +2744,18 @@ namespace CarringtonService.BillingStatements
             return PartialClaim;
         }
         /// <summary>
-        /// 
+        /// 98
         /// </summary>
         /// <param name="accountsModel"></param>
         /// <returns></returns>
         public string GetInterestRateUntil(AccountsModel accountsModel)
         {
-            //ToD0
+          
             try
             {
                 if (Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Rate_Chg_Date).IncludeCenturyDate(true)) > 19000000)
                 {
-                   // InterestRateUntil = CommonHelper.GetDateInDDMMYYFormat(accountsModel.MasterFileDataPart_1Model.Rssi_Rate_Chg_Date);
+                    InterestRateUntil = CommonHelper.GetDateInDDMMYYFormat(accountsModel.MasterFileDataPart_1Model.Rssi_Rate_Chg_Date);
                 }
                 else
                 {
