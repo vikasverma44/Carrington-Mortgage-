@@ -737,7 +737,7 @@ namespace CarringtonService.BillingStatements
             return Hold;
         }
 
-        public string GetAttention(AccountsModel accountsModel, bool isCoBorrower)
+        public string GetAttention(AccountsModel accountsModel, bool isCoBorrower = false)
         {
 
 
@@ -771,7 +771,7 @@ namespace CarringtonService.BillingStatements
         }
 
 
-        public string GetPrimaryBorrower(AccountsModel accountsModel, bool isCoBorrower)
+        public string GetPrimaryBorrower(AccountsModel accountsModel, bool isCoBorrower = false)
         {
 
 
@@ -863,7 +863,7 @@ namespace CarringtonService.BillingStatements
         }
 
 
-        public string GetSecondaryBorrower(AccountsModel accountsModel, bool isCoBorrower)
+        public string GetSecondaryBorrower(AccountsModel accountsModel, bool isCoBorrower = false)
         {
 
 
@@ -899,7 +899,7 @@ namespace CarringtonService.BillingStatements
             return SecondaryBorrower;
         }
 
-        public string GetMailingAddressLine1(AccountsModel accountsModel, bool isCoBorrower)
+        public string GetMailingAddressLine1(AccountsModel accountsModel, bool isCoBorrower = false)
         {
             try
             {
@@ -986,7 +986,7 @@ namespace CarringtonService.BillingStatements
             return MailingAddressLine1;
         }
 
-        public string GetMailingAddressLine2(AccountsModel accountsModel, bool isCoBorrower)
+        public string GetMailingAddressLine2(AccountsModel accountsModel, bool isCoBorrower = false)
         {
             try
             {
@@ -1072,7 +1072,7 @@ namespace CarringtonService.BillingStatements
             return MailingAddressLine2;
         }
 
-        public string GetMailingCityStateZip(AccountsModel accountsModel, bool isCoBorrower)
+        public string GetMailingCityStateZip(AccountsModel accountsModel, bool isCoBorrower = false)
         {
             try
             {
