@@ -131,7 +131,7 @@ namespace CarringtonService.BillingStatements
         public string paymentInformationMessage { get; private set; }
 
         #endregion
-        public StringBuilder GetFinalOptionARMBillingStatement(AccountsModel accountsModel, bool isCoBorrower)
+        public StringBuilder GetFinalOptionARMBillingStatement(AccountsModel accountsModel, bool isCoBorrower =false )
         {
             ExMessage = "Error Message";
             finalLine = new StringBuilder();
