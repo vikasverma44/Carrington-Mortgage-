@@ -2311,12 +2311,12 @@ namespace CarringtonService.BillingStatements
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 6
                     && accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "CO")
                 {
-                    StateDisclosures = "StateDisclosures4AR_MessageFlag";
+                    StateDisclosures = "StateDisclosures6CO_MessageFlag";
                 }
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 12
                     && accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "HI")
                 {
-                    StateDisclosures = "StateDisclosures4AR_MessageFlag";
+                    StateDisclosures = "StateDisclosures12HI_MessageFlag";
                 }
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 22
                     && accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "MA")
@@ -2326,27 +2326,27 @@ namespace CarringtonService.BillingStatements
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 24
                     && accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "MN")
                 {
-                    StateDisclosures = "StateDisclosures4AR_MessageFlag";
+                    StateDisclosures = "StateDisclosures24MN_MessageFlag";
                 }
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
                     && accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "NC")
                 {
-                    StateDisclosures = "StateDisclosures4AR_MessageFlag";
+                    StateDisclosures = "StateDisclosures33NC_MessageFlag";
                 }
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 34
                     && accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "NY")
                 {
-                    StateDisclosures = "StateDisclosures4AR_MessageFlag";
+                    StateDisclosures = "StateDisclosures34NY_MessageFlag";
                 }
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 43
                    && accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "TN")
                 {
-                    StateDisclosures = "StateDisclosures4AR_MessageFlag";
+                    StateDisclosures = "StateDisclosures43TN_MessageFlag";
                 }
                 if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 44
                    && accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "TX")
                 {
-                    StateDisclosures = "StateDisclosures4AR_MessageFlag";
+                    StateDisclosures = "StateDisclosures44TX_MessageFlag";
                 }
                 //Logger.Trace("ENDED: Get state disclosures.");
             }
