@@ -11,6 +11,7 @@ using WMS.Framework.Data;
 using WMS.Framework.Data.Records.WorkflowRecords;
 using CarringtonMortgage.OptionAssignment;
 using CarringtonService.Helpers;
+using CarringtonMortgage.Models.InputCopyBookModels;
 
 namespace CarringtonService.BusinessExpert
 {
@@ -240,6 +241,12 @@ namespace CarringtonService.BusinessExpert
 
                             }
 
+                            //For Raw Data                            
+                            line.Clear();
+                            line = GetRawData(extractAccount);
+                            account.AddCustomerRecord(FormatCustomer.BuildRecord("RAW", primaryIndex, line));
+                            
+
                             //Removing the primary borrower from the list leaving co borrower details inside
                             borrowerList.RemoveAt(0);
                         }
@@ -365,6 +372,30 @@ namespace CarringtonService.BusinessExpert
                 _outputFile = Path.Combine(outPath, OutputFile);
                 Logger.Info($"Output file name: {_outputFile}");
             }
+        }
+
+
+        private StringBuilder GetRawData(AccountsModel accountsModel)
+        {
+            
+            var finalLine = new StringBuilder();
+            finalLine.Append(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap + "|");
+            finalLine.Append(accountsModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id + "|");
+            finalLine.Append(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap + "|");
+            finalLine.Append(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap + "|");
+            finalLine.Append(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap + "|");
+            finalLine.Append(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap + "|");
+            finalLine.Append(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap + "|");
+            finalLine.Append(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap + "|");
+            finalLine.Append(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap + "|");
+            finalLine.Append(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap + "|");
+            finalLine.Append(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap + "|");
+
+
+
+
+            return finalLine;
+
         }
     }
 }
