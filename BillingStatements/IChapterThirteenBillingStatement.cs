@@ -60,7 +60,7 @@ namespace CarringtonService.BillingStatements
         string GetEscrowTaxesandInsurance(AccountsModel accountModel);
         string GetFeesAndChargesPaidLastMonth(AccountsModel accountsModel);
         string GetFeesAndChargesPaidYeartoDate(AccountsModel accountModel);
-        StringBuilder GetFinalChapterThirteenBillingStatement(AccountsModel accountModel);
+        StringBuilder GetFinalChapterThirteenBillingStatement(AccountsModel accountModel, bool isCoBorrower = false);
         string GetHUDPartialClaim(AccountsModel accountModel);
         string GetInterest(AccountsModel accountModel);
         string GetInterestRateUntil(AccountsModel accountModel);

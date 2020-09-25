@@ -72,7 +72,7 @@ namespace CarringtonService.BillingStatements
         #endregion
 
 
-        public StringBuilder GetFinalChapterThirteenBillingStatement(AccountsModel accountModel)
+        public StringBuilder GetFinalChapterThirteenBillingStatement(AccountsModel accountModel, bool isCoBorrower = false)
         {
             ExMessage = "Error Message";
             finalLine = new StringBuilder();
@@ -92,12 +92,12 @@ namespace CarringtonService.BillingStatements
             finalLine.Append(GetSuspense(accountModel) + "|");
             finalLine.Append(GetMiscellaneous(accountModel) + "|");
             finalLine.Append(GetPrintStatement(accountModel) + "|");
-            finalLine.Append(GetPrimaryBorrowerBKAttorney(accountModel) + "|");
+            finalLine.Append(GetPrimaryBorrowerBKAttorney(accountModel, isCoBorrower) + "|");
             finalLine.Append(GetSecondaryBorrower(accountModel) + "|");
-            finalLine.Append(GetMailingBKAttorneyAddressLine1(accountModel) + "|");
-            finalLine.Append(GetMailingBKAttorneyAddressLine2(accountModel) + "|");
-            finalLine.Append(GetBorrowerAttorneyMailingCityStateZip(accountModel) + "|");
-            finalLine.Append(GetMailingCountry(accountModel) + "|");
+            finalLine.Append(GetMailingBKAttorneyAddressLine1(accountModel, isCoBorrower) + "|");
+            finalLine.Append(GetMailingBKAttorneyAddressLine2(accountModel, isCoBorrower) + "|");
+            finalLine.Append(GetBorrowerAttorneyMailingCityStateZip(accountModel, isCoBorrower) + "|");
+            finalLine.Append(GetMailingCountry(accountModel, isCoBorrower) + "|");
             finalLine.Append(GetInterest(accountModel) + "|");
             finalLine.Append(GetEscrowTaxesandInsurance(accountModel) + "|");
             finalLine.Append(GetRegularMonthlyPayment(accountModel) + "|");
