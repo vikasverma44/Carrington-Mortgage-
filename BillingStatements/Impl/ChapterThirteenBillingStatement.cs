@@ -1066,7 +1066,7 @@ namespace CarringtonService.BillingStatements
                     StateDisclosures = "StateDisclosures42_MessageFlag";
                 }
                 //Logger.Trace("ENDED:    To State NSF operation.");
-                return StateNSF;
+                return StateDisclosures;
             }
             catch (Exception ex)
             {

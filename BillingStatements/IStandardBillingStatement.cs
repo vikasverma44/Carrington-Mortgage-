@@ -113,9 +113,9 @@ namespace CarringtonService.BillingStatements
         string GetLenderPlacedInsuranceMessage(AccountsModel accountsModel);
         string GetLockboxAddress(AccountsModel accountsModel);
         string GetLossMitigatationNotice(AccountsModel accountsModel);
-        string GetMailingAddressLine1(AccountsModel accountsModel, bool isCoBorrower);
-        string GetMailingAddressLine2(AccountsModel accountsModel, bool isCoBorrower);
-        string GetMailingCityStateZip(AccountsModel accountsModel, bool isCoBorrower);
+        string GetMailingAddressLine1(AccountsModel accountsModel, bool isCoBorrower = false);
+        string GetMailingAddressLine2(AccountsModel accountsModel, bool isCoBorrower = false);
+        string GetMailingCityStateZip(AccountsModel accountsModel, bool isCoBorrower = false);
         string GetMailingCountry(AccountsModel accountsModel);
         string GetMaturityDate(AccountsModel accountsModel);
         string GetMiscellaneous(AccountsModel accountsModel);
