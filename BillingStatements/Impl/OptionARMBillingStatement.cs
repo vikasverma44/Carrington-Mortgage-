@@ -131,7 +131,7 @@ namespace CarringtonService.BillingStatements
         public string paymentInformationMessage { get; private set; }
 
         #endregion
-        public StringBuilder GetFinalOptionARMBillingStatement(AccountsModel accountsModel)
+        public StringBuilder GetFinalOptionARMBillingStatement(AccountsModel accountsModel, bool isCoBorrower =false )
         {
             ExMessage = "Error Message";
             finalLine = new StringBuilder();
@@ -182,59 +182,59 @@ namespace CarringtonService.BillingStatements
             finalLine.Append(GetTotalFeesChargedOption3(accountsModel) + "|");
             finalLine.Append(GetTotalFeesChargedOption2(accountsModel) + "|");
 
-            //finalLine.Append(GetHold(accountsModel) + "|");
-            //finalLine.Append(GetAttention(accountsModel) + "|");
-            //finalLine.Append(GetPrimaryBorrower(accountsModel) + "|");
-            //finalLine.Append(GetSecondaryBorrower(accountsModel) + "|");
-            //finalLine.Append(GetMailingAddressLine1(accountsModel) + "|");
-            //finalLine.Append(GetMailingAddressLine2(accountsModel) + "|");
-            //finalLine.Append(GetMailingCityStateZip(accountsModel) + "|");
-            //finalLine.Append(GetMailingCountry(accountsModel) + "|");
-            //finalLine.Append(GetPaymentIsReceivedAfter(accountsModel) + "|");
-            //finalLine.Append(GetLateFee(accountsModel) + "|");
-            //finalLine.Append(GetChargeOffNoticeNoticeMessage(accountsModel) + "|");
-            //finalLine.Append(GetNegativeAmortization(accountsModel) + "|");
-            //finalLine.Append(GetBuydownBalance(accountsModel) + "|");
-            //finalLine.Append(GetPartialClaim(accountsModel) + "|");
-            //finalLine.Append(GetInterestOption1(accountsModel) + "|");
-            //finalLine.Append(GetEscrowOption1(accountsModel) + "|");
-            //finalLine.Append(GetRegularMonthlyPaymentOption1(accountsModel) + "|");
-            //finalLine.Append(GetInterestOption2(accountsModel) + "|");
-            //finalLine.Append(GetEscrowOption2(accountsModel) + "|");
-            //finalLine.Append(GetRegularMonthlyPaymentOption2(accountsModel) + "|");
-            //finalLine.Append(GetInterestOption3(accountsModel) + "|");
-            //finalLine.Append(GetEscrowOption3(accountsModel) + "|");
-            //finalLine.Append(GetRegularMonthlyPaymentOption3(accountsModel) + "|");
-            //finalLine.Append(GetInterestOption4(accountsModel) + "|");
-            //finalLine.Append(GetEscrowOption4(accountsModel) + "|");
-            //finalLine.Append(GetRegularMonthlyPaymentOption4(accountsModel) + "|");
-            //finalLine.Append(GetOption4MinimumDescription(accountsModel) + "|");
-            //finalLine.Append(GetPOBoxAddress(accountsModel) + "|");
-            //finalLine.Append(GetReceivedAfterDate(accountsModel) + "|");
-            //finalLine.Append(GetLateChargeAmount(accountsModel) + "|");
-            //finalLine.Append(GetInterestRateUntil(accountsModel) + "|");
-            //finalLine.Append(GetPrepaymentPenalty(accountsModel) + "|");
-            //finalLine.Append(GetModificationDate(accountsModel) + "|");
-            //finalLine.Append(GetMaturityDate(accountsModel) + "|");
-            //finalLine.Append(GetDelinquencyNoticebox(accountsModel) + "|");
-            //finalLine.Append(GetLossMitigtationNotice(accountsModel) + "|");
-            //finalLine.Append(GetForeclosureNotice(accountsModel) + "|");
-            //finalLine.Append(GetACHMessage(accountsModel) + "|");
-            //finalLine.Append(GetLenderPlacedInsuranceMessage(accountsModel) + "|");
-            //finalLine.Append(GetBankruptcyMessage(accountsModel) + "|");
-            //finalLine.Append(GetRepaymentPlanMessage(accountsModel) + "|");
-            //finalLine.Append(GetStateNSFMessage(accountsModel) + "|");
-            //finalLine.Append(GetChargeOffNotice(accountsModel) + "|");
-            //finalLine.Append(GetCMSPartialClaim(accountsModel) + "|");
-            //finalLine.Append(GetHUDPartialClaim(accountsModel) + "|");
-            //finalLine.Append(GetStateDisclosures(accountsModel) + "|");
-            //finalLine.Append(GetPaymentInformationMessage(accountsModel) + "|");
-            //finalLine.Append(GetRecentPayment6(accountsModel) + "|");
-            //finalLine.Append(GetRecentPayment5(accountsModel) + "|");
-            //finalLine.Append(GetRecentPayment4(accountsModel) + "|");
-            //finalLine.Append(GetRecentPayment3(accountsModel) + "|");
-            //finalLine.Append(GetRecentPayment2(accountsModel) + "|");
-            //finalLine.Append(GetRecentPayment1(accountsModel) + "|");
+            finalLine.Append(GetHold(accountsModel) + "|");
+            finalLine.Append(GetAttention(accountsModel, isCoBorrower) + "|");
+            finalLine.Append(GetPrimaryBorrower(accountsModel, isCoBorrower) + "|");
+            finalLine.Append(GetSecondaryBorrower(accountsModel, isCoBorrower) + "|");
+            finalLine.Append(GetMailingAddressLine1(accountsModel, isCoBorrower) + "|");
+            finalLine.Append(GetMailingAddressLine2(accountsModel, isCoBorrower) + "|");
+            finalLine.Append(GetMailingCityStateZip(accountsModel, isCoBorrower) + "|");
+            finalLine.Append(GetMailingCountry(accountsModel) + "|");
+            finalLine.Append(GetPaymentIsReceivedAfter(accountsModel) + "|");
+            finalLine.Append(GetLateFee(accountsModel) + "|");
+            finalLine.Append(GetChargeOffNoticeNoticeMessage(accountsModel) + "|");
+            finalLine.Append(GetNegativeAmortization(accountsModel) + "|");
+            finalLine.Append(GetBuydownBalance(accountsModel) + "|");
+            finalLine.Append(GetPartialClaim(accountsModel) + "|");
+            finalLine.Append(GetInterestOption1(accountsModel) + "|");
+            finalLine.Append(GetEscrowOption1(accountsModel) + "|");
+            finalLine.Append(GetRegularMonthlyPaymentOption1(accountsModel) + "|");
+            finalLine.Append(GetInterestOption2(accountsModel) + "|");
+            finalLine.Append(GetEscrowOption2(accountsModel) + "|");
+            finalLine.Append(GetRegularMonthlyPaymentOption2(accountsModel) + "|");
+            finalLine.Append(GetInterestOption3(accountsModel) + "|");
+            finalLine.Append(GetEscrowOption3(accountsModel) + "|");
+            finalLine.Append(GetRegularMonthlyPaymentOption3(accountsModel) + "|");
+            finalLine.Append(GetInterestOption4(accountsModel) + "|");
+            finalLine.Append(GetEscrowOption4(accountsModel) + "|");
+            finalLine.Append(GetRegularMonthlyPaymentOption4(accountsModel) + "|");
+            finalLine.Append(GetOption4MinimumDescription(accountsModel) + "|");
+            finalLine.Append(GetPOBoxAddress(accountsModel) + "|");
+            finalLine.Append(GetReceivedAfterDate(accountsModel) + "|");
+            finalLine.Append(GetLateChargeAmount(accountsModel) + "|");
+            finalLine.Append(GetInterestRateUntil(accountsModel) + "|");
+            finalLine.Append(GetPrepaymentPenalty(accountsModel) + "|");
+            finalLine.Append(GetModificationDate(accountsModel) + "|");
+            finalLine.Append(GetMaturityDate(accountsModel) + "|");
+            finalLine.Append(GetDelinquencyNoticebox(accountsModel) + "|");
+            finalLine.Append(GetLossMitigtationNotice(accountsModel) + "|");
+            finalLine.Append(GetForeclosureNotice(accountsModel) + "|");
+            finalLine.Append(GetACHMessage(accountsModel) + "|");
+            finalLine.Append(GetLenderPlacedInsuranceMessage(accountsModel) + "|");
+            finalLine.Append(GetBankruptcyMessage(accountsModel) + "|");
+            finalLine.Append(GetRepaymentPlanMessage(accountsModel) + "|");
+            finalLine.Append(GetStateNSFMessage(accountsModel) + "|");
+            finalLine.Append(GetChargeOffNotice(accountsModel) + "|");
+            finalLine.Append(GetCMSPartialClaim(accountsModel) + "|");
+            finalLine.Append(GetHUDPartialClaim(accountsModel) + "|");
+            finalLine.Append(GetStateDisclosures(accountsModel) + "|");
+            finalLine.Append(GetPaymentInformationMessage(accountsModel) + "|");
+            finalLine.Append(GetRecentPayment6(accountsModel) + "|");
+            finalLine.Append(GetRecentPayment5(accountsModel) + "|");
+            finalLine.Append(GetRecentPayment4(accountsModel) + "|");
+            finalLine.Append(GetRecentPayment3(accountsModel) + "|");
+            finalLine.Append(GetRecentPayment2(accountsModel) + "|");
+            finalLine.Append(GetRecentPayment1(accountsModel) + "|");
             return finalLine;
         }
 
@@ -2991,11 +2991,11 @@ namespace CarringtonService.BillingStatements
                        || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "OK"
                        || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "TX")
                 {
-                    POBoxAddress = "PO Box 660586 Dallas, TX 75266-0586";
+                    POBoxAddress = "PO Box 660586 " + accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + ", TX 75266-0586";
                 }
                 else
                 {
-                    POBoxAddress = "PO Box 7006 Pasadena, CA 91109-9998";
+                    POBoxAddress = "PO Box 7006 " + accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + ", CA 91109-9998";
                 }
                 return POBoxAddress;
             }
@@ -3773,7 +3773,6 @@ namespace CarringtonService.BillingStatements
         /// <returns></returns>
         public string GetCMSPartialClaim(AccountsModel accountsModel)
         {
-            String chargeOffNotice = string.Empty;
             try
             {
                 //Logger.Trace("STARTED:  Execute get CMS partial claim.");
@@ -3818,7 +3817,7 @@ namespace CarringtonService.BillingStatements
             return HUDPartialClaim;
         }
         /// <summary>
-        /// 
+        /// 128
         /// </summary>
         /// <param name="accountsModel"></param>
         /// <returns></returns>
@@ -3917,11 +3916,6 @@ namespace CarringtonService.BillingStatements
             }
             return paymentInformationMessage;
         }
-
-       
-
-
-
 
         #endregion
     }

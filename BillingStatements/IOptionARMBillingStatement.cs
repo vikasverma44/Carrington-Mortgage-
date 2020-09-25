@@ -125,7 +125,7 @@ namespace CarringtonService.BillingStatements
         string GetEscrowOption4(AccountsModel accountModel);
         string GetFeesAndChargesPaidLastMonth(AccountsModel model);
         string GetFeesandChargesPaidYeartoDate(AccountsModel model);
-        StringBuilder GetFinalOptionARMBillingStatement(AccountsModel accountsModel);
+        StringBuilder GetFinalOptionARMBillingStatement(AccountsModel accountsModel, bool isCoBorrower = false);
         string GetForeclosureNotice(AccountsModel accountsModel);
         string GetHold(AccountsModel accountModel);
         string GetHUDPartialClaim(AccountsModel accountsModel);
