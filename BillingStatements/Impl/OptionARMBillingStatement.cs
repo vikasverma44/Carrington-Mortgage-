@@ -2991,11 +2991,11 @@ namespace CarringtonService.BillingStatements
                        || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "OK"
                        || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "TX")
                 {
-                    POBoxAddress = "PO Box 660586 Dallas, TX 75266-0586";
+                    POBoxAddress = "PO Box 660586 " + accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + ", TX 75266-0586";
                 }
                 else
                 {
-                    POBoxAddress = "PO Box 7006 Pasadena, CA 91109-9998";
+                    POBoxAddress = "PO Box 7006 " + accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + ", CA 91109-9998";
                 }
                 return POBoxAddress;
             }

@@ -2282,9 +2282,9 @@ namespace CarringtonService.BillingStatements
             try
             {
                 //Logger.Trace("STARTED:  Execute get hud partial claim.");
-                if (Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) > 0 
-                    && accountsModel.UserFieldRecordModel.Rssi_Usr_88 == "H") 
-                { 
+                if (Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) > 0
+                    && accountsModel.UserFieldRecordModel.Rssi_Usr_88 == "H")
+                {
                     HUDPartialClaim = "HUDPartialClaim_MessageFlag"; //TOD0:Revisit Again 
                 }
                 //Logger.Trace("ENDED: Get hud partial claim.");
