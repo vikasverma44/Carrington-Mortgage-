@@ -2051,17 +2051,16 @@ namespace CarringtonService.BillingStatements
 
         public string GetLossMitigatationNotice(AccountsModel accountsModel)
         {
-
-            String lossMitigtationNotice = string.Empty;
-
             try
             {
                 //Logger.Trace("STARTED:  Execute get loss mitigtation notice.");
                 if (!String.IsNullOrEmpty(accountsModel.MasterFileDataPart2Model.Rssi_Lmt_Program) && accountsModel.MasterFileDataPart2Model.Rssi_Lmt_Program != "   ")
                 {
-                    if (int.Parse(accountsModel.MasterFileDataPart2Model.Rssi_Lmt_Program) == (2 - 10) || int.Parse(accountsModel.MasterFileDataPart2Model.Rssi_Lmt_Program) == (12 - 14))
+                    if (int.Parse(accountsModel.MasterFileDataPart2Model.Rssi_Lmt_Program) >= 2 
+                        && int.Parse(accountsModel.MasterFileDataPart2Model.Rssi_Lmt_Program) <=10
+                        || int.Parse(accountsModel.MasterFileDataPart2Model.Rssi_Lmt_Program) == (12 - 14))
                     {
-                        lossMitigtationNotice = "PLEASE TAKE NOTICE that You have agreed to the following loss mitigation program: [Program Name].";
+                        LossMitigtationNotice = "PLEASE TAKE NOTICE that You have agreed to the following loss mitigation program: [Program Name].";
                     }
                 }
                 //Logger.Trace("ENDED: Get get loss mitigtation notice.");
@@ -2073,7 +2072,7 @@ namespace CarringtonService.BillingStatements
 
             }
 
-            return lossMitigtationNotice;
+            return LossMitigtationNotice;
         }
 
 
