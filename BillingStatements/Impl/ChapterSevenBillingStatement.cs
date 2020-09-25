@@ -1385,6 +1385,7 @@ namespace CarringtonService.BillingStatements
             return RecentPayment1;
         }
 
+        //TOD0:Revisit Again
         public string GetLenderPlacedInsuranceMessage(AccountsModel accountModel)
         {          
             try
@@ -1397,7 +1398,7 @@ namespace CarringtonService.BillingStatements
                     accountModel.EscrowRecordModel.Rssi_Ins_Ag == "29005" || 
                     accountModel.EscrowRecordModel.Rssi_Ins_Ag == "43000" || 
                     accountModel.EscrowRecordModel.Rssi_Ins_Ag == "43001")
-                { LenderPlacedInsuranceMessage = "Lender Placed Insurance message"; }
+                { LenderPlacedInsuranceMessage = "LenderPlacedInsurance_MessageFlag"; }
                 //Logger.Trace("ENDED: Get  lender placed insurance message.");
             }
             catch (Exception ex)
@@ -1407,18 +1408,17 @@ namespace CarringtonService.BillingStatements
             }
             return LenderPlacedInsuranceMessage;
         }
-
+        
         public string GetStateNSF(AccountsModel accountModel)
         {
 
-            String stateNSF = String.Empty;
 
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get StateNSF.");
                 if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 6 || Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 16 ||
                       Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 18 || Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 42)
-                { stateNSF = "State NSF message"; }
+                { StateNsf = "State NSF message"; }
                 //Logger.Trace("ENDED: Get  StateNSF.");
 
             }
@@ -1427,7 +1427,7 @@ namespace CarringtonService.BillingStatements
 
                 Logger.Error(ex, "Method name : GetStateNSF" + ExMessage);
             }
-            return stateNSF;
+            return StateNsf;
         }
 
         public string GetAutodraftMessage(AccountsModel accountModel)

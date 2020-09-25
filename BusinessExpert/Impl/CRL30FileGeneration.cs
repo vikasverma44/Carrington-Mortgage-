@@ -245,7 +245,7 @@ namespace CarringtonService.BusinessExpert
                             line.Clear();
                             line = GetRawData(extractAccount);
                             account.AddCustomerRecord(FormatCustomer.BuildRecord("RAW", primaryIndex, line));
-                            
+
 
                             //Removing the primary borrower from the list leaving co borrower details inside
                             borrowerList.RemoveAt(0);
@@ -377,22 +377,31 @@ namespace CarringtonService.BusinessExpert
 
         private StringBuilder GetRawData(AccountsModel accountsModel)
         {
-            
+
             var finalLine = new StringBuilder();
             finalLine.Append(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap + "|");
             finalLine.Append(accountsModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id + "|");
-            finalLine.Append(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap + "|");
-            finalLine.Append(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap + "|");
-            finalLine.Append(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap + "|");
-            finalLine.Append(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap + "|");
-            finalLine.Append(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap + "|");
-            finalLine.Append(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap + "|");
-            finalLine.Append(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap + "|");
-            finalLine.Append(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap + "|");
-            finalLine.Append(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap + "|");
-
-
-
+            finalLine.Append(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData + "|");
+            finalLine.Append(accountsModel.UserFieldRecordModel.Rssi_Usr_93 + "|");
+            finalLine.Append(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag + "|");
+            finalLine.Append(accountsModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag + "|");
+            finalLine.Append(accountsModel.MasterFileDataPart_1Model.Rssi_Print_Stmt + "|");
+            finalLine.Append(accountsModel.MasterFileDataPart_1Model.Rssi_State_PackedData + "|");
+            finalLine.Append(accountsModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date + "|");
+            finalLine.Append(accountsModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind + "|");
+            finalLine.Append(accountsModel.MasterFileDataPart_1Model.Rssi_Acct_No + "|");
+            finalLine.Append(accountsModel.MasterFileDataPart_1Model.Rssi_Primary_Name + "|");
+            finalLine.Append(accountsModel.MasterFileDataPart_1Model.Rssi_Secondary_Name + "|");
+            finalLine.Append(accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1 + "|");
+            finalLine.Append(accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_2 + "|");
+            finalLine.Append(accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + "|");
+            finalLine.Append(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData + "|");
+            finalLine.Append(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData + "|");
+            finalLine.Append(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData + "|");
+            finalLine.Append(accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte + "|");
+            finalLine.Append(accountsModel.MasterFileDataPart_1Model.Rssi_Late_Chg_Amt_PackedData + "|");
+            finalLine.Append(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Dte + "|");
+            finalLine.Append(accountsModel.MasterFileDataPart2Model.Rssi_Tot_Draft_Amt_PackedData + "|");
 
             return finalLine;
 
