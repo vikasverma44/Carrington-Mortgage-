@@ -12,6 +12,8 @@ using WMS.Framework.Data.Records.WorkflowRecords;
 using CarringtonMortgage.OptionAssignment;
 using CarringtonService.Helpers;
 using CarringtonMortgage.Models.InputCopyBookModels;
+using System.Collections.Generic;
+using System.Reflection;
 
 namespace CarringtonService.BusinessExpert
 {
@@ -245,7 +247,7 @@ namespace CarringtonService.BusinessExpert
                             line.Clear();
                             line = GetRawData(extractAccount);
                             account.AddCustomerRecord(FormatCustomer.BuildRecord("RAW", primaryIndex, line));
-
+                            BuildPMRawData(extractAccount, account, primaryIndex);
 
                             //Removing the primary borrower from the list leaving co borrower details inside
                             borrowerList.RemoveAt(0);
@@ -330,7 +332,9 @@ namespace CarringtonService.BusinessExpert
                                     if (primaryAccountRejected)
                                         RejectAccount(account, "Invalid Account");
 
+                                    
                                     account.SequenceTransactions();
+                                    
                                     output.AddAccount(account);
                                     primaryIndex++;//TODO: Need to check this when this task is complete                          
                                 }
@@ -346,7 +350,7 @@ namespace CarringtonService.BusinessExpert
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "GenerateCRL30File Failed :");
+                //Logger.Error(ex, "GenerateCRL30File Failed :");
             }
 
         }
@@ -374,7 +378,11 @@ namespace CarringtonService.BusinessExpert
             }
         }
 
-
+        /// <summary>
+        /// Get Raw Data
+        /// </summary>
+        /// <param name="accountsModel"></param>
+        /// <returns></returns>
         private StringBuilder GetRawData(AccountsModel accountsModel)
         {
 
@@ -410,6 +418,167 @@ namespace CarringtonService.BusinessExpert
 
             return finalLine;
 
+        }
+
+        /// <summary>
+        /// Build file RAW Data
+        /// </summary>
+        /// <param name="accountsModel"></param>
+        /// <param name="account"></param>
+        /// <param name="primaryIndex"></param>
+        private void BuildPMRawData(AccountsModel accountsModel, CustomerAccount account, int primaryIndex)
+        {
+            var builder = new StringBuilder();
+            //A
+            foreach (PropertyInfo propertyInfo in accountsModel.MasterFileDataPart_1Model.GetType().GetProperties())
+            {
+                builder.Append(propertyInfo.GetValue(accountsModel.MasterFileDataPart_1Model) + "|");
+            }
+            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40A", primaryIndex, builder));
+            builder.Clear();
+            //2
+            foreach (PropertyInfo propertyInfo in accountsModel.MasterFileDataPart2Model.GetType().GetProperties())
+            {
+                builder.Append(propertyInfo.GetValue(accountsModel.MasterFileDataPart2Model) + "|");
+            }
+            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM402", primaryIndex, builder));
+            builder.Clear();
+            //U
+            foreach (PropertyInfo propertyInfo in accountsModel.UserFieldRecordModel.GetType().GetProperties())
+            {
+                builder.Append(propertyInfo.GetValue(accountsModel.UserFieldRecordModel) + "|");
+            }
+            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40U", primaryIndex, builder));
+            builder.Clear();
+            //L
+            foreach (PropertyInfo propertyInfo in accountsModel.MultiLockboxRecordModel.GetType().GetProperties())
+            {
+                builder.Append(propertyInfo.GetValue(accountsModel.MultiLockboxRecordModel) + "|");
+            }
+            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40L", primaryIndex, builder));
+            builder.Clear();
+            //R
+            foreach (PropertyInfo propertyInfo in accountsModel.RateReductionRecordModel.GetType().GetProperties())
+            {
+                builder.Append(propertyInfo.GetValue(accountsModel.RateReductionRecordModel) + "|");
+            }
+            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40R", primaryIndex, builder));
+            builder.Clear();
+            //E
+            foreach (PropertyInfo propertyInfo in accountsModel.EscrowRecordModel.GetType().GetProperties())
+            {
+                builder.Append(propertyInfo.GetValue(accountsModel.EscrowRecordModel) + "|");
+            }
+            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40E", primaryIndex, builder));
+            builder.Clear();
+            //O
+            foreach (PropertyInfo propertyInfo in accountsModel.OptionalItemEscrowRecordModel.GetType().GetProperties())
+            {
+                builder.Append(propertyInfo.GetValue(accountsModel.OptionalItemEscrowRecordModel) + "|");
+            }
+            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40O", primaryIndex, builder));
+            builder.Clear();
+            //F
+            foreach (PropertyInfo propertyInfo in accountsModel.FeeRecordModel.GetType().GetProperties())
+            {
+                builder.Append(propertyInfo.GetValue(accountsModel.FeeRecordModel) + "|");
+            }
+            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40F", primaryIndex, builder));
+            builder.Clear();
+            //S
+            foreach (PropertyInfo propertyInfo in accountsModel.SolicitationRecordModel.GetType().GetProperties())
+            {
+                builder.Append(propertyInfo.GetValue(accountsModel.SolicitationRecordModel) + "|");
+            }
+            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40S", primaryIndex, builder));
+            builder.Clear();
+            //T
+            foreach (PropertyInfo propertyInfo in accountsModel.TransactionRecordModel.GetType().GetProperties())
+            {
+                builder.Append(propertyInfo.GetValue(accountsModel.TransactionRecordModel) + "|");
+            }
+            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40T", primaryIndex, builder));
+            builder.Clear();
+            //C
+            foreach (PropertyInfo propertyInfo in accountsModel.ForeignInformationRecordModel.GetType().GetProperties())
+            {
+                builder.Append(propertyInfo.GetValue(accountsModel.ForeignInformationRecordModel) + "|");
+            }
+            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40C", primaryIndex, builder));
+            builder.Clear();
+            //D
+            foreach (PropertyInfo propertyInfo in accountsModel.BlendedRateInformationRecordModel.GetType().GetProperties())
+            {
+                builder.Append(propertyInfo.GetValue(accountsModel.BlendedRateInformationRecordModel) + "|");
+            }
+            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40D", primaryIndex, builder));
+            builder.Clear();
+            //I
+            foreach (PropertyInfo propertyInfo in accountsModel.CoBorrowerRecordModel.GetType().GetProperties())
+            {
+                builder.Append(propertyInfo.GetValue(accountsModel.CoBorrowerRecordModel) + "|");
+            }
+            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40I", primaryIndex, builder));
+            builder.Clear();
+            //<
+            foreach (PropertyInfo propertyInfo in accountsModel.LateChargeInformationRecordModel.GetType().GetProperties())
+            {
+                builder.Append(propertyInfo.GetValue(accountsModel.LateChargeInformationRecordModel) + "|");
+            }
+            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40<", primaryIndex, builder));
+            builder.Clear();
+
+            //-
+            foreach (PropertyInfo propertyInfo in accountsModel.LateChargeDetailRecordModel.GetType().GetProperties())
+            {
+                builder.Append(propertyInfo.GetValue(accountsModel.LateChargeDetailRecordModel) + "|");
+            }
+            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40-", primaryIndex, builder));
+            builder.Clear();
+
+            //J
+            foreach (PropertyInfo propertyInfo in accountsModel.ActiveBankruptcyInformationRecordModel.GetType().GetProperties())
+            {
+                builder.Append(propertyInfo.GetValue(accountsModel.ActiveBankruptcyInformationRecordModel) + "|");
+            }
+            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40J", primaryIndex, builder));
+            builder.Clear();
+            //K
+            foreach (PropertyInfo propertyInfo in accountsModel.ArchivedBankruptcyDetailRecordModel.GetType().GetProperties())
+            {
+                builder.Append(propertyInfo.GetValue(accountsModel.ArchivedBankruptcyDetailRecordModel) + "|");
+            }
+            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40K", primaryIndex, builder));
+            builder.Clear();
+            //X
+            foreach (PropertyInfo propertyInfo in accountsModel.EmailAddressRecordModel.GetType().GetProperties())
+            {
+                builder.Append(propertyInfo.GetValue(accountsModel.EmailAddressRecordModel) + "|");
+            }
+            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40X", primaryIndex, builder));
+            builder.Clear();
+            //3
+            foreach (PropertyInfo propertyInfo in accountsModel.DisasterTrackingRecordModel.GetType().GetProperties())
+            {
+                builder.Append(propertyInfo.GetValue(accountsModel.DisasterTrackingRecordModel) + "|");
+            }
+            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM403", primaryIndex, builder));
+            builder.Clear();
+            //4
+            foreach (PropertyInfo propertyInfo in accountsModel.RHCDSOnlyRecordModel.GetType().GetProperties())
+            {
+                builder.Append(propertyInfo.GetValue(accountsModel.RHCDSOnlyRecordModel) + "|");
+            }
+            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM404", primaryIndex, builder));
+            builder.Clear();
+            //Z
+            foreach (PropertyInfo propertyInfo in accountsModel.TrailerRecordModel.GetType().GetProperties())
+            {
+                builder.Append(propertyInfo.GetValue(accountsModel.TrailerRecordModel) + "|");
+            }
+            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40Z", primaryIndex, builder));
+            builder.Clear();
+            
         }
     }
 }
