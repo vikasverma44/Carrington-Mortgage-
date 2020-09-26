@@ -819,12 +819,12 @@ namespace CarringtonService.BillingStatements
                     var result = from s in accountsModel.TransactionRecordModelList
                                                    where s.Rssi_Log_Tran == "5605"
                                                    && s.Rssi_Tr_Fee_Code == "67"
-                                                   select (s.Rssi_Tr_Amt_PackedData);
+                                                   select (s.Rssi_Tr_Amt_PackedData).FirstOrDefault();
 
                     var res = from s in accountsModel.TransactionRecordModelList
                                                 where (s.Rssi_Log_Tran == "5605" || s.Rssi_Log_Tran == "5707")
                                                 && s.Rssi_Tr_Fee_Code == "198"
-                                                select (s.Rssi_Tr_Amt_PackedData);
+                                                select (s.Rssi_Tr_Amt_PackedData).FirstOrDefault();
                     if (result != null)
                     {
                         Total -= Convert.ToDecimal(result);
@@ -1130,12 +1130,12 @@ namespace CarringtonService.BillingStatements
                     var result = from s in accountsModel.TransactionRecordModelList
                                                    where s.Rssi_Log_Tran == "5605"
                                                    && s.Rssi_Tr_Fee_Code == "67"
-                                                   select (s.Rssi_Tr_Amt_PackedData);
+                                                   select (s.Rssi_Tr_Amt_PackedData).FirstOrDefault();
 
                     var res = from s in accountsModel.TransactionRecordModelList
                                                 where (s.Rssi_Log_Tran == "5605" || s.Rssi_Log_Tran == "5707")
                                                 && s.Rssi_Tr_Fee_Code == "198"
-                                                select (s.Rssi_Tr_Amt_PackedData);
+                                                select (s.Rssi_Tr_Amt_PackedData).FirstOrDefault();
                     if (result != null)
                     {
                         Total -= Convert.ToDecimal(result);
@@ -1419,12 +1419,12 @@ namespace CarringtonService.BillingStatements
                     var result = from s in accountsModel.TransactionRecordModelList
                                  where s.Rssi_Log_Tran == "5605"
                                  && s.Rssi_Tr_Fee_Code == "67"
-                                 select (s.Rssi_Tr_Amt_PackedData);
+                                 select (s.Rssi_Tr_Amt_PackedData).FirstOrDefault();
 
                     var res = from s in accountsModel.TransactionRecordModelList
                               where (s.Rssi_Log_Tran == "5605" || s.Rssi_Log_Tran == "5707")
                               && s.Rssi_Tr_Fee_Code == "198"
-                              select (s.Rssi_Tr_Amt_PackedData);
+                              select (s.Rssi_Tr_Amt_PackedData).FirstOrDefault();
                     if (result != null)
                     {
                         Total -= Convert.ToDecimal(result);
@@ -1708,12 +1708,12 @@ namespace CarringtonService.BillingStatements
                     var result = from s in accountsModel.TransactionRecordModelList
                                  where s.Rssi_Log_Tran == "5605"
                                  && s.Rssi_Tr_Fee_Code == "67"
-                                 select (s.Rssi_Tr_Amt_PackedData);
+                                 select (s.Rssi_Tr_Amt_PackedData).FirstOrDefault();
 
                     var res = from s in accountsModel.TransactionRecordModelList
                               where (s.Rssi_Log_Tran == "5605" || s.Rssi_Log_Tran == "5707")
                               && s.Rssi_Tr_Fee_Code == "198"
-                              select (s.Rssi_Tr_Amt_PackedData);
+                              select (s.Rssi_Tr_Amt_PackedData).FirstOrDefault();
                     if (result != null)
                     {
                         Total -= Convert.ToDecimal(result);
