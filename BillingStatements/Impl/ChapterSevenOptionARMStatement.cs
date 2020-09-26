@@ -803,7 +803,7 @@ namespace CarringtonService.BillingStatements
                     }
                     else if (res != null)
                     {
-                        Total -= Convert.ToDecimal(result);
+                        Total -= Convert.ToDecimal(res);
                     }
 
                     TotalFeesChargedOption2 = Convert.ToString(Total);
@@ -1062,7 +1062,7 @@ namespace CarringtonService.BillingStatements
                     }
                     else if (res != null)
                     {
-                        Total -= Convert.ToDecimal(result);
+                        Total -= Convert.ToDecimal(res);
                     }
 
                     TotalFeesChargedOption3 = Convert.ToString(Total);
@@ -1314,7 +1314,7 @@ namespace CarringtonService.BillingStatements
                     }
                     else if (res != null)
                     {
-                        Total -= Convert.ToDecimal(result);
+                        Total -= Convert.ToDecimal(res);
                     }
                     TotalFeesChargedOption4 = Convert.ToString(Total);
 
