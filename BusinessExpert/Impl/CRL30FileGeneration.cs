@@ -493,12 +493,16 @@ namespace CarringtonService.BusinessExpert
             account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40S", primaryIndex, builder));
             builder.Clear();
             //T
-            foreach (PropertyInfo propertyInfo in accountsModel.TransactionRecordModelList.GetType().GetProperties())
+            foreach (var transactionRecord in accountsModel.TransactionRecordModelList) 
             {
-                builder.Append(propertyInfo.GetValue(accountsModel.TransactionRecordModelList) + "|");
+                foreach (PropertyInfo propertyInfo in transactionRecord.GetType().GetProperties())
+                {
+                    builder.Append(propertyInfo.GetValue(transactionRecord) + "|");
+                }
+                account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40T", primaryIndex, builder));
+                builder.Clear();
             }
-            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40T", primaryIndex, builder));
-            builder.Clear();
+          
             //C
             foreach (PropertyInfo propertyInfo in accountsModel.ForeignInformationRecordModel.GetType().GetProperties())
             {
