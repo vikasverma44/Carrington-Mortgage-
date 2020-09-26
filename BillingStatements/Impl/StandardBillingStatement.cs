@@ -315,13 +315,13 @@ namespace CarringtonService.BillingStatements
                    + accountsModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData != null ?
                    Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData) : 0;
 
-                Total -= Convert.ToDecimal(from s in accountsModel.TransactionRecordModelList
+               var  res = (from s in accountsModel.TransactionRecordModelList
                                            where (s.Rssi_Log_Tran == "5605" || s.Rssi_Log_Tran == "5707")
                                            && (s.Rssi_Tr_Fee_Code == "198" || s.Rssi_Tr_Fee_Code == "67")
-                                           select (s.Rssi_Tr_Amt_PackedData));
+                                           select (s.Rssi_Tr_Amt_PackedData)).FirstOrDefault();
 
 
-                TotalFeesAndCharges = Convert.ToString(Total);
+                TotalFeesAndCharges = Convert.ToString(Total - Convert.ToDecimal(res));
 
                 //Logger.Trace("ENDED: Get  total fees and charges.");
             }
