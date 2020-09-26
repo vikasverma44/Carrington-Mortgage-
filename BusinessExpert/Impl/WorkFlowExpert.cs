@@ -2524,129 +2524,128 @@ namespace CarringtonService.BusinessExpert
         // T Transaction Record. Multiple records per loan if applicable.
         public void GetTransactionRecordModel(byte[] currentByte, ref AccountsModel acc)
         {
-            foreach(var at in acc.TransactionRecordModelList)
+           
+           var transactionRecordModel = new TransactionRecordModel()
             {
+                Rssi_Rcd_Id = PackedTypeCheckAndUnPackData("Rssi_Rcd_Id", currentByte, 1, 1),
+                Rssi_Inst = PackedTypeCheckAndUnPackData("Rssi_Inst", currentByte, 2, 3),
 
-                   at.Rssi_Rcd_Id = PackedTypeCheckAndUnPackData("Rssi_Rcd_Id", currentByte, 1, 1);
-                   at.Rssi_Inst = PackedTypeCheckAndUnPackData("Rssi_Inst", currentByte, 2, 3);
-                  
-                   at.Rssi_Acct_No = PackedTypeCheckAndUnPackData("Rssi_Acct_No", currentByte, 5, 10);
-                   at.Rssi_Seq_No = PackedTypeCheckAndUnPackData("Rssi_Seq_No", currentByte, 15, 5);
-                 
-                   at.Rssi_Log_Date_PackedData = PackedTypeCheckAndUnPackData("Rssi_Log_Date_PackedData", currentByte, 20, 4);
-                   at.Rssi_Log_Time = PackedTypeCheckAndUnPackData("Rssi_Log_Time", currentByte, 24, 4);
-                 
-                   at.Rssi_Tr_Date_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Date_PackedData", currentByte, 28, 4);
-                   at.Rssi_Log_Ptrn = PackedTypeCheckAndUnPackData("Rssi_Log_Ptrn", currentByte, 32, 8);
-                  
-                   at.Rssi_Tr_Fill_01 = PackedTypeCheckAndUnPackData("Rssi_Tr_Fill_01", currentByte, 40, 1);
-                   at.Rssi_Log_Tran = PackedTypeCheckAndUnPackData("Rssi_Log_Tran", currentByte, 41, 4);
-                   
-                   at.Rssi_Tr_Fill_02 = PackedTypeCheckAndUnPackData("Rssi_Tr_Fill_02", currentByte, 45, 1);
-                   at.Rssi_Tr_Store_Ovride = PackedTypeCheckAndUnPackData("Rssi_Tr_Store_Ovride", currentByte, 46, 1);
-                 
-                   at.Rssi_Tr_Fill_03 = PackedTypeCheckAndUnPackData("Rssi_Tr_Fill_03", currentByte, 47, 1);
-                   at.Rssi_Tr_Amt_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_PackedData", currentByte, 48, 8, 2);
-                  
-                   at.Rssi_Tr_Cash_Amt_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Cash_Amt_PackedData", currentByte, 56, 8, 2);
-                   at.Rssi_Tr_Teller_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Teller_PackedData", currentByte, 64, 3);
-                 
-                   at.Rssi_Tr_Unap_Cd_Before = PackedTypeCheckAndUnPackData("Rssi_Tr_Unap_Cd_Before", currentByte, 67, 5);
-                   at.Rssi_Tr_Unap_Cd_After = PackedTypeCheckAndUnPackData("Rssi_Tr_Unap_Cd_After", currentByte, 72, 5);
-                  
-                   at.Rssi_Tr_Amt_To_Prin_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Prin_PackedData", currentByte, 77, 6, 2);
-                   at.Rssi_Tr_Amt_To_Int_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Int_PackedData", currentByte, 83, 6, 2);
-                  
-                   at.Rssi_Tr_Amt_To_Esc_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Esc_PackedData", currentByte, 89, 5, 2);
-                   at.Rssi_Tr_Amt_To_Lc_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Lc_PackedData", currentByte, 94, 5, 2);
-                  
-                   at.Rssi_Tr_Amt_To_Pvar_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Pvar_PackedData", currentByte, 99, 5, 2);
-                   at.Rssi_Tr_Amt_To_Ivar_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Ivar_PackedData", currentByte, 104, 4, 2);
-                  
-                   at.Rssi_Tr_Amt_To_Evar_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_PackedData", currentByte, 109, 5, 2);
-                   at.Rssi_Tr_Amt_To_Lvar_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Lvar_PackedData", currentByte, 114, 5, 2);
-                  
-                   at.Rssi_Tr_Amt_To_Lip_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Lip_PackedData", currentByte, 119, 5, 2);
-                   at.Rssi_Tr_Pymt_Ctr_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Pymt_Ctr_PackedData", currentByte, 124, 2);
-                  
-                   at.Rssi_Tr_Amt_To_Cr_Ins_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Cr_Ins_PackedData", currentByte, 126, 5, 2);
-                   at.Rssi_Tr_Prin_Bal_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Prin_Bal_PackedData", currentByte, 131, 6, 2);
-                  
-                   at.Rssi_Tr_Esc_Bal_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Esc_Bal_PackedData", currentByte, 137, 6, 2);
-                   at.Rssi_Tr_Pd_To_Date_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Pd_To_Date_PackedData", currentByte, 143, 4);
-                 
-                   at.Rssi_Tr_Esc_Pymt_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Esc_Pymt_PackedData", currentByte, 147, 5, 2);
-                   at.Rssi_Tr_Prn_Var_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Prn_Var_PackedData", currentByte, 152, 5, 2);
-                 
-                   at.Rssi_Tr_Uncoll_Int_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Uncoll_Int_PackedData", currentByte, 157, 6, 2);
-                   at.Rssi_Tr_Esc_Var_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Esc_Var_PackedData", currentByte, 163, 5, 2);
-                  
-                   at.Rssi_Tr_Uncoll_Lc_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Uncoll_Lc_PackedData", currentByte, 168, 5, 2);
-                   at.Rssi_Tr_Dla_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Dla_PackedData", currentByte, 173, 4);
-                   
-                   at.Rssi_Tr_Lip_Bal_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Lip_Bal_PackedData", currentByte, 177, 5, 2);
-                   at.Rssi_Tr_Lip_La_Date_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Lip_La_Date_PackedData", currentByte, 182, 4);
-                   
-                   at.Rssi_Tr_Pre_Int_Amt_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Pre_Int_Amt_PackedData", currentByte, 186, 6, 2);
-                   at.Rssi_Tr_Pre_Int_Date = PackedTypeCheckAndUnPackData("Rssi_Tr_Pre_Int_Date", currentByte, 192, 4);
-                  
-                   at.Rssi_Tr_Amt_To_Fees_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Fees_PackedData", currentByte, 196, 6, 2);
-                   at.Rssi_Tr_Fee_Code = PackedTypeCheckAndUnPackData("Rssi_Tr_Fee_Code", currentByte, 202, 3);
-                  
-                   at.Rssi_Tr_Fee_Desc = PackedTypeCheckAndUnPackData("Rssi_Tr_Fee_Desc", currentByte, 205, 23);
-                   at.Rssi_Tr_Amt_Negam_Tak_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_Negam_Tak_PackedData", currentByte, 228, 6, 2);
-                 
-                   at.Rssi_Tr_Amt_Negam_Pd_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_Negam_Pd_PackedData", currentByte, 234, 6, 2);
-                   at.Rssi_Tr_Esc_Pay_Id = PackedTypeCheckAndUnPackData("Rssi_Tr_Esc_Pay_Id", currentByte, 240, 2);
-                 
-                   at.Rssi_Tr_Amort_Fee_Pymt = PackedTypeCheckAndUnPackData("Rssi_Tr_Amort_Fee_Pymt", currentByte, 242, 7, 2);
-                   at.Rssi_Tr_Amt_To_Evar_2_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_2_PackedData", currentByte, 249, 9, 2);
-                  
-                   at.Rssi_Tr_Amt_To_Evar_3_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_3_PackedData", currentByte, 258, 9, 2);
-                   at.Rssi_Tr_Amt_To_Evar_4_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_4_PackedData", currentByte, 267, 9, 2);
-                  
-                   at.Rssi_Tr_Amt_To_Evar_5_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_5_PackedData", currentByte, 276, 9, 2);
-                   at.Rssi_Tr_Exp_Fee_Code = PackedTypeCheckAndUnPackData("Rssi_Tr_Exp_Fee_Code", currentByte, 285, 3);
-                   
-                   at.Rssi_Tr_Exp_Fee_Desc = PackedTypeCheckAndUnPackData("Rssi_Tr_Exp_Fee_Desc", currentByte, 288, 30);
-                   at.Rssi_Tr_Exp_Fee_Amt_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Exp_Fee_Amt_PackedData", currentByte, 318, 6, 2);
-                  
-                   at.Rssi_Tr_Amt_To_Pi_Shrtg = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Pi_Shrtg", currentByte, 324, 9, 2);
-                   at.Rssi_Tr_Amt_To_Esc_Short = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Esc_Short", currentByte, 333, 9, 2);
-                  
-                   at.Rssi_Tr_Amt_To_Acrd_Inctv = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Acrd_Inctv", currentByte, 342, 7, 2);
-                   at.Rssi_Tr_Amt_To_Pra_Remain = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Pra_Remain", currentByte, 349, 11, 2);
-                  
-                   at.Rssi_Tr_Amt_To_Def_Prin_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Def_Prin_PackedData", currentByte, 360, 6, 2);
-                   at.Rssi_Tr_Def_Prin_Bal_After_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Def_Prin_Bal_After_PackedData", currentByte, 366, 6, 2);
-                
-                   at.Rssi_Tr_Amt_To_Def_Int_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Def_Int_PackedData", currentByte, 372, 6, 2);
-                   at.Rssi_Tr_Def_Int_Bal_Aft_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Def_Int_Bal_Aft_PackedData", currentByte, 378, 6, 2);
-                   
-                   at.Rssi_Tr_Amt_To_Def_Late_Chrg_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Def_Late_Chrg_PackedData", currentByte, 384, 5, 2);
-                   at.Rssi_Tr_Def_Lt_Chg_Bal_Aft_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Def_Lt_Chg_Bal_Aft_PackedData", currentByte, 389, 6, 2);
-                  
-                   at.Rssi_Tr_Amt_To_Def_Esc_Adv_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Def_Esc_Adv_PackedData", currentByte, 395, 5, 2);
-                   at.Rssi_Tr_Def_Esc_Adv_Bal_Aft_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Def_Esc_Adv_Bal_Aft_PackedData", currentByte, 400, 6, 2);
-                  
-                   at.Rssi_Tr_Amt_To_Def_Pd_Exp_Adv_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Def_Pd_Exp_Adv_PackedData", currentByte, 406, 6, 2);
-                   at.Rssi_Tr_Def_Pd_Exp_Adv_Bal_Aft_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Def_Pd_Exp_Adv_Bal_Aft_PackedData", currentByte, 412, 6, 2);
-                  
-                   at.Rssi_Tr_Amt_To_Def_Unp_Exp_Adv_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Def_Unp_Exp_Adv_PackedData", currentByte, 418, 6, 2);
-                   at.Rssi_Tr_Def_Unpexp_Bal_Aft_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Def_Unpexp_Bal_Aft_PackedData", currentByte, 424, 6, 2);
-                 
-                   at.Rssi_Tr_Amt_To_Def_Admin_Fees_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Def_Admin_Fees_PackedData", currentByte, 430, 6, 2);
-                   at.Rssi_Tr_Def_Admin_Fees_Bal_Aft_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Def_Admin_Fees_Bal_Aft_PackedData", currentByte, 436, 6, 2);
-                 
-                   at.Rssi_Tr_Amt_To_Def_Optins_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Def_Optins_PackedData", currentByte, 442, 5, 2);
-                   at.Rssi_Tr_Def_Optins_Bal_Aft_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Def_Optins_Bal_Aft_PackedData", currentByte, 447, 6, 2);
-                  
-                   at.Rssi_Tr_Amt_To_Esc_Nt_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Esc_Nt_PackedData", currentByte, 453, 6, 2);
-                   at.Filler_459_1500 = PackedTypeCheckAndUnPackData("Filler_459_1500", currentByte, 459, 1042);
+                Rssi_Acct_No = PackedTypeCheckAndUnPackData("Rssi_Acct_No", currentByte, 5, 10),
+                Rssi_Seq_No = PackedTypeCheckAndUnPackData("Rssi_Seq_No", currentByte, 15, 5),
 
-              
-            }
-            
+                Rssi_Log_Date_PackedData = PackedTypeCheckAndUnPackData("Rssi_Log_Date_PackedData", currentByte, 20, 4),
+                Rssi_Log_Time = PackedTypeCheckAndUnPackData("Rssi_Log_Time", currentByte, 24, 4),
+
+                Rssi_Tr_Date_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Date_PackedData", currentByte, 28, 4),
+                Rssi_Log_Ptrn = PackedTypeCheckAndUnPackData("Rssi_Log_Ptrn", currentByte, 32, 8),
+
+                Rssi_Tr_Fill_01 = PackedTypeCheckAndUnPackData("Rssi_Tr_Fill_01", currentByte, 40, 1),
+                Rssi_Log_Tran = PackedTypeCheckAndUnPackData("Rssi_Log_Tran", currentByte, 41, 4),
+
+                Rssi_Tr_Fill_02 = PackedTypeCheckAndUnPackData("Rssi_Tr_Fill_02", currentByte, 45, 1),
+                Rssi_Tr_Store_Ovride = PackedTypeCheckAndUnPackData("Rssi_Tr_Store_Ovride", currentByte, 46, 1),
+
+                Rssi_Tr_Fill_03 = PackedTypeCheckAndUnPackData("Rssi_Tr_Fill_03", currentByte, 47, 1),
+                Rssi_Tr_Amt_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_PackedData", currentByte, 48, 8, 2),
+
+                Rssi_Tr_Cash_Amt_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Cash_Amt_PackedData", currentByte, 56, 8, 2),
+                Rssi_Tr_Teller_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Teller_PackedData", currentByte, 64, 3),
+
+                Rssi_Tr_Unap_Cd_Before = PackedTypeCheckAndUnPackData("Rssi_Tr_Unap_Cd_Before", currentByte, 67, 5),
+                Rssi_Tr_Unap_Cd_After = PackedTypeCheckAndUnPackData("Rssi_Tr_Unap_Cd_After", currentByte, 72, 5),
+
+                Rssi_Tr_Amt_To_Prin_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Prin_PackedData", currentByte, 77, 6, 2),
+                Rssi_Tr_Amt_To_Int_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Int_PackedData", currentByte, 83, 6, 2),
+
+                Rssi_Tr_Amt_To_Esc_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Esc_PackedData", currentByte, 89, 5, 2),
+                Rssi_Tr_Amt_To_Lc_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Lc_PackedData", currentByte, 94, 5, 2),
+
+                Rssi_Tr_Amt_To_Pvar_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Pvar_PackedData", currentByte, 99, 5, 2),
+                Rssi_Tr_Amt_To_Ivar_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Ivar_PackedData", currentByte, 104, 4, 2),
+
+                Rssi_Tr_Amt_To_Evar_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_PackedData", currentByte, 109, 5, 2),
+                Rssi_Tr_Amt_To_Lvar_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Lvar_PackedData", currentByte, 114, 5, 2),
+
+                Rssi_Tr_Amt_To_Lip_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Lip_PackedData", currentByte, 119, 5, 2),
+                Rssi_Tr_Pymt_Ctr_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Pymt_Ctr_PackedData", currentByte, 124, 2),
+
+                Rssi_Tr_Amt_To_Cr_Ins_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Cr_Ins_PackedData", currentByte, 126, 5, 2),
+                Rssi_Tr_Prin_Bal_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Prin_Bal_PackedData", currentByte, 131, 6, 2),
+
+                Rssi_Tr_Esc_Bal_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Esc_Bal_PackedData", currentByte, 137, 6, 2),
+                Rssi_Tr_Pd_To_Date_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Pd_To_Date_PackedData", currentByte, 143, 4),
+
+                Rssi_Tr_Esc_Pymt_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Esc_Pymt_PackedData", currentByte, 147, 5, 2),
+                Rssi_Tr_Prn_Var_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Prn_Var_PackedData", currentByte, 152, 5, 2),
+
+                Rssi_Tr_Uncoll_Int_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Uncoll_Int_PackedData", currentByte, 157, 6, 2),
+                Rssi_Tr_Esc_Var_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Esc_Var_PackedData", currentByte, 163, 5, 2),
+
+                Rssi_Tr_Uncoll_Lc_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Uncoll_Lc_PackedData", currentByte, 168, 5, 2),
+                Rssi_Tr_Dla_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Dla_PackedData", currentByte, 173, 4),
+
+                Rssi_Tr_Lip_Bal_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Lip_Bal_PackedData", currentByte, 177, 5, 2),
+                Rssi_Tr_Lip_La_Date_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Lip_La_Date_PackedData", currentByte, 182, 4),
+
+                Rssi_Tr_Pre_Int_Amt_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Pre_Int_Amt_PackedData", currentByte, 186, 6, 2),
+                Rssi_Tr_Pre_Int_Date = PackedTypeCheckAndUnPackData("Rssi_Tr_Pre_Int_Date", currentByte, 192, 4),
+
+                Rssi_Tr_Amt_To_Fees_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Fees_PackedData", currentByte, 196, 6, 2),
+                Rssi_Tr_Fee_Code = PackedTypeCheckAndUnPackData("Rssi_Tr_Fee_Code", currentByte, 202, 3),
+
+                Rssi_Tr_Fee_Desc = PackedTypeCheckAndUnPackData("Rssi_Tr_Fee_Desc", currentByte, 205, 23),
+                Rssi_Tr_Amt_Negam_Tak_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_Negam_Tak_PackedData", currentByte, 228, 6, 2),
+
+                Rssi_Tr_Amt_Negam_Pd_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_Negam_Pd_PackedData", currentByte, 234, 6, 2),
+                Rssi_Tr_Esc_Pay_Id = PackedTypeCheckAndUnPackData("Rssi_Tr_Esc_Pay_Id", currentByte, 240, 2),
+
+                Rssi_Tr_Amort_Fee_Pymt = PackedTypeCheckAndUnPackData("Rssi_Tr_Amort_Fee_Pymt", currentByte, 242, 7, 2),
+                Rssi_Tr_Amt_To_Evar_2_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_2_PackedData", currentByte, 249, 9, 2),
+
+                Rssi_Tr_Amt_To_Evar_3_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_3_PackedData", currentByte, 258, 9, 2),
+                Rssi_Tr_Amt_To_Evar_4_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_4_PackedData", currentByte, 267, 9, 2),
+
+                Rssi_Tr_Amt_To_Evar_5_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_5_PackedData", currentByte, 276, 9, 2),
+                Rssi_Tr_Exp_Fee_Code = PackedTypeCheckAndUnPackData("Rssi_Tr_Exp_Fee_Code", currentByte, 285, 3),
+
+                Rssi_Tr_Exp_Fee_Desc = PackedTypeCheckAndUnPackData("Rssi_Tr_Exp_Fee_Desc", currentByte, 288, 30),
+                Rssi_Tr_Exp_Fee_Amt_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Exp_Fee_Amt_PackedData", currentByte, 318, 6, 2),
+
+                Rssi_Tr_Amt_To_Pi_Shrtg = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Pi_Shrtg", currentByte, 324, 9, 2),
+                Rssi_Tr_Amt_To_Esc_Short = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Esc_Short", currentByte, 333, 9, 2),
+
+                Rssi_Tr_Amt_To_Acrd_Inctv = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Acrd_Inctv", currentByte, 342, 7, 2),
+                Rssi_Tr_Amt_To_Pra_Remain = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Pra_Remain", currentByte, 349, 11, 2),
+
+                Rssi_Tr_Amt_To_Def_Prin_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Def_Prin_PackedData", currentByte, 360, 6, 2),
+                Rssi_Tr_Def_Prin_Bal_After_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Def_Prin_Bal_After_PackedData", currentByte, 366, 6, 2),
+
+                Rssi_Tr_Amt_To_Def_Int_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Def_Int_PackedData", currentByte, 372, 6, 2),
+                Rssi_Tr_Def_Int_Bal_Aft_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Def_Int_Bal_Aft_PackedData", currentByte, 378, 6, 2),
+
+                Rssi_Tr_Amt_To_Def_Late_Chrg_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Def_Late_Chrg_PackedData", currentByte, 384, 5, 2),
+                Rssi_Tr_Def_Lt_Chg_Bal_Aft_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Def_Lt_Chg_Bal_Aft_PackedData", currentByte, 389, 6, 2),
+
+                Rssi_Tr_Amt_To_Def_Esc_Adv_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Def_Esc_Adv_PackedData", currentByte, 395, 5, 2),
+                Rssi_Tr_Def_Esc_Adv_Bal_Aft_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Def_Esc_Adv_Bal_Aft_PackedData", currentByte, 400, 6, 2),
+
+                Rssi_Tr_Amt_To_Def_Pd_Exp_Adv_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Def_Pd_Exp_Adv_PackedData", currentByte, 406, 6, 2),
+                Rssi_Tr_Def_Pd_Exp_Adv_Bal_Aft_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Def_Pd_Exp_Adv_Bal_Aft_PackedData", currentByte, 412, 6, 2),
+
+                Rssi_Tr_Amt_To_Def_Unp_Exp_Adv_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Def_Unp_Exp_Adv_PackedData", currentByte, 418, 6, 2),
+                Rssi_Tr_Def_Unpexp_Bal_Aft_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Def_Unpexp_Bal_Aft_PackedData", currentByte, 424, 6, 2),
+
+                Rssi_Tr_Amt_To_Def_Admin_Fees_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Def_Admin_Fees_PackedData", currentByte, 430, 6, 2),
+                Rssi_Tr_Def_Admin_Fees_Bal_Aft_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Def_Admin_Fees_Bal_Aft_PackedData", currentByte, 436, 6, 2),
+
+                Rssi_Tr_Amt_To_Def_Optins_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Def_Optins_PackedData", currentByte, 442, 5, 2),
+                Rssi_Tr_Def_Optins_Bal_Aft_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Def_Optins_Bal_Aft_PackedData", currentByte, 447, 6, 2),
+
+                Rssi_Tr_Amt_To_Esc_Nt_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Esc_Nt_PackedData", currentByte, 453, 6, 2),
+                Filler_459_1500 = PackedTypeCheckAndUnPackData("Filler_459_1500", currentByte, 459, 1042),
+
+            };
+            acc.TransactionRecordModelList.Add(transactionRecordModel);
         }
 
         // C Foreign Information Record. One record per loan if applicable.
