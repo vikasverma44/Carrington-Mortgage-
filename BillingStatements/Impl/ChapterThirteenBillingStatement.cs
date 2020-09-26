@@ -328,7 +328,7 @@ namespace CarringtonService.BillingStatements
                 var result = (from s in accountsModel.TransactionRecordModelList
                               where (s.Rssi_Log_Tran == "5705" || s.Rssi_Log_Tran == "5707")
                               && (s.Rssi_Tr_Fee_Code == "67" || s.Rssi_Tr_Fee_Code == "198")
-                              select (s.Rssi_Tr_Amt_PackedData)).FirstOrDefault();
+                              select s.Rssi_Tr_Amt_PackedData).FirstOrDefault();
                 if (result != null)
                 {
                     FeesAndChargesPaidLastMonth = Convert.ToString(Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Pd_Since_Lst_Stmt_PackedData) +
@@ -390,7 +390,7 @@ namespace CarringtonService.BillingStatements
                 var result = (from s in accountsModel.TransactionRecordModelList
                               where (s.Rssi_Log_Tran == "5705" || s.Rssi_Log_Tran == "5707")
                               && (s.Rssi_Tr_Fee_Code == "67" || s.Rssi_Tr_Fee_Code == "198")
-                              select (s.Rssi_Tr_Amt_PackedData)).FirstOrDefault();
+                              select s.Rssi_Tr_Amt_PackedData).FirstOrDefault();
                 if (result != null)
                 { 
                     //Need to know and Add PriorMoAmnt in this section
@@ -423,7 +423,7 @@ namespace CarringtonService.BillingStatements
                 var result = (from s in accountModel.TransactionRecordModelList
                               where (s.Rssi_Log_Tran == "5705" || s.Rssi_Log_Tran == "5707")
                               && (s.Rssi_Tr_Fee_Code == "67" || s.Rssi_Tr_Fee_Code == "198")
-                              select (s.Rssi_Tr_Amt_PackedData)).FirstOrDefault();
+                              select s.Rssi_Tr_Amt_PackedData).FirstOrDefault();
                 if (result != null)
                 {
                     FeesAndChargesPaidYeartoDate = Convert.ToString(total
@@ -481,7 +481,7 @@ namespace CarringtonService.BillingStatements
                 var result = (from s in accountModel.TransactionRecordModelList
                               where (s.Rssi_Log_Tran == "5705" || s.Rssi_Log_Tran == "5707")
                               && (s.Rssi_Tr_Fee_Code == "67" || s.Rssi_Tr_Fee_Code == "198")
-                              select (s.Rssi_Tr_Amt_PackedData)).FirstOrDefault();
+                              select s.Rssi_Tr_Amt_PackedData).FirstOrDefault();
 
                 if (result != null)
                 {

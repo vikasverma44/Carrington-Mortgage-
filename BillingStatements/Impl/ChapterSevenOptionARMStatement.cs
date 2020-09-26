@@ -517,15 +517,15 @@ namespace CarringtonService.BillingStatements
                     var Total = Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData)
                     + Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData);
 
-                    var result = from s in accountsModel.TransactionRecordModelList
+                    var result = (from s in accountsModel.TransactionRecordModelList
                                                    where s.Rssi_Log_Tran == "5605"
                                                    && s.Rssi_Tr_Fee_Code == "67"
-                                                   select (s.Rssi_Tr_Amt_PackedData).FirstOrDefault();
+                                                   select s.Rssi_Tr_Amt_PackedData).FirstOrDefault();
 
-                    var res= from s in accountsModel.TransactionRecordModelList
+                    var res= (from s in accountsModel.TransactionRecordModelList
                                                 where (s.Rssi_Log_Tran == "5605" || s.Rssi_Log_Tran == "5707")
                                                 &&  s.Rssi_Tr_Fee_Code == "198"
-                                                select (s.Rssi_Tr_Amt_PackedData).FirstOrDefault();
+                                                select s.Rssi_Tr_Amt_PackedData).FirstOrDefault();
                     if (result != null)
                     {
                         Total -=Convert.ToDecimal( result);
@@ -787,15 +787,15 @@ namespace CarringtonService.BillingStatements
                     var Total = Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData)
                     + Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData);
 
-                    var result = from s in accountsModel.TransactionRecordModelList
+                    var result = (from s in accountsModel.TransactionRecordModelList
                                                    where s.Rssi_Log_Tran == "5605"
                                                    && s.Rssi_Tr_Fee_Code == "67"
-                                                   select (s.Rssi_Tr_Amt_PackedData).FirstOrDefault();
+                                                   select s.Rssi_Tr_Amt_PackedData).FirstOrDefault();
 
-                    var res = from s in accountsModel.TransactionRecordModelList
+                    var res = (from s in accountsModel.TransactionRecordModelList
                                                 where (s.Rssi_Log_Tran == "5605" || s.Rssi_Log_Tran == "5707")
                                                 && s.Rssi_Tr_Fee_Code == "198"
-                                                select (s.Rssi_Tr_Amt_PackedData).FirstOrDefault();
+                                                select s.Rssi_Tr_Amt_PackedData).FirstOrDefault();
                   
                     if (result != null)
                     {
@@ -1046,15 +1046,15 @@ namespace CarringtonService.BillingStatements
                     var Total = Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData)
                     + Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData);
 
-                    var result = from s in accountsModel.TransactionRecordModelList
+                    var result = (from s in accountsModel.TransactionRecordModelList
                                                    where s.Rssi_Log_Tran == "5605"
                                                    && s.Rssi_Tr_Fee_Code == "67"
-                                                   select (s.Rssi_Tr_Amt_PackedData).FirstOrDefault();
+                                                   select s.Rssi_Tr_Amt_PackedData).FirstOrDefault();
 
-                    var res = from s in accountsModel.TransactionRecordModelList
+                    var res = (from s in accountsModel.TransactionRecordModelList
                                                 where (s.Rssi_Log_Tran == "5605" || s.Rssi_Log_Tran == "5707")
                                                 && s.Rssi_Tr_Fee_Code == "198"
-                                                select (s.Rssi_Tr_Amt_PackedData).FirstOrDefault();
+                                                select s.Rssi_Tr_Amt_PackedData).FirstOrDefault();
                     
                     if (result != null)
                     {
@@ -1299,15 +1299,15 @@ namespace CarringtonService.BillingStatements
                     + (accountsModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData == null ? 0 : Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData));
 
 
-                    var result = from s in accountsModel.TransactionRecordModelList
+                    var result = (from s in accountsModel.TransactionRecordModelList
                                                    where s.Rssi_Log_Tran == "5605"
                                                    && s.Rssi_Tr_Fee_Code == "67"
-                                                   select (s.Rssi_Tr_Amt_PackedData).FirstOrDefault();
+                                                   select s.Rssi_Tr_Amt_PackedData).FirstOrDefault();
 
-                    var res = from s in accountsModel.TransactionRecordModelList
+                    var res = (from s in accountsModel.TransactionRecordModelList
                                                 where (s.Rssi_Log_Tran == "5605" || s.Rssi_Log_Tran == "5707")
                                                 && s.Rssi_Tr_Fee_Code == "198"
-                                                select (s.Rssi_Tr_Amt_PackedData).FirstOrDefault();
+                                                select s.Rssi_Tr_Amt_PackedData).FirstOrDefault();
                     if (result != null)
                     {
                         Total -= Convert.ToDecimal( result);
@@ -1398,10 +1398,10 @@ namespace CarringtonService.BillingStatements
                 var result = Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Pd_Since_Lst_Stmt_PackedData)
               + Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Lc_Pd_Since_Lst_Stmt_PackedData);
 
-                var resu = from s in accountsModel.TransactionRecordModelList
+                var resu = (from s in accountsModel.TransactionRecordModelList
                                             where (s.Rssi_Log_Tran == "5705" || s.Rssi_Log_Tran == "5707")
                                             && (s.Rssi_Tr_Fee_Code == "67" || s.Rssi_Tr_Fee_Code == "198")
-                                            select (s.Rssi_Tr_Amt_PackedData).FirstOrDefault();
+                                            select s.Rssi_Tr_Amt_PackedData).FirstOrDefault();
                 
 
                 FeesandChargesPaidLastMonth = Convert.ToString(result - Convert.ToDecimal(resu));
@@ -1454,10 +1454,10 @@ namespace CarringtonService.BillingStatements
                 var total = Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Paid_Ytd_PackedData) +
                     Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Late_Chg_Paid_Ytd_PackedData);
 
-                var rec = from s in accountsModel.TransactionRecordModelList
+                var rec = (from s in accountsModel.TransactionRecordModelList
                                            where (s.Rssi_Log_Tran == "5705" || s.Rssi_Log_Tran == "5707")
                                            && (s.Rssi_Tr_Fee_Code == "67" || s.Rssi_Tr_Fee_Code == "198")
-                                           select (s.Rssi_Tr_Amt_PackedData).FirstOrDefault();
+                                           select s.Rssi_Tr_Amt_PackedData).FirstOrDefault();
 
 
                 FeesandChargesPaidYeartoDate = Convert.ToString(total - Convert.ToDecimal(rec));
@@ -1524,10 +1524,10 @@ namespace CarringtonService.BillingStatements
                   ? (accountsModel.MasterFileDataPart2Model.Rssi_Unap_Bal_5_PackedData.Trim() == null ? 0 : Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Unap_Bal_5_PackedData)) : 0;
 
 
-                var res = from s in accountsModel.TransactionRecordModelList
+                var res = (from s in accountsModel.TransactionRecordModelList
                                             where (s.Rssi_Log_Tran == "5605" || s.Rssi_Log_Tran == "5707")
                                             && (s.Rssi_Tr_Fee_Code == "67" || s.Rssi_Tr_Fee_Code == "198")
-                                            select (s.Rssi_Tr_Amt_PackedData).FirstOrDefault();
+                                            select s.Rssi_Tr_Amt_PackedData).FirstOrDefault();
               
 
                 TotalPaidYeartoDate = Convert.ToString(total - Convert.ToDecimal(res));
@@ -2556,7 +2556,7 @@ namespace CarringtonService.BillingStatements
                 }
                 else
                 {
-                    Date = accountsModel.TransactionRecordModelList.FirstOrDefault().Rssi_Tr_Date_PackedData;
+                    Date = accountsModel.TransactionRecordModelList.FirstOrDefault()?.Rssi_Tr_Date_PackedData;
                 }
                 //Logger.Trace("ENDED:  To Get Date");
             }
@@ -2574,9 +2574,9 @@ namespace CarringtonService.BillingStatements
             {
                 //Logger.Trace("STARTED:  Execute to Get Amount");
 
-                if (Convert.ToDecimal(accountsModel.TransactionRecordModelList.FirstOrDefault().Rssi_Tr_Exp_Fee_Amt_PackedData) != 0)
+                if (Convert.ToDecimal(accountsModel.TransactionRecordModelList.FirstOrDefault()?.Rssi_Tr_Exp_Fee_Amt_PackedData) != 0)
                 {
-                    Amount = accountsModel.TransactionRecordModelList.FirstOrDefault().Rssi_Tr_Exp_Fee_Amt_PackedData;
+                    Amount = accountsModel.TransactionRecordModelList.FirstOrDefault()?.Rssi_Tr_Exp_Fee_Amt_PackedData;
                 }
                 else if (accountsModel.FeeRecordModel.Rssi_Fd_Fee_Type == "000")
                 {
@@ -2584,7 +2584,7 @@ namespace CarringtonService.BillingStatements
                 }
                 else
                 {
-                    Amount = accountsModel.TransactionRecordModelList.FirstOrDefault().Rssi_Tr_Amt_PackedData;
+                    Amount = accountsModel.TransactionRecordModelList.FirstOrDefault()?.Rssi_Tr_Amt_PackedData;
                 }
                 //Logger.Trace("ENDED:  To Get Amount");
             }

@@ -368,7 +368,7 @@ namespace CarringtonService.BillingStatements
                 var result = (from s in accountsModel.TransactionRecordModelList
                               where (s.Rssi_Log_Tran == "5705" || s.Rssi_Log_Tran == "5707")
                               && (s.Rssi_Tr_Fee_Code == "67" || s.Rssi_Tr_Fee_Code == "198")
-                              select (s.Rssi_Tr_Amt_PackedData)).FirstOrDefault();
+                              select s.Rssi_Tr_Amt_PackedData).FirstOrDefault();
                 if (result != null)
                 {
                     FeesandChargesPaidLastMonth = Convert.ToString(value
@@ -434,7 +434,7 @@ namespace CarringtonService.BillingStatements
                 var result = (from s in model.TransactionRecordModelList
                               where (s.Rssi_Log_Tran == "5705" || s.Rssi_Log_Tran == "5707")
                               && (s.Rssi_Tr_Fee_Code == "67" || s.Rssi_Tr_Fee_Code == "198")
-                              select (s.Rssi_Tr_Amt_PackedData)).FirstOrDefault();
+                              select s.Rssi_Tr_Amt_PackedData).FirstOrDefault();
                 if (result != null)
                 {
                     FeesandChargesPaidLastMonth = Convert.ToString(value
@@ -501,7 +501,7 @@ namespace CarringtonService.BillingStatements
                 var result = (from s in model.TransactionRecordModelList
                               where (s.Rssi_Log_Tran == "5705" || s.Rssi_Log_Tran == "5707")
                               && (s.Rssi_Tr_Fee_Code == "67" || s.Rssi_Tr_Fee_Code == "198")
-                              select (s.Rssi_Tr_Amt_PackedData)).FirstOrDefault();
+                              select s.Rssi_Tr_Amt_PackedData).FirstOrDefault();
                 if (result != null)
                 {
                     FeesandChargesPaidLastMonth = Convert.ToString(value
@@ -2660,7 +2660,7 @@ namespace CarringtonService.BillingStatements
                     }
                     else
                     {
-                        Date = accountModel.TransactionRecordModelList.FirstOrDefault().Rssi_Tr_Date_PackedData;
+                        Date = accountModel.TransactionRecordModelList.FirstOrDefault()?.Rssi_Tr_Date_PackedData;
                     }
                     //Logger.Trace("ENDED:  To Get Date");
                 }
@@ -2684,9 +2684,9 @@ namespace CarringtonService.BillingStatements
             {
                 //Logger.Trace("STARTED:  Execute to Get Amount");
 
-                if (Convert.ToDecimal(accountsModel.TransactionRecordModelList.FirstOrDefault().Rssi_Tr_Exp_Fee_Amt_PackedData) != 0)
+                if (Convert.ToDecimal(accountsModel.TransactionRecordModelList.FirstOrDefault()?.Rssi_Tr_Exp_Fee_Amt_PackedData) != 0)
                 {
-                    Amount = accountsModel.TransactionRecordModelList.FirstOrDefault().Rssi_Tr_Exp_Fee_Amt_PackedData;
+                    Amount = accountsModel.TransactionRecordModelList.FirstOrDefault()?.Rssi_Tr_Exp_Fee_Amt_PackedData;
                 }
                 else if (accountsModel.FeeRecordModel.Rssi_Fd_Fee_Type == "000")
                 {
@@ -2694,7 +2694,7 @@ namespace CarringtonService.BillingStatements
                 }
                 else
                 {
-                    Amount = accountsModel.TransactionRecordModelList.FirstOrDefault().Rssi_Tr_Amt_PackedData;
+                    Amount = accountsModel.TransactionRecordModelList.FirstOrDefault()?.Rssi_Tr_Amt_PackedData;
                 }
                 //Logger.Trace("ENDED:  To Get Amount");
             }

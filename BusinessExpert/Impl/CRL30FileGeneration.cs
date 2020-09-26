@@ -165,12 +165,12 @@ namespace CarringtonService.BusinessExpert
 
                         if (borrowerList.Count > 0)
                         {
-                            account.Standard.FlexField1 = borrowerList.FirstOrDefault().FlexField1;
-                            account.Standard.FlexField2 = borrowerList.FirstOrDefault().FlexField2;
-                            account.Standard.FlexField3 = borrowerList.FirstOrDefault().FlexField3;
-                            account.Standard.FlexField4 = borrowerList.FirstOrDefault().FlexField4;
-                            account.Standard.FlexField5 = borrowerList.FirstOrDefault().FlexField5;
-                            account.Standard.FlexField6 = borrowerList.FirstOrDefault().FlexField6;
+                            account.Standard.FlexField1 = borrowerList.FirstOrDefault()?.FlexField1;
+                            account.Standard.FlexField2 = borrowerList.FirstOrDefault()?.FlexField2;
+                            account.Standard.FlexField3 = borrowerList.FirstOrDefault()?.FlexField3;
+                            account.Standard.FlexField4 = borrowerList.FirstOrDefault()?.FlexField4;
+                            account.Standard.FlexField5 = borrowerList.FirstOrDefault()?.FlexField5;
+                            account.Standard.FlexField6 = borrowerList.FirstOrDefault()?.FlexField6;
                         }
 
 
@@ -199,7 +199,7 @@ namespace CarringtonService.BusinessExpert
                         if (borrowerList.Count > 0)
                         {
                             //Get Statement based on the Flex fields for account
-                            switch (borrowerList.FirstOrDefault().FlexField2)
+                            switch (borrowerList.FirstOrDefault()?.FlexField2)
                             {
 
                                 //For Chapter 7 Option ARM Statement
