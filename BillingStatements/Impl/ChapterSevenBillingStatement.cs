@@ -231,14 +231,14 @@ namespace CarringtonService.BillingStatements
                 decimal result = 0;
                 //Logger.Trace("STARTED:  Execute to Get total fees and charges");
                 result = Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData) + Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData);
-                if (accountModel.TransactionRecordModel.Rssi_Log_Tran == "5605" && accountModel.TransactionRecordModel.Rssi_Tr_Fee_Code == "67")
+                if (accountModel.TransactionRecordModelList.Rssi_Log_Tran == "5605" && accountModel.TransactionRecordModelList.Rssi_Tr_Fee_Code == "67")
                 {
-                    result = result - Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData);
+                    result = result - Convert.ToDecimal(accountModel.TransactionRecordModelList.Rssi_Tr_Amt_PackedData);
 
                 }
-                if ((accountModel.TransactionRecordModel.Rssi_Log_Tran == "5605" || accountModel.TransactionRecordModel.Rssi_Log_Tran == "5707") && accountModel.TransactionRecordModel.Rssi_Tr_Fee_Code == "198")
+                if ((accountModel.TransactionRecordModelList.Rssi_Log_Tran == "5605" || accountModel.TransactionRecordModelList.Rssi_Log_Tran == "5707") && accountModel.TransactionRecordModelList.Rssi_Tr_Fee_Code == "198")
                 {
-                    result = result - Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData);
+                    result = result - Convert.ToDecimal(accountModel.TransactionRecordModelList.Rssi_Tr_Amt_PackedData);
 
                 }
 
@@ -312,12 +312,12 @@ namespace CarringtonService.BillingStatements
                    Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Lc_Pd_Since_Lst_Stmt_PackedData);
 
                 //Logger.Trace("STARTED:  Execute to Get fees and charges paid last month");
-                if ((Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5705 || Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5707)
+                if ((Convert.ToInt64(accountsModel.TransactionRecordModelList.Rssi_Log_Tran) == 5705 || Convert.ToInt64(accountsModel.TransactionRecordModelList.Rssi_Log_Tran) == 5707)
                     &&
-                    (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Code) == 67 || Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Code) == 198))
+                    (Convert.ToInt64(accountsModel.TransactionRecordModelList.Rssi_Tr_Fee_Code) == 67 || Convert.ToInt64(accountsModel.TransactionRecordModelList.Rssi_Tr_Fee_Code) == 198))
                 {
 
-                    result -= Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData);
+                    result -= Convert.ToInt64(accountsModel.TransactionRecordModelList.Rssi_Tr_Amt_PackedData);
                 }
                 FeesAndChargesPaidLastMonth = Convert.ToString(result);
                 //Logger.Trace("ENDED: Get fees and charges paid last month");
@@ -335,7 +335,7 @@ namespace CarringtonService.BillingStatements
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get unapplied funds paid last month");
-                UnappliedFundsPaidLastMonth = Convert.ToString(Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_4_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_5_PackedData));
+                UnappliedFundsPaidLastMonth = Convert.ToString(Convert.ToDecimal(accountModel.TransactionRecordModelList.Rssi_Tr_Amt_To_Evar_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModelList.Rssi_Tr_Amt_To_Evar_2_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModelList.Rssi_Tr_Amt_To_Evar_3_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModelList.Rssi_Tr_Amt_To_Evar_4_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModelList.Rssi_Tr_Amt_To_Evar_5_PackedData));
                 //Logger.Trace("ENDED: Get  unapplied funds paid last month");
             }
             catch (Exception ex)
@@ -352,12 +352,12 @@ namespace CarringtonService.BillingStatements
                 var result = Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Tot_Pd_Since_Lst_Stmt_PackedData);
 
                 //Logger.Trace("STARTED:  Execute to Get total paid last month");
-                if ((Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5705 || Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Log_Tran) == 5707)
+                if ((Convert.ToInt64(accountsModel.TransactionRecordModelList.Rssi_Log_Tran) == 5705 || Convert.ToInt64(accountsModel.TransactionRecordModelList.Rssi_Log_Tran) == 5707)
                     &&
-                    (Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Code) == 67 || Convert.ToInt64(accountsModel.TransactionRecordModel.Rssi_Tr_Fee_Code) == 198))
+                    (Convert.ToInt64(accountsModel.TransactionRecordModelList.Rssi_Tr_Fee_Code) == 67 || Convert.ToInt64(accountsModel.TransactionRecordModelList.Rssi_Tr_Fee_Code) == 198))
                 {
                     //Need to know and Add PriorMoAmnt in this section
-                    result -= Convert.ToDecimal(accountsModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData);
+                    result -= Convert.ToDecimal(accountsModel.TransactionRecordModelList.Rssi_Tr_Amt_PackedData);
                 }
 
                 TotalPaidLastMonth = Convert.ToString(result + Convert.ToDecimal(accountsModel.detModel.PriorMoAmnt));
@@ -382,9 +382,9 @@ namespace CarringtonService.BillingStatements
             {
                 //Logger.Trace("STARTED:  Execute to Get fees and charges paid year to date");
                 var total = Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Fees_Paid_Ytd_PackedData) + Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Late_Chg_Paid_Ytd_PackedData);
-                if ((Convert.ToInt32(accountModel.TransactionRecordModel.Rssi_Log_Tran) == 5705 || Convert.ToInt32(accountModel.TransactionRecordModel.Rssi_Log_Tran) == 5707) && (Convert.ToInt32(accountModel.TransactionRecordModel.Rssi_Tr_Fee_Code) == 67 || Convert.ToInt32(accountModel.TransactionRecordModel.Rssi_Tr_Fee_Code) == 198))
+                if ((Convert.ToInt32(accountModel.TransactionRecordModelList.Rssi_Log_Tran) == 5705 || Convert.ToInt32(accountModel.TransactionRecordModelList.Rssi_Log_Tran) == 5707) && (Convert.ToInt32(accountModel.TransactionRecordModelList.Rssi_Tr_Fee_Code) == 67 || Convert.ToInt32(accountModel.TransactionRecordModelList.Rssi_Tr_Fee_Code) == 198))
                 {
-                    total -= Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData);
+                    total -= Convert.ToDecimal(accountModel.TransactionRecordModelList.Rssi_Tr_Amt_PackedData);
                 }
                 FeesAndChargesPaidYeartoDate = Convert.ToString(total);
                 //Logger.Trace("ENDED: Get fees and charges paid year to date");
@@ -432,11 +432,11 @@ namespace CarringtonService.BillingStatements
                     Convert.ToDecimal(accountModel.MasterFileDataPart2Model.Rssi_Unap_Bal_5_PackedData) : 0) +
                     Convert.ToDecimal(accountModel.SupplementalCCFModel.YTDAmnt);
 
-                if ((Convert.ToInt64(accountModel.TransactionRecordModel.Rssi_Log_Tran) == 5705 || Convert.ToInt64(accountModel.TransactionRecordModel.Rssi_Log_Tran) == 5707)
+                if ((Convert.ToInt64(accountModel.TransactionRecordModelList.Rssi_Log_Tran) == 5705 || Convert.ToInt64(accountModel.TransactionRecordModelList.Rssi_Log_Tran) == 5707)
                     &&
-                    (Convert.ToInt64(accountModel.TransactionRecordModel.Rssi_Tr_Fee_Code) == 67 || Convert.ToInt64(accountModel.TransactionRecordModel.Rssi_Tr_Fee_Code) == 198))
+                    (Convert.ToInt64(accountModel.TransactionRecordModelList.Rssi_Tr_Fee_Code) == 67 || Convert.ToInt64(accountModel.TransactionRecordModelList.Rssi_Tr_Fee_Code) == 198))
                 {
-                    result -= Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData);
+                    result -= Convert.ToDecimal(accountModel.TransactionRecordModelList.Rssi_Tr_Amt_PackedData);
                 }
                 TotalPaidYearToDate = Convert.ToString(result);
 
@@ -478,7 +478,7 @@ namespace CarringtonService.BillingStatements
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get suspense");
-                Suspense = Convert.ToString(Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_2_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_3_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_4_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Evar_5_PackedData));
+                Suspense = Convert.ToString(Convert.ToDecimal(accountModel.TransactionRecordModelList.Rssi_Tr_Amt_To_Evar_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModelList.Rssi_Tr_Amt_To_Evar_2_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModelList.Rssi_Tr_Amt_To_Evar_3_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModelList.Rssi_Tr_Amt_To_Evar_4_PackedData) + Convert.ToDecimal(accountModel.TransactionRecordModelList.Rssi_Tr_Amt_To_Evar_5_PackedData));
                 //Logger.Trace("ENDED: Get suspense");
             }
             catch (Exception ex)
@@ -493,18 +493,18 @@ namespace CarringtonService.BillingStatements
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get miscellaneous");
-                Miscellaneous = Convert.ToString(Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Lip_PackedData) +
-                    Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Cr_Ins_PackedData) +
-                    Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Pi_Shrtg) +
-                    Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Prin_PackedData) +
-                    Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Int_PackedData) +
+                Miscellaneous = Convert.ToString(Convert.ToDecimal(accountModel.TransactionRecordModelList.Rssi_Tr_Amt_To_Lip_PackedData) +
+                    Convert.ToDecimal(accountModel.TransactionRecordModelList.Rssi_Tr_Amt_To_Cr_Ins_PackedData) +
+                    Convert.ToDecimal(accountModel.TransactionRecordModelList.Rssi_Tr_Amt_To_Pi_Shrtg) +
+                    Convert.ToDecimal(accountModel.TransactionRecordModelList.Rssi_Tr_Amt_To_Def_Prin_PackedData) +
+                    Convert.ToDecimal(accountModel.TransactionRecordModelList.Rssi_Tr_Amt_To_Def_Int_PackedData) +
 
-                    Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Late_Chrg_PackedData) +
-                    Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Esc_Adv_PackedData) +
-                    Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Pd_Exp_Adv_PackedData) +
-                    Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Unp_Exp_Adv_PackedData) +
-                    Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Admin_Fees_PackedData) +
-                    Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Amt_To_Def_Optins_PackedData));
+                    Convert.ToDecimal(accountModel.TransactionRecordModelList.Rssi_Tr_Amt_To_Def_Late_Chrg_PackedData) +
+                    Convert.ToDecimal(accountModel.TransactionRecordModelList.Rssi_Tr_Amt_To_Def_Esc_Adv_PackedData) +
+                    Convert.ToDecimal(accountModel.TransactionRecordModelList.Rssi_Tr_Amt_To_Def_Pd_Exp_Adv_PackedData) +
+                    Convert.ToDecimal(accountModel.TransactionRecordModelList.Rssi_Tr_Amt_To_Def_Unp_Exp_Adv_PackedData) +
+                    Convert.ToDecimal(accountModel.TransactionRecordModelList.Rssi_Tr_Amt_To_Def_Admin_Fees_PackedData) +
+                    Convert.ToDecimal(accountModel.TransactionRecordModelList.Rssi_Tr_Amt_To_Def_Optins_PackedData));
                 //Logger.Trace("ENDED: Get miscellaneous");
             }
             catch (Exception ex)
@@ -1370,7 +1370,7 @@ namespace CarringtonService.BillingStatements
                 }
                 else
                 {
-                    Date = accountModel.TransactionRecordModel.Rssi_Tr_Date_PackedData;
+                    Date = accountModel.TransactionRecordModelList.Rssi_Tr_Date_PackedData;
                 }
                 //Logger.Trace("ENDED:  To Get Date");
             }
@@ -1389,9 +1389,9 @@ namespace CarringtonService.BillingStatements
             {
                 //Logger.Trace("STARTED:  Execute to Get Amount");
 
-                if (Convert.ToDecimal(accountModel.TransactionRecordModel.Rssi_Tr_Exp_Fee_Amt_PackedData) != 0)
+                if (Convert.ToDecimal(accountModel.TransactionRecordModelList.Rssi_Tr_Exp_Fee_Amt_PackedData) != 0)
                 {
-                    Amount = accountModel.TransactionRecordModel.Rssi_Tr_Exp_Fee_Amt_PackedData;
+                    Amount = accountModel.TransactionRecordModelList.Rssi_Tr_Exp_Fee_Amt_PackedData;
                 }
                 else if (accountModel.FeeRecordModel.Rssi_Fd_Fee_Type == "000")
                 {
@@ -1399,7 +1399,7 @@ namespace CarringtonService.BillingStatements
                 }
                 else
                 {
-                    Amount = accountModel.TransactionRecordModel.Rssi_Tr_Amt_PackedData;
+                    Amount = accountModel.TransactionRecordModelList.Rssi_Tr_Amt_PackedData;
                 }
                 //Logger.Trace("ENDED:  To Get Amount");
             }

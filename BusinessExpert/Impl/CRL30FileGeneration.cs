@@ -493,9 +493,9 @@ namespace CarringtonService.BusinessExpert
             account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40S", primaryIndex, builder));
             builder.Clear();
             //T
-            foreach (PropertyInfo propertyInfo in accountsModel.TransactionRecordModel.GetType().GetProperties())
+            foreach (PropertyInfo propertyInfo in accountsModel.TransactionRecordModelList.GetType().GetProperties())
             {
-                builder.Append(propertyInfo.GetValue(accountsModel.TransactionRecordModel) + "|");
+                builder.Append(propertyInfo.GetValue(accountsModel.TransactionRecordModelList) + "|");
             }
             account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40T", primaryIndex, builder));
             builder.Clear();

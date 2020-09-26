@@ -1,4 +1,6 @@
 ﻿using CarringtonMortgage.Models.InputCopyBookModels.MortgageLoanBillingModels;
+using System.Collections.Generic;
+
 namespace CarringtonMortgage.Models.InputCopyBookModels
 {
     public class AccountsModel
@@ -25,7 +27,7 @@ namespace CarringtonMortgage.Models.InputCopyBookModels
             RHCDSOnlyRecordModel = new RHCDSOnlyRecordModel();
             SolicitationRecordModel = new SolicitationRecordModel();
             TrailerRecordModel = new TrailerRecordModel();
-            TransactionRecordModel = new TransactionRecordModel();
+            TransactionRecordModelList = new List<TransactionRecordModel>();
             UserFieldRecordModel = new UserFieldRecordModel();
             detModel = new DetModel();
             EConsentModel = new EConsentModel();
@@ -52,7 +54,7 @@ namespace CarringtonMortgage.Models.InputCopyBookModels
         public RHCDSOnlyRecordModel RHCDSOnlyRecordModel { get; set; }
         public SolicitationRecordModel SolicitationRecordModel { get; set; }
         public TrailerRecordModel TrailerRecordModel { get; set; }
-        public TransactionRecordModel TransactionRecordModel { get; set; }
+        public IList<TransactionRecordModel> TransactionRecordModelList { get; set; }
         public UserFieldRecordModel UserFieldRecordModel { get; set; }
         public bool IsMatched { get; set; } = false;
 
