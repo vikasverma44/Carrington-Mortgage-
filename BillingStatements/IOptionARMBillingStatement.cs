@@ -111,7 +111,7 @@ namespace CarringtonService.BillingStatements
         string GetAssistanceAmountOption2(AccountsModel model);
         string GetAssistanceAmountOption3(AccountsModel model);
         string GetAssistanceAmountOption4(AccountsModel model);
-        string GetAttention(AccountsModel accountsModel);
+        string GetAttention(AccountsModel accountsModel, bool isCoBorrower = false);
         string GetBankruptcyMessage(AccountsModel accountsModel);
         string GetBuydownBalance(AccountsModel accountModel);
         string GetChargeOffNotice(AccountsModel accountsModel);
@@ -125,7 +125,7 @@ namespace CarringtonService.BillingStatements
         string GetEscrowOption4(AccountsModel accountModel);
         string GetFeesAndChargesPaidLastMonth(AccountsModel model);
         string GetFeesandChargesPaidYeartoDate(AccountsModel model);
-        StringBuilder GetFinalOptionARMBillingStatement(AccountsModel accountsModel);
+        StringBuilder GetFinalOptionARMBillingStatement(AccountsModel accountsModel, bool isCoBorrower = false);
         string GetForeclosureNotice(AccountsModel accountsModel);
         string GetHold(AccountsModel accountModel);
         string GetHUDPartialClaim(AccountsModel accountsModel);
@@ -138,9 +138,9 @@ namespace CarringtonService.BillingStatements
         string GetLateFee(AccountsModel accountModel);
         string GetLenderPlacedInsuranceMessage(AccountsModel accountsModel);
         string GetLossMitigtationNotice(AccountsModel accountsModel);
-        string GetMailingAddressLine1(AccountsModel accountsModel);
-        string GetMailingAddressLine2(AccountsModel accountsModel);
-        string GetMailingCityStateZip(AccountsModel accountsModel);
+        string GetMailingAddressLine1(AccountsModel accountsModel, bool isCoBorrower = false);
+        string GetMailingAddressLine2(AccountsModel accountsModel, bool isCoBorrower = false);
+        string GetMailingCityStateZip(AccountsModel accountsModel, bool isCoBorrower = false);
         string GetMailingCountry(AccountsModel accountModel);
         string GetMaturityDate(AccountsModel accountModel);
         string GetMinimumLatePaymentAmount(AccountsModel model);
@@ -158,7 +158,7 @@ namespace CarringtonService.BillingStatements
         string GetPaymentIsReceivedAfter(AccountsModel accountModel);
         string GetPOBoxAddress(AccountsModel accountModel);
         string GetPrepaymentPenalty(AccountsModel accountModel);
-        string GetPrimaryBorrower(AccountsModel accountsModel);
+        string GetPrimaryBorrower(AccountsModel accountsModel, bool isCoBorrower = false);
         string GetPrincipalOption1(AccountsModel model);
         string GetPrincipalOption2(AccountsModel model);
         string GetPrincipalOption3(AccountsModel model);
@@ -179,7 +179,7 @@ namespace CarringtonService.BillingStatements
         string GetReplacementReserveOption2(AccountsModel model);
         string GetReplacementReserveOption3(AccountsModel model);
         string GetReplacementReserveOption4(AccountsModel model);
-        string GetSecondaryBorrower(AccountsModel accountsModel);
+        string GetSecondaryBorrower(AccountsModel accountsModel, bool isCoBorrower = false);
         string GetStateDisclosures(AccountsModel accountsModel);
         string GetStateNSFMessage(AccountsModel accountsModel);
         string GetTotalAmountDueOption1(AccountsModel model);

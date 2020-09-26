@@ -11,6 +11,9 @@ using WMS.Framework.Data;
 using WMS.Framework.Data.Records.WorkflowRecords;
 using CarringtonMortgage.OptionAssignment;
 using CarringtonService.Helpers;
+using CarringtonMortgage.Models.InputCopyBookModels;
+using System.Collections.Generic;
+using System.Reflection;
 
 namespace CarringtonService.BusinessExpert
 {
@@ -162,12 +165,12 @@ namespace CarringtonService.BusinessExpert
 
                         if (borrowerList.Count > 0)
                         {
-                            account.Standard.FlexField1 = borrowerList.FirstOrDefault().FlexField1;
-                            account.Standard.FlexField2 = borrowerList.FirstOrDefault().FlexField2;
-                            account.Standard.FlexField3 = borrowerList.FirstOrDefault().FlexField3;
-                            account.Standard.FlexField4 = borrowerList.FirstOrDefault().FlexField4;
-                            account.Standard.FlexField5 = borrowerList.FirstOrDefault().FlexField5;
-                            account.Standard.FlexField6 = borrowerList.FirstOrDefault().FlexField6;
+                            account.Standard.FlexField1 = borrowerList.FirstOrDefault()?.FlexField1;
+                            account.Standard.FlexField2 = borrowerList.FirstOrDefault()?.FlexField2;
+                            account.Standard.FlexField3 = borrowerList.FirstOrDefault()?.FlexField3;
+                            account.Standard.FlexField4 = borrowerList.FirstOrDefault()?.FlexField4;
+                            account.Standard.FlexField5 = borrowerList.FirstOrDefault()?.FlexField5;
+                            account.Standard.FlexField6 = borrowerList.FirstOrDefault()?.FlexField6;
                         }
 
 
@@ -196,7 +199,7 @@ namespace CarringtonService.BusinessExpert
                         if (borrowerList.Count > 0)
                         {
                             //Get Statement based on the Flex fields for account
-                            switch (borrowerList.FirstOrDefault().FlexField2)
+                            switch (borrowerList.FirstOrDefault()?.FlexField2)
                             {
 
                                 //For Chapter 7 Option ARM Statement
@@ -239,6 +242,12 @@ namespace CarringtonService.BusinessExpert
                                     break;
 
                             }
+
+                            //For Raw Data                            
+                            line.Clear();
+                            line = GetRawData(extractAccount);
+                            account.AddCustomerRecord(FormatCustomer.BuildRecord("RAW", primaryIndex, line));
+                            BuildPMRawData(extractAccount, account, primaryIndex);
 
                             //Removing the primary borrower from the list leaving co borrower details inside
                             borrowerList.RemoveAt(0);
@@ -309,9 +318,9 @@ namespace CarringtonService.BusinessExpert
                                         //For Standard Billing Statement
                                         case "STD":
                                             //Set Mailing address according to the conditions
-                                            account.Standard.OriginalAddressLine1 = StandardBillingStatement.GetMailingAddressLine1(extractAccount);
-                                            account.Standard.OriginalAddressLine2 = StandardBillingStatement.GetMailingAddressLine2(extractAccount);
-                                            account.Standard.OriginalAddressLine3 = StandardBillingStatement.GetMailingCityStateZip(extractAccount);
+                                            account.Standard.OriginalAddressLine1 = StandardBillingStatement.GetMailingAddressLine1(extractAccount);//TEMP FIX NEED TO CHANGE
+                                            account.Standard.OriginalAddressLine2 = StandardBillingStatement.GetMailingAddressLine2(extractAccount);//TEMP FIX NEED TO CHANGE
+                                            account.Standard.OriginalAddressLine3 = StandardBillingStatement.GetMailingCityStateZip(extractAccount);//TEMP FIX NEED TO CHANGE
                                             break;
 
                                         default:
@@ -323,7 +332,9 @@ namespace CarringtonService.BusinessExpert
                                     if (primaryAccountRejected)
                                         RejectAccount(account, "Invalid Account");
 
+                                    
                                     account.SequenceTransactions();
+                                    
                                     output.AddAccount(account);
                                     primaryIndex++;//TODO: Need to check this when this task is complete                          
                                 }
@@ -339,7 +350,7 @@ namespace CarringtonService.BusinessExpert
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "GenerateCRL30File Failed :");
+                //Logger.Error(ex, "GenerateCRL30File Failed :");
             }
 
         }
@@ -365,6 +376,213 @@ namespace CarringtonService.BusinessExpert
                 _outputFile = Path.Combine(outPath, OutputFile);
                 Logger.Info($"Output file name: {_outputFile}");
             }
+        }
+
+        /// <summary>
+        /// Get Raw Data
+        /// </summary>
+        /// <param name="accountsModel"></param>
+        /// <returns></returns>
+        private StringBuilder GetRawData(AccountsModel accountsModel)
+        {
+
+            var finalLine = new StringBuilder();
+            finalLine.Append(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap + "|");
+            finalLine.Append(accountsModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id + "|");
+            finalLine.Append(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData + "|");
+            finalLine.Append(accountsModel.UserFieldRecordModel.Rssi_Usr_93 + "|");
+            finalLine.Append(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag + "|");
+            finalLine.Append(accountsModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag + "|");
+            finalLine.Append(accountsModel.MasterFileDataPart_1Model.Rssi_Print_Stmt + "|");
+            finalLine.Append(accountsModel.MasterFileDataPart_1Model.Rssi_State_PackedData + "|");
+            finalLine.Append(accountsModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date + "|");
+            finalLine.Append(accountsModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind + "|");
+            finalLine.Append(accountsModel.MasterFileDataPart_1Model.Rssi_Acct_No + "|");
+            finalLine.Append(accountsModel.MasterFileDataPart_1Model.Rssi_Primary_Name + "|");
+            finalLine.Append(accountsModel.MasterFileDataPart_1Model.Rssi_Secondary_Name + "|");
+            finalLine.Append(accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1 + "|");
+            finalLine.Append(accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_2 + "|");
+            finalLine.Append(accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + "|");
+            finalLine.Append(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData + "|");
+            finalLine.Append(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData + "|");
+            finalLine.Append(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData + "|");
+            finalLine.Append(accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte + "|");
+            finalLine.Append(accountsModel.MasterFileDataPart_1Model.Rssi_Late_Chg_Amt_PackedData + "|");
+            finalLine.Append(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Dte + "|");
+            finalLine.Append(accountsModel.MasterFileDataPart2Model.Rssi_Tot_Draft_Amt_PackedData + "|");
+            finalLine.Append(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt1_PackedData + "|");
+            finalLine.Append(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt2_PackedData + "|");
+            finalLine.Append(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData + "|");
+            finalLine.Append(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData + "|");
+
+
+            return finalLine;
+
+        }
+
+        /// <summary>
+        /// Build file RAW Data
+        /// </summary>
+        /// <param name="accountsModel"></param>
+        /// <param name="account"></param>
+        /// <param name="primaryIndex"></param>
+        private void BuildPMRawData(AccountsModel accountsModel, CustomerAccount account, int primaryIndex)
+        {
+            var builder = new StringBuilder();
+            //A
+            foreach (PropertyInfo propertyInfo in accountsModel.MasterFileDataPart_1Model.GetType().GetProperties())
+            {
+                builder.Append(propertyInfo.GetValue(accountsModel.MasterFileDataPart_1Model) + "|");
+            }
+            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40A", primaryIndex, builder));
+            builder.Clear();
+            //2
+            foreach (PropertyInfo propertyInfo in accountsModel.MasterFileDataPart2Model.GetType().GetProperties())
+            {
+                builder.Append(propertyInfo.GetValue(accountsModel.MasterFileDataPart2Model) + "|");
+            }
+            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM402", primaryIndex, builder));
+            builder.Clear();
+            //U
+            foreach (PropertyInfo propertyInfo in accountsModel.UserFieldRecordModel.GetType().GetProperties())
+            {
+                builder.Append(propertyInfo.GetValue(accountsModel.UserFieldRecordModel) + "|");
+            }
+            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40U", primaryIndex, builder));
+            builder.Clear();
+            //L
+            foreach (PropertyInfo propertyInfo in accountsModel.MultiLockboxRecordModel.GetType().GetProperties())
+            {
+                builder.Append(propertyInfo.GetValue(accountsModel.MultiLockboxRecordModel) + "|");
+            }
+            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40L", primaryIndex, builder));
+            builder.Clear();
+            //R
+            foreach (PropertyInfo propertyInfo in accountsModel.RateReductionRecordModel.GetType().GetProperties())
+            {
+                builder.Append(propertyInfo.GetValue(accountsModel.RateReductionRecordModel) + "|");
+            }
+            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40R", primaryIndex, builder));
+            builder.Clear();
+            //E
+            foreach (PropertyInfo propertyInfo in accountsModel.EscrowRecordModel.GetType().GetProperties())
+            {
+                builder.Append(propertyInfo.GetValue(accountsModel.EscrowRecordModel) + "|");
+            }
+            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40E", primaryIndex, builder));
+            builder.Clear();
+            //O
+            foreach (PropertyInfo propertyInfo in accountsModel.OptionalItemEscrowRecordModel.GetType().GetProperties())
+            {
+                builder.Append(propertyInfo.GetValue(accountsModel.OptionalItemEscrowRecordModel) + "|");
+            }
+            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40O", primaryIndex, builder));
+            builder.Clear();
+            //F
+            foreach (PropertyInfo propertyInfo in accountsModel.FeeRecordModel.GetType().GetProperties())
+            {
+                builder.Append(propertyInfo.GetValue(accountsModel.FeeRecordModel) + "|");
+            }
+            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40F", primaryIndex, builder));
+            builder.Clear();
+            //S
+            foreach (PropertyInfo propertyInfo in accountsModel.SolicitationRecordModel.GetType().GetProperties())
+            {
+                builder.Append(propertyInfo.GetValue(accountsModel.SolicitationRecordModel) + "|");
+            }
+            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40S", primaryIndex, builder));
+            builder.Clear();
+            //T
+            foreach (var transactionRecord in accountsModel.TransactionRecordModelList) 
+            {
+                foreach (PropertyInfo propertyInfo in transactionRecord.GetType().GetProperties())
+                {
+                    builder.Append(propertyInfo.GetValue(transactionRecord) + "|");
+                }
+                account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40T", primaryIndex, builder));
+                builder.Clear();
+            }
+          
+            //C
+            foreach (PropertyInfo propertyInfo in accountsModel.ForeignInformationRecordModel.GetType().GetProperties())
+            {
+                builder.Append(propertyInfo.GetValue(accountsModel.ForeignInformationRecordModel) + "|");
+            }
+            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40C", primaryIndex, builder));
+            builder.Clear();
+            //D
+            foreach (PropertyInfo propertyInfo in accountsModel.BlendedRateInformationRecordModel.GetType().GetProperties())
+            {
+                builder.Append(propertyInfo.GetValue(accountsModel.BlendedRateInformationRecordModel) + "|");
+            }
+            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40D", primaryIndex, builder));
+            builder.Clear();
+            //I
+            foreach (PropertyInfo propertyInfo in accountsModel.CoBorrowerRecordModel.GetType().GetProperties())
+            {
+                builder.Append(propertyInfo.GetValue(accountsModel.CoBorrowerRecordModel) + "|");
+            }
+            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40I", primaryIndex, builder));
+            builder.Clear();
+            //<
+            foreach (PropertyInfo propertyInfo in accountsModel.LateChargeInformationRecordModel.GetType().GetProperties())
+            {
+                builder.Append(propertyInfo.GetValue(accountsModel.LateChargeInformationRecordModel) + "|");
+            }
+            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40<", primaryIndex, builder));
+            builder.Clear();
+
+            //-
+            foreach (PropertyInfo propertyInfo in accountsModel.LateChargeDetailRecordModel.GetType().GetProperties())
+            {
+                builder.Append(propertyInfo.GetValue(accountsModel.LateChargeDetailRecordModel) + "|");
+            }
+            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40-", primaryIndex, builder));
+            builder.Clear();
+
+            //J
+            foreach (PropertyInfo propertyInfo in accountsModel.ActiveBankruptcyInformationRecordModel.GetType().GetProperties())
+            {
+                builder.Append(propertyInfo.GetValue(accountsModel.ActiveBankruptcyInformationRecordModel) + "|");
+            }
+            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40J", primaryIndex, builder));
+            builder.Clear();
+            //K
+            foreach (PropertyInfo propertyInfo in accountsModel.ArchivedBankruptcyDetailRecordModel.GetType().GetProperties())
+            {
+                builder.Append(propertyInfo.GetValue(accountsModel.ArchivedBankruptcyDetailRecordModel) + "|");
+            }
+            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40K", primaryIndex, builder));
+            builder.Clear();
+            //X
+            foreach (PropertyInfo propertyInfo in accountsModel.EmailAddressRecordModel.GetType().GetProperties())
+            {
+                builder.Append(propertyInfo.GetValue(accountsModel.EmailAddressRecordModel) + "|");
+            }
+            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40X", primaryIndex, builder));
+            builder.Clear();
+            //3
+            foreach (PropertyInfo propertyInfo in accountsModel.DisasterTrackingRecordModel.GetType().GetProperties())
+            {
+                builder.Append(propertyInfo.GetValue(accountsModel.DisasterTrackingRecordModel) + "|");
+            }
+            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM403", primaryIndex, builder));
+            builder.Clear();
+            //4
+            foreach (PropertyInfo propertyInfo in accountsModel.RHCDSOnlyRecordModel.GetType().GetProperties())
+            {
+                builder.Append(propertyInfo.GetValue(accountsModel.RHCDSOnlyRecordModel) + "|");
+            }
+            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM404", primaryIndex, builder));
+            builder.Clear();
+            //Z
+            foreach (PropertyInfo propertyInfo in accountsModel.TrailerRecordModel.GetType().GetProperties())
+            {
+                builder.Append(propertyInfo.GetValue(accountsModel.TrailerRecordModel) + "|");
+            }
+            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40Z", primaryIndex, builder));
+            builder.Clear();
+            
         }
     }
 }

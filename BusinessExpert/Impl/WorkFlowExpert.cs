@@ -366,7 +366,7 @@ namespace CarringtonService.BusinessExpert
                             GetTrailerRecords(currentByteLine, ref accountsModel);
                         }
 
-                      
+
 
                     }
                     iBytesRead = InputFileStream.Read(currentByteLine, 0, numOfBytes);
@@ -392,17 +392,21 @@ namespace CarringtonService.BusinessExpert
         /// </summary>
         private void SetSupplimentalAndEConsentModel(AccountsModel model)
         {
+            var ytdAmount = detModels.Where(df =>
+                   df.LoanNumber == accountsModel.MasterFileDataPart_1Model.Rssi_Acct_No).FirstOrDefault()?.YTDAmnt;
+            var priorMoAmnt = detModels.Where(df =>
+                  df.LoanNumber == accountsModel.MasterFileDataPart_1Model.Rssi_Acct_No).FirstOrDefault()?.PriorMoAmnt;
+            var flagRecordIndicator = detModels.Where(df =>
+                  df.LoanNumber == accountsModel.MasterFileDataPart_1Model.Rssi_Acct_No).FirstOrDefault()?.FlagRecordIndicator;
+
+
             //Adding values from Supplimental file
             model.SupplementalCCFModel = new SupplementalCCFModel
             {
-                YTDAmnt = detModels.Where(df =>
-                 df.LoanNumber == accountsModel.MasterFileDataPart_1Model.Rssi_Acct_No).FirstOrDefault()?.YTDAmnt,
+                YTDAmnt = ytdAmount == "" ? "0" : ytdAmount,
+                PriorMoAmnt = priorMoAmnt == "" ? "0" : priorMoAmnt,
+                FlagRecordIndicator = flagRecordIndicator == "" ? "0" : flagRecordIndicator,
 
-                PriorMoAmnt = detModels.Where(df =>
-                 df.LoanNumber == accountsModel.MasterFileDataPart_1Model.Rssi_Acct_No).FirstOrDefault()?.PriorMoAmnt,
-
-                FlagRecordIndicator = detModels.Where(df =>
-                 df.LoanNumber == accountsModel.MasterFileDataPart_1Model.Rssi_Acct_No).FirstOrDefault()?.FlagRecordIndicator
             };
 
             //Adding values  from eConsent file
@@ -2520,7 +2524,8 @@ namespace CarringtonService.BusinessExpert
         // T Transaction Record. Multiple records per loan if applicable.
         public void GetTransactionRecordModel(byte[] currentByte, ref AccountsModel acc)
         {
-            acc.TransactionRecordModel = new TransactionRecordModel()
+           
+           var transactionRecordModel = new TransactionRecordModel()
             {
                 Rssi_Rcd_Id = PackedTypeCheckAndUnPackData("Rssi_Rcd_Id", currentByte, 1, 1),
                 Rssi_Inst = PackedTypeCheckAndUnPackData("Rssi_Inst", currentByte, 2, 3),
@@ -2640,6 +2645,7 @@ namespace CarringtonService.BusinessExpert
                 Filler_459_1500 = PackedTypeCheckAndUnPackData("Filler_459_1500", currentByte, 459, 1042),
 
             };
+            acc.TransactionRecordModelList.Add(transactionRecordModel);
         }
 
         // C Foreign Information Record. One record per loan if applicable.
@@ -3337,12 +3343,26 @@ namespace CarringtonService.BusinessExpert
             //}
         }
 
+        //public string PackedTypeCheckAndUnPackData(string propertyName, byte[] data, int start, int length, int decimalPlaces = 0, bool hasSign = true)
+        //{
+        //    try
+        //    {
+        //        return NewPackedTypeCheckAndUnPackData(propertyName, data, start, length, decimalPlaces, hasSign);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Logger.Error(ex, "Data not at Position = " + start);
+        //        return "";
+        //    }
+        //}
         public string PackedTypeCheckAndUnPackData(string propertyName, byte[] data, int start, int length, int decimalPlaces = 0, bool hasSign = true)
         {
             try
             {
                 if (propertyName.Contains("PackedData") && propertyName != null)
                 {
+                    if(propertyName.EndsWith("State_PackedData"))
+                        return NewPackedTypeCheckAndUnPackData(propertyName, data, start, length, decimalPlaces, hasSign);
                     var buffer = new byte[length];
                     Array.Copy(data, start - 1, buffer, 0, length);
                     string output = string.Empty;
@@ -3430,6 +3450,101 @@ namespace CarringtonService.BusinessExpert
                 }
             }
 
+        }
+
+        public string NewPackedTypeCheckAndUnPackData(string propertyName, byte[] data, int start, int length, int decimalPlaces = 0, bool hasSign = true)
+        {
+            try
+            {
+                if (propertyName.Contains("PackedData") && propertyName != null)
+                {
+                    var buffer = new byte[length];
+                    Array.Copy(data, start - 1, buffer, 0, length);
+                    string output = string.Empty;
+                    var result =  Unpack(buffer, 0, propertyName);
+                    output = Convert.ToString(result);
+                    
+                    return output;
+                }
+                else
+                {
+                    return GetPositionData(data, start, length, decimalPlaces, propertyName);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "Data not at Position = " + start);
+                return "";
+            }
+        }
+        private static Decimal Unpack(byte[] inp, int scale, string propertyName)
+        {
+            long lo = 0;
+            long mid = 0;
+            long hi = 0;
+            bool isNegative;
+
+            // this nybble stores only the sign, not a digit.  
+            // "C" hex is positive, "D" hex is negative, and "F" hex is unsigned. 
+            switch (nibble(inp, 0))
+            {
+                case 0x0D:
+                    isNegative = true;
+                    break;
+                case 0x0F:
+                case 0x0C:
+                    isNegative = false;
+                    break;
+                default:
+                    throw new Exception("Bad sign nibble");
+            }
+            long intermediate;
+            long carry;
+            long digit;
+            for (int j = inp.Length * 2 - 1; j > 0; j--)
+            {
+                // multiply by 10
+                intermediate = lo * 10;
+                lo = intermediate & 0xffffffff;
+                carry = intermediate >> 32;
+                intermediate = mid * 10 + carry;
+                mid = intermediate & 0xffffffff;
+                carry = intermediate >> 32;
+                intermediate = hi * 10 + carry;
+                hi = intermediate & 0xffffffff;
+                carry = intermediate >> 32;
+                // By limiting input length to 14, we ensure overflow will never occur
+
+                digit = nibble(inp, j);
+                if (digit > 9)
+                {
+                    throw new Exception("Bad digit");
+                }
+                intermediate = lo + digit;
+                lo = intermediate & 0xffffffff;
+                carry = intermediate >> 32;
+                if (carry > 0)
+                {
+                    intermediate = mid + carry;
+                    mid = intermediate & 0xffffffff;
+                    carry = intermediate >> 32;
+                    if (carry > 0)
+                    {
+                        intermediate = hi + carry;
+                        hi = intermediate & 0xffffffff;
+                        carry = intermediate >> 32;
+                        // carry should never be non-zero. Back up with validation
+                    }
+                }
+            }
+            return new Decimal((int)lo, (int)mid, (int)hi, isNegative, (byte)scale);
+        }
+
+        private static int nibble(byte[] inp, int nibbleNo)
+        {
+            int b = inp[inp.Length - 1 - nibbleNo / 2];
+            return (nibbleNo % 2 == 0) ? (b & 0x0000000F) : (b >> 4);
         }
         #endregion
 

@@ -50,7 +50,7 @@ namespace CarringtonService.BillingStatements
         string UnappliedFundsPaidYearToDate { get; set; }
 
         string GetAutodraftMessage(AccountsModel accountModel);
-        string GetBorrowerAttorneyMailingCityStateZip(AccountsModel accountModel);
+        string GetBorrowerAttorneyMailingCityStateZip(AccountsModel accountsModel, bool isCoBorrower = false);
         string GetBuydownBalance(AccountsModel accountModel);
         string GetCarringtonCharitableFoundation(AccountsModel accountModel);
         string GetCarringtonFoundationDonationPaidLastMonth(AccountsModel accountModel);
@@ -60,23 +60,23 @@ namespace CarringtonService.BillingStatements
         string GetEscrowTaxesandInsurance(AccountsModel accountModel);
         string GetFeesAndChargesPaidLastMonth(AccountsModel accountsModel);
         string GetFeesAndChargesPaidYeartoDate(AccountsModel accountModel);
-        StringBuilder GetFinalChapterThirteenBillingStatement(AccountsModel accountModel);
+        StringBuilder GetFinalChapterThirteenBillingStatement(AccountsModel accountModel, bool isCoBorrower = false);
         string GetHUDPartialClaim(AccountsModel accountModel);
         string GetInterest(AccountsModel accountModel);
         string GetInterestRateUntil(AccountsModel accountModel);
         string GetLenderPlacedInsuranceMessage(AccountsModel accountModel);
-        string GetMailingBKAttorneyAddressLine1(AccountsModel accountModel);
-        string GetMailingBKAttorneyAddressLine2(AccountsModel accountModel);
-        string GetMailingCountry(AccountsModel accountModel);
+        string GetMailingBKAttorneyAddressLine1(AccountsModel accountModel, bool isCoborrower = false);
+        string GetMailingBKAttorneyAddressLine2(AccountsModel accountModel, bool isCoborrower = false);
+        string GetMailingCountry(AccountsModel accountsModel, bool isCoBorrower = false);
         string GetMiscellaneous(AccountsModel accountModel);
         string GetPartialClaim(AccountsModel accountModel);
         string GetPastUnpaidAmount(AccountsModel accountsModel);
         string GetPaymentAmount(AccountsModel accountsModel);
-        string GetPaymentInformationMessage(AccountsModel accountModel);
+        string GetPaymentInformationMessage(AccountsModel accountsModel);
         string GetPOBoxAddress(AccountsModel accountModel);
         string GetPostPetitonPastDueMessage(AccountsModel accountModel);
         string GetPrepaymentPenalty(AccountsModel accountModel);
-        string GetPrimaryBorrowerBKAttorney(AccountsModel accountModel);
+        string GetPrimaryBorrowerBKAttorney(AccountsModel accountModel, bool isCoborrower = false);
         string GetPrincipal(AccountsModel accountsModel);
         string GetPrintStatement(AccountsModel accountModel);
         string GetRegularMonthlyPayment(AccountsModel accountModel);

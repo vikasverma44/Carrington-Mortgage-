@@ -69,5 +69,19 @@ namespace CarringtonMortgage.Helpers
                 return Convert.ToString(DateTime.MinValue);
             }
         }
+
+        public static string GetDateInDDMMYYFormat(string date)
+        {
+            try
+            {
+                var parsedDate = DateTime.ParseExact(date, "yyyyMMdd", System.Globalization.CultureInfo.InvariantCulture);
+                var formattedDate = parsedDate.ToString("dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                return formattedDate;
+            }
+            catch (Exception ex)
+            {
+                return Convert.ToString(DateTime.MinValue);
+            }
+        }
     }
 }
