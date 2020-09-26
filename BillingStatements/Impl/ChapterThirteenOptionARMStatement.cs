@@ -407,7 +407,7 @@ namespace CarringtonService.BillingStatements
                    + tra.Rssi_Tr_Amt_To_Evar_5_PackedData == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_5_PackedData);
                 }
                 //corrupted data
-                FeesandChargesPaidLastMonth = Convert.ToString(total);
+                UnappliedFundsPaidLastMonth = Convert.ToString(total);
 
                 //Logger.Trace("ENDED:  To Get Unapplied Funds Paid Last Month");
             }
