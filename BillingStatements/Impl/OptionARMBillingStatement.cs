@@ -2,6 +2,7 @@
 using CarringtonMortgage.Models.InputCopyBookModels;
 using CarringtonService.Helpers;
 using System;
+using System.Linq;
 using System.Text;
 
 namespace CarringtonService.BillingStatements
@@ -131,7 +132,7 @@ namespace CarringtonService.BillingStatements
         public string paymentInformationMessage { get; private set; }
 
         #endregion
-        public StringBuilder GetFinalOptionARMBillingStatement(AccountsModel accountsModel, bool isCoBorrower =false )
+        public StringBuilder GetFinalOptionARMBillingStatement(AccountsModel accountsModel, bool isCoBorrower = false)
         {
             ExMessage = "Error Message";
             finalLine = new StringBuilder();
@@ -522,14 +523,17 @@ namespace CarringtonService.BillingStatements
         {  //TOD0:Revisit Again exception
             try
             {
-                UnappliedFundsPaidLastMonth = Convert.ToString(
-                    Convert.ToDecimal(model.TransactionRecordModelList.Rssi_Tr_Amt_To_Evar_PackedData)
-                     + Convert.ToDecimal(model.TransactionRecordModelList.Rssi_Tr_Amt_To_Evar_2_PackedData)
-                      + Convert.ToDecimal(model.TransactionRecordModelList.Rssi_Tr_Amt_To_Evar_3_PackedData)
-                       + Convert.ToDecimal(model.TransactionRecordModelList.Rssi_Tr_Amt_To_Evar_4_PackedData)
-                        + Convert.ToDecimal(model.TransactionRecordModelList.Rssi_Tr_Amt_To_Evar_5_PackedData));
+                decimal total = 0;
+                foreach (var tra in model.TransactionRecordModelList)
+                {
+                    total += Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_PackedData)
+                         + Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_2_PackedData)
+                         + Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_3_PackedData)
+                         + Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_4_PackedData)
+                         + Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_5_PackedData);
 
-                return UnappliedFundsPaidLastMonth;
+                }
+                return UnappliedFundsPaidLastMonth = Convert.ToString(total);
 
             }
             catch (Exception ex)
@@ -795,24 +799,45 @@ namespace CarringtonService.BillingStatements
                 }
                 else
                 {
-                    var Total = Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData)
-                    + Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData);
+                    //var Total = Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData)
+                    //+ Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData);
 
-                    if (Convert.ToDecimal(accountsModel.TransactionRecordModelList.Rssi_Log_Tran) == 5605
-                        && (Convert.ToDecimal(accountsModel.TransactionRecordModelList.Rssi_Tr_Fee_Desc) == 67))
+                    //if (Convert.ToDecimal(accountsModel.TransactionRecordModelList.Rssi_Log_Tran) == 5605
+                    //    && (Convert.ToDecimal(accountsModel.TransactionRecordModelList.Rssi_Tr_Fee_Desc) == 67))
+                    //{
+                    //    Total = Total - Convert.ToDecimal(accountsModel.TransactionRecordModelList.Rssi_Tr_Amt_PackedData);
+                    //}
+                    //if ((Convert.ToDecimal(accountsModel.TransactionRecordModelList.Rssi_Log_Tran) == 5605
+                    //     || Convert.ToDecimal(accountsModel.TransactionRecordModelList.Rssi_Log_Tran) == 5707)
+                    //     && (Convert.ToDecimal(accountsModel.TransactionRecordModelList.Rssi_Tr_Fee_Desc) == 198))
+                    //{
+                    //    Total = Total - Convert.ToDecimal(accountsModel.TransactionRecordModelList.Rssi_Tr_Amt_PackedData);
+                    //}
+                    var Total = Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData)
+                             + Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData);
+
+                    var result = from s in accountsModel.TransactionRecordModelList
+                                                   where s.Rssi_Log_Tran == "5605"
+                                                   && s.Rssi_Tr_Fee_Code == "67"
+                                                   select (s.Rssi_Tr_Amt_PackedData);
+
+                    var res = from s in accountsModel.TransactionRecordModelList
+                                                where (s.Rssi_Log_Tran == "5605" || s.Rssi_Log_Tran == "5707")
+                                                && s.Rssi_Tr_Fee_Code == "198"
+                                                select (s.Rssi_Tr_Amt_PackedData);
+                    if (result != null)
                     {
-                        Total = Total - Convert.ToDecimal(accountsModel.TransactionRecordModelList.Rssi_Tr_Amt_PackedData);
+                        Total -= Convert.ToDecimal(result);
                     }
-                    if ((Convert.ToDecimal(accountsModel.TransactionRecordModelList.Rssi_Log_Tran) == 5605
-                         || Convert.ToDecimal(accountsModel.TransactionRecordModelList.Rssi_Log_Tran) == 5707)
-                         && (Convert.ToDecimal(accountsModel.TransactionRecordModelList.Rssi_Tr_Fee_Desc) == 198))
+                    else if (res != null)
                     {
-                        Total = Total - Convert.ToDecimal(accountsModel.TransactionRecordModelList.Rssi_Tr_Amt_PackedData);
+                        Total -= Convert.ToDecimal(res);
                     }
-                    else
-                    {
-                        TotalFeesChargedOption1 = Convert.ToString(Total);
-                    }
+                    //else
+                    //{
+                    //    TotalFeesChargedOption1 = Convert.ToString(Total);
+                    //}
+                    TotalFeesChargedOption1 = Convert.ToString(Total);
                 }
                 //Logger.Trace("ENDED:    Total Fees Charged Option1 operation.");
             }
@@ -1081,24 +1106,46 @@ namespace CarringtonService.BillingStatements
                 }
                 else
                 {
-                    var Total = Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData)
-                    + Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData);
+                    //var Total = Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData)
+                    //+ Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData);
 
-                    if (Convert.ToDecimal(accountsModel.TransactionRecordModelList.Rssi_Log_Tran) == 5605
-                        && (Convert.ToDecimal(accountsModel.TransactionRecordModelList.Rssi_Tr_Fee_Desc) == 67))
+                    //if (Convert.ToDecimal(accountsModel.TransactionRecordModelList.Rssi_Log_Tran) == 5605
+                    //    && (Convert.ToDecimal(accountsModel.TransactionRecordModelList.Rssi_Tr_Fee_Desc) == 67))
+                    //{
+                    //    Total = Total - Convert.ToDecimal(accountsModel.TransactionRecordModelList.Rssi_Tr_Amt_PackedData);
+                    //}
+                    //if ((Convert.ToDecimal(accountsModel.TransactionRecordModelList.Rssi_Log_Tran) == 5605
+                    //     || Convert.ToDecimal(accountsModel.TransactionRecordModelList.Rssi_Log_Tran) == 5707)
+                    //     && (Convert.ToDecimal(accountsModel.TransactionRecordModelList.Rssi_Tr_Fee_Desc) == 198))
+                    //{
+                    //    Total = Total - Convert.ToDecimal(accountsModel.TransactionRecordModelList.Rssi_Tr_Amt_PackedData);
+                    //}
+                    //else
+                    //{
+                    //    TotalFeesChargedOption2 = Convert.ToString(Total);
+                    //}
+                    var Total = Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData)
+                                + Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData);
+
+                    var result = from s in accountsModel.TransactionRecordModelList
+                                                   where s.Rssi_Log_Tran == "5605"
+                                                   && s.Rssi_Tr_Fee_Code == "67"
+                                                   select (s.Rssi_Tr_Amt_PackedData);
+
+                    var res = from s in accountsModel.TransactionRecordModelList
+                                                where (s.Rssi_Log_Tran == "5605" || s.Rssi_Log_Tran == "5707")
+                                                && s.Rssi_Tr_Fee_Code == "198"
+                                                select (s.Rssi_Tr_Amt_PackedData);
+                    if (result != null)
                     {
-                        Total = Total - Convert.ToDecimal(accountsModel.TransactionRecordModelList.Rssi_Tr_Amt_PackedData);
+                        Total -= Convert.ToDecimal(result);
                     }
-                    if ((Convert.ToDecimal(accountsModel.TransactionRecordModelList.Rssi_Log_Tran) == 5605
-                         || Convert.ToDecimal(accountsModel.TransactionRecordModelList.Rssi_Log_Tran) == 5707)
-                         && (Convert.ToDecimal(accountsModel.TransactionRecordModelList.Rssi_Tr_Fee_Desc) == 198))
+                    else if (res != null)
                     {
-                        Total = Total - Convert.ToDecimal(accountsModel.TransactionRecordModelList.Rssi_Tr_Amt_PackedData);
+                        Total -= Convert.ToDecimal(res);
                     }
-                    else
-                    {
-                        TotalFeesChargedOption2 = Convert.ToString(Total);
-                    }
+
+                    TotalFeesChargedOption1 = Convert.ToString(Total);
                 }
                 return TotalFeesChargedOption2;
             }
@@ -1367,22 +1414,24 @@ namespace CarringtonService.BillingStatements
                 else
                 {
                     var Total = Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData)
-                    + Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData);
+                               + Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData);
 
-                    if (Convert.ToDecimal(accountsModel.TransactionRecordModelList.Rssi_Log_Tran) == 5605
-                        && (Convert.ToDecimal(accountsModel.TransactionRecordModelList.Rssi_Tr_Fee_Desc) == 67))
+                    var result = from s in accountsModel.TransactionRecordModelList
+                                 where s.Rssi_Log_Tran == "5605"
+                                 && s.Rssi_Tr_Fee_Code == "67"
+                                 select (s.Rssi_Tr_Amt_PackedData);
+
+                    var res = from s in accountsModel.TransactionRecordModelList
+                              where (s.Rssi_Log_Tran == "5605" || s.Rssi_Log_Tran == "5707")
+                              && s.Rssi_Tr_Fee_Code == "198"
+                              select (s.Rssi_Tr_Amt_PackedData);
+                    if (result != null)
                     {
-                        Total = Total - Convert.ToDecimal(accountsModel.TransactionRecordModelList.Rssi_Tr_Amt_PackedData);
+                        Total -= Convert.ToDecimal(result);
                     }
-                    if ((Convert.ToDecimal(accountsModel.TransactionRecordModelList.Rssi_Log_Tran) == 5605
-                         || Convert.ToDecimal(accountsModel.TransactionRecordModelList.Rssi_Log_Tran) == 5707)
-                         && (Convert.ToDecimal(accountsModel.TransactionRecordModelList.Rssi_Tr_Fee_Desc) == 198))
+                    else if (res != null)
                     {
-                        Total = Total - Convert.ToDecimal(accountsModel.TransactionRecordModelList.Rssi_Tr_Amt_PackedData);
-                    }
-                    else
-                    {
-                        TotalFeesChargedOption3 = Convert.ToString(Total);
+                        Total -= Convert.ToDecimal(res);
                     }
                 }
                 return TotalFeesChargedOption3;
@@ -1654,24 +1703,24 @@ namespace CarringtonService.BillingStatements
                 else
                 {
                     var Total = Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData)
-                    + Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData);
+                               + Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData);
 
-                    if (accountsModel.TransactionRecordModelList.Rssi_Log_Tran != null && accountsModel.TransactionRecordModelList.Rssi_Tr_Fee_Desc != null &&
-                        accountsModel.TransactionRecordModelList.Rssi_Log_Tran == "5605"
-                        && (accountsModel.TransactionRecordModelList.Rssi_Tr_Fee_Desc == "67"))
+                    var result = from s in accountsModel.TransactionRecordModelList
+                                 where s.Rssi_Log_Tran == "5605"
+                                 && s.Rssi_Tr_Fee_Code == "67"
+                                 select (s.Rssi_Tr_Amt_PackedData);
+
+                    var res = from s in accountsModel.TransactionRecordModelList
+                              where (s.Rssi_Log_Tran == "5605" || s.Rssi_Log_Tran == "5707")
+                              && s.Rssi_Tr_Fee_Code == "198"
+                              select (s.Rssi_Tr_Amt_PackedData);
+                    if (result != null)
                     {
-                        Total = Total - Convert.ToDecimal(accountsModel.TransactionRecordModelList.Rssi_Tr_Amt_PackedData);
+                        Total -= Convert.ToDecimal(result);
                     }
-                    if (accountsModel.TransactionRecordModelList.Rssi_Log_Tran != null && accountsModel.TransactionRecordModelList.Rssi_Tr_Fee_Desc != null &&
-                        (Convert.ToDecimal(accountsModel.TransactionRecordModelList.Rssi_Log_Tran) == 5605
-                         || accountsModel.TransactionRecordModelList.Rssi_Log_Tran == "5707")
-                         && (accountsModel.TransactionRecordModelList.Rssi_Tr_Fee_Desc == "198"))
+                    else if (res != null)
                     {
-                        Total = Total - Convert.ToDecimal(accountsModel.TransactionRecordModelList.Rssi_Tr_Amt_PackedData);
-                    }
-                    else
-                    {
-                        TotalFeesChargedOption4 = Convert.ToString(Total);
+                        Total -= Convert.ToDecimal(res);
                     }
                 }
                 //Logger.Trace("ENDED:   Total Fees Charged Option4 operation.");
@@ -1797,16 +1846,16 @@ namespace CarringtonService.BillingStatements
         { //TOD0:Revisit Again
             try
             {
-                if (model.TransactionRecordModelList.Rssi_Tr_Amt_To_Evar_2_PackedData != null && model.TransactionRecordModelList.Rssi_Tr_Amt_To_Evar_3_PackedData != null
-                    && model.TransactionRecordModelList.Rssi_Tr_Amt_To_Evar_4_PackedData != null && model.TransactionRecordModelList.Rssi_Tr_Amt_To_Evar_5_PackedData != null)
+                decimal total = 0;
+                foreach (var tra in model.TransactionRecordModelList)
                 {
-                    Suspense = Convert.ToString(Convert.ToDecimal(model.TransactionRecordModelList.Rssi_Tr_Amt_To_Evar_PackedData) +
-       Convert.ToDecimal((model.TransactionRecordModelList.Rssi_Tr_Amt_To_Evar_2_PackedData.Replace("{", "")).Replace("}", "").Replace("P", "")) +
-       Convert.ToDecimal((model.TransactionRecordModelList.Rssi_Tr_Amt_To_Evar_3_PackedData.Replace("{", "")).Replace("}", "").Replace("P", "")) +
-       Convert.ToDecimal((model.TransactionRecordModelList.Rssi_Tr_Amt_To_Evar_4_PackedData.Replace("{", "")).Replace("}", "").Replace("P", "")) +
-       Convert.ToDecimal((model.TransactionRecordModelList.Rssi_Tr_Amt_To_Evar_5_PackedData.Replace("{", "")).Replace("}", "").Replace("P", "")));
+                    total += Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_PackedData) +
+                               Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_2_PackedData) +
+                               Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_3_PackedData) +
+                               Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_4_PackedData) +
+                               Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_5_PackedData);
                 }
-                return Suspense;
+                return Suspense = Convert.ToString(total);
             }
             catch (Exception ex)
             {
@@ -1823,26 +1872,32 @@ namespace CarringtonService.BillingStatements
         {
             try
             {
-                Miscellaneous = Convert.ToString(
-                  (model.TransactionRecordModelList.Rssi_Tr_Amt_To_Lip_PackedData == null ? 0 : Convert.ToDecimal(model.TransactionRecordModelList.Rssi_Tr_Amt_To_Lip_PackedData))
-                + (model.TransactionRecordModelList.Rssi_Tr_Amt_To_Cr_Ins_PackedData == null ? 0 : Convert.ToDecimal(model.TransactionRecordModelList.Rssi_Tr_Amt_To_Cr_Ins_PackedData))
-                + (model.TransactionRecordModelList.Rssi_Tr_Amt_To_Pi_Shrtg == null ? 0 : Convert.ToDecimal(model.TransactionRecordModelList.Rssi_Tr_Amt_To_Pi_Shrtg.Replace("{", "").Replace("}", "")))
-                + (model.TransactionRecordModelList.Rssi_Tr_Amt_To_Def_Prin_PackedData == null ? 0 : Convert.ToDecimal(model.TransactionRecordModelList.Rssi_Tr_Amt_To_Def_Prin_PackedData))
-                + (model.TransactionRecordModelList.Rssi_Tr_Amt_To_Def_Int_PackedData == null ? 0 : Convert.ToDecimal(model.TransactionRecordModelList.Rssi_Tr_Amt_To_Def_Int_PackedData))
-                + (model.TransactionRecordModelList.Rssi_Tr_Amt_To_Def_Late_Chrg_PackedData == null ? 0 : Convert.ToDecimal(model.TransactionRecordModelList.Rssi_Tr_Amt_To_Def_Late_Chrg_PackedData))
-                + (model.TransactionRecordModelList.Rssi_Tr_Amt_To_Def_Esc_Adv_PackedData == null ? 0 : Convert.ToDecimal(model.TransactionRecordModelList.Rssi_Tr_Amt_To_Def_Esc_Adv_PackedData))
-                + (model.TransactionRecordModelList.Rssi_Tr_Amt_To_Def_Pd_Exp_Adv_PackedData == null ? 0 : Convert.ToDecimal(model.TransactionRecordModelList.Rssi_Tr_Amt_To_Def_Pd_Exp_Adv_PackedData))
-                + (model.TransactionRecordModelList.Rssi_Tr_Amt_To_Def_Unp_Exp_Adv_PackedData == null ? 0 : Convert.ToDecimal(model.TransactionRecordModelList.Rssi_Tr_Amt_To_Def_Unp_Exp_Adv_PackedData))
-                + (model.TransactionRecordModelList.Rssi_Tr_Amt_To_Def_Admin_Fees_PackedData == null ? 0 : Convert.ToDecimal(model.TransactionRecordModelList.Rssi_Tr_Amt_To_Def_Admin_Fees_PackedData))
-                + (model.TransactionRecordModelList.Rssi_Tr_Amt_To_Def_Optins_PackedData == null ? 0 : Convert.ToDecimal(model.TransactionRecordModelList.Rssi_Tr_Amt_To_Def_Optins_PackedData))
-                );
-                return Miscellaneous;
+                decimal total = 0;
+                foreach (var tra in model.TransactionRecordModelList)
+                {
+                    total +=
+                  (tra.Rssi_Tr_Amt_To_Lip_PackedData == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Lip_PackedData))
+                + (tra.Rssi_Tr_Amt_To_Cr_Ins_PackedData == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Cr_Ins_PackedData))
+                + (tra.Rssi_Tr_Amt_To_Pi_Shrtg == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Pi_Shrtg.Replace("{", "").Replace("}", "")))
+                + (tra.Rssi_Tr_Amt_To_Def_Prin_PackedData == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Def_Prin_PackedData))
+                + (tra.Rssi_Tr_Amt_To_Def_Int_PackedData == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Def_Int_PackedData))
+                + (tra.Rssi_Tr_Amt_To_Def_Late_Chrg_PackedData == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Def_Late_Chrg_PackedData))
+                + (tra.Rssi_Tr_Amt_To_Def_Esc_Adv_PackedData == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Def_Esc_Adv_PackedData))
+                + (tra.Rssi_Tr_Amt_To_Def_Pd_Exp_Adv_PackedData == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Def_Pd_Exp_Adv_PackedData))
+                + (tra.Rssi_Tr_Amt_To_Def_Unp_Exp_Adv_PackedData == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Def_Unp_Exp_Adv_PackedData))
+                + (tra.Rssi_Tr_Amt_To_Def_Admin_Fees_PackedData == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Def_Admin_Fees_PackedData))
+                + (tra.Rssi_Tr_Amt_To_Def_Optins_PackedData == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Def_Optins_PackedData));
+                }
+
+                Miscellaneous = Convert.ToString(total);
             }
+               
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetMiscellaneous" + ex.TargetSite.Name);
                 return "";
             }
+            return Miscellaneous;
         }
         /// <summary>
         /// 121
@@ -2254,10 +2309,10 @@ namespace CarringtonService.BillingStatements
             return MailingAddressLine2;
         }
         /// <summary>
-         /// 7
-         /// </summary>
-         /// <param name="accountsModel"></param>
-         /// <returns></returns>
+        /// 7
+        /// </summary>
+        /// <param name="accountsModel"></param>
+        /// <returns></returns>
         public string GetMailingCityStateZip(AccountsModel accountsModel, bool isCoBorrower)
         {
 
@@ -2671,8 +2726,8 @@ namespace CarringtonService.BillingStatements
                     InterestOption2 = null;
                 }
                 else if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
-                { 
-                    InterestOption2 = null; 
+                {
+                    InterestOption2 = null;
                 }
                 else
                 {
@@ -2907,7 +2962,7 @@ namespace CarringtonService.BillingStatements
                 if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     EscrowOption4 = "0.00";
                 else if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
-                { 
+                {
                     EscrowOption4 = "0.00";
                 }
                 else
@@ -2935,7 +2990,7 @@ namespace CarringtonService.BillingStatements
                     RegularMonthlyPaymentOption4 = "0.00";
                 else if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                 {
-                    RegularMonthlyPaymentOption4 = "0.00"; ; 
+                    RegularMonthlyPaymentOption4 = "0.00"; ;
                 }
                 else
                 {
@@ -3077,7 +3132,7 @@ namespace CarringtonService.BillingStatements
                 }
                 else
                 {
-                    Date = accountsModel.TransactionRecordModelList.Rssi_Tr_Date_PackedData;
+                    Date = accountsModel.TransactionRecordModelList.FirstOrDefault().Rssi_Tr_Date_PackedData;
                 }
                 //Logger.Trace("ENDED:  To Get Date");
             }
@@ -3102,9 +3157,9 @@ namespace CarringtonService.BillingStatements
             {
                 //Logger.Trace("STARTED:  Execute to Get Amount");
 
-                if (Convert.ToDecimal(accountsModel.TransactionRecordModelList.Rssi_Tr_Exp_Fee_Amt_PackedData) != 0)
+                if (Convert.ToDecimal(accountsModel.TransactionRecordModelList.FirstOrDefault().Rssi_Tr_Exp_Fee_Amt_PackedData) != 0)
                 {
-                    Amount = accountsModel.TransactionRecordModelList.Rssi_Tr_Exp_Fee_Amt_PackedData;
+                    Amount = accountsModel.TransactionRecordModelList.FirstOrDefault().Rssi_Tr_Exp_Fee_Amt_PackedData;
                 }
                 else if (accountsModel.FeeRecordModel.Rssi_Fd_Fee_Type == "000")
                 {
@@ -3112,7 +3167,7 @@ namespace CarringtonService.BillingStatements
                 }
                 else
                 {
-                    Amount = accountsModel.TransactionRecordModelList.Rssi_Tr_Amt_PackedData;
+                    Amount = accountsModel.TransactionRecordModelList.FirstOrDefault().Rssi_Tr_Amt_PackedData;
                 }
                 //Logger.Trace("ENDED:  To Get Amount");
             }
@@ -3824,7 +3879,7 @@ namespace CarringtonService.BillingStatements
         public string GetStateDisclosures(AccountsModel accountModel)
         {
             //ToD0
-           
+
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get State Disclosures operation.");

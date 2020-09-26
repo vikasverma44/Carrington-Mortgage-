@@ -54,7 +54,7 @@ namespace CarringtonMortgage.Models.InputCopyBookModels
         public RHCDSOnlyRecordModel RHCDSOnlyRecordModel { get; set; }
         public SolicitationRecordModel SolicitationRecordModel { get; set; }
         public TrailerRecordModel TrailerRecordModel { get; set; }
-        public IList<TransactionRecordModel> TransactionRecordModelList { get; set; }
+        public List<TransactionRecordModel> TransactionRecordModelList { get; set; }
         public UserFieldRecordModel UserFieldRecordModel { get; set; }
         public bool IsMatched { get; set; } = false;
 
