@@ -2409,7 +2409,7 @@ namespace CarringtonService.BusinessExpert
         public void GetEscrowRecordModel(byte[] currentByte, ref AccountsModel acc)
         {
 
-            acc.EscrowRecordModel = new EscrowRecordModel()
+            var escrowRecordModel = new EscrowRecordModel()
             {
                 Rssi_Rcd_Id = PackedTypeCheckAndUnPackData("Rssi_Rcd_Id", currentByte, 1, 1),
                 Rssi_Inst = PackedTypeCheckAndUnPackData("Rssi_Inst", currentByte, 2, 3),
@@ -2426,13 +2426,14 @@ namespace CarringtonService.BusinessExpert
                 Rssi_Esc_Expir_Dt = PackedTypeCheckAndUnPackData("Rssi_Esc_Expir_Dt", currentByte, 125, 6),
 
             };
+            acc.EscrowRecordModel.Add(escrowRecordModel);
         }
 
         // O Optional Items/Escrow Record. Multiple records per loan if applicable.
         public void GetOptionalItemEscrowRecordModel(byte[] currentByte, ref AccountsModel acc)
         {
 
-            var OptionalItemEscrowRecordModel = new OptionalItemEscrowRecordModel()
+            var optionalItemEscrowRecordModel = new OptionalItemEscrowRecordModel()
             {
                 Rssi_Rcd_Id = PackedTypeCheckAndUnPackData("Rssi_Rcd_Id", currentByte, 1, 1),
                 Rssi_Inst = PackedTypeCheckAndUnPackData("Rssi_Inst", currentByte, 2, 3),
@@ -2447,7 +2448,7 @@ namespace CarringtonService.BusinessExpert
                 Rssi_Oed_Filler = PackedTypeCheckAndUnPackData("Rssi_Oed_Filler", currentByte, 90, 11),
 
             };
-            acc.OptionalItemEscrowRecordModel.Add(OptionalItemEscrowRecordModel);
+            acc.OptionalItemEscrowRecordModel.Add(optionalItemEscrowRecordModel);
         }
 
         // F Fee Record. Multiple records per loan if applicable.

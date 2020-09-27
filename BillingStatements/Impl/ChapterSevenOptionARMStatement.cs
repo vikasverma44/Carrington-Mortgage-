@@ -2977,13 +2977,13 @@ namespace CarringtonService.BillingStatements
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get Lender Placed Insurance Message");
-                if ((Convert.ToDecimal(accountsModel.EscrowRecordModel.Rssi_Esc_Type) == 20
-                || Convert.ToDecimal(accountsModel.EscrowRecordModel.Rssi_Esc_Type) == 21)
-                && Convert.ToDecimal(accountsModel.EscrowRecordModel.Rssi_Ins_Ag) == 2450
-                && (Convert.ToDecimal(accountsModel.EscrowRecordModel.Rssi_Ins_Ag) == 29000
-                || Convert.ToDecimal(accountsModel.EscrowRecordModel.Rssi_Ins_Ag) == 29005
-                || Convert.ToDecimal(accountsModel.EscrowRecordModel.Rssi_Ins_Ag) == 43000
-                || Convert.ToDecimal(accountsModel.EscrowRecordModel.Rssi_Ins_Ag) == 43001))
+                if (( accountsModel.EscrowRecordModel.Any(r => r.rssi_esc_type == "20")
+                   || accountsModel.EscrowRecordModel.Any(r => r.rssi_esc_type == "21")
+                   && accountsModel.EscrowRecordModel.Any(r => r.Rssi_Ins_Co == "2450")
+                  && (accountsModel.EscrowRecordModel.Any(er => er.Rssi_Ins_Ag == "29000")
+                   || accountsModel.EscrowRecordModel.Any(eri => eri.Rssi_Ins_Ag == "29005")
+                  ||  accountsModel.EscrowRecordModel.Any(ins => ins.Rssi_Ins_Ag == "43000")
+                    || accountsModel.EscrowRecordModel.Any(insg => insg.Rssi_Ins_Ag == "43001"))))
                 {
                     LenderPlacedInsuranceMessage = "LenderPlacedInsurance_MessageFlag";
                 }

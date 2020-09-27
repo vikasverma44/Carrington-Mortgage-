@@ -3684,18 +3684,18 @@ namespace CarringtonService.BillingStatements
         /// </summary>
         /// <param name="accountsModel"></param>
         /// <returns></returns>
-        public string GetLenderPlacedInsuranceMessage(AccountsModel accountsModel)
+        public string GetLenderPlacedInsuranceMessage(AccountsModel accountModel)
         {
             try
             {
                 //Logger.Trace("STARTED:  Execute get lender placed insurance message.");
-                if ((accountsModel.EscrowRecordModel.rssi_esc_type == "20"
-                    || accountsModel.EscrowRecordModel.rssi_esc_type == "21")
-                    && accountsModel.EscrowRecordModel.Rssi_Ins_Co == "2450"
-                    && (accountsModel.EscrowRecordModel.Rssi_Ins_Ag == "29000"
-                    || accountsModel.EscrowRecordModel.Rssi_Ins_Ag == "29005"
-                    || accountsModel.EscrowRecordModel.Rssi_Ins_Ag == "43000"
-                    || accountsModel.EscrowRecordModel.Rssi_Ins_Ag == "43001"))
+                if ((accountModel.EscrowRecordModel.Any(r => r.rssi_esc_type == "20")
+                  || accountModel.EscrowRecordModel.Any(r => r.rssi_esc_type == "21")
+                  && accountModel.EscrowRecordModel.Any(r => r.Rssi_Ins_Co == "2450")
+                 && (accountModel.EscrowRecordModel.Any(er => er.Rssi_Ins_Ag == "29000")
+                  || accountModel.EscrowRecordModel.Any(eri => eri.Rssi_Ins_Ag == "29005")
+                 || accountModel.EscrowRecordModel.Any(ins => ins.Rssi_Ins_Ag == "43000")
+                   || accountModel.EscrowRecordModel.Any(insg => insg.Rssi_Ins_Ag == "43001"))))
                 {
                     LenderPlacedInsuranceMessage = "LenderPlacedInsurance_MessageFlag";//TOD0:Revisit Again 
                 }

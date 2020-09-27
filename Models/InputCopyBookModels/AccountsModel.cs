@@ -13,7 +13,7 @@ namespace CarringtonMortgage.Models.InputCopyBookModels
             CoBorrowerRecordModel = new CoBorrowerRecordModel();
             DisasterTrackingRecordModel = new DisasterTrackingRecordModel();
             EmailAddressRecordModel = new EmailAddressRecordModel();
-            EscrowRecordModel = new EscrowRecordModel();
+            EscrowRecordModel = new List<EscrowRecordModel>();
             FeeRecordModel = new FeeRecordModel();
             ForeignInformationRecordModel = new ForeignInformationRecordModel();
             LateChargeDetailRecordModel = new LateChargeDetailRecordModel();
@@ -40,7 +40,7 @@ namespace CarringtonMortgage.Models.InputCopyBookModels
         public CoBorrowerRecordModel CoBorrowerRecordModel { get; set; }
         public DisasterTrackingRecordModel DisasterTrackingRecordModel { get; set; }
         public EmailAddressRecordModel EmailAddressRecordModel { get; set; }
-        public EscrowRecordModel EscrowRecordModel { get; set; }
+        public List<EscrowRecordModel> EscrowRecordModel { get; set; }
         public FeeRecordModel FeeRecordModel { get; set; }
         public ForeignInformationRecordModel ForeignInformationRecordModel { get; set; }
         public LateChargeDetailRecordModel LateChargeDetailRecordModel { get; set; }
