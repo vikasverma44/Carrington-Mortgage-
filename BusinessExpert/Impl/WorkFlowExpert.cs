@@ -2409,7 +2409,7 @@ namespace CarringtonService.BusinessExpert
         public void GetEscrowRecordModel(byte[] currentByte, ref AccountsModel acc)
         {
 
-            acc.EscrowRecordModel = new EscrowRecordModel()
+            var escrowRecordModel = new EscrowRecordModel()
             {
                 Rssi_Rcd_Id = PackedTypeCheckAndUnPackData("Rssi_Rcd_Id", currentByte, 1, 1),
                 Rssi_Inst = PackedTypeCheckAndUnPackData("Rssi_Inst", currentByte, 2, 3),
@@ -2426,13 +2426,14 @@ namespace CarringtonService.BusinessExpert
                 Rssi_Esc_Expir_Dt = PackedTypeCheckAndUnPackData("Rssi_Esc_Expir_Dt", currentByte, 125, 6),
 
             };
+            acc.EscrowRecordModel.Add(escrowRecordModel);
         }
 
         // O Optional Items/Escrow Record. Multiple records per loan if applicable.
         public void GetOptionalItemEscrowRecordModel(byte[] currentByte, ref AccountsModel acc)
         {
 
-            acc.OptionalItemEscrowRecordModel = new OptionalItemEscrowRecordModel()
+            var optionalItemEscrowRecordModel = new OptionalItemEscrowRecordModel()
             {
                 Rssi_Rcd_Id = PackedTypeCheckAndUnPackData("Rssi_Rcd_Id", currentByte, 1, 1),
                 Rssi_Inst = PackedTypeCheckAndUnPackData("Rssi_Inst", currentByte, 2, 3),
@@ -2447,12 +2448,13 @@ namespace CarringtonService.BusinessExpert
                 Rssi_Oed_Filler = PackedTypeCheckAndUnPackData("Rssi_Oed_Filler", currentByte, 90, 11),
 
             };
+            acc.OptionalItemEscrowRecordModel.Add(optionalItemEscrowRecordModel);
         }
 
         // F Fee Record. Multiple records per loan if applicable.
         public void GetFeeRecordModel(byte[] currentByte, ref AccountsModel acc)
         {
-            acc.FeeRecordModel = new FeeRecordModel()
+            var feeRecordModel = new FeeRecordModel()
             {
                 Rssi_Rcd_Id = PackedTypeCheckAndUnPackData("Rssi_Rcd_Id", currentByte, 1, 1),
                 Rssi_Inst = PackedTypeCheckAndUnPackData("Rssi_Inst", currentByte, 2, 3),
@@ -2503,6 +2505,8 @@ namespace CarringtonService.BusinessExpert
                 Rssi_Fd_Filler = PackedTypeCheckAndUnPackData("Rssi_Fd_Filler", currentByte, 194, 207),
 
             };
+
+            acc.FeeRecordModel.Add(feeRecordModel);
         }
 
         // S Solicitation Record. One record per loan if applicable.
@@ -3127,7 +3131,7 @@ namespace CarringtonService.BusinessExpert
         // K Archived Bankruptcy Information Record. Multiple records per loan if applicable.
         public void GetArchivedBankruptcyDetailRecordModel(byte[] currentByte, ref AccountsModel acc)
         {
-            acc.ArchivedBankruptcyDetailRecordModel = new ArchivedBankruptcyDetailRecordModel()
+            var archivedBankruptcyDetailRecordModel = new ArchivedBankruptcyDetailRecordModel()
             {
                 Rssi_Rcd_Id = PackedTypeCheckAndUnPackData("Rssi_Rcd_Id", currentByte, 1, 1),
                 Rssi_Inst = PackedTypeCheckAndUnPackData("Rssi_Inst", currentByte, 2, 3),
@@ -3159,6 +3163,7 @@ namespace CarringtonService.BusinessExpert
                 Filler = PackedTypeCheckAndUnPackData("Filler", currentByte, 141, 160),
 
             };
+            acc.ArchivedBankruptcyDetailRecordModel.Add(archivedBankruptcyDetailRecordModel);
         }
 
         // X Email Addresses Record
