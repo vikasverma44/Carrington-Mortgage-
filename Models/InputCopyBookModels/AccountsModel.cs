@@ -21,7 +21,7 @@ namespace CarringtonMortgage.Models.InputCopyBookModels
             MasterFileDataPart_1Model = new MasterFileDataPart_1Model();
             MasterFileDataPart2Model = new MasterFileDataPart2Model();
             MultiLockboxRecordModel = new MultiLockboxRecordModel();
-            OptionalItemEscrowRecordModel = new OptionalItemEscrowRecordModel();
+            OptionalItemEscrowRecordModel = new List<OptionalItemEscrowRecordModel>();
             PL_RecordModel = new PL_RecordModel();
             RateReductionRecordModel = new RateReductionRecordModel();
             RHCDSOnlyRecordModel = new RHCDSOnlyRecordModel();
@@ -48,7 +48,7 @@ namespace CarringtonMortgage.Models.InputCopyBookModels
         public MasterFileDataPart_1Model MasterFileDataPart_1Model { get; set; }
         public MasterFileDataPart2Model MasterFileDataPart2Model { get; set; }
         public MultiLockboxRecordModel MultiLockboxRecordModel { get; set; }
-        public OptionalItemEscrowRecordModel OptionalItemEscrowRecordModel { get; set; }
+        public List<OptionalItemEscrowRecordModel> OptionalItemEscrowRecordModel { get; set; }
         public PL_RecordModel PL_RecordModel { get; set; }
         public RateReductionRecordModel RateReductionRecordModel { get; set; }
         public RHCDSOnlyRecordModel RHCDSOnlyRecordModel { get; set; }

@@ -472,12 +472,15 @@ namespace CarringtonService.BusinessExpert
             account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40E", primaryIndex, builder));
             builder.Clear();
             //O
-            foreach (PropertyInfo propertyInfo in accountsModel.OptionalItemEscrowRecordModel.GetType().GetProperties())
+            foreach (var optionalItemEscrow in accountsModel.OptionalItemEscrowRecordModel)
             {
-                builder.Append(propertyInfo.GetValue(accountsModel.OptionalItemEscrowRecordModel) + "|");
+                foreach (PropertyInfo propertyInfo in optionalItemEscrow.GetType().GetProperties())
+                {
+                    builder.Append(propertyInfo.GetValue(optionalItemEscrow) + "|");
+                }
+                account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40O", primaryIndex, builder));
+                builder.Clear();
             }
-            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40O", primaryIndex, builder));
-            builder.Clear();
             //F
             foreach (PropertyInfo propertyInfo in accountsModel.FeeRecordModel.GetType().GetProperties())
             {
