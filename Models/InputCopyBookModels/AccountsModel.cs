@@ -8,7 +8,7 @@ namespace CarringtonMortgage.Models.InputCopyBookModels
         public AccountsModel()
         {
             ActiveBankruptcyInformationRecordModel = new ActiveBankruptcyInformationRecordModel();
-            ArchivedBankruptcyDetailRecordModel = new ArchivedBankruptcyDetailRecordModel();
+            ArchivedBankruptcyDetailRecordModel = new List<ArchivedBankruptcyDetailRecordModel>();
             BlendedRateInformationRecordModel = new BlendedRateInformationRecordModel();
             CoBorrowerRecordModel = new CoBorrowerRecordModel();
             DisasterTrackingRecordModel = new DisasterTrackingRecordModel();
@@ -35,7 +35,7 @@ namespace CarringtonMortgage.Models.InputCopyBookModels
             SupplementalCCFModel = new SupplementalCCFModel();
         }
         public ActiveBankruptcyInformationRecordModel ActiveBankruptcyInformationRecordModel { get; set; }
-        public ArchivedBankruptcyDetailRecordModel ArchivedBankruptcyDetailRecordModel { get; set; }
+        public List<ArchivedBankruptcyDetailRecordModel> ArchivedBankruptcyDetailRecordModel { get; set; }
         public BlendedRateInformationRecordModel BlendedRateInformationRecordModel { get; set; }
         public CoBorrowerRecordModel CoBorrowerRecordModel { get; set; }
         public DisasterTrackingRecordModel DisasterTrackingRecordModel { get; set; }

@@ -3128,7 +3128,7 @@ namespace CarringtonService.BusinessExpert
         // K Archived Bankruptcy Information Record. Multiple records per loan if applicable.
         public void GetArchivedBankruptcyDetailRecordModel(byte[] currentByte, ref AccountsModel acc)
         {
-            acc.ArchivedBankruptcyDetailRecordModel = new ArchivedBankruptcyDetailRecordModel()
+            var archivedBankruptcyDetailRecordModel = new ArchivedBankruptcyDetailRecordModel()
             {
                 Rssi_Rcd_Id = PackedTypeCheckAndUnPackData("Rssi_Rcd_Id", currentByte, 1, 1),
                 Rssi_Inst = PackedTypeCheckAndUnPackData("Rssi_Inst", currentByte, 2, 3),
@@ -3160,6 +3160,7 @@ namespace CarringtonService.BusinessExpert
                 Filler = PackedTypeCheckAndUnPackData("Filler", currentByte, 141, 160),
 
             };
+            acc.ArchivedBankruptcyDetailRecordModel.Add(archivedBankruptcyDetailRecordModel);
         }
 
         // X Email Addresses Record

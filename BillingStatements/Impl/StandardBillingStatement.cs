@@ -2172,15 +2172,14 @@ namespace CarringtonService.BillingStatements
             try
             {
                 //Logger.Trace("STARTED:  Execute get bankruptcy message.");
-                if (accountsModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Dschg_Dt_PackedData != null
-                    && accountsModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData != null)
-                {
-                    if (CommonHelper.GetFormatedDateTime(accountsModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Dschg_Dt_PackedData) > Convert.ToDateTime("01/01/01")
-                        && CommonHelper.GetFormatedDateTime(accountsModel.ArchivedBankruptcyDetailRecordModel.Rssi_K_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01"))
-                    {
-                        BankruptcyMessage = "Bankruptcy_MessageFlag";//TOD0:Revisit Again 
-                    }
-                }
+                var result = (from s in accountsModel.ArchivedBankruptcyDetailRecordModel
+                              where CommonHelper.GetFormatedDateTime(s.Rssi_K_B_Dschg_Dt_PackedData) > Convert.ToDateTime("01/01/01")
+                                               && CommonHelper.GetFormatedDateTime(s.Rssi_K_B_Reaffirm_Dt_PackedData) == Convert.ToDateTime("01/01/01")
+                              select (s)).FirstOrDefault();
+
+                if (result != null)
+                    BankruptcyMessage = "Bankruptcy_MessageFlag";
+
                 //Logger.Trace("ENDED: Get get bankruptcy message.");
             }
             catch (Exception ex)
