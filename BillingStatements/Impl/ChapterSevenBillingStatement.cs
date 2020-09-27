@@ -1398,10 +1398,12 @@ namespace CarringtonService.BillingStatements
             {
                 //Logger.Trace("STARTED:  Execute to Get Date");
 
-                if (accountModel.FeeRecordModel.Rssi_Fd_Fee_Type == "000")
-                {
-                    Date = accountModel.FeeRecordModel.Rssi_Fd_Assess_Date;
-                }
+                var result = accountModel.TransactionRecordModelList.Where(m => Convert.ToDecimal(m.Rssi_Tr_Exp_Fee_Amt_PackedData) != 0).FirstOrDefault();
+                var fee = accountModel.FeeRecordModel.Where(m => m.Rssi_Fd_Fee_Type == "000").FirstOrDefault();
+
+                if (fee != null)
+                    Date = fee.Rssi_Fd_Assess_Date;
+
                 else
                 {
                     Date = accountModel.TransactionRecordModelList.FirstOrDefault()?.Rssi_Tr_Date_PackedData;
@@ -1413,7 +1415,7 @@ namespace CarringtonService.BillingStatements
                 Logger.Error(ex, ex.TargetSite.Name);
                 throw;
             }
-            return Date;
+            return Convert.ToString(CommonHelper.GetFormatedDateTime(Date));
         }
 
         public string GetAmount(AccountsModel accountModel)
@@ -1421,20 +1423,28 @@ namespace CarringtonService.BillingStatements
             //Tod0
             try
             {
+                decimal amt = 0;
                 //Logger.Trace("STARTED:  Execute to Get Amount");
+                var result = accountModel.TransactionRecordModelList.Where(m => Convert.ToDecimal(m.Rssi_Tr_Exp_Fee_Amt_PackedData) != 0).FirstOrDefault();
+                var fee = accountModel.FeeRecordModel.Where(m => m.Rssi_Fd_Fee_Type == "000").FirstOrDefault();
 
-                if (Convert.ToDecimal(accountModel.TransactionRecordModelList.FirstOrDefault()?.Rssi_Tr_Exp_Fee_Amt_PackedData) != 0)
+                if (result != null)
+                    amt = Convert.ToDecimal(result.Rssi_Tr_Exp_Fee_Amt_PackedData);
+
+                else if (fee != null)
                 {
-                    Amount = accountModel.TransactionRecordModelList.FirstOrDefault()?.Rssi_Tr_Exp_Fee_Amt_PackedData;
-                }
-                else if (accountModel.FeeRecordModel.Rssi_Fd_Fee_Type == "000")
-                {
-                    Amount = accountModel.FeeRecordModel.Rssi_Fd_Assess_Amt;
+                    amt = Convert.ToDecimal(fee.Rssi_Fd_Assess_Amt);
                 }
                 else
                 {
-                    Amount = accountModel.TransactionRecordModelList.FirstOrDefault()?.Rssi_Tr_Amt_PackedData;
+                    foreach (var i in accountModel.TransactionRecordModelList)
+                    {
+                        amt += Convert.ToDecimal(i.Rssi_Tr_Amt_PackedData);
+                    }
+
                 }
+
+                Amount = Convert.ToString(amt);
                 //Logger.Trace("ENDED:  To Get Amount");
             }
             catch (Exception ex)

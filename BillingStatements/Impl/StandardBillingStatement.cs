@@ -1733,48 +1733,61 @@ namespace CarringtonService.BillingStatements
             return CarringtonCharitableFoundationDonationbox;
         }
 
-        public string GetEffectiveDate(AccountsModel accountsModel)
+        public string GetEffectiveDate(AccountsModel accountModel)
         {
             try
             {
-                //Logger.Trace("STARTED:  Execute get effective date."); 
-                if (Convert.ToInt64(accountsModel.FeeRecordModel.Rssi_Fd_Fee_Type) == 000)//TOD0:Revisit Again
-                {
-                    Date = accountsModel.FeeRecordModel.Rssi_Fd_Assess_Date;
-                }
+                //Logger.Trace("STARTED:  Execute to Get Date");
+
+                var result = accountModel.TransactionRecordModelList.Where(m => Convert.ToDecimal(m.Rssi_Tr_Exp_Fee_Amt_PackedData) != 0).FirstOrDefault();
+                var fee = accountModel.FeeRecordModel.Where(m => m.Rssi_Fd_Fee_Type == "000").FirstOrDefault();
+
+                if (fee != null)
+                    Date = fee.Rssi_Fd_Assess_Date;
+
                 else
                 {
-                    Date = accountsModel.TransactionRecordModelList.FirstOrDefault()?.Rssi_Tr_Date_PackedData;
+                    Date = accountModel.TransactionRecordModelList.FirstOrDefault()?.Rssi_Tr_Date_PackedData;
                 }
-                //Logger.Trace("ENDED: Get get effective date.");
+                //Logger.Trace("ENDED:  To Get Date");
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "Method name : GetEffectiveDate" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
-
-            return Date;
+            return Convert.ToString(CommonHelper.GetFormatedDateTime(Date));
         }
 
-        public string GetTotalAmount(AccountsModel accountsModel)
+        public string GetTotalAmount(AccountsModel accountModel)
         {
             try
             {
                 //Logger.Trace("STARTED:  Execute get total amount.");
 
-                if (Convert.ToDecimal(accountsModel.TransactionRecordModelList.FirstOrDefault()?.Rssi_Tr_Exp_Fee_Amt_PackedData) != 0)
+                decimal amt = 0;
+                //Logger.Trace("STARTED:  Execute to Get Amount");
+                var result = accountModel.TransactionRecordModelList.Where(m => Convert.ToDecimal(m.Rssi_Tr_Exp_Fee_Amt_PackedData) != 0).FirstOrDefault();
+                var fee = accountModel.FeeRecordModel.Where(m => m.Rssi_Fd_Fee_Type == "000").FirstOrDefault();
+
+                if (result != null)
+                    amt = Convert.ToDecimal(result.Rssi_Tr_Exp_Fee_Amt_PackedData);
+
+                else if (fee != null)
                 {
-                    Date = accountsModel.TransactionRecordModelList.FirstOrDefault()?.Rssi_Tr_Exp_Fee_Amt_PackedData;
-                }
-                else if (Convert.ToInt64(accountsModel.FeeRecordModel.Rssi_Fd_Fee_Type) == 000)//TOD0:Revisit Again
-                {
-                    Date = accountsModel.FeeRecordModel.Rssi_Fd_Assess_Amt;
+                    amt = Convert.ToDecimal(fee.Rssi_Fd_Assess_Amt);
                 }
                 else
                 {
-                    Date = accountsModel.TransactionRecordModelList.FirstOrDefault()?.Rssi_Tr_Amt_PackedData;
+                    foreach (var i in accountModel.TransactionRecordModelList)
+                    {
+                        amt += Convert.ToDecimal(i.Rssi_Tr_Amt_PackedData);
+                    }
+
                 }
-                //Logger.Trace("ENDED: Get get total amount.");
+
+                Amount = Convert.ToString(amt);
+                //Logger.Trace("ENDED:  To Get Amount");
             }
             catch (Exception ex)
             {

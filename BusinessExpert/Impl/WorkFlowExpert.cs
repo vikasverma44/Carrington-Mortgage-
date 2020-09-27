@@ -2454,7 +2454,7 @@ namespace CarringtonService.BusinessExpert
         // F Fee Record. Multiple records per loan if applicable.
         public void GetFeeRecordModel(byte[] currentByte, ref AccountsModel acc)
         {
-            acc.FeeRecordModel = new FeeRecordModel()
+            var feeRecordModel = new FeeRecordModel()
             {
                 Rssi_Rcd_Id = PackedTypeCheckAndUnPackData("Rssi_Rcd_Id", currentByte, 1, 1),
                 Rssi_Inst = PackedTypeCheckAndUnPackData("Rssi_Inst", currentByte, 2, 3),
@@ -2505,6 +2505,8 @@ namespace CarringtonService.BusinessExpert
                 Rssi_Fd_Filler = PackedTypeCheckAndUnPackData("Rssi_Fd_Filler", currentByte, 194, 207),
 
             };
+
+            acc.FeeRecordModel.Add(feeRecordModel);
         }
 
         // S Solicitation Record. One record per loan if applicable.

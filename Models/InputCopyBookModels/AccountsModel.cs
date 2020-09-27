@@ -14,7 +14,7 @@ namespace CarringtonMortgage.Models.InputCopyBookModels
             DisasterTrackingRecordModel = new DisasterTrackingRecordModel();
             EmailAddressRecordModel = new EmailAddressRecordModel();
             EscrowRecordModel = new List<EscrowRecordModel>();
-            FeeRecordModel = new FeeRecordModel();
+            FeeRecordModel = new List<FeeRecordModel>();
             ForeignInformationRecordModel = new ForeignInformationRecordModel();
             LateChargeDetailRecordModel = new LateChargeDetailRecordModel();
             LateChargeInformationRecordModel = new LateChargeInformationRecordModel();
@@ -41,7 +41,7 @@ namespace CarringtonMortgage.Models.InputCopyBookModels
         public DisasterTrackingRecordModel DisasterTrackingRecordModel { get; set; }
         public EmailAddressRecordModel EmailAddressRecordModel { get; set; }
         public List<EscrowRecordModel> EscrowRecordModel { get; set; }
-        public FeeRecordModel FeeRecordModel { get; set; }
+        public List<FeeRecordModel> FeeRecordModel { get; set; }
         public ForeignInformationRecordModel ForeignInformationRecordModel { get; set; }
         public LateChargeDetailRecordModel LateChargeDetailRecordModel { get; set; }
         public LateChargeInformationRecordModel LateChargeInformationRecordModel { get; set; }
