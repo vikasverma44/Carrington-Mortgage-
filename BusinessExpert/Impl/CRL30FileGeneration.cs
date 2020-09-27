@@ -319,57 +319,6 @@ namespace CarringtonService.BusinessExpert
                                         default:
                                             break;
 
-
-
-
-
-
-                                            ////For Chapter 7 Option ARM Statement
-                                            //case "A07":
-                                            //    //Set Mailing address according to the conditions
-                                            //    account.Standard.OriginalAddressLine1 = ChapterSevenOptionARMStatement.GetMailingBKAttorneyAddressLine1(extractAccount);
-                                            //    account.Standard.OriginalAddressLine2 = ChapterSevenOptionARMStatement.GetMailingBKAttorneyAddressLine2(extractAccount);
-                                            //    break;
-
-                                            ////For Chapter 13 Option ARM Statement
-                                            //case "A13":
-                                            //    //Set Mailing address according to the conditions
-                                            //    account.Standard.OriginalAddressLine1 = ChapterThirteenOptionARMStatement.GetMailingBKAttorneyAddressLine1(extractAccount);
-                                            //    account.Standard.OriginalAddressLine2 = ChapterThirteenOptionARMStatement.GetMailingBKAttorneyAddressLine2(extractAccount);
-                                            //    break;
-
-                                            ////For Option ARM Billing  Statement
-                                            //case "ARM":
-                                            //    //Set Mailing address according to the conditions
-                                            //    account.Standard.OriginalAddressLine1 = OptionARMBillingStatement.GetMailingAddressLine1(extractAccount);
-                                            //    account.Standard.OriginalAddressLine2 = OptionARMBillingStatement.GetMailingAddressLine2(extractAccount);
-                                            //    break;
-
-                                            ////For Chapter 7 Billing Statement
-                                            //case "S07":
-                                            //    //Set Mailing address according to the conditions
-                                            //    account.Standard.OriginalAddressLine1 = ChapterSevenBillingStatement.GetMailingBKAttorneyAddressLine1(extractAccount);
-                                            //    account.Standard.OriginalAddressLine2 = ChapterSevenBillingStatement.GetMailingBKAttorneyAddressLine2(extractAccount);
-                                            //    break;
-
-                                            ////For Chapter 13 Billing Statement
-                                            //case "S13":
-                                            //    //Set Mailing address according to the conditions
-                                            //    account.Standard.OriginalAddressLine1 = ChapterThirteenBillingStatement.GetMailingBKAttorneyAddressLine1(extractAccount);
-                                            //    account.Standard.OriginalAddressLine2 = ChapterThirteenBillingStatement.GetMailingBKAttorneyAddressLine2(extractAccount);
-                                            //    break;
-
-                                            ////For Standard Billing Statement
-                                            //case "STD":
-                                            //    //Set Mailing address according to the conditions
-                                            //    account.Standard.OriginalAddressLine1 = StandardBillingStatement.GetMailingAddressLine1(extractAccount);//TEMP FIX NEED TO CHANGE
-                                            //    account.Standard.OriginalAddressLine2 = StandardBillingStatement.GetMailingAddressLine2(extractAccount);//TEMP FIX NEED TO CHANGE
-                                            //    account.Standard.OriginalAddressLine3 = StandardBillingStatement.GetMailingCityStateZip(extractAccount);//TEMP FIX NEED TO CHANGE
-                                            //    break;
-
-                                            //default:
-                                            //    break;
-
                                     }
 
                                     //Reject co-borrower account if the primary account is rejected
