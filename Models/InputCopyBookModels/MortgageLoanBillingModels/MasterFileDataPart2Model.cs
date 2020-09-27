@@ -6,7 +6,7 @@
         public string Rssi_Inst { get; set; }
         public string Rssi_Acct_No { get; set; }
         public string Rssi_Seq_No { get; set; }
-       // public string BeginningOfUnappliedFundsBalanceAndCodeInformation { get; set; }
+      
         public string Rssi_Unap_Bal_2_PackedData { get; set; }
         public string Rssi_Unap_Cd_2 { get; set; }
         public string Rssi_Unap_Bal_3_PackedData { get; set; }
@@ -16,7 +16,7 @@
         public string Rssi_Unap_Bal_5_PackedData { get; set; }
         public string Rssi_Unap_Cd_5 { get; set; }
         public string Rssi_Unap_Bal_Tot_PackedData { get; set; }
-       // public string EndOfUnappliedFundsBalanceAndCodeInformation { get; set; }
+       
         public string Rssi_Tot_Draft_Amt_PackedData { get; set; }
         public string Rssi_Rd_Bk_Draft_Amt_PackedData { get; set; }
         public string Filler { get; set; }
@@ -24,7 +24,7 @@
         public string Rssi_Uncoll_Pi_Adv_PackedData { get; set; }
         public string Rssi_Orig_Mat_Date { get; set; }
         public string Rssi_Delq_Couns { get; set; }
-     //   public string BeginningOfBillingMessageInformation { get; set; }
+    
         public string Rssi_Bmsg_Code_01 { get; set; }
         public string Rssi_Bmsg_Code_02 { get; set; }
         public string Rssi_Bmsg_Code_03 { get; set; }
@@ -45,7 +45,7 @@
         public string Rssi_Bmsg_Code_18 { get; set; }
         public string Rssi_Bmsg_Code_19 { get; set; }
         public string Rssi_Bmsg_Code_20 { get; set; }
-        //public string EndOfBillingMessageInformation { get; set; }
+       
         public string Rssi_Prim_Forgn_Flag  { get; set; }
         public string AddressFlag { get; set; }//DOUBT INCLIED TO UPPER PROPERTY
         public string Rssi_Altr_Forgn_Flag { get; set; }

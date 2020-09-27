@@ -12,7 +12,7 @@ namespace CarringtonMortgage.Models.InputCopyBookModels.MortgageLoanBillingModel
         public string Rssi_Inst { get; set; }
         public string Rssi_Acct_No { get; set; }
         public string Rssi_Seq_No { get; set; }
-        public string BeginningOfCoborrowerNameAndAddressInformation { get; set; }
+        
         public string Rssi_Cb_Cbwr1_F { get; set; }
         public string Rssi_Cb_Cbwr1_Adrs1 { get; set; }
         public string Rssi_Cb_Cbwr1_Adrs2 { get; set; }
@@ -83,7 +83,7 @@ namespace CarringtonMortgage.Models.InputCopyBookModels.MortgageLoanBillingModel
         public string Rssi_Cb_Cbwr10_State { get; set; }
         public string Rssi_Cb_Cbwr10_Zip { get; set; }
         public string Rssi_Cb_Cbwr10_Bill_Stmnt { get; set; }
-        public string EndOfCoborrowerNameAndAddressInformation { get; set; }
+     
         public string Rssi_Cb_Cbwr1_Corr_Flag { get; set; }
         public string Rssi_Cb_Cbwr2_Corr_Flag { get; set; }
         public string Rssi_Cb_Cbwr3_Corr_Flag { get; set; }

@@ -234,8 +234,7 @@
 
         public string Rssi_Pmt_Due_Date_6 { get; set; }
         public string Rssi_Pmt_Paid_Date_6 { get; set; }
-        public string EndofPastDuePaidPaymentInformation { get; set; }
-        public string BeginningofAmountsPaidSinceLastStatementInformation { get; set; }
+       
         public string Rssi_Prin_Pd_Since_Lst_Stmt_PackedData { get; set; }
         public string Rssi_Int_Pd_Since_Lst_Stmt_PackedData { get; set; }
         public string Rssi_Esc_Pd_Since_Lst_Stmt_PackedData { get; set; }
@@ -244,12 +243,11 @@
         public string Rssi_Amt_To_Uaf_Since_Lst_Stmt_PackedData { get; set; }
 
         public string Rssi_Tot_Pd_Since_Lst_Stmt_PackedData { get; set; }
-        public string EndofAmountsPaidSinceLastStatementInformation { get; set; }
-        public string BeginningofAmountsAssessedSinceLastStatementInformation { get; set; }
+       
         public string Rssi_Fees_Assd_Since_Lst_Stmt_PackedData { get; set; }
         public string Rssi_Accr_Lc_PackedData { get; set; }
 
-        public string EndofAmountsAssessedSinceLastStatementInformation { get; set; }
+      
         public string Rssi_Loss_Mit_Ind { get; set; }
 
         public string Rssi_1St_Contact_Name { get; set; }
@@ -263,8 +261,7 @@
         public string Rssi_Past_Date_R { get; set; }
         public string Rssi_Reg_Amt_R_PackedData { get; set; }
         public string Rssi_Late_Amt_R_PackedData { get; set; }
-        public string BeginningofPastDuePaidPaymentInformation { get; set; }// DOUBT FULL
-
+        
         public string Rssi_Pmt_Due_Date_7 { get; set; }
         public string Rssi_Pmt_Paid_Date_7 { get; set; }
         public string Rssi_Pmt_Due_Date_8 { get; set; }
