@@ -554,12 +554,15 @@ namespace CarringtonService.BusinessExpert
             account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40J", primaryIndex, builder));
             builder.Clear();
             //K
-            foreach (PropertyInfo propertyInfo in accountsModel.ArchivedBankruptcyDetailRecordModel.GetType().GetProperties())
+            foreach (var archivedBankruptcyDetailRecordModel in accountsModel.ArchivedBankruptcyDetailRecordModel)
             {
-                builder.Append(propertyInfo.GetValue(accountsModel.ArchivedBankruptcyDetailRecordModel) + "|");
+                foreach (PropertyInfo propertyInfo in archivedBankruptcyDetailRecordModel.GetType().GetProperties())
+                {
+                    builder.Append(propertyInfo.GetValue(archivedBankruptcyDetailRecordModel) + "|");
+                }
+                account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40K", primaryIndex, builder));
+                builder.Clear();
             }
-            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40K", primaryIndex, builder));
-            builder.Clear();
             //X
             foreach (PropertyInfo propertyInfo in accountsModel.EmailAddressRecordModel.GetType().GetProperties())
             {
