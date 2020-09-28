@@ -61,7 +61,7 @@ namespace CarringtonMortgage.Helpers
         {
             try
             {
-                string dateTimeAmPm = dateTime.ToString("MM-dd-yy HH:mm:ss").Replace("PM", "").Replace("AM", "");
+                string dateTimeAmPm = dateTime.ToString("MM/dd/yyyy HH:mm:ss").Replace("PM", "").Replace("AM", "");
                 return dateTimeAmPm;
             }
             catch (Exception ex)
