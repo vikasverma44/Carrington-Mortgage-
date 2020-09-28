@@ -1643,12 +1643,13 @@ namespace CarringtonService.BillingStatements
                     || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "OK"
                     || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "TX")
                 {
-
-                    LockboxAddress = "PO Box 660586 " + accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + ", TX 75266-0586";
+                    //PaymentInformationMessage = "PO Box 660586 " + accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + ", TX 75266-0586";
+                    LockboxAddress = "PO Box 660586 Dallas, TX 75266-0586";
                 }
                 else
                 {
-                    LockboxAddress = "PO Box 7006 " + accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + ", CA 91109-9998";
+                    //PaymentInformationMessage = "PO Box 7006 " + accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + ", CA 91109-9998";
+                    LockboxAddress = "PO Box 7006 Pasadena, CA 91109-9998";
                 }
 
                 //Logger.Trace("ENDED: Get get lockbox address.");
@@ -1829,21 +1830,25 @@ namespace CarringtonService.BillingStatements
             {
                 //Logger.Trace("STARTED:  Execute to Get recent payment6.");
                 if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 1)
-                { RecentPayment6 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_5 + ": Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_5; }
+                { 
+                    RecentPayment6 = "Payment Due " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_5) + ": Fully paid on " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_5); }
                 else if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 2)
                 {
-                    RecentPayment6 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_4 + ": Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_4;
+                    RecentPayment6 = "Payment Due " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_4) + ": Fully paid on " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_4);
                 }
                 else if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 3)
-                { RecentPayment6 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_3 + ": Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_3; }
+                { 
+                    RecentPayment6 = "Payment Due " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_3) + ": Fully paid on " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_3); }
                 else if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 4)
-                { RecentPayment6 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_2 + ": Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_2; }
+                { 
+                    RecentPayment6 = "Payment Due " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_2) + ": Fully paid on " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_2); }
                 else if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 5)
-                { RecentPayment6 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_1 + ": Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_1; }
+                { 
+                    RecentPayment6 = "Payment Due " + CommonHelper.GetDateInDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_1) + ": Fully paid on " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_1); }
                 else if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0
                     && Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
                 {
-                    RecentPayment6 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(1): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(1)"; ;
+                    RecentPayment6 = "Payment Due " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) + "(1): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(1)"; ;
                 }
                 //Logger.Trace("ENDED: Get  recent payment6.");
             }
@@ -1865,29 +1870,29 @@ namespace CarringtonService.BillingStatements
 
                 if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 1)
                 {
-                    RecentPayment5 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_4 + ": Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_4;
+                    RecentPayment5 = "Payment Due " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_4) + ": Fully paid on " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_4);
                 }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 2)
                 {
-                    RecentPayment5 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_3 + ": Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_3;
+                    RecentPayment5 = "Payment Due " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_3) + ": Fully paid on " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_3);
                 }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 3)
                 {
-                    RecentPayment5 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_2 + ": Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_2;
+                    RecentPayment5 = "Payment Due " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_2) + ": Fully paid on " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_2);
                 }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 4)
                 {
-                    RecentPayment5 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_1 + ": Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_1;
+                    RecentPayment5 = "Payment Due " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_1) + ": Fully paid on " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_1);
                 }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 5 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
                 {
-                    RecentPayment5 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(1): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(1)";
+                    RecentPayment5 = "Payment Due " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) + "(1): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(1)";
                 }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6
                    && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date).IncludeCenturyDate(true)) > 0
                    && Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
                 {
-                    RecentPayment5 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(2): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(2)";
+                    RecentPayment5 = "Payment Due " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) + "(2): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(2)";
                 }
                 //Logger.Trace("ENDED:  To Get Recent Payment5");
             }
@@ -1908,30 +1913,30 @@ namespace CarringtonService.BillingStatements
 
                 if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 1)
                 {
-                    RecentPayment4 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_3 + ": Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_3;
+                    RecentPayment4 = "Payment Due " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_3) + ": Fully paid on " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_3);
                 }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 2)
                 {
-                    RecentPayment4 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_2 + ": Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_2;
+                    RecentPayment4 = "Payment Due " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_2) + ": Fully paid on " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_2);
                 }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 3)
                 {
-                    RecentPayment4 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_1 + ": Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_1;
+                    RecentPayment4 = "Payment Due " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_1) + ": Fully paid on " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_1);
                 }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 4 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
                 {
-                    RecentPayment4 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(1): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(1)";
+                    RecentPayment4 = "Payment Due " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) + "(1): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(1)";
                 }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 5 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
                 {
-                    RecentPayment4 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(2): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(2)";
+                    RecentPayment4 = "Payment Due " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) + "(2): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(2)";
                 }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6
                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date).IncludeCenturyDate(true)) > 0
                   && Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
 
                 {
-                    RecentPayment4 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(3): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(3)";
+                    RecentPayment4 = "Payment Due " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) + "(3): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(3)";
                 }
                 //Logger.Trace("ENDED:  To Get Recent Payment5");
 
@@ -1953,30 +1958,30 @@ namespace CarringtonService.BillingStatements
 
                 if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 1)
                 {
-                    RecentPayment3 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_2 + ": Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_2;
+                    RecentPayment3 = "Payment Due " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_2) + ": Fully paid on " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_2);
                 }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 2)
                 {
-                    RecentPayment3 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_1 + ": Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_1;
+                    RecentPayment3 = "Payment Due " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_1) + ": Fully paid on " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_1);
                 }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 3 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
                 {
-                    RecentPayment3 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(1): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(1)";
+                    RecentPayment3 = "Payment Due " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) + "(1): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(1)";
                 }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 4 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
                 {
-                    RecentPayment3 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(2): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(2)";
+                    RecentPayment3 = "Payment Due " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) + "(2): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(2)";
                 }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 5 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
                 {
-                    RecentPayment3 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(3): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(3)";
+                    RecentPayment3 = "Payment Due " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) + "(3): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(3)";
                 }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6
                  && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date).IncludeCenturyDate(true)) > 0
                  && Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
 
                 {
-                    RecentPayment3 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(4): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(4)";
+                    RecentPayment3 = "Payment Due " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) + "(4): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(4)";
                 }
                 //Logger.Trace("ENDED:  To Get Recent Payment3");
             }
@@ -1995,30 +2000,30 @@ namespace CarringtonService.BillingStatements
                 //Logger.Trace("STARTED:  Execute to Get Recent Payment2");
                 if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 1)
                 {
-                    RecentPayment2 = accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_1 + ": Fully paid on " + accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_1;
+                    RecentPayment2 = "Payment Due " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_1) + ": Fully paid on " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_1);
                 }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 2 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
                 {
-                    RecentPayment2 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(1): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(1)";
+                    RecentPayment2 = "Payment Due " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) + "(1): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(1)";
                 }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 3 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
                 {
-                    RecentPayment2 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(2): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(2)";
+                    RecentPayment2 = "Payment Due " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) + "(2): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(2)";
                 }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 4 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
                 {
-                    RecentPayment2 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(3): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(3)";
+                    RecentPayment2 = "Payment Due " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) + "(3): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(3)";
                 }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 5 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
                 {
-                    RecentPayment2 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(4): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(4)";
+                    RecentPayment2 = "Payment Due " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) + "(4): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(4)";
                 }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6
                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date).IncludeCenturyDate(true)) > 0
                 && Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
 
                 {
-                    RecentPayment2 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(5): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(5)";
+                    RecentPayment2 = "Payment Due " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) + "(5): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(5)";
                 }
                 //Logger.Trace("ENDED:  To Get Recent Payment2");
             }
@@ -2038,31 +2043,31 @@ namespace CarringtonService.BillingStatements
 
                 if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 1 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
                 {
-                    RecentPayment1 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(1): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(1)";
+                    RecentPayment1 = "Payment Due " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) + "(1): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(1)";
                 }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 2 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
                 {
-                    RecentPayment1 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(2): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(2)";
+                    RecentPayment1 = "Payment Due " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) + "(2): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(2)";
                 }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 3 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
                 {
-                    RecentPayment1 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(3): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(3)";
+                    RecentPayment1 = "Payment Due " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) + "(3): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(3)";
                 }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 4 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
                 {
-                    RecentPayment1 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(4): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(4)";
+                    RecentPayment1 = "Payment Due " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) + "(4): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(4)";
 
                 }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 5 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
                 {
-                    RecentPayment1 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(5): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(5)";
+                    RecentPayment1 = "Payment Due " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) + "(5): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(5)";
                 }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6
                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date).IncludeCenturyDate(true)) > 0
                 && Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
                 //else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
                 {
-                    RecentPayment1 = accountModel.MasterFileDataPart_1Model.Rssi_Past_Date + "(5): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(5)";
+                    RecentPayment1 = "Payment Due " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) + "(5): Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData + "(5)";
                 }
                 //Logger.Trace("ENDED:  To Get Recent Payment1");
             }
@@ -2111,7 +2116,8 @@ namespace CarringtonService.BillingStatements
                 //Logger.Trace("STARTED:  Execute get foreclosure notice.");
                 if (accountsModel.MasterFileDataPart2Model.Rssi_Fcl_Start_Date != null && accountsModel.MasterFileDataPart2Model.Rssi_Fcl_Start_Date != "")
                 {
-                    if (Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart2Model.Rssi_Fcl_Start_Date).IncludeCenturyDate(true)) > 0)
+                    //if (Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart2Model.Rssi_Fcl_Start_Date).IncludeCenturyDate(true)) > 0)
+                    if(CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart2Model.Rssi_Fcl_Start_Date) > Convert.ToDateTime("01/01/01"))
                     {
                         ForeclosureNotice = "PLEASE TAKE NOTICE that Carrington Mortgage Services, LLC has made the first notice or filing required to start a foreclosure.";//TOD0:Revisit Again
                     }
@@ -2260,8 +2266,9 @@ namespace CarringtonService.BillingStatements
             try
             {
                 //Logger.Trace("STARTED:  Execute get ACH message.");
-                if (Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Chrg_Off_Dt_PackedData).IncludeCenturyDate(true)) == 0 &&
-                      Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Tot_Draft_Amt_PackedData) == 0)
+                //if (Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Chrg_Off_Dt_PackedData).IncludeCenturyDate(true)) == 0 
+                if(CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Chrg_Off_Dt_PackedData) == Convert.ToDateTime("01/01/01")
+                    && Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Tot_Draft_Amt_PackedData) == 0)
                 {
                     ACHMessage = "AutoPayService_MessageFlag";//TOD0:Revisit Again 
                 }
@@ -2281,7 +2288,9 @@ namespace CarringtonService.BillingStatements
             try
             {
                 //Logger.Trace("STARTED:  Execute get charge off notice.");
-                if (Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Chrg_Off_Dt_PackedData).IncludeCenturyDate(true)) > 0)
+                //if (Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Chrg_Off_Dt_PackedData).IncludeCenturyDate(true)) > 0)
+
+                if(CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Chrg_Off_Dt_PackedData) > Convert.ToDateTime("01/01/01"))
                 {
                     ChargeOffNotice = "ChargeOff_MessageFlag";//TOD0:Revisit Again 
                 }
@@ -2435,11 +2444,13 @@ namespace CarringtonService.BillingStatements
                     || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "OK"
                     || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "TX")
                 {
-                    PaymentInformationMessage = "PO Box 660586 " + accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + ", TX 75266-0586";
+                    //PaymentInformationMessage = "PO Box 660586 " + accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + ", TX 75266-0586";
+                    PaymentInformationMessage = "PO Box 660586 Dallas, TX 75266-0586";
                 }
                 else
                 {
-                    PaymentInformationMessage = "PO Box 7006 " + accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + ", CA 91109-9998";
+                    //PaymentInformationMessage = "PO Box 7006 " + accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + ", CA 91109-9998";
+                    PaymentInformationMessage = "PO Box 7006 Pasadena, CA 91109-9998";
                 }
                 //Logger.Trace("ENDED: Get payment information message.");
             }
