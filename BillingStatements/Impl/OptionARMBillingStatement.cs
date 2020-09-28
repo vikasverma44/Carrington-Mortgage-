@@ -2205,7 +2205,7 @@ namespace CarringtonService.BillingStatements
                     if (!isCoBorrower)
                         MailingAddressLine1 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1;
                     else
-                        MailingAddressLine1 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_F;
+                        MailingAddressLine1 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Adrs1;
                 }
 
                 //Logger.Trace("ENDED: Get get mailing address line1.");
@@ -2215,6 +2215,7 @@ namespace CarringtonService.BillingStatements
                 Logger.Error(ex, "Method name : GetMailingAddressLine1" + ExMessage);
 
             }
+            
             return MailingAddressLine1;
         }
         /// <summary>
