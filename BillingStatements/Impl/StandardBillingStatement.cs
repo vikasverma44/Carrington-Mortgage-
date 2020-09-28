@@ -695,7 +695,7 @@ namespace CarringtonService.BillingStatements
                     total +=
                   tra.Rssi_Tr_Amt_To_Lip_PackedData == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Lip_PackedData)
                + (tra.Rssi_Tr_Amt_To_Cr_Ins_PackedData == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Cr_Ins_PackedData))
-               + (tra.Rssi_Tr_Amt_To_Pi_Shrtg == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Pi_Shrtg.Replace("{", "").Replace("}", "")))
+               + (tra.Rssi_Tr_Amt_To_Pi_Shrtg == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Pi_Shrtg.Replace("{", "").Replace("}", "").Replace("Q", "")))
                + (tra.Rssi_Tr_Amt_To_Def_Prin_PackedData == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Def_Prin_PackedData))
                + (tra.Rssi_Tr_Amt_To_Def_Int_PackedData == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Def_Int_PackedData))
                + (tra.Rssi_Tr_Amt_To_Def_Late_Chrg_PackedData == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Def_Late_Chrg_PackedData))
@@ -705,7 +705,7 @@ namespace CarringtonService.BillingStatements
                + (tra.Rssi_Tr_Amt_To_Def_Admin_Fees_PackedData == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Def_Admin_Fees_PackedData))
                + (tra.Rssi_Tr_Amt_To_Def_Optins_PackedData == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Def_Optins_PackedData));
                 }
-
+                
 
 
                 return Miscellaneous = Convert.ToString(total);
