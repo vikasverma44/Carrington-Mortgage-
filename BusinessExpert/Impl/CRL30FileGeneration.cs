@@ -130,8 +130,8 @@ namespace CarringtonService.BusinessExpert
 
                     foreach (var extractAccount in mortgageLoanBillingFileModel.AccountModelList)
                     {
-                        //if (extractAccount.MasterFileDataPart_1Model.Rssi_Acct_No == "0000905973") //"0000714479")
-                        //{ 
+                        //if (extractAccount.MasterFileDataPart_1Model.Rssi_Acct_No == "0000714479")//"0000905973") //"0000714479")
+                        //{
 
                         //}
 
@@ -268,7 +268,8 @@ namespace CarringtonService.BusinessExpert
                         account.SequenceTransactions();
                         output.AddAccount(account);
                         primaryIndex++;
-                        if (borrowerList.Count > 0)
+
+                        if (borrowerList.Count > 0 && extractAccount.CoBorrowerRecordModel.Rssi_Acct_No != null)
                         {
                             //Add records for Co-Borrower Section 
                             foreach (var borrower in borrowerList)

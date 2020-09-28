@@ -2215,7 +2215,8 @@ namespace CarringtonService.BillingStatements
                 Logger.Error(ex, "Method name : GetMailingAddressLine1" + ExMessage);
 
             }
-            return MailingAddressLine1.Substring(0,29);
+            
+            return MailingAddressLine1;
         }
         /// <summary>
         /// 6
