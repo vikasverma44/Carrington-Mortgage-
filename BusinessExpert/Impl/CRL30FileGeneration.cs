@@ -130,6 +130,11 @@ namespace CarringtonService.BusinessExpert
 
                     foreach (var extractAccount in mortgageLoanBillingFileModel.AccountModelList)
                     {
+                        //if (extractAccount.MasterFileDataPart_1Model.Rssi_Acct_No == "0000905973") //"0000714479")
+                        //{ 
+
+                        //}
+
                         _accountTypeHold = string.Empty;
 
                         var account = new CustomerAccount(primaryIndex, 1)
@@ -247,6 +252,8 @@ namespace CarringtonService.BusinessExpert
                             line.Clear();
                             line = GetRawData(extractAccount);
                             account.AddCustomerRecord(FormatCustomer.BuildRecord("RAW", primaryIndex, line));
+
+                            //Get all the data from input file and create Raw data rows
                             BuildPMRawData(extractAccount, account, primaryIndex);
 
                             //Removing the primary borrower from the list leaving co borrower details inside
@@ -279,41 +286,47 @@ namespace CarringtonService.BusinessExpert
 
                                     switch (borrower.FlexField2)
                                     {
-
                                         //For Chapter 7 Option ARM Statement
                                         case "A07":
-                                            line = ChapterSevenOptionARMStatement.GetFinalChapterSevenOptionARMStatement(extractAccount, true);
-                                            account.AddCustomerRecord(FormatCustomer.BuildRecord("A07", primaryIndex, line));
+                                            //Set Mailing address according to the conditions
+                                            account.Standard.OriginalAddressLine1 = ChapterSevenOptionARMStatement.GetMailingBKAttorneyAddressLine1(extractAccount, true);
+                                            account.Standard.OriginalAddressLine2 = ChapterSevenOptionARMStatement.GetMailingBKAttorneyAddressLine2(extractAccount, true);
                                             break;
 
                                         //For Chapter 13 Option ARM Statement
                                         case "A13":
-                                            line = ChapterThirteenOptionARMStatement.GetFinalChapterThirteenOptionARMStatement(extractAccount, true);
-                                            account.AddCustomerRecord(FormatCustomer.BuildRecord("A13", primaryIndex, line));
+                                            //Set Mailing address according to the conditions
+                                            account.Standard.OriginalAddressLine1 = ChapterThirteenOptionARMStatement.GetMailingBKAttorneyAddressLine1(extractAccount, true);
+                                            account.Standard.OriginalAddressLine2 = ChapterThirteenOptionARMStatement.GetMailingBKAttorneyAddressLine2(extractAccount, true);
                                             break;
 
                                         //For Option ARM Billing  Statement
                                         case "ARM":
-                                            line = OptionARMBillingStatement.GetFinalOptionARMBillingStatement(extractAccount, true);
-                                            account.AddCustomerRecord(FormatCustomer.BuildRecord("ARM", primaryIndex, line));
+                                            //Set Mailing address according to the conditions
+                                            account.Standard.OriginalAddressLine1 = OptionARMBillingStatement.GetMailingAddressLine1(extractAccount, true);
+                                            account.Standard.OriginalAddressLine2 = OptionARMBillingStatement.GetMailingAddressLine2(extractAccount, true);
                                             break;
 
                                         //For Chapter 7 Billing Statement
                                         case "S07":
-                                            line = ChapterSevenBillingStatement.GetFinalChapterSevenBillingStatement(extractAccount, true);
-                                            account.AddCustomerRecord(FormatCustomer.BuildRecord("S07", primaryIndex, line));
+                                            //Set Mailing address according to the conditions
+                                            account.Standard.OriginalAddressLine1 = ChapterSevenBillingStatement.GetMailingBKAttorneyAddressLine1(extractAccount, true);
+                                            account.Standard.OriginalAddressLine2 = ChapterSevenBillingStatement.GetMailingBKAttorneyAddressLine2(extractAccount, true);
                                             break;
 
                                         //For Chapter 13 Billing Statement
                                         case "S13":
-                                            line = ChapterThirteenBillingStatement.GetFinalChapterThirteenBillingStatement(extractAccount, true);
-                                            account.AddCustomerRecord(FormatCustomer.BuildRecord("S13", primaryIndex, line));
+                                            //Set Mailing address according to the conditions
+                                            account.Standard.OriginalAddressLine1 = ChapterThirteenBillingStatement.GetMailingBKAttorneyAddressLine1(extractAccount, true);
+                                            account.Standard.OriginalAddressLine2 = ChapterThirteenBillingStatement.GetMailingBKAttorneyAddressLine2(extractAccount, true);
                                             break;
 
                                         //For Standard Billing Statement
                                         case "STD":
-                                            line = StandardBillingStatement.GetFinalStringStandardBilling(extractAccount, true);
-                                            account.AddCustomerRecord(FormatCustomer.BuildRecord("STD", primaryIndex, line));
+                                            //Set Mailing address according to the conditions
+                                            account.Standard.OriginalAddressLine1 = StandardBillingStatement.GetMailingAddressLine1(extractAccount, true);
+                                            account.Standard.OriginalAddressLine2 = StandardBillingStatement.GetMailingAddressLine2(extractAccount, true);
+                                            account.Standard.OriginalAddressLine3 = StandardBillingStatement.GetMailingCityStateZip(extractAccount, true);
                                             break;
 
                                         default:
