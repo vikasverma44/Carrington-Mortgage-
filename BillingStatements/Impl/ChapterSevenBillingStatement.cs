@@ -96,7 +96,7 @@ namespace CarringtonService.BillingStatements
             finalLine.Append(GetSuspense(accountModel) + "|");
             finalLine.Append(GetMiscellaneous(accountModel) + "|");
 
-            //TOD0:Revisit Again
+           
             //Conditional Statement Methods
             finalLine.Append(GetPrintStatement(accountModel) + "|");
             finalLine.Append(GetPrimaryBorrowerBKAttorney(accountModel, isCoborrower) + "|");
@@ -840,12 +840,15 @@ namespace CarringtonService.BillingStatements
         //TOD0:Revisit Again check the date format
         public string GetInterestRateUntil(AccountsModel accountModel)
         {
-
+          
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get interest rate until.");
                 if (long.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Rate_Chg_Date) > 19000000)
-                { InterestRateUntil = "Until " + accountModel.MasterFileDataPart_1Model.Rssi_Rate_Chg_Date; }
+                {
+                  
+                    InterestRateUntil = "Until " + accountModel.MasterFileDataPart_1Model.Rssi_Rate_Chg_Date; 
+                }
                 else { InterestRateUntil = null; }
                 //Logger.Trace("ENDED: Get interest rate until.");
             }
@@ -933,7 +936,7 @@ namespace CarringtonService.BillingStatements
             return RegularMonthlyPayment;
         }
 
-        //TOD0:Revisit Again
+        
         public string GetCarringtonCharitableFoundationDonationPaidLastMonh(AccountsModel accountModel)
         {
 
@@ -973,32 +976,39 @@ namespace CarringtonService.BillingStatements
             return CarringtonCharitableFoundationDonationPaidYearToDate;
         }
 
-        //TOD0 Revist
-        public string GetPOBoxAddress(AccountsModel accountModel)
+        
+        public string GetPOBoxAddress(AccountsModel accountsModel)
         {
 
             try
             {
-                //Logger.Trace("STARTED:  Execute to Get POBox address.");
-                if (accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1 == "KS" ||
-                    accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1 == "LA" ||
-                    accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1 == "NM" ||
-                    accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1 == "OK" ||
-                    accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1 == "TX")
-                { PoBoxAddress = "Dallas P.O.Box Address"; }
-                else { PoBoxAddress = "Pasadena P.O.Box Address"; }
-                //Logger.Trace("ENDED: Get  POBox address.");
+                //Logger.Trace("STARTED:  Execute to Get PO Box Address");
+
+                if (accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "KS"
+                      || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "LA"
+                      || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "NM"
+                      || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "OK"
+                      || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "TX")
+                {
+                    PoBoxAddress = "PO Box 660586 Dallas, " + accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + " 75266-0586";
+                }
+                else
+                {
+                    PoBoxAddress = "PO Box 7006 Pasadena, " + accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + " 91109-9998";
+                }
+                //Logger.Trace("ENDED:  To Get PO Box Address");
             }
             catch (Exception ex)
             {
-
-                Logger.Error(ex, "Method name : GetPOBoxAddress" + ExMessage);
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
             }
 
             return PoBoxAddress;
         }
 
-        //TOD0:Revisit Again
+
+       
         public string GetAccountHistoryInformationbox(AccountsModel accountModel)
         {
 
@@ -1280,7 +1290,7 @@ namespace CarringtonService.BillingStatements
             return RecentPayment1;
         }
 
-        //TOD0:Revisit Again
+       
         public string GetLenderPlacedInsuranceMessage(AccountsModel accountModel)
         {
             try
@@ -1313,7 +1323,7 @@ namespace CarringtonService.BillingStatements
             {
                 if (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "6")
                 {
-                    StateNsf = "StateNSF6_MessageFlag"; //TOD0:Revisit Again 
+                    StateNsf = "StateNSF6_MessageFlag"; 
                 }
                 if (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "16")
                 {
@@ -1366,7 +1376,7 @@ namespace CarringtonService.BillingStatements
                 if (Convert.ToDecimal(accountModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) > 0
                     && accountModel.UserFieldRecordModel.Rssi_Usr_88 == "C")
                 {
-                    CmsPartialClaim = "CMSPartialClaim_MessageFlag"; //TOD0:Revisit Again 
+                    CmsPartialClaim = "CMSPartialClaim_MessageFlag"; 
                 }
                 //Logger.Trace("ENDED: Get CMS partial claim.");
                 return CmsPartialClaim;
@@ -1386,7 +1396,7 @@ namespace CarringtonService.BillingStatements
                 if (Convert.ToDecimal(accountModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) > 0
                     && accountModel.UserFieldRecordModel.Rssi_Usr_88 == "H")
                 {
-                    HUDPartialClaim = "HUDPartialClaim_MessageFlag"; //TOD0:Revisit Again 
+                    HUDPartialClaim = "HUDPartialClaim_MessageFlag"; 
                 }
                 //Logger.Trace("ENDED: Get hud partial claim.");
             }
@@ -1427,8 +1437,7 @@ namespace CarringtonService.BillingStatements
         }
 
         public string GetAmount(AccountsModel accountModel)
-        {
-            //Tod0
+        {            
             try
             {
                 decimal amt = 0;
@@ -1463,7 +1472,7 @@ namespace CarringtonService.BillingStatements
             return Amount;
         }
 
-        //TOD0:Revisit Again
+        
         public string GetStateDisclosures(AccountsModel accountModel)
         {
 
@@ -1474,7 +1483,7 @@ namespace CarringtonService.BillingStatements
                 if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 4
                       && accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "AR")
                 {
-                    StateDisclosures = "StateDisclosures4AR_MessageFlag";//TOD0:Revisit Again 
+                    StateDisclosures = "StateDisclosures4AR_MessageFlag";
                 }
                 if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 6
                     && accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "CO")
@@ -1537,7 +1546,7 @@ namespace CarringtonService.BillingStatements
                    || Convert.ToDecimal(accountModel.detModel.YTDAmnt) > 0)
                 {
 
-                    CarringtonCharitableFoundation = "CharitableFoundation_MessageFlag"; //TOD0:Revisit Again 
+                    CarringtonCharitableFoundation = "CharitableFoundation_MessageFlag"; 
 
                 }
                 //Logger.Trace("ENDED:    To Carrington Charitable Foundation operation.");
@@ -1549,7 +1558,7 @@ namespace CarringtonService.BillingStatements
                 return "";
             }
         }
-        //TOD0:Revisit Again
+        
         public string GetPaymentInformationMessage(AccountsModel accountModel)
         {
 

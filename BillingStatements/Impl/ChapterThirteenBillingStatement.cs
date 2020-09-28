@@ -990,7 +990,7 @@ namespace CarringtonService.BillingStatements
                 //Logger.Trace("STARTED:  Execute to Get HUD Partial Claim operation.");
                 if (Convert.ToDecimal(accountModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) > 0
                     && accountModel.UserFieldRecordModel.Rssi_Usr_88 == "H")
-                    HUDPartialClaim = "HUDPartialClaim_MessageFlag"; //TOD0:Revisit Again 
+                    HUDPartialClaim = "HUDPartialClaim_MessageFlag"; 
                 //Logger.Trace("ENDED:    To HUD Partial Claim operation.");
                 return HUDPartialClaim;
             }
@@ -1000,7 +1000,7 @@ namespace CarringtonService.BillingStatements
                 return "";
             }
         }
-        // This condition statement is not cleared ===>  If Mailing State = KS, LA, NM, OK, or TX then Dallas P.O.Box Address else Pasadena P.O.Box  Address
+        
         public string GetPOBoxAddress(AccountsModel accountModel)
         {
             try
@@ -1012,11 +1012,11 @@ namespace CarringtonService.BillingStatements
                      || accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "OK"
                      || accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "TX")
                 {
-                    POBoxAddress = "PO Box 660586 " + accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + ", TX 75266-0586";
+                    POBoxAddress = "PO Box 660586 Dallas, " + accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + " 75266-0586";
                 }
                 else
                 {
-                    POBoxAddress = "PO Box 7006 " + accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + ", CA 91109-9998";
+                    POBoxAddress = "PO Box 7006 Pasadena, " + accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + " 91109-9998";
                 }
                 //Logger.Trace("ENDED:    To POBox Address operation.");
                 return POBoxAddress;
@@ -1061,7 +1061,7 @@ namespace CarringtonService.BillingStatements
                      || accountModel.EscrowRecordModel.Any(ins => ins.Rssi_Ins_Ag == "43000")
                        || accountModel.EscrowRecordModel.Any(insg => insg.Rssi_Ins_Ag == "43001"))))
                 {
-                    LenderPlacedInsuranceMessage = "LenderPlacedInsurance_MessageFlag";//TOD0:Revisit Again 
+                    LenderPlacedInsuranceMessage = "LenderPlacedInsurance_MessageFlag";
                 }
                 //Logger.Trace("ENDED:    To Lender Placed Insurance Message operation.");
                 return LenderPlacedInsuranceMessage;
@@ -1136,7 +1136,7 @@ namespace CarringtonService.BillingStatements
                 if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 4
                       && accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "AR")
                 {
-                    StateDisclosures = "StateDisclosures4AR_MessageFlag";//TOD0:Revisit Again 
+                    StateDisclosures = "StateDisclosures4AR_MessageFlag";
                 }
                 if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 6
                     && accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "CO")
@@ -1201,7 +1201,7 @@ namespace CarringtonService.BillingStatements
                         || Convert.ToDecimal(accountModel.detModel.PriorMoAmnt) > 0
                         || Convert.ToDecimal(accountModel.detModel.YTDAmnt) > 0)
                     {
-                        CarringtonCharitableFoundation = "CharitableFoundation_MessageFlag"; //TOD0:Revisit Again 
+                        CarringtonCharitableFoundation = "CharitableFoundation_MessageFlag"; 
                     }
                 }
                 //Logger.Trace("ENDED:    To Carrington Charitable Foundation operation.");
