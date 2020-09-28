@@ -9895,9 +9895,9 @@ namespace CarringtonMortgage.OptionAssignment
             List<BorrowerModel> lstBrw = new List<BorrowerModel>();
             try
             {
-                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
+                if ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
                  || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13")
-                 && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
+                 && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                  && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
                 && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
                  && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
@@ -10025,9 +10025,9 @@ namespace CarringtonMortgage.OptionAssignment
                 //{ If RSSI-B - CHAP = 12 or 13 and RSSI-ML - ALT - TYP - ID = ‘O’}
                 //and If RSSI - POC - STATEMENT - FLAG = B and If RSSI - PRINT - STMT = H and RSSI-STATE = 33 and RSSI-LIP - LA - DATE = 0 and RSSI-FIRST - STMT - IND = Y and when field 8 on the “Proposed Supplemental CCF Layout_050820” = HELLO.
                 //Logger.Trace("STARTED:  Execute to Get Option Arm Bk Chpt13 Stmt Archive Only Ny Hello Primary");
-                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
+                if ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
                  || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13")
-                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
+                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                      && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B")
                      && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H")
                      && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33")
@@ -10063,9 +10063,9 @@ namespace CarringtonMortgage.OptionAssignment
                 //}
                 if (lstBrw.Count == 0)
                 {
-                    if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
+                    if ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
                      || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13")
-                         && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
+                         && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                          && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y")
                          && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H")
                          && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33")
@@ -10481,9 +10481,9 @@ namespace CarringtonMortgage.OptionAssignment
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get Option Arm Bk Chpt13 Stmt Ny And Dvl Letter Primary");
-                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
+                if ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
                  || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13")
-                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
+                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                      && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B")
                      && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33")
                      && (Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0)
@@ -10517,9 +10517,9 @@ namespace CarringtonMortgage.OptionAssignment
                 //}
                 if (lstBrw.Count == 0)
                 {
-                    if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
+                    if ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
                      || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13")
-                         && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
+                         && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                          && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y")
                          && (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33")
                          && (Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0)
@@ -10570,9 +10570,9 @@ namespace CarringtonMortgage.OptionAssignment
             {
                 //{If RSSI-B-CHAP = 12 or 13 and RSSI-ML-ALT-TYP-ID = ‘O’}and If RSSI-POC-STATEMENT-FLAG = B and Document type =BILL and eConset Flag = Y on the eConsent file
                 //Logger.Trace("STARTED:  Execute to Get Option Arm Bk Chpt13 EDelivery Archive Primary");
-                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
+                if ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
                  || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13")
-                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
+                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                      && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B")
                      && (accountModel.EConsentModel.DocumentType == "Bill") && (accountModel.EConsentModel.EConsentFlag == "Y"))
                 {
@@ -10600,9 +10600,9 @@ namespace CarringtonMortgage.OptionAssignment
                 //}
                 if (lstBrw.Count == 0)
                 {
-                    if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
+                    if ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
                      || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13")
-                         && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
+                         && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                          && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y")
                          && (accountModel.EConsentModel.DocumentType == "Bill") && (accountModel.EConsentModel.EConsentFlag == "Y"))
                     {
