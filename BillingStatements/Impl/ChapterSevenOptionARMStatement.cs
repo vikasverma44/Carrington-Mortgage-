@@ -1278,8 +1278,8 @@ namespace CarringtonService.BillingStatements
             return OverduePaymentsOption4;
         }
 
-        //TOD0:Revisit Again
-        public string GetTotalFeesChargedOption4(AccountsModel accountsModel)// issue
+        
+        public string GetTotalFeesChargedOption4(AccountsModel accountsModel)
         {
 
             try
@@ -1415,7 +1415,7 @@ namespace CarringtonService.BillingStatements
             }
             return FeesandChargesPaidLastMonth;
         }
-        //TOD0:Revisit Again
+       
         public string GeUnappliedFundsPaidLastMonth(AccountsModel accountsModel)
         {
 
@@ -1499,7 +1499,7 @@ namespace CarringtonService.BillingStatements
 
         }
 
-        //TOD0:Revisit Again
+        
         public string GetTotalPaidYeartoDate(AccountsModel accountsModel)
         {
             try
@@ -1684,14 +1684,13 @@ namespace CarringtonService.BillingStatements
             }
             return PaymentAmountOption4;
         }
-        //TOD0:Revisit Again
+        
         public string GetSuspense(AccountsModel accountsModel)
         {
 
             try
             {
-                //Logger.Trace("STARTED:  Execute to Get Suspense");
-                //corrupted data
+                //Logger.Trace("STARTED:  Execute to Get Suspense");            
                 decimal result = 0;
                 foreach (var item in accountsModel.TransactionRecordModelList)
                 {
@@ -1713,13 +1712,13 @@ namespace CarringtonService.BillingStatements
             }
             return Suspense;
         }
-        //TOD0:Revisit Again
+       
         public string GetMiscellaneous(AccountsModel accountsModel)
         {
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get Miscellaneous");
-                //corrupted data
+               
                 decimal total = 0;
                 foreach (var tra in accountsModel.TransactionRecordModelList)
                 {
@@ -1746,10 +1745,10 @@ namespace CarringtonService.BillingStatements
             }
             return Miscellaneous;
         }
-        //TOD0:Revisit Again
+       
         public string GetDeferredBalance(AccountsModel accountsModel)
         {
-            //return DeferredBalance = "0"; // corrupted data
+           
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get Deferred Balance");
@@ -1800,7 +1799,7 @@ namespace CarringtonService.BillingStatements
             return TotalDue;
         }
 
-        //TOD0:Revisit Again
+        
         public string GetHold(AccountsModel accountsModel)
         {
 
@@ -2513,7 +2512,7 @@ namespace CarringtonService.BillingStatements
             }
             return Option4MinimumDescription;
         }
-        //TOD0:Revisit Again
+        
         public string GetPOBoxAddress(AccountsModel accountsModel)
         {
 
@@ -2527,11 +2526,11 @@ namespace CarringtonService.BillingStatements
                    || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "OK"
                    || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "TX")
                 {
-                    POBoxAddress = "PO Box 660586 Dallas, TX 75266 - 0586";
+                    POBoxAddress = "PO Box 660586 Dallas, " + accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + " 75266-0586";
                 }
                 else
                 {
-                    POBoxAddress = "PO Box 7006 Pasadena, CA 91109 - 9998";
+                    POBoxAddress = "PO Box 7006 Pasadena, " + accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + " 91109-9998";
                 }
                 //Logger.Trace("ENDED:  To Get PO Box Address");
             }
@@ -2982,7 +2981,7 @@ namespace CarringtonService.BillingStatements
             return RecentPayment1;
         }
 
-        //TOD0:Revisit Again
+       
         public string GetLenderPlacedInsuranceMessage(AccountsModel accountsModel)
         {
             try
@@ -3094,7 +3093,7 @@ namespace CarringtonService.BillingStatements
             return HUDPartialClaim;
         }
 
-        //TOD0:Revisit Again
+        
         public string GetStateDisclosures(AccountsModel accountsModel)
         {
 
@@ -3124,7 +3123,7 @@ namespace CarringtonService.BillingStatements
                || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "TN"
                || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "TX")
                 {
-                    StateDisclosures = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
+                    StateDisclosures = "StateDisclosures_"+ accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3+ "_MessageFlag";
                 }
                 //Logger.Trace("ENDED:  To Get State Disclosures");
             }
@@ -3136,7 +3135,7 @@ namespace CarringtonService.BillingStatements
             return StateDisclosures;
         }
 
-        //TOD0:Revisit Again
+        
         public string GetPaymentInformationMessage(AccountsModel accountsModel)
         {
 
@@ -3149,11 +3148,11 @@ namespace CarringtonService.BillingStatements
                 || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "OK"
                 || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "TX")
                 {
-                    PaymentInformationMessage = "PO Box 660586 Dallas, TX 75266 - 0586";
+                    PaymentInformationMessage = "PO Box 660586 Dallas, " + accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + " 75266-0586";
                 }
                 else
                 {
-                    PaymentInformationMessage = "PO Box 7006 Pasadena, CA 91109 - 9998";
+                    PaymentInformationMessage = "PO Box 7006 Pasadena, " + accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + " 91109-9998";
                 }
                 //Logger.Trace("ENDED:  To Get Payment Information Message");
             }

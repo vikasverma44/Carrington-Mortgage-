@@ -393,7 +393,7 @@ namespace CarringtonService.BillingStatements
         /// <returns></returns>
         public string GetUnappliedFundsPaidLastMonth(AccountsModel model)
         {
-            //TOD0:Revisit Again
+          
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get Unapplied Funds Paid Last Month");
@@ -406,7 +406,7 @@ namespace CarringtonService.BillingStatements
                    + tra.Rssi_Tr_Amt_To_Evar_4_PackedData == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_4_PackedData)
                    + tra.Rssi_Tr_Amt_To_Evar_5_PackedData == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_5_PackedData);
                 }
-                //corrupted data
+               
                 UnappliedFundsPaidLastMonth = Convert.ToString(total);
 
                 //Logger.Trace("ENDED:  To Get Unapplied Funds Paid Last Month");
@@ -1464,7 +1464,7 @@ namespace CarringtonService.BillingStatements
         /// <returns></returns>
         public string GetSuspense(AccountsModel model)
         {
-            //TOD0:Revisit Again
+           
             try
             {
                 //Logger.Trace("STARTED:  Execuate To Get Suspense");
@@ -1499,8 +1499,7 @@ namespace CarringtonService.BillingStatements
         /// <returns></returns>
         public string GetMiscellaneous(AccountsModel model)
         {
-            //TOD0:Revisit Again
-
+           
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get Miscellaneous");
@@ -1534,42 +1533,33 @@ namespace CarringtonService.BillingStatements
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public string GetDeferredBalance(AccountsModel model)
+        public string GetDeferredBalance(AccountsModel accountModel)
         {
-            //TOD0:Revisit Again
-
-            return DeferredBalance = "0"; // corrupted data
-            //try
-            //{
-            //    //Logger.Trace("STARTED:  Execute to Get Deferred Balance");
-
-            //        if ((model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal == "\0\0\0\0\0.\0\f" ? 0 : Convert.ToDecimal(model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal)
-            //        - Convert.ToInt32(model.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData)) == 0)
-
-            //    {
-            //        DeferredBalance = "N/A";
-            //    }
-            //    else
-            //    {
-            //        DeferredBalance = Convert.ToString(Convert.ToInt32(model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal)
-            //            - Convert.ToInt32(model.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData));
-            //    }
-            //    //Logger.Trace("ENDED:  To Get Deferred Balance");
-            //}
-            //catch (Exception ex)
-            //{
-            //    Logger.Error(ex, ex.TargetSite.Name);
-            //    throw;
-            //}
-            //return DeferredBalance;
+            try
+            {
+                //Logger.Trace("STARTED:  Execute to Get deferred bBalance");
+                if ((Convert.ToDecimal(accountModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal_PackedData) - Convert.ToDecimal(accountModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData)) == 0)
+                {
+                    DeferredBalance = "N/A";
+                }
+                else
+                {
+                    DeferredBalance = Convert.ToString(Convert.ToDecimal(accountModel.MasterFileDataPart2Model.Rssi_Def_Tot_Bal_PackedData) - Convert.ToDecimal(accountModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData));
+                }
+                //Logger.Trace("ENDED: Get deferred Balance");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "Method name : GetDeferredBalance" + ExMessage);
+            }
+            return DeferredBalance;
         }
         #endregion
 
         #region Condition Statement ==>
         public string GetHold(AccountsModel accountsModel)
         {
-            //TOD0:Revisit Again
-
+           
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get Hold");
@@ -2403,7 +2393,7 @@ namespace CarringtonService.BillingStatements
         /// <returns></returns>
         public string GetInterestOption4(AccountsModel accountsModel)
         {
-            //ToD0
+            
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get Interest Option4");
@@ -2678,7 +2668,7 @@ namespace CarringtonService.BillingStatements
         /// <returns></returns>
         public string GetAmount(AccountsModel accountModel)
         {
-            //Tod0
+           
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get Amount");
@@ -2842,7 +2832,7 @@ namespace CarringtonService.BillingStatements
                  || accountModel.EscrowRecordModel.Any(ins => ins.Rssi_Ins_Ag == "43000")
                    || accountModel.EscrowRecordModel.Any(insg => insg.Rssi_Ins_Ag == "43001"))))
                 {
-                    LenderPlacedInsuranceMessage = "LenderPlacedInsurance_MessageFlag";//TOD0:Revisit Again 
+                    LenderPlacedInsuranceMessage = "LenderPlacedInsurance_MessageFlag";
                 }
                 //Logger.Trace("ENDED:  To Get Lender Placed Insurance Message");
             }
@@ -2933,7 +2923,7 @@ namespace CarringtonService.BillingStatements
                 if (Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) > 0
                     && accountsModel.UserFieldRecordModel.Rssi_Usr_88 == "C")
                 {
-                    CMSPartialClaim = "CMSPartialClaim_MessageFlag"; //TOD0:Revisit Again 
+                    CMSPartialClaim = "CMSPartialClaim_MessageFlag"; 
                 }
                 //Logger.Trace("ENDED: Get CMS partial claim.");
             }
@@ -2957,7 +2947,7 @@ namespace CarringtonService.BillingStatements
                 if (Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) > 0
                     && accountsModel.UserFieldRecordModel.Rssi_Usr_88 == "H")
                 {
-                    HUDPartialClaim = "HUDPartialClaim_MessageFlag"; //TOD0:Revisit Again 
+                    HUDPartialClaim = "HUDPartialClaim_MessageFlag"; 
                 }
                 //Logger.Trace("ENDED: Get hud partial claim.");
             }
@@ -2981,7 +2971,7 @@ namespace CarringtonService.BillingStatements
                 if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 4
                       && accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "AR")
                 {
-                    StateDisclosures = "StateDisclosures4AR_MessageFlag";//TOD0:Revisit Again 
+                    StateDisclosures = "StateDisclosures4AR_MessageFlag";
                 }
                 if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 6
                     && accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "CO")
@@ -3040,7 +3030,7 @@ namespace CarringtonService.BillingStatements
         /// <returns></returns>
         public string GetPaymentInformationMessage(AccountsModel accountsModel)
         {
-            //ToD0
+           
             try
             {
                 //Logger.Trace("STARTED:  Execute get payment information message.");
@@ -3050,11 +3040,11 @@ namespace CarringtonService.BillingStatements
                     || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "OK"
                     || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "TX")
                 {
-                    PaymentInformationMessage = "PO Box 660586 " + accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + ", TX 75266-0586";
+                    PaymentInformationMessage = "PO Box 660586 Dallas, " + accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + " 75266-0586";
                 }
                 else
                 {
-                    PaymentInformationMessage = "PO Box 7006 " + accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + ", CA 91109-9998";
+                    PaymentInformationMessage = "PO Box 7006 Pasadena, " + accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + " 91109-9998";
                 }
                 //Logger.Trace("ENDED: Get payment information message.");
             }
