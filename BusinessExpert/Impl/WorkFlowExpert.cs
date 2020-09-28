@@ -2615,7 +2615,7 @@ namespace CarringtonService.BusinessExpert
                 Rssi_Tr_Exp_Fee_Desc = PackedTypeCheckAndUnPackData("Rssi_Tr_Exp_Fee_Desc", currentByte, 288, 30),
                 Rssi_Tr_Exp_Fee_Amt_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Exp_Fee_Amt_PackedData", currentByte, 318, 6, 2),
 
-                Rssi_Tr_Amt_To_Pi_Shrtg = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Pi_Shrtg", currentByte, 324, 9, 2),
+                Rssi_Tr_Amt_To_Pi_Shrtg_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Pi_Shrtg_PackedData", currentByte, 324, 9, 2),
                 Rssi_Tr_Amt_To_Esc_Short = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Esc_Short", currentByte, 333, 9, 2),
 
                 Rssi_Tr_Amt_To_Acrd_Inctv = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Acrd_Inctv", currentByte, 342, 7, 2),
