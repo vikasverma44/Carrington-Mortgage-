@@ -3087,7 +3087,7 @@ namespace CarringtonService.BillingStatements
         /// <returns></returns>
         public string GetDate(AccountsModel accountModel)
         {
-            //Tod0
+            
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get Date");
