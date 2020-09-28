@@ -2403,7 +2403,7 @@ namespace CarringtonService.BillingStatements
         }
 
         public string GetPaymentInformationMessage(AccountsModel accountsModel)
-        {//TOD0:Revisit Again 
+        {
             try
             {
                 //Logger.Trace("STARTED:  Execute get payment information message.");

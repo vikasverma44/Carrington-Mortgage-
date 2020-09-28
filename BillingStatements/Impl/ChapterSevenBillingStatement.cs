@@ -96,7 +96,7 @@ namespace CarringtonService.BillingStatements
             finalLine.Append(GetSuspense(accountModel) + "|");
             finalLine.Append(GetMiscellaneous(accountModel) + "|");
 
-           
+
             //Conditional Statement Methods
             finalLine.Append(GetPrintStatement(accountModel) + "|");
             finalLine.Append(GetPrimaryBorrowerBKAttorney(accountModel, isCoborrower) + "|");
@@ -837,17 +837,17 @@ namespace CarringtonService.BillingStatements
             return PartialClaim;
         }
 
-        //TOD0:Revisit Again check the date format
+        
         public string GetInterestRateUntil(AccountsModel accountModel)
         {
-          
+
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get interest rate until.");
                 if (long.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Rate_Chg_Date) > 19000000)
                 {
-                  
-                    InterestRateUntil = "Until " + accountModel.MasterFileDataPart_1Model.Rssi_Rate_Chg_Date; 
+
+                    InterestRateUntil = "Until " + CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Rate_Chg_Date);
                 }
                 else { InterestRateUntil = null; }
                 //Logger.Trace("ENDED: Get interest rate until.");
@@ -936,7 +936,7 @@ namespace CarringtonService.BillingStatements
             return RegularMonthlyPayment;
         }
 
-        
+
         public string GetCarringtonCharitableFoundationDonationPaidLastMonh(AccountsModel accountModel)
         {
 
@@ -976,7 +976,7 @@ namespace CarringtonService.BillingStatements
             return CarringtonCharitableFoundationDonationPaidYearToDate;
         }
 
-        
+
         public string GetPOBoxAddress(AccountsModel accountsModel)
         {
 
@@ -1008,7 +1008,7 @@ namespace CarringtonService.BillingStatements
         }
 
 
-       
+
         public string GetAccountHistoryInformationbox(AccountsModel accountModel)
         {
 
@@ -1282,7 +1282,7 @@ namespace CarringtonService.BillingStatements
             return RecentPayment1;
         }
 
-       
+
         public string GetLenderPlacedInsuranceMessage(AccountsModel accountModel)
         {
             try
@@ -1315,7 +1315,7 @@ namespace CarringtonService.BillingStatements
             {
                 if (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "6")
                 {
-                    StateNsf = "StateNSF6_MessageFlag"; 
+                    StateNsf = "StateNSF6_MessageFlag";
                 }
                 if (accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "16")
                 {
@@ -1368,7 +1368,7 @@ namespace CarringtonService.BillingStatements
                 if (Convert.ToDecimal(accountModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) > 0
                     && accountModel.UserFieldRecordModel.Rssi_Usr_88 == "C")
                 {
-                    CmsPartialClaim = "CMSPartialClaim_MessageFlag"; 
+                    CmsPartialClaim = "CMSPartialClaim_MessageFlag";
                 }
                 //Logger.Trace("ENDED: Get CMS partial claim.");
                 return CmsPartialClaim;
@@ -1388,7 +1388,7 @@ namespace CarringtonService.BillingStatements
                 if (Convert.ToDecimal(accountModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) > 0
                     && accountModel.UserFieldRecordModel.Rssi_Usr_88 == "H")
                 {
-                    HUDPartialClaim = "HUDPartialClaim_MessageFlag"; 
+                    HUDPartialClaim = "HUDPartialClaim_MessageFlag";
                 }
                 //Logger.Trace("ENDED: Get hud partial claim.");
             }
@@ -1429,7 +1429,7 @@ namespace CarringtonService.BillingStatements
         }
 
         public string GetAmount(AccountsModel accountModel)
-        {            
+        {
             try
             {
                 decimal amt = 0;
@@ -1464,7 +1464,7 @@ namespace CarringtonService.BillingStatements
             return Amount;
         }
 
-        
+
         public string GetStateDisclosures(AccountsModel accountModel)
         {
 
@@ -1538,7 +1538,7 @@ namespace CarringtonService.BillingStatements
                    || Convert.ToDecimal(accountModel.detModel.YTDAmnt) > 0)
                 {
 
-                    CarringtonCharitableFoundation = "CharitableFoundation_MessageFlag"; 
+                    CarringtonCharitableFoundation = "CharitableFoundation_MessageFlag";
 
                 }
                 //Logger.Trace("ENDED:    To Carrington Charitable Foundation operation.");
@@ -1550,7 +1550,7 @@ namespace CarringtonService.BillingStatements
                 return "";
             }
         }
-        
+
         public string GetPaymentInformationMessage(AccountsModel accountModel)
         {
 
