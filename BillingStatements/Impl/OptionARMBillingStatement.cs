@@ -411,7 +411,7 @@ namespace CarringtonService.BillingStatements
         {
             try
             {
-                return Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) -
+                PastDueBalance = Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) -
                      Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData) -
                      Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData));
             }
@@ -420,6 +420,7 @@ namespace CarringtonService.BillingStatements
                 Logger.Error(ex, "GetPastDueBalance" + ex.TargetSite.Name);
                 return "";
             }
+            return PastDueBalance;
         }
         /// <summary>
         /// 22
@@ -428,9 +429,9 @@ namespace CarringtonService.BillingStatements
         /// <returns></returns>
         public string GetDeferredBalance(AccountsModel model)
         {
-          
+
             try
-            {             
+            {
 
                 if (Convert.ToDecimal(model.MasterFileDataPart2Model.Rssi_Def_Tot_Bal_PackedData) -
                 Convert.ToDecimal(model.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) == 0)
@@ -498,7 +499,7 @@ namespace CarringtonService.BillingStatements
         /// <param name="model"></param>
         /// <returns></returns>
         public string GeUnappliedFundsPaidLastMonth(AccountsModel model)
-        {  
+        {
             try
             {
                 decimal total = 0;
@@ -755,7 +756,7 @@ namespace CarringtonService.BillingStatements
         /// <param name="accountsModel"></param>
         /// <returns></returns>
         public string GetTotalFeesChargedOption1(AccountsModel accountsModel)
-        {  
+        {
             try
             {
                 //Logger.Trace("STARTED:  Execute to get Total Fees Charged Option1 operation.");
@@ -777,7 +778,7 @@ namespace CarringtonService.BillingStatements
                 }
                 else
                 {
-                  
+
                     var Total = Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData)
                              + Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData);
 
@@ -1687,6 +1688,8 @@ namespace CarringtonService.BillingStatements
                     {
                         Total -= Convert.ToDecimal(res);
                     }
+
+                    TotalFeesChargedOption4 = Convert.ToString(Total);
                 }
                 //Logger.Trace("ENDED:   Total Fees Charged Option4 operation.");
             }
@@ -1808,7 +1811,7 @@ namespace CarringtonService.BillingStatements
         /// <param name="model"></param>
         /// <returns></returns>
         public string GeSuspense(AccountsModel model)
-        { 
+        {
             try
             {
                 decimal total = 0;
@@ -1900,7 +1903,7 @@ namespace CarringtonService.BillingStatements
         /// <returns></returns>
         public string GetHold(AccountsModel accountsModel)
         {
-          
+
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get Hold");
@@ -1930,7 +1933,7 @@ namespace CarringtonService.BillingStatements
         /// <returns></returns>
         public string GetAttention(AccountsModel accountsModel, bool isCoBorrower)
         {
-          
+
             try
             {
                 //Logger.Trace("STARTED:  Execute get attention.");
@@ -2180,7 +2183,7 @@ namespace CarringtonService.BillingStatements
                 Logger.Error(ex, "Method name : GetMailingAddressLine1" + ExMessage);
 
             }
-            
+
             return MailingAddressLine1;
         }
         /// <summary>
@@ -3034,7 +3037,7 @@ namespace CarringtonService.BillingStatements
         /// <returns></returns>
         public string GetReceivedAfterDate(AccountsModel accountsModel)
         {
-          
+
             try
             {
                 if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
@@ -3087,7 +3090,7 @@ namespace CarringtonService.BillingStatements
         /// <returns></returns>
         public string GetDate(AccountsModel accountModel)
         {
-            
+
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get Date");
@@ -3120,7 +3123,7 @@ namespace CarringtonService.BillingStatements
         public string GetAmount(AccountsModel accountModel)
         {
 
-           
+
             try
             {
                 decimal amt = 0;
@@ -3291,7 +3294,7 @@ namespace CarringtonService.BillingStatements
         /// <returns></returns>
         public string GetRecentPayment6(AccountsModel accountModel)
         {
-            
+
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get recent payment6.");
@@ -3589,7 +3592,7 @@ namespace CarringtonService.BillingStatements
                         || (int.Parse(accountsModel.MasterFileDataPart2Model.Rssi_Lmt_Program) >= 12
                         && int.Parse(accountsModel.MasterFileDataPart2Model.Rssi_Lmt_Program) <= 14))
                     {
-                        LossMitigtationNotice = "PLEASE TAKE NOTICE that You have agreed to the following loss mitigation program: "+accountsModel.MasterFileDataPart2Model.Rssi_Lmt_Program;
+                        LossMitigtationNotice = "PLEASE TAKE NOTICE that You have agreed to the following loss mitigation program: " + accountsModel.MasterFileDataPart2Model.Rssi_Lmt_Program;
                     }
                 }
             }
@@ -3608,7 +3611,7 @@ namespace CarringtonService.BillingStatements
         /// <returns></returns>
         public string GetForeclosureNotice(AccountsModel accountsModel)
         {
-            
+
             try
             {
                 //Logger.Trace("STARTED:  Execute get foreclosure notice.");
@@ -3689,7 +3692,7 @@ namespace CarringtonService.BillingStatements
         /// <returns></returns>
         public string GetBankruptcyMessage(AccountsModel accountsModel)
         {
-           
+
             try
             {
                 //Logger.Trace("STARTED:  Execute get bankruptcy message.");
@@ -3749,7 +3752,7 @@ namespace CarringtonService.BillingStatements
             {
                 if (accountsModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "6")
                 {
-                    StateNSFMessage = "StateNSF6_MessageFlag"; 
+                    StateNSFMessage = "StateNSF6_MessageFlag";
                 }
                 if (accountsModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "16")
                 {
@@ -3810,7 +3813,7 @@ namespace CarringtonService.BillingStatements
                 if (Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) > 0
                     && accountsModel.UserFieldRecordModel.Rssi_Usr_88 == "C")
                 {
-                    chargeOffNotice = "CMSPartialClaim_MessageFlag"; 
+                    chargeOffNotice = "CMSPartialClaim_MessageFlag";
                 }
                 //Logger.Trace("ENDED: Get CMS partial claim.");
                 return chargeOffNotice;
@@ -3828,7 +3831,7 @@ namespace CarringtonService.BillingStatements
         /// <returns></returns>
         public string GetHUDPartialClaim(AccountsModel accountsModel)
         {
-            
+
             try
             {
                 //Logger.Trace("STARTED:  Execute get hud partial claim.");
@@ -3839,7 +3842,7 @@ namespace CarringtonService.BillingStatements
                 }
                 //Logger.Trace("ENDED: Get hud partial claim.");
             }
-          
+
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetHUDPartialClaim" + ex.TargetSite.Name);
@@ -3854,7 +3857,7 @@ namespace CarringtonService.BillingStatements
         /// <returns></returns>
         public string GetStateDisclosures(AccountsModel accountModel)
         {
-            
+
 
             try
             {
@@ -3921,7 +3924,7 @@ namespace CarringtonService.BillingStatements
         /// <returns></returns>
         public string GetPaymentInformationMessage(AccountsModel accountsModel)
         {
-            
+
             try
             {
                 //Logger.Trace("STARTED:  Execute get payment information message.");

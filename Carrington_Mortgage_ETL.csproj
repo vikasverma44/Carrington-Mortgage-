@@ -142,6 +142,7 @@
     <Compile Include="BillingStatements\Impl\ChapterSevenOptionARMStatement.cs" />
     <Compile Include="DIContainer.cs" />
     <Compile Include="Helpers\IConfigHelper.cs" />
+    <Compile Include="Models\MultiLocationValueModel.cs" />
     <Compile Include="OptionAssignment\IOptionAssignmentLogic.cs" />
     <Compile Include="Helpers\Impl\CommonHelper.cs" />
     <Compile Include="Models\BorrowerModel.cs" />

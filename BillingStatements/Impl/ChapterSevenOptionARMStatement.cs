@@ -611,8 +611,9 @@ namespace CarringtonService.BillingStatements
                                    + Convert.ToDecimal(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Unpaid_PackedData)
                                    + Convert.ToDecimal(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData));
 
-                TotalAmountDueOption1 = Convert.ToString(Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData)
-                                  + Convert.ToDecimal(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData));
+                if (TotalAmountDueOption1 == null)
+                    TotalAmountDueOption1 = Convert.ToString(Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData)
+                                      + Convert.ToDecimal(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt4_PackedData));
                 //Logger.Trace("ENDED:  To Get Total Amount Due Option1");
             }
             catch (Exception ex)
@@ -875,8 +876,8 @@ namespace CarringtonService.BillingStatements
                     TotalAmountDueOption2 = "Option Not Available";
 
                 else
-                    TotalAmountDueOption2 = Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData)
-                        + Convert.ToString(Convert.ToDecimal(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData));
+                    TotalAmountDueOption2 = Convert.ToString(Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData)
+                        + Convert.ToDecimal(accountsModel.BlendedRateInformationRecordModel.Rssi_Alt_Pymt3_PackedData));
 
                 //Logger.Trace("ENDED:  To Get Total Amount Due Option2");
             }
@@ -1278,7 +1279,7 @@ namespace CarringtonService.BillingStatements
             return OverduePaymentsOption4;
         }
 
-        
+
         public string GetTotalFeesChargedOption4(AccountsModel accountsModel)
         {
 
@@ -1415,7 +1416,7 @@ namespace CarringtonService.BillingStatements
             }
             return FeesandChargesPaidLastMonth;
         }
-       
+
         public string GeUnappliedFundsPaidLastMonth(AccountsModel accountsModel)
         {
 
@@ -1499,7 +1500,7 @@ namespace CarringtonService.BillingStatements
 
         }
 
-        
+
         public string GetTotalPaidYeartoDate(AccountsModel accountsModel)
         {
             try
@@ -1512,7 +1513,7 @@ namespace CarringtonService.BillingStatements
                  + Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Late_Chg_Paid_Ytd_PackedData);
 
 
-                total = accountsModel.MasterFileDataPart_1Model.Rssi_Unap_Fund_Cd != "L"
+                total += accountsModel.MasterFileDataPart_1Model.Rssi_Unap_Fund_Cd != "L"
                   ? (accountsModel.MasterFileDataPart_1Model.Rssi_Esc_Var_PackedData.Trim() == null ? 0 : Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Esc_Var_PackedData)) : 0
                   + accountsModel.MasterFileDataPart2Model.Rssi_Unap_Cd_2 != "L"
                   ? (accountsModel.MasterFileDataPart2Model.Rssi_Unap_Bal_2_PackedData.Trim() == null ? 0 : Convert.ToDecimal(accountsModel.MasterFileDataPart2Model.Rssi_Unap_Bal_2_PackedData)) : 0
@@ -1684,7 +1685,7 @@ namespace CarringtonService.BillingStatements
             }
             return PaymentAmountOption4;
         }
-        
+
         public string GetSuspense(AccountsModel accountsModel)
         {
 
@@ -1712,13 +1713,13 @@ namespace CarringtonService.BillingStatements
             }
             return Suspense;
         }
-       
+
         public string GetMiscellaneous(AccountsModel accountsModel)
         {
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get Miscellaneous");
-               
+
                 decimal total = 0;
                 foreach (var tra in accountsModel.TransactionRecordModelList)
                 {
@@ -1745,10 +1746,10 @@ namespace CarringtonService.BillingStatements
             }
             return Miscellaneous;
         }
-       
+
         public string GetDeferredBalance(AccountsModel accountsModel)
         {
-           
+
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get Deferred Balance");
@@ -1799,7 +1800,7 @@ namespace CarringtonService.BillingStatements
             return TotalDue;
         }
 
-        
+
         public string GetHold(AccountsModel accountsModel)
         {
 
@@ -2512,25 +2513,28 @@ namespace CarringtonService.BillingStatements
             }
             return Option4MinimumDescription;
         }
-        
+
         public string GetPOBoxAddress(AccountsModel accountsModel)
         {
+            //Getting the mailing state from the address line for comparision
+            string mailingAddress = System.Text.RegularExpressions.Regex.Replace(accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3, @"\s+", " ");
+            var mailingState = mailingAddress.Split(" ".ToCharArray());
 
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get PO Box Address");
 
-                if (accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "KS"
-                   || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "LA"
-                   || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "NM"
-                   || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "OK"
-                   || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "TX")
+                if (mailingState.Any(m => m == "KS")
+                   || mailingState.Any(m => m == "LA")
+                   || mailingState.Any(m => m == "NM")
+                   || mailingState.Any(m => m == "OK")
+                   || mailingState.Any(m => m == "TX"))
                 {
-                    POBoxAddress = "PO Box 660586 Dallas, " + accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + " 75266-0586";
+                    POBoxAddress = "PO Box 660586 Dallas, " + mailingAddress + " 75266-0586";
                 }
                 else
                 {
-                    POBoxAddress = "PO Box 7006 Pasadena, " + accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + " 91109-9998";
+                    POBoxAddress = "PO Box 7006 Pasadena, " + mailingAddress + " 91109-9998";
                 }
                 //Logger.Trace("ENDED:  To Get PO Box Address");
             }
@@ -2596,7 +2600,7 @@ namespace CarringtonService.BillingStatements
 
                 Amount = Convert.ToString(amt);
                 //Logger.Trace("ENDED:  To Get Amount");
-            
+
             }
             catch (Exception ex)
             {
@@ -2981,7 +2985,7 @@ namespace CarringtonService.BillingStatements
             return RecentPayment1;
         }
 
-       
+
         public string GetLenderPlacedInsuranceMessage(AccountsModel accountsModel)
         {
             try
@@ -3093,37 +3097,39 @@ namespace CarringtonService.BillingStatements
             return HUDPartialClaim;
         }
 
-        
+
         public string GetStateDisclosures(AccountsModel accountsModel)
         {
-
+            //Getting the mailing state from the address line for comparision
+            string mailingAddress = System.Text.RegularExpressions.Regex.Replace(accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3, @"\s+", " ");
+            var mailingState = mailingAddress.Split(" ".ToCharArray());
 
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get State Disclosures");
 
-                if (accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "4"
-               || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "6"
-               || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "12"
-               || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "22"
-               || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "24"
-               || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "33"
-               || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "34"
-               || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "38"
-               || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "43"
-               || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "44"
-               || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "AR"
-               || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "CO"
-               || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "HI"
-               || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "MA"
-               || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "MN"
-               || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "NC"
-               || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "NY"
-               || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "OR"
-               || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "TN"
-               || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "TX")
+                if (mailingState.Any(m => m == "4")
+                   || mailingState.Any(m => m == "6")
+                   || mailingState.Any(m => m == "12")
+                   || mailingState.Any(m => m == "22")
+                   || mailingState.Any(m => m == "24")
+                   || mailingState.Any(m => m == "33")
+                   || mailingState.Any(m => m == "34")
+                   || mailingState.Any(m => m == "38")
+                   || mailingState.Any(m => m == "43")
+                   || mailingState.Any(m => m == "44")
+                   || mailingState.Any(m => m == "AR")
+                   || mailingState.Any(m => m == "CO")
+                   || mailingState.Any(m => m == "HI")
+                   || mailingState.Any(m => m == "MA")
+                   || mailingState.Any(m => m == "MN")
+                   || mailingState.Any(m => m == "NC")
+                   || mailingState.Any(m => m == "NY")
+                   || mailingState.Any(m => m == "OR")
+                   || mailingState.Any(m => m == "TN")
+                   || mailingState.Any(m => m == "TX"))
                 {
-                    StateDisclosures = "StateDisclosures_"+ accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3+ "_MessageFlag";
+                    StateDisclosures = "StateDisclosures_" + mailingAddress + "_MessageFlag";
                 }
                 //Logger.Trace("ENDED:  To Get State Disclosures");
             }
@@ -3135,24 +3141,27 @@ namespace CarringtonService.BillingStatements
             return StateDisclosures;
         }
 
-        
+
         public string GetPaymentInformationMessage(AccountsModel accountsModel)
         {
+            //Getting the mailing state from the address line for comparision
+            string mailingAddress = System.Text.RegularExpressions.Regex.Replace(accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3, @"\s+", " ");
+            var mailingState = mailingAddress.Split(" ".ToCharArray());
 
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get Payment Information Message");
-                if (accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "KS"
-                || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "LA"
-                || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "NM"
-                || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "OK"
-                || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "TX")
+                if (mailingState.Any(m => m == "KS")
+                    || mailingState.Any(m => m == "LA")
+                    || mailingState.Any(m => m == "NM")
+                    || mailingState.Any(m => m == "OK")
+                    || mailingState.Any(m => m == "TX"))
                 {
-                    PaymentInformationMessage = "PO Box 660586 Dallas, " + accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + " 75266-0586";
+                    PaymentInformationMessage = "PO Box 660586 Dallas, " + mailingAddress + " 75266-0586";
                 }
                 else
                 {
-                    PaymentInformationMessage = "PO Box 7006 Pasadena, " + accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + " 91109-9998";
+                    PaymentInformationMessage = "PO Box 7006 Pasadena, " + mailingAddress + " 91109-9998";
                 }
                 //Logger.Trace("ENDED:  To Get Payment Information Message");
             }

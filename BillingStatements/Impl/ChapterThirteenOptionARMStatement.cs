@@ -191,6 +191,7 @@ namespace CarringtonService.BillingStatements
             return finalLine;
         }
         #region Calculation ==>>
+      
         /* While Calculating Conditions must be applied*/
         /// <summary>
         /// 11
@@ -201,7 +202,7 @@ namespace CarringtonService.BillingStatements
         {
             try
             {
-                //Logger.Trace("STARTED:  Execute to Get Amount Due Option1");
+                      //Logger.Trace("STARTED:  Execute to Get Amount Due Option1");
 
                 if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     AmountDueOption1 = "0.00";
@@ -214,8 +215,8 @@ namespace CarringtonService.BillingStatements
 
                 else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     AmountDueOption1 = "N/A";
-
-                else if (CommonHelper.GetFormatedDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                
+                else if (CommonHelper.GetDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                     AmountDueOption1 = "N/A";
                 else
                 {
@@ -256,7 +257,7 @@ namespace CarringtonService.BillingStatements
                 else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     AmountDueOption2 = "N/A";
 
-                else if (CommonHelper.GetFormatedDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                else if (CommonHelper.GetDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                     AmountDueOption2 = "N/A";
 
                 else
@@ -297,7 +298,7 @@ namespace CarringtonService.BillingStatements
                 else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     AmountDueOption3 = "N/A";
 
-                else if (CommonHelper.GetFormatedDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                else if (CommonHelper.GetDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                     AmountDueOption3 = "N/A";
 
                 else
@@ -331,7 +332,7 @@ namespace CarringtonService.BillingStatements
                 else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     AmountDueOption4 = "N/A";
 
-                else if (CommonHelper.GetFormatedDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                else if (CommonHelper.GetDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                 {
                     AmountDueOption4 = Convert.ToString(Convert.ToDecimal(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Unpaid_PackedData)
                     + Convert.ToDecimal(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData));
@@ -541,7 +542,7 @@ namespace CarringtonService.BillingStatements
                 else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     PrincipalOption1 = "null";
 
-                else if (CommonHelper.GetFormatedDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                else if (CommonHelper.GetDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                     PrincipalOption1 = "null";
                 else
                 {
@@ -577,7 +578,7 @@ namespace CarringtonService.BillingStatements
                 else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     AssistanceAmountOption1 = "null";
 
-                else if (CommonHelper.GetFormatedDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                else if (CommonHelper.GetDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                     AssistanceAmountOption1 = "null";
                 else
                 {
@@ -616,7 +617,7 @@ namespace CarringtonService.BillingStatements
                 else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     ReplacementReserveOption1 = "0.00";
 
-                else if (CommonHelper.GetFormatedDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                else if (CommonHelper.GetDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                     ReplacementReserveOption1 = "null";
                 else
                 {
@@ -659,7 +660,7 @@ namespace CarringtonService.BillingStatements
                 else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     OverduePaymentsOption1 = "null";
 
-                else if (CommonHelper.GetFormatedDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                else if (CommonHelper.GetDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                     OverduePaymentsOption1 = "null";
                 else
                 {
@@ -699,14 +700,14 @@ namespace CarringtonService.BillingStatements
                 else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     TotalFeesPaidOption1 = "null";
 
-                else if (CommonHelper.GetFormatedDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                else if (CommonHelper.GetDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                     TotalFeesPaidOption1 = "null";
 
-                else if ((Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
+                else if ((Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Fees_New_PackedData)
                           + Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)) <
                            Convert.ToDecimal(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData))
                 {
-                    TotalFeesPaidOption1 = Convert.ToString((Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
+                    TotalFeesPaidOption1 = Convert.ToString((Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Fees_New_PackedData)
                         + Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)
                         - Convert.ToDecimal(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData)));
                 }
@@ -744,7 +745,7 @@ namespace CarringtonService.BillingStatements
                 else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     TotalAmountDueOption1 = "N/A";
 
-                else if (CommonHelper.GetFormatedDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                else if (CommonHelper.GetDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                     TotalAmountDueOption1 = "null";
 
                 else
@@ -783,7 +784,7 @@ namespace CarringtonService.BillingStatements
                 else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     PrincipalOption2 = "null";
 
-                else if (CommonHelper.GetFormatedDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                else if (CommonHelper.GetDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                     PrincipalOption2 = "null";
                 else
                 {
@@ -819,7 +820,7 @@ namespace CarringtonService.BillingStatements
                 else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     AssistanceAmountOption2 = "null";
 
-                else if (CommonHelper.GetFormatedDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                else if (CommonHelper.GetDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                     AssistanceAmountOption2 = "null";
                 else
                 {
@@ -857,7 +858,7 @@ namespace CarringtonService.BillingStatements
                 else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     ReplacementReserveOption2 = "null";
 
-                else if (CommonHelper.GetFormatedDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                else if (CommonHelper.GetDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                     ReplacementReserveOption2 = "null";
                 else
                 {
@@ -899,7 +900,7 @@ namespace CarringtonService.BillingStatements
                 else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     OverduePaymentsOption2 = "null";
 
-                else if (CommonHelper.GetFormatedDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                else if (CommonHelper.GetDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                     OverduePaymentsOption2 = "null";
                 else
                 {
@@ -939,14 +940,14 @@ namespace CarringtonService.BillingStatements
                 else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     TotalFeesPaidOption2 = "null";
 
-                else if (CommonHelper.GetFormatedDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                else if (CommonHelper.GetDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                     TotalFeesPaidOption2 = "null";
 
-                else if ((Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
+                else if ((Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Fees_New_PackedData)
                           + Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)) <
                            Convert.ToDecimal(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData))
                 {
-                    TotalFeesPaidOption2 = Convert.ToString((Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
+                    TotalFeesPaidOption2 = Convert.ToString((Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Fees_New_PackedData)
                         + Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)
                         - Convert.ToDecimal(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData)));
                 }
@@ -983,7 +984,7 @@ namespace CarringtonService.BillingStatements
                 else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     TotalAmountDueOption2 = "N/A";
 
-                else if (CommonHelper.GetFormatedDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                else if (CommonHelper.GetDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                     TotalAmountDueOption2 = "null";
 
                 else
@@ -1021,7 +1022,7 @@ namespace CarringtonService.BillingStatements
                 else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     PrincipalOption3 = "null";
 
-                else if (CommonHelper.GetFormatedDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                else if (CommonHelper.GetDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                     PrincipalOption3 = "null";
                 else
                 {
@@ -1058,7 +1059,7 @@ namespace CarringtonService.BillingStatements
                 else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     AssistanceAmountOption3 = "0.00";
 
-                else if (CommonHelper.GetFormatedDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                else if (CommonHelper.GetDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                     AssistanceAmountOption3 = "null";
                 else
                 {
@@ -1096,7 +1097,7 @@ namespace CarringtonService.BillingStatements
                 else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     ReplacementReserveOption3 = "0.00";
 
-                else if (CommonHelper.GetFormatedDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                else if (CommonHelper.GetDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                     ReplacementReserveOption3 = "null";
                 else
                 {
@@ -1138,7 +1139,7 @@ namespace CarringtonService.BillingStatements
                 else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     OverduePaymentsOption3 = "null";
 
-                else if (CommonHelper.GetFormatedDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                else if (CommonHelper.GetDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                     OverduePaymentsOption3 = "null";
                 else
                 {
@@ -1178,14 +1179,14 @@ namespace CarringtonService.BillingStatements
                 else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     TotalFeesPaidOption3 = "null";
 
-                else if (CommonHelper.GetFormatedDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                else if (CommonHelper.GetDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                     TotalFeesPaidOption3 = "null";
 
-                else if ((Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
+                else if ((Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Fees_New_PackedData)
                           + Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)) <
                            Convert.ToDecimal(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData))
                 {
-                    TotalFeesPaidOption3 = Convert.ToString((Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
+                    TotalFeesPaidOption3 = Convert.ToString((Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Fees_New_PackedData)
                         + Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)
                         - Convert.ToDecimal(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData)));
                 }
@@ -1222,7 +1223,7 @@ namespace CarringtonService.BillingStatements
                 else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     TotalAmountDueOption3 = "N/A";
 
-                else if (CommonHelper.GetFormatedDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                else if (CommonHelper.GetDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                     TotalAmountDueOption3 = "null";
 
                 else
@@ -1261,7 +1262,7 @@ namespace CarringtonService.BillingStatements
                 else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     PrincipalOption4 = "0.00";
 
-                else if (CommonHelper.GetFormatedDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                else if (CommonHelper.GetDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                     PrincipalOption4 = "0.00";
                 else
                 {
@@ -1297,7 +1298,7 @@ namespace CarringtonService.BillingStatements
                 else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     AssistanceAmountOption4 = "0.00";
 
-                else if (CommonHelper.GetFormatedDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                else if (CommonHelper.GetDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                     AssistanceAmountOption4 = "0.00";
                 else
                 {
@@ -1335,7 +1336,7 @@ namespace CarringtonService.BillingStatements
                 else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     ReplacementReserveOption4 = "0.00";
 
-                else if (CommonHelper.GetFormatedDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                else if (CommonHelper.GetDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                     ReplacementReserveOption4 = "0.00";
                 else
                 {
@@ -1402,11 +1403,11 @@ namespace CarringtonService.BillingStatements
                 else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     TotalFeesPaidOption4 = "0.00";
 
-                else if ((Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
+                else if ((Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Fees_New_PackedData)
                           + Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)) <
                            Convert.ToDecimal(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData))
                 {
-                    TotalFeesPaidOption4 = Convert.ToString((Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
+                    TotalFeesPaidOption4 = Convert.ToString((Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Fees_New_PackedData)
                         + Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)
                         - Convert.ToDecimal(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData)));
                 }
@@ -1438,7 +1439,7 @@ namespace CarringtonService.BillingStatements
                 else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     TotalAmountDueOption4 = "N/A";
 
-                else if (CommonHelper.GetFormatedDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                else if (CommonHelper.GetDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                 {
                     TotalAmountDueOption4 = Convert.ToString(Convert.ToDecimal(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Unpaid_PackedData)
                                    + Convert.ToDecimal(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData));
@@ -1851,7 +1852,7 @@ namespace CarringtonService.BillingStatements
                 {
                     InterestOption1 = "null";
                 }
-                else if (CommonHelper.GetFormatedDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) >
+                else if (CommonHelper.GetDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) >
                    CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                 {
                     InterestOption1 = "null";
@@ -1897,7 +1898,7 @@ namespace CarringtonService.BillingStatements
                 {
                     EscrowOption1 = "null";
                 }
-                else if (CommonHelper.GetFormatedDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) >
+                else if (CommonHelper.GetDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) >
                     CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                 {
                     EscrowOption1 = "null";
@@ -1944,7 +1945,7 @@ namespace CarringtonService.BillingStatements
                 {
                     RegularMonthlyPaymentOption1 = "null";
                 }
-                else if (CommonHelper.GetFormatedDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) >
+                else if (CommonHelper.GetDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) >
                     CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                 {
                     RegularMonthlyPaymentOption1 = "null";
@@ -1990,7 +1991,7 @@ namespace CarringtonService.BillingStatements
                 {
                     TotalFeesChargedOption1 = "null";
                 }
-                else if (CommonHelper.GetFormatedDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) >
+                else if (CommonHelper.GetDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) >
                 CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                 {
                     TotalFeesChargedOption1 = "null";
@@ -2038,7 +2039,7 @@ namespace CarringtonService.BillingStatements
                 {
                     InterestOption2 = "null";
                 }
-                else if (CommonHelper.GetFormatedDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) >
+                else if (CommonHelper.GetDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) >
                 CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                 {
                     InterestOption2 = "null";
@@ -2085,7 +2086,7 @@ namespace CarringtonService.BillingStatements
                 {
                     EscrowOption2 = "null";
                 }
-                else if (CommonHelper.GetFormatedDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) >
+                else if (CommonHelper.GetDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) >
                  CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                 {
                     EscrowOption2 = "null";
@@ -2132,7 +2133,7 @@ namespace CarringtonService.BillingStatements
                 {
                     RegularMonthlyPaymentOption2 = "null";
                 }
-                else if (CommonHelper.GetFormatedDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) >
+                else if (CommonHelper.GetDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) >
                   CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                 {
                     RegularMonthlyPaymentOption2 = "null";
@@ -2179,7 +2180,7 @@ namespace CarringtonService.BillingStatements
                 {
                     TotalFeesChargedOption2 = "null";
                 }
-                else if (CommonHelper.GetFormatedDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) >
+                else if (CommonHelper.GetDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) >
                   CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                 {
                     TotalFeesChargedOption2 = "null";
@@ -2226,7 +2227,7 @@ namespace CarringtonService.BillingStatements
                 {
                     InterestOption3 = "null";
                 }
-                else if (CommonHelper.GetFormatedDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) >
+                else if (CommonHelper.GetDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) >
                    CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                 {
                     InterestOption3 = "null";
@@ -2273,7 +2274,7 @@ namespace CarringtonService.BillingStatements
                 {
                     EscrowOption3 = "null";
                 }
-                else if (CommonHelper.GetFormatedDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) >
+                else if (CommonHelper.GetDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) >
                     CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                 {
                     EscrowOption3 = "null";
@@ -2320,7 +2321,7 @@ namespace CarringtonService.BillingStatements
                 {
                     RegularMonthlyPaymentOption3 = "null";
                 }
-                else if (CommonHelper.GetFormatedDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) >
+                else if (CommonHelper.GetDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) >
                     CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                 {
                     RegularMonthlyPaymentOption3 = "null";
@@ -2367,7 +2368,7 @@ namespace CarringtonService.BillingStatements
                 {
                     TotalFeesChargedOption3 = "null";
                 }
-                else if (CommonHelper.GetFormatedDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) >
+                else if (CommonHelper.GetDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) >
                     CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                 {
                     TotalFeesChargedOption3 = "null";
@@ -2407,7 +2408,7 @@ namespace CarringtonService.BillingStatements
                 {
                     InterestOption4 = "null";
                 }
-                else if (CommonHelper.GetFormatedDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date)
+                else if (CommonHelper.GetDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date)
                     > CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                 {
                     InterestOption4 = "null";
@@ -2445,7 +2446,7 @@ namespace CarringtonService.BillingStatements
                 {
                     EscrowOption4 = "0.00";
                 }
-                else if (CommonHelper.GetFormatedDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date)
+                else if (CommonHelper.GetDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date)
                     > CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                 {
                     EscrowOption4 = "0.00";
@@ -2484,7 +2485,7 @@ namespace CarringtonService.BillingStatements
                 {
                     RegularMonthlyPaymentOption4 = "0.00";
                 }
-                else if (CommonHelper.GetFormatedDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date)
+                else if (CommonHelper.GetDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date)
                    > CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                 {
                     RegularMonthlyPaymentOption4 = "0.00";
@@ -2585,7 +2586,7 @@ namespace CarringtonService.BillingStatements
             {
                 //Logger.Trace("STARTED:  Execute to Get Post Petiton past due message");
 
-                if (CommonHelper.GetFormatedDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) <=
+                if (CommonHelper.GetDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) <=
                     CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Run_Date))
                 {
                     PostPetitonpastduemessage = "We have not received all of your mortgage payments due since you filed for bankruptcy.";
@@ -2606,23 +2607,25 @@ namespace CarringtonService.BillingStatements
         /// <returns></returns>
         public string GetPOBoxAddress(AccountsModel accountsModel)
         {
+            string mailingAddress = System.Text.RegularExpressions.Regex.Replace(accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3, @"\s+", " ");
+            var mailingState = mailingAddress.Split(" ".ToCharArray());
             try
             {
-                //Logger.Trace("STARTED:  Execute to Get PO Box Address");
-
-                if (accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "KS"
-                      || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "LA"
-                      || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "NM"
-                      || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "OK"
-                      || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "TX")
+                //Logger.Trace("STARTED:  Execute to Get Payment Information Message");
+                if (mailingState.Any(m => m == "KS")
+                    || mailingState.Any(m => m == "LA")
+                    || mailingState.Any(m => m == "NM")
+                    || mailingState.Any(m => m == "OK")
+                    || mailingState.Any(m => m == "TX"))
                 {
-                    POBoxAddress = "PO Box 660586 " + accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + ", TX 75266-0586";
+                    POBoxAddress = "PO Box 660586 Dallas, " + mailingAddress + " 75266-0586";
                 }
                 else
                 {
-                    POBoxAddress = "PO Box 7006 " + accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + ", CA 91109-9998";
+                    POBoxAddress = "PO Box 7006 Pasadena, " + mailingAddress + " 91109-9998";
                 }
-                //Logger.Trace("ENDED:  To Get PO Box Address");
+                //Logger.Trace("ENDED:  To Get Payment Information Message");
+                //return POBoxAddress;
             }
             catch (Exception ex)
             {
@@ -2773,7 +2776,7 @@ namespace CarringtonService.BillingStatements
             {
                 if (Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Rate_Chg_Date).IncludeCenturyDate(true)) > 19000000)
                 {
-                    InterestRateUntil = CommonHelper.GetDateInDDMMYYFormat(accountsModel.MasterFileDataPart_1Model.Rssi_Rate_Chg_Date);
+                    InterestRateUntil =Convert.ToString(CommonHelper.GetDateInDDMMYYFormat(accountsModel.MasterFileDataPart_1Model.Rssi_Rate_Chg_Date));
                 }
                 else
                 {
@@ -2965,51 +2968,53 @@ namespace CarringtonService.BillingStatements
         /// <returns></returns>
         public string GetStateDisclosures(AccountsModel accountModel)
         {
+            string mailingAddress = System.Text.RegularExpressions.Regex.Replace(accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3, @"\s+", " ");
+            var mailingState = mailingAddress.Split(" ".ToCharArray());
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get State Disclosures operation.");
                 if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 4
-                      && accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "AR")
+                      && mailingState.Any(m => m == "KS"))
                 {
                     StateDisclosures = "StateDisclosures4AR_MessageFlag";
                 }
                 if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 6
-                    && accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "CO")
+                    && mailingState.Any(m => m == "KS"))
                 {
                     StateDisclosures = "StateDisclosures6CO_MessageFlag";
                 }
                 if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 12
-                    && accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "HI")
+                    && mailingState.Any(m => m == "KS"))
                 {
                     StateDisclosures = "StateDisclosures12HI_MessageFlag";
                 }
                 if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 22
-                    && accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "MA")
+                    && mailingState.Any(m => m == "KS"))
                 {
                     StateDisclosures = "StateDisclosures4AR_MessageFlag";
                 }
                 if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 24
-                    && accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "MN")
+                    && mailingState.Any(m => m == "KS"))
                 {
                     StateDisclosures = "StateDisclosures24MN_MessageFlag";
                 }
                 if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                    && accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "NC")
+                    && mailingState.Any(m => m == "KS"))
                 {
                     StateDisclosures = "StateDisclosures33NC_MessageFlag";
                 }
                 if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 34
-                    && accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "NY")
+                    && mailingState.Any(m => m == "NY"))
                 {
                     StateDisclosures = "StateDisclosures34NY_MessageFlag";
                 }
                 if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 43
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "TN")
+                   && mailingState.Any(m => m == "TN")) 
                 {
                     StateDisclosures = "StateDisclosures43TN_MessageFlag";
                 }
                 if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 44
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "TX")
+                   && mailingState.Any(m => m == "TX"))
                 {
                     StateDisclosures = "StateDisclosures44TX_MessageFlag";
                 }
@@ -3030,23 +3035,25 @@ namespace CarringtonService.BillingStatements
         /// <returns></returns>
         public string GetPaymentInformationMessage(AccountsModel accountsModel)
         {
-           
+
+            string mailingAddress = System.Text.RegularExpressions.Regex.Replace(accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3, @"\s+", " ");
+            var mailingState = mailingAddress.Split(" ".ToCharArray());
             try
             {
-                //Logger.Trace("STARTED:  Execute get payment information message.");
-                if (accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "KS"
-                    || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "LA"
-                    || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "NM"
-                    || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "OK"
-                    || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "TX")
+                //Logger.Trace("STARTED:  Execute to Get Payment Information Message");
+                if (mailingState.Any(m => m == "KS")
+                    || mailingState.Any(m => m == "LA")
+                    || mailingState.Any(m => m == "NM")
+                    || mailingState.Any(m => m == "OK")
+                    || mailingState.Any(m => m == "TX"))
                 {
-                    PaymentInformationMessage = "PO Box 660586 Dallas, " + accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + " 75266-0586";
+                    PaymentInformationMessage = "PO Box 660586 Dallas, " + mailingAddress + " 75266-0586";
                 }
                 else
                 {
-                    PaymentInformationMessage = "PO Box 7006 Pasadena, " + accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + " 91109-9998";
+                    PaymentInformationMessage = "PO Box 7006 Pasadena, " + mailingAddress + " 91109-9998";
                 }
-                //Logger.Trace("ENDED: Get payment information message.");
+                //Logger.Trace("ENDED:  To Get Payment Information Message");
             }
             catch (Exception ex)
             {
