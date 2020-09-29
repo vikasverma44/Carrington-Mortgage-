@@ -441,7 +441,7 @@ namespace CarringtonService.BusinessExpert
             }
             catch (Exception ex)
             {
-                //Logger.Error(ex, "GenerateCRL30File Failed :");
+                Logger.Error(ex, "GenerateCRL30File Failed :");
             }
 
         }
