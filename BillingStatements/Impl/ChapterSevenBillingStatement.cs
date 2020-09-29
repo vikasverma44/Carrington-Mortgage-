@@ -196,7 +196,8 @@ namespace CarringtonService.BillingStatements
                 }
                 else
                 {
-                    Principal = Convert.ToString(Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_P_I_Pymt_PackedData) - Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData));
+                    Principal = Convert.ToString(Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_P_I_Pymt_PackedData) 
+                        - Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData));
 
                 }
                 //Logger.Trace("ENDED: Get principal");
@@ -214,7 +215,10 @@ namespace CarringtonService.BillingStatements
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get past unpaid amount");
-                PastUnpaidAmount = Convert.ToString(Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) - Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData) - Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData) - Convert.ToDecimal(GetTotalFeesPaid(accountModel)));
+                PastUnpaidAmount = Convert.ToString(Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) 
+                    - Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData) 
+                    - Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData) 
+                    - Convert.ToDecimal(GetTotalFeesPaid(accountModel)));
                 //Logger.Trace("ENDED: Get past unpaid amount");
             }
             catch (Exception ex)
@@ -266,10 +270,11 @@ namespace CarringtonService.BillingStatements
                         Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)) <
                         Convert.ToDecimal(GetTotalFeesandCharges(accountModel)))
 
-
+                {
                     TotalFeesPaid = Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Fees_New_PackedData) +
                     Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData) -
                      Convert.ToDecimal(GetTotalFeesandCharges(accountModel));
+                }
 
                 else
                 {
@@ -438,7 +443,8 @@ namespace CarringtonService.BillingStatements
             {
                 //Logger.Trace("STARTED:  Execute to Get total paid year to date");
                 var result = Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Paid_Ytd_PackedData) +
-                    Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Int_Pd_Ytd_PackedData) + Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Esc_Paid_Ytd_PackedData)
+                    Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Int_Pd_Ytd_PackedData) 
+                    + Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Esc_Paid_Ytd_PackedData)
                     + Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Fees_Paid_Ytd_PackedData) +
                     Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Late_Chg_Paid_Ytd_PackedData) + (accountModel.MasterFileDataPart_1Model.Rssi_Unap_Fund_Cd != "L" ?
                     Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Esc_Var_PackedData) : 0) + (accountModel.MasterFileDataPart2Model.Rssi_Unap_Cd_2 != "L" ?
@@ -557,6 +563,10 @@ namespace CarringtonService.BillingStatements
             {
                 //Logger.Trace("STARTED:  Execute to Get print statement");
                 if (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H")
+                {
+                    PrintStatement = "Create image but do not mail";
+                }
+                else
                 {
                     PrintStatement = string.Empty;
                 }
@@ -758,11 +768,11 @@ namespace CarringtonService.BillingStatements
                     if (isCoBorrower)
                         MailingCountry = accountsModel.ForeignInformationRecordModel.Rssi_Appl_Country;
                     else
-                        MailingCountry = "null";
+                        MailingCountry = null;
                 }
                 else
                 {
-                    MailingCountry = "null";
+                    MailingCountry = null;
                 }
                 //Logger.Trace("ENDED:  To Get Mailing Country");
             }
@@ -784,7 +794,7 @@ namespace CarringtonService.BillingStatements
             {
                 //Logger.Trace("STARTED:  Execute to Get Mailing Country");
 
-                PaymentDate = accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte;
+                PaymentDate = CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte);
 
                 //Logger.Trace("ENDED:  To Get Mailing Country");
             }
@@ -805,8 +815,13 @@ namespace CarringtonService.BillingStatements
             {
                 //Logger.Trace("STARTED:  Execute to Get buy down balance.");
                 if (Convert.ToDecimal(accountModel.UserFieldRecordModel.Rssi_Usr_303_PackedData) <= 0)
-                { BuydownBalance = "N/A"; }
-                else { BuydownBalance = accountModel.UserFieldRecordModel.Rssi_Usr_303_PackedData; }
+                { 
+                    BuydownBalance = "N/A"; 
+                }
+                else 
+                { 
+                    BuydownBalance = accountModel.UserFieldRecordModel.Rssi_Usr_303_PackedData; 
+                }
                 //Logger.Trace("ENDED: Get buy down balance.");
             }
             catch (Exception ex)
@@ -824,8 +839,13 @@ namespace CarringtonService.BillingStatements
             {
                 //Logger.Trace("STARTED:  Execute to Get partial claim.");
                 if (Convert.ToDecimal(accountModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData) == 0)
-                { PartialClaim = "N/A"; }
-                else { PartialClaim = accountModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData; }
+                { 
+                    PartialClaim = "N/A"; 
+                }
+                else 
+                { 
+                    PartialClaim = accountModel.MasterFileDataPart2Model.Rssi_Def_Unpd_Exp_Adv_Bal_PackedData; 
+                }
                 //Logger.Trace("ENDED: Get partial claim.");
             }
             catch (Exception ex)
@@ -846,10 +866,12 @@ namespace CarringtonService.BillingStatements
                 //Logger.Trace("STARTED:  Execute to Get interest rate until.");
                 if (long.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Rate_Chg_Date) > 19000000)
                 {
-
-                    InterestRateUntil = "Until " + CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Rate_Chg_Date);
+                    InterestRateUntil = "Until " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Rate_Chg_Date);
                 }
-                else { InterestRateUntil = null; }
+                else 
+                { 
+                    InterestRateUntil = null; 
+                }
                 //Logger.Trace("ENDED: Get interest rate until.");
             }
             catch (Exception ex)
@@ -868,8 +890,13 @@ namespace CarringtonService.BillingStatements
             {
                 //Logger.Trace("STARTED:  Execute to Get prepayment penalty.");
                 if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Prepay_Pen_Amt_PackedData) > 0)
-                { PrepaymentPenalty = "Yes"; }
-                else { PrepaymentPenalty = "No"; }
+                { 
+                    PrepaymentPenalty = "Yes"; 
+                }
+                else 
+                { 
+                    PrepaymentPenalty = "No"; 
+                }
                 //Logger.Trace("ENDED: Get prepayment penalty.");
             }
             catch (Exception ex)
@@ -886,8 +913,17 @@ namespace CarringtonService.BillingStatements
             {
                 //Logger.Trace("STARTED:  Execute to Get interest.");
                 if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
-                { Interest = "0.00"; }
-                else if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0) { Interest = "0.00"; }
+                { 
+                    Interest = "0.00"; 
+                }
+                else if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0) 
+                { 
+                    Interest = "0.00"; 
+                }
+                else
+                {
+                    Interest = accountModel.MasterFileDataPart_1Model.Rssi_Int_Due_PackedData;
+                }
                 //Logger.Trace("ENDED: Get interest.");
             }
             catch (Exception ex)
@@ -905,8 +941,17 @@ namespace CarringtonService.BillingStatements
             {
                 //Logger.Trace("STARTED:  Execute to Get escrow taxes and insurance.");
                 if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
-                { EscrowTaxesAndOrInsurance = "0.00"; }
-                else if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0) { EscrowTaxesAndOrInsurance = "0.00"; }
+                { 
+                    EscrowTaxesAndOrInsurance = "0.00"; 
+                }
+                else if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0) 
+                { 
+                    EscrowTaxesAndOrInsurance = "0.00"; 
+                }
+                else
+                {
+                    EscrowTaxesAndOrInsurance = accountModel.MasterFileDataPart_1Model.Rssi_Esc_Pymt_PackedData;
+                }
                 //Logger.Trace("ENDED: Get escrow taxes and insurance.");
             }
             catch (Exception ex)
@@ -923,7 +968,13 @@ namespace CarringtonService.BillingStatements
             {
                 //Logger.Trace("STARTED:  Execute to Get regular monthly payment.");
                 if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
-                { RegularMonthlyPayment = "0.00"; }
+                { 
+                    RegularMonthlyPayment = "0.00"; 
+                }
+                else
+                {
+                    RegularMonthlyPayment = accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData;
+                }
                 //Logger.Trace("ENDED: Get regular monthly payment.");
 
             }
@@ -943,8 +994,15 @@ namespace CarringtonService.BillingStatements
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get carrington paid last month.");
-                if (Convert.ToDecimal(accountModel.SupplementalCCFModel.PriorMoAmnt) > 0 || Convert.ToDecimal(accountModel.SupplementalCCFModel.YTDAmnt) > 0)
-                { CarringtonCharitableFoundationDonationPaidLastMonh = "CharitableFoundationDonation_MessageFlag"; }
+                if (Convert.ToDecimal(accountModel.SupplementalCCFModel.PriorMoAmnt) > 0 
+                    || Convert.ToDecimal(accountModel.SupplementalCCFModel.YTDAmnt) > 0)
+                { 
+                    CarringtonCharitableFoundationDonationPaidLastMonh = "CharitableFoundationDonation_MessageFlag"; 
+                }
+                else
+                {
+                    CarringtonCharitableFoundationDonationPaidLastMonh = accountModel.SupplementalCCFModel.PriorMoAmnt;
+                }
                 //Logger.Trace("ENDED: Get regular monthly payment.");
 
             }
@@ -963,8 +1021,15 @@ namespace CarringtonService.BillingStatements
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get carrington charitable paid yearto date.");
-                if (Convert.ToDecimal(accountModel.SupplementalCCFModel.PriorMoAmnt) > 0 || Convert.ToDecimal(accountModel.SupplementalCCFModel.YTDAmnt) > 0)
-                { CarringtonCharitableFoundationDonationPaidYearToDate = "CharitableFoundationDonation_MessageFlag"; }
+                if (Convert.ToDecimal(accountModel.SupplementalCCFModel.PriorMoAmnt) > 0 
+                    || Convert.ToDecimal(accountModel.SupplementalCCFModel.YTDAmnt) > 0)
+                { 
+                    CarringtonCharitableFoundationDonationPaidYearToDate = "CharitableFoundationDonation_MessageFlag"; 
+                }
+                else
+                {
+                    CarringtonCharitableFoundationDonationPaidYearToDate = accountModel.SupplementalCCFModel.YTDAmnt;
+                }
                 //Logger.Trace("ENDED: Get carrington charitable paid yearto date.");
             }
             catch (Exception ex)
@@ -1017,8 +1082,13 @@ namespace CarringtonService.BillingStatements
                 //Logger.Trace("STARTED:  Execute to Get account history information box.");
                 if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Num_Days_Delq) >= 30 &&
                     Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) > 0)
-                { AccountHistoryInformationBox = "DelinquencyNoticeSection_MessageFlag"; }
-                else { AccountHistoryInformationBox = string.Empty; }
+                { 
+                    AccountHistoryInformationBox = "DelinquencyNoticeSection_MessageFlag"; 
+                }
+                else 
+                { 
+                    AccountHistoryInformationBox = string.Empty; 
+                }
                 //Logger.Trace("ENDED: Get  account history information box.");
             }
             catch (Exception ex)
@@ -1054,7 +1124,7 @@ namespace CarringtonService.BillingStatements
                 }
                 else if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 5)
                 {
-                    RecentPayment6 = "Payment Due " + CommonHelper.GetDateInDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_1) + ": Fully paid on " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_1);
+                    RecentPayment6 = "Payment Due " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Due_Date_1) + ": Fully paid on " + CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(accountModel.MasterFileDataPart_1Model.Rssi_Pmt_Paid_Date_1);
                 }
                 else if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0
                     && Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData) > 0)
@@ -1296,15 +1366,16 @@ namespace CarringtonService.BillingStatements
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get lender placed insurance message.");
-                if ((accountModel.EscrowRecordModel.Any(r => r.rssi_esc_type == "20")
-                    || accountModel.EscrowRecordModel.Any(r => r.rssi_esc_type == "21")
-                    && accountModel.EscrowRecordModel.Any(r => r.Rssi_Ins_Co == "2450")
-                   && (accountModel.EscrowRecordModel.Any(er => er.Rssi_Ins_Ag == "29000")
-                    || accountModel.EscrowRecordModel.Any(eri => eri.Rssi_Ins_Ag == "29005")
-                   || accountModel.EscrowRecordModel.Any(ins => ins.Rssi_Ins_Ag == "43000")
-                     || accountModel.EscrowRecordModel.Any(insg => insg.Rssi_Ins_Ag == "43001"))))
-
-                { LenderPlacedInsuranceMessage = "LenderPlacedInsurance_MessageFlag"; }
+                if (accountModel.EscrowRecordModel.Any(r => r.rssi_esc_type == "20")
+                || accountModel.EscrowRecordModel.Any(r => r.rssi_esc_type == "21")
+                && accountModel.EscrowRecordModel.Any(r => r.Rssi_Ins_Co == "2450")
+                && (accountModel.EscrowRecordModel.Any(er => er.Rssi_Ins_Ag == "29000")
+                || accountModel.EscrowRecordModel.Any(eri => eri.Rssi_Ins_Ag == "29005")
+                || accountModel.EscrowRecordModel.Any(ins => ins.Rssi_Ins_Ag == "43000")
+                || accountModel.EscrowRecordModel.Any(insg => insg.Rssi_Ins_Ag == "43001")))
+                { 
+                    LenderPlacedInsuranceMessage = "LenderPlacedInsurance_MessageFlag"; 
+                }
                 //Logger.Trace("ENDED: Get  lender placed insurance message.");
             }
             catch (Exception ex)
@@ -1475,8 +1546,6 @@ namespace CarringtonService.BillingStatements
 
         public string GetStateDisclosures(AccountsModel accountModel)
         {
-
-
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get State Disclosures operation.");
@@ -1506,14 +1575,14 @@ namespace CarringtonService.BillingStatements
                     StateDisclosures = "StateDisclosures24MN_MessageFlag";
                 }
                 if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                    && accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "NC")
-                {
-                    StateDisclosures = "StateDisclosures33NC_MessageFlag";
-                }
-                if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 34
                     && accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "NY")
                 {
-                    StateDisclosures = "StateDisclosures34NY_MessageFlag";
+                    StateDisclosures = "StateDisclosures33NY_MessageFlag";
+                }
+                if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 34
+                    && accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "NC")
+                {
+                    StateDisclosures = "StateDisclosures34NC_MessageFlag";
                 }
                 if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 43
                    && accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "TN")
@@ -1525,6 +1594,7 @@ namespace CarringtonService.BillingStatements
                 {
                     StateDisclosures = "StateDisclosures44TX_MessageFlag";
                 }
+
                 //Logger.Trace("ENDED:    To State Disclosures operation.");
                 return StateDisclosures;
             }
@@ -1571,11 +1641,11 @@ namespace CarringtonService.BillingStatements
                     || accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "OK"
                     || accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "TX")
                 {
-                    PaymentInformationMessage = "PO Box 660586 " + accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + ", TX 75266-0586";
+                    PaymentInformationMessage = "PO Box 660586 Dallas, " + accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + " 75266-0586";
                 }
                 else
                 {
-                    PaymentInformationMessage = "PO Box 7006 " + accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + ", CA 91109-9998";
+                    PaymentInformationMessage = "PO Box 7006 Pasadena, " + accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + " 91109-9998";
                 }
                 //Logger.Trace("ENDED: Get payment information message.");
             }

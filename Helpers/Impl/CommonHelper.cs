@@ -88,7 +88,7 @@ namespace CarringtonMortgage.Helpers
             try
             {
                 var parsedDate = DateTime.ParseExact(date, "yyMMdd", System.Globalization.CultureInfo.InvariantCulture);
-                var formattedDate = parsedDate.ToString("dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                var formattedDate = parsedDate.ToString("MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                 return formattedDate;
             }
             catch (Exception ex)
