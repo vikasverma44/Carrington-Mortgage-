@@ -207,7 +207,7 @@ namespace CarringtonService.BillingStatements
 
                 else if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                 {
-                    Principal = "null";
+                    Principal = "0.00";
                 }
                 else
                 {
@@ -290,9 +290,9 @@ namespace CarringtonService.BillingStatements
             try
             {
                 //Logger.Trace("STARTED:  Execute to overdue payment.");
-                OverduePayment = Convert.ToString(Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData)
+                OverduePayment = Convert.ToString(Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Total_Due_PackedData) 
+                                      - Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_Assd_Since_Lst_Stmt_PackedData)
                                       - Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Accr_Lc_PackedData)
-                                      - Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Pd_Since_Lst_Stmt_PackedData)
                                       - Convert.ToDecimal(GetTotalFeesPaid(accountsModel)));
                 //Logger.Trace("ENDED: Get  overdue payment.");
             }
@@ -339,11 +339,11 @@ namespace CarringtonService.BillingStatements
             try
             {
                 //Logger.Trace("STARTED:  Execute get total fees paid.");
-                if ((Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
+                if ((Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_New_PackedData)
                              + Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)) <
                               Convert.ToDecimal(GetTotalFeesAndCharges(accountsModel)))
                 {
-                    TotalFeesPaid = Convert.ToString(Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
+                    TotalFeesPaid = Convert.ToString(Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Fees_New_PackedData)
                         + Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)
                         - Convert.ToDecimal(GetTotalFeesAndCharges(accountsModel)));
                 }
@@ -520,7 +520,7 @@ namespace CarringtonService.BillingStatements
 
 
                 result -= Convert.ToDecimal(res);
-                result += Convert.ToDecimal(accountsModel.detModel.PriorMoAmnt);
+                result += Convert.ToDecimal(accountsModel.SupplementalCCFModel.PriorMoAmnt);
 
                 TotalPaidLastMonth = Convert.ToString(result);
 
@@ -1566,14 +1566,14 @@ namespace CarringtonService.BillingStatements
             try
             {
                 //Logger.Trace("STARTED:  Execute get carrington charitable foundation.");
-                if (Convert.ToDecimal(accountsModel.detModel.PriorMoAmnt) > 0
-                    || Convert.ToDecimal(accountsModel.detModel.YTDAmnt) > 0)
+                if (Convert.ToDecimal(accountsModel.SupplementalCCFModel.PriorMoAmnt) > 0
+                    || Convert.ToDecimal(accountsModel.SupplementalCCFModel.YTDAmnt) > 0)
                 {
                     CarringtonCharitableFoundation = string.Empty;
                 }
                 else
                 {
-                    CarringtonCharitableFoundation = accountsModel.detModel.PriorMoAmnt;
+                    CarringtonCharitableFoundation = accountsModel.SupplementalCCFModel.PriorMoAmnt;
                 }
                 //Logger.Trace("ENDED: Get get carrington charitable foundation.");
             }
@@ -1592,14 +1592,14 @@ namespace CarringtonService.BillingStatements
             try
             {
                 //Logger.Trace("STARTED:  Execute get carrington charitable paid yeartodate.");
-                if (Convert.ToDecimal(accountsModel.detModel.PriorMoAmnt) > 0
-                    || Convert.ToDecimal(accountsModel.detModel.YTDAmnt) > 0)
+                if (Convert.ToDecimal(accountsModel.SupplementalCCFModel.PriorMoAmnt) > 0
+                    || Convert.ToDecimal(accountsModel.SupplementalCCFModel.YTDAmnt) > 0)
                 {
                     CarringtonCharitableFoundationDonationPaidYeartoDate = string.Empty;
                 }
                 else
                 {
-                    CarringtonCharitableFoundationDonationPaidYeartoDate = accountsModel.detModel.YTDAmnt;
+                    CarringtonCharitableFoundationDonationPaidYeartoDate = accountsModel.SupplementalCCFModel.YTDAmnt;
                 }
                 //Logger.Trace("ENDED: Get get carrington charitable paid yeartodate.");
             }
@@ -1698,7 +1698,7 @@ namespace CarringtonService.BillingStatements
             try
             {
                 //Logger.Trace("STARTED:  Execute get carrington charitable donationbox.");
-                if (accountsModel.detModel.Eligible == "Yes")
+                if (accountsModel.SupplementalCCFModel.Eligible == "Yes")
                 {
                     CarringtonCharitableFoundationDonationbox = "CharitableFoundation_MessageFlag";
                 }
@@ -2121,14 +2121,14 @@ namespace CarringtonService.BillingStatements
             try
             {
                 //Logger.Trace("STARTED:  Execute get preforeclosure notice.");
-                if (accountsModel.detModel.SentNO631 != null)
+                if (accountsModel.SupplementalCCFModel.SentNO631 != null)
                 {
 
-                    if (int.Parse(accountsModel.detModel.SentNO631) == 1)
+                    if (int.Parse(accountsModel.SupplementalCCFModel.SentNO631) == 1)
                     {
                         PreForeclosureNY90DayNotice = "LEASE TAKE NOTICE that Carrington Mortgage Services, LLC has fulfilled, the pre - foreclosure notice requirements of Real Property Actions and Proceedings Law §1304 or Uniform Commercial Code § 9‐611(f), if applicable.";
                     }
-                    if (int.Parse(accountsModel.detModel.SentNO631) == 0)
+                    if (int.Parse(accountsModel.SupplementalCCFModel.SentNO631) == 0)
                     {
                         PreForeclosureNY90DayNotice = string.Empty;
                     }
@@ -2394,13 +2394,13 @@ namespace CarringtonService.BillingStatements
             try
             {
                 //Logger.Trace("STARTED:  Execute get carrington charitable foundation.");
-                if (accountsModel.detModel.Eligible != null
-                    && accountsModel.detModel.PriorMoAmnt != null
-                    && accountsModel.detModel.YTDAmnt != null)
+                if (accountsModel.SupplementalCCFModel.Eligible != null
+                    && accountsModel.SupplementalCCFModel.PriorMoAmnt != null
+                    && accountsModel.SupplementalCCFModel.YTDAmnt != null)
                 {
-                    if (accountsModel.detModel.Eligible == "Yes"
-                        || Convert.ToDecimal(accountsModel.detModel.PriorMoAmnt) > 0
-                        || Convert.ToDecimal(accountsModel.detModel.YTDAmnt) > 0)
+                    if (accountsModel.SupplementalCCFModel.Eligible == "Yes"
+                        || Convert.ToDecimal(accountsModel.SupplementalCCFModel.PriorMoAmnt) > 0
+                        || Convert.ToDecimal(accountsModel.SupplementalCCFModel.YTDAmnt) > 0)
                     {
                         CarringtonCharitableFoundation = "CharitableFoundation_MessageFlag"; 
                     }

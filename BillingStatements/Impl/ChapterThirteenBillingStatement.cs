@@ -1004,30 +1004,55 @@ namespace CarringtonService.BillingStatements
         
         public string GetPOBoxAddress(AccountsModel accountModel)
         {
+            string mailingAddress = System.Text.RegularExpressions.Regex.Replace(accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3, @"\s+", " ");
+            var mailingState = mailingAddress.Split(" ".ToCharArray());
             try
             {
-                //Logger.Trace("STARTED:  Execute to Get POBox Address operation.");
-                if (accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "KS"
-                     || accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "LA"
-                     || accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "NM"
-                     || accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "OK"
-                     || accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "TX")
+                //Logger.Trace("STARTED:  Execute to Get Payment Information Message");
+                if (mailingState.Any(m => m == "KS")
+                    || mailingState.Any(m => m == "LA")
+                    || mailingState.Any(m => m == "NM")
+                    || mailingState.Any(m => m == "OK")
+                    || mailingState.Any(m => m == "TX"))
                 {
-                    POBoxAddress = "PO Box 660586 Dallas, " + accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + " 75266-0586";
+                    POBoxAddress = "PO Box 660586 Dallas, " + mailingAddress + " 75266-0586";
                 }
                 else
                 {
-                    POBoxAddress = "PO Box 7006 Pasadena, " + accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + " 91109-9998";
+                    POBoxAddress = "PO Box 7006 Pasadena, " + mailingAddress + " 91109-9998";
                 }
-                //Logger.Trace("ENDED:    To POBox Address operation.");
+                //Logger.Trace("ENDED:  To Get Payment Information Message");
                 return POBoxAddress;
             }
-
             catch (Exception ex)
             {
                 Logger.Error(ex, "GetPOBoxAddress " + ex.TargetSite.Name);
                 return "";
             }
+            //try
+            //{
+            //    //Logger.Trace("STARTED:  Execute to Get POBox Address operation.");
+            //    if (accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "KS"
+            //         || accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "LA"
+            //         || accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "NM"
+            //         || accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "OK"
+            //         || accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "TX")
+            //    {
+            //        POBoxAddress = "PO Box 660586 Dallas, " + accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + " 75266-0586";
+            //    }
+            //    else
+            //    {
+            //        POBoxAddress = "PO Box 7006 Pasadena, " + accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + " 91109-9998";
+            //    }
+            //    //Logger.Trace("ENDED:    To POBox Address operation.");
+            //    return POBoxAddress;
+            //}
+
+            //catch (Exception ex)
+            //{
+            //    Logger.Error(ex, "GetPOBoxAddress " + ex.TargetSite.Name);
+            //    return "";
+            //}
         }
         //public string GetDate(AccountsModel accountModel)
         //{
@@ -1131,51 +1156,53 @@ namespace CarringtonService.BillingStatements
         //What to do if the condition is satisfied
         public string GetStateDisclosures(AccountsModel accountModel)
         {
+            string mailingAddress = System.Text.RegularExpressions.Regex.Replace(accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3, @"\s+", " ");
+            var mailingState = mailingAddress.Split(" ".ToCharArray());
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get State Disclosures operation.");
                 if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 4
-                      && accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "AR")
+                      && mailingState.Any(m => m == "AR")) 
                 {
                     StateDisclosures = "StateDisclosures4AR_MessageFlag";
                 }
                 if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 6
-                    && accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "CO")
+                    && mailingState.Any(m => m == "CO"))
                 {
                     StateDisclosures = "StateDisclosures6CO_MessageFlag";
                 }
                 if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 12
-                    && accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "HI")
+                    && mailingState.Any(m => m == "HI"))
                 {
                     StateDisclosures = "StateDisclosures12HI_MessageFlag";
                 }
                 if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 22
-                    && accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "MA")
+                    && mailingState.Any(m => m == "MA")) 
                 {
                     StateDisclosures = "StateDisclosures4AR_MessageFlag";
                 }
                 if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 24
-                    && accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "MN")
+                    && mailingState.Any(m => m == "MN")) 
                 {
                     StateDisclosures = "StateDisclosures24MN_MessageFlag";
                 }
                 if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                    && accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "NC")
+                    && mailingState.Any(m => m == "NC"))
                 {
                     StateDisclosures = "StateDisclosures33NC_MessageFlag";
                 }
                 if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 34
-                    && accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "NY")
+                    && mailingState.Any(m => m == "NY"))
                 {
                     StateDisclosures = "StateDisclosures34NY_MessageFlag";
                 }
                 if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 43
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "TN")
+                   && mailingState.Any(m => m == "TN"))
                 {
                     StateDisclosures = "StateDisclosures43TN_MessageFlag";
                 }
                 if (Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 44
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "TX")
+                   && mailingState.Any(m => m == "TX")) 
                 {
                     StateDisclosures = "StateDisclosures44TX_MessageFlag";
                 }
@@ -1217,22 +1244,24 @@ namespace CarringtonService.BillingStatements
 
         public string GetPaymentInformationMessage(AccountsModel accountsModel)
         {
+            string mailingAddress = System.Text.RegularExpressions.Regex.Replace(accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3, @"\s+", " ");
+            var mailingState = mailingAddress.Split(" ".ToCharArray());
             try
             {
-                //Logger.Trace("STARTED:  Execute to Get Payment Information Message operation.");
-                if (accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "KS"
-                   || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "LA"
-                   || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "NM"
-                   || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "OK"
-                   || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "TX")
+                //Logger.Trace("STARTED:  Execute to Get Payment Information Message");
+                if (mailingState.Any(m => m == "KS")
+                    || mailingState.Any(m => m == "LA")
+                    || mailingState.Any(m => m == "NM")
+                    || mailingState.Any(m => m == "OK")
+                    || mailingState.Any(m => m == "TX"))
                 {
-                    PaymentInformationMessage = "PO Box 660586 " + accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + ", TX 75266-0586";
+                    PaymentInformationMessage = "PO Box 660586 Dallas, " + mailingAddress + " 75266-0586";
                 }
                 else
                 {
-                    PaymentInformationMessage = "PO Box 7006 " + accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + ", CA 91109-9998";
+                    PaymentInformationMessage = "PO Box 7006 Pasadena, " + mailingAddress + " 91109-9998";
                 }
-                //Logger.Trace("ENDED:    To Payment Information Message operation.");         
+                //Logger.Trace("ENDED:  To Get Payment Information Message");
             }
             catch (Exception ex)
             {
