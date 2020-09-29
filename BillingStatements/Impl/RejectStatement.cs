@@ -23,9 +23,11 @@ namespace CarringtonMortgage.Calculation_Classes
         {
             try
             {
-                Logger.Trace("STARTED:  Executing to check Reject Account.");
+                //Logger.Trace("STARTED:  Executing to check Reject Account.");
 
                 bool isReject = false;
+
+              
 
                 //Rejection condition 1
                 if ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -59,7 +61,7 @@ namespace CarringtonMortgage.Calculation_Classes
                 {
                     isReject = true;
                 }
-                Logger.Trace("ENDED:   Executed to check Reject Account..");
+              //  Logger.Trace("ENDED:   Executed to check Reject Account..");
                 return isReject;
             }
             catch (Exception ex)
