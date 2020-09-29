@@ -216,7 +216,7 @@ namespace CarringtonService.BillingStatements
                 else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     AmountDueOption1 = "N/A";
                 
-                else if (CommonHelper.GetDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                else if (CommonHelper.GetDateTime(model.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(model.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
                     AmountDueOption1 = "N/A";
                 else
                 {

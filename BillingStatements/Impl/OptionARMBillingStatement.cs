@@ -1722,11 +1722,11 @@ namespace CarringtonService.BillingStatements
                 {
                     TotalFeesPaidOption4 = "0.00";
                 }
-                else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
+                else if (Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Fees_New_PackedData)
                     + Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)
                     < Convert.ToDecimal(GetTotalFeesChargedOption4(model) != "null" ? GetTotalFeesChargedOption4(model) : "0.00"))
                 {
-                    TotalFeesPaidOption4 = Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Fees_PackedData)
+                    TotalFeesPaidOption4 = Convert.ToString(Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Fees_New_PackedData)
                    + Convert.ToDecimal(model.MasterFileDataPart_1Model.Rssi_Late_Chg_Due_PackedData)
                    - Convert.ToDecimal(GetTotalFeesChargedOption4(model) != "null" ? GetTotalFeesChargedOption4(model) : "0.00"));
                 }
