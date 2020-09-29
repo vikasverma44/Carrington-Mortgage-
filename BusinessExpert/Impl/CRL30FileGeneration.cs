@@ -133,7 +133,7 @@ namespace CarringtonService.BusinessExpert
                     {
                         counter++;
                         Logger.Info("Account records extracting...: " + counter);
-                        //if (extractAccount.MasterFileDataPart_1Model.Rssi_Acct_No == "0000714479")//"0000905973") //"0000714479")
+                        //if (extractAccount.MasterFileDataPart_1Model.Rssi_Acct_No == "0000000011")//"0000714479")//"0000905973") //"0000714479")
                         //{
 
                         //}
@@ -162,7 +162,7 @@ namespace CarringtonService.BusinessExpert
                         account.Standard.OriginalAddressLine3 = extractAccount.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
 
                         //City,State and Zip
-                        account.Standard.OriginalCity = extractAccount.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
+                        //account.Standard.OriginalCity = extractAccount.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
                         //account.Standard.OriginalState = extractAccount.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
                         //account.Standard.OriginalZip4 = extractAccount.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
                         //account.Standard.OriginalZip5 = extractAccount.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
@@ -207,6 +207,8 @@ namespace CarringtonService.BusinessExpert
                                 account.Standard.LatePaymentDueDate = CommonHelper.GetFormatedDateTime(extractAccount.LateChargeDetailRecordModel.Rssi_Lcd_Pymt_Due_Dt_PackedData);
                             }
                             else { account.Standard.LatePaymentDueDate = null; }
+
+                            account.Standard.PaymentAmount = Convert.ToDecimal(ChapterSevenBillingStatement.GetPaymentAmount(extractAccount));
 
                             account.Standard.LatePaymentAmount = (StandardBillingStatement.GetLatePaymentAmount(extractAccount) != null
                                 && StandardBillingStatement.GetLatePaymentAmount(extractAccount) != "N/A") ?
@@ -316,6 +318,16 @@ namespace CarringtonService.BusinessExpert
                                             //Set Mailing address according to the conditions
                                             account.Standard.OriginalAddressLine1 = ChapterSevenOptionARMStatement.GetMailingBKAttorneyAddressLine1(extractAccount, true);
                                             account.Standard.OriginalAddressLine2 = ChapterSevenOptionARMStatement.GetMailingBKAttorneyAddressLine2(extractAccount, true);
+                                            string A07_cityStateZip = ChapterSevenOptionARMStatement.GetBorrowerAttorneyMailingCityStateZip(extractAccount, true);
+                                            if(!string.IsNullOrEmpty(A07_cityStateZip))
+                                            {
+                                                var arr = A07_cityStateZip.Split(',');
+                                                account.Standard.OriginalCity = arr[0].Trim();
+                                                account.Standard.OriginalState = arr[1].Trim();
+                                                account.Standard.OriginalZip5 = arr[2].Trim();
+                                                account.Standard.OrigCszLength = A07_cityStateZip.Length - 2; // Remove 2 for commas (",")
+
+                                            }
                                             break;
 
                                         //For Chapter 13 Option ARM Statement
@@ -323,6 +335,16 @@ namespace CarringtonService.BusinessExpert
                                             //Set Mailing address according to the conditions
                                             account.Standard.OriginalAddressLine1 = ChapterThirteenOptionARMStatement.GetMailingBKAttorneyAddressLine1(extractAccount, true);
                                             account.Standard.OriginalAddressLine2 = ChapterThirteenOptionARMStatement.GetMailingBKAttorneyAddressLine2(extractAccount, true);
+                                            string A13_cityStateZip = ChapterThirteenOptionARMStatement.GetBorrowerAttorneyMailingCityStateZip(extractAccount, true);
+                                            if (!string.IsNullOrEmpty(A13_cityStateZip))
+                                            {
+                                                var arr = A13_cityStateZip.Split(',');
+                                                account.Standard.OriginalCity = arr[0].Trim();
+                                                account.Standard.OriginalState = arr[1].Trim();
+                                                account.Standard.OriginalZip5 = arr[2].Trim();
+                                                account.Standard.OrigCszLength = A13_cityStateZip.Length-2;
+
+                                            }
                                             break;
 
                                         //For Option ARM Billing  Statement
@@ -330,6 +352,15 @@ namespace CarringtonService.BusinessExpert
                                             //Set Mailing address according to the conditions
                                             account.Standard.OriginalAddressLine1 = OptionARMBillingStatement.GetMailingAddressLine1(extractAccount, true);
                                             account.Standard.OriginalAddressLine2 = OptionARMBillingStatement.GetMailingAddressLine2(extractAccount, true);
+                                            string ARM_cityStateZip = OptionARMBillingStatement.GetMailingCityStateZip(extractAccount, true);
+                                            if (!string.IsNullOrEmpty(ARM_cityStateZip))
+                                            {
+                                                var arr = ARM_cityStateZip.Split(',');
+                                                account.Standard.OriginalCity = arr[0].Trim();
+                                                account.Standard.OriginalState = arr[1].Trim();
+                                                account.Standard.OriginalZip5 = arr[2].Trim();
+                                                account.Standard.OrigCszLength = ARM_cityStateZip.Length-2;
+                                            }
                                             break;
 
                                         //For Chapter 7 Billing Statement
@@ -337,6 +368,16 @@ namespace CarringtonService.BusinessExpert
                                             //Set Mailing address according to the conditions
                                             account.Standard.OriginalAddressLine1 = ChapterSevenBillingStatement.GetMailingBKAttorneyAddressLine1(extractAccount, true);
                                             account.Standard.OriginalAddressLine2 = ChapterSevenBillingStatement.GetMailingBKAttorneyAddressLine2(extractAccount, true);
+                                            string S07_cityStateZip = ChapterSevenBillingStatement.GetBorrowerAttorneyMailingCityStateZip(extractAccount, true);
+                                            if (!string.IsNullOrEmpty(S07_cityStateZip))
+                                            {
+                                                var arr = S07_cityStateZip.Split(',');
+                                                account.Standard.OriginalCity = arr[0].Trim();
+                                                account.Standard.OriginalState = arr[1].Trim();
+                                                account.Standard.OriginalZip5 = arr[2].Trim();
+                                                account.Standard.OrigCszLength = S07_cityStateZip.Length-2;
+
+                                            }
                                             break;
 
                                         //For Chapter 13 Billing Statement
@@ -344,6 +385,16 @@ namespace CarringtonService.BusinessExpert
                                             //Set Mailing address according to the conditions
                                             account.Standard.OriginalAddressLine1 = ChapterThirteenBillingStatement.GetMailingBKAttorneyAddressLine1(extractAccount, true);
                                             account.Standard.OriginalAddressLine2 = ChapterThirteenBillingStatement.GetMailingBKAttorneyAddressLine2(extractAccount, true);
+                                            string S13_cityStateZip = ChapterThirteenBillingStatement.GetBorrowerAttorneyMailingCityStateZip(extractAccount, true);
+                                            if (!string.IsNullOrEmpty(S13_cityStateZip))
+                                            {
+                                                var arr = S13_cityStateZip.Split(',');
+                                                account.Standard.OriginalCity = arr[0].Trim();
+                                                account.Standard.OriginalState = arr[1].Trim();
+                                                account.Standard.OriginalZip5 = arr[2].Trim();
+                                                account.Standard.OrigCszLength = S13_cityStateZip.Length-2;
+
+                                            }
                                             break;
 
                                         //For Standard Billing Statement
@@ -351,7 +402,16 @@ namespace CarringtonService.BusinessExpert
                                             //Set Mailing address according to the conditions
                                             account.Standard.OriginalAddressLine1 = StandardBillingStatement.GetMailingAddressLine1(extractAccount, true);
                                             account.Standard.OriginalAddressLine2 = StandardBillingStatement.GetMailingAddressLine2(extractAccount, true);
-                                            account.Standard.OriginalAddressLine3 = StandardBillingStatement.GetMailingCityStateZip(extractAccount, true);
+                                            string STD_cityStateZip = StandardBillingStatement.GetMailingCityStateZip(extractAccount, true);
+                                            if (!string.IsNullOrEmpty(STD_cityStateZip))
+                                            {
+                                                var arr = STD_cityStateZip.Split(',');
+                                                account.Standard.OriginalCity = arr[0].Trim();
+                                                account.Standard.OriginalState = arr[1].Trim();
+                                                account.Standard.OriginalZip5 = arr[2].Trim();
+                                                account.Standard.OrigCszLength = STD_cityStateZip.Length-2;
+
+                                            }
                                             break;
 
                                         default:
