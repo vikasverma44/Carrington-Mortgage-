@@ -33,6 +33,23 @@ namespace CarringtonService.BusinessExpert
         public static List<DetModel> detModels = new List<DetModel>();
         public static List<TransModel> transModels = new List<TransModel>();
         public static List<EConsentModel> eConsentModels = new List<EConsentModel>();
+        
+        public static List<MultiLocationValueModel> Rssi_Inv_Code_PackedData_Model = new List<MultiLocationValueModel>();
+        public static List<MultiLocationValueModel> Rssi_Past_Date_Model = new List<MultiLocationValueModel>();
+        public static List<MultiLocationValueModel> Rssi_Inv_Name_Model = new List<MultiLocationValueModel>();
+        public static List<MultiLocationValueModel> Rssi_Inv_Block_PackedData_Model = new List<MultiLocationValueModel>();
+        public static List<MultiLocationValueModel> Rssi_Inv_Pc_Owned_PackedData_Model = new List<MultiLocationValueModel>();
+        public static List<MultiLocationValueModel> Rssi_Inv_Rate_PackedData_Model = new List<MultiLocationValueModel>();
+        public static List<MultiLocationValueModel> Rssi_Inv_Sv_Code_PackedData_Model = new List<MultiLocationValueModel>();
+        public static List<MultiLocationValueModel> Rssi_Inv_Sv_Fee_PackedData_Model = new List<MultiLocationValueModel>();
+        public static List<MultiLocationValueModel> Rssi_Inv_Sv_Acct_Model = new List<MultiLocationValueModel>();
+        public static List<MultiLocationValueModel> Rssi_Inv_Fill_Model = new List<MultiLocationValueModel>();
+        public static List<MultiLocationValueModel> Rssi_Reg_Amt_PackedData_Model = new List<MultiLocationValueModel>();
+        public static List<MultiLocationValueModel> Rssi_Late_Amt_PackedData_Model = new List<MultiLocationValueModel>();
+        public static List<MultiLocationValueModel> Rssi_Past_Date_R_Model = new List<MultiLocationValueModel>();
+        public static List<MultiLocationValueModel> Rssi_Reg_Amt_R_PackedData_Model = new List<MultiLocationValueModel>();
+        public static List<MultiLocationValueModel> Rssi_Late_Amt_R_PackedData_Model = new List<MultiLocationValueModel>();
+
 
         /// <summary>The delimiter.</summary>
         private const string Delimiter = "|";
@@ -709,444 +726,423 @@ namespace CarringtonService.BusinessExpert
             };
         }
 
-        public string GetValueFromMultiLocation(string variableName, byte[] currentByte)
+        public MultiLocationValueModel GetValueFromMultiLocationModel(string variableName, byte[] currentByte, string acc)
         {
-            string firstPostion, secondPostion, thirdPostion, fourthPostion, fifthPostion, sixPostion,
-            Postion07, Postion08, Postion09, Postion10, Postion11, Postion12,
-            Postion13, Postion14, Postion15, Postion16, Postion17, Postion18, Postion19, Postion20, Postion21, Postion22 = "";
+            var model = new MultiLocationValueModel();
+            model.AccountNo = acc;
+
             if (variableName == "Rssi_Inv_Code_PackedData")
             {
-                firstPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Code_PackedData", currentByte, 50, 3);
-                secondPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Code_PackedData", currentByte, 120, 3);
-                thirdPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Code_PackedData", currentByte, 190, 3);
-                fourthPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Code_PackedData", currentByte, 260, 3);
-                fifthPostion = "";
-                sixPostion = "";
-                Postion07 = "";
-                Postion08 = "";
-                Postion09 = "";
-                Postion10 = "";
-                Postion11 = "";
-                Postion12 = "";
-                Postion13 = "";
-                Postion14 = "";
-                Postion15 = "";
-                Postion16 = "";
-                Postion17 = "";
-                Postion18 = "";
-                Postion19 = "";
-                Postion20 = "";
-                Postion21 = "";
-                Postion22 = "";
+                model.Postion1 = PackedTypeCheckAndUnPackData("Rssi_Inv_Code_PackedData", currentByte, 50, 3);
+                model.Postion2 = PackedTypeCheckAndUnPackData("Rssi_Inv_Code_PackedData", currentByte, 120, 3);
+                model.Postion3 = PackedTypeCheckAndUnPackData("Rssi_Inv_Code_PackedData", currentByte, 190, 3);
+                model.Postion4 = PackedTypeCheckAndUnPackData("Rssi_Inv_Code_PackedData", currentByte, 260, 3);
+                model.Postion5 = "";
+                model.Postion6 = "";
+                model.Postion7 = "";
+                model.Postion8 = "";
+                model.Postion9 = "";
+                model.Postion10 = "";
+                model.Postion11 = "";
+                model.Postion12 = "";
+                model.Postion13 = "";
+                model.Postion14 = "";
+                model.Postion15 = "";
+                model.Postion16 = "";
+                model.Postion17 = "";
+                model.Postion18 = "";
+                model.Postion19 = "";
+                model.Postion20 = "";
+                model.Postion21 = "";
+                model.Postion22 = "";
 
             }
             else if (variableName == "Rssi_Inv_Name")
             {
-                firstPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Name", currentByte, 53, 35);
-                secondPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Name", currentByte, 123, 35);
-                thirdPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Name", currentByte, 193, 35);
-                fourthPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Name", currentByte, 263, 35);
-                fifthPostion = "";
-                sixPostion = "";
-                Postion07 = "";
-                Postion08 = "";
-                Postion09 = "";
-                Postion10 = "";
-                Postion11 = "";
-                Postion12 = "";
-                Postion13 = "";
-                Postion14 = "";
-                Postion15 = "";
-                Postion16 = "";
-                Postion17 = "";
-                Postion18 = "";
-                Postion19 = "";
-                Postion20 = "";
-                Postion21 = "";
-                Postion22 = "";
+                model.Postion1 = PackedTypeCheckAndUnPackData("Rssi_Inv_Name", currentByte, 53, 35);
+                model.Postion2 = PackedTypeCheckAndUnPackData("Rssi_Inv_Name", currentByte, 123, 35);
+                model.Postion3 = PackedTypeCheckAndUnPackData("Rssi_Inv_Name", currentByte, 193, 35);
+                model.Postion4 = PackedTypeCheckAndUnPackData("Rssi_Inv_Name", currentByte, 263, 35);
+                model.Postion5 = "";
+                model.Postion6 = "";
+                model.Postion7 = "";
+                model.Postion8 = "";
+                model.Postion9 = "";
+                model.Postion10 = "";
+                model.Postion11 = "";
+                model.Postion12 = "";
+                model.Postion13 = "";
+                model.Postion14 = "";
+                model.Postion15 = "";
+                model.Postion16 = "";
+                model.Postion17 = "";
+                model.Postion18 = "";
+                model.Postion19 = "";
+                model.Postion20 = "";
+                model.Postion21 = "";
+                model.Postion22 = "";
             }
             else if (variableName == "Rssi_Inv_Block_PackedData")
             {
-                firstPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Block_PackedData", currentByte, 88, 3);
-                secondPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Block_PackedData", currentByte, 158, 3);
-                thirdPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Block_PackedData", currentByte, 228, 3);
-                fourthPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Block_PackedData", currentByte, 298, 3);
-                fifthPostion = "";
-                sixPostion = "";
-                Postion07 = "";
-                Postion08 = "";
-                Postion09 = "";
-                Postion10 = "";
-                Postion11 = "";
-                Postion12 = "";
-                Postion13 = "";
-                Postion14 = "";
-                Postion15 = "";
-                Postion16 = "";
-                Postion17 = "";
-                Postion18 = "";
-                Postion19 = "";
-                Postion20 = "";
-                Postion21 = "";
-                Postion22 = "";
+                model.Postion1 = PackedTypeCheckAndUnPackData("Rssi_Inv_Block_PackedData", currentByte, 88, 3);
+                model.Postion2 = PackedTypeCheckAndUnPackData("Rssi_Inv_Block_PackedData", currentByte, 158, 3);
+                model.Postion3 = PackedTypeCheckAndUnPackData("Rssi_Inv_Block_PackedData", currentByte, 228, 3);
+                model.Postion4 = PackedTypeCheckAndUnPackData("Rssi_Inv_Block_PackedData", currentByte, 298, 3);
+                model.Postion5 = "";
+                model.Postion6 = "";
+                model.Postion7 = "";
+                model.Postion8 = "";
+                model.Postion9 = "";
+                model.Postion10 = "";
+                model.Postion11 = "";
+                model.Postion12 = "";
+                model.Postion13 = "";
+                model.Postion14 = "";
+                model.Postion15 = "";
+                model.Postion16 = "";
+                model.Postion17 = "";
+                model.Postion18 = "";
+                model.Postion19 = "";
+                model.Postion20 = "";
+                model.Postion21 = "";
+                model.Postion22 = "";
             }
             else if (variableName == "Rssi_Inv_Pc_Owned_PackedData")
             {
-                firstPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Pc_Owned_PackedData", currentByte, 91, 4, 5);
-                secondPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Pc_Owned_PackedData", currentByte, 161, 4, 5);
-                thirdPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Pc_Owned_PackedData", currentByte, 231, 4, 5);
-                fourthPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Pc_Owned_PackedData", currentByte, 301, 4, 5);
-                fifthPostion = "";
-                sixPostion = "";
-                Postion07 = "";
-                Postion08 = "";
-                Postion09 = "";
-                Postion10 = "";
-                Postion11 = "";
-                Postion12 = "";
-                Postion13 = "";
-                Postion14 = "";
-                Postion15 = "";
-                Postion16 = "";
-                Postion17 = "";
-                Postion18 = "";
-                Postion19 = "";
-                Postion20 = "";
-                Postion21 = "";
-                Postion22 = "";
+                model.Postion1 = PackedTypeCheckAndUnPackData("Rssi_Inv_Pc_Owned_PackedData", currentByte, 91, 4, 5);
+                model.Postion2 = PackedTypeCheckAndUnPackData("Rssi_Inv_Pc_Owned_PackedData", currentByte, 161, 4, 5);
+                model.Postion3 = PackedTypeCheckAndUnPackData("Rssi_Inv_Pc_Owned_PackedData", currentByte, 231, 4, 5);
+                model.Postion4 = PackedTypeCheckAndUnPackData("Rssi_Inv_Pc_Owned_PackedData", currentByte, 301, 4, 5);
+                model.Postion5 = "";
+                model.Postion6 = "";
+                model.Postion7 = "";
+                model.Postion8 = "";
+                model.Postion9 = "";
+                model.Postion10 = "";
+                model.Postion11 = "";
+                model.Postion12 = "";
+                model.Postion13 = "";
+                model.Postion14 = "";
+                model.Postion15 = "";
+                model.Postion16 = "";
+                model.Postion17 = "";
+                model.Postion18 = "";
+                model.Postion19 = "";
+                model.Postion20 = "";
+                model.Postion21 = "";
+                model.Postion22 = "";
 
             }
             else if (variableName == "Rssi_Inv_Rate_PackedData")
             {
-                firstPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Rate_PackedData", currentByte, 95, 4, 5);
-                secondPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Rate_PackedData", currentByte, 165, 4, 5);
-                thirdPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Rate_PackedData", currentByte, 235, 4, 5);
-                fourthPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Rate_PackedData", currentByte, 305, 4, 5);
-                fifthPostion = "";
-                sixPostion = "";
-                Postion07 = "";
-                Postion08 = "";
-                Postion09 = "";
-                Postion10 = "";
-                Postion11 = "";
-                Postion12 = "";
-                Postion13 = "";
-                Postion14 = "";
-                Postion15 = "";
-                Postion16 = "";
-                Postion17 = "";
-                Postion18 = "";
-                Postion19 = "";
-                Postion20 = "";
-                Postion21 = "";
-                Postion22 = "";
+                model.Postion1 = PackedTypeCheckAndUnPackData("Rssi_Inv_Rate_PackedData", currentByte, 95, 4, 5);
+                model.Postion2 = PackedTypeCheckAndUnPackData("Rssi_Inv_Rate_PackedData", currentByte, 165, 4, 5);
+                model.Postion3 = PackedTypeCheckAndUnPackData("Rssi_Inv_Rate_PackedData", currentByte, 235, 4, 5);
+                model.Postion4 = PackedTypeCheckAndUnPackData("Rssi_Inv_Rate_PackedData", currentByte, 305, 4, 5);
+                model.Postion5 = "";
+                model.Postion6 = "";
+                model.Postion7 = "";
+                model.Postion8 = "";
+                model.Postion9 = "";
+                model.Postion10 = "";
+                model.Postion11 = "";
+                model.Postion12 = "";
+                model.Postion13 = "";
+                model.Postion14 = "";
+                model.Postion15 = "";
+                model.Postion16 = "";
+                model.Postion17 = "";
+                model.Postion18 = "";
+                model.Postion19 = "";
+                model.Postion20 = "";
+                model.Postion21 = "";
+                model.Postion22 = "";
 
             }
             else if (variableName == "Rssi_Inv_Sv_Code_PackedData")
             {
-                firstPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Code_PackedData", currentByte, 99, 1);
-                secondPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Code_PackedData", currentByte, 169, 1);
-                thirdPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Code_PackedData", currentByte, 239, 1);
-                fourthPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Code_PackedData", currentByte, 309, 1);
-                fifthPostion = "";
-                sixPostion = "";
-                Postion07 = "";
-                Postion08 = "";
-                Postion09 = "";
-                Postion10 = "";
-                Postion11 = "";
-                Postion12 = "";
-                Postion13 = "";
-                Postion14 = "";
-                Postion15 = "";
-                Postion16 = "";
-                Postion17 = "";
-                Postion18 = "";
-                Postion19 = "";
-                Postion20 = "";
-                Postion21 = "";
-                Postion22 = "";
+                model.Postion1 = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Code_PackedData", currentByte, 99, 1);
+                model.Postion2 = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Code_PackedData", currentByte, 169, 1);
+                model.Postion3 = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Code_PackedData", currentByte, 239, 1);
+                model.Postion4 = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Code_PackedData", currentByte, 309, 1);
+                model.Postion5 = "";
+                model.Postion6 = "";
+                model.Postion7 = "";
+                model.Postion8 = "";
+                model.Postion9 = "";
+                model.Postion10 = "";
+                model.Postion11 = "";
+                model.Postion12 = "";
+                model.Postion13 = "";
+                model.Postion14 = "";
+                model.Postion15 = "";
+                model.Postion16 = "";
+                model.Postion17 = "";
+                model.Postion18 = "";
+                model.Postion19 = "";
+                model.Postion20 = "";
+                model.Postion21 = "";
+                model.Postion22 = "";
             }
             else if (variableName == "Rssi_Inv_Sv_Fee_PackedData")
             {
-                firstPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Fee_PackedData", currentByte, 100, 4, 5);
-                secondPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Fee_PackedData", currentByte, 170, 4, 5);
-                thirdPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Fee_PackedData", currentByte, 240, 4, 5);
-                fourthPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Fee_PackedData", currentByte, 310, 4, 5);
-                fifthPostion = "";
-                sixPostion = "";
-                Postion07 = "";
-                Postion08 = "";
-                Postion09 = "";
-                Postion10 = "";
-                Postion11 = "";
-                Postion12 = "";
-                Postion13 = "";
-                Postion14 = "";
-                Postion15 = "";
-                Postion16 = "";
-                Postion17 = "";
-                Postion18 = "";
-                Postion19 = "";
-                Postion20 = "";
-                Postion21 = "";
-                Postion22 = "";
+                model.Postion1 = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Fee_PackedData", currentByte, 100, 4, 5);
+                model.Postion2 = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Fee_PackedData", currentByte, 170, 4, 5);
+                model.Postion3 = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Fee_PackedData", currentByte, 240, 4, 5);
+                model.Postion4 = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Fee_PackedData", currentByte, 310, 4, 5);
+                model.Postion5 = "";
+                model.Postion6 = "";
+                model.Postion7 = "";
+                model.Postion8 = "";
+                model.Postion9 = "";
+                model.Postion10 = "";
+                model.Postion11 = "";
+                model.Postion12 = "";
+                model.Postion13 = "";
+                model.Postion14 = "";
+                model.Postion15 = "";
+                model.Postion16 = "";
+                model.Postion17 = "";
+                model.Postion18 = "";
+                model.Postion19 = "";
+                model.Postion20 = "";
+                model.Postion21 = "";
+                model.Postion22 = "";
             }
             else if (variableName == "Rssi_Inv_Sv_Acct")
             {
-                firstPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Acct", currentByte, 104, 15);
-                secondPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Acct", currentByte, 174, 15);
-                thirdPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Acct", currentByte, 244, 15);
-                fourthPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Acct", currentByte, 314, 15);
-                fifthPostion = "";
-                sixPostion = "";
-                Postion07 = "";
-                Postion08 = "";
-                Postion09 = "";
-                Postion10 = "";
-                Postion11 = "";
-                Postion12 = "";
-                Postion13 = "";
-                Postion14 = "";
-                Postion15 = "";
-                Postion16 = "";
-                Postion17 = "";
-                Postion18 = "";
-                Postion19 = "";
-                Postion20 = "";
-                Postion21 = "";
-                Postion22 = "";
+                model.Postion1 = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Acct", currentByte, 104, 15);
+                model.Postion2 = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Acct", currentByte, 174, 15);
+                model.Postion3 = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Acct", currentByte, 244, 15);
+                model.Postion4 = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Acct", currentByte, 314, 15);
+                model.Postion5 = "";
+                model.Postion6 = "";
+                model.Postion7 = "";
+                model.Postion8 = "";
+                model.Postion9 = "";
+                model.Postion10 = "";
+                model.Postion11 = "";
+                model.Postion12 = "";
+                model.Postion13 = "";
+                model.Postion14 = "";
+                model.Postion15 = "";
+                model.Postion16 = "";
+                model.Postion17 = "";
+                model.Postion18 = "";
+                model.Postion19 = "";
+                model.Postion20 = "";
+                model.Postion21 = "";
+                model.Postion22 = "";
             }
             else if (variableName == "Rssi_Inv_Fill")
             {
-                firstPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Fill", currentByte, 119, 1);
-                secondPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Fill", currentByte, 189, 1);
-                thirdPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Fill", currentByte, 259, 1);
-                fourthPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Fill", currentByte, 329, 1);
-                fifthPostion = "";
-                sixPostion = "";
-                Postion07 = "";
-                Postion08 = "";
-                Postion09 = "";
-                Postion10 = "";
-                Postion11 = "";
-                Postion12 = "";
-                Postion13 = "";
-                Postion14 = "";
-                Postion15 = "";
-                Postion16 = "";
-                Postion17 = "";
-                Postion18 = "";
-                Postion19 = "";
-                Postion20 = "";
-                Postion21 = "";
-                Postion22 = "";
+                model.Postion1 = PackedTypeCheckAndUnPackData("Rssi_Inv_Fill", currentByte, 119, 1);
+                model.Postion2 = PackedTypeCheckAndUnPackData("Rssi_Inv_Fill", currentByte, 189, 1);
+                model.Postion3 = PackedTypeCheckAndUnPackData("Rssi_Inv_Fill", currentByte, 259, 1);
+                model.Postion4 = PackedTypeCheckAndUnPackData("Rssi_Inv_Fill", currentByte, 329, 1);
+                model.Postion5 = "";
+                model.Postion6 = "";
+                model.Postion7 = "";
+                model.Postion8 = "";
+                model.Postion9 = "";
+                model.Postion10 = "";
+                model.Postion11 = "";
+                model.Postion12 = "";
+                model.Postion13 = "";
+                model.Postion14 = "";
+                model.Postion15 = "";
+                model.Postion16 = "";
+                model.Postion17 = "";
+                model.Postion18 = "";
+                model.Postion19 = "";
+                model.Postion20 = "";
+                model.Postion21 = "";
+                model.Postion22 = "";
             }
             else if (variableName == "Rssi_Past_Date")
             {
-                firstPostion = PackedTypeCheckAndUnPackData("Rssi_Past_Date", currentByte, 813, 6);
-                secondPostion = PackedTypeCheckAndUnPackData("Rssi_Past_Date", currentByte, 831, 6);
-                thirdPostion = PackedTypeCheckAndUnPackData("Rssi_Past_Date", currentByte, 849, 6);
-                fourthPostion = PackedTypeCheckAndUnPackData("Rssi_Past_Date", currentByte, 867, 6);
-                fifthPostion = PackedTypeCheckAndUnPackData("Rssi_Past_Date", currentByte, 885, 6);
-                sixPostion = PackedTypeCheckAndUnPackData("Rssi_Past_Date", currentByte, 903, 6);
-                Postion07 = "";
-                Postion08 = "";
-                Postion09 = "";
-                Postion10 = "";
-                Postion11 = "";
-                Postion12 = "";
-                Postion13 = "";
-                Postion14 = "";
-                Postion15 = "";
-                Postion16 = "";
-                Postion17 = "";
-                Postion18 = "";
-                Postion19 = "";
-                Postion20 = "";
-                Postion21 = "";
-                Postion22 = "";
+                model.Postion1 = PackedTypeCheckAndUnPackData("Rssi_Past_Date", currentByte, 813, 6);
+                model.Postion2 = PackedTypeCheckAndUnPackData("Rssi_Past_Date", currentByte, 831, 6);
+                model.Postion3 = PackedTypeCheckAndUnPackData("Rssi_Past_Date", currentByte, 849, 6);
+                model.Postion4 = PackedTypeCheckAndUnPackData("Rssi_Past_Date", currentByte, 867, 6);
+                model.Postion5 = PackedTypeCheckAndUnPackData("Rssi_Past_Date", currentByte, 885, 6);
+                model.Postion6 = PackedTypeCheckAndUnPackData("Rssi_Past_Date", currentByte, 903, 6);
+                model.Postion7 = "";
+                model.Postion8 = "";
+                model.Postion9 = "";
+                model.Postion10 = "";
+                model.Postion11 = "";
+                model.Postion12 = "";
+                model.Postion13 = "";
+                model.Postion14 = "";
+                model.Postion15 = "";
+                model.Postion16 = "";
+                model.Postion17 = "";
+                model.Postion18 = "";
+                model.Postion19 = "";
+                model.Postion20 = "";
+                model.Postion21 = "";
+                model.Postion22 = "";
             }
             else if (variableName == "Rssi_Reg_Amt_PackedData")
             {
-                firstPostion = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_PackedData", currentByte, 819, 6, 2);
-                secondPostion = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_PackedData", currentByte, 837, 6, 2);
-                thirdPostion = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_PackedData", currentByte, 855, 6, 2);
-                fourthPostion = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_PackedData", currentByte, 873, 6, 2);
-                fifthPostion = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_PackedData", currentByte, 891, 6, 2);
-                sixPostion = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_PackedData", currentByte, 909, 6, 2);
-                Postion07 = "";
-                Postion08 = "";
-                Postion09 = "";
-                Postion10 = "";
-                Postion11 = "";
-                Postion12 = "";
-                Postion13 = "";
-                Postion14 = "";
-                Postion15 = "";
-                Postion16 = "";
-                Postion17 = "";
-                Postion18 = "";
-                Postion19 = "";
-                Postion20 = "";
-                Postion21 = "";
-                Postion22 = "";
+                model.Postion1 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_PackedData", currentByte, 819, 6, 2);
+                model.Postion2 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_PackedData", currentByte, 837, 6, 2);
+                model.Postion3 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_PackedData", currentByte, 855, 6, 2);
+                model.Postion4 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_PackedData", currentByte, 873, 6, 2);
+                model.Postion5 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_PackedData", currentByte, 891, 6, 2);
+                model.Postion6 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_PackedData", currentByte, 909, 6, 2);
+                model.Postion7 = "";
+                model.Postion8 = "";
+                model.Postion9 = "";
+                model.Postion10 = "";
+                model.Postion11 = "";
+                model.Postion12 = "";
+                model.Postion13 = "";
+                model.Postion14 = "";
+                model.Postion15 = "";
+                model.Postion16 = "";
+                model.Postion17 = "";
+                model.Postion18 = "";
+                model.Postion19 = "";
+                model.Postion20 = "";
+                model.Postion21 = "";
+                model.Postion22 = "";
             }
             else if (variableName == "Rssi_Late_Amt_PackedData")
             {
-                firstPostion = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_PackedData", currentByte, 825, 6, 2);
-                secondPostion = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_PackedData", currentByte, 843, 6, 2);
-                thirdPostion = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_PackedData", currentByte, 861, 6, 2);
-                fourthPostion = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_PackedData", currentByte, 879, 6, 2);
-                fifthPostion = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_PackedData", currentByte, 897, 6, 2);
-                sixPostion = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_PackedData", currentByte, 915, 6, 2);
-                Postion07 = "";
-                Postion08 = "";
-                Postion09 = "";
-                Postion10 = "";
-                Postion11 = "";
-                Postion12 = "";
-                Postion13 = "";
-                Postion14 = "";
-                Postion15 = "";
-                Postion16 = "";
-                Postion17 = "";
-                Postion18 = "";
-                Postion19 = "";
-                Postion20 = "";
-                Postion21 = "";
-                Postion22 = "";
+                model.Postion1 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_PackedData", currentByte, 825, 6, 2);
+                model.Postion2 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_PackedData", currentByte, 843, 6, 2);
+                model.Postion3 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_PackedData", currentByte, 861, 6, 2);
+                model.Postion4 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_PackedData", currentByte, 879, 6, 2);
+                model.Postion5 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_PackedData", currentByte, 897, 6, 2);
+                model.Postion6 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_PackedData", currentByte, 915, 6, 2);
+                model.Postion7 = "";
+                model.Postion8 = "";
+                model.Postion9 = "";
+                model.Postion10 = "";
+                model.Postion11 = "";
+                model.Postion12 = "";
+                model.Postion13 = "";
+                model.Postion14 = "";
+                model.Postion15 = "";
+                model.Postion16 = "";
+                model.Postion17 = "";
+                model.Postion18 = "";
+                model.Postion19 = "";
+                model.Postion20 = "";
+                model.Postion21 = "";
+                model.Postion22 = "";
             }
             else if (variableName == "Rssi_Past_Date_R")
             {
-                firstPostion = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 1791, 6);
-                secondPostion = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 1809, 6);
-                thirdPostion = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 1827, 6);
-                fourthPostion = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 1845, 6);
-                fifthPostion = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 1863, 6);
-                sixPostion = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 1881, 6);
-                Postion07 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 1899, 6);
-                Postion08 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 1917, 6);
-                Postion09 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 1935, 6);
-                Postion10 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 1953, 6);
-                Postion11 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 1971, 6);
-                Postion12 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 1989, 6);
-                Postion13 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 2007, 6);
-                Postion14 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 2025, 6);
-                Postion15 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 2043, 6);
-                Postion16 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 2061, 6);
-                Postion17 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 2079, 6);
-                Postion18 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 2097, 6);
-                Postion19 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 2115, 6);
-                Postion20 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 2133, 6);
-                Postion21 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 2151, 6);
-                Postion22 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 2169, 6);
+                model.Postion1 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 1791, 6);
+                model.Postion2 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 1809, 6);
+                model.Postion3 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 1827, 6);
+                model.Postion4 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 1845, 6);
+                model.Postion5 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 1863, 6);
+                model.Postion6 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 1881, 6);
+                model.Postion7 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 1899, 6);
+                model.Postion8 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 1917, 6);
+                model.Postion9 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 1935, 6);
+                model.Postion10 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 1953, 6);
+                model.Postion11 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 1971, 6);
+                model.Postion12 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 1989, 6);
+                model.Postion13 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 2007, 6);
+                model.Postion14 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 2025, 6);
+                model.Postion15 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 2043, 6);
+                model.Postion16 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 2061, 6);
+                model.Postion17 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 2079, 6);
+                model.Postion18 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 2097, 6);
+                model.Postion19 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 2115, 6);
+                model.Postion20 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 2133, 6);
+                model.Postion21 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 2151, 6);
+                model.Postion22 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 2169, 6);
             }
             else if (variableName == "Rssi_Reg_Amt_R_PackedData")
             {
-                firstPostion = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 1797, 6, 2);
-                secondPostion = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 1815, 6, 2);
-                thirdPostion = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 1833, 6, 2);
-                fourthPostion = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 1851, 6, 2);
-                fifthPostion = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 1869, 6, 2);
-                sixPostion = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 1887, 6, 2);
-                Postion07 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 1905, 6, 2);
-                Postion08 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 1923, 6, 2);
-                Postion09 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 1941, 6, 2);
-                Postion10 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 1959, 6, 2);
-                Postion11 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 1977, 6, 2);
-                Postion12 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 1995, 6, 2);
-                Postion13 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 2013, 6, 2);
-                Postion14 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 2031, 6, 2);
-                Postion15 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 2049, 6, 2);
-                Postion16 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 2067, 6, 2);
-                Postion17 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 2085, 6, 2);
-                Postion18 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 2103, 6, 2);
-                Postion19 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 2021, 6, 2);
-                Postion20 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 2139, 6, 2);
-                Postion21 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 2157, 6, 2);
-                Postion22 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 2175, 6, 2);
+                model.Postion1 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 1797, 6, 2);
+                model.Postion2 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 1815, 6, 2);
+                model.Postion3 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 1833, 6, 2);
+                model.Postion4 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 1851, 6, 2);
+                model.Postion5 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 1869, 6, 2);
+                model.Postion6 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 1887, 6, 2);
+                model.Postion7 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 1905, 6, 2);
+                model.Postion8 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 1923, 6, 2);
+                model.Postion9 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 1941, 6, 2);
+                model.Postion10 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 1959, 6, 2);
+                model.Postion11 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 1977, 6, 2);
+                model.Postion12 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 1995, 6, 2);
+                model.Postion13 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 2013, 6, 2);
+                model.Postion14 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 2031, 6, 2);
+                model.Postion15 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 2049, 6, 2);
+                model.Postion16 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 2067, 6, 2);
+                model.Postion17 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 2085, 6, 2);
+                model.Postion18 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 2103, 6, 2);
+                model.Postion19 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 2021, 6, 2);
+                model.Postion20 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 2139, 6, 2);
+                model.Postion21 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 2157, 6, 2);
+                model.Postion22 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 2175, 6, 2);
             }
             else if (variableName == "Rssi_Late_Amt_R_PackedData")
             {
-                firstPostion = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 1803, 6, 2);
-                secondPostion = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 1821, 6, 2);
-                thirdPostion = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 1839, 6, 2);
-                fourthPostion = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 1857, 6, 2);
-                fifthPostion = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 1875, 6, 2);
-                sixPostion = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 1893, 6, 2);
-                Postion07 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 1911, 6, 2);
-                Postion08 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 1929, 6, 2);
-                Postion09 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 1947, 6, 2);
-                Postion10 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 1965, 6, 2);
-                Postion11 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 1983, 6, 2);
-                Postion12 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 2001, 6, 2);
-                Postion13 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 2019, 6, 2);
-                Postion14 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 2037, 6, 2);
-                Postion15 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 2055, 6, 2);
-                Postion16 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 2073, 6, 2);
-                Postion17 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 2091, 6, 2);
-                Postion18 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 2109, 6, 2);
-                Postion19 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 2127, 6, 2);
-                Postion20 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 2145, 6, 2);
-                Postion21 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 2163, 6, 2);
-                Postion22 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 2181, 6, 2);
+                model.Postion1 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 1803, 6, 2);
+                model.Postion2 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 1821, 6, 2);
+                model.Postion3 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 1839, 6, 2);
+                model.Postion4 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 1857, 6, 2);
+                model.Postion5 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 1875, 6, 2);
+                model.Postion6 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 1893, 6, 2);
+                model.Postion7 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 1911, 6, 2);
+                model.Postion8 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 1929, 6, 2);
+                model.Postion9 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 1947, 6, 2);
+                model.Postion10 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 1965, 6, 2);
+                model.Postion11 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 1983, 6, 2);
+                model.Postion12 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 2001, 6, 2);
+                model.Postion13 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 2019, 6, 2);
+                model.Postion14 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 2037, 6, 2);
+                model.Postion15 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 2055, 6, 2);
+                model.Postion16 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 2073, 6, 2);
+                model.Postion17 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 2091, 6, 2);
+                model.Postion18 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 2109, 6, 2);
+                model.Postion19 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 2127, 6, 2);
+                model.Postion20 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 2145, 6, 2);
+                model.Postion21 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 2163, 6, 2);
+                model.Postion22 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 2181, 6, 2);
             }
-            else
-                return "";
+            
 
-            if (firstPostion != "")
-            { return firstPostion; }
-            else if (secondPostion != "")
-            { return secondPostion; }
-            else if (thirdPostion != "")
-            { return thirdPostion; }
-            else if (fourthPostion != "")
-            { return fourthPostion; }
-            else if (fifthPostion != "")
-            { return fourthPostion; }
-            else if (sixPostion != "")
-            { return fourthPostion; }
-            else if (Postion07 != "")
-            { return Postion07; }
-            else if (Postion08 != "")
-            { return Postion08; }
-            else if (Postion09 != "")
-            { return Postion09; }
-            else if (Postion10 != "")
-            { return Postion10; }
-            else if (Postion11 != "")
-            { return Postion11; }
-            else if (Postion12 != "")
-            { return Postion12; }
-            else if (Postion13 != "")
-            { return Postion13; }
-            else if (Postion14 != "")
-            { return Postion14; }
-            else if (Postion15 != "")
-            { return Postion15; }
-            else if (Postion16 != "")
-            { return Postion16; }
-            else if (Postion17 != "")
-            { return Postion17; }
-            else if (Postion18 != "")
-            { return Postion18; }
-            else if (Postion19 != "")
-            { return Postion19; }
-            else if (Postion20 != "")
-            { return Postion20; }
-            else if (Postion21 != "")
-            { return Postion21; }
-            else if (Postion22 != "")
-            { return Postion22; }
-            else
-                return "";
+            return model;
+
+           
         }
         // A Master File Data Part 1 Record.One record per loan.
 
 
         public void GetMasterFileDataPart_1(byte[] currentByte, ref AccountsModel acc)
         {
+            string accountNo = PackedTypeCheckAndUnPackData("Rssi_Acct_No", currentByte, 5, 10);
+
+            Rssi_Inv_Code_PackedData_Model.Add(GetValueFromMultiLocationModel("Rssi_Inv_Code_PackedData", currentByte, accountNo));
+            Rssi_Inv_Name_Model.Add(GetValueFromMultiLocationModel("Rssi_Inv_Name", currentByte, accountNo));
+            Rssi_Inv_Block_PackedData_Model.Add(GetValueFromMultiLocationModel("Rssi_Inv_Block_PackedData", currentByte, accountNo));
+           
+            Rssi_Inv_Pc_Owned_PackedData_Model.Add(GetValueFromMultiLocationModel("Rssi_Inv_Pc_Owned_PackedData", currentByte, accountNo));
+            Rssi_Inv_Rate_PackedData_Model.Add(GetValueFromMultiLocationModel("Rssi_Inv_Rate_PackedData", currentByte, accountNo));
+            Rssi_Inv_Sv_Code_PackedData_Model.Add(GetValueFromMultiLocationModel("Rssi_Inv_Sv_Code_PackedData", currentByte, accountNo));
+            
+            Rssi_Inv_Sv_Fee_PackedData_Model.Add(GetValueFromMultiLocationModel("Rssi_Inv_Sv_Fee_PackedData", currentByte, accountNo));
+            Rssi_Inv_Sv_Acct_Model.Add(GetValueFromMultiLocationModel("Rssi_Inv_Sv_Acct", currentByte, accountNo));
+            Rssi_Inv_Fill_Model.Add(GetValueFromMultiLocationModel("Rssi_Inv_Fill", currentByte, accountNo));
+            
+            Rssi_Past_Date_Model.Add(GetValueFromMultiLocationModel("Rssi_Past_Date", currentByte, accountNo));
+            Rssi_Reg_Amt_PackedData_Model.Add(GetValueFromMultiLocationModel("Rssi_Reg_Amt_PackedData", currentByte, accountNo));
+            Rssi_Late_Amt_PackedData_Model.Add(GetValueFromMultiLocationModel("Rssi_Late_Amt_PackedData", currentByte, accountNo));
+            
+            Rssi_Past_Date_R_Model.Add(GetValueFromMultiLocationModel("Rssi_Past_Date_R", currentByte, accountNo));
+            Rssi_Reg_Amt_R_PackedData_Model.Add(GetValueFromMultiLocationModel("Rssi_Reg_Amt_R_PackedData", currentByte, accountNo));
+            Rssi_Late_Amt_R_PackedData_Model.Add(GetValueFromMultiLocationModel("Rssi_Late_Amt_R_PackedData", currentByte, accountNo));
+
+
             string Rssi_Inv_Code_PackedData = GetValueFromMultiLocation("Rssi_Inv_Code_PackedData", currentByte);
             string Rssi_Inv_Name = GetValueFromMultiLocation("Rssi_Inv_Name", currentByte);
             string Rssi_Inv_Block_PackedData = GetValueFromMultiLocation("Rssi_Inv_Block_PackedData", currentByte);
@@ -1653,6 +1649,440 @@ namespace CarringtonService.BusinessExpert
                 Filler = PackedTypeCheckAndUnPackData("Filler", currentByte, 2655, 1356),
 
             };
+        }
+
+        public string GetValueFromMultiLocation(string variableName, byte[] currentByte)
+        {
+            string firstPostion, secondPostion, thirdPostion, fourthPostion, fifthPostion, sixPostion,
+            Postion07, Postion08, Postion09, Postion10, Postion11, Postion12,
+            Postion13, Postion14, Postion15, Postion16, Postion17, Postion18, Postion19, Postion20, Postion21, Postion22 = "";
+            if (variableName == "Rssi_Inv_Code_PackedData")
+            {
+                firstPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Code_PackedData", currentByte, 50, 3);
+                secondPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Code_PackedData", currentByte, 120, 3);
+                thirdPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Code_PackedData", currentByte, 190, 3);
+                fourthPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Code_PackedData", currentByte, 260, 3);
+                fifthPostion = "";
+                sixPostion = "";
+                Postion07 = "";
+                Postion08 = "";
+                Postion09 = "";
+                Postion10 = "";
+                Postion11 = "";
+                Postion12 = "";
+                Postion13 = "";
+                Postion14 = "";
+                Postion15 = "";
+                Postion16 = "";
+                Postion17 = "";
+                Postion18 = "";
+                Postion19 = "";
+                Postion20 = "";
+                Postion21 = "";
+                Postion22 = "";
+
+            }
+            else if (variableName == "Rssi_Inv_Name")
+            {
+                firstPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Name", currentByte, 53, 35);
+                secondPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Name", currentByte, 123, 35);
+                thirdPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Name", currentByte, 193, 35);
+                fourthPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Name", currentByte, 263, 35);
+                fifthPostion = "";
+                sixPostion = "";
+                Postion07 = "";
+                Postion08 = "";
+                Postion09 = "";
+                Postion10 = "";
+                Postion11 = "";
+                Postion12 = "";
+                Postion13 = "";
+                Postion14 = "";
+                Postion15 = "";
+                Postion16 = "";
+                Postion17 = "";
+                Postion18 = "";
+                Postion19 = "";
+                Postion20 = "";
+                Postion21 = "";
+                Postion22 = "";
+            }
+            else if (variableName == "Rssi_Inv_Block_PackedData")
+            {
+                firstPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Block_PackedData", currentByte, 88, 3);
+                secondPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Block_PackedData", currentByte, 158, 3);
+                thirdPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Block_PackedData", currentByte, 228, 3);
+                fourthPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Block_PackedData", currentByte, 298, 3);
+                fifthPostion = "";
+                sixPostion = "";
+                Postion07 = "";
+                Postion08 = "";
+                Postion09 = "";
+                Postion10 = "";
+                Postion11 = "";
+                Postion12 = "";
+                Postion13 = "";
+                Postion14 = "";
+                Postion15 = "";
+                Postion16 = "";
+                Postion17 = "";
+                Postion18 = "";
+                Postion19 = "";
+                Postion20 = "";
+                Postion21 = "";
+                Postion22 = "";
+            }
+            else if (variableName == "Rssi_Inv_Pc_Owned_PackedData")
+            {
+                firstPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Pc_Owned_PackedData", currentByte, 91, 4, 5);
+                secondPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Pc_Owned_PackedData", currentByte, 161, 4, 5);
+                thirdPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Pc_Owned_PackedData", currentByte, 231, 4, 5);
+                fourthPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Pc_Owned_PackedData", currentByte, 301, 4, 5);
+                fifthPostion = "";
+                sixPostion = "";
+                Postion07 = "";
+                Postion08 = "";
+                Postion09 = "";
+                Postion10 = "";
+                Postion11 = "";
+                Postion12 = "";
+                Postion13 = "";
+                Postion14 = "";
+                Postion15 = "";
+                Postion16 = "";
+                Postion17 = "";
+                Postion18 = "";
+                Postion19 = "";
+                Postion20 = "";
+                Postion21 = "";
+                Postion22 = "";
+
+            }
+            else if (variableName == "Rssi_Inv_Rate_PackedData")
+            {
+                firstPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Rate_PackedData", currentByte, 95, 4, 5);
+                secondPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Rate_PackedData", currentByte, 165, 4, 5);
+                thirdPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Rate_PackedData", currentByte, 235, 4, 5);
+                fourthPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Rate_PackedData", currentByte, 305, 4, 5);
+                fifthPostion = "";
+                sixPostion = "";
+                Postion07 = "";
+                Postion08 = "";
+                Postion09 = "";
+                Postion10 = "";
+                Postion11 = "";
+                Postion12 = "";
+                Postion13 = "";
+                Postion14 = "";
+                Postion15 = "";
+                Postion16 = "";
+                Postion17 = "";
+                Postion18 = "";
+                Postion19 = "";
+                Postion20 = "";
+                Postion21 = "";
+                Postion22 = "";
+
+            }
+            else if (variableName == "Rssi_Inv_Sv_Code_PackedData")
+            {
+                firstPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Code_PackedData", currentByte, 99, 1);
+                secondPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Code_PackedData", currentByte, 169, 1);
+                thirdPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Code_PackedData", currentByte, 239, 1);
+                fourthPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Code_PackedData", currentByte, 309, 1);
+                fifthPostion = "";
+                sixPostion = "";
+                Postion07 = "";
+                Postion08 = "";
+                Postion09 = "";
+                Postion10 = "";
+                Postion11 = "";
+                Postion12 = "";
+                Postion13 = "";
+                Postion14 = "";
+                Postion15 = "";
+                Postion16 = "";
+                Postion17 = "";
+                Postion18 = "";
+                Postion19 = "";
+                Postion20 = "";
+                Postion21 = "";
+                Postion22 = "";
+            }
+            else if (variableName == "Rssi_Inv_Sv_Fee_PackedData")
+            {
+                firstPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Fee_PackedData", currentByte, 100, 4, 5);
+                secondPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Fee_PackedData", currentByte, 170, 4, 5);
+                thirdPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Fee_PackedData", currentByte, 240, 4, 5);
+                fourthPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Fee_PackedData", currentByte, 310, 4, 5);
+                fifthPostion = "";
+                sixPostion = "";
+                Postion07 = "";
+                Postion08 = "";
+                Postion09 = "";
+                Postion10 = "";
+                Postion11 = "";
+                Postion12 = "";
+                Postion13 = "";
+                Postion14 = "";
+                Postion15 = "";
+                Postion16 = "";
+                Postion17 = "";
+                Postion18 = "";
+                Postion19 = "";
+                Postion20 = "";
+                Postion21 = "";
+                Postion22 = "";
+            }
+            else if (variableName == "Rssi_Inv_Sv_Acct")
+            {
+                firstPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Acct", currentByte, 104, 15);
+                secondPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Acct", currentByte, 174, 15);
+                thirdPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Acct", currentByte, 244, 15);
+                fourthPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Sv_Acct", currentByte, 314, 15);
+                fifthPostion = "";
+                sixPostion = "";
+                Postion07 = "";
+                Postion08 = "";
+                Postion09 = "";
+                Postion10 = "";
+                Postion11 = "";
+                Postion12 = "";
+                Postion13 = "";
+                Postion14 = "";
+                Postion15 = "";
+                Postion16 = "";
+                Postion17 = "";
+                Postion18 = "";
+                Postion19 = "";
+                Postion20 = "";
+                Postion21 = "";
+                Postion22 = "";
+            }
+            else if (variableName == "Rssi_Inv_Fill")
+            {
+                firstPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Fill", currentByte, 119, 1);
+                secondPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Fill", currentByte, 189, 1);
+                thirdPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Fill", currentByte, 259, 1);
+                fourthPostion = PackedTypeCheckAndUnPackData("Rssi_Inv_Fill", currentByte, 329, 1);
+                fifthPostion = "";
+                sixPostion = "";
+                Postion07 = "";
+                Postion08 = "";
+                Postion09 = "";
+                Postion10 = "";
+                Postion11 = "";
+                Postion12 = "";
+                Postion13 = "";
+                Postion14 = "";
+                Postion15 = "";
+                Postion16 = "";
+                Postion17 = "";
+                Postion18 = "";
+                Postion19 = "";
+                Postion20 = "";
+                Postion21 = "";
+                Postion22 = "";
+            }
+            else if (variableName == "Rssi_Past_Date")
+            {
+                firstPostion = PackedTypeCheckAndUnPackData("Rssi_Past_Date", currentByte, 813, 6);
+                secondPostion = PackedTypeCheckAndUnPackData("Rssi_Past_Date", currentByte, 831, 6);
+                thirdPostion = PackedTypeCheckAndUnPackData("Rssi_Past_Date", currentByte, 849, 6);
+                fourthPostion = PackedTypeCheckAndUnPackData("Rssi_Past_Date", currentByte, 867, 6);
+                fifthPostion = PackedTypeCheckAndUnPackData("Rssi_Past_Date", currentByte, 885, 6);
+                sixPostion = PackedTypeCheckAndUnPackData("Rssi_Past_Date", currentByte, 903, 6);
+                Postion07 = "";
+                Postion08 = "";
+                Postion09 = "";
+                Postion10 = "";
+                Postion11 = "";
+                Postion12 = "";
+                Postion13 = "";
+                Postion14 = "";
+                Postion15 = "";
+                Postion16 = "";
+                Postion17 = "";
+                Postion18 = "";
+                Postion19 = "";
+                Postion20 = "";
+                Postion21 = "";
+                Postion22 = "";
+            }
+            else if (variableName == "Rssi_Reg_Amt_PackedData")
+            {
+                firstPostion = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_PackedData", currentByte, 819, 6, 2);
+                secondPostion = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_PackedData", currentByte, 837, 6, 2);
+                thirdPostion = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_PackedData", currentByte, 855, 6, 2);
+                fourthPostion = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_PackedData", currentByte, 873, 6, 2);
+                fifthPostion = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_PackedData", currentByte, 891, 6, 2);
+                sixPostion = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_PackedData", currentByte, 909, 6, 2);
+                Postion07 = "";
+                Postion08 = "";
+                Postion09 = "";
+                Postion10 = "";
+                Postion11 = "";
+                Postion12 = "";
+                Postion13 = "";
+                Postion14 = "";
+                Postion15 = "";
+                Postion16 = "";
+                Postion17 = "";
+                Postion18 = "";
+                Postion19 = "";
+                Postion20 = "";
+                Postion21 = "";
+                Postion22 = "";
+            }
+            else if (variableName == "Rssi_Late_Amt_PackedData")
+            {
+                firstPostion = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_PackedData", currentByte, 825, 6, 2);
+                secondPostion = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_PackedData", currentByte, 843, 6, 2);
+                thirdPostion = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_PackedData", currentByte, 861, 6, 2);
+                fourthPostion = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_PackedData", currentByte, 879, 6, 2);
+                fifthPostion = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_PackedData", currentByte, 897, 6, 2);
+                sixPostion = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_PackedData", currentByte, 915, 6, 2);
+                Postion07 = "";
+                Postion08 = "";
+                Postion09 = "";
+                Postion10 = "";
+                Postion11 = "";
+                Postion12 = "";
+                Postion13 = "";
+                Postion14 = "";
+                Postion15 = "";
+                Postion16 = "";
+                Postion17 = "";
+                Postion18 = "";
+                Postion19 = "";
+                Postion20 = "";
+                Postion21 = "";
+                Postion22 = "";
+            }
+            else if (variableName == "Rssi_Past_Date_R")
+            {
+                firstPostion = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 1791, 6);
+                secondPostion = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 1809, 6);
+                thirdPostion = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 1827, 6);
+                fourthPostion = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 1845, 6);
+                fifthPostion = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 1863, 6);
+                sixPostion = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 1881, 6);
+                Postion07 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 1899, 6);
+                Postion08 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 1917, 6);
+                Postion09 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 1935, 6);
+                Postion10 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 1953, 6);
+                Postion11 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 1971, 6);
+                Postion12 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 1989, 6);
+                Postion13 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 2007, 6);
+                Postion14 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 2025, 6);
+                Postion15 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 2043, 6);
+                Postion16 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 2061, 6);
+                Postion17 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 2079, 6);
+                Postion18 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 2097, 6);
+                Postion19 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 2115, 6);
+                Postion20 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 2133, 6);
+                Postion21 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 2151, 6);
+                Postion22 = PackedTypeCheckAndUnPackData("Rssi_Past_Date_R", currentByte, 2169, 6);
+            }
+            else if (variableName == "Rssi_Reg_Amt_R_PackedData")
+            {
+                firstPostion = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 1797, 6, 2);
+                secondPostion = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 1815, 6, 2);
+                thirdPostion = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 1833, 6, 2);
+                fourthPostion = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 1851, 6, 2);
+                fifthPostion = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 1869, 6, 2);
+                sixPostion = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 1887, 6, 2);
+                Postion07 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 1905, 6, 2);
+                Postion08 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 1923, 6, 2);
+                Postion09 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 1941, 6, 2);
+                Postion10 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 1959, 6, 2);
+                Postion11 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 1977, 6, 2);
+                Postion12 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 1995, 6, 2);
+                Postion13 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 2013, 6, 2);
+                Postion14 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 2031, 6, 2);
+                Postion15 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 2049, 6, 2);
+                Postion16 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 2067, 6, 2);
+                Postion17 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 2085, 6, 2);
+                Postion18 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 2103, 6, 2);
+                Postion19 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 2021, 6, 2);
+                Postion20 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 2139, 6, 2);
+                Postion21 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 2157, 6, 2);
+                Postion22 = PackedTypeCheckAndUnPackData("Rssi_Reg_Amt_R_PackedData", currentByte, 2175, 6, 2);
+            }
+            else if (variableName == "Rssi_Late_Amt_R_PackedData")
+            {
+                firstPostion = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 1803, 6, 2);
+                secondPostion = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 1821, 6, 2);
+                thirdPostion = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 1839, 6, 2);
+                fourthPostion = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 1857, 6, 2);
+                fifthPostion = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 1875, 6, 2);
+                sixPostion = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 1893, 6, 2);
+                Postion07 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 1911, 6, 2);
+                Postion08 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 1929, 6, 2);
+                Postion09 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 1947, 6, 2);
+                Postion10 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 1965, 6, 2);
+                Postion11 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 1983, 6, 2);
+                Postion12 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 2001, 6, 2);
+                Postion13 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 2019, 6, 2);
+                Postion14 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 2037, 6, 2);
+                Postion15 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 2055, 6, 2);
+                Postion16 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 2073, 6, 2);
+                Postion17 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 2091, 6, 2);
+                Postion18 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 2109, 6, 2);
+                Postion19 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 2127, 6, 2);
+                Postion20 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 2145, 6, 2);
+                Postion21 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 2163, 6, 2);
+                Postion22 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 2181, 6, 2);
+            }
+            else
+                return "";
+
+            if (firstPostion != "")
+            { return firstPostion; }
+            else if (secondPostion != "")
+            { return secondPostion; }
+            else if (thirdPostion != "")
+            { return thirdPostion; }
+            else if (fourthPostion != "")
+            { return fourthPostion; }
+            else if (fifthPostion != "")
+            { return fourthPostion; }
+            else if (sixPostion != "")
+            { return fourthPostion; }
+            else if (Postion07 != "")
+            { return Postion07; }
+            else if (Postion08 != "")
+            { return Postion08; }
+            else if (Postion09 != "")
+            { return Postion09; }
+            else if (Postion10 != "")
+            { return Postion10; }
+            else if (Postion11 != "")
+            { return Postion11; }
+            else if (Postion12 != "")
+            { return Postion12; }
+            else if (Postion13 != "")
+            { return Postion13; }
+            else if (Postion14 != "")
+            { return Postion14; }
+            else if (Postion15 != "")
+            { return Postion15; }
+            else if (Postion16 != "")
+            { return Postion16; }
+            else if (Postion17 != "")
+            { return Postion17; }
+            else if (Postion18 != "")
+            { return Postion18; }
+            else if (Postion19 != "")
+            { return Postion19; }
+            else if (Postion20 != "")
+            { return Postion20; }
+            else if (Postion21 != "")
+            { return Postion21; }
+            else if (Postion22 != "")
+            { return Postion22; }
+            else
+                return "";
         }
 
         // 2 Master File Data Part 2 Record.One record per loan.
@@ -3362,6 +3792,10 @@ namespace CarringtonService.BusinessExpert
         //}
         public string PackedTypeCheckAndUnPackData(string propertyName, byte[] data, int start, int length, int decimalPlaces = 0, bool hasSign = true)
         {
+            if(propertyName == "Rssi_Tr_Amt_To_Evar_2_PackedData")
+            {
+
+            }
             try
             {
                 if (propertyName.Contains("PackedData") && propertyName != null)
