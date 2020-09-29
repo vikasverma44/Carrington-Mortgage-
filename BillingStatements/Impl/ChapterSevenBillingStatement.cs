@@ -1353,7 +1353,7 @@ namespace CarringtonService.BillingStatements
                 }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) == 5 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0)
                 {
-                    RecentPayment1 = CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(Rssi_Past_Date.po) + ": Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData;
+                    RecentPayment1 = CommonHelper.GetConvertDateYYMMDDToDDMMYYFormat(Rssi_Past_Date.Postion1) + ": Unpaid balance of " + accountModel.MasterFileDataPart_1Model.Rssi_Reg_Amt_PackedData;
                 }
                 else if (int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Pymts_Due_Ctr_PackedData) >= 6
                 && int.Parse(accountModel.MasterFileDataPart_1Model.Rssi_Past_Date) > 0
