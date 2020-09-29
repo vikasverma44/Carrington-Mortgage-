@@ -15,7 +15,46 @@ namespace CarringtonMortgage.Helpers
             else
                 return source;
         }
+        public static DateTime GetDateTime(string dateString)
+        {
+            string str1;
+            string str2;
+            string str3;
+            switch (dateString.Length)
+            {
+                case 0:
+                case 1:
+                    return Convert.ToDateTime("0001/01/01");
+                case 6:
+                    int result1;
+                    int.TryParse(dateString.Substring(0, 2), out result1);
+                    str1 = result1 <= 50 ? string.Format("20{0}", (object)dateString.Substring(0, 2)) : string.Format("19{0}", (object)dateString.Substring(0, 2));
+                    str2 = dateString.Substring(2, 2);
+                    str3 = dateString.Substring(4, 2);
+                    break;
+                case 7:
+                    int result2;
+                    int.TryParse(dateString.Substring(0, 1), out result2);
+                    str1 = result2 != 0 ? string.Format("19{0}", (object)dateString.Substring(1, 2)) : string.Format("20{0}", (object)dateString.Substring(1, 2));
+                    str2 = dateString.Substring(3, 2);
+                    str3 = dateString.Substring(5, 2);
+                    break;
+                case 8:
+                    str1 = dateString.Substring(0, 4);
+                    str2 = dateString.Substring(4, 2);
+                    str3 = dateString.Substring(6, 2);
+                    break;
+                case 10:
+                    str1 = dateString.Substring(0, 4);
+                    str2 = dateString.Substring(5, 2);
+                    str3 = dateString.Substring(8, 2);
+                    break;
+                default:
 
+                    return Convert.ToDateTime("0001/01/01");
+            }
+            return Convert.ToDateTime(string.Format("{0}/{1}/{2}", (object)str2, (object)str3, (object)str1));
+        }
         /// <summary>
         /// This method is used to convert string date time to formated date time.
         /// </summary>
@@ -88,7 +127,7 @@ namespace CarringtonMortgage.Helpers
             try
             {
                 var parsedDate = DateTime.ParseExact(date, "yyMMdd", System.Globalization.CultureInfo.InvariantCulture);
-                var formattedDate = parsedDate.ToString("dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                var formattedDate = parsedDate.ToString("MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                 return formattedDate;
             }
             catch (Exception ex)
