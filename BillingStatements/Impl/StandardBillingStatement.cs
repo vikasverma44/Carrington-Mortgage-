@@ -752,8 +752,6 @@ namespace CarringtonService.BillingStatements
 
         public string GetAttention(AccountsModel accountsModel, bool isCoBorrower = false)
         {
-
-
             try
             {
                 //Logger.Trace("STARTED:  Execute get attention.");
@@ -786,13 +784,9 @@ namespace CarringtonService.BillingStatements
 
         public string GetPrimaryBorrower(AccountsModel accountsModel, bool isCoBorrower = false)
         {
-
-
-
             try
             {
                 //Logger.Trace("STARTED:  Execute get primary borrower.");
-
                 if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A")
                 {
                     if (!isCoBorrower)
@@ -871,16 +865,12 @@ namespace CarringtonService.BillingStatements
                 Logger.Error(ex, "Method name : GetPrimaryBorrower" + ExMessage);
 
             }
-
             return PrimaryBorrower;
         }
 
 
         public string GetSecondaryBorrower(AccountsModel accountsModel, bool isCoBorrower = false)
         {
-
-
-
             try
             {
                 //Logger.Trace("STARTED:  Execute get secondary borrower.");
@@ -900,7 +890,6 @@ namespace CarringtonService.BillingStatements
                     else
                         SecondaryBorrower = null;
                 }
-
                 //Logger.Trace("ENDED: Get get secondary borrower.");
             }
             catch (Exception ex)
@@ -986,7 +975,7 @@ namespace CarringtonService.BillingStatements
                     if (!isCoBorrower)
                         MailingAddressLine1 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1;
                     else
-                        MailingAddressLine1 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_F;
+                        MailingAddressLine1 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Adrs1;
                 }
 
                 //Logger.Trace("ENDED: Get get mailing address line1.");
@@ -1175,7 +1164,7 @@ namespace CarringtonService.BillingStatements
                 else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A")
                 {
                     if (!isCoBorrower)
-                        MailingCityStateZip = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1;
+                        MailingCityStateZip = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
                     else
                         MailingCityStateZip = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_City
                             + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_State
@@ -1284,10 +1273,6 @@ namespace CarringtonService.BillingStatements
                 {
                     AutodraftMessage = "Autodraft_MessageFlag";
                 }
-                else
-                {
-                    AutodraftMessage = accountsModel.MasterFileDataPart2Model.Rssi_Tot_Draft_Amt_PackedData;
-                }
                 //Logger.Trace("ENDED: Get get auto draft message.");
             }
             catch (Exception ex)
@@ -1298,7 +1283,7 @@ namespace CarringtonService.BillingStatements
             return AutodraftMessage;
         }
 
-        public string GetInterestRateUnit(AccountsModel accountsModel)
+        public string GetInterestRateUnit(AccountsModel accountsModel)// visit again
         {
             try
             {
@@ -1344,7 +1329,7 @@ namespace CarringtonService.BillingStatements
             return PrepaymentPenalty;
         }
 
-        public string GetMaturityDate(AccountsModel accountsModel)
+        public string GetMaturityDate(AccountsModel accountsModel)// visit again
         {
             try
             {
@@ -1372,7 +1357,7 @@ namespace CarringtonService.BillingStatements
             try
             {
                 //Logger.Trace("STARTED:  Execute get modification date.");
-                if (Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Balloon_Date).IncludeCenturyDate(true)) > 19000000)
+                if (Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Modify_Date).IncludeCenturyDate(true)) > 19000000)
                 {
                     ModificationDate = CommonHelper.GetDateInDDMMYYFormat(accountsModel.MasterFileDataPart_1Model.Rssi_Modify_Date);
                 }
@@ -1404,7 +1389,8 @@ namespace CarringtonService.BillingStatements
                 {
                     ChargeOffNoticeDelinquencyNoticeRefinanceMessage = "DelinquencyNotice_MessageFlag";
                 }
-                else if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Num_Days_Delq) < 30 && Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) > 0)
+                else if (Convert.ToInt64(accountsModel.MasterFileDataPart_1Model.Rssi_Num_Days_Delq) < 30 
+                    && Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) > 0)
                 {
                     ChargeOffNoticeDelinquencyNoticeRefinanceMessage = "ReFinance_MessageFlag";
                 }
@@ -1427,8 +1413,8 @@ namespace CarringtonService.BillingStatements
             try
             {
                 //Logger.Trace("STARTED:  Execute get interest.");
-                if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0 ||
-                     Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0
+                     || Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                 {
                     Interest = "0.00";
                 }
@@ -1452,8 +1438,8 @@ namespace CarringtonService.BillingStatements
             try
             {
                 //Logger.Trace("STARTED:  Execute get escrow taxes insurance.");
-                if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0 ||
-                   Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
+                if (Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0
+                    || Convert.ToDecimal(accountsModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                 {
                     EscrowTaxesandorInsurance = "0.00";
                 }
@@ -1501,7 +1487,7 @@ namespace CarringtonService.BillingStatements
             try
             {
                 //Logger.Trace("STARTED:  Execute get buy down balance.");
-                if (Convert.ToDecimal(accountsModel.UserFieldRecordModel.Rssi_Usr_303_PackedData) < 0)
+                if (Convert.ToDecimal(accountsModel.UserFieldRecordModel.Rssi_Usr_303_PackedData) <= 0)
                 {
                     BuydownBalance = "N/A";
                 }
