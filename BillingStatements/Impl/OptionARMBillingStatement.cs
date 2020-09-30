@@ -506,10 +506,10 @@ namespace CarringtonService.BillingStatements
                 foreach (var tra in model.TransactionRecordModelList)
                 {
                     total += Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_PackedData)
-                         + Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_2_PackedData)
-                         + Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_3_PackedData)
-                         + Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_4_PackedData)
-                         + Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_5_PackedData);
+                         + Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_2)
+                         + Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_3)
+                         + Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_4)
+                         + Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_5);
 
                 }
                 return UnappliedFundsPaidLastMonth = Convert.ToString(total);
@@ -1818,10 +1818,10 @@ namespace CarringtonService.BillingStatements
                 foreach (var tra in model.TransactionRecordModelList)
                 {
                     total += Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_PackedData) +
-                               Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_2_PackedData) +
-                               Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_3_PackedData) +
-                               Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_4_PackedData) +
-                               Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_5_PackedData);
+                               Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_2) +
+                               Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_3) +
+                               Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_4) +
+                               Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_5);
                 }
                 return Suspense = Convert.ToString(total);
             }
