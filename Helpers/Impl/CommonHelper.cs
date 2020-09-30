@@ -1,6 +1,7 @@
 ﻿using CarringtonService.BusinessExpert;
 using System;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace CarringtonMortgage.Helpers
@@ -14,6 +15,44 @@ namespace CarringtonMortgage.Helpers
                 return Regex.Replace(source, "[^0-9]", "");
             else
                 return source;
+        }
+        public static int? ConvertEBCDICtoInt(string inputString)
+        {
+            int? returnInt = null;
+
+            if (string.IsNullOrEmpty(inputString))
+                return (returnInt);
+
+            StringBuilder strAmount = new StringBuilder(inputString);
+            if (inputString.IndexOfAny(new char[] { '}', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R' }) >= 0)
+                strAmount.Insert(0, "-");
+
+            strAmount.Replace("{", "0");
+            strAmount.Replace("}", "0");
+            strAmount.Replace("A", "1");
+            strAmount.Replace("J", "1");
+            strAmount.Replace("B", "2");
+            strAmount.Replace("K", "2");
+            strAmount.Replace("C", "3");
+            strAmount.Replace("L", "3");
+            strAmount.Replace("D", "4");
+            strAmount.Replace("M", "4");
+            strAmount.Replace("E", "5");
+            strAmount.Replace("N", "5");
+            strAmount.Replace("F", "6");
+            strAmount.Replace("O", "6");
+            strAmount.Replace("G", "7");
+            strAmount.Replace("P", "7");
+            strAmount.Replace("H", "8");
+            strAmount.Replace("Q", "8");
+            strAmount.Replace("I", "9");
+            strAmount.Replace("R", "9");
+
+           
+            int n;
+            if (int.TryParse(strAmount.ToString(), out n))
+                returnInt = n;
+            return (returnInt);
         }
         public static DateTime GetDateTime(string dateString)
         {

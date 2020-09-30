@@ -485,10 +485,10 @@ namespace CarringtonService.BillingStatements
                 foreach (var tra in accountsModel.TransactionRecordModelList)
                 {
                     total += tra.Rssi_Tr_Amt_To_Evar_PackedData == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_PackedData)
-                   + tra.Rssi_Tr_Amt_To_Evar_2_PackedData == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_2_PackedData)
-                   + tra.Rssi_Tr_Amt_To_Evar_3_PackedData == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_3_PackedData)
-                   + tra.Rssi_Tr_Amt_To_Evar_4_PackedData == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_4_PackedData)
-                   + tra.Rssi_Tr_Amt_To_Evar_5_PackedData == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_5_PackedData);
+                   + tra.Rssi_Tr_Amt_To_Evar_2 == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_2)
+                   + tra.Rssi_Tr_Amt_To_Evar_3 == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_3)
+                   + tra.Rssi_Tr_Amt_To_Evar_4 == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_4)
+                   + tra.Rssi_Tr_Amt_To_Evar_5 == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_5);
                 }
                
                 UnappliedFundsPaidLastMonth = Convert.ToString(total);
@@ -649,10 +649,10 @@ namespace CarringtonService.BillingStatements
                 {
                     total +=
                      Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_PackedData) +
-                     Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_2_PackedData) +
-                     Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_3_PackedData) +
-                     Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_4_PackedData) +
-                     Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_5_PackedData);
+                     Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_2) +
+                     Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_3) +
+                     Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_4) +
+                     Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_5);
                 }
 
 
@@ -1729,7 +1729,7 @@ namespace CarringtonService.BillingStatements
                 Logger.Error(ex, ex.TargetSite.Name);
                 throw;
             }
-            return Convert.ToString(CommonHelper.GetFormatedDateTime(Date));
+            return Date!=null? Convert.ToString(CommonHelper.GetDateTime(Date)):string.Empty;
         }
 
         public string GetTotalAmount(AccountsModel accountModel)
