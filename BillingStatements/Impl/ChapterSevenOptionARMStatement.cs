@@ -1428,10 +1428,10 @@ namespace CarringtonService.BillingStatements
                 foreach (var item in accountsModel.TransactionRecordModelList)
                 {
                     result += Convert.ToDecimal(item.Rssi_Tr_Amt_To_Evar_PackedData) +
-                    Convert.ToDecimal(item.Rssi_Tr_Amt_To_Evar_2) +
-                    Convert.ToDecimal(item.Rssi_Tr_Amt_To_Evar_3) +
-                    Convert.ToDecimal(item.Rssi_Tr_Amt_To_Evar_4) +
-                    Convert.ToDecimal(item.Rssi_Tr_Amt_To_Evar_5);
+                     CommonHelper.ConvertEBCDICtoDecimal(item.Rssi_Tr_Amt_To_Evar_2) +
+                     CommonHelper.ConvertEBCDICtoDecimal(item.Rssi_Tr_Amt_To_Evar_3) +
+                     CommonHelper.ConvertEBCDICtoDecimal(item.Rssi_Tr_Amt_To_Evar_4) +
+                     CommonHelper.ConvertEBCDICtoDecimal(item.Rssi_Tr_Amt_To_Evar_5);
 
                 }
 
@@ -1696,10 +1696,10 @@ namespace CarringtonService.BillingStatements
                 foreach (var item in accountsModel.TransactionRecordModelList)
                 {
                     result += Convert.ToDecimal(item.Rssi_Tr_Amt_To_Evar_PackedData) +
-                    Convert.ToDecimal(item.Rssi_Tr_Amt_To_Evar_2) +
-                    Convert.ToDecimal(item.Rssi_Tr_Amt_To_Evar_3) +
-                    Convert.ToDecimal(item.Rssi_Tr_Amt_To_Evar_4) +
-                    Convert.ToDecimal(item.Rssi_Tr_Amt_To_Evar_5);
+                     CommonHelper.ConvertEBCDICtoDecimal(item.Rssi_Tr_Amt_To_Evar_2) +
+                     CommonHelper.ConvertEBCDICtoDecimal(item.Rssi_Tr_Amt_To_Evar_3) +
+                     CommonHelper.ConvertEBCDICtoDecimal(item.Rssi_Tr_Amt_To_Evar_4) +
+                     CommonHelper.ConvertEBCDICtoDecimal(item.Rssi_Tr_Amt_To_Evar_5);
 
                 }
 
