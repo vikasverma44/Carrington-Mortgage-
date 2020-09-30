@@ -561,7 +561,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -645,7 +645,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -785,7 +785,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -825,7 +825,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -845,7 +845,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -865,7 +865,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -885,7 +885,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
               && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
               && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -905,7 +905,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
               && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
               && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -925,7 +925,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -945,7 +945,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -1006,7 +1006,7 @@ namespace CarringtonMortgage.OptionAssignment
                     return lstBrw;
                 }
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -1030,7 +1030,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                   && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -1054,7 +1054,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
              && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
              && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
              || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -1078,7 +1078,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
              && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
              && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
              || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -1102,7 +1102,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
               && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
               && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -1126,7 +1126,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
              && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
              && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
              || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -1150,7 +1150,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
               && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
               && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -1174,7 +1174,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
               && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
               && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -1198,7 +1198,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -1222,7 +1222,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
               && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
               && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -1285,7 +1285,7 @@ namespace CarringtonMortgage.OptionAssignment
                     lstBrw = GetStdStmtArchiveOnlyNyHelloDvl(accountModel);
                     return lstBrw;
                 }
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -1309,7 +1309,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -1333,7 +1333,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -1357,7 +1357,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -1381,7 +1381,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -1405,7 +1405,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -1429,7 +1429,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -1453,7 +1453,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -1477,7 +1477,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -1501,7 +1501,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -1564,7 +1564,7 @@ namespace CarringtonMortgage.OptionAssignment
                     return lstBrw;
                 }
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -1588,7 +1588,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                    && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                    && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                    || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -1612,7 +1612,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                     && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                     && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                     || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -1636,7 +1636,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                      && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                      && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                      || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -1660,7 +1660,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                     && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                     && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                     || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -1684,7 +1684,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                      && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                      && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                      || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -1708,7 +1708,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                     && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                     && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                     || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -1732,7 +1732,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                    && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                    && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                    || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -1756,7 +1756,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                    && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                    && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                    || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -1780,7 +1780,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                    && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                    && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                    || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -1845,7 +1845,7 @@ namespace CarringtonMortgage.OptionAssignment
                 }
 
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -1869,7 +1869,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                     && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                     && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                     || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -1893,7 +1893,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                     && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                     && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                     || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -1917,7 +1917,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                      && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                      && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                      || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -1941,7 +1941,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                      && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                      && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                      || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -1965,7 +1965,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                     && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                     && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                     || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -1989,7 +1989,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                    && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                    && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                    || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -2013,7 +2013,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                      && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                      && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                      || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -2037,7 +2037,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                     && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                     && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                     || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -2061,7 +2061,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                      && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                      && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                      || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -2124,7 +2124,7 @@ namespace CarringtonMortgage.OptionAssignment
                     return lstBrw;
                 }
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -2148,7 +2148,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -2171,7 +2171,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -2194,7 +2194,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                   && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -2217,7 +2217,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                   && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -2240,7 +2240,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -2263,7 +2263,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -2286,7 +2286,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -2309,7 +2309,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -2332,7 +2332,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -2395,7 +2395,7 @@ namespace CarringtonMortgage.OptionAssignment
                     return lstBrw;
                 }
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -2418,7 +2418,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                   && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -2441,7 +2441,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                   && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -2464,7 +2464,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                   && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -2487,7 +2487,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                   && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -2510,7 +2510,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                   && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -2533,7 +2533,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                   && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -2556,7 +2556,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                   && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -2579,7 +2579,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                    && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                    && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                    || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -2602,7 +2602,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -2664,7 +2664,7 @@ namespace CarringtonMortgage.OptionAssignment
                     return lstBrw;
                 }
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -2687,7 +2687,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                   && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -2710,7 +2710,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -2733,7 +2733,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -2756,7 +2756,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                   && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -2779,7 +2779,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                   && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -2802,7 +2802,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -2825,7 +2825,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                     && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                     && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                     || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -2848,7 +2848,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -2871,7 +2871,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                   && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -2964,7 +2964,7 @@ namespace CarringtonMortgage.OptionAssignment
                         lstBrw = GetStdBkChpt7StmtPrimaryForeign(accountModel);
                         return lstBrw;
                     }
-                    if (ClearedPreviousStatement &&(((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                    if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                         && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                         && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData == "0000000"))
                         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") ? (((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7")
@@ -3054,7 +3054,7 @@ namespace CarringtonMortgage.OptionAssignment
                         lstBrw = GetStdBkChpt7StmtArchiveOnlyPrimary(accountModel);
                         return lstBrw;
                     }
-                    if (ClearedPreviousStatement &&(((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                    if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                     && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                     && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData == "0000000"))
                     || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") ? (((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7")
@@ -3146,7 +3146,7 @@ namespace CarringtonMortgage.OptionAssignment
                         lstBrw = GetStdBkChpt7StmtArchiveOnlyNy(accountModel);
                         return lstBrw;
                     }
-                    if (ClearedPreviousStatement &&(((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                    if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                      && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                      && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData == "0000000"))
                      || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") ? (((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7")
@@ -3263,7 +3263,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //}
                 if (lstBrw.Count == 0)
                 {
-                    if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                    if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                    && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                    && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData == "0000000"))
                    || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") ? (((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7")
@@ -3285,7 +3285,7 @@ namespace CarringtonMortgage.OptionAssignment
                         lstBrw = GetStdBkChpt7StmtArchiveOnlyNyHelloPrimary(accountModel);
                         return lstBrw;
                     }
-                    if (ClearedPreviousStatement &&(((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                    if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                     && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                     && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData == "0000000"))
                     || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") ? (((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7")
@@ -3391,7 +3391,7 @@ namespace CarringtonMortgage.OptionAssignment
                         lstBrw = GetStdBkChpt7StmtArchiveOnlyNyHelloDvlPrimary(accountModel);
                         return lstBrw;
                     }
-                    if (ClearedPreviousStatement &&(((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                    if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                     && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                     && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData == "0000000"))
                     || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") ? (((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7")
@@ -3476,7 +3476,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //}
                 if (lstBrw.Count == 0)
                 {
-                    if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                    if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                      && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                      && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData == "0000000"))
                      || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") ? (((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7")
@@ -3499,7 +3499,7 @@ namespace CarringtonMortgage.OptionAssignment
                         lstBrw = GetStdBkChpt7StmtArchiveOnlyNyDvlPrimary(accountModel);
                         return lstBrw;
                     }
-                    if (ClearedPreviousStatement &&(((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                    if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                      && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                      && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData == "0000000"))
                      || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") ? (((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7")
@@ -3817,7 +3817,7 @@ namespace CarringtonMortgage.OptionAssignment
                         lstBrw = GetStdBkChpt7StmtNyAndDvlLetterPrimary(accountModel);
                         return lstBrw;
                     }
-                    if (ClearedPreviousStatement &&(((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                    if (ClearedPreviousStatement && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                       && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                       && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData == "0000000"))
                       || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") ? (((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7")
@@ -3998,7 +3998,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //}
                 if (lstBrw.Count == 0)
                 {
-                    if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                    if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                        && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                        && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData == "0000000"))
                        || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") ? (((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7")
@@ -4908,7 +4908,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 if (lstBrw.Count == 0)
                 {
-                    if ( ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
+                    if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
                      || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13")
                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                      && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y")
@@ -5178,7 +5178,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07")
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07")
                     || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000"
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
@@ -5432,7 +5432,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
                     || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000"
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
@@ -5456,7 +5456,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
                     || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000"
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
@@ -5550,7 +5550,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    ClearedPreviousStatement = false;
                 //    return lstBrw;
                 //}
-                if ( ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
                    || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                    && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000"
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
@@ -5641,7 +5641,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //}
 
 
-                if ( ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
                    || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                    && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000"
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
@@ -5665,7 +5665,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
                   || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                   && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000"
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
@@ -5737,7 +5737,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
                   || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                   && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000"
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
@@ -6097,7 +6097,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    ClearedPreviousStatement = false;
                 //    return lstBrw;
                 //}
-                if ( ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
                    || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                    && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000"
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
@@ -6192,7 +6192,7 @@ namespace CarringtonMortgage.OptionAssignment
                     return lstBrw;
                 }
 
-                if ( ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
                    || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                    && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000"
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
@@ -6222,7 +6222,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //}
 
 
-                if ( ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
                    || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                    && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000"
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
@@ -6309,7 +6309,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
                   || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                   && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000"
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
@@ -6671,7 +6671,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
                    || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                    && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000"
                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
@@ -7024,7 +7024,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    return lstBrw;
                 //}
 
-                if ( ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
                   || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                   && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000"
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
@@ -7180,7 +7180,7 @@ namespace CarringtonMortgage.OptionAssignment
                     lstBrw = GetOptionArmStmtNyandHelloLetter(accountModel);
                     return lstBrw;
                 }
-                if ( ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
                     || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000"
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
@@ -7434,7 +7434,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    ClearedPreviousStatement = false;
                 //    return lstBrw;
                 //}
-                if ( ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
                     || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000"
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
@@ -7616,7 +7616,7 @@ namespace CarringtonMortgage.OptionAssignment
                 //    ClearedPreviousStatement = false;
                 //    return lstBrw;
                 //}
-                if ( ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
+                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
                   || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                   && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000"
                   && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
@@ -8435,7 +8435,7 @@ namespace CarringtonMortgage.OptionAssignment
                      || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                      && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                      && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000"))
-                     ||((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") ? (((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7")
+                     || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "7" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") ? (((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7")
                     || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11")
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")) : false)
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B")
@@ -8553,7 +8553,7 @@ namespace CarringtonMortgage.OptionAssignment
                       && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
                       && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
 
-                      ||((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") ? (((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "07")
+                      || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") ? (((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "07")
                     || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11")
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")) : false)
                       && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
@@ -10590,12 +10590,13 @@ namespace CarringtonMortgage.OptionAssignment
                     ClearedPreviousStatement = true;
                     lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A13", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
-                //else
-                //{
-                //    ClearedPreviousStatement = false;
-                //    return lstBrw;
-                //}
-                if (lstBrw.Count==0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
+                else
+                {
+                    ClearedPreviousStatement = false;
+                    lstBrw = GetRejectA07(accountModel);
+                    return lstBrw;
+                }
+                if (lstBrw.Count == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
                  || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13")
                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                      && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L")
@@ -10662,9 +10663,9 @@ namespace CarringtonMortgage.OptionAssignment
                     || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData == "0000000"))
-                || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
-                || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11")
-                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") ? (((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7")
+                    || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11")
+                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")) : false))
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "N" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == null))
                 {
                     lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "", FlexField2 = "A07", FlexField3 = "SP", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
@@ -10722,9 +10723,10 @@ namespace CarringtonMortgage.OptionAssignment
                     || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData == "0000000"))
-                || ((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7"
-                || accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11")
-                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+             || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+             ? (((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7")
+                    || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11")
+                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")) : false))
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "N" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == null))
 
                 {
