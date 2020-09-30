@@ -402,10 +402,10 @@ namespace CarringtonService.BillingStatements
                 foreach (var tra in model.TransactionRecordModelList)
                 {
                     total += tra.Rssi_Tr_Amt_To_Evar_PackedData == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_PackedData)
-                   + tra.Rssi_Tr_Amt_To_Evar_2 == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_2)
-                   + tra.Rssi_Tr_Amt_To_Evar_3 == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_3)
-                   + tra.Rssi_Tr_Amt_To_Evar_4 == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_4)
-                   + tra.Rssi_Tr_Amt_To_Evar_5 == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_5);
+                   + tra.Rssi_Tr_Amt_To_Evar_2 == null ? 0 :  CommonHelper.ConvertEBCDICtoDecimal(tra.Rssi_Tr_Amt_To_Evar_2)
+                   + tra.Rssi_Tr_Amt_To_Evar_3 == null ? 0 :  CommonHelper.ConvertEBCDICtoDecimal(tra.Rssi_Tr_Amt_To_Evar_3)
+                   + tra.Rssi_Tr_Amt_To_Evar_4 == null ? 0 :  CommonHelper.ConvertEBCDICtoDecimal(tra.Rssi_Tr_Amt_To_Evar_4)
+                   + tra.Rssi_Tr_Amt_To_Evar_5 == null ? 0 : CommonHelper.ConvertEBCDICtoDecimal(tra.Rssi_Tr_Amt_To_Evar_5);
                 }
                
                 UnappliedFundsPaidLastMonth = Convert.ToString(total);
@@ -1474,10 +1474,10 @@ namespace CarringtonService.BillingStatements
                 {
                     total +=
                 (tra.Rssi_Tr_Amt_To_Evar_PackedData == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_PackedData))
-              + (tra.Rssi_Tr_Amt_To_Evar_2 == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_2))
-              + (tra.Rssi_Tr_Amt_To_Evar_3 == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_3))
-              + (tra.Rssi_Tr_Amt_To_Evar_4 == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_4))
-              + (tra.Rssi_Tr_Amt_To_Evar_5 == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_5));
+              + (tra.Rssi_Tr_Amt_To_Evar_2 == null ? 0 :  CommonHelper.ConvertEBCDICtoDecimal(tra.Rssi_Tr_Amt_To_Evar_2))
+              + (tra.Rssi_Tr_Amt_To_Evar_3 == null ? 0 :  CommonHelper.ConvertEBCDICtoDecimal(tra.Rssi_Tr_Amt_To_Evar_3))
+              + (tra.Rssi_Tr_Amt_To_Evar_4 == null ? 0 :  CommonHelper.ConvertEBCDICtoDecimal(tra.Rssi_Tr_Amt_To_Evar_4))
+              + (tra.Rssi_Tr_Amt_To_Evar_5 == null ? 0 : CommonHelper.ConvertEBCDICtoDecimal(tra.Rssi_Tr_Amt_To_Evar_5));
 
                 }
                 Suspense = Convert.ToString(total);
@@ -1509,7 +1509,7 @@ namespace CarringtonService.BillingStatements
                 {
                     total += (tra.Rssi_Tr_Amt_To_Lip_PackedData == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Lip_PackedData))
                    + (tra.Rssi_Tr_Amt_To_Cr_Ins_PackedData == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Cr_Ins_PackedData))
-                   + (tra.Rssi_Tr_Amt_To_Pi_Shrtg_PackedData == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Pi_Shrtg_PackedData))
+                   + (tra.Rssi_Tr_Amt_To_Pi_Shrtg == null ? 0 : CommonHelper.ConvertEBCDICtoDecimal(tra.Rssi_Tr_Amt_To_Pi_Shrtg))
                    + (tra.Rssi_Tr_Amt_To_Def_Prin_PackedData == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Def_Prin_PackedData))
                    + (tra.Rssi_Tr_Amt_To_Def_Int_PackedData == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Def_Int_PackedData))
                    + (tra.Rssi_Tr_Amt_To_Def_Late_Chrg_PackedData == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Def_Late_Chrg_PackedData))

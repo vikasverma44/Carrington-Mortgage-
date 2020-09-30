@@ -349,11 +349,11 @@ namespace CarringtonService.BillingStatements
                 foreach (var item in accountModel.TransactionRecordModelList)
                 {
                     result += Convert.ToDecimal(item.Rssi_Tr_Amt_To_Evar_PackedData) +
-                     CommonHelper.ConvertEBCDICtoDecimal(item.Rssi_Tr_Amt_To_Evar_2) +
-                     CommonHelper.ConvertEBCDICtoDecimal(item.Rssi_Tr_Amt_To_Evar_3) +
-                     CommonHelper.ConvertEBCDICtoDecimal(item.Rssi_Tr_Amt_To_Evar_4) +
-                     CommonHelper.ConvertEBCDICtoDecimal(item.Rssi_Tr_Amt_To_Evar_5);                  
-                }
+                    CommonHelper.ConvertEBCDICtoDecimal(item.Rssi_Tr_Amt_To_Evar_3) +
+                    CommonHelper.ConvertEBCDICtoDecimal(item.Rssi_Tr_Amt_To_Evar_4) +
+                    CommonHelper.ConvertEBCDICtoDecimal(item.Rssi_Tr_Amt_To_Evar_2) +
+                    CommonHelper.ConvertEBCDICtoDecimal(item.Rssi_Tr_Amt_To_Evar_5);                  
+                }   
 
                 UnappliedFundsPaidLastMonth = Convert.ToString(result);
 
@@ -506,10 +506,10 @@ namespace CarringtonService.BillingStatements
                 foreach (var item in accountModel.TransactionRecordModelList)
                 {
                     result += Convert.ToDecimal(item.Rssi_Tr_Amt_To_Evar_PackedData) +
-                    CommonHelper.ConvertEBCDICtoDecimal(item.Rssi_Tr_Amt_To_Evar_2) +
-                    CommonHelper.ConvertEBCDICtoDecimal(item.Rssi_Tr_Amt_To_Evar_3) +
-                    CommonHelper.ConvertEBCDICtoDecimal(item.Rssi_Tr_Amt_To_Evar_4) +
-                    CommonHelper.ConvertEBCDICtoDecimal(item.Rssi_Tr_Amt_To_Evar_5);
+                     CommonHelper.ConvertEBCDICtoDecimal(item.Rssi_Tr_Amt_To_Evar_2) +
+                     CommonHelper.ConvertEBCDICtoDecimal(item.Rssi_Tr_Amt_To_Evar_3) +
+                     CommonHelper.ConvertEBCDICtoDecimal(item.Rssi_Tr_Amt_To_Evar_4) +
+                     CommonHelper.ConvertEBCDICtoDecimal(item.Rssi_Tr_Amt_To_Evar_5);
 
                 }
 
@@ -533,7 +533,7 @@ namespace CarringtonService.BillingStatements
                 {
                     total += (tra.Rssi_Tr_Amt_To_Lip_PackedData == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Lip_PackedData))
                    + (tra.Rssi_Tr_Amt_To_Cr_Ins_PackedData == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Cr_Ins_PackedData))
-                   + (tra.Rssi_Tr_Amt_To_Pi_Shrtg_PackedData == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Pi_Shrtg_PackedData))
+                   + (tra.Rssi_Tr_Amt_To_Pi_Shrtg == null ? 0 : CommonHelper.ConvertEBCDICtoDecimal(tra.Rssi_Tr_Amt_To_Pi_Shrtg))
                    + (tra.Rssi_Tr_Amt_To_Def_Prin_PackedData == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Def_Prin_PackedData))
                    + (tra.Rssi_Tr_Amt_To_Def_Int_PackedData == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Def_Int_PackedData))
                    + (tra.Rssi_Tr_Amt_To_Def_Late_Chrg_PackedData == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Def_Late_Chrg_PackedData))
