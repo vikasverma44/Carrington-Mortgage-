@@ -523,6 +523,9 @@ namespace CarringtonService.BusinessExpert
             //A
             foreach (PropertyInfo propertyInfo in accountsModel.MasterFileDataPart_1Model.GetType().GetProperties())
             {
+                if (propertyInfo.Name == "Rssi_Inv_All")
+                    continue;
+                
                 builder.Append(propertyInfo.GetValue(accountsModel.MasterFileDataPart_1Model) + "|");
             }
             account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40A", primaryIndex, builder));
