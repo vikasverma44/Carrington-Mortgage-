@@ -538,7 +538,7 @@ namespace CarringtonService.BillingStatements
                 {
                  total += Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Lip_PackedData) +
                           Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Cr_Ins_PackedData) +
-                          Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Pi_Shrtg_PackedData) +
+                         CommonHelper.ConvertEBCDICtoDecimal(tra.Rssi_Tr_Amt_To_Pi_Shrtg) +
                           Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Def_Prin_PackedData) +
                           Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Def_Int_PackedData) +
                           Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Def_Late_Chrg_PackedData) +
