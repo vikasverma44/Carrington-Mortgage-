@@ -3034,12 +3034,12 @@ namespace CarringtonService.BusinessExpert
                 Rssi_Tr_Esc_Pay_Id = PackedTypeCheckAndUnPackData("Rssi_Tr_Esc_Pay_Id", currentByte, 240, 2),
 
                 Rssi_Tr_Amort_Fee_Pymt = PackedTypeCheckAndUnPackData("Rssi_Tr_Amort_Fee_Pymt", currentByte, 242, 7, 2),
-                Rssi_Tr_Amt_To_Evar_2_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_2_PackedData", currentByte, 249, 9, 2),
+                Rssi_Tr_Amt_To_Evar_2 = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_2", currentByte, 249, 9, 2),
 
-                Rssi_Tr_Amt_To_Evar_3_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_3_PackedData", currentByte, 258, 9, 2),
-                Rssi_Tr_Amt_To_Evar_4_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_4_PackedData", currentByte, 267, 9, 2),
+                Rssi_Tr_Amt_To_Evar_3 = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_3", currentByte, 258, 9, 2),
+                Rssi_Tr_Amt_To_Evar_4 = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_4", currentByte, 267, 9, 2),
 
-                Rssi_Tr_Amt_To_Evar_5_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_5_PackedData", currentByte, 276, 9, 2),
+                Rssi_Tr_Amt_To_Evar_5 = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_5", currentByte, 276, 9, 2),
                 Rssi_Tr_Exp_Fee_Code = PackedTypeCheckAndUnPackData("Rssi_Tr_Exp_Fee_Code", currentByte, 285, 3),
 
                 Rssi_Tr_Exp_Fee_Desc = PackedTypeCheckAndUnPackData("Rssi_Tr_Exp_Fee_Desc", currentByte, 288, 30),
