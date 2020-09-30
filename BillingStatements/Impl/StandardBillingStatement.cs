@@ -2193,8 +2193,6 @@ namespace CarringtonService.BillingStatements
         }
 
 
-
-        // START
         public string GetStateNSF(AccountsModel accountsModel)
         {
             try

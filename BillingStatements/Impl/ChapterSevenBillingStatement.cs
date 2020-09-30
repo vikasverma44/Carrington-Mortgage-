@@ -794,7 +794,7 @@ namespace CarringtonService.BillingStatements
             {
                 //Logger.Trace("STARTED:  Execute to Get Mailing Country");
 
-                PaymentDate = CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte);
+                PaymentDate = accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte;
 
                 //Logger.Trace("ENDED:  To Get Mailing Country");
             }
