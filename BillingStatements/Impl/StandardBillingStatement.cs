@@ -485,10 +485,10 @@ namespace CarringtonService.BillingStatements
                 foreach (var tra in accountsModel.TransactionRecordModelList)
                 {
                     total += tra.Rssi_Tr_Amt_To_Evar_PackedData == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_PackedData)
-                   + tra.Rssi_Tr_Amt_To_Evar_2 == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_2)
-                   + tra.Rssi_Tr_Amt_To_Evar_3 == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_3)
-                   + tra.Rssi_Tr_Amt_To_Evar_4 == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_4)
-                   + tra.Rssi_Tr_Amt_To_Evar_5 == null ? 0 : Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_5);
+                   + tra.Rssi_Tr_Amt_To_Evar_2 == null ? 0 : CommonHelper.ConvertEBCDICtoDecimal(tra.Rssi_Tr_Amt_To_Evar_2)
+                   + tra.Rssi_Tr_Amt_To_Evar_3 == null ? 0 : CommonHelper.ConvertEBCDICtoDecimal(tra.Rssi_Tr_Amt_To_Evar_3)
+                   + tra.Rssi_Tr_Amt_To_Evar_4 == null ? 0 : CommonHelper.ConvertEBCDICtoDecimal(tra.Rssi_Tr_Amt_To_Evar_4)
+                   + tra.Rssi_Tr_Amt_To_Evar_5 == null ? 0 : CommonHelper.ConvertEBCDICtoDecimal(tra.Rssi_Tr_Amt_To_Evar_5);
                 }
                
                 UnappliedFundsPaidLastMonth = Convert.ToString(total);
@@ -649,10 +649,10 @@ namespace CarringtonService.BillingStatements
                 {
                     total +=
                      Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_PackedData) +
-                     Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_2) +
-                     Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_3) +
-                     Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_4) +
-                     Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_5);
+                    CommonHelper.ConvertEBCDICtoDecimal(tra.Rssi_Tr_Amt_To_Evar_2) +
+                    CommonHelper.ConvertEBCDICtoDecimal(tra.Rssi_Tr_Amt_To_Evar_3) +
+                    CommonHelper.ConvertEBCDICtoDecimal(tra.Rssi_Tr_Amt_To_Evar_4) +
+                    CommonHelper.ConvertEBCDICtoDecimal(tra.Rssi_Tr_Amt_To_Evar_5);
                 }
 
 
@@ -1558,11 +1558,7 @@ namespace CarringtonService.BillingStatements
                 if (Convert.ToDecimal(accountsModel.SupplementalCCFModel.PriorMoAmnt) > 0
                     || Convert.ToDecimal(accountsModel.SupplementalCCFModel.YTDAmnt) > 0)
                 {
-                    CarringtonCharitableFoundation = string.Empty;
-                }
-                else
-                {
-                    CarringtonCharitableFoundation = accountsModel.SupplementalCCFModel.PriorMoAmnt;
+                    CarringtonCharitableFoundation = "CharitableFoundation_MessageFlag";
                 }
                 //Logger.Trace("ENDED: Get get carrington charitable foundation.");
             }
@@ -1584,11 +1580,7 @@ namespace CarringtonService.BillingStatements
                 if (Convert.ToDecimal(accountsModel.SupplementalCCFModel.PriorMoAmnt) > 0
                     || Convert.ToDecimal(accountsModel.SupplementalCCFModel.YTDAmnt) > 0)
                 {
-                    CarringtonCharitableFoundationDonationPaidYeartoDate = string.Empty;
-                }
-                else
-                {
-                    CarringtonCharitableFoundationDonationPaidYeartoDate = accountsModel.SupplementalCCFModel.YTDAmnt;
+                    CarringtonCharitableFoundationDonationPaidYeartoDate = "CharitableFoundation_MessageFlag";
                 }
                 //Logger.Trace("ENDED: Get get carrington charitable paid yeartodate.");
             }
@@ -1604,24 +1596,23 @@ namespace CarringtonService.BillingStatements
         public string GetLockboxAddress(AccountsModel accountsModel)
         {
 
-
+            string mailingAddress = System.Text.RegularExpressions.Regex.Replace(accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3, @"\s+", " ");
+            var mailingState = mailingAddress.Split(" ".ToCharArray());
 
             try
             {
                 //Logger.Trace("STARTED:  Execute get lockbox address.");
-                if (accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "KS"
-                    || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "LA"
-                    || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "NM"
-                    || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "OK"
-                    || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "TX")
+                if (mailingState.Any(m => m == "KS")
+                    || mailingState.Any(m => m == "LA")
+                    || mailingState.Any(m => m == "NM")
+                    || mailingState.Any(m => m == "OK")
+                    || mailingState.Any(m => m == "TX"))
                 {
-                    //PaymentInformationMessage = "PO Box 660586 " + accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + ", TX 75266-0586";
-                    LockboxAddress = "PO Box 660586 Dallas, " + accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + " 75266-0586";
+                    LockboxAddress = "PO Box 660586 Dallas, " + mailingAddress + " 75266-0586";
                 }
                 else
                 {
-                    //PaymentInformationMessage = "PO Box 7006 " + accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + ", CA 91109-9998";
-                    LockboxAddress = "PO Box 7006 Pasadena, " + accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 + " 91109-9998";
+                    LockboxAddress = "PO Box 7006 Pasadena, " + mailingAddress + " 91109-9998";
                 }
 
                 //Logger.Trace("ENDED: Get get lockbox address.");
@@ -1729,7 +1720,7 @@ namespace CarringtonService.BillingStatements
                 Logger.Error(ex, ex.TargetSite.Name);
                 throw;
             }
-            return Date!=null? Convert.ToString(CommonHelper.GetDateTime(Date)):string.Empty;
+            return Date != null ? Convert.ToString(CommonHelper.GetDateTime(Date)) : string.Empty;
         }
 
         public string GetTotalAmount(AccountsModel accountModel)
@@ -1782,7 +1773,7 @@ namespace CarringtonService.BillingStatements
                 }
                 else
                 {
-                    DelinquencyInformationbox = "";
+                    DelinquencyInformationbox = string.Empty;
                 }
                 //Logger.Trace("ENDED: Get get delinquency informationbox.");
             }
@@ -2201,6 +2192,9 @@ namespace CarringtonService.BillingStatements
             return repaymentPlanMessage;
         }
 
+
+
+        // START
         public string GetStateNSF(AccountsModel accountsModel)
         {
             try
