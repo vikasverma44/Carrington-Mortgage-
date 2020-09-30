@@ -1,4 +1,5 @@
-﻿using CarringtonMortgage.Models;
+﻿using CarringtonMortgage.Helpers;
+using CarringtonMortgage.Models;
 using CarringtonMortgage.Models.InputCopyBookModels;
 using CarringtonMortgage.Models.InputCopyBookModels.MortgageLoanBillingModels;
 using CarringtonService.Helpers;
@@ -2958,8 +2959,8 @@ namespace CarringtonService.BusinessExpert
         // T Transaction Record. Multiple records per loan if applicable.
         public void GetTransactionRecordModel(byte[] currentByte, ref AccountsModel acc)
         {
-           
-           var transactionRecordModel = new TransactionRecordModel()
+            
+            var transactionRecordModel = new TransactionRecordModel()
             {
                 Rssi_Rcd_Id = PackedTypeCheckAndUnPackData("Rssi_Rcd_Id", currentByte, 1, 1),
                 Rssi_Inst = PackedTypeCheckAndUnPackData("Rssi_Inst", currentByte, 2, 3),
@@ -3007,7 +3008,7 @@ namespace CarringtonService.BusinessExpert
                 Rssi_Tr_Prin_Bal_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Prin_Bal_PackedData", currentByte, 131, 6, 2),
 
                 Rssi_Tr_Esc_Bal_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Esc_Bal_PackedData", currentByte, 137, 6, 2),
-                Rssi_Tr_Pd_To_Date_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Pd_To_Date_PackedData", currentByte, 143, 4),
+                Rssi_Tr_Pd_To_Date_PackedData = (PackedTypeCheckAndUnPackData("Rssi_Tr_Pd_To_Date_PackedData", currentByte, 143, 4)!=null && PackedTypeCheckAndUnPackData("Rssi_Tr_Pd_To_Date_PackedData", currentByte, 143, 4)!= "0000000")? Convert.ToString(CommonHelper.GetDateTime(PackedTypeCheckAndUnPackData("Rssi_Tr_Pd_To_Date_PackedData", currentByte, 143, 4))): "0",
 
                 Rssi_Tr_Esc_Pymt_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Esc_Pymt_PackedData", currentByte, 147, 5, 2),
                 Rssi_Tr_Prn_Var_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Prn_Var_PackedData", currentByte, 152, 5, 2),
@@ -3016,10 +3017,10 @@ namespace CarringtonService.BusinessExpert
                 Rssi_Tr_Esc_Var_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Esc_Var_PackedData", currentByte, 163, 5, 2),
 
                 Rssi_Tr_Uncoll_Lc_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Uncoll_Lc_PackedData", currentByte, 168, 5, 2),
-                Rssi_Tr_Dla_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Dla_PackedData", currentByte, 173, 4),
+                Rssi_Tr_Dla_PackedData = (PackedTypeCheckAndUnPackData("Rssi_Tr_Dla_PackedData", currentByte, 173, 4)!=null && PackedTypeCheckAndUnPackData("Rssi_Tr_Dla_PackedData", currentByte, 173, 4) != "0000000") ? Convert.ToString(CommonHelper.GetDateTime(PackedTypeCheckAndUnPackData("Rssi_Tr_Dla_PackedData", currentByte, 173, 4))): "0",
 
                 Rssi_Tr_Lip_Bal_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Lip_Bal_PackedData", currentByte, 177, 5, 2),
-                Rssi_Tr_Lip_La_Date_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Lip_La_Date_PackedData", currentByte, 182, 4),
+                Rssi_Tr_Lip_La_Date_PackedData = (PackedTypeCheckAndUnPackData("Rssi_Tr_Lip_La_Date_PackedData", currentByte, 182, 4) !=null && PackedTypeCheckAndUnPackData("Rssi_Tr_Lip_La_Date_PackedData", currentByte, 182, 4)!= "0000000")? Convert.ToString(CommonHelper.GetDateTime(PackedTypeCheckAndUnPackData("Rssi_Tr_Lip_La_Date_PackedData", currentByte, 182, 4))) : "0",
 
                 Rssi_Tr_Pre_Int_Amt_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Pre_Int_Amt_PackedData", currentByte, 186, 6, 2),
                 Rssi_Tr_Pre_Int_Date = PackedTypeCheckAndUnPackData("Rssi_Tr_Pre_Int_Date", currentByte, 192, 4),

@@ -3112,7 +3112,7 @@ namespace CarringtonService.BillingStatements
                 Logger.Error(ex, ex.TargetSite.Name);
                 throw;
             }
-            return Convert.ToString(CommonHelper.GetFormatedDateTime(Date));
+            return Date != null ? Convert.ToString(CommonHelper.GetDateTime(Date)) : string.Empty;
 
         }
         /// <summary>
