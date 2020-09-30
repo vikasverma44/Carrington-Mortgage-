@@ -135,7 +135,7 @@ namespace CarringtonService.BillingStatements
                 }
                 else if (accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date != null && accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte != null &&
                     CommonHelper.GetDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) >
-                     CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                     CommonHelper.GetDateTime(Convert.ToString(CommonHelper.ConvertEBCDICtoInt(accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))))
                 {
                     PaymentAmount = Convert.ToString(Convert.ToDecimal(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Unpaid_PackedData) +
                         Convert.ToDecimal(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData));
@@ -172,7 +172,7 @@ namespace CarringtonService.BillingStatements
                     Principal = "0.00";
 
                 else if (accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date != null && CommonHelper.GetDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) >
-                        CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                        CommonHelper.GetDateTime(Convert.ToString(CommonHelper.ConvertEBCDICtoInt(accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))))
                     Principal = "0.00";
 
                 else
@@ -261,7 +261,7 @@ namespace CarringtonService.BillingStatements
 
 
                 else if (accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date != null && CommonHelper.GetDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) >
-                     CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                     CommonHelper.GetDateTime(Convert.ToString(CommonHelper.ConvertEBCDICtoInt(accountsModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))))
 
                     TotalPaymentAmount = Convert.ToString(Convert.ToDecimal(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Unpaid_PackedData) +
                         Convert.ToDecimal(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Pet_Fees_PackedData));
@@ -367,10 +367,10 @@ namespace CarringtonService.BillingStatements
                 {
                     total +=
                            Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_PackedData) +
-                           Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_2_PackedData) +
-                           Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_3_PackedData) +
-                           Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_4_PackedData) +
-                           Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_5_PackedData);
+                           CommonHelper.ConvertEBCDICtoDecimal(tra.Rssi_Tr_Amt_To_Evar_2) +
+                           CommonHelper.ConvertEBCDICtoDecimal(tra.Rssi_Tr_Amt_To_Evar_3) +
+                           CommonHelper.ConvertEBCDICtoDecimal(tra.Rssi_Tr_Amt_To_Evar_4) +
+                           CommonHelper.ConvertEBCDICtoDecimal(tra.Rssi_Tr_Amt_To_Evar_5);
                 }
                 //Logger.Trace("ENDED:    Get to Unapplied Funds Paid Last Month operation.");
                 return UnappliedFundsPaidLastMonth = Convert.ToString(total);
@@ -514,10 +514,10 @@ namespace CarringtonService.BillingStatements
                 {
                     total +=
                 Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_PackedData) +
-                Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_2_PackedData) +
-                Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_3_PackedData) +
-                Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_4_PackedData) +
-                Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_5_PackedData);
+                 CommonHelper.ConvertEBCDICtoDecimal(tra.Rssi_Tr_Amt_To_Evar_2) +
+                 CommonHelper.ConvertEBCDICtoDecimal(tra.Rssi_Tr_Amt_To_Evar_3) +
+                 CommonHelper.ConvertEBCDICtoDecimal(tra.Rssi_Tr_Amt_To_Evar_4) +
+                 CommonHelper.ConvertEBCDICtoDecimal(tra.Rssi_Tr_Amt_To_Evar_5);
                 }
                 //Logger.Trace("ENDED:    Get to Get Total Paid Year To Date operation.");
                 return Suspense  =Convert.ToString(total);
@@ -538,7 +538,7 @@ namespace CarringtonService.BillingStatements
                 {
                  total += Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Lip_PackedData) +
                           Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Cr_Ins_PackedData) +
-                          Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Pi_Shrtg_PackedData) +
+                         CommonHelper.ConvertEBCDICtoDecimal(tra.Rssi_Tr_Amt_To_Pi_Shrtg) +
                           Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Def_Prin_PackedData) +
                           Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Def_Int_PackedData) +
                           Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Def_Late_Chrg_PackedData) +
@@ -775,7 +775,7 @@ namespace CarringtonService.BillingStatements
                     && Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     Interest = "0.00";
                 else if (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date != null
-                    && accountModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte != null && CommonHelper.GetDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                    && accountModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte != null && CommonHelper.GetDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetDateTime(Convert.ToString(CommonHelper.ConvertEBCDICtoInt(accountModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))))
                     Interest = "0.00";
                 //Logger.Trace("ENDED:    To Interest operation.");
 
@@ -798,7 +798,7 @@ namespace CarringtonService.BillingStatements
                 else if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Bill_Pmt_Amt_PackedData) == 0)
                     EscrowTaxesandInsurance = "0.00";
                 else if (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date != null && accountModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte != null &&
-                    CommonHelper.GetDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                    CommonHelper.GetDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetDateTime(Convert.ToString(CommonHelper.ConvertEBCDICtoInt(accountModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))))
                     EscrowTaxesandInsurance = "0.00";
                 //Logger.Trace("ENDED:    To Escrow Taxes and Insurance operation.");
 
@@ -818,7 +818,7 @@ namespace CarringtonService.BillingStatements
                 if (Convert.ToDecimal(accountModel.MasterFileDataPart_1Model.Rssi_Prin_Bal_PackedData) == 0)
                     RegularMonthlyPayment = "0.00";
                 else if (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date != null && accountModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte != null &&
-                    CommonHelper.GetDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))
+                    CommonHelper.GetDateTime(accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) > CommonHelper.GetDateTime(Convert.ToString(CommonHelper.ConvertEBCDICtoInt(accountModel.MasterFileDataPart_1Model.Rssi_Cur_Due_Dte))))
                     RegularMonthlyPayment = "0.00";
                 //Logger.Trace("ENDED:    To Regular Monthly Payment operation.");
 

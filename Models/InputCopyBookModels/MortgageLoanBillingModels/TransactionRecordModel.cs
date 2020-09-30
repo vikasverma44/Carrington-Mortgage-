@@ -51,14 +51,14 @@
         public string Rssi_Tr_Amt_Negam_Pd_PackedData { get; set; }
         public string Rssi_Tr_Esc_Pay_Id { get; set; }
         public string Rssi_Tr_Amort_Fee_Pymt { get; set; }
-        public string Rssi_Tr_Amt_To_Evar_2_PackedData { get; set; }
-        public string Rssi_Tr_Amt_To_Evar_3_PackedData { get; set; }
-        public string Rssi_Tr_Amt_To_Evar_4_PackedData { get; set; }
-        public string Rssi_Tr_Amt_To_Evar_5_PackedData { get; set; }
+        public string Rssi_Tr_Amt_To_Evar_2 { get; set; }
+        public string Rssi_Tr_Amt_To_Evar_3 { get; set; }
+        public string Rssi_Tr_Amt_To_Evar_4 { get; set; }
+        public string Rssi_Tr_Amt_To_Evar_5 { get; set; }
         public string Rssi_Tr_Exp_Fee_Code { get; set; }
         public string Rssi_Tr_Exp_Fee_Desc { get; set; }
         public string Rssi_Tr_Exp_Fee_Amt_PackedData { get; set; }
-        public string Rssi_Tr_Amt_To_Pi_Shrtg_PackedData { get; set; }
+        public string Rssi_Tr_Amt_To_Pi_Shrtg { get; set; }
         public string Rssi_Tr_Amt_To_Esc_Short { get; set; }
         public string Rssi_Tr_Amt_To_Acrd_Inctv { get; set; }
         public string Rssi_Tr_Amt_To_Pra_Remain { get; set; }
