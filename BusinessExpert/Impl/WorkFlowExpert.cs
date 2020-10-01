@@ -416,7 +416,10 @@ namespace CarringtonService.BusinessExpert
                   df.LoanNumber == accountsModel.MasterFileDataPart_1Model.Rssi_Acct_No).FirstOrDefault()?.PriorMoAmnt;
             var flagRecordIndicator = detModels.Where(df =>
                   df.LoanNumber == accountsModel.MasterFileDataPart_1Model.Rssi_Acct_No).FirstOrDefault()?.FlagRecordIndicator;
-
+            var eligible = detModels.Where(df =>
+                  df.LoanNumber == accountsModel.MasterFileDataPart_1Model.Rssi_Acct_No).FirstOrDefault()?.Eligible;
+            var sentNO631 = detModels.Where(df =>
+                   df.LoanNumber == accountsModel.MasterFileDataPart_1Model.Rssi_Acct_No).FirstOrDefault()?.SentNO631;
 
             //Adding values from Supplimental file
             model.SupplementalCCFModel = new SupplementalCCFModel
@@ -424,6 +427,8 @@ namespace CarringtonService.BusinessExpert
                 YTDAmnt = ytdAmount == "" ? "0" : ytdAmount,
                 PriorMoAmnt = priorMoAmnt == "" ? "0" : priorMoAmnt,
                 FlagRecordIndicator = flagRecordIndicator == "" ? "0" : flagRecordIndicator,
+                Eligible = eligible == "" ? "N" : eligible,
+                SentNO631 = sentNO631 == "" ? "0" : sentNO631,
 
             };
 
