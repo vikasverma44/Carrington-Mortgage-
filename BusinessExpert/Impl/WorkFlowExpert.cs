@@ -2965,11 +2965,12 @@ namespace CarringtonService.BusinessExpert
                 Rssi_Rcd_Id = PackedTypeCheckAndUnPackData("Rssi_Rcd_Id", currentByte, 1, 1),
                 Rssi_Inst = PackedTypeCheckAndUnPackData("Rssi_Inst", currentByte, 2, 3),
 
-                Rssi_Acct_No = PackedTypeCheckAndUnPackData("Rssi_Acct_No", currentByte, 5, 10),
+                //Rssi_Acct_No = PackedTypeCheckAndUnPackData("Rssi_Acct_No", currentByte, 5, 10),
+                Rssi_Acct_No_Packeddata = PackedTypeCheckAndUnPackData("Rssi_Acct_No_Packeddata", currentByte, 5, 10),
                 Rssi_Seq_No = PackedTypeCheckAndUnPackData("Rssi_Seq_No", currentByte, 15, 5),
 
                 Rssi_Log_Date_PackedData = PackedTypeCheckAndUnPackData("Rssi_Log_Date_PackedData", currentByte, 20, 4),
-                Rssi_Log_Time = PackedTypeCheckAndUnPackData("Rssi_Log_Time", currentByte, 24, 4),
+                Rssi_Log_Time_PackedData = PackedTypeCheckAndUnPackData("Rssi_Log_Time_PackedData", currentByte, 24, 4),
 
                 Rssi_Tr_Date_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Date_PackedData", currentByte, 28, 4),
                 Rssi_Log_Ptrn = PackedTypeCheckAndUnPackData("Rssi_Log_Ptrn", currentByte, 32, 8),

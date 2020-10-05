@@ -27,7 +27,8 @@ namespace CarringtonService
                 objWFservice.logger.Trace("STARTED: Main");
                 if (args.Length >= 4)
                 {
-                    _inputFile = args[0];
+                    _inputFile = @"C:\Mortgage\WIP\467004\09242020011458.TESTFEBIL09162020101432.680.ETOA";
+                    //_inputFile = args[0];
                     _inputRecordLength = args[1];
                     _dataCenter = args[2];
                     _trackingId = args[3];

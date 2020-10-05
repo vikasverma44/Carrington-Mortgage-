@@ -601,7 +601,11 @@ namespace CarringtonService.BusinessExpert
             {
                 foreach (PropertyInfo propertyInfo in transactionRecord.GetType().GetProperties())
                 {
-                    builder.Append(propertyInfo.GetValue(transactionRecord) + "|");
+                    if (propertyInfo.Name == "Rssi_Tr_Pre_Int_Date")
+                    { 
+                    
+                    }
+                        builder.Append(propertyInfo.GetValue(transactionRecord) + "|");
                 }
                 account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40T", primaryIndex, builder));
                 builder.Clear();
@@ -671,6 +675,10 @@ namespace CarringtonService.BusinessExpert
             //3
             foreach (PropertyInfo propertyInfo in accountsModel.DisasterTrackingRecordModel.GetType().GetProperties())
             {
+                if (propertyInfo.Name == "Rssi_Dstr_Extended_Dt_PackedData")
+                {
+
+                }
                 builder.Append(propertyInfo.GetValue(accountsModel.DisasterTrackingRecordModel) + "|");
             }
             account.AddCustomerRecord(FormatCustomer.BuildRecord("PM403", primaryIndex, builder));
