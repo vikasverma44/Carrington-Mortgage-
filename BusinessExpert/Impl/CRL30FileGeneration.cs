@@ -133,7 +133,7 @@ namespace CarringtonService.BusinessExpert
                     {
                         counter++;
                         Logger.Info("Account records extracting...: " + counter);
-                        //if (extractAccount.MasterFileDataPart_1Model.Rssi_Acct_No == "0000000011")//"0000714479")//"0000905973") //"0000714479")
+                        //if (extractAccount.MasterFileDataPart_1Model.Rssi_Acct_No == "0000714479")//"0000714479")//"0000905973") //"0000714479")
                         //{
 
                         //}
@@ -194,7 +194,7 @@ namespace CarringtonService.BusinessExpert
                                 account.Standard.FlexField5 = borrowerList.FirstOrDefault()?.FlexField5;
                                 account.Standard.FlexField6 = borrowerList.FirstOrDefault()?.FlexField6;
                             }
-                              
+
 
                             account.Standard.SSN = extractAccount.MasterFileDataPart_1Model.Rssi_Primary_Social_Sec;
                             account.Standard.StatementDate = CommonHelper.GetFormatedDateTime(extractAccount.MasterFileDataPart_1Model.Rssi_Run_Date);
@@ -267,10 +267,10 @@ namespace CarringtonService.BusinessExpert
 
                                 }
 
-                                                            
+
                                 line.Clear();
 
-                               
+
 
                                 //Removing the primary borrower from the list leaving co borrower details inside
                                 borrowerList.RemoveAt(0);
@@ -288,7 +288,7 @@ namespace CarringtonService.BusinessExpert
                             }
                             RejectAccount(account, "Invalid Account" + bankruptcy);
                         }
-                            
+
 
 
                         account.SequenceTransactions();
@@ -319,7 +319,7 @@ namespace CarringtonService.BusinessExpert
                                             account.Standard.OriginalAddressLine1 = ChapterSevenOptionARMStatement.GetMailingBKAttorneyAddressLine1(extractAccount, true);
                                             account.Standard.OriginalAddressLine2 = ChapterSevenOptionARMStatement.GetMailingBKAttorneyAddressLine2(extractAccount, true);
                                             string A07_cityStateZip = ChapterSevenOptionARMStatement.GetBorrowerAttorneyMailingCityStateZip(extractAccount, true);
-                                            if(!string.IsNullOrEmpty(A07_cityStateZip))
+                                            if (!string.IsNullOrEmpty(A07_cityStateZip))
                                             {
                                                 var arr = A07_cityStateZip.Split(',');
                                                 account.Standard.OriginalCity = arr[0].Trim();
@@ -342,7 +342,7 @@ namespace CarringtonService.BusinessExpert
                                                 account.Standard.OriginalCity = arr[0].Trim();
                                                 account.Standard.OriginalState = arr[1].Trim();
                                                 account.Standard.OriginalZip5 = arr[2].Trim();
-                                                account.Standard.OrigCszLength = A13_cityStateZip.Length-2;
+                                                account.Standard.OrigCszLength = A13_cityStateZip.Length - 2;
 
                                             }
                                             break;
@@ -359,7 +359,7 @@ namespace CarringtonService.BusinessExpert
                                                 account.Standard.OriginalCity = arr[0].Trim();
                                                 account.Standard.OriginalState = arr[1].Trim();
                                                 account.Standard.OriginalZip5 = arr[2].Trim();
-                                                account.Standard.OrigCszLength = ARM_cityStateZip.Length-2;
+                                                account.Standard.OrigCszLength = ARM_cityStateZip.Length - 2;
                                             }
                                             break;
 
@@ -375,7 +375,7 @@ namespace CarringtonService.BusinessExpert
                                                 account.Standard.OriginalCity = arr[0].Trim();
                                                 account.Standard.OriginalState = arr[1].Trim();
                                                 account.Standard.OriginalZip5 = arr[2].Trim();
-                                                account.Standard.OrigCszLength = S07_cityStateZip.Length-2;
+                                                account.Standard.OrigCszLength = S07_cityStateZip.Length - 2;
 
                                             }
                                             break;
@@ -392,7 +392,7 @@ namespace CarringtonService.BusinessExpert
                                                 account.Standard.OriginalCity = arr[0].Trim();
                                                 account.Standard.OriginalState = arr[1].Trim();
                                                 account.Standard.OriginalZip5 = arr[2].Trim();
-                                                account.Standard.OrigCszLength = S13_cityStateZip.Length-2;
+                                                account.Standard.OrigCszLength = S13_cityStateZip.Length - 2;
 
                                             }
                                             break;
@@ -409,7 +409,7 @@ namespace CarringtonService.BusinessExpert
                                                 account.Standard.OriginalCity = arr[0].Trim();
                                                 account.Standard.OriginalState = arr[1].Trim();
                                                 account.Standard.OriginalZip5 = arr[2].Trim();
-                                                account.Standard.OrigCszLength = STD_cityStateZip.Length-2;
+                                                account.Standard.OrigCszLength = STD_cityStateZip.Length - 2;
 
                                             }
                                             break;
@@ -521,174 +521,236 @@ namespace CarringtonService.BusinessExpert
         {
             var builder = new StringBuilder();
             //A
-            foreach (PropertyInfo propertyInfo in accountsModel.MasterFileDataPart_1Model.GetType().GetProperties())
+            if (!string.IsNullOrEmpty(accountsModel.MasterFileDataPart_1Model.Rssi_Acct_No))
             {
-                if (propertyInfo.Name == "Rssi_Inv_All")
-                    continue;
-                
-                builder.Append(propertyInfo.GetValue(accountsModel.MasterFileDataPart_1Model) + "|");
-            }
-            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40A", primaryIndex, builder));
-            builder.Clear();
-            //2
-            foreach (PropertyInfo propertyInfo in accountsModel.MasterFileDataPart2Model.GetType().GetProperties())
-            {
-                builder.Append(propertyInfo.GetValue(accountsModel.MasterFileDataPart2Model) + "|");
-            }
-            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM402", primaryIndex, builder));
-            builder.Clear();
-            //U
-            foreach (PropertyInfo propertyInfo in accountsModel.UserFieldRecordModel.GetType().GetProperties())
-            {
-                builder.Append(propertyInfo.GetValue(accountsModel.UserFieldRecordModel) + "|");
-            }
-            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40U", primaryIndex, builder));
-            builder.Clear();
-            //L
-            foreach (PropertyInfo propertyInfo in accountsModel.MultiLockboxRecordModel.GetType().GetProperties())
-            {
-                builder.Append(propertyInfo.GetValue(accountsModel.MultiLockboxRecordModel) + "|");
-            }
-            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40L", primaryIndex, builder));
-            builder.Clear();
-            //R
-            foreach (PropertyInfo propertyInfo in accountsModel.RateReductionRecordModel.GetType().GetProperties())
-            {
-                builder.Append(propertyInfo.GetValue(accountsModel.RateReductionRecordModel) + "|");
-            }
-            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40R", primaryIndex, builder));
-            builder.Clear();
-            //E
-            foreach (var escrow in accountsModel.EscrowRecordModel)
-            {
-                foreach (PropertyInfo propertyInfo in escrow.GetType().GetProperties())
+                foreach (PropertyInfo propertyInfo in accountsModel.MasterFileDataPart_1Model.GetType().GetProperties())
                 {
-                    builder.Append(propertyInfo.GetValue(escrow) + "|");
+                    if (propertyInfo.Name == "Rssi_Inv_All")
+                        continue;
+
+                    builder.Append(propertyInfo.GetValue(accountsModel.MasterFileDataPart_1Model) + "|");
                 }
-                account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40E", primaryIndex, builder));
+                account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40A", primaryIndex, builder));
                 builder.Clear();
+            }
+            //2
+            if (!string.IsNullOrEmpty(accountsModel.MasterFileDataPart2Model.Rssi_Acct_No))
+            {
+                foreach (PropertyInfo propertyInfo in accountsModel.MasterFileDataPart2Model.GetType().GetProperties())
+                {
+                    builder.Append(propertyInfo.GetValue(accountsModel.MasterFileDataPart2Model) + "|");
+                }
+                account.AddCustomerRecord(FormatCustomer.BuildRecord("PM402", primaryIndex, builder));
+                builder.Clear();
+            }
+            //U
+            if (!string.IsNullOrEmpty(accountsModel.UserFieldRecordModel.Rssi_Acct_No))
+            {
+                foreach (PropertyInfo propertyInfo in accountsModel.UserFieldRecordModel.GetType().GetProperties())
+                {
+                    builder.Append(propertyInfo.GetValue(accountsModel.UserFieldRecordModel) + "|");
+                }
+                account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40U", primaryIndex, builder));
+                builder.Clear();
+            }
+            //L
+            if (!string.IsNullOrEmpty(accountsModel.MultiLockboxRecordModel.Rssi_Acct_No))
+            {
+                foreach (PropertyInfo propertyInfo in accountsModel.MultiLockboxRecordModel.GetType().GetProperties())
+                {
+                    builder.Append(propertyInfo.GetValue(accountsModel.MultiLockboxRecordModel) + "|");
+                }
+                account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40L", primaryIndex, builder));
+                builder.Clear();
+            }
+            //R
+            if (!string.IsNullOrEmpty(accountsModel.RateReductionRecordModel.Rssi_Acct_No))
+            {
+                foreach (PropertyInfo propertyInfo in accountsModel.RateReductionRecordModel.GetType().GetProperties())
+                {
+                    builder.Append(propertyInfo.GetValue(accountsModel.RateReductionRecordModel) + "|");
+                }
+                account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40R", primaryIndex, builder));
+                builder.Clear();
+            }
+            //E
+            if (accountsModel.EscrowRecordModel.Count > 0)
+            {
+                foreach (var escrow in accountsModel.EscrowRecordModel)
+                {
+                    foreach (PropertyInfo propertyInfo in escrow.GetType().GetProperties())
+                    {
+                        builder.Append(propertyInfo.GetValue(escrow) + "|");
+                    }
+                    account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40E", primaryIndex, builder));
+                    builder.Clear();
+                }
             }
             //O
-            foreach (var optionalItemEscrow in accountsModel.OptionalItemEscrowRecordModel)
+            if (accountsModel.OptionalItemEscrowRecordModel.Count>0)
             {
-                foreach (PropertyInfo propertyInfo in optionalItemEscrow.GetType().GetProperties())
+                foreach (var optionalItemEscrow in accountsModel.OptionalItemEscrowRecordModel)
                 {
-                    builder.Append(propertyInfo.GetValue(optionalItemEscrow) + "|");
+                    foreach (PropertyInfo propertyInfo in optionalItemEscrow.GetType().GetProperties())
+                    {
+                        builder.Append(propertyInfo.GetValue(optionalItemEscrow) + "|");
+                    }
+                    account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40O", primaryIndex, builder));
+                    builder.Clear();
                 }
-                account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40O", primaryIndex, builder));
-                builder.Clear();
             }
             //F
-            foreach (var feeRecordModel in accountsModel.FeeRecordModel)
+            if (accountsModel.FeeRecordModel.Count>0)
             {
-
-                foreach (PropertyInfo propertyInfo in feeRecordModel.GetType().GetProperties())
+                foreach (var feeRecordModel in accountsModel.FeeRecordModel)
                 {
-                    builder.Append(propertyInfo.GetValue(feeRecordModel) + "|");
+
+                    foreach (PropertyInfo propertyInfo in feeRecordModel.GetType().GetProperties())
+                    {
+                        builder.Append(propertyInfo.GetValue(feeRecordModel) + "|");
+                    }
+                    account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40F", primaryIndex, builder));
+                    builder.Clear();
                 }
-                account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40F", primaryIndex, builder));
-                builder.Clear();
             }
             //S
-            foreach (PropertyInfo propertyInfo in accountsModel.SolicitationRecordModel.GetType().GetProperties())
+            if (!string.IsNullOrEmpty(accountsModel.SolicitationRecordModel.Rssi_Acct_No))
             {
-                builder.Append(propertyInfo.GetValue(accountsModel.SolicitationRecordModel) + "|");
-            }
-            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40S", primaryIndex, builder));
-            builder.Clear();
-            //T
-            foreach (var transactionRecord in accountsModel.TransactionRecordModelList)
-            {
-                foreach (PropertyInfo propertyInfo in transactionRecord.GetType().GetProperties())
+                foreach (PropertyInfo propertyInfo in accountsModel.SolicitationRecordModel.GetType().GetProperties())
                 {
-                    builder.Append(propertyInfo.GetValue(transactionRecord) + "|");
+                    builder.Append(propertyInfo.GetValue(accountsModel.SolicitationRecordModel) + "|");
                 }
-                account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40T", primaryIndex, builder));
+                account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40S", primaryIndex, builder));
                 builder.Clear();
+            }
+            //T
+            if (accountsModel.TransactionRecordModelList.Count>0)
+            {
+                foreach (var transactionRecord in accountsModel.TransactionRecordModelList)
+                {
+                    foreach (PropertyInfo propertyInfo in transactionRecord.GetType().GetProperties())
+                    {
+                        builder.Append(propertyInfo.GetValue(transactionRecord) + "|");
+                    }
+                    account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40T", primaryIndex, builder));
+                    builder.Clear();
+                }
             }
 
             //C
-            foreach (PropertyInfo propertyInfo in accountsModel.ForeignInformationRecordModel.GetType().GetProperties())
+            if (!string.IsNullOrEmpty(accountsModel.ForeignInformationRecordModel.Rssi_Acct_No))
             {
-                builder.Append(propertyInfo.GetValue(accountsModel.ForeignInformationRecordModel) + "|");
-            }
-            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40C", primaryIndex, builder));
-            builder.Clear();
-            //D
-            foreach (PropertyInfo propertyInfo in accountsModel.BlendedRateInformationRecordModel.GetType().GetProperties())
-            {
-                builder.Append(propertyInfo.GetValue(accountsModel.BlendedRateInformationRecordModel) + "|");
-            }
-            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40D", primaryIndex, builder));
-            builder.Clear();
-            //I
-            foreach (PropertyInfo propertyInfo in accountsModel.CoBorrowerRecordModel.GetType().GetProperties())
-            {
-                builder.Append(propertyInfo.GetValue(accountsModel.CoBorrowerRecordModel) + "|");
-            }
-            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40I", primaryIndex, builder));
-            builder.Clear();
-            //<
-            foreach (PropertyInfo propertyInfo in accountsModel.LateChargeInformationRecordModel.GetType().GetProperties())
-            {
-                builder.Append(propertyInfo.GetValue(accountsModel.LateChargeInformationRecordModel) + "|");
-            }
-            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40<", primaryIndex, builder));
-            builder.Clear();
-
-            //-
-            foreach (PropertyInfo propertyInfo in accountsModel.LateChargeDetailRecordModel.GetType().GetProperties())
-            {
-                builder.Append(propertyInfo.GetValue(accountsModel.LateChargeDetailRecordModel) + "|");
-            }
-            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40-", primaryIndex, builder));
-            builder.Clear();
-
-            //J
-            foreach (PropertyInfo propertyInfo in accountsModel.ActiveBankruptcyInformationRecordModel.GetType().GetProperties())
-            {
-                builder.Append(propertyInfo.GetValue(accountsModel.ActiveBankruptcyInformationRecordModel) + "|");
-            }
-            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40J", primaryIndex, builder));
-            builder.Clear();
-            //K
-            foreach (var archivedBankruptcyDetailRecordModel in accountsModel.ArchivedBankruptcyDetailRecordModel)
-            {
-                foreach (PropertyInfo propertyInfo in archivedBankruptcyDetailRecordModel.GetType().GetProperties())
+                foreach (PropertyInfo propertyInfo in accountsModel.ForeignInformationRecordModel.GetType().GetProperties())
                 {
-                    builder.Append(propertyInfo.GetValue(archivedBankruptcyDetailRecordModel) + "|");
+                    builder.Append(propertyInfo.GetValue(accountsModel.ForeignInformationRecordModel) + "|");
                 }
-                account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40K", primaryIndex, builder));
+                account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40C", primaryIndex, builder));
                 builder.Clear();
             }
+            //D
+            if (!string.IsNullOrEmpty(accountsModel.BlendedRateInformationRecordModel.Rssi_Acct_No))
+            {
+                foreach (PropertyInfo propertyInfo in accountsModel.BlendedRateInformationRecordModel.GetType().GetProperties())
+                {
+                    builder.Append(propertyInfo.GetValue(accountsModel.BlendedRateInformationRecordModel) + "|");
+                }
+                account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40D", primaryIndex, builder));
+                builder.Clear();
+            }
+            //I
+            if (!string.IsNullOrEmpty(accountsModel.CoBorrowerRecordModel.Rssi_Acct_No))
+            {
+                foreach (PropertyInfo propertyInfo in accountsModel.CoBorrowerRecordModel.GetType().GetProperties())
+                {
+                    builder.Append(propertyInfo.GetValue(accountsModel.CoBorrowerRecordModel) + "|");
+                }
+                account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40I", primaryIndex, builder));
+                builder.Clear();
+            }
+            //<
+            if (!string.IsNullOrEmpty(accountsModel.LateChargeInformationRecordModel.Rssi_Acct_No))
+            {
+                foreach (PropertyInfo propertyInfo in accountsModel.LateChargeInformationRecordModel.GetType().GetProperties())
+                {
+                    builder.Append(propertyInfo.GetValue(accountsModel.LateChargeInformationRecordModel) + "|");
+                }
+                account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40<", primaryIndex, builder));
+                builder.Clear();
+            }
+            //-
+            if (!string.IsNullOrEmpty(accountsModel.LateChargeDetailRecordModel.Rssi_Acct_No))
+            {
+                foreach (PropertyInfo propertyInfo in accountsModel.LateChargeDetailRecordModel.GetType().GetProperties())
+                {
+                    builder.Append(propertyInfo.GetValue(accountsModel.LateChargeDetailRecordModel) + "|");
+                }
+                account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40-", primaryIndex, builder));
+                builder.Clear();
+            }
+
+            //J
+            if (!string.IsNullOrEmpty(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Acct_No))
+            {
+                foreach (PropertyInfo propertyInfo in accountsModel.ActiveBankruptcyInformationRecordModel.GetType().GetProperties())
+                {
+                    builder.Append(propertyInfo.GetValue(accountsModel.ActiveBankruptcyInformationRecordModel) + "|");
+                }
+                account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40J", primaryIndex, builder));
+                builder.Clear();
+            }
+            //K
+            if (accountsModel.ArchivedBankruptcyDetailRecordModel.Count>0)
+            {
+                foreach (var archivedBankruptcyDetailRecordModel in accountsModel.ArchivedBankruptcyDetailRecordModel)
+                {
+                    foreach (PropertyInfo propertyInfo in archivedBankruptcyDetailRecordModel.GetType().GetProperties())
+                    {
+                        builder.Append(propertyInfo.GetValue(archivedBankruptcyDetailRecordModel) + "|");
+                    }
+                    account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40K", primaryIndex, builder));
+                    builder.Clear();
+                }
+            }
             //X
-            foreach (PropertyInfo propertyInfo in accountsModel.EmailAddressRecordModel.GetType().GetProperties())
+            if (!string.IsNullOrEmpty(accountsModel.EmailAddressRecordModel.Rssi_Acct_No))
             {
-                builder.Append(propertyInfo.GetValue(accountsModel.EmailAddressRecordModel) + "|");
+                foreach (PropertyInfo propertyInfo in accountsModel.EmailAddressRecordModel.GetType().GetProperties())
+                {
+                    builder.Append(propertyInfo.GetValue(accountsModel.EmailAddressRecordModel) + "|");
+                }
+                account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40X", primaryIndex, builder));
+                builder.Clear();
             }
-            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40X", primaryIndex, builder));
-            builder.Clear();
             //3
-            foreach (PropertyInfo propertyInfo in accountsModel.DisasterTrackingRecordModel.GetType().GetProperties())
+            if (!string.IsNullOrEmpty(accountsModel.DisasterTrackingRecordModel.Rssi_Acct_No))
             {
-                builder.Append(propertyInfo.GetValue(accountsModel.DisasterTrackingRecordModel) + "|");
+                foreach (PropertyInfo propertyInfo in accountsModel.DisasterTrackingRecordModel.GetType().GetProperties())
+                {
+                    builder.Append(propertyInfo.GetValue(accountsModel.DisasterTrackingRecordModel) + "|");
+                }
+                account.AddCustomerRecord(FormatCustomer.BuildRecord("PM403", primaryIndex, builder));
+                builder.Clear();
             }
-            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM403", primaryIndex, builder));
-            builder.Clear();
             //4
-            foreach (PropertyInfo propertyInfo in accountsModel.RHCDSOnlyRecordModel.GetType().GetProperties())
+            if (!string.IsNullOrEmpty(accountsModel.RHCDSOnlyRecordModel.Rssi_Acct_No))
             {
-                builder.Append(propertyInfo.GetValue(accountsModel.RHCDSOnlyRecordModel) + "|");
+                foreach (PropertyInfo propertyInfo in accountsModel.RHCDSOnlyRecordModel.GetType().GetProperties())
+                {
+                    builder.Append(propertyInfo.GetValue(accountsModel.RHCDSOnlyRecordModel) + "|");
+                }
+                account.AddCustomerRecord(FormatCustomer.BuildRecord("PM404", primaryIndex, builder));
+                builder.Clear();
             }
-            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM404", primaryIndex, builder));
-            builder.Clear();
             //Z
-            foreach (PropertyInfo propertyInfo in accountsModel.TrailerRecordModel.GetType().GetProperties())
+            if (!string.IsNullOrEmpty(accountsModel.TrailerRecordModel.Rssi_Acct_Np))
             {
-                builder.Append(propertyInfo.GetValue(accountsModel.TrailerRecordModel) + "|");
+                foreach (PropertyInfo propertyInfo in accountsModel.TrailerRecordModel.GetType().GetProperties())
+                {
+                    builder.Append(propertyInfo.GetValue(accountsModel.TrailerRecordModel) + "|");
+                }
+                account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40Z", primaryIndex, builder));
+                builder.Clear();
             }
-            account.AddCustomerRecord(FormatCustomer.BuildRecord("PM40Z", primaryIndex, builder));
-            builder.Clear();
 
         }
     }

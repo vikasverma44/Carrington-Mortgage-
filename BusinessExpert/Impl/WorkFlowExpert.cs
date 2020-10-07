@@ -34,7 +34,7 @@ namespace CarringtonService.BusinessExpert
         public static List<DetModel> detModels = new List<DetModel>();
         public static List<TransModel> transModels = new List<TransModel>();
         public static List<EConsentModel> eConsentModels = new List<EConsentModel>();
-        
+
         public static List<MultiLocationValueModel> Rssi_Inv_Code_PackedData_Model = new List<MultiLocationValueModel>();
         public static List<MultiLocationValueModel> Rssi_Past_Date_Model = new List<MultiLocationValueModel>();
         public static List<MultiLocationValueModel> Rssi_Inv_Name_Model = new List<MultiLocationValueModel>();
@@ -1115,11 +1115,11 @@ namespace CarringtonService.BusinessExpert
                 model.Postion21 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 2163, 6, 2);
                 model.Postion22 = PackedTypeCheckAndUnPackData("Rssi_Late_Amt_R_PackedData", currentByte, 2181, 6, 2);
             }
-            
+
 
             return model;
 
-           
+
         }
         // A Master File Data Part 1 Record.One record per loan.
 
@@ -1131,19 +1131,19 @@ namespace CarringtonService.BusinessExpert
             Rssi_Inv_Code_PackedData_Model.Add(GetValueFromMultiLocationModel("Rssi_Inv_Code_PackedData", currentByte, accountNo));
             Rssi_Inv_Name_Model.Add(GetValueFromMultiLocationModel("Rssi_Inv_Name", currentByte, accountNo));
             Rssi_Inv_Block_PackedData_Model.Add(GetValueFromMultiLocationModel("Rssi_Inv_Block_PackedData", currentByte, accountNo));
-           
+
             Rssi_Inv_Pc_Owned_PackedData_Model.Add(GetValueFromMultiLocationModel("Rssi_Inv_Pc_Owned_PackedData", currentByte, accountNo));
             Rssi_Inv_Rate_PackedData_Model.Add(GetValueFromMultiLocationModel("Rssi_Inv_Rate_PackedData", currentByte, accountNo));
             Rssi_Inv_Sv_Code_PackedData_Model.Add(GetValueFromMultiLocationModel("Rssi_Inv_Sv_Code_PackedData", currentByte, accountNo));
-            
+
             Rssi_Inv_Sv_Fee_PackedData_Model.Add(GetValueFromMultiLocationModel("Rssi_Inv_Sv_Fee_PackedData", currentByte, accountNo));
             Rssi_Inv_Sv_Acct_Model.Add(GetValueFromMultiLocationModel("Rssi_Inv_Sv_Acct", currentByte, accountNo));
             Rssi_Inv_Fill_Model.Add(GetValueFromMultiLocationModel("Rssi_Inv_Fill", currentByte, accountNo));
-            
+
             Rssi_Past_Date_Model.Add(GetValueFromMultiLocationModel("Rssi_Past_Date", currentByte, accountNo));
             Rssi_Reg_Amt_PackedData_Model.Add(GetValueFromMultiLocationModel("Rssi_Reg_Amt_PackedData", currentByte, accountNo));
             Rssi_Late_Amt_PackedData_Model.Add(GetValueFromMultiLocationModel("Rssi_Late_Amt_PackedData", currentByte, accountNo));
-            
+
             Rssi_Past_Date_R_Model.Add(GetValueFromMultiLocationModel("Rssi_Past_Date_R", currentByte, accountNo));
             Rssi_Reg_Amt_R_PackedData_Model.Add(GetValueFromMultiLocationModel("Rssi_Reg_Amt_R_PackedData", currentByte, accountNo));
             Rssi_Late_Amt_R_PackedData_Model.Add(GetValueFromMultiLocationModel("Rssi_Late_Amt_R_PackedData", currentByte, accountNo));
@@ -2964,7 +2964,7 @@ namespace CarringtonService.BusinessExpert
         // T Transaction Record. Multiple records per loan if applicable.
         public void GetTransactionRecordModel(byte[] currentByte, ref AccountsModel acc)
         {
-            
+
             var transactionRecordModel = new TransactionRecordModel()
             {
                 Rssi_Rcd_Id = PackedTypeCheckAndUnPackData("Rssi_Rcd_Id", currentByte, 1, 1),
@@ -3013,7 +3013,7 @@ namespace CarringtonService.BusinessExpert
                 Rssi_Tr_Prin_Bal_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Prin_Bal_PackedData", currentByte, 131, 6, 2),
 
                 Rssi_Tr_Esc_Bal_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Esc_Bal_PackedData", currentByte, 137, 6, 2),
-                Rssi_Tr_Pd_To_Date_PackedData = (PackedTypeCheckAndUnPackData("Rssi_Tr_Pd_To_Date_PackedData", currentByte, 143, 4)!=null && PackedTypeCheckAndUnPackData("Rssi_Tr_Pd_To_Date_PackedData", currentByte, 143, 4)!= "0000000")? Convert.ToString(CommonHelper.GetDateTime(PackedTypeCheckAndUnPackData("Rssi_Tr_Pd_To_Date_PackedData", currentByte, 143, 4))): "0",
+                Rssi_Tr_Pd_To_Date_PackedData = (PackedTypeCheckAndUnPackData("Rssi_Tr_Pd_To_Date_PackedData", currentByte, 143, 4) != null && PackedTypeCheckAndUnPackData("Rssi_Tr_Pd_To_Date_PackedData", currentByte, 143, 4) != "0000000") ? Convert.ToString(CommonHelper.GetDateTime(PackedTypeCheckAndUnPackData("Rssi_Tr_Pd_To_Date_PackedData", currentByte, 143, 4))) : "0",
 
                 Rssi_Tr_Esc_Pymt_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Esc_Pymt_PackedData", currentByte, 147, 5, 2),
                 Rssi_Tr_Prn_Var_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Prn_Var_PackedData", currentByte, 152, 5, 2),
@@ -3022,10 +3022,10 @@ namespace CarringtonService.BusinessExpert
                 Rssi_Tr_Esc_Var_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Esc_Var_PackedData", currentByte, 163, 5, 2),
 
                 Rssi_Tr_Uncoll_Lc_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Uncoll_Lc_PackedData", currentByte, 168, 5, 2),
-                Rssi_Tr_Dla_PackedData = (PackedTypeCheckAndUnPackData("Rssi_Tr_Dla_PackedData", currentByte, 173, 4)!=null && PackedTypeCheckAndUnPackData("Rssi_Tr_Dla_PackedData", currentByte, 173, 4) != "0000000") ? Convert.ToString(CommonHelper.GetDateTime(PackedTypeCheckAndUnPackData("Rssi_Tr_Dla_PackedData", currentByte, 173, 4))): "0",
+                Rssi_Tr_Dla_PackedData = (PackedTypeCheckAndUnPackData("Rssi_Tr_Dla_PackedData", currentByte, 173, 4) != null && PackedTypeCheckAndUnPackData("Rssi_Tr_Dla_PackedData", currentByte, 173, 4) != "0000000") ? Convert.ToString(CommonHelper.GetDateTime(PackedTypeCheckAndUnPackData("Rssi_Tr_Dla_PackedData", currentByte, 173, 4))) : "0",
 
                 Rssi_Tr_Lip_Bal_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Lip_Bal_PackedData", currentByte, 177, 5, 2),
-                Rssi_Tr_Lip_La_Date_PackedData = (PackedTypeCheckAndUnPackData("Rssi_Tr_Lip_La_Date_PackedData", currentByte, 182, 4) !=null && PackedTypeCheckAndUnPackData("Rssi_Tr_Lip_La_Date_PackedData", currentByte, 182, 4)!= "0000000")? Convert.ToString(CommonHelper.GetDateTime(PackedTypeCheckAndUnPackData("Rssi_Tr_Lip_La_Date_PackedData", currentByte, 182, 4))) : "0",
+                Rssi_Tr_Lip_La_Date_PackedData = (PackedTypeCheckAndUnPackData("Rssi_Tr_Lip_La_Date_PackedData", currentByte, 182, 4) != null && PackedTypeCheckAndUnPackData("Rssi_Tr_Lip_La_Date_PackedData", currentByte, 182, 4) != "0000000") ? Convert.ToString(CommonHelper.GetDateTime(PackedTypeCheckAndUnPackData("Rssi_Tr_Lip_La_Date_PackedData", currentByte, 182, 4))) : "0",
 
                 Rssi_Tr_Pre_Int_Amt_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Pre_Int_Amt_PackedData", currentByte, 186, 6, 2),
                 Rssi_Tr_Pre_Int_Date = PackedTypeCheckAndUnPackData("Rssi_Tr_Pre_Int_Date", currentByte, 192, 4),
@@ -3040,18 +3040,18 @@ namespace CarringtonService.BusinessExpert
                 Rssi_Tr_Esc_Pay_Id = PackedTypeCheckAndUnPackData("Rssi_Tr_Esc_Pay_Id", currentByte, 240, 2),
 
                 Rssi_Tr_Amort_Fee_Pymt = PackedTypeCheckAndUnPackData("Rssi_Tr_Amort_Fee_Pymt", currentByte, 242, 7, 2),
-                Rssi_Tr_Amt_To_Evar_2 = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_2", currentByte, 249, 9, 2),
+                Rssi_Tr_Amt_To_Evar_2 = Convert.ToString(CommonHelper.ConvertEBCDICtoDecimal(PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_2", currentByte, 249, 9, 2))),
 
-                Rssi_Tr_Amt_To_Evar_3 = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_3", currentByte, 258, 9, 2),
-                Rssi_Tr_Amt_To_Evar_4 = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_4", currentByte, 267, 9, 2),
+                Rssi_Tr_Amt_To_Evar_3 = Convert.ToString(CommonHelper.ConvertEBCDICtoDecimal(PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_3", currentByte, 258, 9, 2))),
+                Rssi_Tr_Amt_To_Evar_4 = Convert.ToString(CommonHelper.ConvertEBCDICtoDecimal(PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_4", currentByte, 267, 9, 2))),
 
-                Rssi_Tr_Amt_To_Evar_5 = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_5", currentByte, 276, 9, 2),
+                Rssi_Tr_Amt_To_Evar_5 = Convert.ToString(CommonHelper.ConvertEBCDICtoDecimal(PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_5", currentByte, 276, 9, 2))),
                 Rssi_Tr_Exp_Fee_Code = PackedTypeCheckAndUnPackData("Rssi_Tr_Exp_Fee_Code", currentByte, 285, 3),
 
                 Rssi_Tr_Exp_Fee_Desc = PackedTypeCheckAndUnPackData("Rssi_Tr_Exp_Fee_Desc", currentByte, 288, 30),
                 Rssi_Tr_Exp_Fee_Amt_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Exp_Fee_Amt_PackedData", currentByte, 318, 6, 2),
 
-                Rssi_Tr_Amt_To_Pi_Shrtg = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Pi_Shrtg", currentByte, 324, 9, 2),
+                Rssi_Tr_Amt_To_Pi_Shrtg = Convert.ToString(CommonHelper.ConvertEBCDICtoDecimal(PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Pi_Shrtg", currentByte, 324, 9, 2))),
                 Rssi_Tr_Amt_To_Esc_Short = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Esc_Short", currentByte, 333, 9, 2),
 
                 Rssi_Tr_Amt_To_Acrd_Inctv = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Acrd_Inctv", currentByte, 342, 7, 2),
@@ -3798,15 +3798,12 @@ namespace CarringtonService.BusinessExpert
         //}
         public string PackedTypeCheckAndUnPackData(string propertyName, byte[] data, int start, int length, int decimalPlaces = 0, bool hasSign = true)
         {
-            if(propertyName == "Rssi_Tr_Amt_To_Evar_2_PackedData")
-            {
 
-            }
             try
             {
                 if (propertyName.Contains("PackedData") && propertyName != null)
                 {
-                    if(propertyName.EndsWith("State_PackedData"))
+                    if (propertyName.EndsWith("State_PackedData"))
                         return NewPackedTypeCheckAndUnPackData(propertyName, data, start, length, decimalPlaces, hasSign);
                     var buffer = new byte[length];
                     Array.Copy(data, start - 1, buffer, 0, length);
@@ -3906,9 +3903,9 @@ namespace CarringtonService.BusinessExpert
                     var buffer = new byte[length];
                     Array.Copy(data, start - 1, buffer, 0, length);
                     string output = string.Empty;
-                    var result =  Unpack(buffer, 0, propertyName);
+                    var result = Unpack(buffer, 0, propertyName);
                     output = Convert.ToString(result);
-                    
+
                     return output;
                 }
                 else

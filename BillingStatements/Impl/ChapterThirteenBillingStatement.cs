@@ -367,10 +367,10 @@ namespace CarringtonService.BillingStatements
                 {
                     total +=
                            Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_PackedData) +
-                           CommonHelper.ConvertEBCDICtoDecimal(tra.Rssi_Tr_Amt_To_Evar_2) +
-                           CommonHelper.ConvertEBCDICtoDecimal(tra.Rssi_Tr_Amt_To_Evar_3) +
-                           CommonHelper.ConvertEBCDICtoDecimal(tra.Rssi_Tr_Amt_To_Evar_4) +
-                           CommonHelper.ConvertEBCDICtoDecimal(tra.Rssi_Tr_Amt_To_Evar_5);
+                           Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_2) +
+                           Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_3) +
+                           Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_4) +
+                           Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_5);
                 }
                 //Logger.Trace("ENDED:    Get to Unapplied Funds Paid Last Month operation.");
                 return UnappliedFundsPaidLastMonth = Convert.ToString(total);
@@ -514,10 +514,10 @@ namespace CarringtonService.BillingStatements
                 {
                     total +=
                 Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_PackedData) +
-                 CommonHelper.ConvertEBCDICtoDecimal(tra.Rssi_Tr_Amt_To_Evar_2) +
-                 CommonHelper.ConvertEBCDICtoDecimal(tra.Rssi_Tr_Amt_To_Evar_3) +
-                 CommonHelper.ConvertEBCDICtoDecimal(tra.Rssi_Tr_Amt_To_Evar_4) +
-                 CommonHelper.ConvertEBCDICtoDecimal(tra.Rssi_Tr_Amt_To_Evar_5);
+                 Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_2) +
+                 Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_3) +
+                 Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_4) +
+                 Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_5);
                 }
                 //Logger.Trace("ENDED:    Get to Get Total Paid Year To Date operation.");
                 return Suspense  =Convert.ToString(total);
@@ -538,7 +538,7 @@ namespace CarringtonService.BillingStatements
                 {
                  total += Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Lip_PackedData) +
                           Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Cr_Ins_PackedData) +
-                         CommonHelper.ConvertEBCDICtoDecimal(tra.Rssi_Tr_Amt_To_Pi_Shrtg) +
+                         Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Pi_Shrtg) +
                           Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Def_Prin_PackedData) +
                           Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Def_Int_PackedData) +
                           Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Def_Late_Chrg_PackedData) +
