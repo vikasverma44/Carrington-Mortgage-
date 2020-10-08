@@ -3052,10 +3052,15 @@ namespace CarringtonService.BusinessExpert
                 Rssi_Tr_Exp_Fee_Amt_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Exp_Fee_Amt_PackedData", currentByte, 318, 6, 2),
 
                 Rssi_Tr_Amt_To_Pi_Shrtg = Convert.ToString(CommonHelper.ConvertEBCDICtoDecimal(PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Pi_Shrtg", currentByte, 324, 9, 2))),
-                Rssi_Tr_Amt_To_Esc_Short = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Esc_Short", currentByte, 333, 9, 2),
+                //Rssi_Tr_Amt_To_Esc_Short = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Esc_Short", currentByte, 333, 9, 2),
+                Rssi_Tr_Amt_To_Esc_Short = Convert.ToString(CommonHelper.ConvertEBCDICtoDecimal(PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Esc_Short", currentByte, 333, 9, 2))),
 
-                Rssi_Tr_Amt_To_Acrd_Inctv = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Acrd_Inctv", currentByte, 342, 7, 2),
-                Rssi_Tr_Amt_To_Pra_Remain = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Pra_Remain", currentByte, 349, 11, 2),
+                //Rssi_Tr_Amt_To_Acrd_Inctv = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Acrd_Inctv", currentByte, 342, 7, 2),
+                Rssi_Tr_Amt_To_Acrd_Inctv = Convert.ToString(CommonHelper.ConvertEBCDICtoDecimal(PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Acrd_Inctv", currentByte, 342, 7, 2))),
+
+                //Rssi_Tr_Amt_To_Pra_Remain = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Pra_Remain", currentByte, 349, 11, 2),
+                Rssi_Tr_Amt_To_Pra_Remain = Convert.ToString(CommonHelper.ConvertEBCDICtoDecimal(PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Pra_Remain", currentByte, 349, 11, 2))),
+
 
                 Rssi_Tr_Amt_To_Def_Prin_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Def_Prin_PackedData", currentByte, 360, 6, 2),
                 Rssi_Tr_Def_Prin_Bal_After_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Def_Prin_Bal_After_PackedData", currentByte, 366, 6, 2),
@@ -3171,8 +3176,11 @@ namespace CarringtonService.BusinessExpert
                 Rssi_Alt_Fix_Pct_PackedData = PackedTypeCheckAndUnPackData("Rssi_Alt_Fix_Pct_PackedData", currentByte, 97, 4, 5),
                 Rssi_Alt_B_Opt_Flag = PackedTypeCheckAndUnPackData("Rssi_Alt_B_Opt_Flag", currentByte, 101, 1),
 
-                Rssi_Alt_B_Opt_Curr_Fix = PackedTypeCheckAndUnPackData("Rssi_Alt_B_Opt_Curr_Fix", currentByte, 102, 11, 2),
-                Rssi_Alt_B_Curr_Adj = PackedTypeCheckAndUnPackData("Rssi_Alt_B_Curr_Adj", currentByte, 113, 11, 2),
+                //Rssi_Alt_B_Opt_Curr_Fix = PackedTypeCheckAndUnPackData("Rssi_Alt_B_Opt_Curr_Fix", currentByte, 102, 11, 2),
+                Rssi_Alt_B_Opt_Curr_Fix = Convert.ToString(CommonHelper.ConvertEBCDICtoDecimal(PackedTypeCheckAndUnPackData("Rssi_Alt_B_Opt_Curr_Fix", currentByte, 102, 11, 2))),
+                //Rssi_Alt_B_Curr_Adj = PackedTypeCheckAndUnPackData("Rssi_Alt_B_Curr_Adj", currentByte, 113, 11, 2),
+                Rssi_Alt_B_Curr_Adj = Convert.ToString(CommonHelper.ConvertEBCDICtoDecimal(PackedTypeCheckAndUnPackData("Rssi_Alt_B_Curr_Adj", currentByte, 113, 11, 2))),
+                //Convert.ToString(CommonHelper.ConvertEBCDICtoDecimal(
                 FILLER_124_400 = PackedTypeCheckAndUnPackData("FILLER_124_400", currentByte, 124, 277),
             };
         }
