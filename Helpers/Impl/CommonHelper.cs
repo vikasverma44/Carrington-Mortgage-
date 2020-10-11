@@ -175,7 +175,7 @@ namespace CarringtonMortgage.Helpers
             }
         }
         /// <summary>
-        /// Convert EBSTIC to mecimal. Mainly use for EVAR field.
+        /// Convert EBSTIC to decimal. Mainly use for EVAR field.
         /// </summary>
         /// <param name="inputString"></param>
         /// <returns></returns>
