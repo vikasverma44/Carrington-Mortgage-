@@ -75,6 +75,7 @@ namespace CarringtonService.BillingStatements
 
         public StringBuilder GetFinalChapterThirteenBillingStatement(AccountsModel accountModel, bool isCoBorrower = false)
         {
+            ClearAllValues();
             ExMessage = "Error Message";
             finalLine = new StringBuilder();
 
@@ -1270,5 +1271,53 @@ namespace CarringtonService.BillingStatements
             return PaymentInformationMessage;
         }
         #endregion
+
+        public void ClearAllValues()
+        {
+            PaymentAmount = string.Empty;
+            Principal = string.Empty;
+            PastUnpaidAmount = string.Empty;
+         TotalFeesPaid = 0;
+        TotalPaymentAmount = string.Empty;
+         DeferredBalance = string.Empty;
+         FeesAndChargesPaidLastMonth = string.Empty;
+         UnappliedFundsPaidLastMonth = string.Empty;
+         TotalPaidLastMonth = string.Empty;
+         FeesAndChargesPaidYeartoDate = string.Empty;
+         UnappliedFundsPaidYearToDate = string.Empty;
+         TotalPaidYearToDate = string.Empty;
+         Suspense = string.Empty;
+         Miscellaneous = string.Empty;
+
+
+         PrintStatement = string.Empty;
+         PrimaryBorrowerBKAttorney = string.Empty;
+         SecondaryBorrower = string.Empty;
+         MailingBKAttorneyAddressLine1 = string.Empty;
+         MailingBKAttorneyAddressLine2 = string.Empty;
+         BorrowerAttorneyMailingCityStateZip = string.Empty;
+         MailingCountry = string.Empty;
+         Interest = string.Empty;
+         EscrowTaxesandInsurance = string.Empty;
+         RegularMonthlyPayment = string.Empty;
+         BuydownBalance = string.Empty;
+         PartialClaim = string.Empty;
+         InterestRateUntil = string.Empty;
+         PrepaymentPenalty = string.Empty;
+         CarringtonFoundationDonationPaidLastMonth = string.Empty;
+         CarringtonFoundationDonationPaidYearToDate = string.Empty;
+         PostPetitonPastDueMessage = string.Empty;
+         CMSPartialClaim = string.Empty;
+         HUDPartialClaim = string.Empty;
+         POBoxAddress = string.Empty;
+         Date = string.Empty;
+         Amount = string.Empty;
+         LenderPlacedInsuranceMessage = string.Empty;
+         StateNSF = string.Empty;
+         AutodraftMessage = string.Empty;
+         StateDisclosures = string.Empty;
+         CarringtonCharitableFoundation = string.Empty;
+         PaymentInformationMessage = string.Empty;
+        }
     }
 }

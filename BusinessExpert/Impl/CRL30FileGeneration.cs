@@ -129,6 +129,11 @@ namespace CarringtonService.BusinessExpert
                     var primaryIndex = 1;
                     var line = new StringBuilder();
                     int counter = 0;
+
+                    //if (accountsModel.MasterFileDataPart_1Model.Rssi_Acct_No == "0000714479")
+                    //{
+
+                    //}
                     foreach (var extractAccount in mortgageLoanBillingFileModel.AccountModelList)
                     {
                         counter++;
@@ -180,7 +185,7 @@ namespace CarringtonService.BusinessExpert
 
                         var borrowerList = new List<BorrowerModel>();
 
-                        if (!isBankrupt)
+                        //if (!isBankrupt)
                         {
                             //Assigning Flex fields for Primary borrower
                             borrowerList = StatementType.GetPrimaryStandardStatement(extractAccount);
@@ -261,13 +266,10 @@ namespace CarringtonService.BusinessExpert
                                         line = StandardBillingStatement.GetFinalStringStandardBilling(extractAccount);
                                         account.AddCustomerRecord(FormatCustomer.BuildRecord("STD", primaryIndex, line));
                                         break;
-
                                     default:
                                         break;
 
                                 }
-
-
                                 line.Clear();
 
 
@@ -278,16 +280,16 @@ namespace CarringtonService.BusinessExpert
                         }
 
                         //Check if primary account is rejected or not 
-                        var primaryAccountRejected = RejectStatement.IsRejectAccount(extractAccount);
-                        if (primaryAccountRejected || isBankrupt)
-                        {
-                            string bankruptcy = string.Empty;
-                            if (isBankrupt)
-                            {
-                                bankruptcy = " - Active Bankruptcy";
-                            }
-                            RejectAccount(account, "Invalid Account" + bankruptcy);
-                        }
+                        //var primaryAccountRejected = RejectStatement.IsRejectAccount(extractAccount);
+                        //if (primaryAccountRejected || isBankrupt)
+                        //{
+                        //    string bankruptcy = string.Empty;
+                        //    if (isBankrupt)
+                        //    {
+                        //        bankruptcy = " - Active Bankruptcy";
+                        //    }
+                        //    RejectAccount(account, "Invalid Account" + bankruptcy);
+                        //}
 
 
 
@@ -400,7 +402,7 @@ namespace CarringtonService.BusinessExpert
                                         //For Standard Billing Statement
                                         case "STD":
                                             //Set Mailing address according to the conditions
-                                            account.Standard.OriginalAddressLine1 = StandardBillingStatement.GetMailingAddressLine1(extractAccount, true);
+                                            account.Standard.OriginalAddressLine1 = StandardBillingStatement.GetPrimaryBorrower(extractAccount, true);
                                             account.Standard.OriginalAddressLine2 = StandardBillingStatement.GetMailingAddressLine2(extractAccount, true);
                                             string STD_cityStateZip = StandardBillingStatement.GetMailingCityStateZip(extractAccount, true);
                                             if (!string.IsNullOrEmpty(STD_cityStateZip))
@@ -420,8 +422,8 @@ namespace CarringtonService.BusinessExpert
                                     }
 
                                     //Reject co-borrower account if the primary account is rejected
-                                    if (primaryAccountRejected)
-                                        RejectAccount(account, "Invalid Account");
+                                    //if (primaryAccountRejected)
+                                    //    RejectAccount(account, "Invalid Account");
 
 
                                     account.SequenceTransactions();
@@ -432,7 +434,7 @@ namespace CarringtonService.BusinessExpert
                             }
                         }
                         //Setting to false for other primary accounts
-                        primaryAccountRejected = false;
+                        //primaryAccountRejected = false;
                     }
 
                     output.CloseFile();

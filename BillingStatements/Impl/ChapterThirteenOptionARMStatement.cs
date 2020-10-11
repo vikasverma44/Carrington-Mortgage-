@@ -108,6 +108,7 @@ namespace CarringtonService.BillingStatements
 
         public StringBuilder GetFinalChapterThirteenOptionARMStatement(AccountsModel accountModel, bool isCoBorrower = false)
         {
+            ClearAllValues();
             ExMessage = "Error Message";
             finalLine = new StringBuilder();
             finalLine.Append(GetAmountDueOption1(accountModel) + "|");
@@ -3063,5 +3064,93 @@ namespace CarringtonService.BillingStatements
             return PaymentInformationMessage;
         }
         #endregion
+
+
+        public void ClearAllValues()
+        {
+            AmountDueOption1 = string.Empty;
+            AmountDueOption2 = string.Empty;
+            AmountDueOption3 = string.Empty;
+            AmountDueOption4 = string.Empty;
+            FeesandChargesPaidLastMonth = string.Empty;
+            UnappliedFundsPaidLastMonth = string.Empty;
+            FeesandChargesPaidYeartoDate = string.Empty;
+            UnappliedFundsPaidYearToDate = string.Empty;
+            TotalPaidYearToDate = string.Empty;
+            PrincipalOption1 = string.Empty;
+            AssistanceAmountOption1 = string.Empty;
+            ReplacementReserveOption1 = string.Empty;
+            OverduePaymentsOption1 = string.Empty;
+            TotalFeesPaidOption1 = string.Empty;
+            TotalAmountDueOption1 = string.Empty;
+            PrincipalOption2 = string.Empty;
+            AssistanceAmountOption2 = string.Empty;
+            ReplacementReserveOption2 = string.Empty;
+            OverduePaymentsOption2 = string.Empty;
+            TotalFeesPaidOption2 = string.Empty;
+            TotalAmountDueOption2 = string.Empty;
+            PrincipalOption3 = string.Empty;
+            AssistanceAmountOption3 = string.Empty;
+            ReplacementReserveOption3 = string.Empty;
+            OverduePaymentsOption3 = string.Empty;
+            TotalFeesPaidOption3 = string.Empty;
+            TotalAmountDueOption3 = string.Empty;
+            PrincipalOption4 = string.Empty;
+            AssistanceAmountOption4 = string.Empty;
+            ReplacementReserveOption4 = string.Empty;
+            OverduePaymentsOption4 = string.Empty;
+            TotalFeesPaidOption4 = string.Empty;
+            TotalAmountDueOption4 = string.Empty;
+            Suspense = string.Empty;
+            Miscellaneous = string.Empty;
+            DeferredBalance = string.Empty;
+
+
+
+            Hold = string.Empty;
+            PrimaryBorrowerBKAttorney = string.Empty;
+            SecondaryBorrower = string.Empty;
+            MailingBKAttorneyAddressLine1 = string.Empty;
+            MailingBKAttorneyAddressLine2 = string.Empty;
+            BorrowerAttorneyMailingCityStateZip = string.Empty;
+            MailingCountry = string.Empty;
+            PaymentDate = string.Empty;
+            InterestOption1 = string.Empty;
+            EscrowOption1 = string.Empty;
+            RegularMonthlyPaymentOption1 = string.Empty;
+            TotalFeesChargedOption1 = string.Empty;
+            InterestOption2 = string.Empty;
+            EscrowOption2 = string.Empty;
+            RegularMonthlyPaymentOption2 = string.Empty;
+            TotalFeesChargedOption2 = string.Empty;
+
+            InterestOption3 = string.Empty;
+            EscrowOption3 = string.Empty;
+            RegularMonthlyPaymentOption3 = string.Empty;
+            TotalFeesChargedOption3 = string.Empty;
+
+            InterestOption4 = string.Empty;
+            EscrowOption4 = string.Empty;
+            RegularMonthlyPaymentOption4 = string.Empty;
+            TotalFeesChargedOption4 = string.Empty;
+
+            Option4MinimumDescription = string.Empty;
+            PostPetitonpastduemessage = string.Empty;
+            POBoxAddress = string.Empty;
+            PaymentDate1 = string.Empty;
+            Date = string.Empty;
+            Amount = string.Empty;
+            BuydownBalance = string.Empty;
+            PartialClaim = string.Empty;
+            InterestRateUntil = string.Empty;
+            PrepaymentPenalty = string.Empty;
+            LenderPlacedInsuranceMessage = string.Empty;
+            StateNSF = string.Empty;
+            AutodraftMessage = string.Empty;
+            CMSPartialClaim = string.Empty;
+            HUDPartialClaim = string.Empty;
+            StateDisclosures = string.Empty;
+            PaymentInformationMessage = string.Empty;
+        }
     }
 }

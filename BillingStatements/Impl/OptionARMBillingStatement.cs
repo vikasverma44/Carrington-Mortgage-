@@ -134,6 +134,7 @@ namespace CarringtonService.BillingStatements
         #endregion
         public StringBuilder GetFinalOptionARMBillingStatement(AccountsModel accountsModel, bool isCoBorrower = false)
         {
+            ClearAllValues();
             ExMessage = "Error Message";
             finalLine = new StringBuilder();
 
@@ -506,9 +507,9 @@ namespace CarringtonService.BillingStatements
                 foreach (var tra in model.TransactionRecordModelList)
                 {
                     total += Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_PackedData)
-                         +  Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_2)
-                         +  Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_3)
-                         +  Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_4)
+                         + Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_2)
+                         + Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_3)
+                         + Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_4)
                          + Convert.ToDecimal(tra.Rssi_Tr_Amt_To_Evar_5);
 
                 }
@@ -1975,76 +1976,123 @@ namespace CarringtonService.BillingStatements
             {
                 //Logger.Trace("STARTED:  Execute get primary borrower.");
 
-                if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A")
-                {
-                    if (!isCoBorrower)
-                        PrimaryBorrower = accountsModel.MasterFileDataPart_1Model.Rssi_Primary_Name;
-                    else
-                        PrimaryBorrower = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_F;
+                //if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A")
+                //{
+                //    if (!isCoBorrower)
+                //        PrimaryBorrower = accountsModel.MasterFileDataPart_1Model.Rssi_Primary_Name;
+                //    else
+                //        PrimaryBorrower = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_F;
 
-                }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A")
+                //}
+                //else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A")
+                //{
+                //    if (!isCoBorrower)
+                //        PrimaryBorrower = accountsModel.MasterFileDataPart_1Model.Rssi_Primary_Name;
+                //    else
+                //        PrimaryBorrower = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_F;
+                //}
+                //else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A")
+                //{
+                //    if (!isCoBorrower)
+                //        PrimaryBorrower = accountsModel.MasterFileDataPart_1Model.Rssi_Primary_Name;
+                //    else
+                //        PrimaryBorrower = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_F;
+                //}
+                //else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A")
+                //{
+                //    if (!isCoBorrower)
+                //        PrimaryBorrower = accountsModel.MasterFileDataPart_1Model.Rssi_Primary_Name;
+                //    else
+                //        PrimaryBorrower = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_F;
+                //}
+                //else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A")
+                //{
+                //    if (!isCoBorrower)
+                //        PrimaryBorrower = accountsModel.MasterFileDataPart_1Model.Rssi_Primary_Name;
+                //    else
+                //        PrimaryBorrower = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_F;
+                //}
+                //else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A")
+                //{
+                //    if (!isCoBorrower)
+                //        PrimaryBorrower = accountsModel.MasterFileDataPart_1Model.Rssi_Primary_Name;
+                //    else
+                //        PrimaryBorrower = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_F;
+                //}
+                //else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A")
+                //{
+                //    if (!isCoBorrower)
+                //        PrimaryBorrower = accountsModel.MasterFileDataPart_1Model.Rssi_Primary_Name;
+                //    else
+                //        PrimaryBorrower = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_F;
+                //}
+                //else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A")
+                //{
+                //    if (!isCoBorrower)
+                //        PrimaryBorrower = accountsModel.MasterFileDataPart_1Model.Rssi_Primary_Name;
+                //    else
+                //        PrimaryBorrower = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_F;
+                //}
+                //else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A")
+                //{
+                //    if (!isCoBorrower)
+                //        PrimaryBorrower = accountsModel.MasterFileDataPart_1Model.Rssi_Primary_Name;
+                //    else
+                //        PrimaryBorrower = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_F;
+                //}
+                //else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A")
+                //{
+                //    if (!isCoBorrower)
+                //        PrimaryBorrower = accountsModel.MasterFileDataPart_1Model.Rssi_Primary_Name;
+                //    else
+                //        PrimaryBorrower = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_F;
+                //}
+                if (!isCoBorrower)
                 {
-                    if (!isCoBorrower)
-                        PrimaryBorrower = accountsModel.MasterFileDataPart_1Model.Rssi_Primary_Name;
-                    else
+                    PrimaryBorrower = accountsModel.MasterFileDataPart_1Model.Rssi_Primary_Name;
+                }
+                else
+                {
+                    if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A")
+                    {
+                        PrimaryBorrower = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_F;
+                    }
+                    if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A")
+                    {
                         PrimaryBorrower = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_F;
-                }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A")
-                {
-                    if (!isCoBorrower)
-                        PrimaryBorrower = accountsModel.MasterFileDataPart_1Model.Rssi_Primary_Name;
-                    else
+                    }
+                    if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A")
+                    {
                         PrimaryBorrower = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_F;
-                }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A")
-                {
-                    if (!isCoBorrower)
-                        PrimaryBorrower = accountsModel.MasterFileDataPart_1Model.Rssi_Primary_Name;
-                    else
+                    }
+                    if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A")
+                    {
                         PrimaryBorrower = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_F;
-                }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A")
-                {
-                    if (!isCoBorrower)
-                        PrimaryBorrower = accountsModel.MasterFileDataPart_1Model.Rssi_Primary_Name;
-                    else
+                    }
+                    if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A")
+                    {
                         PrimaryBorrower = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_F;
-                }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A")
-                {
-                    if (!isCoBorrower)
-                        PrimaryBorrower = accountsModel.MasterFileDataPart_1Model.Rssi_Primary_Name;
-                    else
+                    }
+                    if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A")
+                    {
                         PrimaryBorrower = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_F;
-                }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A")
-                {
-                    if (!isCoBorrower)
-                        PrimaryBorrower = accountsModel.MasterFileDataPart_1Model.Rssi_Primary_Name;
-                    else
+                    }
+                    if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A")
+                    {
                         PrimaryBorrower = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_F;
-                }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A")
-                {
-                    if (!isCoBorrower)
-                        PrimaryBorrower = accountsModel.MasterFileDataPart_1Model.Rssi_Primary_Name;
-                    else
+                    }
+                    if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A")
+                    {
                         PrimaryBorrower = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_F;
-                }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A")
-                {
-                    if (!isCoBorrower)
-                        PrimaryBorrower = accountsModel.MasterFileDataPart_1Model.Rssi_Primary_Name;
-                    else
+                    }
+                    if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A")
+                    {
                         PrimaryBorrower = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_F;
-                }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A")
-                {
-                    if (!isCoBorrower)
-                        PrimaryBorrower = accountsModel.MasterFileDataPart_1Model.Rssi_Primary_Name;
-                    else
+                    }
+                    if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A")
+                    {
                         PrimaryBorrower = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_F;
+                    }
                 }
                 //Logger.Trace("ENDED: Get get primary borrower.");
             }
@@ -2104,76 +2152,124 @@ namespace CarringtonService.BillingStatements
             try
             {
                 //Logger.Trace("STARTED:  Execute get mailing address line1.");
-                if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A")
-                {
-                    if (!isCoBorrower)
-                        MailingAddressLine1 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1;
-                    else
-                        MailingAddressLine1 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Adrs1;
+                //if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A")
+                //{
+                //    if (!isCoBorrower)
+                //        MailingAddressLine1 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1;
+                //    else
+                //        MailingAddressLine1 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Adrs1;
 
-                }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A")
+                //}
+                //else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A")
+                //{
+                //    if (!isCoBorrower)
+                //        MailingAddressLine1 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1;
+                //    else
+                //        MailingAddressLine1 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Adrs1;
+                //}
+                //else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A")
+                //{
+                //    if (!isCoBorrower)
+                //        MailingAddressLine1 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1;
+                //    else
+                //        MailingAddressLine1 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Adrs1;
+                //}
+                //else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A")
+                //{
+                //    if (!isCoBorrower)
+                //        MailingAddressLine1 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1;
+                //    else
+                //        MailingAddressLine1 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Adrs1;
+                //}
+                //else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A")
+                //{
+                //    if (!isCoBorrower)
+                //        MailingAddressLine1 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1;
+                //    else
+                //        MailingAddressLine1 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Adrs1;
+                //}
+                //else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A")
+                //{
+                //    if (!isCoBorrower)
+                //        MailingAddressLine1 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1;
+                //    else
+                //        MailingAddressLine1 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Adrs1;
+                //}
+                //else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A")
+                //{
+                //    if (!isCoBorrower)
+                //        MailingAddressLine1 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1;
+                //    else
+                //        MailingAddressLine1 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Adrs1;
+                //}
+                //else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A")
+                //{
+                //    if (!isCoBorrower)
+                //        MailingAddressLine1 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1;
+                //    else
+                //        MailingAddressLine1 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Adrs1;
+                //}
+                //else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A")
+                //{
+                //    if (!isCoBorrower)
+                //        MailingAddressLine1 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1;
+                //    else
+                //        MailingAddressLine1 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Adrs1;
+                //}
+                //else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A")
+                //{
+                //    if (!isCoBorrower)
+                //        MailingAddressLine1 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1;
+                //    else
+                //        MailingAddressLine1 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Adrs1;
+                //}
+
+                if (!isCoBorrower)
                 {
-                    if (!isCoBorrower)
-                        MailingAddressLine1 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1;
-                    else
+                    MailingAddressLine1 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1;
+                }
+                else
+                {
+                    if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A")
+                    {
+                        MailingAddressLine1 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Adrs1;
+                    }
+                    if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A")
+                    {
                         MailingAddressLine1 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Adrs1;
-                }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A")
-                {
-                    if (!isCoBorrower)
-                        MailingAddressLine1 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1;
-                    else
+                    }
+                    if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A")
+                    {
                         MailingAddressLine1 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Adrs1;
-                }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A")
-                {
-                    if (!isCoBorrower)
-                        MailingAddressLine1 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1;
-                    else
+                    }
+                    if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A")
+                    {
                         MailingAddressLine1 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Adrs1;
-                }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A")
-                {
-                    if (!isCoBorrower)
-                        MailingAddressLine1 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1;
-                    else
+                    }
+                    if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A")
+                    {
                         MailingAddressLine1 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Adrs1;
-                }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A")
-                {
-                    if (!isCoBorrower)
-                        MailingAddressLine1 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1;
-                    else
+                    }
+                    if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A")
+                    {
                         MailingAddressLine1 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Adrs1;
-                }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A")
-                {
-                    if (!isCoBorrower)
-                        MailingAddressLine1 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1;
-                    else
+                    }
+                    if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A")
+                    {
                         MailingAddressLine1 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Adrs1;
-                }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A")
-                {
-                    if (!isCoBorrower)
-                        MailingAddressLine1 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1;
-                    else
+                    }
+                    if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A")
+                    {
                         MailingAddressLine1 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Adrs1;
-                }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A")
-                {
-                    if (!isCoBorrower)
-                        MailingAddressLine1 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1;
-                    else
+                    }
+                    if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A")
+                    {
                         MailingAddressLine1 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Adrs1;
-                }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A")
-                {
-                    if (!isCoBorrower)
-                        MailingAddressLine1 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1;
-                    else
+                    }
+                    if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A")
+                    {
                         MailingAddressLine1 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Adrs1;
+                    }
                 }
 
                 //Logger.Trace("ENDED: Get get mailing address line1.");
@@ -2197,77 +2293,127 @@ namespace CarringtonService.BillingStatements
             try
             {
                 //Logger.Trace("STARTED:  Execute get mailing address line2.");
-                if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A")
-                {
-                    if (!isCoBorrower)
-                        MailingAddressLine2 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_2;
-                    else
-                        MailingAddressLine2 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Adrs2;
+                //if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A")
+                //{
+                //    if (!isCoBorrower)
+                //        MailingAddressLine2 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_2;
+                //    else
+                //        MailingAddressLine2 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Adrs2;
 
-                }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A")
+                //}
+                //else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A")
+                //{
+                //    if (!isCoBorrower)
+                //        MailingAddressLine2 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_2;
+                //    else
+                //        MailingAddressLine2 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Adrs2;
+                //}
+                //else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A")
+                //{
+                //    if (!isCoBorrower)
+                //        MailingAddressLine2 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_2;
+                //    else
+                //        MailingAddressLine2 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Adrs2;
+                //}
+                //else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A")
+                //{
+                //    if (!isCoBorrower)
+                //        MailingAddressLine2 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_2;
+                //    else
+                //        MailingAddressLine2 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Adrs2;
+                //}
+                //else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A")
+                //{
+                //    if (!isCoBorrower)
+                //        MailingAddressLine2 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_2;
+                //    else
+                //        MailingAddressLine2 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Adrs2;
+                //}
+                //else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A")
+                //{
+                //    if (!isCoBorrower)
+                //        MailingAddressLine2 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_2;
+                //    else
+                //        MailingAddressLine2 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Adrs2;
+                //}
+                //else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A")
+                //{
+                //    if (!isCoBorrower)
+                //        MailingAddressLine2 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_2;
+                //    else
+                //        MailingAddressLine2 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Adrs2;
+                //}
+                //else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A")
+                //{
+                //    if (!isCoBorrower)
+                //        MailingAddressLine2 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_2;
+                //    else
+                //        MailingAddressLine2 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Adrs2;
+                //}
+                //else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A")
+                //{
+                //    if (!isCoBorrower)
+                //        MailingAddressLine2 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_2;
+                //    else
+                //        MailingAddressLine2 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Adrs2;
+                //}
+                //else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A")
+                //{
+                //    if (!isCoBorrower)
+                //        MailingAddressLine2 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_2;
+                //    else
+                //        MailingAddressLine2 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Adrs2;
+                //}
+
+                if (!isCoBorrower)
                 {
-                    if (!isCoBorrower)
-                        MailingAddressLine2 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_2;
-                    else
+                    MailingAddressLine2 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_2;
+                }
+                else
+                {
+                    if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A")
+                    {
+                        MailingAddressLine2 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Adrs2;
+                    }
+                    if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A")
+                    {
                         MailingAddressLine2 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Adrs2;
-                }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A")
-                {
-                    if (!isCoBorrower)
-                        MailingAddressLine2 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_2;
-                    else
+                    }
+                    if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A")
+                    {
                         MailingAddressLine2 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Adrs2;
-                }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A")
-                {
-                    if (!isCoBorrower)
-                        MailingAddressLine2 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_2;
-                    else
+                    }
+                    if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A")
+                    {
                         MailingAddressLine2 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Adrs2;
-                }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A")
-                {
-                    if (!isCoBorrower)
-                        MailingAddressLine2 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_2;
-                    else
+                    }
+                    if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A")
+                    {
                         MailingAddressLine2 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Adrs2;
-                }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A")
-                {
-                    if (!isCoBorrower)
-                        MailingAddressLine2 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_2;
-                    else
+                    }
+
+                    if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A")
+                    {
                         MailingAddressLine2 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Adrs2;
-                }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A")
-                {
-                    if (!isCoBorrower)
-                        MailingAddressLine2 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_2;
-                    else
+                    }
+                    if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A")
+                    {
                         MailingAddressLine2 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Adrs2;
-                }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A")
-                {
-                    if (!isCoBorrower)
-                        MailingAddressLine2 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_2;
-                    else
+                    }
+                    if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A")
+                    {
                         MailingAddressLine2 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Adrs2;
-                }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A")
-                {
-                    if (!isCoBorrower)
-                        MailingAddressLine2 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_2;
-                    else
+                    }
+                    if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A")
+                    {
                         MailingAddressLine2 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Adrs2;
-                }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A")
-                {
-                    if (!isCoBorrower)
-                        MailingAddressLine2 = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_2;
-                    else
+                    }
+                    if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A")
+                    {
                         MailingAddressLine2 = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Adrs2;
+                    }
                 }
+
                 //Logger.Trace("ENDED: Get get mailing address line2.");
             }
             catch (Exception ex)
@@ -2288,96 +2434,163 @@ namespace CarringtonService.BillingStatements
             try
             {
                 //Logger.Trace("STARTED:  Execute get mailing city state zip.");
-                if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A")
+                //if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A")
+                //{
+                //    if (!isCoBorrower)
+                //        MailingCityStateZip = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
+                //    else
+                //        MailingCityStateZip = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_City
+                //            + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_State
+                //            + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Zip;
+
+                //}
+                //else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A")
+                //{
+                //    if (!isCoBorrower)
+                //        MailingCityStateZip = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
+                //    else
+                //        MailingCityStateZip = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_City
+                //            + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_State
+                //            + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Zip;
+                //}
+                //else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A")
+                //{
+                //    if (!isCoBorrower)
+                //        MailingCityStateZip = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
+                //    else
+                //        MailingCityStateZip = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_City
+                //            + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_State
+                //            + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Zip;
+                //}
+                //else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A")
+                //{
+                //    if (!isCoBorrower)
+                //        MailingCityStateZip = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
+                //    else
+                //        MailingCityStateZip = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_City
+                //            + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_State
+                //            + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Zip;
+                //}
+                //else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A")
+                //{
+                //    if (!isCoBorrower)
+                //        MailingCityStateZip = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
+                //    else
+                //        MailingCityStateZip = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_City
+                //            + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_State
+                //            + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Zip;
+                //}
+                //else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A")
+                //{
+                //    if (!isCoBorrower)
+                //        MailingCityStateZip = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
+                //    else
+                //        MailingCityStateZip = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_City
+                //            + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_State
+                //            + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Zip;
+                //}
+                //else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A")
+                //{
+                //    if (!isCoBorrower)
+                //        MailingCityStateZip = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
+                //    else
+                //        MailingCityStateZip = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_City
+                //            + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_State
+                //            + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Zip;
+                //}
+                //else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A")
+                //{
+                //    if (!isCoBorrower)
+                //        MailingCityStateZip = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
+                //    else
+                //        MailingCityStateZip = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_City
+                //            + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_State
+                //            + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Zip;
+                //}
+                //else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A")
+                //{
+                //    if (!isCoBorrower)
+                //        MailingCityStateZip = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
+                //    else
+                //        MailingCityStateZip = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_City
+                //            + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_State
+                //            + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Zip;
+                //}
+                //else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A")
+                //{
+                //    if (!isCoBorrower)
+                //        MailingCityStateZip = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1;
+                //    else
+                //        MailingCityStateZip = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_City
+                //            + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_State
+                //            + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Zip;
+                //}
+                if (!isCoBorrower)
                 {
-                    if (!isCoBorrower)
-                        MailingCityStateZip = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
-                    else
+                    MailingCityStateZip = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
+                }
+                else
+                {
+                    if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A")
+                    {
                         MailingCityStateZip = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_City
                             + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_State
                             + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Zip;
-
-                }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A")
-                {
-                    if (!isCoBorrower)
-                        MailingCityStateZip = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
-                    else
+                    }
+                    if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A")
+                    {
                         MailingCityStateZip = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_City
                             + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_State
                             + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Zip;
-                }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A")
-                {
-                    if (!isCoBorrower)
-                        MailingCityStateZip = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
-                    else
+                    }
+                    if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A")
+                    {
                         MailingCityStateZip = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_City
                             + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_State
                             + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Zip;
-                }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A")
-                {
-                    if (!isCoBorrower)
-                        MailingCityStateZip = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
-                    else
+                    }
+                    if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A")
+                    {
                         MailingCityStateZip = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_City
                             + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_State
                             + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Zip;
-                }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A")
-                {
-                    if (!isCoBorrower)
-                        MailingCityStateZip = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
-                    else
+                    }
+                    if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A")
+                    {
                         MailingCityStateZip = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_City
                             + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_State
                             + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Zip;
-                }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A")
-                {
-                    if (!isCoBorrower)
-                        MailingCityStateZip = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
-                    else
+                    }
+                    if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A")
+                    {
                         MailingCityStateZip = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_City
                             + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_State
                             + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Zip;
-                }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A")
-                {
-                    if (!isCoBorrower)
-                        MailingCityStateZip = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
-                    else
+                    }
+                    if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A")
+                    {
                         MailingCityStateZip = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_City
                             + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_State
                             + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Zip;
-                }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A")
-                {
-                    if (!isCoBorrower)
-                        MailingCityStateZip = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
-                    else
+                    }
+                    if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A")
+                    {
                         MailingCityStateZip = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_City
                             + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_State
                             + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Zip;
-                }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A")
-                {
-                    if (!isCoBorrower)
-                        MailingCityStateZip = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3;
-                    else
+                    }
+                    if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A")
+                    {
                         MailingCityStateZip = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_City
                             + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_State
                             + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Zip;
-                }
-                else if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A")
-                {
-                    if (!isCoBorrower)
-                        MailingCityStateZip = accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_1;
-                    else
+                    }
+                    if (accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A")
+                    {
                         MailingCityStateZip = accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_City
                             + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_State
                             + "," + accountsModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Zip;
+                    }
                 }
                 //Logger.Trace("ENDED: Get get mailing city state zip.");
             }
@@ -3952,5 +4165,117 @@ namespace CarringtonService.BillingStatements
         }
 
         #endregion
+
+        public void ClearAllValues()
+        {
+            AmountDueOption1 = string.Empty;
+            AmountDueOption2 = string.Empty;
+            AmountDueOption3 = string.Empty;
+            AmountDueOption4 = string.Empty;
+            PastDueBalance = string.Empty;
+            DeferredBalance = string.Empty;
+            UnappliedFunds = string.Empty;
+            FeesAndChargesPaidLastMonth = string.Empty;
+            UnappliedFundsPaidLastMonth = string.Empty;
+            FeesandChargesPaidYeartoDate = string.Empty;
+            UnappliedFundsPaidYearToDate = string.Empty;
+            TotalPaidYearToDate = string.Empty;
+            //PrincipalOption1 = string.Empty;
+            //AssistanceAmountOption1 = string.Empty;
+            //ReplacementReserveOption1 = string.Empty;
+            //OverduePaymentsOption1 = string.Empty;
+            //TotalFeesChargedOption1 = string.Empty;
+            //TotalFeesPaidOption1 = string.Empty;
+            //TotalAmountDueOption1 = string.Empty;
+            //PrincipalOption2 = string.Empty;
+            //AssistanceAmountOption2 = string.Empty;
+            //ReplacementReserveOption2 = string.Empty;
+            //OverduePaymentsOption2 = string.Empty;
+            //TotalFeesChargedOption2 = string.Empty;
+            //TotalFeesPaidOption2 = string.Empty;
+            //TotalAmountDueOption2 = string.Empty;
+            //PrincipalOption3 = string.Empty;
+            //AssistanceAmountOption3 = string.Empty;
+            //ReplacementReserveOption3 = string.Empty;
+            //OverduePaymentsOption3 = string.Empty;
+            //TotalFeesChargedOption3 = string.Empty;
+            //TotalFeesPaidOption3 = string.Empty;
+            //TotalAmountDueOption3 = string.Empty;
+            //PrincipalOption4 = string.Empty;
+            //AssistanceAmountOption4 = string.Empty;
+            //ReplacementReserveOption4 = string.Empty;
+            //OverduePaymentsOption4 = string.Empty;
+            //TotalFeesChargedOption4 = string.Empty;
+            //TotalFeesPaidOption4 = string.Empty;
+            //TotalAmountDueOption4 = string.Empty;
+            MinimumLatePaymentAmount = string.Empty;
+            Suspense = string.Empty;
+            Miscellaneous = string.Empty;
+            TotalDue = string.Empty;
+
+            Hold = string.Empty;
+            Attention = string.Empty;
+            PrimaryBorrower = string.Empty;
+            MailingCountry = string.Empty;
+            PaymentIsReceivedAfter = string.Empty;
+            LateFee = string.Empty;
+            ChargeOffNoticeNoticeMessage = string.Empty;
+            NegativeAmortization = string.Empty;
+            BuydownBalance = string.Empty;
+            PartialClaim = string.Empty;
+
+            InterestOption1 = string.Empty;
+            EscrowOption1 = string.Empty;
+            RegularMonthlyPaymentOption1 = string.Empty;
+            InterestOption2 = string.Empty;
+            EscrowOption2 = string.Empty;
+            RegularMonthlyPaymentOption2 = string.Empty;
+            InterestOption3 = string.Empty;
+            EscrowOption3 = string.Empty;
+            RegularMonthlyPaymentOption3 = string.Empty;
+            InterestOption4 = string.Empty;
+            EscrowOption4 = string.Empty;
+            RegularMonthlyPaymentOption4 = string.Empty;
+            Option4MinimumDescription = string.Empty;
+
+            POBoxAddress = string.Empty;
+            DueDate = string.Empty;
+            IfReceivedAfterDate = string.Empty;
+            LateChargeAmount = string.Empty;
+            Date = string.Empty;
+            Amount = string.Empty;
+            InterestRateUntil = string.Empty;
+            PrepaymentPenalty = string.Empty;
+            ModificationDate = string.Empty;
+            MaturityDate = string.Empty;
+            DelinquencyNoticebox = string.Empty;
+            LossMitigtationNotice = string.Empty;
+            ForeclosureNotice = string.Empty;
+            ACHMessage = string.Empty;
+            LenderPlacedInsuranceMessage = string.Empty;
+            BankruptcyMessage = string.Empty;
+            RepaymentPlanMessage = string.Empty;
+            StateNSFMessage = string.Empty;
+            ChargeOffNotice = string.Empty;
+            CMSPartialClaim = string.Empty;
+            HUDPartialClaim = string.Empty;
+            StateDisclosures = string.Empty;
+            PaymentInformationMessage = string.Empty;
+
+            RecentPayment6 = string.Empty;
+            RecentPayment5 = string.Empty;
+            RecentPayment4 = string.Empty;
+            RecentPayment3 = string.Empty;
+            RecentPayment2 = string.Empty;
+            RecentPayment1 = string.Empty;
+            SecondaryBorrower = string.Empty;
+            MailingAddressLine1 = string.Empty;
+            MailingAddressLine2 = string.Empty;
+            MailingCityStateZip = string.Empty;
+            IfPaymentisReceivedAfter = string.Empty;
+            chargeOffNotice = string.Empty;
+            stateDisclosures = string.Empty;
+            paymentInformationMessage = string.Empty;
+        }
     }
 }
