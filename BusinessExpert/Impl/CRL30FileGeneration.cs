@@ -291,7 +291,11 @@ namespace CarringtonService.BusinessExpert
                         //    RejectAccount(account, "Invalid Account" + bankruptcy);
                         //}
 
-
+                        var primaryAccountRejected = RejectStatement.IsRejectAccount(extractAccount);
+                        if (primaryAccountRejected)
+                        {
+                            RejectAccount(account, "Invalid Account");
+                        }
 
                         account.SequenceTransactions();
                         output.AddAccount(account);
@@ -422,8 +426,8 @@ namespace CarringtonService.BusinessExpert
                                     }
 
                                     //Reject co-borrower account if the primary account is rejected
-                                    //if (primaryAccountRejected)
-                                    //    RejectAccount(account, "Invalid Account");
+                                    if (primaryAccountRejected)
+                                        RejectAccount(account, "Invalid Account");
 
 
                                     account.SequenceTransactions();
@@ -434,7 +438,7 @@ namespace CarringtonService.BusinessExpert
                             }
                         }
                         //Setting to false for other primary accounts
-                        //primaryAccountRejected = false;
+                        primaryAccountRejected = false;
                     }
 
                     output.CloseFile();
