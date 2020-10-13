@@ -1867,7 +1867,7 @@ namespace CarringtonService.BillingStatements
                 throw;
             }
 
-            var effectivedate = Date != null ? Convert.ToString(CommonHelper.GetDateTime(Date)) : string.Empty;
+            var effectivedate = Date != null ? Convert.ToString(Date) : string.Empty;
             return effectivedate;
         }
 

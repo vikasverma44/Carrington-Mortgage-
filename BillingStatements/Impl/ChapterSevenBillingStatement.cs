@@ -1595,7 +1595,7 @@ namespace CarringtonService.BillingStatements
                 throw;
             }
 
-            return Date != null ? Convert.ToString(CommonHelper.GetDateTime(Date)) : string.Empty;
+            return Date != null ? Convert.ToString(Date) : string.Empty;
         }
 
         public string GetAmount(AccountsModel accountModel)

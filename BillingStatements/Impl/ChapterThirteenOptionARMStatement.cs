@@ -2586,7 +2586,6 @@ namespace CarringtonService.BillingStatements
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get Post Petiton past due message");
-
                 if (CommonHelper.GetDateTime(accountsModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Post_Due_Date) <=
                     CommonHelper.GetFormatedDateTime(accountsModel.MasterFileDataPart_1Model.Rssi_Run_Date))
                 {
@@ -2663,7 +2662,7 @@ namespace CarringtonService.BillingStatements
                 Logger.Error(ex, ex.TargetSite.Name);
                 throw;
             }
-            return Date != null ? Convert.ToString(CommonHelper.GetDateTime(Date)) : string.Empty;
+            return Date != null ? Convert.ToString(Date) : string.Empty;
         }
         /// <summary>
         /// 84

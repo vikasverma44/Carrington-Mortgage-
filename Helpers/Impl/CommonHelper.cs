@@ -56,7 +56,9 @@ namespace CarringtonMortgage.Helpers
         }
         public static DateTime GetDateTime(string dateString)
         {
-            string str1;
+            try
+            {
+                string str1;
             string str2;
             string str3;
             switch (dateString.Length)
@@ -93,6 +95,11 @@ namespace CarringtonMortgage.Helpers
                     return Convert.ToDateTime("0001/01/01");
             }
             return Convert.ToDateTime(string.Format("{0}/{1}/{2}", (object)str2, (object)str3, (object)str1));
+            }
+            catch (Exception)
+            {
+                return DateTime.MinValue;
+            }
         }
         /// <summary>
         /// This method is used to convert string date time to formated date time.

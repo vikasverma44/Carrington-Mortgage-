@@ -3013,7 +3013,8 @@ namespace CarringtonService.BusinessExpert
                 Rssi_Tr_Prin_Bal_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Prin_Bal_PackedData", currentByte, 131, 6, 2),
 
                 Rssi_Tr_Esc_Bal_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Esc_Bal_PackedData", currentByte, 137, 6, 2),
-                Rssi_Tr_Pd_To_Date_PackedData = (PackedTypeCheckAndUnPackData("Rssi_Tr_Pd_To_Date_PackedData", currentByte, 143, 4) != null && PackedTypeCheckAndUnPackData("Rssi_Tr_Pd_To_Date_PackedData", currentByte, 143, 4) != "0000000") ? Convert.ToString(CommonHelper.GetDateTime(PackedTypeCheckAndUnPackData("Rssi_Tr_Pd_To_Date_PackedData", currentByte, 143, 4))) : "0",
+                //Rssi_Tr_Pd_To_Date_PackedData = (PackedTypeCheckAndUnPackData("Rssi_Tr_Pd_To_Date_PackedData", currentByte, 143, 4) != null && PackedTypeCheckAndUnPackData("Rssi_Tr_Pd_To_Date_PackedData", currentByte, 143, 4) != "0000000") ? Convert.ToString(CommonHelper.GetDateTime(PackedTypeCheckAndUnPackData("Rssi_Tr_Pd_To_Date_PackedData", currentByte, 143, 4))) : "0",
+                Rssi_Tr_Pd_To_Date_PackedData = (PackedTypeCheckAndUnPackData("Rssi_Tr_Pd_To_Date_PackedData", currentByte, 143, 4) != null && PackedTypeCheckAndUnPackData("Rssi_Tr_Pd_To_Date_PackedData", currentByte, 143, 4) != "0000000") ? Convert.ToString(PackedTypeCheckAndUnPackData("Rssi_Tr_Pd_To_Date_PackedData", currentByte, 143, 4)) : "0",
 
                 Rssi_Tr_Esc_Pymt_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Esc_Pymt_PackedData", currentByte, 147, 5, 2),
                 Rssi_Tr_Prn_Var_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Prn_Var_PackedData", currentByte, 152, 5, 2),
@@ -3022,10 +3023,12 @@ namespace CarringtonService.BusinessExpert
                 Rssi_Tr_Esc_Var_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Esc_Var_PackedData", currentByte, 163, 5, 2),
 
                 Rssi_Tr_Uncoll_Lc_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Uncoll_Lc_PackedData", currentByte, 168, 5, 2),
-                Rssi_Tr_Dla_PackedData = (PackedTypeCheckAndUnPackData("Rssi_Tr_Dla_PackedData", currentByte, 173, 4) != null && PackedTypeCheckAndUnPackData("Rssi_Tr_Dla_PackedData", currentByte, 173, 4) != "0000000") ? Convert.ToString(CommonHelper.GetDateTime(PackedTypeCheckAndUnPackData("Rssi_Tr_Dla_PackedData", currentByte, 173, 4))) : "0",
+                //Rssi_Tr_Dla_PackedData = (PackedTypeCheckAndUnPackData("Rssi_Tr_Dla_PackedData", currentByte, 173, 4) != null && PackedTypeCheckAndUnPackData("Rssi_Tr_Dla_PackedData", currentByte, 173, 4) != "0000000") ? Convert.ToString(CommonHelper.GetDateTime(PackedTypeCheckAndUnPackData("Rssi_Tr_Dla_PackedData", currentByte, 173, 4))) : "0",
+                Rssi_Tr_Dla_PackedData = (PackedTypeCheckAndUnPackData("Rssi_Tr_Dla_PackedData", currentByte, 173, 4) != null && PackedTypeCheckAndUnPackData("Rssi_Tr_Dla_PackedData", currentByte, 173, 4) != "0000000") ? Convert.ToString(PackedTypeCheckAndUnPackData("Rssi_Tr_Dla_PackedData", currentByte, 173, 4)) : "0",
 
                 Rssi_Tr_Lip_Bal_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Lip_Bal_PackedData", currentByte, 177, 5, 2),
-                Rssi_Tr_Lip_La_Date_PackedData = (PackedTypeCheckAndUnPackData("Rssi_Tr_Lip_La_Date_PackedData", currentByte, 182, 4) != null && PackedTypeCheckAndUnPackData("Rssi_Tr_Lip_La_Date_PackedData", currentByte, 182, 4) != "0000000") ? Convert.ToString(CommonHelper.GetDateTime(PackedTypeCheckAndUnPackData("Rssi_Tr_Lip_La_Date_PackedData", currentByte, 182, 4))) : "0",
+                //Rssi_Tr_Lip_La_Date_PackedData = (PackedTypeCheckAndUnPackData("Rssi_Tr_Lip_La_Date_PackedData", currentByte, 182, 4) != null && PackedTypeCheckAndUnPackData("Rssi_Tr_Lip_La_Date_PackedData", currentByte, 182, 4) != "0000000") ? Convert.ToString(CommonHelper.GetDateTime(PackedTypeCheckAndUnPackData("Rssi_Tr_Lip_La_Date_PackedData", currentByte, 182, 4))) : "0",
+                Rssi_Tr_Lip_La_Date_PackedData = (PackedTypeCheckAndUnPackData("Rssi_Tr_Lip_La_Date_PackedData", currentByte, 182, 4) != null && PackedTypeCheckAndUnPackData("Rssi_Tr_Lip_La_Date_PackedData", currentByte, 182, 4) != "0000000") ? Convert.ToString(PackedTypeCheckAndUnPackData("Rssi_Tr_Lip_La_Date_PackedData", currentByte, 182, 4)) : "0",
 
                 Rssi_Tr_Pre_Int_Amt_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Pre_Int_Amt_PackedData", currentByte, 186, 6, 2),
                 Rssi_Tr_Pre_Int_Date = PackedTypeCheckAndUnPackData("Rssi_Tr_Pre_Int_Date", currentByte, 192, 4),
@@ -3390,6 +3393,7 @@ namespace CarringtonService.BusinessExpert
                 Rssi_Lci_Max_PackedData = PackedTypeCheckAndUnPackData("Rssi_Lci_Max_PackedData", currentByte, 35, 4, 2),
 
                 Rssi_Lci_Min_PackedData = PackedTypeCheckAndUnPackData("Rssi_Lci_Min_PackedData", currentByte, 39, 4, 2),
+
                 Rssi_Lci_Max_Annual_PackedData = PackedTypeCheckAndUnPackData("Rssi_Lci_Max_Annual_PackedData", currentByte, 43, 5, 2),
 
                 Rssi_Lci_Max_Life_PackedData = PackedTypeCheckAndUnPackData("Rssi_Lci_Max_Life_PackedData", currentByte, 48, 5, 2),
@@ -3813,6 +3817,7 @@ namespace CarringtonService.BusinessExpert
                 {
                     if (propertyName.EndsWith("State_PackedData"))
                         return NewPackedTypeCheckAndUnPackData(propertyName, data, start, length, decimalPlaces, hasSign);
+
                     var buffer = new byte[length];
                     Array.Copy(data, start - 1, buffer, 0, length);
                     string output = string.Empty;
