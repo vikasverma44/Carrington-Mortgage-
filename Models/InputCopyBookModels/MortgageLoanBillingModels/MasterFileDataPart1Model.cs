@@ -349,9 +349,9 @@
         public string Rssi_Print_Stmt { get; set; }
         public string Rssi_Part_Pymts_Ytd_PackedData { get; set; }
         public string Rssi_Closing_Int_Ytd_PackedData { get; set; }
-        public string Rssi_Payoff_Amount { get; set; }
+        public string Rssi_Payoff_Amount_PackedData { get; set; }
         public string Rssi_Prim_Attention { get; set; }
-        public string Rssi_Dsi_Accr_Int { get; set; }
+        public string Rssi_Dsi_Accr_Int_PackedData { get; set; }
         public string Rssi_Accelerated_Amt_PackedData { get; set; }
 
         public string Rssi_Reinstatement_Dt_PackedData { get; set; }

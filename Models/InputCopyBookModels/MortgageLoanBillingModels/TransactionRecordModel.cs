@@ -7,7 +7,7 @@
         public string Rssi_Acct_No { get; set; }
         public string Rssi_Seq_No { get; set; }
         public string Rssi_Log_Date_PackedData { get; set; }
-        public string Rssi_Log_Time { get; set; }
+        public string Rssi_Log_Time_PackedData { get; set; }
         public string Rssi_Tr_Date_PackedData { get; set; }
         public string Rssi_Log_Ptrn { get; set; }
         public string Rssi_Tr_Fill_01 { get; set; }

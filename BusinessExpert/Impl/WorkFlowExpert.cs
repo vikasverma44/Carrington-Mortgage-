@@ -1631,10 +1631,10 @@ namespace CarringtonService.BusinessExpert
                 Rssi_Part_Pymts_Ytd_PackedData = PackedTypeCheckAndUnPackData("Rssi_Part_Pymts_Ytd_PackedData", currentByte, 2546, 5, 2),
 
                 Rssi_Closing_Int_Ytd_PackedData = PackedTypeCheckAndUnPackData("Rssi_Closing_Int_Ytd_PackedData", currentByte, 2551, 6, 2),
-                Rssi_Payoff_Amount = PackedTypeCheckAndUnPackData("Rssi_Payoff_Amount", currentByte, 2557, 6, 2),
+                Rssi_Payoff_Amount_PackedData = PackedTypeCheckAndUnPackData("Rssi_Payoff_Amount_PackedData", currentByte, 2557, 6, 2),
 
                 Rssi_Prim_Attention = PackedTypeCheckAndUnPackData("Rssi_Prim_Attention", currentByte, 2563, 35),
-                Rssi_Dsi_Accr_Int = PackedTypeCheckAndUnPackData("Rssi_Dsi_Accr_Int", currentByte, 2598, 6, 2),
+                Rssi_Dsi_Accr_Int_PackedData = PackedTypeCheckAndUnPackData("Rssi_Dsi_Accr_Int_PackedData", currentByte, 2598, 6, 2),
 
                 Rssi_Accelerated_Amt_PackedData = PackedTypeCheckAndUnPackData("Rssi_Accelerated_Amt_PackedData", currentByte, 2604, 7, 2),
                 Rssi_Reinstatement_Dt_PackedData = PackedTypeCheckAndUnPackData("Rssi_Reinstatement_Dt_PackedData", currentByte, 2611, 4),
@@ -1655,7 +1655,8 @@ namespace CarringtonService.BusinessExpert
                 Filler = PackedTypeCheckAndUnPackData("Filler", currentByte, 2655, 1356),
 
             };
-        }
+
+           }
 
         public string GetValueFromMultiLocation(string variableName, byte[] currentByte)
         {
@@ -2168,10 +2169,10 @@ namespace CarringtonService.BusinessExpert
                 Rssi_Def_Paid_Exp_Adv_Bal_PackedData = PackedTypeCheckAndUnPackData("Rssi_Def_Paid_Exp_Adv_Bal_PackedData", currentByte, 248, 6, 2),
 
                 Rssi_Def_Unpd_Exp_Adv_Bal_PackedData = PackedTypeCheckAndUnPackData("Rssi_Def_Unpd_Exp_Adv_Bal_PackedData", currentByte, 254, 6, 2),
-                Rssi_Def_Admn_Fees_Bal = PackedTypeCheckAndUnPackData("Rssi_Def_Admn_Fees_Bal", currentByte, 260, 6, 2),
+                Rssi_Def_Admn_Fees_Bal_PackedData = PackedTypeCheckAndUnPackData("Rssi_Def_Admn_Fees_Bal_PackedData", currentByte, 260, 6, 2),
 
                 Rssi_Borr_Lnge = PackedTypeCheckAndUnPackData("Rssi_Borr_Lnge", currentByte, 266, 1),
-                Rssi_Uncoll_Esc_Short = PackedTypeCheckAndUnPackData("Rssi_Uncoll_Esc_Short", currentByte, 267, 6, 2),
+                Rssi_Uncoll_Esc_Short_PackedData = PackedTypeCheckAndUnPackData("Rssi_Uncoll_Esc_Short_PackedData", currentByte, 267, 6, 2),
 
                 Rssi_Def_Opt_Ins_Bal_PackedData = PackedTypeCheckAndUnPackData("Rssi_Def_Opt_Ins_Bal_PackedData", currentByte, 273, 5, 2),
                 Rssi_Clo_Agent_Cd = PackedTypeCheckAndUnPackData("Rssi_Clo_Agent_Cd", currentByte, 278, 5),
@@ -2974,7 +2975,7 @@ namespace CarringtonService.BusinessExpert
                 Rssi_Seq_No = PackedTypeCheckAndUnPackData("Rssi_Seq_No", currentByte, 15, 5),
 
                 Rssi_Log_Date_PackedData = PackedTypeCheckAndUnPackData("Rssi_Log_Date_PackedData", currentByte, 20, 4),
-                Rssi_Log_Time = PackedTypeCheckAndUnPackData("Rssi_Log_Time", currentByte, 24, 4),
+                Rssi_Log_Time_PackedData = PackedTypeCheckAndUnPackData("Rssi_Log_Time_PackedData", currentByte, 24, 4),
 
                 Rssi_Tr_Date_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Date_PackedData", currentByte, 28, 4),
                 Rssi_Log_Ptrn = PackedTypeCheckAndUnPackData("Rssi_Log_Ptrn", currentByte, 32, 8),
@@ -3043,26 +3044,26 @@ namespace CarringtonService.BusinessExpert
                 Rssi_Tr_Esc_Pay_Id = PackedTypeCheckAndUnPackData("Rssi_Tr_Esc_Pay_Id", currentByte, 240, 2),
 
                 Rssi_Tr_Amort_Fee_Pymt = PackedTypeCheckAndUnPackData("Rssi_Tr_Amort_Fee_Pymt", currentByte, 242, 7, 2),
-                Rssi_Tr_Amt_To_Evar_2 = Convert.ToString(CommonHelper.ConvertEBCDICtoDecimal(PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_2", currentByte, 249, 9, 2))),
+                Rssi_Tr_Amt_To_Evar_2 = Convert.ToString(CommonHelper.ConvertEBCDICtoDecimal(PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_2", currentByte, 249, 9))),
 
-                Rssi_Tr_Amt_To_Evar_3 = Convert.ToString(CommonHelper.ConvertEBCDICtoDecimal(PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_3", currentByte, 258, 9, 2))),
-                Rssi_Tr_Amt_To_Evar_4 = Convert.ToString(CommonHelper.ConvertEBCDICtoDecimal(PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_4", currentByte, 267, 9, 2))),
+                Rssi_Tr_Amt_To_Evar_3 = Convert.ToString(CommonHelper.ConvertEBCDICtoDecimal(PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_3", currentByte, 258, 9))),
+                Rssi_Tr_Amt_To_Evar_4 = Convert.ToString(CommonHelper.ConvertEBCDICtoDecimal(PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_4", currentByte, 267, 9))),
 
-                Rssi_Tr_Amt_To_Evar_5 = Convert.ToString(CommonHelper.ConvertEBCDICtoDecimal(PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_5", currentByte, 276, 9, 2))),
+                Rssi_Tr_Amt_To_Evar_5 = Convert.ToString(CommonHelper.ConvertEBCDICtoDecimal(PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Evar_5", currentByte, 276, 9))),
                 Rssi_Tr_Exp_Fee_Code = PackedTypeCheckAndUnPackData("Rssi_Tr_Exp_Fee_Code", currentByte, 285, 3),
 
                 Rssi_Tr_Exp_Fee_Desc = PackedTypeCheckAndUnPackData("Rssi_Tr_Exp_Fee_Desc", currentByte, 288, 30),
                 Rssi_Tr_Exp_Fee_Amt_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Exp_Fee_Amt_PackedData", currentByte, 318, 6, 2),
 
-                Rssi_Tr_Amt_To_Pi_Shrtg = Convert.ToString(CommonHelper.ConvertEBCDICtoDecimal(PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Pi_Shrtg", currentByte, 324, 9, 2))),
+                Rssi_Tr_Amt_To_Pi_Shrtg = Convert.ToString(CommonHelper.ConvertEBCDICtoDecimal(PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Pi_Shrtg", currentByte, 324, 9))),
                 //Rssi_Tr_Amt_To_Esc_Short = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Esc_Short", currentByte, 333, 9, 2),
-                Rssi_Tr_Amt_To_Esc_Short = Convert.ToString(CommonHelper.ConvertEBCDICtoDecimal(PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Esc_Short", currentByte, 333, 9, 2))),
+                Rssi_Tr_Amt_To_Esc_Short = Convert.ToString(CommonHelper.ConvertEBCDICtoDecimal(PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Esc_Short", currentByte, 333, 9))),
 
                 //Rssi_Tr_Amt_To_Acrd_Inctv = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Acrd_Inctv", currentByte, 342, 7, 2),
-                Rssi_Tr_Amt_To_Acrd_Inctv = Convert.ToString(CommonHelper.ConvertEBCDICtoDecimal(PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Acrd_Inctv", currentByte, 342, 7, 2))),
+                Rssi_Tr_Amt_To_Acrd_Inctv = Convert.ToString(CommonHelper.ConvertEBCDICtoDecimal(PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Acrd_Inctv", currentByte, 342, 7))),
 
                 //Rssi_Tr_Amt_To_Pra_Remain = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Pra_Remain", currentByte, 349, 11, 2),
-                Rssi_Tr_Amt_To_Pra_Remain = Convert.ToString(CommonHelper.ConvertEBCDICtoDecimal(PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Pra_Remain", currentByte, 349, 11, 2))),
+                Rssi_Tr_Amt_To_Pra_Remain = Convert.ToString(CommonHelper.ConvertEBCDICtoDecimal(PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Pra_Remain", currentByte, 349, 11))),
 
 
                 Rssi_Tr_Amt_To_Def_Prin_PackedData = PackedTypeCheckAndUnPackData("Rssi_Tr_Amt_To_Def_Prin_PackedData", currentByte, 360, 6, 2),
@@ -3670,7 +3671,7 @@ namespace CarringtonService.BusinessExpert
                 Rssi_Dstr_Desig_Dt_PackedData = PackedTypeCheckAndUnPackData("Rssi_Dstr_Desig_Dt_PackedData", currentByte, 61, 4),
                 Rssi_Dstr_End_Dt_PackedData = PackedTypeCheckAndUnPackData("Rssi_Dstr_End_Dt_PackedData", currentByte, 65, 4),
 
-                Rssi_Dstr_Extended_Dt_PackedData = PackedTypeCheckAndUnPackData("Rssi_Dstr_Extended_Dt", currentByte, 69, 4),
+                Rssi_Dstr_Extended_Dt_PackedData = PackedTypeCheckAndUnPackData("Rssi_Dstr_Extended_Dt_PackedData", currentByte, 69, 4),
                 Rssi_Dstr_Ddn = PackedTypeCheckAndUnPackData("Rssi_Dstr_Ddn", currentByte, 73, 10),
 
                 Rssi_Dstr_Aplcnt_Nbr = PackedTypeCheckAndUnPackData("Rssi_Dstr_Aplcnt_Nbr", currentByte, 83, 10),

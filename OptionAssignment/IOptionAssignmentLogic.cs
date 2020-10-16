@@ -6,6 +6,7 @@ namespace CarringtonMortgage.OptionAssignment
 {
     public interface IOptionAssignmentLogic
     {
+        List<BorrowerModel> GetRejectA07(AccountsModel accountsModel);
         List<BorrowerModel> GetOptionArmBkChpt13EDeliveryArchivePrimary(AccountsModel accountModel);
         List<BorrowerModel> GetOptionArmBkChpt13StmtArchiveOnlyNy(AccountsModel accountModel);
         List<BorrowerModel> GetOptionArmBkChpt13StmtArchiveOnlyNyDvlPrimary(AccountsModel accountModel);

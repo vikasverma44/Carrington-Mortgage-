@@ -15,6 +15,6 @@ namespace CarringtonMortgage.Models
         public string FlexField4 { get; set; }
         public string FlexField5 { get; set; }
         public string FlexField6 { get; set; }
-
+        public bool isReject { get; set; }
     }
 }

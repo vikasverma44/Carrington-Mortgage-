@@ -186,11 +186,12 @@ namespace CarringtonMortgage.Helpers
         /// </summary>
         /// <param name="inputString"></param>
         /// <returns></returns>
-        public static decimal ConvertEBCDICtoDecimal(string inputString)
+        public static string ConvertEBCDICtoDecimal(string inputString)
         {
             decimal returnDecimal;
             if (string.IsNullOrEmpty(inputString))
-                return (Convert.ToDecimal("0.00"));
+                //return (Convert.ToDecimal("0.00"));
+                return string.Empty;
 
             StringBuilder strAmount = new StringBuilder(inputString);
             if (inputString.IndexOfAny(new char[] { '}', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R' }) >= 0)
@@ -218,10 +219,11 @@ namespace CarringtonMortgage.Helpers
             strAmount.Replace("R", "9");
 
             // Convert the amount to a deciaml:
-            decimal n;
-            if (decimal.TryParse(strAmount.ToString(), out n))
-                returnDecimal = n;
-            return (Convert.ToDecimal("0.00"));
+            return strAmount.ToString();
+            //decimal n;
+            //if (decimal.TryParse(strAmount.ToString(), out n))
+            //    returnDecimal = n;
+            //return (Convert.ToDecimal("0.00"));
         }
     }
 }

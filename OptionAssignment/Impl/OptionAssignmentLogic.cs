@@ -16,6 +16,132 @@ namespace CarringtonMortgage.OptionAssignment
         {
             Logger = logger;
         }
+
+        // REJECT Start
+
+        public List<BorrowerModel> GetRejectA07(AccountsModel accountModel)
+        {
+            List<BorrowerModel> lstBrw = new List<BorrowerModel>();
+            try
+            {
+                //Logger.Trace("STARTED:  Execute to Get Reject A07");
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
+                    || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
+                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData == "0000000"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") ? (((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7")
+                    || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11")
+                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")) : false))
+                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "N" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == " "))
+                {
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "", FlexField2 = "A07", FlexField3 = "SP", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill", isReject = true });
+                }
+                else
+                {
+                    lstBrw = GetRejectA13(accountModel);
+                }
+                // Logger.Trace("ENDED:  To Get Reject A07");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+        }
+
+        public List<BorrowerModel> GetRejectA13(AccountsModel accountModel)
+        {
+            List<BorrowerModel> lstBrw = new List<BorrowerModel>();
+            try
+            {
+                //Logger.Trace("STARTED:  Execute to Get Reject A13");
+                if ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
+                    || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13")
+                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
+                    && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "N"
+                    || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == " "))
+                {
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "", FlexField2 = "A13", FlexField3 = "SP", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill", isReject = true });
+                }
+                else
+                {
+                    lstBrw = GetRejectS07(accountModel);
+                }
+
+                // Logger.Trace("ENDED:  To Get Reject A13");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+        }
+
+        public List<BorrowerModel> GetRejectS07(AccountsModel accountModel)
+        {
+            List<BorrowerModel> lstBrw = new List<BorrowerModel>();
+            try
+            {
+                //Logger.Trace("STARTED:  Execute to Get Reject S07");
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
+                    || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
+                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData == "0000000"))
+             || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+             ? (((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7")
+                    || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11")
+                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")) : false))
+                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "N" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == " "))
+
+                {
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "", FlexField2 = "S07", FlexField3 = "SP", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill", isReject = true });
+                }
+                else
+                {
+                    lstBrw = GetRejectS13(accountModel);
+                }
+
+                // Logger.Trace("ENDED:  To Get Reject S07");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+        }
+
+        public List<BorrowerModel> GetRejectS13(AccountsModel accountModel)
+        {
+            List<BorrowerModel> lstBrw = new List<BorrowerModel>();
+            try
+            {
+                //Logger.Trace("STARTED:  Execute to Get Reject S13");
+                if ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
+                    || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13")
+                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
+                    && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "N"
+                    || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == " "))
+                {
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "", FlexField2 = "S13", FlexField3 = "SP", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill", isReject = true });
+                }
+                else
+                {
+                    lstBrw = GetPrimaryStandardStatement(accountModel);
+                }
+
+                // Logger.Trace("ENDED:  To Get Reject S13");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+        }
+
         public List<BorrowerModel> GetPrimaryStandardStatement(AccountsModel accountModel)
         {
 
@@ -2913,7 +3039,8 @@ namespace CarringtonMortgage.OptionAssignment
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                   && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData == "0000000"))
-                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") ? (((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7")
+                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                  ? (((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7")
                     || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11")
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")) : false))
                   && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B")
@@ -10593,7 +10720,7 @@ namespace CarringtonMortgage.OptionAssignment
                 else
                 {
                     ClearedPreviousStatement = false;
-                    lstBrw = GetRejectA07(accountModel);
+                    //lstBrw = GetRejectA07(accountModel);
                     return lstBrw;
                 }
                 if (lstBrw.Count == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
@@ -10651,125 +10778,6 @@ namespace CarringtonMortgage.OptionAssignment
             return lstBrw;
         }
 
-        // REJECT Start
 
-        public List<BorrowerModel> GetRejectA07(AccountsModel accountModel)
-        {
-            List<BorrowerModel> lstBrw = new List<BorrowerModel>();
-            try
-            {
-                //Logger.Trace("STARTED:  Execute to Get Reject A07");
-                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
-                    || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
-                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData == "0000000"))
-                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") ? (((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7")
-                    || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11")
-                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")) : false))
-                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "N" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == null))
-                {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "", FlexField2 = "A07", FlexField3 = "SP", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
-                }
-                else
-                {
-                    lstBrw = GetRejectA13(accountModel);
-                }
-                // Logger.Trace("ENDED:  To Get Reject A07");
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, ex.TargetSite.Name);
-                throw;
-            }
-            return lstBrw;
-        }
-
-        public List<BorrowerModel> GetRejectA13(AccountsModel accountModel)
-        {
-            List<BorrowerModel> lstBrw = new List<BorrowerModel>();
-            try
-            {
-                //Logger.Trace("STARTED:  Execute to Get Reject A13");
-                if ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
-                    || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13")
-                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-                    && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "N"
-                    || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == null))
-                {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "", FlexField2 = "A13", FlexField3 = "SP", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
-                }
-                else
-                {
-                    lstBrw = GetRejectS07(accountModel);
-                }
-
-                // Logger.Trace("ENDED:  To Get Reject A13");
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, ex.TargetSite.Name);
-                throw;
-            }
-            return lstBrw;
-        }
-
-        public List<BorrowerModel> GetRejectS07(AccountsModel accountModel)
-        {
-            List<BorrowerModel> lstBrw = new List<BorrowerModel>();
-            try
-            {
-                //Logger.Trace("STARTED:  Execute to Get Reject S07");
-                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
-                    || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
-                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData == "0000000"))
-             || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-             ? (((accountModel.UserFieldRecordModel.Rssi_Usr_93 == "7")
-                    || (accountModel.UserFieldRecordModel.Rssi_Usr_93 == "11")
-                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")) : false))
-                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "N" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == null))
-
-                {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "", FlexField2 = "S07", FlexField3 = "SP", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
-                }
-                else
-                {
-                    lstBrw = GetRejectS13(accountModel);
-                }
-
-                // Logger.Trace("ENDED:  To Get Reject S07");
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, ex.TargetSite.Name);
-                throw;
-            }
-            return lstBrw;
-        }
-
-        public List<BorrowerModel> GetRejectS13(AccountsModel accountModel)
-        {
-            List<BorrowerModel> lstBrw = new List<BorrowerModel>();
-            try
-            {
-                //Logger.Trace("STARTED:  Execute to Get Reject S13");
-                if ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
-                    || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13")
-                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"
-                    && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "N"
-                    || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == null))
-                {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "", FlexField2 = "S13", FlexField3 = "SP", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
-                }
-
-                // Logger.Trace("ENDED:  To Get Reject S13");
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, ex.TargetSite.Name);
-                throw;
-            }
-            return lstBrw;
-        }
     }
 }

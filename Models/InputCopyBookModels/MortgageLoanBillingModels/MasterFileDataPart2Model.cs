@@ -56,9 +56,9 @@
         public string Rssi_Def_Escrow_Adv_Bal_PackedData { get; set; }
         public string Rssi_Def_Paid_Exp_Adv_Bal_PackedData { get; set; }
         public string Rssi_Def_Unpd_Exp_Adv_Bal_PackedData { get; set; }
-        public string Rssi_Def_Admn_Fees_Bal { get; set; }
+        public string Rssi_Def_Admn_Fees_Bal_PackedData { get; set; }
         public string Rssi_Borr_Lnge { get; set; }
-        public string Rssi_Uncoll_Esc_Short { get; set; }
+        public string Rssi_Uncoll_Esc_Short_PackedData { get; set; }
         public string Rssi_Def_Opt_Ins_Bal_PackedData { get; set; }
         public string Rssi_Clo_Agent_Cd { get; set; }
         public string FillerPart2 { get; set; }
