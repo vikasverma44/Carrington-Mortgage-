@@ -2827,8 +2827,8 @@ namespace CarringtonService.BillingStatements
                 //Logger.Trace("STARTED:  Execute to Get Lender Placed Insurance Message");
 
                 //Logger.Trace("STARTED:  Execute get lender placed insurance message.");
-                if ((accountModel.EscrowRecordModel.Any(r => r.rssi_esc_type == "20")
-                  || accountModel.EscrowRecordModel.Any(r => r.rssi_esc_type == "21")
+                if ((accountModel.EscrowRecordModel.Any(r => r.Rssi_Esc_Type == "20")
+                  || accountModel.EscrowRecordModel.Any(r => r.Rssi_Esc_Type == "21")
                   && accountModel.EscrowRecordModel.Any(r => r.Rssi_Ins_Co == "2450")
                  && (accountModel.EscrowRecordModel.Any(er => er.Rssi_Ins_Ag == "29000")
                   || accountModel.EscrowRecordModel.Any(eri => eri.Rssi_Ins_Ag == "29005")

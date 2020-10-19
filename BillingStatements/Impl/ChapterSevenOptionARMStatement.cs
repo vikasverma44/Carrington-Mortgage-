@@ -3080,8 +3080,8 @@ namespace CarringtonService.BillingStatements
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get Lender Placed Insurance Message");
-                if ((accountsModel.EscrowRecordModel.Any(r => r.rssi_esc_type == "20")
-                   || accountsModel.EscrowRecordModel.Any(r => r.rssi_esc_type == "21")
+                if ((accountsModel.EscrowRecordModel.Any(r => r.Rssi_Esc_Type == "20")
+                   || accountsModel.EscrowRecordModel.Any(r => r.Rssi_Esc_Type == "21")
                    && accountsModel.EscrowRecordModel.Any(r => r.Rssi_Ins_Co == "2450")
                   && (accountsModel.EscrowRecordModel.Any(er => er.Rssi_Ins_Ag == "29000")
                    || accountsModel.EscrowRecordModel.Any(eri => eri.Rssi_Ins_Ag == "29005")
