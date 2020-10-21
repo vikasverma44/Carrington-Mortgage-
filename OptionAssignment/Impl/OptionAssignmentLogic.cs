@@ -148,6 +148,9 @@ namespace CarringtonMortgage.OptionAssignment
             List<BorrowerModel> lstBrw = new List<BorrowerModel>();
             try
             {
+                string mailingAddress = System.Text.RegularExpressions.Regex.Replace(accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3, @"\s+", " ");
+                var mailingState = mailingAddress.Split(" ".ToCharArray());
+
                 //Logger.Trace("STARTED:  Execute to Get Primary Standard Statement");
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
@@ -156,7 +159,11 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13"
-                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")) && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m != "LA")
+                || mailingState.Any(m => m != "NM")
+                || mailingState.Any(m => m != "OK")
+                || mailingState.Any(m => m != "TX")))
                 {
                     lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
@@ -175,7 +182,11 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13"
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
-                && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A"))
+                && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A") && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m != "LA")
+                || mailingState.Any(m => m != "NM")
+                || mailingState.Any(m => m != "OK")
+                || mailingState.Any(m => m != "TX")))
                 {
                     lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
@@ -188,7 +199,11 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13"
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
-                && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A"))
+                && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A") && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m != "LA")
+                || mailingState.Any(m => m != "NM")
+                || mailingState.Any(m => m != "OK")
+                || mailingState.Any(m => m != "TX")))
                 {
                     lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
@@ -201,7 +216,11 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13"
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
-                && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A"))
+                && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A") && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m != "LA")
+                || mailingState.Any(m => m != "NM")
+                || mailingState.Any(m => m != "OK")
+                || mailingState.Any(m => m != "TX")))
                 {
                     lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
@@ -214,7 +233,12 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13"
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
-                && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A"))
+                && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A") 
+                && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m != "LA")
+                || mailingState.Any(m => m != "NM")
+                || mailingState.Any(m => m != "OK")
+                || mailingState.Any(m => m != "TX")))
                 {
                     lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
@@ -227,7 +251,12 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13"
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
-                && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A"))
+                && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A") 
+                && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m != "LA")
+                || mailingState.Any(m => m != "NM")
+                || mailingState.Any(m => m != "OK")
+                || mailingState.Any(m => m != "TX")))
                 {
                     lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
@@ -240,7 +269,12 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13"
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
-                && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A"))
+                && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A") 
+                && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m != "LA")
+                || mailingState.Any(m => m != "NM")
+                || mailingState.Any(m => m != "OK")
+                || mailingState.Any(m => m != "TX")))
                 {
                     lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
@@ -253,7 +287,12 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13"
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
-                && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A"))
+                && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A") 
+                && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m != "LA")
+                || mailingState.Any(m => m != "NM")
+                || mailingState.Any(m => m != "OK")
+                || mailingState.Any(m => m != "TX")))
                 {
                     lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
@@ -266,7 +305,12 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13"
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
-                && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A"))
+                && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A") 
+                && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m != "LA")
+                || mailingState.Any(m => m != "NM")
+                || mailingState.Any(m => m != "OK")
+                || mailingState.Any(m => m != "TX")))
                 {
                     lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
@@ -279,7 +323,12 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13"
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
-                && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A"))
+                && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A") 
+                && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m != "LA")
+                || mailingState.Any(m => m != "NM")
+                || mailingState.Any(m => m != "OK")
+                || mailingState.Any(m => m != "TX")))
                 { 
                     lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
@@ -293,7 +342,12 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13"
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
-                && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A"))
+                && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A") 
+                && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m != "LA")
+                || mailingState.Any(m => m != "NM")
+                || mailingState.Any(m => m != "OK")
+                || mailingState.Any(m => m != "TX")))
                 {
                     lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
@@ -331,7 +385,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "OK")
                 || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "PrimaryDallas", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -1153,6 +1207,258 @@ namespace CarringtonMortgage.OptionAssignment
             }
             return lstBrw;
         }
+
+        public List<BorrowerModel> GetStdStmtEDeliveryArchiveCopy1DallasRemitAddress(AccountsModel accountModel)
+        {
+            bool ClearedPreviousStatement = false;
+            List<BorrowerModel> lstBrw = new List<BorrowerModel>();
+            try
+            {
+                //Logger.Trace("STARTED:  Execute to Get Std Stmt EDelivery Archive Copy1");
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                && accountModel.EConsentModel.DocumentType == "Bill"
+                && accountModel.EConsentModel.EConsentFlag == "Y" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPreviousStatement = false;
+                    lstBrw = GetStdStmtArchiveOnly(accountModel);
+                    return lstBrw;
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A"
+                && accountModel.EConsentModel.DocumentType == "Bill"
+                && accountModel.EConsentModel.EConsentFlag == "Y" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A"
+                && accountModel.EConsentModel.DocumentType == "Bill"
+                && accountModel.EConsentModel.EConsentFlag == "Y" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                 && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A"
+                 && accountModel.EConsentModel.DocumentType == "Bill"
+                 && accountModel.EConsentModel.EConsentFlag == "Y" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                  && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A"
+                  && accountModel.EConsentModel.DocumentType == "Bill"
+                  && accountModel.EConsentModel.EConsentFlag == "Y" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                  && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A"
+                  && accountModel.EConsentModel.DocumentType == "Bill"
+                  && accountModel.EConsentModel.EConsentFlag == "Y" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                 && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A"
+                 && accountModel.EConsentModel.DocumentType == "Bill"
+                 && accountModel.EConsentModel.EConsentFlag == "Y" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A"
+                && accountModel.EConsentModel.DocumentType == "Bill"
+                && accountModel.EConsentModel.EConsentFlag == "Y" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A"
+                && accountModel.EConsentModel.DocumentType == "Bill"
+                && accountModel.EConsentModel.EConsentFlag == "Y" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                  && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A"
+                  && accountModel.EConsentModel.DocumentType == "Bill"
+                  && accountModel.EConsentModel.EConsentFlag == "Y" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A"
+                && accountModel.EConsentModel.DocumentType == "Bill"
+                && accountModel.EConsentModel.EConsentFlag == "Y" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+                //Logger.Trace("ENDED:  To Get Std Stmt EDelivery Archive Copy1");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+        }
+
         public List<BorrowerModel> GetStdStmtArchiveOnly(AccountsModel accountModel)
         {
             bool ClearedPreviousStatement = false;
@@ -1336,6 +1642,243 @@ namespace CarringtonMortgage.OptionAssignment
                     lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 
+                //Logger.Trace("ENDED:  To Get Std Stmt Archive Only");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+        }
+
+        public List<BorrowerModel> GetStdStmtArchiveOnlyDallasRemitAddress(AccountsModel accountModel)
+        {
+            bool ClearedPreviousStatement = false;
+            List<BorrowerModel> lstBrw = new List<BorrowerModel>();
+            try
+            {
+                //Logger.Trace("STARTED:  Execute to Get Std Stmt Archive Only");
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPreviousStatement = false;
+                    lstBrw = GetStdStmtArchiveOnlyNy(accountModel);
+                    return lstBrw;
+                }
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+               && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+               && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+               && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+               && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+               && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+               && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+               && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+               && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+               && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+               && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+               && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+               && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+               && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+               && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+               && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+               && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                 && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                 && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+               && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+               && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+               && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+               && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+               && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+               && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+               && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+               && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+              && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+              && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+              || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+              && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+              && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+              && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+              && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+              && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+              && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+              && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+              && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+              || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+              && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+              && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+              && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+              && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+              && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+              && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+               && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+               && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+               && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+               && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+               && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+               && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+               && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+               && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
                 //Logger.Trace("ENDED:  To Get Std Stmt Archive Only");
             }
             catch (Exception ex)
@@ -1582,6 +2125,289 @@ namespace CarringtonMortgage.OptionAssignment
             }
             return lstBrw;
         }
+
+        public List<BorrowerModel> GetStdStmtArchiveOnlyNyDallasRemitAddress(AccountsModel accountModel)
+        {
+            bool ClearedPreviousStatement = false;
+            List<BorrowerModel> lstBrw = new List<BorrowerModel>();
+            try
+            {
+                //Logger.Trace("STARTED:  Execute to Get Std Stmt Archive Only Ny");
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                && !CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)
+                && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPreviousStatement = false;
+                    lstBrw = GetStdStmtArchiveOnlyNyHello(accountModel);
+                    return lstBrw;
+                }
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                && !CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)
+                && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                  && !CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)
+                  && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                  && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                  && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                  && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+             && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+             && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+             || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+             && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+             && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+             && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+             && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+             && !CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)
+             && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+             && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+             && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+             && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+             && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+             && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+             && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+             || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+             && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+             && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+             && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+             && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+             && !CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)
+             && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+             && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+             && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+             && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+             && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+              && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+              && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+              || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+              && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+              && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+              && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+              && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+              && !CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)
+              && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+              && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+              && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+              && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+              && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+             && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+             && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+             || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+             && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+             && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+             && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+             && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+             && !CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)
+             && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+             && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+             && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+             && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+             && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+              && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+              && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+              || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+              && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+              && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+              && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+              && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+              && !CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)
+              && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+              && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+              && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+              && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+              && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+              && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+              && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+              || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+              && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+              && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+              && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+              && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+              && !CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)
+              && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+              && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+              && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+              && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+              && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+               && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+               && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+               && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+               && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+               && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+               && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+               && !CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)
+               && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+               && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+               && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+               && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+               && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+              && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+              && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+              || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+              && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+              && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+              && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+              && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+              && !CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)
+              && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+              && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+              && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+              && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+              && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+                //Logger.Trace("ENDED:  To Get Std Stmt Archive Only Ny");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+        }
+
         public List<BorrowerModel> GetStdStmtArchiveOnlyNyHello(AccountsModel accountModel)
         {
             bool ClearedPreviousStatement = false;
@@ -1811,6 +2637,289 @@ namespace CarringtonMortgage.OptionAssignment
                     lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 
+                //Logger.Trace("ENDED:  To Get Std Stmt Archive Only Ny Hello");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+        }
+
+        public List<BorrowerModel> GetStdStmtArchiveOnlyNyHelloDallasRemitAddress(AccountsModel accountModel)
+        {
+            bool ClearedPreviousStatement = false;
+            List<BorrowerModel> lstBrw = new List<BorrowerModel>();
+            try
+            {
+                //Logger.Trace("STARTED:  Execute to Get Std Stmt Archive Only Ny Hello");
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPreviousStatement = false;
+                    lstBrw = GetStdStmtArchiveOnlyNyHelloDvl(accountModel);
+                    return lstBrw;
+                }
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"
+                && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"
+                && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"
+                && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"
+                && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+               && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+               && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+               && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+               && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+               && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+               && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+               && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+               && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+               && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+               && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+               && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"
+               && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"
+                && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+               && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+               && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+               || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+               && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+               && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+               && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+               && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+               && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+               && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+               && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+               && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+               && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"
+               && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                 && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                 && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                 && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"
+                 && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"
+                && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"
+                && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
                 //Logger.Trace("ENDED:  To Get Std Stmt Archive Only Ny Hello");
             }
             catch (Exception ex)
@@ -2059,6 +3168,291 @@ namespace CarringtonMortgage.OptionAssignment
             }
             return lstBrw;
         }
+
+        public List<BorrowerModel> GetStdStmtArchiveOnlyNyHelloDvlDallasRemitAddress(AccountsModel accountModel)
+        {
+            bool ClearedPreviousStatement = false;
+            List<BorrowerModel> lstBrw = new List<BorrowerModel>();
+            try
+            {
+                //Logger.Trace("STARTED:  Execute to Get Std Stmt Archive Only Ny Hello Dvl");
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPreviousStatement = false;
+                    lstBrw = GetStdStmtArchiveOnlyNyDvl(accountModel);
+                    return lstBrw;
+                }
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"
+                && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                   && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                   && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                   && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                   && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                   && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                   && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"
+                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                    && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                    && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                    || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                    && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                    && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                    && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                    && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                    && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"
+                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                     && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                     && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                     || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                     && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                     && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                     && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"
+                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                    && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                    && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                    || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                    && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                    && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                    && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                    && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                    && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"
+                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                     && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                     && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                     || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                     && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                     && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                     && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"
+                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                    && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                    && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                    || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                    && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                    && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                    && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                    && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                    && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"
+                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                   && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                   && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                   && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                   && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                   && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                   && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"
+                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                   && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                   && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                   && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                   && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                   && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                   && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"
+                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                   && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                   && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                   && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                   && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                   && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                   && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"
+                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+                //Logger.Trace("ENDED:  To Get Std Stmt Archive Only Ny Hello Dvl");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+        }
+
         public List<BorrowerModel> GetStdStmtArchiveOnlyNyDvl(AccountsModel accountModel)
         {
             bool ClearedPreviousStatement = false;
@@ -2300,6 +3694,293 @@ namespace CarringtonMortgage.OptionAssignment
             }
             return lstBrw;
         }
+
+        public List<BorrowerModel> GetStdStmtArchiveOnlyNyDvlDallasRemitAddress(AccountsModel accountModel)
+        {
+            bool ClearedPreviousStatement = false;
+            List<BorrowerModel> lstBrw = new List<BorrowerModel>();
+            try
+            {
+                //Logger.Trace("STARTED:  Execute to Get Std Stmt Archive Only Ny Dvl");
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPreviousStatement = false;
+                    lstBrw = GetStdStmtNyAndHelloLetter(accountModel);
+                    return lstBrw;
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"
+                && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                    && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                    && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                    || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                    && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                    && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                    && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                    && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                    && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"
+                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                    && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                    && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                    || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                    && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                    && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                    && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                    && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                    && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"
+                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                     && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                     && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                     || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                     && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                     && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                     && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"
+                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                     && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                     && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                     || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                     && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                     && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                     && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"
+                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                    && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                    && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                    || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                    && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                    && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                    && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                    && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                    && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"
+                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                   && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                   && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                   && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                   && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                   && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                   && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                   && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"
+                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                     && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                     && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                     || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                     && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                     && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                     && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"
+                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                    && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                    && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                    || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                    && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                    && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                    && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                    && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                    && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                    && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"
+                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                     && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                     && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                     || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                     && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                     && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                     && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"
+                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+                //Logger.Trace("ENDED:  To Get Std Stmt Archive Only Ny Dvl");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+        }
+
         public List<BorrowerModel> GetStdStmtNyAndHelloLetter(AccountsModel accountModel)
         {
             bool ClearedPreviousStatement = false;
@@ -2528,6 +4209,280 @@ namespace CarringtonMortgage.OptionAssignment
             }
             return lstBrw;
         }
+
+        public List<BorrowerModel> GetStdStmtNyAndHelloLetterDallasRemitAddress(AccountsModel accountModel)
+        {
+            bool ClearedPreviousStatement = false;
+            List<BorrowerModel> lstBrw = new List<BorrowerModel>();
+            try
+            {
+                //Logger.Trace("STARTED:  Execute to Get Std Stmt Ny And Hello Letter");
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPreviousStatement = false;
+                    lstBrw = GetStdStmtNyAndHelloDvlLetter(accountModel);
+                    return lstBrw;
+                }
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A"
+                && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A"
+                && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A"
+                && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                  && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A"
+                  && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                  && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                  && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A"
+                  && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                  && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                 && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A"
+                 && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                 && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                 && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A"
+                 && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                 && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A"
+                && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                 && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A"
+                 && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                 && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A"
+                && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+                //Logger.Trace("ENDED:  To Get Std Stmt Ny And Hello Letter");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+        }
+
         public List<BorrowerModel> GetStdStmtNyAndHelloDvlLetter(AccountsModel accountModel)
         {
             bool ClearedPreviousStatement = false;
@@ -2757,6 +4712,281 @@ namespace CarringtonMortgage.OptionAssignment
             }
             return lstBrw;
         }
+
+        public List<BorrowerModel> GetStdStmtNyAndHelloDvlLetterDallasRemitAddress(AccountsModel accountModel)
+        {
+            bool ClearedPreviousStatement = false;
+            List<BorrowerModel> lstBrw = new List<BorrowerModel>();
+            try
+            {
+                //Logger.Trace("STARTED:  Execute To Get Std Stmt Ny And Hello Dvl Letter");
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPreviousStatement = false;
+                    lstBrw = GetStdStmtNyAndDvlLetter(accountModel);
+                    return lstBrw;
+                }
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                 && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A"
+                 && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                 && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                  && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A"
+                  && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                  && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                  && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A"
+                  && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                  && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                  && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A"
+                  && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                  && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                  && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A"
+                  && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                  && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                  && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A"
+                  && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                  && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                  && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A"
+                  && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                  && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                  && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A"
+                  && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                  && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                   && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                   && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                   && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                   && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A"
+                   && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                   && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                   && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                 && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A"
+                 && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                 && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+                //Logger.Trace("ENDED:  To Get Std Stmt Ny And Hello Dvl Letter");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+        }
+
         public List<BorrowerModel> GetStdStmtNyAndDvlLetter(AccountsModel accountModel)
         {
             bool ClearedPreviousStatement = false;
@@ -2985,6 +5215,280 @@ namespace CarringtonMortgage.OptionAssignment
             }
             return lstBrw;
         }
+
+        public List<BorrowerModel> GetStdStmtNyAndDvlLetterDallasRemitAddress(AccountsModel accountModel)
+        {
+            bool ClearedPreviousStatement = false;
+            List<BorrowerModel> lstBrw = new List<BorrowerModel>();
+            try
+            {
+                //Logger.Trace("STARTED:  Execute To Get Std Smt Ny And Dvl Letter");
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+                else
+                {
+                    ClearedPreviousStatement = false;
+                    lstBrw = GetStdBkChpt7StmtPrimary(accountModel);
+                    return lstBrw;
+                }
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A"
+                && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                  && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A"
+                  && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                  && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                 && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A"
+                 && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                 && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                 && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A"
+                 && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                 && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                  && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A"
+                  && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                  && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                  && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A"
+                  && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                  && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                 && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A"
+                 && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                 && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                    && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                    && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                    || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                    && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                    && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                    && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                    && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A"
+                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                    && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                    && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A"
+                && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+
+                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                  || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                  && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A"
+                  && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+                  && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL" && (mailingState.Any(m => m == "KS")
+                || mailingState.Any(m => m == "LA")
+                || mailingState.Any(m => m == "NM")
+                || mailingState.Any(m => m == "OK")
+                || mailingState.Any(m => m == "TX")))
+                {
+                    ClearedPreviousStatement = true;
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                }
+
+                //Logger.Trace("ENDED:  To Get Std Smt Ny And Dvl Letter");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.TargetSite.Name);
+                throw;
+            }
+            return lstBrw;
+        }
+
         public List<BorrowerModel> GetStdBkChpt7StmtPrimary(AccountsModel accountModel)
         {
             bool ClearedPreviousStatement = false;
