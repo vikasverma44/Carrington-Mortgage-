@@ -2425,7 +2425,7 @@ namespace CarringtonService.BusinessExpert
                 Rssi_Usr_144 = PackedTypeCheckAndUnPackData("Rssi_Usr_144", currentByte, 909, 15),
                 Rssi_Usr_145 = PackedTypeCheckAndUnPackData("Rssi_Usr_145", currentByte, 924, 15),
 
-                Rssi_Usr_146 = PackedTypeCheckAndUnPackData("Rssi_Usr_146", currentByte, 939, 0),
+                Rssi_Usr_146 = PackedTypeCheckAndUnPackData("Rssi_Usr_146", currentByte, 939, 15),
                 Rssi_Usr_147 = PackedTypeCheckAndUnPackData("Rssi_Usr_147", currentByte, 954, 15),
 
                 Rssi_Usr_148 = PackedTypeCheckAndUnPackData("Rssi_Usr_148", currentByte, 969, 15),
