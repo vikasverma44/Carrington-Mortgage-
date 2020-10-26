@@ -1052,11 +1052,11 @@ namespace CarringtonService.BillingStatements
             {
                 //Logger.Trace("STARTED:  Execute to Get PO Box Address");
 
-                if (accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "KS"
-                      || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "LA"
-                      || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "NM"
-                      || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "OK"
-                      || accountsModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 == "TX")
+                if (mailingState.Any(m => m == "KS")
+                   || mailingState.Any(m => m == "LA")
+                   || mailingState.Any(m => m == "NM")
+                   || mailingState.Any(m => m == "OK")
+                   || mailingState.Any(m => m == "TX"))
                 {
                     PoBoxAddress = "PO Box 660586 Dallas, " + mailingAddress + " 75266-0586";
                 }
