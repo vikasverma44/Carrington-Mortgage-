@@ -165,8 +165,8 @@ namespace CarringtonService.BusinessExpert
 
 
                         //For Raw Data
-                        line = GetRawData(extractAccount);
-                        account.AddCustomerRecord(FormatCustomer.BuildRecord("RAW", primaryIndex, line));
+                        //line = GetRawData(extractAccount);
+                        //account.AddCustomerRecord(FormatCustomer.BuildRecord("RAW", primaryIndex, line));
 
                         //Get all the data from input file and create Raw data rows
                         BuildPMRawData(extractAccount, account, primaryIndex);
