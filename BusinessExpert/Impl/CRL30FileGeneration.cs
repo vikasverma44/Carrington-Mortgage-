@@ -15,6 +15,7 @@ using CarringtonMortgage.Models.InputCopyBookModels;
 using System.Collections.Generic;
 using System.Reflection;
 using CarringtonMortgage.Models;
+using System.Diagnostics;
 
 namespace CarringtonService.BusinessExpert
 {
@@ -129,7 +130,7 @@ namespace CarringtonService.BusinessExpert
                     var primaryIndex = 1;
                     var line = new StringBuilder();
                     int counter = 0;
-                    foreach (var extractAccount in mortgageLoanBillingFileModel.AccountModelList)//.Where(x => x.MasterFileDataPart_1Model.Rssi_Acct_No == "0001184300"))
+                    foreach (var extractAccount in mortgageLoanBillingFileModel.AccountModelList)//.Where(x => x.MasterFileDataPart_1Model.Rssi_Acct_No == "0000714479"))
                     {
                         counter++;
                         Logger.Info("Account records extracting...: " + counter);
@@ -169,7 +170,7 @@ namespace CarringtonService.BusinessExpert
                         //account.AddCustomerRecord(FormatCustomer.BuildRecord("RAW", primaryIndex, line));
 
                         //Get all the data from input file and create Raw data rows
-                        BuildPMRawData(extractAccount, account, primaryIndex);
+                        //BuildPMRawData(extractAccount, account, primaryIndex);
 
                         // Check the account for bankrupcy 
                         bool isBankrupt = string.IsNullOrEmpty(extractAccount.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) ? true : false;
@@ -178,15 +179,27 @@ namespace CarringtonService.BusinessExpert
                             //Assigning Flex fields for Primary borrower
                             //borrowerList = StatementType.GetPrimaryStandardStatement(extractAccount);
                             borrowerList = StatementType.GetRejectA07(extractAccount);
-                            if (borrowerList.Count > 0)
+                        if (borrowerList.Count > 0)
+                        {
+                            
+                            List<string> flexField1 = borrowerList.FirstOrDefault()?.FlexField1.Split('(').ToList();
+                            if (flexField1.Count > 1)
+                            {
+                                account.Standard.FlexField1 = flexField1[1].Replace(")","").Trim();
+                            }
+                            else
                             {
                                 account.Standard.FlexField1 = borrowerList.FirstOrDefault()?.FlexField1;
-                                account.Standard.FlexField2 = borrowerList.FirstOrDefault()?.FlexField2;
-                                account.Standard.FlexField3 = borrowerList.FirstOrDefault()?.FlexField3;
-                                account.Standard.FlexField4 = borrowerList.FirstOrDefault()?.FlexField4;
-                                account.Standard.FlexField5 = borrowerList.FirstOrDefault()?.FlexField5;
-                                account.Standard.FlexField6 = borrowerList.FirstOrDefault()?.FlexField6;
                             }
+                            
+                            account.Standard.FlexField2 = borrowerList.FirstOrDefault()?.FlexField2;
+                            account.Standard.FlexField3 = borrowerList.FirstOrDefault()?.FlexField3;
+                            account.Standard.FlexField4 = borrowerList.FirstOrDefault()?.FlexField4;
+                            account.Standard.FlexField5 = borrowerList.FirstOrDefault()?.FlexField5;
+                            account.Standard.FlexField6 = borrowerList.FirstOrDefault()?.FlexField6;
+                            
+                      
+                        }
 
 
                             account.Standard.SSN = extractAccount.MasterFileDataPart_1Model.Rssi_Primary_Social_Sec;
@@ -210,6 +223,7 @@ namespace CarringtonService.BusinessExpert
                             account.Standard.FormattedAccount = extractAccount.MasterFileDataPart_1Model.Rssi_Acct_No;
                             account.Standard.TwoDRecordCode = 3;
 
+                           
 
                             lineCnt++;
                             line.Clear();
@@ -217,44 +231,55 @@ namespace CarringtonService.BusinessExpert
                             {
                             if (!borrowerList.FirstOrDefault().isReject)
                             {
+                                var flexField1Val = string.Empty;
+                                List<string> flexField1 = borrowerList.FirstOrDefault()?.FlexField1.Split('(').ToList();
+                                if (flexField1.Count > 1)
+                                {
+                                    flexField1Val = flexField1[0].Trim();
+                                }
+                                else
+                                {
+                                    flexField1Val = borrowerList.FirstOrDefault()?.FlexField1;
+                                }
                                 //Get Statement based on the Flex fields for account
                                 switch (borrowerList.FirstOrDefault()?.FlexField2)
                                 {
+                                    
 
                                     //For Chapter 7 Option ARM Statement
                                     case "A07":
                                         line = ChapterSevenOptionARMStatement.GetFinalChapterSevenOptionARMStatement(extractAccount);
-                                        account.AddCustomerRecord(FormatCustomer.BuildRecord("A07", primaryIndex, line));
+                                        account.AddCustomerRecord(FormatCustomer.BuildRecord("A07", primaryIndex, line.Append("|"+ flexField1Val)));
                                         break;
 
                                     //For Chapter 13 Option ARM Statement
                                     case "A13":
                                         line = ChapterThirteenOptionARMStatement.GetFinalChapterThirteenOptionARMStatement(extractAccount);
-                                        account.AddCustomerRecord(FormatCustomer.BuildRecord("A13", primaryIndex, line));
+                                        account.AddCustomerRecord(FormatCustomer.BuildRecord("A13", primaryIndex, line.Append("|" + flexField1Val)));
                                         break;
 
                                     //For Option ARM Billing  Statement
                                     case "ARM":
                                         line = OptionARMBillingStatement.GetFinalOptionARMBillingStatement(extractAccount);
-                                        account.AddCustomerRecord(FormatCustomer.BuildRecord("ARM", primaryIndex, line));
+                                        account.AddCustomerRecord(FormatCustomer.BuildRecord("ARM", primaryIndex, line.Append("|" + flexField1Val)));
                                         break;
 
                                     //For Chapter 7 Billing Statement
                                     case "S07":
                                         line = ChapterSevenBillingStatement.GetFinalChapterSevenBillingStatement(extractAccount);
-                                        account.AddCustomerRecord(FormatCustomer.BuildRecord("S07", primaryIndex, line));
+                                        account.AddCustomerRecord(FormatCustomer.BuildRecord("S07", primaryIndex, line.Append("|" + flexField1Val)));
                                         break;
 
                                     //For Chapter 13 Billing Statement
                                     case "S13":
                                         line = ChapterThirteenBillingStatement.GetFinalChapterThirteenBillingStatement(extractAccount);
-                                        account.AddCustomerRecord(FormatCustomer.BuildRecord("S13", primaryIndex, line));
+                                        account.AddCustomerRecord(FormatCustomer.BuildRecord("S13", primaryIndex, line.Append("|" + flexField1Val)));
                                         break;
 
                                     //For Standard Billing Statement
                                     case "STD":
                                         line = StandardBillingStatement.GetFinalStringStandardBilling(extractAccount);
-                                        account.AddCustomerRecord(FormatCustomer.BuildRecord("STD", primaryIndex, line));
+                                        account.AddCustomerRecord(FormatCustomer.BuildRecord("STD", primaryIndex, line.Append("|" + flexField1Val)));
                                         break;
                                     default:
                                         break;
@@ -293,13 +318,23 @@ namespace CarringtonService.BusinessExpert
 
                         if (borrowerList.Count > 0 && extractAccount.CoBorrowerRecordModel.Rssi_Acct_No != null)
                         {
+                            
                             //Add records for Co-Borrower Section 
                             foreach (var borrower in borrowerList)
                             {
                                 if (borrower.DistinctAdditionalRecord)
                                 {
                                     //Setting FlexFields according to co-borrower conditions
-                                    account.Standard.FlexField1 = borrower.FlexField1;
+                                    //account.Standard.FlexField1 = borrower.FlexField1.Split('(')[1].Replace(")", "").ToString();
+                                    List<string> flexField1 = borrower.FlexField1.Split('(').ToList();
+                                    if (flexField1.Count > 1)
+                                    {
+                                        account.Standard.FlexField1 = flexField1[1].Replace(")", "").Trim();
+                                    }
+                                    else
+                                    {
+                                        account.Standard.FlexField1 = borrower.FlexField1;
+                                    }
                                     account.Standard.FlexField2 = borrower.FlexField2;
                                     account.Standard.FlexField3 = borrower.FlexField3;
                                     account.Standard.FlexField4 = borrower.FlexField4;
@@ -307,7 +342,7 @@ namespace CarringtonService.BusinessExpert
                                     account.Standard.FlexField6 = borrower.FlexField6;
 
                                         switch (borrower.FlexField2)
-                                        {
+                                        { 
                                             //For Chapter 7 Option ARM Statement
                                             case "A07":
                                                 //Set Mailing address according to the conditions
@@ -394,7 +429,7 @@ namespace CarringtonService.BusinessExpert
 
                                             //For Standard Billing Statement
                                             case "STD":
-                                                //Set Mailing address according to the conditions
+                                            //Set Mailing address according to the conditions
                                                 account.Standard.OriginalAddressLine1 = StandardBillingStatement.GetPrimaryBorrower(extractAccount, true);
                                                 account.Standard.OriginalAddressLine2 = StandardBillingStatement.GetMailingAddressLine2(extractAccount, true);
                                                 string STD_cityStateZip = StandardBillingStatement.GetMailingCityStateZip(extractAccount, true);
@@ -421,7 +456,6 @@ namespace CarringtonService.BusinessExpert
 
 
                                     account.SequenceTransactions();
-
                                     output.AddAccount(account);
                                     primaryIndex++;//TODO: Need to check this when this task is complete                          
                                 }

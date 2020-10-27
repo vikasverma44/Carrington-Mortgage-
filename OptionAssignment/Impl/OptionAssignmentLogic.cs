@@ -147,11 +147,12 @@ namespace CarringtonMortgage.OptionAssignment
 
         #endregion
 
+
         #region STD Statement
 
         public List<BorrowerModel> GetPrimaryStandardStatement(AccountsModel accountModel)
         {
-            
+
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get Primary Standard Statement");
@@ -177,7 +178,7 @@ namespace CarringtonMortgage.OptionAssignment
                 // );
 
 
-                
+
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
@@ -188,7 +189,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
                 {
                     isPrimary = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STD)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -209,7 +210,7 @@ namespace CarringtonMortgage.OptionAssignment
 
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (STD)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -222,7 +223,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
                 && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A"))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (STD)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -237,7 +238,7 @@ namespace CarringtonMortgage.OptionAssignment
 
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (STD)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -250,7 +251,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
                 && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A"))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (STD)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -263,7 +264,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
                 && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A"))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (STD)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -276,7 +277,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
                 && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A"))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (STD)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -289,7 +290,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
                 && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A"))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (STD)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -302,7 +303,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
                 && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A"))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (STD)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -314,9 +315,9 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13"
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
                 && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A"))
-               
+
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "m", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (STD)", FlexField2 = "m", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -330,7 +331,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
                 && (accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A"))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (STD)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 if (isPrimary)
                 {
@@ -348,7 +349,7 @@ namespace CarringtonMortgage.OptionAssignment
 
         public List<BorrowerModel> GetPrimaryStandardStatementDallasRemitAddress(AccountsModel accountModel)
         {
-           
+
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get Primary Standard Statement");
@@ -367,7 +368,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDDallas)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -390,7 +391,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "OK")
                 || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (STDDallas)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -408,7 +409,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "OK")
                 || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (STDDallas)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -426,7 +427,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "OK")
                 || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (STDDallas)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -444,7 +445,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "OK")
                 || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (STDDallas)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -462,7 +463,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "OK")
                 || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (STDDallas)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -480,7 +481,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "OK")
                 || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (STDDallas)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -498,7 +499,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "OK")
                 || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (STDDallas)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -516,7 +517,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "OK")
                 || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (STDDallas)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -534,7 +535,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "OK")
                 || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (STDDallas)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -553,7 +554,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "OK")
                 || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (STDDallas)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 //Logger.Trace("ENDED:  To Get Primary Standard Statement");
@@ -568,7 +569,7 @@ namespace CarringtonMortgage.OptionAssignment
 
         public List<BorrowerModel> GetStdStmtPrimaryForeign(AccountsModel accountModel)
         {
-            
+
             try
             {
                 bool isPrimary = false;
@@ -585,7 +586,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"))
                 {
                     isPrimary = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDForeign)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -606,7 +607,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (STDForeign)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -621,7 +622,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (STDForeign)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -637,7 +638,7 @@ namespace CarringtonMortgage.OptionAssignment
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (STDForeign)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -652,7 +653,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (STDForeign)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -668,7 +669,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (STDForeign)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -684,7 +685,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (STDForeign)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -700,7 +701,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (STDForeign)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -716,7 +717,7 @@ namespace CarringtonMortgage.OptionAssignment
                       && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (STDForeign)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -732,7 +733,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (STDForeign)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -747,7 +748,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (STDForeign)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 if (isPrimary)
                 {
@@ -783,7 +784,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDForDal)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -805,7 +806,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "OK")
                 || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (STDForDal)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -823,7 +824,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "OK")
                 || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (STDForDal)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -842,7 +843,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "OK")
                 || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (STDForDal)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -860,7 +861,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "OK")
                 || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (STDForDal)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -879,7 +880,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "OK")
                 || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (STDForDal)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -898,7 +899,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "OK")
                 || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (STDForDal)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -917,7 +918,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "OK")
                 || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (STDForDal)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -936,7 +937,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "OK")
                 || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (STDForDal)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -955,7 +956,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "OK")
                 || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (STDForDal)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -973,7 +974,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "OK")
                 || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (STDForDal)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 //Logger.Trace("ENDED:  To Get Std Stmt Primary Foreign");
@@ -988,7 +989,7 @@ namespace CarringtonMortgage.OptionAssignment
 
         public List<BorrowerModel> GetStdStmtEDeliveryArchiveCopy1(AccountsModel accountModel)
         {
-            
+
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get Std Stmt EDelivery Archive Copy1");
@@ -1008,7 +1009,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.EConsentModel.EConsentFlag == "Y")
                 {
                     isPrimary = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDEArc)", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -1031,7 +1032,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.EConsentModel.EConsentFlag == "Y")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (STDEMail)", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -1047,7 +1048,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.EConsentModel.EConsentFlag == "Y")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (STDEMail)", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -1064,7 +1065,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && accountModel.EConsentModel.EConsentFlag == "Y")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (STDEMail)", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -1081,7 +1082,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && accountModel.EConsentModel.EConsentFlag == "Y")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (STDEMail)", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -1098,7 +1099,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && accountModel.EConsentModel.EConsentFlag == "Y")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (STDEMail)", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -1115,7 +1116,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && accountModel.EConsentModel.EConsentFlag == "Y")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (STDEMail)", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -1131,7 +1132,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.EConsentModel.EConsentFlag == "Y")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (STDEMail)", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -1148,7 +1149,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.EConsentModel.EConsentFlag == "Y")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (STDEMail)", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -1165,7 +1166,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && accountModel.EConsentModel.EConsentFlag == "Y")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (STDEMail)", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -1182,7 +1183,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.EConsentModel.EConsentFlag == "Y")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (STDEMail)", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 if (isPrimary)
                 {
@@ -1220,7 +1221,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDEArcDal)", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -1245,7 +1246,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (STDEMailDal)", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -1265,7 +1266,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (STDEMailDal)", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -1286,7 +1287,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (STDEMailDal)", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -1307,7 +1308,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (STDEMailDal)", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -1328,7 +1329,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (STDEMailDal)", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -1349,7 +1350,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (STDEMailDal)", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -1369,7 +1370,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (STDEMailDal)", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -1390,7 +1391,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (STDEMailDal)", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -1411,7 +1412,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (STDEMailDal)", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -1432,7 +1433,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (STDEMailDal)", FlexField2 = "STD", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 //Logger.Trace("ENDED:  To Get Std Stmt EDelivery Archive Copy1");
@@ -1448,7 +1449,7 @@ namespace CarringtonMortgage.OptionAssignment
         public List<BorrowerModel> GetStdStmtArchiveOnly(AccountsModel accountModel)
         {
 
-           
+
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get Std Stmt Archive Only");
@@ -1465,7 +1466,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H")
                 {
                     isPrimary = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDArc)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -1486,7 +1487,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (STDArc)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -1502,7 +1503,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (STDArc)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -1517,7 +1518,7 @@ namespace CarringtonMortgage.OptionAssignment
                && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (STDArc)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -1533,7 +1534,7 @@ namespace CarringtonMortgage.OptionAssignment
                && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (STDArc)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -1549,7 +1550,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (STDArc)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -1564,7 +1565,7 @@ namespace CarringtonMortgage.OptionAssignment
                && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (STDArc)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -1580,7 +1581,7 @@ namespace CarringtonMortgage.OptionAssignment
               && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (STDArc)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -1595,7 +1596,7 @@ namespace CarringtonMortgage.OptionAssignment
               && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (STDArc)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -1610,7 +1611,7 @@ namespace CarringtonMortgage.OptionAssignment
                && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (STDArc)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -1626,7 +1627,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (STDArc)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 if (isPrimary)
                 {
@@ -1663,7 +1664,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDArcDal)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -1686,7 +1687,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (STDArcDal)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -1706,7 +1707,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (STDArcDal)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -1725,7 +1726,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (STDArcDal)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -1745,7 +1746,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (STDArcDal)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -1765,7 +1766,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (STDArcDal)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -1784,7 +1785,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (STDArcDal)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -1804,7 +1805,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (STDArcDal)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -1823,7 +1824,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (STDArcDal)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -1842,7 +1843,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (STDArcDal)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -1862,7 +1863,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (STDArcDal)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 //Logger.Trace("ENDED:  To Get Std Stmt Archive Only");
@@ -1877,7 +1878,7 @@ namespace CarringtonMortgage.OptionAssignment
         public List<BorrowerModel> GetStdStmtArchiveOnlyNy(AccountsModel accountModel)
         {
 
-            
+
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get Std Stmt Archive Only Ny");
@@ -1899,7 +1900,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 {
                     isPrimary = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDArcNY)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -1924,7 +1925,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (STDArcNY)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -1944,7 +1945,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (STDArcNY)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -1963,7 +1964,7 @@ namespace CarringtonMortgage.OptionAssignment
              && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (STDArcNY)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -1983,7 +1984,7 @@ namespace CarringtonMortgage.OptionAssignment
              && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (STDArcNY)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -2002,7 +2003,7 @@ namespace CarringtonMortgage.OptionAssignment
               && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (STDArcNY)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -2022,7 +2023,7 @@ namespace CarringtonMortgage.OptionAssignment
              && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (STDArcNY)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -2041,7 +2042,7 @@ namespace CarringtonMortgage.OptionAssignment
               && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (STDArcNY)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -2061,7 +2062,7 @@ namespace CarringtonMortgage.OptionAssignment
               && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (STDArcNY)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -2080,7 +2081,7 @@ namespace CarringtonMortgage.OptionAssignment
                && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (STDArcNY)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -2100,7 +2101,7 @@ namespace CarringtonMortgage.OptionAssignment
               && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (STDArcNY)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 if (isPrimary)
                 {
@@ -2142,7 +2143,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 {
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDArcNYDal)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -2169,7 +2170,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (STDArcNYDal)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -2193,7 +2194,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (STDArcNYDal)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -2216,7 +2217,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (STDArcNYDal)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -2240,7 +2241,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (STDArcNYDal)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -2263,7 +2264,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (STDArcNYDal)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -2287,7 +2288,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (STDArcNYDal)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -2310,7 +2311,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (STDArcNYDal)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -2334,7 +2335,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (STDArcNYDal)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -2357,7 +2358,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (STDArcNYDal)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -2381,7 +2382,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (STDArcNYDal)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 //Logger.Trace("ENDED:  To Get Std Stmt Archive Only Ny");
@@ -2397,7 +2398,7 @@ namespace CarringtonMortgage.OptionAssignment
         public List<BorrowerModel> GetStdStmtArchiveOnlyNyHello(AccountsModel accountModel)
         {
 
-           
+
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get Std Stmt Archive Only Ny Hello");
@@ -2418,7 +2419,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                 {
                     isPrimary = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDArcNYHell)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -2442,7 +2443,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (STDArcNYHell)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -2462,7 +2463,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (STDArcNYHell)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -2482,7 +2483,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (STDArcNYHell)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -2502,7 +2503,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (STDArcNYHell)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -2522,7 +2523,7 @@ namespace CarringtonMortgage.OptionAssignment
                && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (STDArcNYHell)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -2542,7 +2543,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (STDArcNYHell)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -2562,7 +2563,7 @@ namespace CarringtonMortgage.OptionAssignment
                && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (STDArcNYHell)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -2582,7 +2583,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (STDArcNYHell)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -2601,7 +2602,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (STDArcNYHell)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -2621,7 +2622,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (STDArcNYHell)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 if (isPrimary)
                 {
@@ -2664,7 +2665,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDArNYHelDa)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -2690,7 +2691,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (STDArNYHelDa)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -2714,7 +2715,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (STDArNYHelDa)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -2738,7 +2739,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (STDArNYHelDa)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -2762,7 +2763,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (STDArNYHelDa)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -2786,7 +2787,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (STDArNYHelDa)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -2810,7 +2811,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (STDArNYHelDa)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -2834,7 +2835,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (STDArNYHelDa)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -2858,7 +2859,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (STDArNYHelDa)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -2881,7 +2882,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (STDArNYHelDa)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -2905,7 +2906,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (STDArNYHelDa)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 //Logger.Trace("ENDED:  To Get Std Stmt Archive Only Ny Hello");
@@ -2920,7 +2921,7 @@ namespace CarringtonMortgage.OptionAssignment
         public List<BorrowerModel> GetStdStmtArchiveOnlyNyHelloDvl(AccountsModel accountModel)
         {
 
-           
+
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get Std Stmt Archive Only Ny Hello Dvl"); 
@@ -2941,7 +2942,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
                     isPrimary = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDArNYHeDVL)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -2966,7 +2967,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (STDArNYHeDVL)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -2986,7 +2987,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (STDArNYHeDVL)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -3006,7 +3007,7 @@ namespace CarringtonMortgage.OptionAssignment
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (STDArNYHeDVL)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -3026,7 +3027,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (STDArNYHeDVL)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -3046,7 +3047,7 @@ namespace CarringtonMortgage.OptionAssignment
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (STDArNYHeDVL)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -3066,7 +3067,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (STDArNYHeDVL)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -3086,7 +3087,7 @@ namespace CarringtonMortgage.OptionAssignment
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (STDArNYHeDVL)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -3106,7 +3107,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (STDArNYHeDVL)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -3126,7 +3127,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (STDArNYHeDVL)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -3146,7 +3147,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (STDArNYHeDVL)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 if (isPrimary)
                 {
@@ -3187,7 +3188,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDANYHeDVLD)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -3214,7 +3215,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (STDANYHeDVLD)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -3238,7 +3239,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (STDANYHeDVLD)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -3262,7 +3263,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (STDANYHeDVLD)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -3286,7 +3287,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (STDANYHeDVLD)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -3310,7 +3311,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (STDANYHeDVLD)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -3334,11 +3335,11 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (STDANYHeDVLD)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
-                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                    if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                     && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
                     && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
                     || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
@@ -3356,85 +3357,85 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "NM")
                 || mailingState.Any(m => m == "OK")
                 || mailingState.Any(m => m == "TX")))
-                {
+                    {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (STDANYHeDVLD)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    }
+
+
+                    if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                       && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                       && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                       || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                       && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                       && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                       && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                       && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                       && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                       && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
+                       && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                       && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                       && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"
+                       && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                    || mailingState.Any(m => m == "LA")
+                    || mailingState.Any(m => m == "NM")
+                    || mailingState.Any(m => m == "OK")
+                    || mailingState.Any(m => m == "TX")))
+                    {
+
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (STDANYHeDVLD)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    }
+
+
+                    if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                       && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                       && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                       || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                       && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                       && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                       && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                       && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                       && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                       && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
+                       && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                       && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                       && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"
+                       && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                    || mailingState.Any(m => m == "LA")
+                    || mailingState.Any(m => m == "NM")
+                    || mailingState.Any(m => m == "OK")
+                    || mailingState.Any(m => m == "TX")))
+                    {
+
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (STDANYHeDVLD)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    }
+
+
+                    if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+                       && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+                       && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
+                       || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
+                       && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
+                       && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
+                       && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
+                       && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
+                       && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+                       && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
+                       && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+                       && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+                       && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"
+                       && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
+                    || mailingState.Any(m => m == "LA")
+                    || mailingState.Any(m => m == "NM")
+                    || mailingState.Any(m => m == "OK")
+                    || mailingState.Any(m => m == "TX")))
+                    {
+
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (STDANYHeDVLD)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    }
+
+                    //Logger.Trace("ENDED:  To Get Std Stmt Archive Only Ny Hello Dvl");
                 }
-
-
-                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                   && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
-                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
-                   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
-                   && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
-                   && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
-                   && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
-                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
-                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
-                   && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
-                   && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"
-                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
-                || mailingState.Any(m => m == "LA")
-                || mailingState.Any(m => m == "NM")
-                || mailingState.Any(m => m == "OK")
-                || mailingState.Any(m => m == "TX")))
-                {
-
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
-                }
-
-
-                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                   && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
-                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
-                   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
-                   && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
-                   && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
-                   && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
-                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
-                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
-                   && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
-                   && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"
-                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
-                || mailingState.Any(m => m == "LA")
-                || mailingState.Any(m => m == "NM")
-                || mailingState.Any(m => m == "OK")
-                || mailingState.Any(m => m == "TX")))
-                {
-
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
-                }
-
-
-                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                   && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
-                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O"))
-                   || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "07"
-                   && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "11"
-                   && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "12"
-                   && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap != "13")
-                   && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")))
-                   && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
-                   && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                   && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
-                   && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
-                   && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"
-                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A" && (mailingState.Any(m => m == "KS")
-                || mailingState.Any(m => m == "LA")
-                || mailingState.Any(m => m == "NM")
-                || mailingState.Any(m => m == "OK")
-                || mailingState.Any(m => m == "TX")))
-                {
-
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
-                }
-
-                //Logger.Trace("ENDED:  To Get Std Stmt Archive Only Ny Hello Dvl");
-            }
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.TargetSite.Name);
@@ -3446,7 +3447,7 @@ namespace CarringtonMortgage.OptionAssignment
         public List<BorrowerModel> GetStdStmtArchiveOnlyNyDvl(AccountsModel accountModel)
         {
 
-           
+
             try
             {
                 //Logger.Trace("STARTED:  Execute to Get Std Stmt Archive Only Ny Dvl");
@@ -3467,7 +3468,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                 {
                     isPrimary = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDArcNYDVL)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -3493,7 +3494,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (STDArcNYDVL)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -3513,7 +3514,7 @@ namespace CarringtonMortgage.OptionAssignment
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (STDArcNYDVL)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -3533,7 +3534,7 @@ namespace CarringtonMortgage.OptionAssignment
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (STDArcNYDVL)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -3553,7 +3554,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (STDArcNYDVL)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -3573,7 +3574,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (STDArcNYDVL)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -3593,7 +3594,7 @@ namespace CarringtonMortgage.OptionAssignment
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (STDArcNYDVL)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -3613,7 +3614,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (STDArcNYDVL)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -3633,7 +3634,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (STDArcNYDVL)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -3653,7 +3654,7 @@ namespace CarringtonMortgage.OptionAssignment
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (STDArcNYDVL)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -3673,7 +3674,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (STDArcNYDVL)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 if (isPrimary)
                 {
@@ -3715,7 +3716,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDArNYDVLDa)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 //else
                 //{
@@ -3745,7 +3746,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (STDArNYDVLDa)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -3769,7 +3770,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (STDArNYDVLDa)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -3793,7 +3794,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (STDArNYDVLDa)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -3817,7 +3818,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (STDArNYDVLDa)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -3841,7 +3842,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (STDArNYDVLDa)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -3865,7 +3866,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (STDArNYDVLDa)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -3889,7 +3890,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (STDArNYDVLDa)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -3913,7 +3914,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (STDArNYDVLDa)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -3937,7 +3938,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (STDArNYDVLDa)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -3961,7 +3962,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (STDArNYDVLDa)", FlexField2 = "STD", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 //Logger.Trace("ENDED:  To Get Std Stmt Archive Only Ny Dvl");
@@ -3977,7 +3978,7 @@ namespace CarringtonMortgage.OptionAssignment
         public List<BorrowerModel> GetStdStmtNyAndHelloLetter(AccountsModel accountModel)
         {
 
-            
+
             try
             {
 
@@ -3998,7 +3999,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDNYHello)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -4023,7 +4024,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (STDNYHello)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -4042,7 +4043,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (STDNYHello)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -4060,7 +4061,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (STDNYHello)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -4079,7 +4080,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (STDNYHello)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -4098,7 +4099,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (STDNYHello)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -4116,7 +4117,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (STDNYHello)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -4135,7 +4136,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (STDNYHello)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -4154,7 +4155,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (STDNYHello)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -4173,7 +4174,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (STDNYHello)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -4192,7 +4193,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (STDNYHello)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 if (isPrimary)
                 {
@@ -4232,7 +4233,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDNYHellDal)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 //else
                 //{
@@ -4261,7 +4262,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (STDNYHellDal)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -4284,7 +4285,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (STDNYHellDal)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -4306,7 +4307,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (STDNYHellDal)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -4329,7 +4330,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (STDNYHellDal)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -4352,7 +4353,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (STDNYHellDal)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -4374,7 +4375,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (STDNYHellDal)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -4397,7 +4398,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (STDNYHellDal)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -4420,7 +4421,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (STDNYHellDal)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -4443,7 +4444,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (STDNYHellDal)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -4466,7 +4467,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (STDNYHellDal)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 //Logger.Trace("ENDED:  To Get Std Stmt Ny And Hello Letter");
@@ -4482,7 +4483,7 @@ namespace CarringtonMortgage.OptionAssignment
         public List<BorrowerModel> GetStdStmtNyAndHelloDvlLetter(AccountsModel accountModel)
         {
 
-            
+
             try
             {
                 //Logger.Trace("STARTED:  Execute To Get Std Stmt Ny And Hello Dvl Letter");
@@ -4502,7 +4503,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDNYHellDVL)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -4526,7 +4527,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (STDNYHellDVL)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -4545,7 +4546,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (STDNYHellDVL)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -4563,7 +4564,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (STDNYHellDVL)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -4582,7 +4583,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (STDNYHellDVL)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -4601,7 +4602,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (STDNYHellDVL)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -4620,7 +4621,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (STDNYHellDVL)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -4639,7 +4640,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (STDNYHellDVL)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -4658,7 +4659,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (STDNYHellDVL)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -4677,7 +4678,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (STDNYHellDVL)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -4696,7 +4697,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (STDNYHellDVL)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 if (isPrimary)
                 {
@@ -4736,7 +4737,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDNYHelDVLD)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 //else
                 //{
@@ -4764,7 +4765,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (STDNYHelDVLD)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -4787,7 +4788,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (STDNYHelDVLD)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -4809,7 +4810,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (STDNYHelDVLD)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -4832,7 +4833,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (STDNYHelDVLD)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -4855,7 +4856,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (STDNYHelDVLD)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -4878,7 +4879,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (STDNYHelDVLD)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -4901,7 +4902,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (STDNYHelDVLD)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -4924,7 +4925,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (STDNYHelDVLD)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -4947,7 +4948,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (STDNYHelDVLD)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -4970,7 +4971,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (STDNYHelDVLD)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 //Logger.Trace("ENDED:  To Get Std Stmt Ny And Hello Dvl Letter");
@@ -4986,7 +4987,7 @@ namespace CarringtonMortgage.OptionAssignment
         public List<BorrowerModel> GetStdStmtNyAndDvlLetter(AccountsModel accountModel)
         {
 
-            
+
             try
             {
                 //Logger.Trace("STARTED:  Execute To Get Std Smt Ny And Dvl Letter");
@@ -5006,7 +5007,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDNYDVL)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -5030,7 +5031,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (STDNYDVL)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -5049,7 +5050,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (STDNYDVL)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -5068,7 +5069,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (STDNYDVL)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -5087,7 +5088,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (STDNYDVL)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -5106,7 +5107,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (STDNYDVL)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -5125,7 +5126,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (STDNYDVL)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -5144,7 +5145,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (STDNYDVL)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -5162,7 +5163,7 @@ namespace CarringtonMortgage.OptionAssignment
                     && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (STDNYDVL)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -5181,7 +5182,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (STDNYDVL)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -5200,7 +5201,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (STDNYDVL)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 if (isPrimary)
                 {
@@ -5242,7 +5243,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDNYDVLDal)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 //else
                 //{
@@ -5270,7 +5271,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (STDNYDVLDal)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -5293,7 +5294,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (STDNYDVLDal)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -5316,7 +5317,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (STDNYDVLDal)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -5339,7 +5340,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (STDNYDVLDal)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -5362,7 +5363,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (STDNYDVLDal)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -5385,7 +5386,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (STDNYDVLDal)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -5408,7 +5409,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (STDNYDVLDal)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -5430,7 +5431,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (STDNYDVLDal)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -5453,7 +5454,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (STDNYDVLDal)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -5476,7 +5477,7 @@ namespace CarringtonMortgage.OptionAssignment
                 || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (STDNYDVLDal)", FlexField2 = "STD", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 //Logger.Trace("ENDED:  To Get Std Smt Ny And Dvl Letter");
@@ -5494,7 +5495,7 @@ namespace CarringtonMortgage.OptionAssignment
         #region S07 Statement
         public List<BorrowerModel> GetStdBkChpt7StmtPrimary(AccountsModel accountModel)
         {
-            
+
             try
             {
                 //Logger.Trace("STARTED:  Execute To Get Std Bk Chpt 7 Stmt Primary");
@@ -5510,9 +5511,9 @@ namespace CarringtonMortgage.OptionAssignment
                   && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B")
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDCh7)", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
-                
+
 
                 if (lstBrw.Count == 0 && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
@@ -5523,9 +5524,9 @@ namespace CarringtonMortgage.OptionAssignment
                  && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDCh7)", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
-               
+
                 if (lstBrw.Count == 0)
                 {
                     if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -5538,7 +5539,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDCh7)", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -5554,11 +5555,11 @@ namespace CarringtonMortgage.OptionAssignment
                         && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")) : false))
                         && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y")
                     {
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDCh7)", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
-                    
+
                 }
-                if(ClearedPreviousStatement)
+                if (ClearedPreviousStatement)
                 {
                     GetStdBkChpt7StmtPrimaryDallasRemitAddress(accountModel);
                 }
@@ -5590,7 +5591,7 @@ namespace CarringtonMortgage.OptionAssignment
                     ClearedPreviousStatement = true;
                     lstCount = 1;
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDCh7Dal)", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -5608,7 +5609,7 @@ namespace CarringtonMortgage.OptionAssignment
                     }
                     lstCount = 1;
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDCh7Dal)", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0)
@@ -5624,7 +5625,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         lstBrw.Clear();
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDCh7Dal)", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -5639,7 +5640,7 @@ namespace CarringtonMortgage.OptionAssignment
                         && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")) : false))
                         && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y")
                     {
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDCh7Dal)", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
 
                 }
@@ -5654,7 +5655,7 @@ namespace CarringtonMortgage.OptionAssignment
         }
         public List<BorrowerModel> GetStdBkChpt7StmtPrimaryForeign(AccountsModel accountModel)
         {
-           
+
             try
             {
                 //Logger.Trace("STARTED:  Execute To Get Std Bk Chpt 7 Stmt Primary Foreign");
@@ -5670,7 +5671,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDCh7For)", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstBrw.Count == 0 && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -5683,7 +5684,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDCh7For)", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstBrw.Count == 0)
@@ -5699,7 +5700,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDCh7For)", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -5716,7 +5717,7 @@ namespace CarringtonMortgage.OptionAssignment
                     && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
                     && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")
                     {
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDCh7For)", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
                 if (ClearedPreviousStatement)
@@ -5735,7 +5736,7 @@ namespace CarringtonMortgage.OptionAssignment
 
         public List<BorrowerModel> GetStdBkChpt7StmtPrimaryForeignDallasRemitAddress(AccountsModel accountModel)
         {
-            
+
 
             try
             {
@@ -5758,7 +5759,7 @@ namespace CarringtonMortgage.OptionAssignment
                     ClearedPreviousStatement = true;
                     lstCount = 1;
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDCh7ForDal)", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0 && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -5780,7 +5781,7 @@ namespace CarringtonMortgage.OptionAssignment
                     }
                     lstCount = 1;
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDCh7ForDal)", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0)
@@ -5801,7 +5802,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         ClearedPreviousStatement = true;
                         lstBrw.Clear();
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDCh7ForDal)", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -5821,7 +5822,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                     {
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDCh7ForDal)", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
                 //Logger.Trace("ENDED:  To Get Std Bk Chpt 7 Stmt Primary Foreign");
@@ -5835,7 +5836,7 @@ namespace CarringtonMortgage.OptionAssignment
         }
         public List<BorrowerModel> GetStdBkChpt7StmtArchiveOnlyPrimary(AccountsModel accountModel)
         {
-            
+
             try
             {
                 //Logger.Trace("STARTED:  Execute To Get Std Bk Chpt 7 Stmt Archive Only Primary");
@@ -5852,7 +5853,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDCh7Arc)", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 if (lstBrw.Count == 0 && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
@@ -5865,7 +5866,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDCh7Arc)", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 if (lstBrw.Count == 0)
                 {
@@ -5879,7 +5880,7 @@ namespace CarringtonMortgage.OptionAssignment
                     && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H")
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDCh7Arc)", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -5897,7 +5898,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y")
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDCh7Arc)", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -5921,7 +5922,7 @@ namespace CarringtonMortgage.OptionAssignment
 
         public List<BorrowerModel> GetStdBkChpt7StmtArchiveOnlyPrimaryDallasRemitAddress(AccountsModel accountModel)
         {
-           
+
 
             try
             {
@@ -5945,7 +5946,7 @@ namespace CarringtonMortgage.OptionAssignment
                     lstBrw.Clear();
                     lstCount = 1;
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDCh7ArcDal)", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 if (lstCount == 0 && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
@@ -5967,7 +5968,7 @@ namespace CarringtonMortgage.OptionAssignment
                     }
                     lstCount = 1;
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDCh7ArcDal)", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 if (lstCount == 0)
                 {
@@ -5986,7 +5987,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         ClearedPreviousStatement = true;
                         lstBrw.Clear();
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDCh7ArcDal)", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -6007,7 +6008,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDCh7ArcDal)", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -6028,7 +6029,7 @@ namespace CarringtonMortgage.OptionAssignment
         public List<BorrowerModel> GetStdBkChpt7StmtArchiveOnlyNy(AccountsModel accountModel) //TOD0:Revisit Again
         {
 
-            
+
             try
             {
                 //Logger.Trace("STARTED:  Execute To Get Std Bk Chpt 7 Stmt Archive Only Ny");
@@ -6055,10 +6056,10 @@ namespace CarringtonMortgage.OptionAssignment
                     lstBrw = GetStdBkChpt7StmtArchiveOnlyNyPrimary(accountModel);
                     return lstBrw;
                 }
-                if (ClearedPreviousStatement)
-                {
-                    GetStdBkChpt7StmtArchiveOnlyNyDallasRemitAddress(accountModel);
-                }
+                //if (ClearedPreviousStatement)
+                //{
+                //    GetStdBkChpt7StmtArchiveOnlyNyDallasRemitAddress(accountModel);
+                //}
                 //Logger.Trace("ENDED:  To Get Std Bk Chpt 7 Stmt Archive Only Ny");
             }
             catch (Exception ex)
@@ -6069,46 +6070,46 @@ namespace CarringtonMortgage.OptionAssignment
             return lstBrw;
         }
 
-        public List<BorrowerModel> GetStdBkChpt7StmtArchiveOnlyNyDallasRemitAddress(AccountsModel accountModel) //TOD0:Revisit Again
-        {
-            try
-            {
-                //Logger.Trace("STARTED:  Execute To Get Std Bk Chpt 7 Stmt Archive Only Ny");
-                if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                 && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
-                 && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData == "0000000"))
-                 || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") ? (((accountModel.UserFieldRecordModel.Rssi_Usr_93.Trim() == "7")
-                    || (accountModel.UserFieldRecordModel.Rssi_Usr_93.Trim() == "11")
-                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")) : false))
-                 && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
-                 && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
-                 && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
-                 && !CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No) && (mailingState.Any(m => m == "KS")
-                    || mailingState.Any(m => m == "LA")
-                    || mailingState.Any(m => m == "NM")
-                    || mailingState.Any(m => m == "OK")
-                    || mailingState.Any(m => m == "TX")))
-                {
-                    lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
-                }
-                else
-                {
-                    return lstBrw;
-                }
-                //Logger.Trace("ENDED:  To Get Std Bk Chpt 7 Stmt Archive Only Ny");
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, ex.TargetSite.Name);
-                throw;
-            }
-            return lstBrw;
-        }
+        //public List<BorrowerModel> GetStdBkChpt7StmtArchiveOnlyNyDallasRemitAddress(AccountsModel accountModel) //TOD0:Revisit Again
+        //{
+        //    try
+        //    {
+        //        //Logger.Trace("STARTED:  Execute To Get Std Bk Chpt 7 Stmt Archive Only Ny");
+        //        if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+        //         && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
+        //         && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData == "0000000"))
+        //         || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") ? (((accountModel.UserFieldRecordModel.Rssi_Usr_93.Trim() == "7")
+        //            || (accountModel.UserFieldRecordModel.Rssi_Usr_93.Trim() == "11")
+        //            && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")) : false))
+        //         && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+        //         && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+        //         && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+        //         && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+        //         && !CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No) && (mailingState.Any(m => m == "KS")
+        //            || mailingState.Any(m => m == "LA")
+        //            || mailingState.Any(m => m == "NM")
+        //            || mailingState.Any(m => m == "OK")
+        //            || mailingState.Any(m => m == "TX")))
+        //        {
+        //            lstBrw.Clear();
+        //            lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+        //        }
+        //        else
+        //        {
+        //            return lstBrw;
+        //        }
+        //        //Logger.Trace("ENDED:  To Get Std Bk Chpt 7 Stmt Archive Only Ny");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Logger.Error(ex, ex.TargetSite.Name);
+        //        throw;
+        //    }
+        //    return lstBrw;
+        //}
         public List<BorrowerModel> GetStdBkChpt7StmtArchiveOnlyNyPrimary(AccountsModel accountModel)
         {
-           
+
             try
             {
                 //Logger.Trace("STARTED:  Execute To Get Std Bk Chpt 7 Stmt Archive Only Ny Primary");
@@ -6127,7 +6128,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDCh7ArcNY)", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstBrw.Count == 0 && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -6143,7 +6144,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDCh7ArcNY)", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstBrw.Count == 0)
@@ -6162,7 +6163,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDCh7ArcNY)", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -6183,7 +6184,7 @@ namespace CarringtonMortgage.OptionAssignment
                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y")
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDCh7ArcNY)", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -6207,7 +6208,7 @@ namespace CarringtonMortgage.OptionAssignment
 
         public List<BorrowerModel> GetStdBkChpt7StmtArchiveOnlyNyPrimaryDallasRemitAddress(AccountsModel accountModel)
         {
-            
+
 
             try
             {
@@ -6233,7 +6234,7 @@ namespace CarringtonMortgage.OptionAssignment
                     ClearedPreviousStatement = true;
                     lstCount = 1;
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDCh7ArNYDa)", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0 && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -6258,7 +6259,7 @@ namespace CarringtonMortgage.OptionAssignment
                     }
                     lstCount = 1;
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDCh7ArNYDa)", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0)
@@ -6282,7 +6283,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         ClearedPreviousStatement = true;
                         lstBrw.Clear();
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDCh7ArNYDa)", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -6306,7 +6307,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDCh7ArNYDa)", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -6325,7 +6326,7 @@ namespace CarringtonMortgage.OptionAssignment
         }
         public List<BorrowerModel> GetStdBkChpt7StmtArchiveOnlyNyHelloPrimary(AccountsModel accountModel)
         {
-            
+
             try
             {
                 //Logger.Trace("STARTED:  Execute To Get Std Bk Chpt7 Stmt Archive Only Ny Hello Primary"); 
@@ -6346,7 +6347,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDCh7ArNYHe)", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -6364,7 +6365,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDCh7ArNYHe)", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstBrw.Count == 0)
@@ -6383,7 +6384,7 @@ namespace CarringtonMortgage.OptionAssignment
                     && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDCh7ArNYHe)", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -6405,15 +6406,15 @@ namespace CarringtonMortgage.OptionAssignment
                     && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDCh7ArNYHe)", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
                         ClearedPreviousStatement = false;
                         return lstBrw;
                     }
-                   
-                } 
+
+                }
                 if (ClearedPreviousStatement)
                 {
                     GetStdBkChpt7StmtArchiveOnlyNyHelloPrimaryDallasRemitAddress(accountModel);
@@ -6430,7 +6431,7 @@ namespace CarringtonMortgage.OptionAssignment
 
         public List<BorrowerModel> GetStdBkChpt7StmtArchiveOnlyNyHelloPrimaryDallasRemitAddress(AccountsModel accountModel)
         {
-           
+
 
             try
             {
@@ -6458,7 +6459,7 @@ namespace CarringtonMortgage.OptionAssignment
                     ClearedPreviousStatement = true;
                     lstCount = 1;
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDCh7ArNYHD)", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -6485,7 +6486,7 @@ namespace CarringtonMortgage.OptionAssignment
                     }
                     lstCount = 1;
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDCh7ArNYHD)", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0)
@@ -6509,7 +6510,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         ClearedPreviousStatement = true;
                         lstBrw.Clear();
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDCh7ArNYHD)", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -6534,7 +6535,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDCh7ArNYHD)", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -6553,7 +6554,7 @@ namespace CarringtonMortgage.OptionAssignment
         }
         public List<BorrowerModel> GetStdBkChpt7StmtArchiveOnlyNyHelloDvlPrimary(AccountsModel accountModel)
         {
-            
+
             try
             {
                 //Logger.Trace("STARTED:  Execute To Get Std Bk Chpt7 Stmt Archive Only Ny Hello Dvl Primary"); 
@@ -6574,7 +6575,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDCh7ANYHDV)", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -6592,7 +6593,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDCh7ANYHDV)", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstBrw.Count == 0)
@@ -6612,7 +6613,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDCh7ANYHDV)", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -6634,7 +6635,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDCh7ANYHDV)", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -6657,7 +6658,7 @@ namespace CarringtonMortgage.OptionAssignment
         }
         public List<BorrowerModel> GetStdBkChpt7StmtArchiveOnlyNyHelloDvlPrimaryDallasRemitAddress(AccountsModel accountModel)
         {
-            
+
 
             try
             {
@@ -6685,7 +6686,7 @@ namespace CarringtonMortgage.OptionAssignment
                     ClearedPreviousStatement = true;
                     lstCount = 1;
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDCh7ANYHDD)", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -6712,7 +6713,7 @@ namespace CarringtonMortgage.OptionAssignment
                     }
                     lstCount = 1;
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDCh7ANYHDD)", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0)
@@ -6737,7 +6738,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         ClearedPreviousStatement = true;
                         lstBrw.Clear();
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDCh7ANYHDD)", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -6762,7 +6763,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDCh7ANYHDD)", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -6781,7 +6782,7 @@ namespace CarringtonMortgage.OptionAssignment
         }
         public List<BorrowerModel> GetStdBkChpt7StmtArchiveOnlyNyDvlPrimary(AccountsModel accountModel)
         {
-            
+
             try
             {
                 //Logger.Trace("STARTED:  Execute To Get Std Bk Chpt 7 Stmt Archive Only Ny Dvl Primary"); 
@@ -6802,7 +6803,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDCh7ANYDVL)", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstBrw.Count == 0 && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -6819,7 +6820,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDCh7ANYDVL)", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstBrw.Count == 0)
@@ -6839,7 +6840,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDCh7ANYDVL)", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -6861,7 +6862,7 @@ namespace CarringtonMortgage.OptionAssignment
                       && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDCh7ANYDVL)", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -6884,7 +6885,7 @@ namespace CarringtonMortgage.OptionAssignment
         }
         public List<BorrowerModel> GetStdBkChpt7StmtArchiveOnlyNyDvlPrimaryDallasRemitAddress(AccountsModel accountModel)
         {
-            
+
 
             try
             {
@@ -6912,7 +6913,7 @@ namespace CarringtonMortgage.OptionAssignment
                     ClearedPreviousStatement = true;
                     lstCount = 1;
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDCh7ANYDVD)", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0 && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -6938,7 +6939,7 @@ namespace CarringtonMortgage.OptionAssignment
                     }
                     lstCount = 1;
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDCh7ANYDVD)", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0)
@@ -6963,7 +6964,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         ClearedPreviousStatement = true;
                         lstBrw.Clear();
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDCh7ANYDVD)", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -6988,7 +6989,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDCh7ANYDVD)", FlexField2 = "S07", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -7007,7 +7008,7 @@ namespace CarringtonMortgage.OptionAssignment
         }
         public List<BorrowerModel> GetStdBkChpt7StmtNyAndHelloLetterPrimary(AccountsModel accountModel)
         {
-          
+
             try
             {
                 //Logger.Trace("STARTED:  Execute To Get Std Bk Chpt 7 Stmt Ny And Hello Letter Primary"); 
@@ -7026,7 +7027,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDCh7NYHell)", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -7043,7 +7044,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDCh7NYHell)", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstBrw.Count == 0)
@@ -7062,7 +7063,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDCh7NYHell)", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -7083,7 +7084,7 @@ namespace CarringtonMortgage.OptionAssignment
                       && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDCh7NYHell)", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -7108,7 +7109,7 @@ namespace CarringtonMortgage.OptionAssignment
 
         public List<BorrowerModel> GetStdBkChpt7StmtNyAndHelloLetterPrimaryDallasRemitAddress(AccountsModel accountModel)
         {
-           
+
 
             try
             {
@@ -7134,7 +7135,7 @@ namespace CarringtonMortgage.OptionAssignment
                     ClearedPreviousStatement = true;
                     lstCount = 1;
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDCh7NYHeDa)", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -7160,7 +7161,7 @@ namespace CarringtonMortgage.OptionAssignment
                     }
                     lstCount = 1;
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDCh7NYHeDa)", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0)
@@ -7184,7 +7185,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         ClearedPreviousStatement = true;
                         lstBrw.Clear();
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDCh7NYHeDa)", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -7208,7 +7209,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDCh7NYHeDa)", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -7227,12 +7228,12 @@ namespace CarringtonMortgage.OptionAssignment
         }
         public List<BorrowerModel> GetStdBkChpt7StmtNyAndHelloDvlLetterPrimary(AccountsModel accountModel)
         {
-         
+
             try
             {
                 //Logger.Trace("STARTED:  Execute To Get Std Bk Chpt 7 Stmt Ny And Hello Dvl Letter Primary"); 
-   bool ClearedPreviousStatement = false;
-            lstBrw = new List<BorrowerModel>();
+                bool ClearedPreviousStatement = false;
+                lstBrw = new List<BorrowerModel>();
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
              && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
              && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData == "0000000"))
@@ -7247,9 +7248,9 @@ namespace CarringtonMortgage.OptionAssignment
 
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDCh7NYHDVL)", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
- 
+
                 if (lstBrw.Count == 0 && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
                  && (accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData == "0000000"))
@@ -7263,7 +7264,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDCh7NYHDVL)", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstBrw.Count == 0)
@@ -7282,7 +7283,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDCh7NYHDVL)", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -7303,7 +7304,7 @@ namespace CarringtonMortgage.OptionAssignment
                       && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDCh7NYHDVL)", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -7326,7 +7327,7 @@ namespace CarringtonMortgage.OptionAssignment
         }
         public List<BorrowerModel> GetStdBkChpt7StmtNyAndHelloDvlLetterPrimaryDallasRemitAddress(AccountsModel accountModel)
         {
-            
+
 
             try
             {
@@ -7353,7 +7354,7 @@ namespace CarringtonMortgage.OptionAssignment
                     ClearedPreviousStatement = true;
                     lstCount = 1;
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDCh7NYHDVD)", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0 && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -7378,7 +7379,7 @@ namespace CarringtonMortgage.OptionAssignment
                     }
                     lstCount = 1;
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDCh7NYHDVD)", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0)
@@ -7402,7 +7403,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         ClearedPreviousStatement = true;
                         lstBrw.Clear();
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDCh7NYHDVD)", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -7426,7 +7427,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDCh7NYHDVD)", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -7445,7 +7446,7 @@ namespace CarringtonMortgage.OptionAssignment
         }
         public List<BorrowerModel> GetStdBkChpt7StmtNyAndDvlLetterPrimary(AccountsModel accountModel)
         {
-            
+
             try
             {
                 //Logger.Trace("STARTED:  Execute To Get Std Bk Chpt 7 Stmt Ny And Dvl Letter Primary"); 
@@ -7466,7 +7467,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDCh7NYDVL)", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstBrw.Count == 0 && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -7482,7 +7483,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDCh7NYDVL)", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstBrw.Count == 0)
@@ -7501,7 +7502,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDCh7NYDVL)", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -7522,7 +7523,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDCh7NYDVL)", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -7546,7 +7547,7 @@ namespace CarringtonMortgage.OptionAssignment
 
         public List<BorrowerModel> GetStdBkChpt7StmtNyAndDvlLetterPrimaryDallasRemitAddress(AccountsModel accountModel)
         {
-            
+
 
             try
             {
@@ -7573,7 +7574,7 @@ namespace CarringtonMortgage.OptionAssignment
                     ClearedPreviousStatement = true;
                     lstCount = 1;
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDCh7NYDVDa)", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0 && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -7598,7 +7599,7 @@ namespace CarringtonMortgage.OptionAssignment
                     }
                     lstCount = 1;
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDCh7NYDVDa)", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0)
@@ -7622,7 +7623,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         ClearedPreviousStatement = true;
                         lstBrw.Clear();
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDCh7NYDVDa)", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -7646,7 +7647,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDCh7NYDVDa)", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -7654,7 +7655,7 @@ namespace CarringtonMortgage.OptionAssignment
                         return lstBrw;
                     }
                 }
-              
+
                 //Logger.Trace("ENDED:  To Get Std Bk Chpt 7 Stmt Ny And Dvl Letter Primary"); 
             }
             catch (Exception ex)
@@ -7683,7 +7684,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && accountModel.EConsentModel.EConsentFlag == "Y")
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S07", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDCh7EDArc)", FlexField2 = "S07", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -7698,9 +7699,9 @@ namespace CarringtonMortgage.OptionAssignment
                  && accountModel.EConsentModel.EConsentFlag == "Y")
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S07", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDCh7EDArc)", FlexField2 = "S07", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
-               
+
                 if (lstBrw.Count == 0)
                 {
                     if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
@@ -7715,7 +7716,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S07", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDCh7EDArc)", FlexField2 = "S07", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -7734,7 +7735,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && accountModel.EConsentModel.EConsentFlag == "Y")
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDCh7EDArc)", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -7780,7 +7781,7 @@ namespace CarringtonMortgage.OptionAssignment
                     ClearedPreviousStatement = true;
                     lstCount = 1;
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S07", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDCh7EDArDa)", FlexField2 = "S07", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -7804,7 +7805,7 @@ namespace CarringtonMortgage.OptionAssignment
                     }
                     lstCount = 1;
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S07", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDCh7EDArDa)", FlexField2 = "S07", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0)
@@ -7826,7 +7827,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         ClearedPreviousStatement = true;
                         lstBrw.Clear();
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S07", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDCh7EDArDa)", FlexField2 = "S07", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -7848,7 +7849,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDCh7EDArDa)", FlexField2 = "S07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -7881,7 +7882,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDCh13)", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
 
@@ -7891,7 +7892,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDCh13)", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
                 if (lstBrw.Count == 0)
@@ -7902,7 +7903,7 @@ namespace CarringtonMortgage.OptionAssignment
                     && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDCh13)", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -7917,7 +7918,7 @@ namespace CarringtonMortgage.OptionAssignment
                     && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDCh13)", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -7957,7 +7958,7 @@ namespace CarringtonMortgage.OptionAssignment
                     ClearedPreviousStatement = true;
                     lstCount = 1;
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDCh13Dal)", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -7976,7 +7977,7 @@ namespace CarringtonMortgage.OptionAssignment
                     }
                     lstCount = 1;
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDCh13Dal)", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0)
@@ -7992,7 +7993,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         ClearedPreviousStatement = true;
                         lstBrw.Clear();
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDCh13Dal)", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -8010,7 +8011,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDCh13Dal)", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -8040,7 +8041,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDCh13For)", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 if (lstBrw.Count == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
                  || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13")
@@ -8049,7 +8050,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDCh13For)", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 if (lstBrw.Count == 0)
                 {
@@ -8060,7 +8061,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDCh13For)", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -8075,7 +8076,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDCh13For)", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -8114,7 +8115,7 @@ namespace CarringtonMortgage.OptionAssignment
                     ClearedPreviousStatement = true;
                     lstCount = 1;
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDCh13ForDa)", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 if (lstCount == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
                  || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13")
@@ -8132,7 +8133,7 @@ namespace CarringtonMortgage.OptionAssignment
                         lstBrw.Clear();
                     }
                     lstCount = 1;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDCh13ForDa)", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 if (lstCount == 0)
                 {
@@ -8148,7 +8149,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         ClearedPreviousStatement = true;
                         lstBrw.Clear();
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDCh13ForDa)", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -8166,7 +8167,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDCh13ForDa)", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -8196,7 +8197,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDCh13Arc)", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 if (lstBrw.Count == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
                  || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13")
@@ -8205,7 +8206,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDCh13Arc)", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstBrw.Count == 0)
@@ -8217,7 +8218,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDCh13Arc)", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -8232,7 +8233,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDCh13Arc)", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -8272,7 +8273,7 @@ namespace CarringtonMortgage.OptionAssignment
                     ClearedPreviousStatement = true;
                     lstCount = 1;
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDCh13ArcDa)", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 if (lstCount == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
                  || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13")
@@ -8290,7 +8291,7 @@ namespace CarringtonMortgage.OptionAssignment
                     }
                     lstCount = 1;
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDCh13ArcDa)", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0)
@@ -8307,7 +8308,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         ClearedPreviousStatement = true;
                         lstBrw.Clear();
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDCh13ArcDa)", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -8325,7 +8326,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDCh13ArcDa)", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -8359,7 +8360,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No))))
                 {
                     lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
-                    GetStdBkChpt13StmtArchiveOnlyNyDallasRemitAddress(accountModel);
+                    //GetStdBkChpt13StmtArchiveOnlyNyDallasRemitAddress(accountModel);
                 }
                 else
                 {
@@ -8376,39 +8377,39 @@ namespace CarringtonMortgage.OptionAssignment
             return lstBrw;
         }
 
-        public List<BorrowerModel> GetStdBkChpt13StmtArchiveOnlyNyDallasRemitAddress(AccountsModel accountModel) //TOD0:Revisit Again
-        {
-            try
-            {
-                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
-                || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13")
-                && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
+        //public List<BorrowerModel> GetStdBkChpt13StmtArchiveOnlyNyDallasRemitAddress(AccountsModel accountModel) //TOD0:Revisit Again
+        //{
+        //    try
+        //    {
+        //        if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
+        //        || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13")
+        //        && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
 
-                && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
-               && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
-                && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
-                && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)) && (mailingState.Any(m => m == "KS")
-                   || mailingState.Any(m => m == "LA")
-                   || mailingState.Any(m => m == "NM")
-                   || mailingState.Any(m => m == "OK")
-                   || mailingState.Any(m => m == "TX")))
-                {
-                    lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
-                }
-                else
-                { 
-                    return lstBrw;
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, ex.TargetSite.Name);
-                throw;
-            }
-            return lstBrw;
-        }
+        //        && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+        //       && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
+        //        && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+        //        && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+        //        && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)) && (mailingState.Any(m => m == "KS")
+        //           || mailingState.Any(m => m == "LA")
+        //           || mailingState.Any(m => m == "NM")
+        //           || mailingState.Any(m => m == "OK")
+        //           || mailingState.Any(m => m == "TX")))
+        //        {
+        //            lstBrw.Clear();
+        //            lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+        //        }
+        //        else
+        //        { 
+        //            return lstBrw;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Logger.Error(ex, ex.TargetSite.Name);
+        //        throw;
+        //    }
+        //    return lstBrw;
+        //}
 
         public List<BorrowerModel> GetStdBkChpt13StmtArchiveOnlyNyPrimary(AccountsModel accountModel)
         {
@@ -8428,7 +8429,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDCh13ArcNY)", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstBrw.Count == 0 && (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
@@ -8442,7 +8443,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No))))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDCh13ArcNY)", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -8459,7 +8460,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No))))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDCh13ArcNY)", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -8478,7 +8479,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No))))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDCh13ArcNY)", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -8524,7 +8525,7 @@ namespace CarringtonMortgage.OptionAssignment
                     ClearedPreviousStatement = true;
                     lstCount = 1;
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDCh13ANYDa)", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
@@ -8547,7 +8548,7 @@ namespace CarringtonMortgage.OptionAssignment
                     }
                     lstCount = 1;
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDCh13ANYDa)", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -8569,7 +8570,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         ClearedPreviousStatement = true;
                         lstBrw.Clear();
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDCh13ANYDa)", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -8591,7 +8592,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDCh13ANYDa)", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -8613,8 +8614,8 @@ namespace CarringtonMortgage.OptionAssignment
           
             try
             {
-  bool ClearedPreviousStatement = false;
-            lstBrw = new List<BorrowerModel>();
+                bool ClearedPreviousStatement = false;
+                lstBrw = new List<BorrowerModel>();
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
                  || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13")
                  && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id != "O")
@@ -8626,7 +8627,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDCh13ArNYH)", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstBrw.Count == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
@@ -8640,7 +8641,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDCh13ArNYH)", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 
 
@@ -8657,7 +8658,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDCh13ArNYH)", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -8676,7 +8677,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDCh13ArNYH)", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -8720,7 +8721,7 @@ namespace CarringtonMortgage.OptionAssignment
                     ClearedPreviousStatement = true;
                     lstCount = 1;
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDCh13ANYHD)", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
@@ -8743,7 +8744,7 @@ namespace CarringtonMortgage.OptionAssignment
                     }
                     lstCount = 1;
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDCh13ANYHD)", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -8765,7 +8766,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         ClearedPreviousStatement = true;
                         lstBrw.Clear();
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDCh13ANYHD)", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -8787,7 +8788,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDCh13ANYHD)", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -8822,7 +8823,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDC13ANYHDV)", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstBrw.Count == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
@@ -8836,7 +8837,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDC13ANYHDV)", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
                 if (lstBrw.Count == 0)
@@ -8852,7 +8853,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDC13ANYHDV)", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -8871,7 +8872,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDC13ANYHDV)", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -8916,7 +8917,7 @@ namespace CarringtonMortgage.OptionAssignment
                     ClearedPreviousStatement = true;
                     lstCount = 1;
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDC13ANYHDD)", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
@@ -8939,7 +8940,7 @@ namespace CarringtonMortgage.OptionAssignment
                     }
                     lstCount = 1;
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDC13ANYHDD)", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0)
@@ -8960,7 +8961,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         ClearedPreviousStatement = true;
                         lstBrw.Clear();
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDC13ANYHDD)", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -8982,7 +8983,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDC13ANYHDD)", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -9016,7 +9017,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDCh13ANYDV)", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstBrw.Count == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
@@ -9030,7 +9031,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDCh13ANYDV)", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
               
                 if (lstBrw.Count == 0)
@@ -9046,7 +9047,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDCh13ANYDV)", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -9065,7 +9066,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDCh13ANYDV)", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -9111,7 +9112,7 @@ namespace CarringtonMortgage.OptionAssignment
                     ClearedPreviousStatement = true;
                     lstCount = 1;
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDCh13ANYDD)", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
@@ -9134,7 +9135,7 @@ namespace CarringtonMortgage.OptionAssignment
                     }
                     lstCount = 1;
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDCh13ANYDD)", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0)
@@ -9155,7 +9156,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         ClearedPreviousStatement = true;
                         lstBrw.Clear();
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDCh13ANYDD)", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -9177,7 +9178,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDCh13ANYDD)", FlexField2 = "S13", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -9211,7 +9212,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDCh13NYHel)", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstBrw.Count == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
@@ -9224,7 +9225,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDCh13NYHel)", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -9240,7 +9241,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDCh13NYHel)", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -9258,7 +9259,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDCh13NYHel)", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -9303,7 +9304,7 @@ namespace CarringtonMortgage.OptionAssignment
                     ClearedPreviousStatement = true;
                     lstCount = 1;
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDCh13NYHDa)", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
@@ -9325,7 +9326,7 @@ namespace CarringtonMortgage.OptionAssignment
                     }
                     lstCount = 1;
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDCh13NYHDa)", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -9346,7 +9347,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         ClearedPreviousStatement = true;
                         lstBrw.Clear();
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDCh13NYHDa)", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -9367,7 +9368,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDCh13NYHDa)", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -9401,7 +9402,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDCh13NYHDV)", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstBrw.Count == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
@@ -9414,7 +9415,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDCh13NYHDV)", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -9430,7 +9431,7 @@ namespace CarringtonMortgage.OptionAssignment
                       && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDCh13NYHDV)", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -9448,7 +9449,7 @@ namespace CarringtonMortgage.OptionAssignment
                       && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDCh13NYHDV)", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -9493,7 +9494,7 @@ namespace CarringtonMortgage.OptionAssignment
                     ClearedPreviousStatement = true;
                     lstCount = 1;
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDCh13NYHDD)", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
@@ -9515,7 +9516,7 @@ namespace CarringtonMortgage.OptionAssignment
                     }
                     lstCount = 1;
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDCh13NYHDD)", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -9536,7 +9537,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         ClearedPreviousStatement = true;
                         lstBrw.Clear();
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDCh13NYHDD)", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -9557,7 +9558,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDCh13NYHDD)", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -9591,7 +9592,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDCh13NYDVL)", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 if (lstBrw.Count == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
                  || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13")
@@ -9603,7 +9604,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDCh13NYDVL)", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -9619,7 +9620,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDCh13NYDVL)", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -9637,7 +9638,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDCh13NYDVL)", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -9681,7 +9682,7 @@ namespace CarringtonMortgage.OptionAssignment
                     ClearedPreviousStatement = true;
                     lstCount = 1;
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDCh13NYDVD)", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 if (lstCount == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
                  || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13")
@@ -9702,7 +9703,7 @@ namespace CarringtonMortgage.OptionAssignment
                     }
                     lstCount = 1;
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDCh13NYDVD)", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -9723,7 +9724,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         ClearedPreviousStatement = true;
                         lstBrw.Clear();
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDCh13NYDVD)", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -9744,7 +9745,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDCh13NYDVD)", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -9775,7 +9776,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && (accountModel.EConsentModel.EConsentFlag == "Y"))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S13", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDCh13EDArc)", FlexField2 = "S13", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstBrw.Count == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
@@ -9786,7 +9787,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && (accountModel.EConsentModel.EConsentFlag == "Y"))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S13", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDCh13EDArc)", FlexField2 = "S13", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstBrw.Count == 0)
@@ -9799,7 +9800,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && (accountModel.EConsentModel.EConsentFlag == "Y"))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S13", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDCh13EDArc)", FlexField2 = "S13", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -9815,7 +9816,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && (accountModel.EConsentModel.EConsentFlag == "Y"))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDCh13EDArc)", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -9858,7 +9859,7 @@ namespace CarringtonMortgage.OptionAssignment
                     ClearedPreviousStatement = true;
                     lstCount = 1;
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "S13", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (STDCh13EDArD)", FlexField2 = "S13", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
@@ -9878,7 +9879,7 @@ namespace CarringtonMortgage.OptionAssignment
                     }
                     lstCount = 1;
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "S13", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (STDCh13EDArD)", FlexField2 = "S13", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0)
@@ -9896,7 +9897,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         ClearedPreviousStatement = true;
                         lstBrw.Clear();
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "S13", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (STDCh13EDArD)", FlexField2 = "S13", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -9915,7 +9916,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (STDCh13EDArD)", FlexField2 = "S13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -9958,7 +9959,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 {
                     isPrimary = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARM)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -9980,7 +9981,7 @@ namespace CarringtonMortgage.OptionAssignment
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (ARM)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -10000,7 +10001,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A")
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (ARM)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -10018,7 +10019,7 @@ namespace CarringtonMortgage.OptionAssignment
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (ARM)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07")
@@ -10035,7 +10036,7 @@ namespace CarringtonMortgage.OptionAssignment
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (ARM)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07")
@@ -10052,7 +10053,7 @@ namespace CarringtonMortgage.OptionAssignment
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (ARM)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -10070,7 +10071,7 @@ namespace CarringtonMortgage.OptionAssignment
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (ARM)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -10088,7 +10089,7 @@ namespace CarringtonMortgage.OptionAssignment
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (ARM)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -10106,7 +10107,7 @@ namespace CarringtonMortgage.OptionAssignment
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (ARM)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07")
@@ -10123,7 +10124,7 @@ namespace CarringtonMortgage.OptionAssignment
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (ARM)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07")
@@ -10140,7 +10141,7 @@ namespace CarringtonMortgage.OptionAssignment
                     && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (ARM)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if(isPrimary)
@@ -10184,7 +10185,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 { 
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMDal)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -10209,7 +10210,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (ARMDal)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -10232,7 +10233,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (ARMDal)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -10254,7 +10255,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (ARMDal)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07")
@@ -10275,7 +10276,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (ARMDal)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07")
@@ -10296,7 +10297,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (ARMDal)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -10318,7 +10319,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (ARMDal)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -10340,7 +10341,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (ARMDal)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -10362,7 +10363,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (ARMDal)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07")
@@ -10383,7 +10384,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (ARMDal)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if ((((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07")
@@ -10404,7 +10405,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (ARMDal)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 //Logger.Trace("ENDED:    To get Option ARM Stmt Archive Only Ny");
@@ -10445,7 +10446,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 {
                     isPrimary = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMFor)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -10468,7 +10469,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "Y")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (ARMFor)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -10487,7 +10488,7 @@ namespace CarringtonMortgage.OptionAssignment
                     && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "Y")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (ARMFor)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -10506,7 +10507,7 @@ namespace CarringtonMortgage.OptionAssignment
                     && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "Y")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (ARMFor)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
               
 
@@ -10525,7 +10526,7 @@ namespace CarringtonMortgage.OptionAssignment
                     && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "Y")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (ARMFor)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
               
 
@@ -10544,7 +10545,7 @@ namespace CarringtonMortgage.OptionAssignment
                     && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "Y")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (ARMFor)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
 
@@ -10563,7 +10564,7 @@ namespace CarringtonMortgage.OptionAssignment
                     && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "Y")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (ARMFor)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
 
@@ -10582,7 +10583,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "Y")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (ARMFor)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -10600,7 +10601,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "Y")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (ARMFor)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -10618,7 +10619,7 @@ namespace CarringtonMortgage.OptionAssignment
                     && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "Y")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (ARMFor)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -10636,7 +10637,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "Y")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (ARMFor)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 if(isPrimary)
                 {
@@ -10678,7 +10679,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 {
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMForDal)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -10704,7 +10705,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (ARMForDal)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -10728,7 +10729,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (ARMForDal)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -10751,7 +10752,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (ARMForDal)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -10774,7 +10775,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (ARMForDal)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -10797,7 +10798,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (ARMForDal)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -10820,7 +10821,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (ARMForDal)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -10843,7 +10844,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (ARMForDal)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -10865,7 +10866,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (ARMForDal)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -10887,7 +10888,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (ARMForDal)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -10909,7 +10910,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (ARMForDal)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 //Logger.Trace("ENDED:    To get Option ARM Stmt Archive Only Ny");
@@ -10946,7 +10947,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 {
                     isPrimary = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMEDArc)", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -10969,7 +10970,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && (accountModel.EConsentModel.DocumentType == "Bill") && (accountModel.EConsentModel.EConsentFlag == "Y")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "Y")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (ARMEDArc)", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
 
@@ -10988,7 +10989,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && (accountModel.EConsentModel.DocumentType == "Bill") && (accountModel.EConsentModel.EConsentFlag == "Y")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "Y")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (ARMEDArc)", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
 
@@ -11007,7 +11008,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && (accountModel.EConsentModel.DocumentType == "Bill") && (accountModel.EConsentModel.EConsentFlag == "Y")
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "Y")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (ARMEDArc)", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -11025,7 +11026,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && (accountModel.EConsentModel.DocumentType == "Bill") && (accountModel.EConsentModel.EConsentFlag == "Y")
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "Y")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (ARMEDArc)", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
               
 
@@ -11044,7 +11045,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && (accountModel.EConsentModel.DocumentType == "Bill") && (accountModel.EConsentModel.EConsentFlag == "Y")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "Y")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (ARMEDArc)", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
               
 
@@ -11063,7 +11064,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && (accountModel.EConsentModel.DocumentType == "Bill") && (accountModel.EConsentModel.EConsentFlag == "Y")
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "Y")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (ARMEDArc)", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
 
@@ -11082,7 +11083,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && (accountModel.EConsentModel.DocumentType == "Bill") && (accountModel.EConsentModel.EConsentFlag == "Y")
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "Y")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (ARMEDArc)", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -11100,7 +11101,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && (accountModel.EConsentModel.DocumentType == "Bill") && (accountModel.EConsentModel.EConsentFlag == "Y")
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "Y")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (ARMEDArc)", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -11118,7 +11119,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && (accountModel.EConsentModel.DocumentType == "Bill") && (accountModel.EConsentModel.EConsentFlag == "Y")
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "Y")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (ARMEDArc)", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -11136,7 +11137,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && (accountModel.EConsentModel.DocumentType == "Bill") && (accountModel.EConsentModel.EConsentFlag == "Y")
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "Y")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (ARMEDArc)", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 
                 if(isPrimary)
@@ -11179,7 +11180,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 {
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMEDArcDal)", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -11205,7 +11206,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (ARMEDArcDal)", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -11228,7 +11229,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (ARMEDArcDal)", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -11251,7 +11252,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (ARMEDArcDal)", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -11273,7 +11274,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (ARMEDArcDal)", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -11296,7 +11297,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (ARMEDArcDal)", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -11319,7 +11320,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (ARMEDArcDal)", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -11342,7 +11343,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (ARMEDArcDal)", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -11364,7 +11365,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (ARMEDArcDal)", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -11386,7 +11387,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (ARMEDArcDal)", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -11408,7 +11409,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (ARMEDArcDal)", FlexField2 = "ARM", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 //Logger.Trace("ENDED:    To get Option ARM Stmt Archive Only Ny");
@@ -11445,7 +11446,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 {
                     isPrimary = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMArc)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -11469,7 +11470,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A"
                    )
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (ARMArc)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 
 
@@ -11490,7 +11491,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A"
                    )
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (ARMArc)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -11509,7 +11510,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A"
                    )
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (ARMArc)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -11528,7 +11529,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A"
                   )
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (ARMArc)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -11547,7 +11548,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A"
                   )
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (ARMArc)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 
 
@@ -11567,7 +11568,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A"
                   )
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (ARMArc)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -11586,7 +11587,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A"
                   )
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (ARMArc)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 
 
@@ -11606,7 +11607,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A"
                    )
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (ARMArc)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
              
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -11625,7 +11626,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A"
                    )
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (ARMArc)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -11644,7 +11645,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A"
                   )
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (ARMArc)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if(isPrimary)
@@ -11687,7 +11688,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 {
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMArcDal)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -11714,7 +11715,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (ARMArcDal)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -11739,7 +11740,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (ARMArcDal)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -11762,7 +11763,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (ARMArcDal)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -11785,7 +11786,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (ARMArcDal)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -11808,7 +11809,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (ARMArcDal)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -11832,7 +11833,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (ARMArcDal)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -11855,7 +11856,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (ARMArcDal)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -11879,7 +11880,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (ARMArcDal)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -11902,7 +11903,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (ARMArcDal)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -11925,7 +11926,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (ARMArcDal)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 //Logger.Trace("ENDED:    To get Option ARM Stmt Archive Only Ny");
@@ -11966,7 +11967,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 {
                     isPrimary = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMArcNY)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -11994,7 +11995,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A"
                    )
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (ARMArcNY)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
 
@@ -12018,7 +12019,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A"
                    )
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (ARMArcNY)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
               
 
@@ -12042,7 +12043,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A"
                   )
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (ARMArcNY)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 
 
@@ -12066,7 +12067,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A"
                    )
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (ARMArcNY)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 
 
@@ -12090,7 +12091,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A"
                   )
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (ARMArcNY)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
 
@@ -12114,7 +12115,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A"
                   )
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (ARMArcNY)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
 
@@ -12138,7 +12139,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A"
                   )
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (ARMArcNY)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
 
@@ -12162,7 +12163,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A"
                   )
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (ARMArcNY)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
               
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -12185,7 +12186,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A"
                   )
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (ARMArcNY)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
         
 
@@ -12209,7 +12210,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A"
                   )
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (ARMArcNY)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                if(isPrimary)
                 {
@@ -12255,7 +12256,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 {
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMArcNYDal)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -12286,7 +12287,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (ARMArcNYDal)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -12314,7 +12315,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (ARMArcNYDal)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -12342,7 +12343,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (ARMArcNYDal)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -12370,7 +12371,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (ARMArcNYDal)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -12398,7 +12399,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (ARMArcNYDal)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -12426,7 +12427,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (ARMArcNYDal)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -12454,7 +12455,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (ARMArcNYDal)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -12482,7 +12483,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (ARMArcNYDal)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -12510,7 +12511,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (ARMArcNYDal)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -12538,7 +12539,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (ARMArcNYDal)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 //Logger.Trace("ENDED:    To get Option ARM Stmt Archive Only Ny Hello");
@@ -12579,7 +12580,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 {
                     isPrimary = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMArcNYHell)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -12607,7 +12608,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A"
                    )
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (ARMArcNYHell)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 
 
@@ -12632,7 +12633,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A"
                    )
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (ARMArcNYHell)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 
 
@@ -12656,7 +12657,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A"
                    )
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (ARMArcNYHell)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
 
@@ -12679,7 +12680,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (ARMArcNYHell)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -12701,7 +12702,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (ARMArcNYHell)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 
 
@@ -12724,7 +12725,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (ARMArcNYHell)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
 
@@ -12747,7 +12748,7 @@ namespace CarringtonMortgage.OptionAssignment
                     && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (ARMArcNYHell)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
               
 
@@ -12770,7 +12771,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (ARMArcNYHell)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -12792,7 +12793,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (ARMArcNYHell)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
               
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -12814,7 +12815,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (ARMArcNYHell)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                if(isPrimary)
                 {
@@ -12860,7 +12861,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 {
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMArcNYHeDa)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -12892,7 +12893,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (ARMArcNYHeDa)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -12921,7 +12922,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (ARMArcNYHeDa)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -12950,7 +12951,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (ARMArcNYHeDa)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -12978,7 +12979,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                 {
    
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (ARMArcNYHeDa)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -13005,7 +13006,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                 {
        
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (ARMArcNYHeDa)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -13033,7 +13034,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                 {
           
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (ARMArcNYHeDa)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -13061,7 +13062,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                 {
             
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (ARMArcNYHeDa)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -13089,7 +13090,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                 {
             
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (ARMArcNYHeDa)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -13116,7 +13117,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                 {
            
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (ARMArcNYHeDa)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -13143,7 +13144,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                 {
            
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (ARMArcNYHeDa)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 //Logger.Trace("ENDED:    To get Option ARM Stmt Archive Only Ny Hello");
@@ -13184,7 +13185,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 {
                     isPrimary = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMArcNYHeDV)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -13211,7 +13212,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (ARMArcNYHeDV)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 
 
@@ -13235,7 +13236,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (ARMArcNYHeDV)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 
 
@@ -13258,7 +13259,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (ARMArcNYHeDV)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 
 
@@ -13281,7 +13282,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (ARMArcNYHeDV)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
 
@@ -13304,7 +13305,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (ARMArcNYHeDV)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 
 
@@ -13327,7 +13328,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (ARMArcNYHeDV)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 
 
@@ -13350,7 +13351,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (ARMArcNYHeDV)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 
 
@@ -13373,7 +13374,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (ARMArcNYHeDV)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -13395,7 +13396,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                   && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (ARMArcNYHeDV)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -13417,7 +13418,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (ARMArcNYHeDV)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 if(isPrimary)
                 {
@@ -13464,7 +13465,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 {
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMArNYHeDVD)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -13494,7 +13495,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (ARMArNYHeDVD)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -13522,7 +13523,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (ARMArNYHeDVD)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -13549,7 +13550,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (ARMArNYHeDVD)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -13577,7 +13578,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (ARMArNYHeDVD)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -13604,7 +13605,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (ARMArNYHeDVD)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -13631,7 +13632,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (ARMArNYHeDVD)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -13658,7 +13659,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (ARMArNYHeDVD)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -13685,7 +13686,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (ARMArNYHeDVD)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -13711,7 +13712,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (ARMArNYHeDVD)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -13737,7 +13738,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (ARMArNYHeDVD)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 //Logger.Trace("ENDED:    To get Option ARM Stmt Archive Only Ny Hello DVL");
@@ -13779,7 +13780,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 {
                     isPrimary = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMArcNYDVL)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -13806,7 +13807,7 @@ namespace CarringtonMortgage.OptionAssignment
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt == "A")
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (ARMArcNYDVL)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
 
@@ -13830,7 +13831,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr2_Bill_Stmnt == "A")
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (ARMArcNYDVL)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 
 
@@ -13854,7 +13855,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr3_Bill_Stmnt == "A")
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (ARMArcNYDVL)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -13877,7 +13878,7 @@ namespace CarringtonMortgage.OptionAssignment
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr4_Bill_Stmnt == "A")
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (ARMArcNYDVL)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -13900,7 +13901,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr5_Bill_Stmnt == "A")
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (ARMArcNYDVL)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -13923,7 +13924,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr6_Bill_Stmnt == "A")
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (ARMArcNYDVL)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -13946,7 +13947,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr7_Bill_Stmnt == "A")
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (ARMArcNYDVL)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -13969,7 +13970,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr8_Bill_Stmnt == "A")
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (ARMArcNYDVL)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
            
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -13992,7 +13993,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr9_Bill_Stmnt == "A")
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (ARMArcNYDVL)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -14015,7 +14016,7 @@ namespace CarringtonMortgage.OptionAssignment
                     && accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr10_Bill_Stmnt == "A")
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (ARMArcNYDVL)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 if(isPrimary)
                 {
@@ -14060,7 +14061,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 {
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMArNYDVLDa)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -14090,7 +14091,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (ARMArNYDVLDa)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -14118,7 +14119,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (ARMArNYDVLDa)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -14146,7 +14147,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (ARMArNYDVLDa)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -14173,7 +14174,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (ARMArNYDVLDa)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -14200,7 +14201,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (ARMArNYDVLDa)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -14227,7 +14228,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (ARMArNYDVLDa)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -14254,7 +14255,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (ARMArNYDVLDa)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -14281,7 +14282,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (ARMArNYDVLDa)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -14308,7 +14309,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (ARMArNYDVLDa)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -14335,7 +14336,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (ARMArNYDVLDa)", FlexField2 = "ARM", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 //Logger.Trace("ENDED:    To get Option ARM STMT ARCHIVE ONLY NY DVL");
@@ -14346,6 +14347,7 @@ namespace CarringtonMortgage.OptionAssignment
             }
             return lstBrw;
         }
+ 
         public List<BorrowerModel> GetOptionArmStmtNyandHelloLetter(AccountsModel accountModel)
         {
            
@@ -14374,7 +14376,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 {
                     isPrimary = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMNYHello)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -14401,7 +14403,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (ARMNYHello)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
 
@@ -14424,7 +14426,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (ARMNYHello)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -14446,7 +14448,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (ARMNYHello)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -14468,7 +14470,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (ARMNYHello)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -14490,7 +14492,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (ARMNYHello)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
               
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -14512,7 +14514,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (ARMNYHello)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -14534,7 +14536,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (ARMNYHello)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
               
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -14556,7 +14558,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (ARMNYHello)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -14578,7 +14580,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (ARMNYHello)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -14600,7 +14602,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (ARMNYHello)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 if(isPrimary)
                 {
@@ -14645,7 +14647,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 {
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMNYHellDa)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -14675,7 +14677,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (ARMNYHellDa)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -14702,7 +14704,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (ARMNYHellDa)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -14728,7 +14730,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (ARMNYHellDa)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -14754,7 +14756,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (ARMNYHellDa)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -14780,7 +14782,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (ARMNYHellDa)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -14806,7 +14808,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (ARMNYHellDa)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -14832,7 +14834,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (ARMNYHellDa)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -14858,7 +14860,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (ARMNYHellDa)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -14884,7 +14886,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (ARMNYHellDa)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -14910,7 +14912,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (ARMNYHellDa)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 //Logger.Trace("ENDED:    To get Option ARM STMT NY and Hello Letter");
@@ -14951,7 +14953,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 {
                     isPrimary = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMNYHellDVL)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -14978,7 +14980,7 @@ namespace CarringtonMortgage.OptionAssignment
                    && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (ARMNYHellDVL)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
 
@@ -15002,7 +15004,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (ARMNYHellDVL)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
               
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -15025,7 +15027,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (ARMNYHellDVL)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
               
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -15048,7 +15050,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (ARMNYHellDVL)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -15071,7 +15073,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (ARMNYHellDVL)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -15094,7 +15096,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (ARMNYHellDVL)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -15117,7 +15119,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (ARMNYHellDVL)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
          
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -15140,7 +15142,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (ARMNYHellDVL)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
           
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -15163,7 +15165,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (ARMNYHellDVL)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
              
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -15186,7 +15188,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 {
 
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (ARMNYHellDVL)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                if(isPrimary)
                 {
@@ -15230,7 +15232,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 {
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMNYHeDVLDa)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -15260,7 +15262,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (ARMNYHeDVLDa)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -15287,7 +15289,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (ARMNYHeDVLDa)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -15313,7 +15315,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (ARMNYHeDVLDa)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -15339,7 +15341,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (ARMNYHeDVLDa)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -15365,7 +15367,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (ARMNYHeDVLDa)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -15391,7 +15393,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (ARMNYHeDVLDa)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -15417,7 +15419,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (ARMNYHeDVLDa)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -15443,7 +15445,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (ARMNYHeDVLDa)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -15469,7 +15471,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (ARMNYHeDVLDa)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -15495,7 +15497,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (ARMNYHeDVLDa)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 //Logger.Trace("ENDED:    To Get Option ARM STMT NY and Hello DVL Letter");
@@ -15535,7 +15537,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 {
                     isPrimary = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMNYDVL)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -15562,7 +15564,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (ARMNYDVL)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -15584,7 +15586,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (ARMNYDVL)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -15606,7 +15608,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (ARMNYDVL)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -15628,7 +15630,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (ARMNYDVL)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -15650,7 +15652,7 @@ namespace CarringtonMortgage.OptionAssignment
                   && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (ARMNYDVL)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -15672,7 +15674,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (ARMNYDVL)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -15694,7 +15696,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (ARMNYDVL)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -15716,7 +15718,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (ARMNYDVL)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -15738,7 +15740,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (ARMNYDVL)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
               
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -15760,7 +15762,7 @@ namespace CarringtonMortgage.OptionAssignment
                  && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (ARMNYDVL)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                if(isPrimary)
                 {
@@ -15804,7 +15806,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 {
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMNYDVLDal)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -15834,7 +15836,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB1 (ARMNYDVLDal)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -15860,7 +15862,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB2 (ARMNYDVLDal)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -15886,7 +15888,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB3 (ARMNYDVLDal)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -15912,7 +15914,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB4 (ARMNYDVLDal)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -15938,7 +15940,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB5 (ARMNYDVLDal)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -15964,7 +15966,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB6 (ARMNYDVLDal)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -15990,7 +15992,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB7 (ARMNYDVLDal)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -16016,7 +16018,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB8 (ARMNYDVLDal)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -16042,7 +16044,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB9 (ARMNYDVLDal)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -16068,7 +16070,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
 
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "CB10 (ARMNYDVLDal)", FlexField2 = "ARM", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 //Logger.Trace("ENDED:    To Get Option ARM STMT NY and DVL Letter");
@@ -16103,7 +16105,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B")
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMCh7)", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -16117,7 +16119,7 @@ namespace CarringtonMortgage.OptionAssignment
                       && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMCh7)", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstBrw.Count == 0)
@@ -16132,7 +16134,7 @@ namespace CarringtonMortgage.OptionAssignment
                          && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y")
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1primary", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1primary (ARMCh7)", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -16152,7 +16154,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMCh7)", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
                 if(ClearedPreviousStatement)
@@ -16194,7 +16196,7 @@ namespace CarringtonMortgage.OptionAssignment
                     ClearedPreviousStatement = true;
                     lstCount = 1;
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMCh7Dal)", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -16217,7 +16219,7 @@ namespace CarringtonMortgage.OptionAssignment
                     }
                     lstCount = 1;
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMCh7Dal)", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0)
@@ -16237,7 +16239,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         ClearedPreviousStatement = true;
                         lstBrw.Clear();
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1primary", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1primary (ARMCh7Dal)", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -16260,7 +16262,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMCh7Dal)", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
 
@@ -16294,7 +16296,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"
                      && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMCh7For)", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
   
                 if (lstBrw.Count == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -16308,7 +16310,7 @@ namespace CarringtonMortgage.OptionAssignment
                       && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
                       && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMCh7For)", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstBrw.Count == 0)
@@ -16325,7 +16327,7 @@ namespace CarringtonMortgage.OptionAssignment
                          && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1primary", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1primary (ARMCh7For)", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -16345,7 +16347,7 @@ namespace CarringtonMortgage.OptionAssignment
                          && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"
                          && accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y")
                     {
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMCh7For)", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
 
@@ -16390,7 +16392,7 @@ namespace CarringtonMortgage.OptionAssignment
                     ClearedPreviousStatement = true;
                     lstCount = 1;
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMCh7ForDal)", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -16414,7 +16416,7 @@ namespace CarringtonMortgage.OptionAssignment
                     }
                     lstCount = 1;
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMCh7ForDal)", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0)
@@ -16436,7 +16438,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         ClearedPreviousStatement = true;
                         lstBrw.Clear();
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1primary", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1primary (ARMCh7ForDal)", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -16459,7 +16461,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "OK")
                     || mailingState.Any(m => m == "TX")))
                     {
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMCh7ForDal)", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
 
@@ -16494,7 +16496,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H")
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMCh7Arc)", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
  
 
@@ -16509,7 +16511,7 @@ namespace CarringtonMortgage.OptionAssignment
                       && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"
                       && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H")
                 {
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMCh7Arc)", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstBrw.Count == 0)
@@ -16526,7 +16528,7 @@ namespace CarringtonMortgage.OptionAssignment
                           && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H")
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1primary", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1primary (ARMCh7Arc)", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -16547,7 +16549,7 @@ namespace CarringtonMortgage.OptionAssignment
                           && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H")
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMCh7Arc)", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
                 if (ClearedPreviousStatement)
@@ -16591,7 +16593,7 @@ namespace CarringtonMortgage.OptionAssignment
                     ClearedPreviousStatement = true;
                     lstCount = 1;
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMCh7ArcDal)", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -16616,7 +16618,7 @@ namespace CarringtonMortgage.OptionAssignment
                     }
                     lstCount = 1;
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMCh7ArcDal)", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0)
@@ -16638,7 +16640,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         ClearedPreviousStatement = true;
                         lstBrw.Clear();
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1primary", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1primary (ARMCh7ArcDal)", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -16662,7 +16664,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMCh7ArcDal)", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
 
@@ -16675,7 +16677,7 @@ namespace CarringtonMortgage.OptionAssignment
             }
             return lstBrw;
         }
-        public List<BorrowerModel> GetOptionArmBkChpt7StmtArchiveOnlyNy(AccountsModel accountModel)
+        public List<BorrowerModel> GetOptionArmBkChpt7StmtArchiveOnlyNy(AccountsModel accountModel) // need to check again
         {
            
             try
@@ -16697,7 +16699,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 {
                     lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
-                    GetOptionArmBkChpt7StmtArchiveOnlyNyDallasRemitAddress(accountModel);
+                    //GetOptionArmBkChpt7StmtArchiveOnlyNyDallasRemitAddress(accountModel);
                 }
                 else
                 {
@@ -16713,46 +16715,46 @@ namespace CarringtonMortgage.OptionAssignment
             return lstBrw;
 
         }
-        public List<BorrowerModel> GetOptionArmBkChpt7StmtArchiveOnlyNyDallasRemitAddress(AccountsModel accountModel)
-        {
+        //public List<BorrowerModel> GetOptionArmBkChpt7StmtArchiveOnlyNyDallasRemitAddress(AccountsModel accountModel)
+        //{
            
-            try
-            {
-                if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
-                      || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
-                      && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-                      && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
+        //    try
+        //    {
+        //        if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
+        //              || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")
+        //              && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
+        //              && accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData != "0000000")
 
-                      || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") ? (((accountModel.UserFieldRecordModel.Rssi_Usr_93.Trim() == "7")
-                    || (accountModel.UserFieldRecordModel.Rssi_Usr_93.Trim() == "11")
-                    && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")) : false)
-                      && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
-                    && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
-                     && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
-                     && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
-                     && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)) && (mailingState.Any(m => m == "KS")
-                    || mailingState.Any(m => m == "LA")
-                    || mailingState.Any(m => m == "NM")
-                    || mailingState.Any(m => m == "OK")
-                    || mailingState.Any(m => m == "TX")))
+        //              || ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11") ? (((accountModel.UserFieldRecordModel.Rssi_Usr_93.Trim() == "7")
+        //            || (accountModel.UserFieldRecordModel.Rssi_Usr_93.Trim() == "11")
+        //            && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O")) : false)
+        //              && accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+        //            && accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData == "33"
+        //             && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+        //             && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+        //             && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)) && (mailingState.Any(m => m == "KS")
+        //            || mailingState.Any(m => m == "LA")
+        //            || mailingState.Any(m => m == "NM")
+        //            || mailingState.Any(m => m == "OK")
+        //            || mailingState.Any(m => m == "TX")))
 
-                {
-                    lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
-                }
-                else
-                {
-                    return lstBrw;
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, ex.TargetSite.Name);
-                throw;
-            }
-            return lstBrw;
+        //        {
+        //            lstBrw.Clear();
+        //            lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+        //        }
+        //        else
+        //        {
+        //            return lstBrw;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Logger.Error(ex, ex.TargetSite.Name);
+        //        throw;
+        //    }
+        //    return lstBrw;
 
-        }
+        //}
 
         public List<BorrowerModel> GetOptionArmBkChpt7StmtArchiveOnlyNyPrimary(AccountsModel accountModel)
         {
@@ -16779,7 +16781,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMCh7ArcNY)", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstBrw.Count == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -16798,7 +16800,7 @@ namespace CarringtonMortgage.OptionAssignment
                       && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMCh7ArcNY)", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstBrw.Count == 0)
@@ -16819,7 +16821,7 @@ namespace CarringtonMortgage.OptionAssignment
                           && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (ARMCh7ArcNY)", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -16844,7 +16846,7 @@ namespace CarringtonMortgage.OptionAssignment
                           && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMCh7ArcNY)", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
                 if (ClearedPreviousStatement)
@@ -16892,7 +16894,7 @@ namespace CarringtonMortgage.OptionAssignment
                     ClearedPreviousStatement = true;
                     lstCount = 1;
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMCh7ArNYDa)", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstBrw.Count == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -16920,7 +16922,7 @@ namespace CarringtonMortgage.OptionAssignment
                     }
                     lstCount = 1;
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMCh7ArNYDa)", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0)
@@ -16946,7 +16948,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         ClearedPreviousStatement = true;
                         lstBrw.Clear();
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (ARMCh7ArNYDa)", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -16974,7 +16976,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMCh7ArNYDa)", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
 
@@ -17012,7 +17014,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMCh7ArNYHe)", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
                 if (lstBrw.Count == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -17031,7 +17033,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMCh7ArNYHe)", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
               
                 if (lstBrw.Count == 0)
@@ -17052,7 +17054,7 @@ namespace CarringtonMortgage.OptionAssignment
                          && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (ARMCh7ArNYHe)", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -17078,7 +17080,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMCh7ArNYHe)", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
 
@@ -17127,7 +17129,7 @@ namespace CarringtonMortgage.OptionAssignment
                     ClearedPreviousStatement = true;
                     lstCount = 1;
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMCh7ArNYHD)", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -17155,7 +17157,7 @@ namespace CarringtonMortgage.OptionAssignment
                     }
                     lstCount = 1;
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMCh7ArNYHD)", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0)
@@ -17181,7 +17183,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         ClearedPreviousStatement = true;
                         lstBrw.Clear();
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (ARMCh7ArNYHD)", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -17210,7 +17212,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMCh7ArNYHD)", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
 
@@ -17251,7 +17253,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMCh7ANYHDV)", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
               
                 if (lstBrw.Count == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -17270,7 +17272,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMCh7ANYHDV)", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
  
                 if (lstBrw.Count == 0)
@@ -17291,7 +17293,7 @@ namespace CarringtonMortgage.OptionAssignment
                           && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (ARMCh7ANYHDV)", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -17316,7 +17318,7 @@ namespace CarringtonMortgage.OptionAssignment
                             && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMCh7ANYHDV)", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
                 if (ClearedPreviousStatement)
@@ -17362,7 +17364,7 @@ namespace CarringtonMortgage.OptionAssignment
                     ClearedPreviousStatement = true;
                     lstCount = 1;
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMCh7ANYHDD)", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -17390,7 +17392,7 @@ namespace CarringtonMortgage.OptionAssignment
                     }
                     lstCount = 1;
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMCh7ANYHDD)", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0)
@@ -17416,7 +17418,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         ClearedPreviousStatement = true;
                         lstBrw.Clear();
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (ARMCh7ANYHDD)", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -17444,7 +17446,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMCh7ANYHDD)", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
 
@@ -17481,7 +17483,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMCh7ANYDVL)", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
              
 
@@ -17501,7 +17503,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMCh7ANYDVL)", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
   
                 if (lstBrw.Count == 0)
@@ -17522,7 +17524,7 @@ namespace CarringtonMortgage.OptionAssignment
                         && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (ARMCh7ANYDVL)", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -17547,7 +17549,7 @@ namespace CarringtonMortgage.OptionAssignment
                          && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMCh7ANYDVL)", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
                 if (ClearedPreviousStatement)
@@ -17594,7 +17596,7 @@ namespace CarringtonMortgage.OptionAssignment
                     ClearedPreviousStatement = true;
                     lstCount = 1;
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMCh7ANYDVD)", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -17623,7 +17625,7 @@ namespace CarringtonMortgage.OptionAssignment
                     }
                     lstCount = 1;
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMCh7ANYDVD)", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0)
@@ -17649,7 +17651,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         ClearedPreviousStatement = true;
                         lstBrw.Clear();
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (ARMCh7ANYDVD)", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -17677,7 +17679,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMCh7ANYDVD)", FlexField2 = "A07", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
 
@@ -17713,7 +17715,7 @@ namespace CarringtonMortgage.OptionAssignment
                       && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMCh7NYHell)", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
              
 
@@ -17732,7 +17734,7 @@ namespace CarringtonMortgage.OptionAssignment
                     && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMCh7NYHell)", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
                 if (lstBrw.Count == 0)
@@ -17752,7 +17754,7 @@ namespace CarringtonMortgage.OptionAssignment
                         && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (ARMCh7NYHell)", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -17775,7 +17777,7 @@ namespace CarringtonMortgage.OptionAssignment
                                        && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO")
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMCh7NYHell)", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
                 if (ClearedPreviousStatement)
@@ -17821,7 +17823,7 @@ namespace CarringtonMortgage.OptionAssignment
                     ClearedPreviousStatement = true;
                     lstCount = 1;
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMCh7NYHeDa)", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -17849,7 +17851,7 @@ namespace CarringtonMortgage.OptionAssignment
                     }
                     lstCount = 1;
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMCh7NYHeDa)", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0)
@@ -17874,7 +17876,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         ClearedPreviousStatement = true;
                         lstBrw.Clear();
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (ARMCh7NYHeDa)", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -17900,7 +17902,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMCh7NYHeDa)", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
 
@@ -17937,7 +17939,7 @@ namespace CarringtonMortgage.OptionAssignment
                       && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMCh7NYHeDV)", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 
 
@@ -17956,7 +17958,7 @@ namespace CarringtonMortgage.OptionAssignment
                       && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMCh7NYHeDV)", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 
                 if (lstBrw.Count == 0)
@@ -17976,7 +17978,7 @@ namespace CarringtonMortgage.OptionAssignment
                            && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (ARMCh7NYHeDV)", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -17999,7 +18001,7 @@ namespace CarringtonMortgage.OptionAssignment
                            && accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL")
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMCh7NYHeDV)", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
                 if (ClearedPreviousStatement)
@@ -18045,7 +18047,7 @@ namespace CarringtonMortgage.OptionAssignment
                     ClearedPreviousStatement = true;
                     lstCount = 1;
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMCh7NYHDVD)", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -18073,7 +18075,7 @@ namespace CarringtonMortgage.OptionAssignment
                     }
                     lstCount = 1;
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMCh7NYHDVD)", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0)
@@ -18098,7 +18100,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         ClearedPreviousStatement = true;
                         lstBrw.Clear();
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (ARMCh7NYHDVD)", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -18124,7 +18126,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMCh7NYHDVD)", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
 
@@ -18161,7 +18163,7 @@ namespace CarringtonMortgage.OptionAssignment
                        && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMCh7NYDVL)", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -18180,7 +18182,7 @@ namespace CarringtonMortgage.OptionAssignment
                         && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMCh7NYDVL)", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstBrw.Count == 0)
@@ -18200,7 +18202,7 @@ namespace CarringtonMortgage.OptionAssignment
                           && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (ARMCh7NYDVL)", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -18224,7 +18226,7 @@ namespace CarringtonMortgage.OptionAssignment
                           && accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL")
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMCh7NYDVL)", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
                 if (ClearedPreviousStatement)
@@ -18271,7 +18273,7 @@ namespace CarringtonMortgage.OptionAssignment
                     ClearedPreviousStatement = true;
                     lstCount = 1;
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMCh7NYDVDa)", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -18299,7 +18301,7 @@ namespace CarringtonMortgage.OptionAssignment
                     }
                     lstCount = 1;
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMCh7NYDVDa)", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0)
@@ -18324,7 +18326,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         ClearedPreviousStatement = true;
                         lstBrw.Clear();
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (ARMCh7NYDVDa)", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -18351,7 +18353,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMCh7NYDVDa)", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
 
@@ -18383,7 +18385,7 @@ namespace CarringtonMortgage.OptionAssignment
                 && (accountModel.EConsentModel.DocumentType == "Bill" && accountModel.EConsentModel.EConsentFlag == "Y"))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A07", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMCh7EDArc)", FlexField2 = "A07", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstBrw.Count == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -18397,7 +18399,7 @@ namespace CarringtonMortgage.OptionAssignment
                     && (accountModel.EConsentModel.DocumentType == "Bill" && accountModel.EConsentModel.EConsentFlag == "Y"))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A07", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMCh7EDArc)", FlexField2 = "A07", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
                 if (lstBrw.Count == 0)
@@ -18413,7 +18415,7 @@ namespace CarringtonMortgage.OptionAssignment
                        && (accountModel.EConsentModel.DocumentType == "Bill" && accountModel.EConsentModel.EConsentFlag == "Y"))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A07", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (ARMCh7EDArc)", FlexField2 = "A07", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -18433,7 +18435,7 @@ namespace CarringtonMortgage.OptionAssignment
                         && (accountModel.EConsentModel.DocumentType == "Bill" && accountModel.EConsentModel.EConsentFlag == "Y"))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMCh7EDArc)", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
 
@@ -18472,7 +18474,7 @@ namespace CarringtonMortgage.OptionAssignment
                     ClearedPreviousStatement = true;
                     lstCount = 1;
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A07", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMCh7EDArDa)", FlexField2 = "A07", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07"
@@ -18495,7 +18497,7 @@ namespace CarringtonMortgage.OptionAssignment
                     }
                     lstCount = 1;
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A07", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMCh7EDArDa)", FlexField2 = "A07", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0)
@@ -18516,7 +18518,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         ClearedPreviousStatement = true;
                         lstBrw.Clear();
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A07", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (ARMCh7EDArDa)", FlexField2 = "A07", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -18539,7 +18541,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMCh7EDArDa)", FlexField2 = "A07", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
 
@@ -18566,7 +18568,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "B"))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMCh13)", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -18576,7 +18578,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L")))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMCh13)", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstBrw.Count == 0)
@@ -18587,7 +18589,7 @@ namespace CarringtonMortgage.OptionAssignment
                          && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1primary (ARMCh13)", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -18602,7 +18604,7 @@ namespace CarringtonMortgage.OptionAssignment
                          && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMCh13)", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
                 if(ClearedPreviousStatement)
@@ -18636,7 +18638,7 @@ namespace CarringtonMortgage.OptionAssignment
                 {
                     ClearedPreviousStatement = true;
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMCh13Dal)", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -18654,7 +18656,7 @@ namespace CarringtonMortgage.OptionAssignment
                         lstBrw.Clear();
                     }
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMCh13Dal)", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstBrw.Count == 0)
@@ -18670,7 +18672,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         ClearedPreviousStatement = true;
                         lstBrw.Clear();
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1primary (ARMCh13Dal)", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -18688,7 +18690,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMCh13Dal)", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
 
@@ -18716,7 +18718,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMCh13For)", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstBrw.Count == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
@@ -18726,7 +18728,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMCh13For)", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstBrw.Count == 0)
@@ -18738,7 +18740,7 @@ namespace CarringtonMortgage.OptionAssignment
                          && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1primary (ARMCh13For)", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -18753,7 +18755,7 @@ namespace CarringtonMortgage.OptionAssignment
                          && (accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag == "Y"))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMCh13For)", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
                 if(ClearedPreviousStatement)
@@ -18788,7 +18790,7 @@ namespace CarringtonMortgage.OptionAssignment
                 {
                     ClearedPreviousStatement = true;
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMCh13ForDa)", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstBrw.Count == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
@@ -18806,7 +18808,7 @@ namespace CarringtonMortgage.OptionAssignment
                         lstBrw.Clear();
                     }
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMCh13ForDa)", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstBrw.Count == 0)
@@ -18823,7 +18825,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         ClearedPreviousStatement = true;
                         lstBrw.Clear();
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1primary (ARMCh13ForDa)", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -18841,7 +18843,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMCh13ForDa)", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
                 //Logger.Trace("ENDED: To Get Option Arm Bk Chpt13 Stmt Primary Foreign");
@@ -18870,7 +18872,7 @@ namespace CarringtonMortgage.OptionAssignment
 
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMCh13Arc)", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstBrw.Count == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
@@ -18880,7 +18882,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "L"))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMCh13Arc)", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstBrw.Count == 0)
@@ -18892,7 +18894,7 @@ namespace CarringtonMortgage.OptionAssignment
                          && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1primary (ARMCh13Arc)", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -18908,7 +18910,7 @@ namespace CarringtonMortgage.OptionAssignment
                          && (accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag == "Y"))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMCh13Arc)", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
 
@@ -18949,7 +18951,7 @@ namespace CarringtonMortgage.OptionAssignment
                     ClearedPreviousStatement = true;
                     lstCount = 1;
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMCh13ArcDa)", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
@@ -18968,7 +18970,7 @@ namespace CarringtonMortgage.OptionAssignment
                     }
                     lstCount = 1;
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMCh13ArcDa)", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0)
@@ -18985,7 +18987,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         ClearedPreviousStatement = true;
                         lstBrw.Clear();
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1primary (ARMCh13ArcDa)", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -19004,7 +19006,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMCh13ArcDa)", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
 
@@ -19022,7 +19024,7 @@ namespace CarringtonMortgage.OptionAssignment
         {
           
             try
-            {  bool ClearedPreviousStatement = false;
+            {  //bool ClearedPreviousStatement = false;
                 lstBrw = new List<BorrowerModel>();
                 if ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
                  || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13")
@@ -19033,19 +19035,19 @@ namespace CarringtonMortgage.OptionAssignment
                  && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
                  && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No))))
                 {
-                    ClearedPreviousStatement = true;
+                    //ClearedPreviousStatement = true;
                     lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
-                    ClearedPreviousStatement = false;
+                    //ClearedPreviousStatement = false;
                     lstBrw = GetOptionArmBkChpt13StmtArchiveOnlyNyPrimary(accountModel);
                     return lstBrw;
                 }
-                if (ClearedPreviousStatement)
-                {
-                    GetOptionArmBkChpt13StmtArchiveOnlyNyDallasRemitAddress(accountModel);
-                }
+                //if (ClearedPreviousStatement)
+                //{
+                //    GetOptionArmBkChpt13StmtArchiveOnlyNyDallasRemitAddress(accountModel);
+                //}
             }
             catch (Exception ex)
             {
@@ -19054,40 +19056,40 @@ namespace CarringtonMortgage.OptionAssignment
             }
             return lstBrw;
         }
-        public List<BorrowerModel> GetOptionArmBkChpt13StmtArchiveOnlyNyDallasRemitAddress(AccountsModel accountModel)
-        {
+        //public List<BorrowerModel> GetOptionArmBkChpt13StmtArchiveOnlyNyDallasRemitAddress(AccountsModel accountModel)
+        //{
 
 
-            try
-            {
-                if ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
-                 || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13")
-                 && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
-                 && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
-                && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
-                 && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
-                 && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
-                 && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No))) && (mailingState.Any(m => m == "KS")
-                    || mailingState.Any(m => m == "LA")
-                    || mailingState.Any(m => m == "NM")
-                    || mailingState.Any(m => m == "OK")
-                    || mailingState.Any(m => m == "TX")))
-                {
-                    lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
-                }
-                else
-                {
-                    return lstBrw;
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, ex.TargetSite.Name);
-                throw;
-            }
-            return lstBrw;
-        }
+        //    try
+        //    {
+        //        if ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
+        //         || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "13")
+        //         && accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id == "O"
+        //         && (accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt == "H"
+        //        && Convert.ToInt64(accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData) == 33
+        //         && Convert.ToUInt64(CommonHelper.GetFormatedDateTime(accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date).IncludeCenturyDate(true)) == 0
+        //         && accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y"
+        //         && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No))) && (mailingState.Any(m => m == "KS")
+        //            || mailingState.Any(m => m == "LA")
+        //            || mailingState.Any(m => m == "NM")
+        //            || mailingState.Any(m => m == "OK")
+        //            || mailingState.Any(m => m == "TX")))
+        //        {
+        //            lstBrw.Clear();
+        //            lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+        //        }
+        //        else
+        //        {
+        //            return lstBrw;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Logger.Error(ex, ex.TargetSite.Name);
+        //        throw;
+        //    }
+        //    return lstBrw;
+        //}
         public List<BorrowerModel> GetOptionArmBkChpt13StmtArchiveOnlyNyPrimary(AccountsModel accountModel)
         {
           
@@ -19106,7 +19108,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMCh13ArcNY)", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
               
 
@@ -19120,7 +19122,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMCh13ArcNY)", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
                 if (lstBrw.Count == 0)
@@ -19135,7 +19137,7 @@ namespace CarringtonMortgage.OptionAssignment
                          && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1primary (ARMCh13ArcNY)", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -19154,7 +19156,7 @@ namespace CarringtonMortgage.OptionAssignment
                          && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (!CommonHelper.CheckAccountExistInSupplimentalFile(accountModel.MasterFileDataPart_1Model.Rssi_Acct_No)))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMCh13ArcNY)", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
 
@@ -19196,7 +19198,7 @@ namespace CarringtonMortgage.OptionAssignment
                     ClearedPreviousStatement = true;
                     lstCount = 1;
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMCh13ArNYD)", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -19219,7 +19221,7 @@ namespace CarringtonMortgage.OptionAssignment
                     }
                     lstCount = 1;
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMCh13ArNYD)", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0)
@@ -19239,7 +19241,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         ClearedPreviousStatement = true;
                         lstBrw.Clear();
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1primary (ARMCh13ArNYD)", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -19261,7 +19263,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMCh13ArNYD)", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
 
@@ -19293,7 +19295,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMCh13ANYHe)", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -19307,7 +19309,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMCh13ANYHe)", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 //else
                 //{
@@ -19326,7 +19328,7 @@ namespace CarringtonMortgage.OptionAssignment
                          && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1primary (ARMCh13ANYHe)", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -19344,7 +19346,7 @@ namespace CarringtonMortgage.OptionAssignment
                          && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMCh13ANYHe)", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
 
@@ -19386,7 +19388,7 @@ namespace CarringtonMortgage.OptionAssignment
                     ClearedPreviousStatement = true;
                     lstCount = 1;
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMCh13ANYHD)", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
 
@@ -19409,7 +19411,7 @@ namespace CarringtonMortgage.OptionAssignment
                     }
                     lstCount = 1;
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMCh13ANYHD)", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 //else
                 //{
@@ -19433,7 +19435,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         ClearedPreviousStatement = true;
                         lstBrw.Clear();
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1primary (ARMCh13ANYHD)", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -19454,7 +19456,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMCh13ANYHD)", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
 
@@ -19487,7 +19489,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMC13ANYHDV)", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstBrw.Count == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
@@ -19501,7 +19503,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMC13ANYHDV)", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstBrw.Count == 0)
@@ -19517,7 +19519,7 @@ namespace CarringtonMortgage.OptionAssignment
                          && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (ARMC13ANYHDV)", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -19536,7 +19538,7 @@ namespace CarringtonMortgage.OptionAssignment
                          && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMC13ANYHDV)", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
                 if (ClearedPreviousStatement)
@@ -19577,7 +19579,7 @@ namespace CarringtonMortgage.OptionAssignment
                     ClearedPreviousStatement = true;
                     lstCount = 1;
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMC13ANYHDD)", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
@@ -19600,7 +19602,7 @@ namespace CarringtonMortgage.OptionAssignment
                     }
                     lstCount = 1;
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMC13ANYHDD)", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0)
@@ -19621,7 +19623,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         ClearedPreviousStatement = true;
                         lstBrw.Clear();
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (ARMC13ANYHDD)", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -19643,7 +19645,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMC13ANYHDD)", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
 
@@ -19675,7 +19677,7 @@ namespace CarringtonMortgage.OptionAssignment
                     && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMCh13ANYDV)", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
  
                 if (lstBrw.Count == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
@@ -19689,7 +19691,7 @@ namespace CarringtonMortgage.OptionAssignment
                     && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMCh13ANYDV)", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstBrw.Count == 0)
@@ -19705,7 +19707,7 @@ namespace CarringtonMortgage.OptionAssignment
                         && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (ARMCh13ANYDV)", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -19724,7 +19726,7 @@ namespace CarringtonMortgage.OptionAssignment
                         && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMCh13ANYDV)", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
 
@@ -19767,7 +19769,7 @@ namespace CarringtonMortgage.OptionAssignment
                     ClearedPreviousStatement = true;
                     lstCount = 1;
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMCh13ANYDD)", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
@@ -19790,7 +19792,7 @@ namespace CarringtonMortgage.OptionAssignment
                     }
                     lstCount = 1;
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMCh13ANYDD)", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0)
@@ -19811,7 +19813,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         ClearedPreviousStatement = true;
                         lstBrw.Clear();
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (ARMCh13ANYDD)", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -19833,7 +19835,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMCh13ANYDD)", FlexField2 = "A13", FlexField3 = "HD", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
 
@@ -19864,7 +19866,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMCh13NYHel)", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstBrw.Count == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
@@ -19876,7 +19878,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMCh13NYHel)", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstBrw.Count == 0)
@@ -19890,7 +19892,7 @@ namespace CarringtonMortgage.OptionAssignment
                          && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (ARMCh13NYHel)", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -19907,7 +19909,7 @@ namespace CarringtonMortgage.OptionAssignment
                          && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO"))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMCh13NYHel)", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
                 if (ClearedPreviousStatement)
@@ -19947,7 +19949,7 @@ namespace CarringtonMortgage.OptionAssignment
                     ClearedPreviousStatement = true;
                     lstCount = 1;
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMCh13NYHDa)", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
@@ -19968,7 +19970,7 @@ namespace CarringtonMortgage.OptionAssignment
                     }
                     lstCount = 1;
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMCh13NYHDa)", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0)
@@ -19987,7 +19989,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         ClearedPreviousStatement = true;
                         lstBrw.Clear();
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (ARMCh13NYHDa)", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -20007,7 +20009,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMCh13NYHDa)", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "HELLO", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
 
@@ -20037,7 +20039,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMCh13NYHDV)", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstBrw.Count == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
@@ -20049,7 +20051,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMCh13NYHDV)", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
                 if (lstBrw.Count == 0)
@@ -20063,7 +20065,7 @@ namespace CarringtonMortgage.OptionAssignment
                          && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (ARMCh13NYHDV)", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -20080,7 +20082,7 @@ namespace CarringtonMortgage.OptionAssignment
                          && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "HELLO_DVL"))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMCh13NYHDV)", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
                 if (ClearedPreviousStatement)
@@ -20119,7 +20121,7 @@ namespace CarringtonMortgage.OptionAssignment
                     ClearedPreviousStatement = true;
                     lstCount = 1;
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMCh13NYHDD)", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
@@ -20140,7 +20142,7 @@ namespace CarringtonMortgage.OptionAssignment
                     }
                     lstCount = 1;
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMCh13NYHDD)", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0)
@@ -20159,7 +20161,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         ClearedPreviousStatement = true;
                         lstBrw.Clear();
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (ARMCh13NYHDD)", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -20179,7 +20181,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMCh13NYHDD)", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "HELLO_DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
 
@@ -20209,7 +20211,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMCh13NYDVL)", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
                 if (lstBrw.Count == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
@@ -20221,7 +20223,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMCh13NYDVL)", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                
                 if (lstBrw.Count == 0)
@@ -20235,7 +20237,7 @@ namespace CarringtonMortgage.OptionAssignment
                          && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (ARMCh13NYDVL)", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -20253,7 +20255,7 @@ namespace CarringtonMortgage.OptionAssignment
                          && (accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind == "Y") && (accountModel.SupplementalCCFModel.FlagRecordIndicator == "DVL"))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMCh13NYDVL)", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
                 if(ClearedPreviousStatement)
@@ -20293,7 +20295,7 @@ namespace CarringtonMortgage.OptionAssignment
                     ClearedPreviousStatement = true;
                     lstCount = 1;
                     lstBrw.Clear();
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMCh13NYDVD)", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0 && ((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "12"
@@ -20314,7 +20316,7 @@ namespace CarringtonMortgage.OptionAssignment
                     }
                     lstCount = 1;
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMCh13NYDVD)", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
 
                 if (lstCount == 0)
@@ -20333,7 +20335,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         ClearedPreviousStatement = true;
                         lstBrw.Clear();
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (ARMCh13NYDVD)", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -20354,7 +20356,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMCh13NYDVD)", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "DVL", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
 
@@ -20382,7 +20384,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && (accountModel.EConsentModel.DocumentType == "Bill") && (accountModel.EConsentModel.EConsentFlag == "Y"))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A13", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMCh13EDArc)", FlexField2 = "A13", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -20396,7 +20398,7 @@ namespace CarringtonMortgage.OptionAssignment
                      && (accountModel.EConsentModel.DocumentType == "Bill") && (accountModel.EConsentModel.EConsentFlag == "Y"))
                 {
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A13", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMCh13EDArc)", FlexField2 = "A13", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 if (lstBrw.Count == 0)
                 {
@@ -20407,7 +20409,7 @@ namespace CarringtonMortgage.OptionAssignment
                          && (accountModel.EConsentModel.DocumentType == "Bill") && (accountModel.EConsentModel.EConsentFlag == "Y"))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A13", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (ARMCh13EDArc)", FlexField2 = "A13", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -20421,7 +20423,7 @@ namespace CarringtonMortgage.OptionAssignment
                          && (accountModel.EConsentModel.DocumentType == "Bill") && (accountModel.EConsentModel.EConsentFlag == "Y"))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMCh13EDArc)", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
                 if (ClearedPreviousStatement)
@@ -20459,7 +20461,7 @@ namespace CarringtonMortgage.OptionAssignment
                     ClearedPreviousStatement = true;
                     lstBrw.Clear();
                     lstCount = 1;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary", FlexField2 = "A13", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Primary (ARMCh13EDADa)", FlexField2 = "A13", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 else
                 {
@@ -20482,7 +20484,7 @@ namespace CarringtonMortgage.OptionAssignment
                     }
                     lstCount = 1;
                     ClearedPreviousStatement = true;
-                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND", FlexField2 = "A13", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                    lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "VEND (ARMCh13EDADa)", FlexField2 = "A13", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                 }
                 if (lstCount == 0)
                 {
@@ -20498,7 +20500,7 @@ namespace CarringtonMortgage.OptionAssignment
                     {
                         ClearedPreviousStatement = true;
                         lstBrw.Clear();
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary", FlexField2 = "A13", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = false, FlexField1 = "Copy1Primary (ARMCh13EDADa)", FlexField2 = "A13", FlexField3 = "IM", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                     else
                     {
@@ -20516,7 +20518,7 @@ namespace CarringtonMortgage.OptionAssignment
                     || mailingState.Any(m => m == "TX")))
                     {
                         ClearedPreviousStatement = true;
-                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
+                        lstBrw.Add(new BorrowerModel { DistinctAdditionalRecord = true, FlexField1 = "Copy2Vend (ARMCh13EDADa)", FlexField2 = "A13", FlexField3 = "FC", FlexField4 = "", FlexField5 = "Billing Statement", FlexField6 = "Bill" });
                     }
                 }
                 //Logger.Trace("ENDED: To Get Option Arm Bk Chpt13 EDelivery Archive Primary");
