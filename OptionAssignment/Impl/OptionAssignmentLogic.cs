@@ -160,23 +160,7 @@ namespace CarringtonMortgage.OptionAssignment
                 string mailingAddress = System.Text.RegularExpressions.Regex.Replace(accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3, @"\s+", " ");
                 mailingState = mailingAddress.Split(" ".ToCharArray());
                 bool isPrimary = false;
-                //Logger.Trace(
-                //"|" + accountModel.MasterFileDataPart_1Model.Rssi_Acct_No +
-                // "|" + accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap +
-                // "|" + accountModel.BlendedRateInformationRecordModel.Rssi_Ml_Alt_Typ_Id +
-                // "|" + accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Reaffirm_Dt_PackedData +
-                // "|" + accountModel.UserFieldRecordModel.Rssi_Usr_93 +
-                // "|" + accountModel.ActiveBankruptcyInformationRecordModel.Rssi_Poc_Statement_Flag +
-                // "|" + accountModel.MasterFileDataPart2Model.Rssi_Altr_Forgn_Flag +
-                // "|" + accountModel.MasterFileDataPart_1Model.Rssi_Print_Stmt +
-                // "|" + accountModel.MasterFileDataPart_1Model.Rssi_State_PackedData +
-                // "|" + accountModel.MasterFileDataPart_1Model.Rssi_Lip_La_Date +
-                // "|" + accountModel.MasterFileDataPart_1Model.Rssi_First_Stmt_Ind +
-                // "|" + mailingState[0] +
-                // "|" + accountModel.MasterFileDataPart_1Model.Rssi_Mail_Adrs_3 +
-                // "|" + accountModel.CoBorrowerRecordModel.Rssi_Cb_Cbwr1_Bill_Stmnt
-                // );
-
+               
 
 
                 if (((accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "07" || accountModel.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap == "11")

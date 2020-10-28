@@ -186,17 +186,7 @@ namespace CarringtonService.BusinessExpert
                         if (borrowerList.Count > 0)
                         {
 
-                            //List<string> flexField1 = borrowerList.FirstOrDefault()?.FlexField1.Split('(').ToList();
-                            //if (flexField1.Count > 1)
-                            //{
-                            //    account.Standard.FlexField1 = flexField1[1].Replace(")","").Trim();
-                            //}
-                            //else
-                            //{
-                            //    account.Standard.FlexField1 = borrowerList.FirstOrDefault()?.FlexField1;
-                            //}
-
-                            flexField1 = borrowerList.FirstOrDefault()?.FlexField1.Split('(').ToList();
+                             flexField1 = borrowerList.FirstOrDefault()?.FlexField1.Split('(').ToList();
                             if (flexField1.Count > 1)
                             {
                                 flexField1Val = flexField1[0].Trim();
@@ -248,16 +238,6 @@ namespace CarringtonService.BusinessExpert
                             {
                                 if (!borrowerList.FirstOrDefault().isReject)
                                 {
-                                    //var flexField1Val = string.Empty;
-                                    //List<string> flexField1 = borrowerList.FirstOrDefault()?.FlexField1.Split('(').ToList();
-                                    //if (flexField1.Count > 1)
-                                    //{
-                                    //    flexField1Val = flexField1[0].Trim();
-                                    //}
-                                    //else
-                                    //{
-                                    //    flexField1Val = borrowerList.FirstOrDefault()?.FlexField1;
-                                    //}
                                 //Get Statement based on the Flex fields for account
                                 switch (borrowerList.FirstOrDefault()?.FlexField2)
                                 {
@@ -331,200 +311,8 @@ namespace CarringtonService.BusinessExpert
                         output.AddAccount(account);
                         primaryIndex++;
 
-                        AddCoBorrwer(borrowerList, extractAccount, output);
-
+                        AddCoBorrwer(borrowerList, extractAccount, output, primaryIndex);
                         
-
-                        //if (borrowerList.Count > 0 && extractAccount.CoBorrowerRecordModel.Rssi_Acct_No != null)
-                        //{
-                        //    //Add records for Co-Borrower Section 
-                        //    foreach (var borrower in borrowerList)
-                        //    {
-                        //        if (borrower.DistinctAdditionalRecord)
-                        //        {
-                        //            //Setting FlexFields according to co-borrower conditions
-                        //            //account.Standard.FlexField1 = borrower.FlexField1.Split('(')[1].Replace(")", "").ToString();
-                        //            List<string> flexField1 = borrower.FlexField1.Split('(').ToList();
-                        //            if (flexField1.Count > 1)
-                        //            {
-                        //                account.Standard.FlexField1 = flexField1[1].Replace(")", "").Trim();
-                        //            }
-                        //            else
-                        //            {
-                        //                account.Standard.FlexField1 = borrower.FlexField1;
-                        //            }
-                        //            account.Standard.FlexField2 = borrower.FlexField2;
-                        //            account.Standard.FlexField3 = borrower.FlexField3;
-                        //            account.Standard.FlexField4 = borrower.FlexField4;
-                        //            account.Standard.FlexField5 = borrower.FlexField5;
-                        //            account.Standard.FlexField6 = borrower.FlexField6;
-
-                        //            switch (borrower.FlexField2)
-                        //            {
-
-
-                        //                //For Chapter 7 Option ARM Statement
-                        //                case "A07":
-                        //                    line = ChapterSevenOptionARMStatement.GetFinalChapterSevenOptionARMStatement(extractAccount);
-                        //                    account.AddCustomerRecord(FormatCustomer.BuildRecord("A07", primaryIndex, line.Append("|" + flexField1[0])));
-                        //                    break;
-
-                        //                //For Chapter 13 Option ARM Statement
-                        //                case "A13":
-                        //                    line = ChapterThirteenOptionARMStatement.GetFinalChapterThirteenOptionARMStatement(extractAccount);
-                        //                    account.AddCustomerRecord(FormatCustomer.BuildRecord("A13", primaryIndex, line.Append("|" + flexField1[0])));
-                        //                    break;
-
-                        //                //For Option ARM Billing  Statement
-                        //                case "ARM":
-                        //                    line = OptionARMBillingStatement.GetFinalOptionARMBillingStatement(extractAccount);
-                        //                    account.AddCustomerRecord(FormatCustomer.BuildRecord("ARM", primaryIndex, line.Append("|" + flexField1[0])));
-                        //                    break;
-
-                        //                //For Chapter 7 Billing Statement
-                        //                case "S07":
-                        //                    line = ChapterSevenBillingStatement.GetFinalChapterSevenBillingStatement(extractAccount);
-                        //                    account.AddCustomerRecord(FormatCustomer.BuildRecord("S07", primaryIndex, line.Append("|" + flexField1[0])));
-                        //                    break;
-
-                        //                //For Chapter 13 Billing Statement
-                        //                case "S13":
-                        //                    line = ChapterThirteenBillingStatement.GetFinalChapterThirteenBillingStatement(extractAccount);
-                        //                    account.AddCustomerRecord(FormatCustomer.BuildRecord("S13", primaryIndex, line.Append("|" + flexField1[0])));
-                        //                    break;
-
-                        //                //For Standard Billing Statement
-                        //                case "STD":
-                        //                    line = StandardBillingStatement.GetFinalStringStandardBilling(extractAccount);
-                        //                    account.AddCustomerRecord(FormatCustomer.BuildRecord("STD", primaryIndex, line.Append("|" + flexField1[0])));
-                        //                    break;
-                        //                default:
-                        //                    break;
-
-                        //            }
-
-                        //            switch (borrower.FlexField2)
-                        //                { 
-                        //                    //For Chapter 7 Option ARM Statement
-                        //                    case "A07":
-                        //                        //Set Mailing address according to the conditions
-                        //                        account.Standard.OriginalAddressLine1 = ChapterSevenOptionARMStatement.GetMailingBKAttorneyAddressLine1(extractAccount, true);
-                        //                        account.Standard.OriginalAddressLine2 = ChapterSevenOptionARMStatement.GetMailingBKAttorneyAddressLine2(extractAccount, true);
-                        //                        string A07_cityStateZip = ChapterSevenOptionARMStatement.GetBorrowerAttorneyMailingCityStateZip(extractAccount, true);
-                        //                        if (!string.IsNullOrEmpty(A07_cityStateZip))
-                        //                        {
-                        //                            var arr = A07_cityStateZip.Split(',');
-                        //                            account.Standard.OriginalCity = arr[0].Trim();
-                        //                            account.Standard.OriginalState = arr[1].Trim();
-                        //                            account.Standard.OriginalZip5 = arr[2].Trim();
-                        //                            account.Standard.OrigCszLength = A07_cityStateZip.Length - 2; // Remove 2 for commas (",")
-
-                        //                        }
-                        //                        break;
-
-                        //                    //For Chapter 13 Option ARM Statement
-                        //                    case "A13":
-                        //                        //Set Mailing address according to the conditions
-                        //                        account.Standard.OriginalAddressLine1 = ChapterThirteenOptionARMStatement.GetMailingBKAttorneyAddressLine1(extractAccount, true);
-                        //                        account.Standard.OriginalAddressLine2 = ChapterThirteenOptionARMStatement.GetMailingBKAttorneyAddressLine2(extractAccount, true);
-                        //                        string A13_cityStateZip = ChapterThirteenOptionARMStatement.GetBorrowerAttorneyMailingCityStateZip(extractAccount, true);
-                        //                        if (!string.IsNullOrEmpty(A13_cityStateZip))
-                        //                        {
-                        //                            var arr = A13_cityStateZip.Split(',');
-                        //                            account.Standard.OriginalCity = arr[0].Trim();
-                        //                            account.Standard.OriginalState = arr[1].Trim();
-                        //                            account.Standard.OriginalZip5 = arr[2].Trim();
-                        //                            account.Standard.OrigCszLength = A13_cityStateZip.Length - 2;
-
-                        //                        }
-                        //                        break;
-
-                        //                    //For Option ARM Billing  Statement
-                        //                    case "ARM":
-                        //                        //Set Mailing address according to the conditions
-                        //                        account.Standard.OriginalAddressLine1 = OptionARMBillingStatement.GetMailingAddressLine1(extractAccount, true);
-                        //                        account.Standard.OriginalAddressLine2 = OptionARMBillingStatement.GetMailingAddressLine2(extractAccount, true);
-                        //                        string ARM_cityStateZip = OptionARMBillingStatement.GetMailingCityStateZip(extractAccount, true);
-                        //                        if (!string.IsNullOrEmpty(ARM_cityStateZip))
-                        //                        {
-                        //                            var arr = ARM_cityStateZip.Split(',');
-                        //                            account.Standard.OriginalCity = arr[0].Trim();
-                        //                            account.Standard.OriginalState = arr[1].Trim();
-                        //                            account.Standard.OriginalZip5 = arr[2].Trim();
-                        //                            account.Standard.OrigCszLength = ARM_cityStateZip.Length - 2;
-                        //                        }
-                        //                        break;
-
-                        //                    //For Chapter 7 Billing Statement
-                        //                    case "S07":
-                        //                        //Set Mailing address according to the conditions
-                        //                        account.Standard.OriginalAddressLine1 = ChapterSevenBillingStatement.GetMailingBKAttorneyAddressLine1(extractAccount, true);
-                        //                        account.Standard.OriginalAddressLine2 = ChapterSevenBillingStatement.GetMailingBKAttorneyAddressLine2(extractAccount, true);
-                        //                        string S07_cityStateZip = ChapterSevenBillingStatement.GetBorrowerAttorneyMailingCityStateZip(extractAccount, true);
-                        //                        if (!string.IsNullOrEmpty(S07_cityStateZip))
-                        //                        {
-                        //                            var arr = S07_cityStateZip.Split(',');
-                        //                            account.Standard.OriginalCity = arr[0].Trim();
-                        //                            account.Standard.OriginalState = arr[1].Trim();
-                        //                            account.Standard.OriginalZip5 = arr[2].Trim();
-                        //                            account.Standard.OrigCszLength = S07_cityStateZip.Length - 2;
-
-                        //                        }
-                        //                        break;
-
-                        //                    //For Chapter 13 Billing Statement
-                        //                    case "S13":
-                        //                        //Set Mailing address according to the conditions
-                        //                        account.Standard.OriginalAddressLine1 = ChapterThirteenBillingStatement.GetMailingBKAttorneyAddressLine1(extractAccount, true);
-                        //                        account.Standard.OriginalAddressLine2 = ChapterThirteenBillingStatement.GetMailingBKAttorneyAddressLine2(extractAccount, true);
-                        //                        string S13_cityStateZip = ChapterThirteenBillingStatement.GetBorrowerAttorneyMailingCityStateZip(extractAccount, true);
-                        //                        if (!string.IsNullOrEmpty(S13_cityStateZip))
-                        //                        {
-                        //                            var arr = S13_cityStateZip.Split(',');
-                        //                            account.Standard.OriginalCity = arr[0].Trim();
-                        //                            account.Standard.OriginalState = arr[1].Trim();
-                        //                            account.Standard.OriginalZip5 = arr[2].Trim();
-                        //                            account.Standard.OrigCszLength = S13_cityStateZip.Length - 2;
-
-                        //                        }
-                        //                        break;
-
-                        //                    //For Standard Billing Statement
-                        //                    case "STD":
-                        //                    //Set Mailing address according to the conditions
-                        //                        account.Standard.OriginalAddressLine1 = StandardBillingStatement.GetPrimaryBorrower(extractAccount, true);
-                        //                        account.Standard.OriginalAddressLine2 = StandardBillingStatement.GetMailingAddressLine2(extractAccount, true);
-                        //                        string STD_cityStateZip = StandardBillingStatement.GetMailingCityStateZip(extractAccount, true);
-                        //                        if (!string.IsNullOrEmpty(STD_cityStateZip))
-                        //                        {
-                        //                            var arr = STD_cityStateZip.Split(',');
-                        //                            account.Standard.OriginalCity = arr[0].Trim();
-                        //                            account.Standard.OriginalState = arr[1].Trim();
-                        //                            account.Standard.OriginalZip5 = arr[2].Trim();
-                        //                            account.Standard.OrigCszLength = STD_cityStateZip.Length - 2;
-
-                        //                        }
-                        //                        break;
-
-                        //                    default:
-                        //                        break;
-
-                        //                }
-
-
-                        //            //Reject co-borrower account if the primary account is rejected
-                        //            if (borrowerList.FirstOrDefault().isReject)
-                        //                RejectAccount(account, "Invalid Account");
-
-
-                        //            account.SequenceTransactions();
-                        //            output.AddAccount(account);
-                        //            primaryIndex++;//TODO: Need to check this when this task is complete                          
-                        //        }
-                        //    }
-                        //}
-                        //Setting to false for other primary accounts
-                        //primaryAccountRejected = false;
                     }
 
                     output.CloseFile();
@@ -538,12 +326,8 @@ namespace CarringtonService.BusinessExpert
 
         }
 
-        private void AddCoBorrwer(List<BorrowerModel> borrowerList,AccountsModel extractAccount, StandardFile output)
+        private void AddCoBorrwer(List<BorrowerModel> borrowerList,AccountsModel extractAccount, StandardFile output,int primaryIndex)
         {
-            var primaryIndex = 1;
-            var line = new StringBuilder();
-            int counter = 0;
-
             var account = new CustomerAccount(primaryIndex, 1)
             {
                 Standard = RecordManager.NewStandardRecord(Ncp10Version),
@@ -578,7 +362,7 @@ namespace CarringtonService.BusinessExpert
 
             //Get all the data from input file and create Raw data rows
             BuildPMRawData(extractAccount, account, primaryIndex);
-
+            var line = new StringBuilder();
             if (borrowerList.Count > 0 && extractAccount.CoBorrowerRecordModel.Rssi_Acct_No != null)
             {
                 //Add records for Co-Borrower Section 
