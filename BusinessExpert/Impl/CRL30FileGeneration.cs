@@ -170,7 +170,7 @@ namespace CarringtonService.BusinessExpert
                         //account.AddCustomerRecord(FormatCustomer.BuildRecord("RAW", primaryIndex, line));
 
                         //Get all the data from input file and create Raw data rows
-                        //BuildPMRawData(extractAccount, account, primaryIndex);
+                        BuildPMRawData(extractAccount, account, primaryIndex);
 
                         // Check the account for bankrupcy 
                         bool isBankrupt = string.IsNullOrEmpty(extractAccount.ActiveBankruptcyInformationRecordModel.Rssi_B_Chap) ? true : false;
