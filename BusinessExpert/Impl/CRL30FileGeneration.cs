@@ -244,37 +244,37 @@ namespace CarringtonService.BusinessExpert
                                     //For Chapter 7 Option ARM Statement
                                     case "A07":
                                         line = ChapterSevenOptionARMStatement.GetFinalChapterSevenOptionARMStatement(extractAccount);
-                                        account.AddCustomerRecord(FormatCustomer.BuildRecord("A07", primaryIndex, line.Append("|"+ flexField1Val)));
+                                        account.AddCustomerRecord(FormatCustomer.BuildRecord("A07", primaryIndex, line.Append(flexField1Val)));
                                         break;
 
                                     //For Chapter 13 Option ARM Statement
                                     case "A13":
                                         line = ChapterThirteenOptionARMStatement.GetFinalChapterThirteenOptionARMStatement(extractAccount);
-                                        account.AddCustomerRecord(FormatCustomer.BuildRecord("A13", primaryIndex, line.Append("|" + flexField1Val)));
+                                        account.AddCustomerRecord(FormatCustomer.BuildRecord("A13", primaryIndex, line.Append(flexField1Val)));
                                         break;
 
                                     //For Option ARM Billing  Statement
                                     case "ARM":
                                         line = OptionARMBillingStatement.GetFinalOptionARMBillingStatement(extractAccount);
-                                        account.AddCustomerRecord(FormatCustomer.BuildRecord("ARM", primaryIndex, line.Append("|" + flexField1Val)));
+                                        account.AddCustomerRecord(FormatCustomer.BuildRecord("ARM", primaryIndex, line.Append(flexField1Val)));
                                         break;
 
                                     //For Chapter 7 Billing Statement
                                     case "S07":
                                         line = ChapterSevenBillingStatement.GetFinalChapterSevenBillingStatement(extractAccount);
-                                        account.AddCustomerRecord(FormatCustomer.BuildRecord("S07", primaryIndex, line.Append("|" + flexField1Val)));
+                                        account.AddCustomerRecord(FormatCustomer.BuildRecord("S07", primaryIndex, line.Append(flexField1Val)));
                                         break;
 
                                     //For Chapter 13 Billing Statement
                                     case "S13":
                                         line = ChapterThirteenBillingStatement.GetFinalChapterThirteenBillingStatement(extractAccount);
-                                        account.AddCustomerRecord(FormatCustomer.BuildRecord("S13", primaryIndex, line.Append("|" + flexField1Val)));
+                                        account.AddCustomerRecord(FormatCustomer.BuildRecord("S13", primaryIndex, line.Append(flexField1Val)));
                                         break;
 
                                     //For Standard Billing Statement
                                     case "STD":
                                         line = StandardBillingStatement.GetFinalStringStandardBilling(extractAccount);
-                                        account.AddCustomerRecord(FormatCustomer.BuildRecord("STD", primaryIndex, line.Append("|" + flexField1Val)));
+                                        account.AddCustomerRecord(FormatCustomer.BuildRecord("STD", primaryIndex, line.Append(flexField1Val)));
                                         break;
                                     default:
                                         break;
@@ -392,7 +392,7 @@ namespace CarringtonService.BusinessExpert
                             //For Chapter 7 Option ARM Statement
                             case "A07":
                                 line = ChapterSevenOptionARMStatement.GetFinalChapterSevenOptionARMStatement(extractAccount);
-                                account.AddCustomerRecord(FormatCustomer.BuildRecord("A07", primaryIndex, line.Append("|" + flexField1[0])));
+                                account.AddCustomerRecord(FormatCustomer.BuildRecord("A07", primaryIndex, line.Append(flexField1[0])));
 
                                 //Set Mailing address according to the conditions
                                 account.Standard.OriginalAddressLine1 = ChapterSevenOptionARMStatement.GetMailingBKAttorneyAddressLine1(extractAccount, true);
@@ -412,7 +412,7 @@ namespace CarringtonService.BusinessExpert
                             //For Chapter 13 Option ARM Statement
                             case "A13":
                                 line = ChapterThirteenOptionARMStatement.GetFinalChapterThirteenOptionARMStatement(extractAccount);
-                                account.AddCustomerRecord(FormatCustomer.BuildRecord("A13", primaryIndex, line.Append("|" + flexField1[0])));
+                                account.AddCustomerRecord(FormatCustomer.BuildRecord("A13", primaryIndex, line.Append(flexField1[0])));
                                 //Set Mailing address according to the conditions
                                 account.Standard.OriginalAddressLine1 = ChapterThirteenOptionARMStatement.GetMailingBKAttorneyAddressLine1(extractAccount, true);
                                 account.Standard.OriginalAddressLine2 = ChapterThirteenOptionARMStatement.GetMailingBKAttorneyAddressLine2(extractAccount, true);
@@ -431,7 +431,7 @@ namespace CarringtonService.BusinessExpert
                             //For Option ARM Billing  Statement
                             case "ARM":
                                 line = OptionARMBillingStatement.GetFinalOptionARMBillingStatement(extractAccount);
-                                account.AddCustomerRecord(FormatCustomer.BuildRecord("ARM", primaryIndex, line.Append("|" + flexField1[0])));
+                                account.AddCustomerRecord(FormatCustomer.BuildRecord("ARM", primaryIndex, line.Append(flexField1[0])));
                                 //Set Mailing address according to the conditions
                                 account.Standard.OriginalAddressLine1 = OptionARMBillingStatement.GetMailingAddressLine1(extractAccount, true);
                                 account.Standard.OriginalAddressLine2 = OptionARMBillingStatement.GetMailingAddressLine2(extractAccount, true);
@@ -449,7 +449,7 @@ namespace CarringtonService.BusinessExpert
                             //For Chapter 7 Billing Statement
                             case "S07":
                                 line = ChapterSevenBillingStatement.GetFinalChapterSevenBillingStatement(extractAccount);
-                                account.AddCustomerRecord(FormatCustomer.BuildRecord("S07", primaryIndex, line.Append("|" + flexField1[0])));
+                                account.AddCustomerRecord(FormatCustomer.BuildRecord("S07", primaryIndex, line.Append(flexField1[0])));
                                 //Set Mailing address according to the conditions
                                 account.Standard.OriginalAddressLine1 = ChapterSevenBillingStatement.GetMailingBKAttorneyAddressLine1(extractAccount, true);
                                 account.Standard.OriginalAddressLine2 = ChapterSevenBillingStatement.GetMailingBKAttorneyAddressLine2(extractAccount, true);
@@ -468,7 +468,7 @@ namespace CarringtonService.BusinessExpert
                             //For Chapter 13 Billing Statement
                             case "S13":
                                 line = ChapterThirteenBillingStatement.GetFinalChapterThirteenBillingStatement(extractAccount);
-                                account.AddCustomerRecord(FormatCustomer.BuildRecord("S13", primaryIndex, line.Append("|" + flexField1[0])));
+                                account.AddCustomerRecord(FormatCustomer.BuildRecord("S13", primaryIndex, line.Append(flexField1[0])));
                                 //Set Mailing address according to the conditions
                                 account.Standard.OriginalAddressLine1 = ChapterThirteenBillingStatement.GetMailingBKAttorneyAddressLine1(extractAccount, true);
                                 account.Standard.OriginalAddressLine2 = ChapterThirteenBillingStatement.GetMailingBKAttorneyAddressLine2(extractAccount, true);
@@ -487,7 +487,7 @@ namespace CarringtonService.BusinessExpert
                             //For Standard Billing Statement
                             case "STD":
                                 line = StandardBillingStatement.GetFinalStringStandardBilling(extractAccount);
-                                account.AddCustomerRecord(FormatCustomer.BuildRecord("STD", primaryIndex, line.Append("|" + flexField1[0])));
+                                account.AddCustomerRecord(FormatCustomer.BuildRecord("STD", primaryIndex, line.Append(flexField1[0])));
                                 //Set Mailing address according to the conditions
                                 account.Standard.OriginalAddressLine1 = StandardBillingStatement.GetPrimaryBorrower(extractAccount, true);
                                 account.Standard.OriginalAddressLine2 = StandardBillingStatement.GetMailingAddressLine2(extractAccount, true);
